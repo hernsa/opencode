@@ -122,6 +122,15 @@ type Precomputed = {
   readonly fiber: Fiber.Fiber<Result, Failure>
 }
 
+/** A flattened history: what does not depend on the size the transcript has to fit. */
+type FlattenPlan = {
+  readonly request: LLMRequest
+  readonly lead: ReadonlyArray<Message>
+  /** Every exchange, rendered at each shortening level. */
+  readonly exchanges: ReadonlyArray<ReadonlyArray<string>>
+  readonly leadSize: number
+}
+
 const NOTHING_TO_COMPACT: Failure = { error: { type: "compaction.unavailable", message: "Nothing to compact yet" } }
 /** After each "too long" rejection, the next attempt aims at this share of the first rejected request's size. */
 const SHRINK_STEPS = [0.85, 0.7, 0.5, 0.35]
@@ -169,6 +178,11 @@ const CACHE_MARGIN = 30_000
 const PRECOMPUTED_TAIL_SHARE = 0.4
 /** Failed background summaries after which no new one starts until the next compaction. */
 const PRECOMPUTE_MAX_FAILURES = 2
+/**
+ * Held background summaries kept at once. A summary holds a live Fiber, and a Session that never compacts again
+ * would keep it for the life of the process, so the least recently held summaries are dropped past this many.
+ */
+const PRECOMPUTED_LIMIT = 64
 
 const SUMMARY_TEMPLATE = `You MUST use this format for your response (you may omit sections that aren't applicable). Do not include the <template> tags in your response.
 <template>
@@ -263,6 +277,26 @@ export const layer = Layer.effect(
 
     const scope = yield* Scope.Scope
     const precomputed = new Map<SessionContext.Loaded["session"]["id"], Precomputed>()
+
+    /** Reads a held summary and marks it as the most recently used one. */
+    const heldSummary = (sessionID: SessionContext.Loaded["session"]["id"]) => {
+      const entry = precomputed.get(sessionID)
+      if (entry === undefined) return undefined
+      precomputed.delete(sessionID)
+      precomputed.set(sessionID, entry)
+      return entry
+    }
+
+    /** Drops the least recently held summaries until the map is within its limit, stopping their background work. */
+    const evictPrecomputed = Effect.fnUntraced(function* (keep: SessionContext.Loaded["session"]["id"]) {
+      for (const id of [...precomputed.keys()]) {
+        if (precomputed.size <= PRECOMPUTED_LIMIT) return
+        if (id === keep) continue
+        const entry = precomputed.get(id)
+        precomputed.delete(id)
+        if (entry) yield* Fiber.interrupt(entry.fiber)
+      }
+    })
 
     const state = State.create<Settings, Editor>({
       name: "session-compaction",
@@ -369,7 +403,7 @@ export const layer = Layer.effect(
       if (anchorIndex <= 0 || anchor?.type !== "assistant" || !anchor.tokens) return
 
       const sessionID = context.session.id
-      const existing = precomputed.get(sessionID)
+      const existing = heldSummary(sessionID)
       const exit = existing?.fiber.pollUnsafe()
       const failed = exit !== undefined && Exit.isFailure(exit)
       const failures = (existing?.failures ?? 0) + (failed ? 1 : 0)
@@ -404,6 +438,7 @@ export const layer = Layer.effect(
         usage,
         fiber,
       })
+      yield* evictPrecomputed(sessionID)
     })
 
     /**
@@ -640,23 +675,31 @@ export const layer = Layer.effect(
       let asText = shrink.text ?? false
       let fit = shrink.fit
 
+      // The request and the history it is shortened from do not change while the request is shrunk, so their
+      // size and the transcript they flatten to are computed once instead of on every attempt.
+      let preparedSize: number | undefined
+      let historySize: number | undefined
+      let plan: FlattenPlan | undefined
+      const sizeOfPrepared = () => (preparedSize ??= estimateRequest(prepared.request))
+      const sizeOfHistory = () => (historySize ??= estimateRequest(shrink.history))
+      const flattened = (limit: number) => {
+        const current = (plan ??= flattenPlan(shrink.history, context))
+        return renderPlan(current, limit)
+      }
+
       while (true) {
         const measured = rejections === 0 ? shrink.measured : undefined
         const unchanged = asText
           ? undefined
-          : (measured ? total(measured) : estimateRequest(prepared.request)) <= fit
+          : (measured ? total(measured) : sizeOfPrepared()) <= fit
             ? prepared.request
-            : estimateRequest(shrink.history) <= target
+            : sizeOfHistory() <= target
               ? shrink.history
               : undefined
         const request =
           unchanged ??
-          flattenAndDropOldest(shrink.history, context, target) ??
-          (rejections > 0
-            ? undefined
-            : asText
-              ? flattenAndDropOldest(shrink.history, context, Number.POSITIVE_INFINITY)
-              : shrink.history)
+          flattened(target) ??
+          (rejections > 0 ? undefined : asText ? flattened(Number.POSITIVE_INFINITY) : shrink.history)
         if (!request) {
           return yield* Effect.fail<Failure>({
             error: {
@@ -716,8 +759,11 @@ export const layer = Layer.effect(
      * does (see `flattenMessage` for the levels): every exchange reaches a level before any reaches the next, so
      * detail is lost from the oldest history first and whole exchanges are omitted only as a last resort. The newest
      * exchange is never omitted; undefined when the transcript cannot fit even so.
+     *
+     * The plan holds what does not depend on the size the transcript has to fit, so a request that is shrunk more
+     * than once flattens the history once.
      */
-    const flattenAndDropOldest = (request: LLMRequest, context: SessionContext.Loaded, target: number) => {
+    const flattenPlan = (request: LLMRequest, context: SessionContext.Loaded): FlattenPlan => {
       const previous = previousCompaction(context.messages)
       const end =
         request.messages.findLastIndex(
@@ -755,15 +801,23 @@ export const layer = Layer.effect(
           )
           .filter((renders) => renders[0]),
       ]
+      return {
+        request,
+        lead,
+        exchanges,
+        leadSize: estimateRequest({ system: request.system, tools: [], messages: lead }),
+      }
+    }
+
+    /** The transcript of a flattened history, shortened until it fits `target`. */
+    const renderPlan = (plan: FlattenPlan, target: number): LLMRequest | undefined => {
+      const { request, lead, exchanges, leadSize } = plan
       if (exchanges.length === 0) return undefined
       const note = (omitted: number) =>
         omitted ? `[${omitted} older ${omitted === 1 ? "exchange" : "exchanges"} omitted]\n\n` : ""
       const size = (text: string) => (text ? Token.estimate(text) + 1 : 0)
       // Room for the longest possible note is set aside before choosing what to keep.
-      const room =
-        target -
-        estimateRequest({ system: request.system, tools: [], messages: lead }) -
-        Token.estimate(note(exchanges.length))
+      const room = target - leadSize - Token.estimate(note(exchanges.length))
 
       const levels = exchanges.map(() => 0)
       let total = exchanges.reduce((sum, renders) => sum + size(renders[0]), 0)

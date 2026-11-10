@@ -5,10 +5,11 @@ import type { Mcp } from "@opencode/schema/mcp"
 import { CrossSpawnSpawner } from "@opencode/util/cross-spawn-spawner"
 import { makeGlobalNode } from "@opencode/util/effect/app-node"
 import { httpFetch } from "@opencode/util/effect/app-node-platform"
-import { Cause, Context, Deferred, Effect, Exit, Fiber, FiberSet, Layer, Scope, Semaphore } from "effect"
+import { Cause, Context, Deferred, Effect, Exit, Fiber, FiberSet, Layer, Result, Scope, Semaphore } from "effect"
 import { FetchHttpClient } from "effect/http"
 import { ChildProcessSpawner } from "effect/process/ChildProcessSpawner"
 import { Environment } from "../environment/index.js"
+import { OcNano } from "../native/oc-nano.js"
 import { SharedCache } from "../shared-cache.js"
 import type { McpClient } from "./client.js"
 import { McpConnection } from "./connection.js"
@@ -83,6 +84,67 @@ function fingerprint(secret: string | Record<string, string> | undefined) {
       ? secret
       : JSON.stringify(Object.entries(secret).toSorted(([a], [b]) => a.localeCompare(b))),
   )
+}
+
+// The native pool mirrors the pooled connections this layer holds: a bounded, expiring record
+// of them, so a long-lived process keeps at most NATIVE_POOL_CAPACITY of them natively instead
+// of every connection it ever made. The JavaScript maps below stay the source of truth for
+// what OpenCode does; the mirror only bounds what the native side retains.
+const NATIVE_POOL_CAPACITY = 64
+const NATIVE_POOL_TTL_SECS = 300
+
+// The native pool is a process-wide singleton, so its id is created once and reused: a rebuilt
+// layer must not create a second pool nor reset the entries another layer still holds.
+let nativePoolId: number | undefined
+// Set when the addon could not provide a pool. A failure is not retried on every connection,
+// because each attempt would create yet another native pool.
+let nativePoolFailed = false
+
+/** The native pool's id, or undefined when the addon cannot provide one. */
+function nativePool() {
+  if (nativePoolFailed) return undefined
+  if (nativePoolId !== undefined) return nativePoolId
+  if (!OcNano.available()) {
+    nativePoolFailed = true
+    return undefined
+  }
+  const created = nativeCall(() => OcNano.initPool(NATIVE_POOL_CAPACITY, NATIVE_POOL_TTL_SECS))
+  if (created === undefined) {
+    nativePoolFailed = true
+    return undefined
+  }
+  nativePoolId = created
+  return nativePoolId
+}
+
+/** A short, fixed-width handle for a slot key, so a mirrored entry stays a known size. */
+function instanceId(key: string) {
+  return SharedCache.fingerprint(key)
+}
+
+/** Records a pooled connection in the native mirror, refreshing its time to live. */
+function recordInstance(key: string) {
+  const pool = nativePool()
+  if (pool === undefined) return
+  // The pool key is the connection's secret-free configuration, so the mirror never holds a
+  // credential: it is the same string the JavaScript map is keyed by.
+  nativeCall(() => OcNano.acquireInstance(pool, instanceId(key), key, NATIVE_POOL_TTL_SECS))
+}
+
+/** Drops a pooled connection from the native mirror and prunes what has expired in it. */
+function forgetInstance(key: string) {
+  const pool = nativePool()
+  if (pool === undefined) return
+  nativeCall(() => OcNano.releaseInstance(pool, instanceId(key)))
+  nativeCall(() => OcNano.prunePool(pool))
+}
+
+/**
+ * Runs a native call. The addon is an optimisation, so a missing addon or a native failure
+ * yields no result and the JavaScript path continues unchanged.
+ */
+function nativeCall<A>(run: () => A) {
+  return Result.try(run).pipe(Result.getOrUndefined)
 }
 
 // A Location holding a shared connection. The pool reaches Locations only through the holders
@@ -222,7 +284,9 @@ export const layer = Layer.effect(
       )
 
     const detach = (key: string, slot: Slot) => {
-      if (slots.get(key) === slot) slots.delete(key)
+      if (slots.get(key) !== slot) return
+      slots.delete(key)
+      forgetInstance(key)
     }
 
     // Closes as soon as the last holder lets go, interrupting a start nobody waits for anymore.
@@ -242,6 +306,9 @@ export const layer = Layer.effect(
       const slot =
         slots.get(key) ??
         open(key, { name: input.name, config: input.config, directory: input.directory, clientInfo: input.clientInfo })
+      // The native mirror tracks the same instances the slot map does, so it is refreshed on every
+      // acquisition rather than only when the slot opens: a long-held connection stays alive in it.
+      recordInstance(key)
       yield* Effect.acquireRelease(
         Effect.sync(() => slot.holders.add(holder)),
         () => release(key, slot, holder),

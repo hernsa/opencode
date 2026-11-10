@@ -5,13 +5,14 @@ export type { Context, Metadata, Namespace, Options, Result } from "@opencode/sc
 import { ToolDefinition, type ToolCall } from "@opencode/ai/effect"
 import type { CodeMode } from "@opencode/codemode"
 import { Tool } from "@opencode/schema/tool"
-import { Context, Effect, Layer, Ref, Result, Schema, SchemaIssue, Types } from "effect"
+import { Context, Effect, Layer, Option, Ref, Result, Schema, SchemaIssue, Types } from "effect"
 import { makeLocationNode } from "@opencode/util/effect/app-node"
 import type { Agent } from "./agent.js"
 import { CodeModeCatalog } from "./codemode/catalog.js"
 import { CodeModeTool } from "./codemode/tool.js"
 import { Flag } from "./flag.js"
 import { Image } from "./image.js"
+import { OcNano } from "./native/oc-nano.js"
 import { Permission } from "./permission.js"
 import { PluginHooks } from "./plugin/hooks.js"
 import { SessionMessage } from "./session/message.js"
@@ -81,6 +82,61 @@ export interface Snapshot {
 }
 
 export class Service extends Context.Service<Service, Interface>()("@opencode/Tool") {}
+
+/** How long a cached schema bundle stays valid in the native cache. */
+const SCHEMA_CACHE_TTL_SECS = 300
+
+/**
+ * The model half of the native cache key.
+ *
+ * The registry is Location-scoped and model-agnostic: a tool's model-facing schema comes from
+ * its own registration, never from the model that will read it, and `snapshot()` has no model
+ * in scope. One namespace therefore holds every bundle. The slot is reserved so a per-model
+ * schema dialect can partition it later.
+ */
+const SCHEMA_CACHE_MODEL = "default"
+
+/** The model-facing artifacts a code mode tool set produces. */
+type SchemaBundle = {
+  readonly catalog: CodeModeCatalog.Inventory
+  readonly definition: ToolDefinition
+}
+
+const CatalogTool = Schema.Struct({
+  type: Schema.Literal("tool"),
+  name: Schema.String,
+  description: Schema.String,
+  signature: Schema.String,
+  pinned: Schema.optionalKey(Schema.Boolean),
+})
+
+const CatalogNamespace: Schema.Codec<CodeModeCatalog.Namespace> = Schema.Struct({
+  type: Schema.Literal("namespace"),
+  name: Schema.String,
+  description: Schema.optionalKey(Schema.String),
+  tools: Schema.Array(
+    Schema.suspend((): Schema.Codec<CodeModeCatalog.Tool | CodeModeCatalog.Namespace> => CatalogEntry),
+  ),
+})
+
+const CatalogEntry: Schema.Codec<CodeModeCatalog.Tool | CodeModeCatalog.Namespace> = Schema.Union([
+  CatalogTool,
+  CatalogNamespace,
+])
+
+const BundleJson = Schema.Struct({
+  catalog: Schema.Struct({ tools: Schema.Array(CatalogEntry) }),
+  definition: Schema.Struct({
+    type: Schema.Literal("tool"),
+    name: Schema.String,
+    description: Schema.String,
+    inputSchema: Schema.Record(Schema.String, Schema.Unknown),
+    outputSchema: Schema.optionalKey(Schema.Record(Schema.String, Schema.Unknown)),
+  }),
+})
+
+const decodeJson = Schema.decodeUnknownOption(Schema.fromJsonString(Schema.Unknown))
+const decodeBundle = Schema.decodeUnknownOption(BundleJson)
 
 const layer = Layer.effect(
   Service,
@@ -280,11 +336,17 @@ const layer = Layer.effect(
                 flag,
               )
             : undefined
+          // The native cache is the second layer beneath the in-process memo. The memo is keyed
+          // by the registry revision, so any registration drops it, while the native cache is
+          // keyed by the tool set itself and survives a revision that left the tool set alone.
+          const hash = codeModeEnabled && !cached ? toolSetHash(codeModeTools, data) : undefined
+          const native = hash === undefined ? undefined : readBundle(hash)
           const codeModeCatalog = !codeModeEnabled
             ? undefined
-            : (cached?.value ?? CodeModeTool.catalog(codeModeInventory))
-          const codeModeDefinition = codeModeTool && (cached?.definition ?? definition(codeModeTool))
-          if (codeModeCatalog && codeModeDefinition)
+            : (cached?.value ?? native?.catalog ?? CodeModeTool.catalog(codeModeInventory))
+          const codeModeDefinition =
+            codeModeTool && (cached?.definition ?? native?.definition ?? definition(codeModeTool))
+          if (codeModeCatalog && codeModeDefinition) {
             catalog = {
               data,
               names,
@@ -292,6 +354,9 @@ const layer = Layer.effect(
               value: codeModeCatalog,
               definition: codeModeDefinition,
             }
+            if (hash !== undefined && native === undefined)
+              writeBundle(hash, { catalog: codeModeCatalog, definition: codeModeDefinition })
+          }
           return {
             ...(codeModeCatalog === undefined ? {} : { codeModeCatalog }),
             definitions: [
@@ -422,6 +487,64 @@ function register(tool: Tool.Info): Result.Result<ToolDefinition, RegistrationEr
 function namespaceError(name: string) {
   if (name.split(".").every((segment) => /^[A-Za-z0-9_-]+$/.test(segment))) return
   return new RegistrationError({ name, message: `Invalid tool namespace: ${JSON.stringify(name)}` })
+}
+
+/**
+ * The canonical tool set: the code mode tools and namespaces that decide what the model sees.
+ * Entries are sorted by path and written in a fixed field order, so the same tool set always
+ * produces the same JSON, and therefore the same native hash, in this process and the next.
+ */
+function toolSetJson(tools: ReadonlyMap<string, Tool.Info>, data: Data) {
+  return JSON.stringify({
+    namespaces: Array.from(data.namespaces.values())
+      .map((namespace) => ({ name: namespace.name, description: namespace.description }))
+      .toSorted((left, right) => (left.name < right.name ? -1 : left.name > right.name ? 1 : 0)),
+    tools: Array.from(tools)
+      .map(([id, tool]) => {
+        const definition = data.definitions.get(id)
+        return {
+          name: CodeModeTool.qualifiedName(tool),
+          description: tool.description,
+          input: definition?.inputSchema ?? null,
+          output: definition?.outputSchema ?? null,
+          pinned: tool.options?.pinned === true,
+        }
+      })
+      .toSorted((left, right) => (left.name < right.name ? -1 : left.name > right.name ? 1 : 0)),
+  })
+}
+
+/** The native hash of a tool set, or undefined when the addon is unavailable or fails. */
+function toolSetHash(tools: ReadonlyMap<string, Tool.Info>, data: Data) {
+  if (!OcNano.available()) return undefined
+  return nativeCall(() => OcNano.hashToolSet(toolSetJson(tools, data)))
+}
+
+/** Reads a cached bundle from the native cache, or undefined when there is none. */
+function readBundle(hash: number): SchemaBundle | undefined {
+  const json = nativeCall(() => OcNano.getCachedSchema(SCHEMA_CACHE_MODEL, hash))
+  if (json === undefined) return undefined
+  const parsed = decodeJson(json)
+  if (Option.isNone(parsed)) return undefined
+  const bundle = decodeBundle(parsed.value)
+  if (Option.isNone(bundle)) return undefined
+  return bundle.value
+}
+
+/** Stores a bundle in the native cache. */
+function writeBundle(hash: number, bundle: SchemaBundle) {
+  nativeCall(() => OcNano.putCachedSchema(SCHEMA_CACHE_MODEL, hash, JSON.stringify(bundle), SCHEMA_CACHE_TTL_SECS))
+  // A tool set that is never looked up again would otherwise stay until the process ends, so
+  // expired bundles are dropped whenever a new one is stored.
+  nativeCall(() => OcNano.evictExpiredSchemas())
+}
+
+/**
+ * Runs a native call. The addon is an optimisation, so a missing addon or a native failure
+ * yields no result and the caller keeps the plain TypeScript path.
+ */
+function nativeCall<A>(run: () => A) {
+  return Result.try(run).pipe(Result.getOrUndefined)
 }
 
 export const node = makeLocationNode({
