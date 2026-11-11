@@ -125,9 +125,17 @@ test("shared packaging defaults", async () => {
   expect(config.nsis?.include).toBe(include)
   expect(await Bun.file(include).exists()).toBe(true)
   expect(config.files).toContain("!resources/opencode-cli*")
-  expect(config.extraResources).toEqual([
-    { from: "resources/", to: "", filter: ["opencode-cli", "opencode-cli.exe", "opencode-cli.version"] },
-  ])
+})
+
+// The oc-nano addon is a native module, so it ships as an extra resource next to the app instead
+// of inside the asar archive. Only a win32-x64 build of it exists, so the other targets keep the
+// runtime fallback instead of carrying a binary they cannot load.
+test.each(CLI_BINARIES)("oc-nano addon resources for $target", ({ target, os, cpu }) => {
+  const config = load("dev", target)
+  const cli = { from: "resources/", to: "", filter: ["opencode-cli", "opencode-cli.exe", "opencode-cli.version"] }
+  const addon = { from: "../core/src/native", to: "oc-nano", filter: ["oc_nano_native.node"] }
+
+  expect(config.extraResources).toEqual(os === "win32" && cpu === "x64" ? [cli, addon] : [cli])
 })
 
 test("trims external dependencies without excluding runtime files", () => {

@@ -26,6 +26,22 @@ const rpmNoBuildIdLinksFpm = "--rpm-rpmbuild-define=_build_id_links none"
 const metainfoFpm = (appId: string) =>
   `${path.join(packageDir, "resources", `${appId}.metainfo.xml`)}=/usr/share/metainfo/${appId}.metainfo.xml`
 
+// The oc-nano native addon lives in packages/core and is loaded from disk by
+// packages/core/src/native/oc-nano-binding.ts, which looks for it next to the running binary
+// under <resources>/oc-nano/oc_nano_native.node. A native module cannot be loaded from inside
+// the asar archive, so it ships as an extra resource instead of an app file.
+const ocNanoResource = {
+  from: "../core/src/native",
+  to: "oc-nano",
+  filter: ["oc_nano_native.node"],
+}
+
+// packages/core checks in a win32-x64 build of the addon only, and the CLI gates it the same
+// way (packages/cli/src/node/target.ts), so the other targets keep the loader's fallback.
+function shipsOcNano(target: { os: string; cpu: string }) {
+  return target.os === "win32" && target.cpu === "x64"
+}
+
 // Dev and beta package every commit, so they trade about 5% (deb) and 17% (rpm) larger files for xz -1, which
 // compresses the payload about 3x faster than the deb default (-3) and 5x faster than the rpm default (-9).
 const previewCompressionFpm = (target: "deb" | "rpm") => [`--${target}-compression-level`, "1"]
@@ -107,6 +123,7 @@ const getBase = (appId: string): Configuration => {
         to: "",
         filter: ["opencode-cli", "opencode-cli.exe", "opencode-cli.version"],
       },
+      ...(shipsOcNano(target) ? [ocNanoResource] : []),
     ],
     afterPack: async (context) => {
       const arch = Arch[context.arch]
@@ -132,6 +149,16 @@ const getBase = (appId: string): Configuration => {
         await copyFile(path.join(packageDir, "resources/icons/icon.icns"), path.join(resources, "icon.icns"))
 
       if (context.electronPlatformName !== "win32") return
+
+      // The oc-nano addon ships as an extra resource rather than an app file, so it sits next to
+      // the app instead of inside the asar archive. The sidecar loads it from <resources>/oc-nano,
+      // which is where the loader in packages/core looks for it.
+      if (shipsOcNano(target)) {
+        const ocNano = path.join(resources, "oc-nano", "oc_nano_native.node")
+
+        if ((await stat(ocNano)).size === 0) throw new Error(`Bundled oc-nano addon must be a non-empty file: ${ocNano}`)
+        await NativeArch.verify(ocNano, arch)
+      }
 
       const prebuilds = path.join(
         resources,

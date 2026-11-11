@@ -42,7 +42,9 @@ const databaseLayer = (lock: Effect.Effect<Semaphore.Semaphore>) =>
         yield* db.run("PRAGMA journal_mode = WAL")
         yield* db.run("PRAGMA synchronous = NORMAL")
         yield* db.run("PRAGMA busy_timeout = 5000")
-        yield* db.run("PRAGMA cache_size = -64000")
+        // 8 MiB page cache (negative values are KiB): 8x smaller than the previous 64 MiB,
+        // keeping resident memory bounded across many open conversations.
+        yield* db.run("PRAGMA cache_size = -8192")
         yield* db.run("PRAGMA wal_checkpoint(PASSIVE)")
       }
       // Durable Object SQLite always enforces foreign keys and rejects the pragma.

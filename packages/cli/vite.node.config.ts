@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises"
 import { createRequire } from "node:module"
 import { defineConfig, type Plugin, type UserConfig } from "vite"
 import solid from "vite-plugin-solid"
-import { nodeExecArgv, nodeTarget, type NodeTarget, photonWasmAsset } from "./src/node/target"
+import { nodeExecArgv, nodeTarget, type NodeTarget, ocNanoAsset, photonWasmAsset } from "./src/node/target"
 import { verifySimulationGraph } from "./script/verify-artifact"
 
 const dir = import.meta.dirname
@@ -239,6 +239,10 @@ process.env.OPENCODE_PARCEL_WATCHER_PATH = __ocPath.join(__ocAssetRoot, ${JSON.s
 process.env.OPENCODE_PHOTON_WASM_PATH = __ocPath.join(__ocAssetRoot, ${JSON.stringify(photonWasmAsset)})
 process.env.FFF_BINARY_PATH = __ocPath.join(__ocAssetRoot, ${JSON.stringify(input.target.fffAsset)})
 process.env.OPENCODE_FFF_FFI_PATH = __ocPath.join(__ocAssetRoot, ${JSON.stringify(input.target.fffFfiAsset)})
+try {
+  const __ocNanoPath = __ocPath.join(__ocAssetRoot, ${JSON.stringify(ocNanoAsset)})
+  if (__ocExists(__ocNanoPath)) process.env.OPENCODE_OC_NANO_PATH = __ocNanoPath
+} catch {}
 if (__ocPersistentPty && !process.env.OPENCODE_PTY_BIN) process.env.OPENCODE_PTY_BIN = __ocPath.join(__ocAssetRoot, __ocPersistentPty)
 try {
   globalThis.__OPENCODE_FFF_FFI = require(process.env.OPENCODE_FFF_FFI_PATH)
