@@ -27,8 +27,12 @@ export function nodeTarget(platform: string, arch: string) {
     fffFfiPackage,
     fffFfiAsset: `${fffFfiPackage}/ffi-rs.${targetPlatform}-${targetArch}${targetPlatform === "linux" ? "-gnu" : targetPlatform === "win32" ? "-msvc" : ""}.node`,
     opencodePtyAsset,
+    ocNanoAsset: targetPlatform === "win32" && targetArch === "x64" ? ocNanoAsset : undefined,
   }
 }
+
+/** SEA asset key of the oc-nano native addon. Only a win32-x64 build of the addon exists today. */
+export const ocNanoAsset = "oc-nano/oc_nano_native.node"
 
 export const photonWasmAsset = "@silvia-odwyer/photon-node/photon_rs_bg.wasm"
 export const nodeExecArgv = ["--experimental-ffi", "--use-system-ca", "--disable-warning=ExperimentalWarning"] as const

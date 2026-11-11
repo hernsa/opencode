@@ -8,6 +8,8 @@ import { collectFiles } from "./files"
 import { resolveOpencodePty } from "./opencode-pty"
 
 const dir = path.resolve(import.meta.dirname, "..")
+// The oc-nano addon is checked in under packages/core; only a win32-x64 build exists today.
+const ocNanoSource = path.resolve(dir, "../core/src/native/oc_nano_native.node")
 
 // Bun's compiler discovers file imports and embeds them in its virtual filesystem. Vite only bundles the JavaScript
 // portion of the Node executable, while SEA embeds only the assets explicitly listed in its build configuration.
@@ -26,6 +28,7 @@ export async function collectNodeAssets(target: NodeTarget) {
   })
   const ptyEntry = fileURLToPath(import.meta.resolve(target.nodePtyPackage))
   const ptyRoot = path.resolve(path.dirname(ptyEntry), "..")
+  const ocNanoExists = await Bun.file(ocNanoSource).exists()
   const assets: NodeAsset[] = [
     ...getNodeAssets({
       platform: target.platform,
@@ -44,6 +47,7 @@ export async function collectNodeAssets(target: NodeTarget) {
       source: path.resolve(dir, "../ui/src/assets/audio", path.basename(key)),
     })),
     ...(opencodePty && target.opencodePtyAsset ? [{ key: target.opencodePtyAsset, source: opencodePty.source }] : []),
+    ...(target.ocNanoAsset && ocNanoExists ? [{ key: target.ocNanoAsset, source: ocNanoSource }] : []),
     ...(await collectFiles(ptyRoot))
       .filter((relative) => !relative.endsWith(".map") && !relative.endsWith(".pdb"))
       .map((relative) => ({

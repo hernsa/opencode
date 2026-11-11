@@ -18,6 +18,10 @@ import { bundledModelsSnapshot, modelsSnapshotPlugin } from "../../core/script/m
 
 const dir = path.resolve(import.meta.dirname, "..")
 const binary = "opencode"
+// The oc-nano addon is checked in as a real file: the plugin below rewrites the binding to a
+// require() of it, so the bytes have to exist on disk when the bundle is produced.
+const ocNanoAddon = path.resolve(dir, "../core/src/native/oc_nano_native.node")
+const ocNanoAddonExists = await Bun.file(ocNanoAddon).exists()
 const outdir = path.resolve(
   dir,
   process.argv.find((arg) => arg.startsWith("--outdir="))?.slice("--outdir=".length) ?? "dist",
@@ -165,6 +169,18 @@ export default { path: file, version: ${JSON.stringify(opencodePty.version)}, sh
       }))
     },
   }
+  // Only a win32-x64 addon exists; every other target keeps the original binding so the runtime
+  // fallback (undefined) degrades gracefully instead of loading a mismatched binary.
+  const ocNanoAvailable = item.os === "win32" && item.arch === "x64" && ocNanoAddonExists
+  const ocNanoPlugin: BunPlugin = {
+    name: "oc-nano-binding",
+    setup(build) {
+      build.onLoad({ filter: /native[/\\]oc-nano-binding\.ts$/ }, () => ({
+        contents: `export default () => require(${JSON.stringify(ocNanoAddon)})`,
+        loader: "js",
+      }))
+    },
+  }
   const target = targetName(item)
   const name = target.replace(binary, "cli")
   const executablePath = await compileExecutable(item)
@@ -176,6 +192,7 @@ export default { path: file, version: ${JSON.stringify(opencodePty.version)}, sh
       appAssetsPlugin,
       solidPlugin,
       parcelWatcherPlugin,
+      ...(ocNanoAvailable ? [ocNanoPlugin] : []),
       opencodePtyPlugin,
       pluginRuntimePlugin,
       wsReexportPlugin,
