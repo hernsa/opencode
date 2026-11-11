@@ -1,7 +1,7 @@
 import { blocks } from "~/lib/markdown"
 
 /**
- * The OpenCode font: the six letters of the wordmark, cut on a 24 × 42 cell from the official SVG
+ * The OcNano font: the six letters of the wordmark, cut on a 24 × 42 cell from the official SVG
  * logo. `ink` is the letter, `shadow` the lighter shade in its counter. The same outlines live in
  * public/font/glyphs.mjs, which the font download and the GIF worker load at runtime.
  */
@@ -75,7 +75,7 @@ export const words = [
   "depended",
   "conceded",
   "condoned",
-  "opencode",
+  "ocnano",
   "encoded",
   "decoded",
   "condone",
@@ -229,9 +229,9 @@ export const bigrams = Object.fromEntries(
   ),
 ) as Record<string, number>
 
-/** Words that fit inside the letters of "opencode". */
+/** Words that fit inside the letters of "ocnano". */
 export const subAnagrams = words.filter((word) => {
-  const pool = [..."opencode"]
+  const pool = [..."ocnano"]
   return [...word].every((char) => {
     const index = pool.indexOf(char)
     if (index === -1) return false
@@ -284,10 +284,10 @@ export const versions = [
 
 /** The page copy, shared by the page, its Markdown version and the ⌘K search. */
 export const fontContent = {
-  title: "OpenCode Font",
-  metaTitle: "OpenCode | Font, a typeface cut from the wordmark",
+  title: "OC Nano Font",
+  metaTitle: "OC Nano | Font, a typeface cut from the wordmark",
   description:
-    "A six-letter typeface cut from the OpenCode wordmark on a 4 × 7 grid. Type with it, see how every letter is built, then download your own installable font.",
+    "A six-letter typeface cut from the OC Nano wordmark on a 4 × 7 grid. Type with it, see how every letter is built, then download your own installable font.",
   combinations: { base: "6", exponent: "3,591" },
   download: "Download",
   plates: [
@@ -309,7 +309,7 @@ export const fontContent = {
     { id: "colophon", title: "Colophon" },
   ],
   cover: {
-    lead: "Six letters cut from the OpenCode wordmark. No curves, no diagonals, no exceptions: every edge falls on a grid of 120-unit modules.",
+    lead: "Six letters cut from the OC Nano wordmark. No curves, no diagonals, no exceptions: every edge falls on a grid of 120-unit modules.",
   },
   construction: {
     lead: "Each letter, rebuilt from nothing: the grid, the metrics, one module at a time, the shade, the outline, and the measurements that prove it.",
@@ -333,22 +333,22 @@ export const fontContent = {
     lead: "A font small enough to read in one sitting.",
   },
   anagrams: {
-    lead: "The letters of opencode can be arranged 10,080 ways. Try them all.",
+    lead: "The letters of ocnano can be arranged 10,080 ways. Try them all.",
   },
   field: {
     lead: "A field of the six letters.",
   },
   loupe: {
     lead: "Look closer. Every module of every letter is a grid of 144 smaller squares.",
-    label: "opencode, set large in the OpenCode font. Hover or press and hold to look through a loupe.",
+    label: "ocnano, set large in the OC Nano font. Hover or press and hold to look through a loupe.",
   },
   tester: {
     lead: "Type with the six letters. Other characters stay empty.",
-    label: "Text to preview in the OpenCode font",
+    label: "Text to preview in the OC Nano font",
     initial: "open code node done",
   },
   colophon: {
-    lead: "Download the font, install it, then choose OpenCode in any app. Every copy carries its own substitution map.",
+    lead: "Download the font, install it, then choose OC Nano in any app. Every copy carries its own substitution map.",
   },
 }
 

@@ -20,11 +20,11 @@ import {
   type MarkdownCodeAction,
   type MarkdownCodeBlock,
   type MarkdownCodeBlocks,
-} from "@opencode/session-ui/context/markdown"
-import { SourcesProvider } from "@opencode/session-ui/context/sources"
-import { sourcesExperiment } from "@opencode/session-ui/sources/experiment"
-import { useTheme } from "@opencode/ui/theme/context"
-import type { DesktopTheme } from "@opencode/ui/theme/types"
+} from "@ocnano/session-ui/context/markdown"
+import { SourcesProvider } from "@ocnano/session-ui/context/sources"
+import { sourcesExperiment } from "@ocnano/session-ui/sources/experiment"
+import { useTheme } from "@ocnano/ui/theme/context"
+import type { DesktopTheme } from "@ocnano/ui/theme/types"
 import {
   CodeBlock,
   CodeBlockAction,
@@ -32,9 +32,9 @@ import {
   Theme,
   type CodeBlockProps,
   type MountedSession,
-} from "@opencode/plugin/gui"
-import { BuiltinSlot, type BuiltinSlotMap } from "@opencode/plugin/gui/builtin"
-import { PluginContext } from "@opencode/plugin/gui/host"
+} from "@ocnano/plugin/gui"
+import { BuiltinSlot, type BuiltinSlotMap } from "@ocnano/plugin/gui/builtin"
+import { PluginContext } from "@ocnano/plugin/gui/host"
 import { usePluginHost, type Item } from "./host"
 import { createLinkCheck } from "./link-check"
 

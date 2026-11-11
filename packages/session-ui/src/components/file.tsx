@@ -1,4 +1,4 @@
-import { sampledChecksum } from "@opencode/util/encode"
+import { sampledChecksum } from "@ocnano/util/encode"
 import {
   areOptionsEqual,
   DEFAULT_VIRTUAL_FILE_METRICS,

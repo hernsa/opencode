@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { FormInfo } from "@opencode/client/promise"
+import type { FormInfo } from "@ocnano/client/promise"
 import {
   buildFormAnswer,
   createQuestionDockState,

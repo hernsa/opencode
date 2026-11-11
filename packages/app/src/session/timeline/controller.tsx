@@ -1,11 +1,11 @@
-import type { SessionMessageInfo } from "@opencode/client/promise"
-import { DialogFooter, DialogHeader, DialogTitleGroup, Dialog } from "@opencode/ui/dialog"
-import { Button } from "@opencode/ui/button"
+import type { SessionMessageInfo } from "@ocnano/client/promise"
+import { DialogFooter, DialogHeader, DialogTitleGroup, Dialog } from "@ocnano/ui/dialog"
+import { Button } from "@ocnano/ui/button"
 import { useNavigate } from "@solidjs/router"
 import { createEffect, createMemo, createSignal, on, onCleanup, untrack, type Accessor } from "solid-js"
 import { Option, Predicate, Schema } from "effect"
 import { notifySessionTabsRemoved } from "@/shell/titlebar/session-events"
-import { useDialog } from "@opencode/ui/context/dialog"
+import { useDialog } from "@ocnano/ui/context/dialog"
 import { useLanguage } from "@/runtime/i18n/language"
 import { useSettings } from "@/settings/model"
 import { useWorkspaceLocation } from "@/workspaces/location"
@@ -36,7 +36,7 @@ import {
 } from "./header-actions-machine"
 import { createTimelineProjection } from "./projection"
 import { useServer } from "@/runtime/server/current"
-import type { ReasoningMode } from "@opencode/session-ui/timeline/projection"
+import type { ReasoningMode } from "@ocnano/session-ui/timeline/projection"
 
 const emptyMessages: SessionMessageInfo[] = []
 

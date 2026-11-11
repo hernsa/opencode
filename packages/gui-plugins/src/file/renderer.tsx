@@ -11,8 +11,8 @@ import {
   type ParentProps,
 } from "solid-js"
 import { createStore, produce, unwrap } from "solid-js/store"
-import { Icon } from "@opencode/ui/icon"
-import { encodeFilePath, getFilename } from "@opencode/util/path"
+import { Icon } from "@ocnano/ui/icon"
+import { encodeFilePath, getFilename } from "@ocnano/util/path"
 import {
   Command,
   createKeyed,
@@ -29,9 +29,9 @@ import {
   type SessionScreen,
   type ServerRef,
   type Plugin,
-} from "@opencode/plugin/gui"
-import { artifactKind } from "@opencode/util/artifact"
-import { uuid } from "@opencode/util/uuid"
+} from "@ocnano/plugin/gui"
+import { artifactKind } from "@ocnano/util/artifact"
+import { uuid } from "@ocnano/util/uuid"
 import { resolveArtifactPath } from "./artifact"
 import { FileContext, type FileShared } from "./context"
 import {
@@ -40,7 +40,7 @@ import {
   type FileListProps,
   type FileTreeProps,
   type OpenInAppProps,
-} from "@opencode/plugin/gui/file"
+} from "@ocnano/plugin/gui/file"
 import type File from "./index"
 import { FileVisual } from "./label"
 import {
@@ -76,9 +76,9 @@ import {
   type PickerEvent,
 } from "./picker-machine"
 import tabStyles from "./tabs.css?inline"
-import { onIdle, BuiltinPanel, BuiltinSlot, type BuiltinPanelTab } from "@opencode/plugin/gui/builtin"
-import { Browser } from "@opencode/plugin/gui/browser"
-import { Changes } from "@opencode/plugin/gui/review"
+import { onIdle, BuiltinPanel, BuiltinSlot, type BuiltinPanelTab } from "@ocnano/plugin/gui/builtin"
+import { Browser } from "@ocnano/plugin/gui/browser"
+import { Changes } from "@ocnano/plugin/gui/review"
 
 const OPEN = "open"
 

@@ -14,8 +14,8 @@ test("bundles the Promise and Effect clients with the in-memory host", async () 
   const result = await Bun.build({
     entrypoints: Object.values(entrypoints),
     files: {
-      [entrypoints.promise]: 'export * from "@opencode/sdk"',
-      [entrypoints.effect]: 'export * from "@opencode/sdk/effect"',
+      [entrypoints.promise]: 'export * from "@ocnano/sdk"',
+      [entrypoints.effect]: 'export * from "@ocnano/sdk/effect"',
     },
     target: "bun",
     format: "esm",

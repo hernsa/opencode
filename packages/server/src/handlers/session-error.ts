@@ -1,6 +1,6 @@
-import { Session } from "@opencode/core/session"
-import type { Snapshot } from "@opencode/core/snapshot"
-import { MessageNotFoundError, SessionNotFoundError, UnknownError } from "@opencode/protocol/errors"
+import { Session } from "@ocnano/core/session"
+import type { Snapshot } from "@ocnano/core/snapshot"
+import { MessageNotFoundError, SessionNotFoundError, UnknownError } from "@ocnano/protocol/errors"
 import { Effect } from "effect"
 
 export function missingSession(error: Session.NotFoundError) {

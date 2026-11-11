@@ -1,11 +1,11 @@
-import { Button } from "@opencode/ui/button"
-import { Dialog, DialogBody, DialogFooter, DialogHeader, DialogTitle } from "@opencode/ui/dialog"
-import { Divider } from "@opencode/ui/divider"
-import { TextInput } from "@opencode/ui/text-input"
-import { useDialog } from "@opencode/ui/context/dialog"
-import { uuid } from "@opencode/util/uuid"
+import { Button } from "@ocnano/ui/button"
+import { Dialog, DialogBody, DialogFooter, DialogHeader, DialogTitle } from "@ocnano/ui/dialog"
+import { Divider } from "@ocnano/ui/divider"
+import { TextInput } from "@ocnano/ui/text-input"
+import { useDialog } from "@ocnano/ui/context/dialog"
+import { uuid } from "@ocnano/util/uuid"
 import { createMemo, createSignal, onCleanup, onMount, Show, untrack } from "solid-js"
-import { createKeyed, usePlugin } from "@opencode/plugin/gui"
+import { createKeyed, usePlugin } from "@ocnano/plugin/gui"
 import type { SshConfig } from "./contract"
 import {
   createSshDialogState,

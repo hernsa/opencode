@@ -3,11 +3,11 @@ title: Referencias
 description: Añada directorios locales y repositorios Git como referencias del proyecto.
 ---
 
-Las referencias dan a OpenCode acceso a directorios fuera del proyecto actual. Úselas para tener a mano documentación, bibliotecas compartidas, ejemplos u otro repositorio mientras trabaja.
+Las referencias dan a OC Nano acceso a directorios fuera del proyecto actual. Úselas para tener a mano documentación, bibliotecas compartidas, ejemplos u otro repositorio mientras trabaja.
 
-Las referencias se configuran por alias en `opencode.json` o `opencode.jsonc`.
+Las referencias se configuran por alias en `ocnano.json` o `ocnano.jsonc`.
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "$schema": "https://opencode.ai/config.json",
   "references": {
@@ -30,7 +30,7 @@ Las referencias se configuran por alias en `opencode.json` o `opencode.jsonc`.
 
 Use `path` para hacer referencia a un directorio local.
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "references": {
     "docs": {
@@ -48,7 +48,7 @@ Las rutas pueden ser:
 
 También puede usar una forma abreviada como cadena:
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "references": {
     "docs": "../docs",
@@ -60,9 +60,9 @@ También puede usar una forma abreviada como cadena:
 
 ## Repositorios Git
 
-Use `repository` para hacer referencia a un repositorio Git. OpenCode materializa el repositorio en su caché local de repositorios y pone a disposición el código fuente extraído como directorio de referencia.
+Use `repository` para hacer referencia a un repositorio Git. OC Nano materializa el repositorio en su caché local de repositorios y pone a disposición el código fuente extraído como directorio de referencia.
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "references": {
     "effect": {
@@ -73,11 +73,11 @@ Use `repository` para hacer referencia a un repositorio Git. OpenCode materializ
 }
 ```
 
-`repository` acepta URL de Git, referencias host/path y la forma abreviada `owner/repo` de GitHub. El campo opcional `branch` selecciona una rama o ref. Sin `branch`, OpenCode usa la rama predeterminada del repositorio.
+`repository` acepta URL de Git, referencias host/path y la forma abreviada `owner/repo` de GitHub. El campo opcional `branch` selecciona una rama o ref. Sin `branch`, OC Nano usa la rama predeterminada del repositorio.
 
 Puede usar la forma abreviada como cadena cuando no necesite una rama, una descripción ni otras opciones:
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "references": {
     "effect": "Effect-TS/effect",
@@ -95,7 +95,7 @@ Las referencias de Git se actualizan de forma asíncrona. Un repositorio recién
 
 Añada `description` para explicar cuándo debe usar un agente una referencia.
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "references": {
     "design-system": {
@@ -106,7 +106,7 @@ Añada `description` para explicar cuándo debe usar un agente una referencia.
 }
 ```
 
-OpenCode incluye las referencias con descripción en el contexto del agente. Las descripciones deben ser breves y lo bastante específicas para distinguir referencias con contenido similar. Las referencias sin descripción siguen disponibles mediante el autocompletado y el uso directo, pero no se anuncian a los agentes.
+OC Nano incluye las referencias con descripción en el contexto del agente. Las descripciones deben ser breves y lo bastante específicas para distinguir referencias con contenido similar. Las referencias sin descripción siguen disponibles mediante el autocompletado y el uso directo, pero no se anuncian a los agentes.
 
 ---
 
@@ -114,7 +114,7 @@ OpenCode incluye las referencias con descripción en el contexto del agente. Las
 
 Establezca `hidden` en `true` para omitir una referencia del autocompletado con `@` en la TUI.
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "references": {
     "internal": {
@@ -140,7 +140,7 @@ Compare this implementation with @sdk/src/client.ts
 
 Los agentes también reciben en su contexto de sistema las rutas resueltas y las descripciones de las referencias configuradas que tienen descripción, de modo que pueden inspeccionar una referencia cuando es relevante sin que usted tenga que adjuntarla manualmente.
 
-OpenCode permite automáticamente los directorios de referencia a través de su límite de permisos para directorios externos. Los permisos normales de las herramientas siguen aplicándose; por ejemplo, un agente que no puede editar archivos no obtiene acceso de edición porque un directorio esté configurado como referencia.
+OC Nano permite automáticamente los directorios de referencia a través de su límite de permisos para directorios externos. Los permisos normales de las herramientas siguen aplicándose; por ejemplo, un agente que no puede editar archivos no obtiene acceso de edición porque un directorio esté configurado como referencia.
 
 ---
 

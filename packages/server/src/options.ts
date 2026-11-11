@@ -1,8 +1,8 @@
-import { Database } from "@opencode/core/database/database"
-import { ModelsDev } from "@opencode/core/models-dev"
-import { PersistentPty } from "@opencode/core/persistent-pty"
+import { Database } from "@ocnano/core/database/database"
+import { ModelsDev } from "@ocnano/core/models-dev"
+import { PersistentPty } from "@ocnano/core/persistent-pty"
 import { Schema } from "effect"
-import type { LayerNodePlatform } from "@opencode/util/effect/app-node-platform"
+import type { LayerNodePlatform } from "@ocnano/util/effect/app-node-platform"
 
 export const ServerOptions = Schema.Struct({
   app: Schema.optional(
@@ -26,7 +26,7 @@ export const ServerOptions = Schema.Struct({
   ),
   models: Schema.optional(ModelsDev.Options),
   /**
-   * Replaces `globalThis.fetch` for OpenCode's own HTTP requests: OpenCode Console config, model requests, web fetch
+   * Replaces `globalThis.fetch` for OcNano's own HTTP requests: OcNano Console config, model requests, web fetch
    * and search, well-known config, and remote MCP servers. Agent code in Code Mode keeps `globalThis.fetch`. For
    * example, a Cloudflare Worker can route requests through a Service Binding.
    */

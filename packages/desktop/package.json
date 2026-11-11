@@ -1,12 +1,12 @@
 {
-  "name": "@opencode/desktop",
+  "name": "@ocnano/desktop",
   "private": true,
   "version": "2.2.7",
   "type": "module",
   "license": "MIT",
   "homepage": "https://opencode.ai",
   "author": {
-    "name": "OpenCode",
+    "name": "OC Nano",
     "email": "hello@opencode.ai"
   },
   "scripts": {
@@ -32,12 +32,12 @@
     "@effect/platform-node": "catalog:",
     "@hona/strobe": "catalog:",
     "@lydell/node-pty": "catalog:",
-    "@opencode/app": "workspace:*",
-    "@opencode/gui-plugins": "workspace:*",
-    "@opencode/plugin": "workspace:*",
-    "@opencode/client": "workspace:*",
-    "@opencode/schema": "workspace:*",
-    "@opencode/ui": "workspace:*",
+    "@ocnano/app": "workspace:*",
+    "@ocnano/gui-plugins": "workspace:*",
+    "@ocnano/plugin": "workspace:*",
+    "@ocnano/client": "workspace:*",
+    "@ocnano/schema": "workspace:*",
+    "@ocnano/ui": "workspace:*",
     "@sentry/solid": "catalog:",
     "@solidjs/router": "catalog:",
     "@types/bun": "catalog:",

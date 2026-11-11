@@ -1,4 +1,4 @@
-import { Button } from "@opencode/ui/button"
+import { Button } from "@ocnano/ui/button"
 import { createEffect, For, on, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { InboxSessionCard } from "./inbox"
@@ -45,10 +45,10 @@ function SessionCardStory(props: {
           <InboxSessionCard
             project={
               props.projectKnown
-                ? { id: "lab-opencode", name: props.project, worktree: "/workspace/opencode", icon: { color: "blue" } }
+                ? { id: "lab-ocnano", name: props.project, worktree: "/workspace/ocnano", icon: { color: "blue" } }
                 : undefined
             }
-            directory={props.worktree ? "/workspace/opencode/worktrees/tooltip-status" : "/workspace/opencode"}
+            directory={props.worktree ? "/workspace/ocnano/worktrees/tooltip-status" : "/workspace/ocnano"}
             title={props.title}
             status={props.status}
             selected={state.selected}
@@ -92,7 +92,7 @@ export default {
     remote: false,
     branch: "dev",
     title: "Tooltip status on latest dev",
-    project: "opencode",
+    project: "ocnano",
     projectKnown: true,
     ageMinutes: 41,
     width: 280,

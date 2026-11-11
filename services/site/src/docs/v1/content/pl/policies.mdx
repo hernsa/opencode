@@ -1,15 +1,15 @@
 ---
 title: Polityki
-description: Kontroluj, z których skonfigurowanych zasobów może korzystać OpenCode.
+description: Kontroluj, z których skonfigurowanych zasobów może korzystać OC Nano.
 ---
 
-:::caution[Wymaga OpenCode 2]
-Polityki nie są egzekwowane w OpenCode 1. Przykłady na tej stronie wymagają OpenCode 2. W OpenCode 1 użyj [`disabled_providers`](/docs/config#disabled-providers) lub [`enabled_providers`](/docs/config#enabled-providers), aby kontrolować dostępność dostawców. Aktualne informacje znajdziesz w [dokumentacji polityk OpenCode 2](https://opencode.ai/docs/policies/).
+:::caution[Wymaga OC Nano 2]
+Polityki nie są egzekwowane w OC Nano 1. Przykłady na tej stronie wymagają OC Nano 2. W OC Nano 1 użyj [`disabled_providers`](/docs/config#disabled-providers) lub [`enabled_providers`](/docs/config#enabled-providers), aby kontrolować dostępność dostawców. Aktualne informacje znajdziesz w [dokumentacji polityk OC Nano 2](https://opencode.ai/docs/policies/).
 :::
 
-Polityki określają, czy OpenCode może wykonać daną akcję na wskazanym zasobie. Ta funkcja OpenCode 2 jest eksperymentalna i konfiguruje się ją za pomocą tablicy `experimental.policies` w `opencode.json`.
+Polityki określają, czy OC Nano może wykonać daną akcję na wskazanym zasobie. Ta funkcja OC Nano 2 jest eksperymentalna i konfiguruje się ją za pomocą tablicy `experimental.policies` w `ocnano.json`.
 
-Polityki są niezależne od [uprawnień](/docs/permissions). Uprawnienia kontrolują, co narzędzia mogą robić w trakcie sesji, a polityki decydują, czy OpenCode może korzystać z zasobu, takiego jak dostawca LLM.
+Polityki są niezależne od [uprawnień](/docs/permissions). Uprawnienia kontrolują, co narzędzia mogą robić w trakcie sesji, a polityki decydują, czy OC Nano może korzystać z zasobu, takiego jak dostawca LLM.
 
 ---
 
@@ -23,7 +23,7 @@ Każda reguła polityki ma trzy pola:
 
 Na przykład zablokuj korzystanie z dostawcy `openai`:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "$schema": "https://opencode.ai/config.json",
   "experimental": {
@@ -44,7 +44,7 @@ Dostawca zablokowany przez politykę nie jest dostępny do wyboru ani używania 
 
 ## Dostępne polityki
 
-OpenCode obsługuje obecnie jedną akcję polityki:
+OC Nano obsługuje obecnie jedną akcję polityki:
 
 | Akcja          | Zasób                                | Opis                                                  |
 | -------------- | ------------------------------------ | ----------------------------------------------------- |
@@ -58,7 +58,7 @@ W przyszłości mogą zostać dodane kolejne akcje polityk.
 
 Pole `resource` obsługuje dopasowywanie z symbolami wieloznacznymi. Użyj `*`, aby dopasować zero lub więcej znaków, oraz `?`, aby dopasować jeden znak.
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "$schema": "https://opencode.ai/config.json",
   "experimental": {
@@ -83,7 +83,7 @@ Gdy pasuje kilka reguł, wygrywa ostatnia pasująca. Umieść najpierw reguły o
 
 Na przykład zezwól tylko na Anthropic:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "$schema": "https://opencode.ai/config.json",
   "experimental": {
@@ -111,11 +111,11 @@ Polityki można ustawić zarówno w konfiguracji globalnej, jak i w konfiguracji
 
 ## Listy dostawców
 
-W OpenCode 2 do kontrolowania dostępu do dostawców używaj polityk zamiast starszych ustawień `disabled_providers` i `enabled_providers`. W OpenCode 1 nadal korzystaj z tych list dostawców.
+W OC Nano 2 do kontrolowania dostępu do dostawców używaj polityk zamiast starszych ustawień `disabled_providers` i `enabled_providers`. W OC Nano 1 nadal korzystaj z tych list dostawców.
 
 Aby zastąpić `disabled_providers`:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "experimental": {
     "policies": [
@@ -128,7 +128,7 @@ Aby zastąpić `disabled_providers`:
 
 Aby zastąpić `enabled_providers`, najpierw zablokuj wszystkich dostawców, a następnie zezwól na wybranych:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "experimental": {
     "policies": [

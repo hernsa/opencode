@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url"
 import { getNodeAssets } from "@opentui/core/node-assets"
 import { attentionSoundAssets, type NodeTarget, photonWasmAsset } from "../src/node/target"
 import { collectFiles } from "./files"
-import { resolveOpencodePty } from "./opencode-pty"
+import { resolveOcNanoPty } from "./ocnano-pty"
 
 const dir = path.resolve(import.meta.dirname, "..")
 // The oc-nano addon is checked in under packages/core; only a win32-x64 build exists today.
@@ -21,7 +21,7 @@ export type NodeAsset = {
 }
 
 export async function collectNodeAssets(target: NodeTarget) {
-  const opencodePty = await resolveOpencodePty({
+  const ocnanoPty = await resolveOcNanoPty({
     platform: target.platform,
     arch: target.arch,
     ...(target.platform === "linux" ? { libc: "glibc" as const } : {}),
@@ -46,7 +46,7 @@ export async function collectNodeAssets(target: NodeTarget) {
       key,
       source: path.resolve(dir, "../ui/src/assets/audio", path.basename(key)),
     })),
-    ...(opencodePty && target.opencodePtyAsset ? [{ key: target.opencodePtyAsset, source: opencodePty.source }] : []),
+    ...(ocnanoPty && target.ocnanoPtyAsset ? [{ key: target.ocnanoPtyAsset, source: ocnanoPty.source }] : []),
     ...(target.ocNanoAsset && ocNanoExists ? [{ key: target.ocNanoAsset, source: ocNanoSource }] : []),
     ...(await collectFiles(ptyRoot))
       .filter((relative) => !relative.endsWith(".map") && !relative.endsWith(".pdb"))

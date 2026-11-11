@@ -2,11 +2,11 @@ import { expect } from "bun:test"
 import fs from "node:fs/promises"
 import { createServer } from "node:http"
 import path from "node:path"
-import { Agent } from "@opencode/schema/agent"
-import { Integration } from "@opencode/schema/integration"
-import { ServerInfo } from "@opencode/protocol/groups/server"
+import { Agent } from "@ocnano/schema/agent"
+import { Integration } from "@ocnano/schema/integration"
+import { ServerInfo } from "@ocnano/protocol/groups/server"
 import { Effect, Schedule, Schema } from "effect"
-import { Session } from "@opencode/schema/session"
+import { Session } from "@ocnano/schema/session"
 import { tmpdir } from "../../core/test/fixture/tmpdir"
 import { it } from "../../core/test/lib/effect"
 import { ServerFetch } from "../src/fetch"
@@ -21,15 +21,15 @@ const options = {
 
 it.live("returns LocationNotFoundError for a missing folder and recovers once it exists", () =>
   Effect.gen(function* () {
-    const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-directory-errors-")))
+    const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-directory-errors-")))
     const directory = path.join(config.path, "project")
     const handler = yield* ServerFetch.make({ ...options, config: { directory: config.path } })
     // Session creation only resolves its placement; it does not boot the Location graph.
     const created = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/session", {
+        new Request("http://ocnano.local/api/session", {
           method: "POST",
-          headers: { "content-type": "application/json", "x-opencode-directory": encodeURIComponent(directory) },
+          headers: { "content-type": "application/json", "x-ocnano-directory": encodeURIComponent(directory) },
           body: JSON.stringify({ location: { directory } }),
         }),
       ),
@@ -47,8 +47,8 @@ it.live("returns LocationNotFoundError for a missing folder and recovers once it
     for (const endpoint of endpoints) {
       const response = yield* Effect.promise(() =>
         handler(
-          new Request(`http://opencode.local${endpoint}`, {
-            headers: { "x-opencode-directory": encodeURIComponent(directory) },
+          new Request(`http://ocnano.local${endpoint}`, {
+            headers: { "x-ocnano-directory": encodeURIComponent(directory) },
           }),
         ),
       )
@@ -62,8 +62,8 @@ it.live("returns LocationNotFoundError for a missing folder and recovers once it
     yield* Effect.promise(() => fs.mkdir(directory))
     const recovered = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/model", {
-          headers: { "x-opencode-directory": encodeURIComponent(directory) },
+        new Request("http://ocnano.local/api/model", {
+          headers: { "x-ocnano-directory": encodeURIComponent(directory) },
         }),
       ),
     )
@@ -73,14 +73,14 @@ it.live("returns LocationNotFoundError for a missing folder and recovers once it
 
 it.live("manages a session whose directory was deleted", () =>
   Effect.gen(function* () {
-    const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-deleted-directory-")))
+    const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-deleted-directory-")))
     const directory = path.join(config.path, "project")
     yield* Effect.promise(() => fs.mkdir(directory))
     const handler = yield* ServerFetch.make({ ...options, config: { directory: config.path } })
     const request = (endpoint: string, method: string, body?: unknown) =>
       Effect.promise(() =>
         handler(
-          new Request(`http://opencode.local${endpoint}`, {
+          new Request(`http://ocnano.local${endpoint}`, {
             method,
             headers: { "content-type": "application/json" },
             body: body === undefined ? undefined : JSON.stringify(body),
@@ -169,7 +169,7 @@ function occupy(port: number, cancel = false) {
 // A server without its own config directory reads the developer's global config, whose remote MCP servers would
 // reach the network.
 const isolated = Effect.gen(function* () {
-  const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-openai-oauth-")))
+  const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-openai-oauth-")))
   return yield* ServerFetch.make({ ...options, config: { ...options.config, directory: config.path } })
 })
 
@@ -177,7 +177,7 @@ const connectOpenAI = (handler: Handler) =>
   Effect.gen(function* () {
     // Catalog endpoints no longer wait for plugin initialization.
     yield* Effect.gen(function* () {
-      const response = yield* Effect.promise(() => handler(new Request("http://opencode.local/api/integration")))
+      const response = yield* Effect.promise(() => handler(new Request("http://ocnano.local/api/integration")))
       expect(response.status).toBe(200)
       const body = Schema.decodeUnknownSync(Schema.Struct({ data: Schema.Array(Integration.Info) }))(
         yield* Effect.promise(() => response.json()),
@@ -194,7 +194,7 @@ const connectOpenAI = (handler: Handler) =>
     )
     return yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/integration/openai/connect/oauth", {
+        new Request("http://ocnano.local/api/integration/openai/connect/oauth", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ methodID: "chatgpt-browser" }),
@@ -207,13 +207,13 @@ it.live("serves the HttpApi and enforces Basic auth like the Node server", () =>
   Effect.gen(function* () {
     const handler = yield* ServerFetch.make({ ...options, password: "secret" })
 
-    const denied = yield* Effect.promise(() => handler(new Request("http://opencode.local/api/info")))
+    const denied = yield* Effect.promise(() => handler(new Request("http://ocnano.local/api/info")))
     expect(denied.status).toBe(401)
 
     const response = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/info", {
-          headers: { authorization: `Basic ${btoa("opencode:secret")}` },
+        new Request("http://ocnano.local/api/info", {
+          headers: { authorization: `Basic ${btoa("ocnano:secret")}` },
         }),
       ),
     )
@@ -222,7 +222,7 @@ it.live("serves the HttpApi and enforces Basic auth like the Node server", () =>
       Effect.flatMap(Schema.decodeUnknownEffect(ServerInfo)),
     )
     expect(body.version).toBe("test-version")
-    expect(body.paths.tmp).toEndWith("opencode")
+    expect(body.paths.tmp).toEndWith("ocnano")
     expect(body.capabilities?.persistentPty).toBe(true)
   }),
 )
@@ -231,7 +231,7 @@ it.live("activates credentials through the HttpApi", () =>
   Effect.gen(function* () {
     const handler = yield* ServerFetch.make(options)
     const response = yield* Effect.promise(() =>
-      handler(new Request("http://opencode.local/api/credential/cred_missing/activate", { method: "POST" })),
+      handler(new Request("http://ocnano.local/api/credential/cred_missing/activate", { method: "POST" })),
     )
     expect(response.status).toBe(204)
   }),
@@ -241,12 +241,12 @@ it.live("serves unauthenticated and answers CORS preflight when no password is c
   Effect.gen(function* () {
     const handler = yield* ServerFetch.make(options)
 
-    const response = yield* Effect.promise(() => handler(new Request("http://opencode.local/api/info")))
+    const response = yield* Effect.promise(() => handler(new Request("http://ocnano.local/api/info")))
     expect(response.status).toBe(200)
 
     const preflight = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/info", {
+        new Request("http://ocnano.local/api/info", {
           method: "OPTIONS",
           headers: {
             origin: "http://localhost:3000",
@@ -273,7 +273,7 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
           const allowed = origin !== "https://untrusted.example.com"
           const preflight = yield* Effect.promise(() =>
             handler(
-              new Request("http://opencode.local/api/info", {
+              new Request("http://ocnano.local/api/info", {
                 method: "OPTIONS",
                 headers: {
                   origin,
@@ -289,8 +289,8 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
           const response = yield* Effect.promise(() =>
             handler(
-              new Request("http://opencode.local/api/info", {
-                headers: { origin, authorization: `Basic ${btoa("opencode:secret")}` },
+              new Request("http://ocnano.local/api/info", {
+                headers: { origin, authorization: `Basic ${btoa("ocnano:secret")}` },
               }),
             ),
           )
@@ -299,9 +299,9 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
           const ticket = yield* Effect.promise(() =>
             handler(
-              new Request("http://opencode.local/api/experimental/persistent-pty/pty_missing/connect-token", {
+              new Request("http://ocnano.local/api/experimental/persistent-pty/pty_missing/connect-token", {
                 method: "POST",
-                headers: { origin, authorization: `Basic ${btoa("opencode:secret")}`, "x-opencode-ticket": "1" },
+                headers: { origin, authorization: `Basic ${btoa("ocnano:secret")}`, "x-ocnano-ticket": "1" },
               }),
             ),
           )
@@ -310,7 +310,7 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
           const invalidTicket = yield* Effect.promise(() =>
             handler(
-              new Request("http://opencode.local/api/pty/pty_missing/connect?ticket=invalid&location[directory]=/tmp", {
+              new Request("http://ocnano.local/api/pty/pty_missing/connect?ticket=invalid&location[directory]=/tmp", {
                 headers: { origin },
               }),
             ),
@@ -320,7 +320,7 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
           const invalidMcpTicket = yield* Effect.promise(() =>
             handler(
               new Request(
-                "http://opencode.local/api/experimental/client-mcp?ticket=invalid&location[directory]=/tmp&name=tui",
+                "http://ocnano.local/api/experimental/client-mcp?ticket=invalid&location[directory]=/tmp&name=tui",
                 {
                   headers: { origin },
                 },
@@ -331,8 +331,8 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
           const connect = yield* Effect.promise(() =>
             handler(
-              new Request("http://opencode.local/api/pty/pty_missing/connect", {
-                headers: { origin, authorization: `Basic ${btoa("opencode:secret")}` },
+              new Request("http://ocnano.local/api/pty/pty_missing/connect", {
+                headers: { origin, authorization: `Basic ${btoa("ocnano:secret")}` },
               }),
             ),
           )
@@ -340,8 +340,8 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
           const persistentConnect = yield* Effect.promise(() =>
             handler(
-              new Request("http://opencode.local/api/experimental/persistent-pty/pty_missing/connect?cursor=-1", {
-                headers: { origin, authorization: `Basic ${btoa("opencode:secret")}` },
+              new Request("http://ocnano.local/api/experimental/persistent-pty/pty_missing/connect?cursor=-1", {
+                headers: { origin, authorization: `Basic ${btoa("ocnano:secret")}` },
               }),
             ),
           )
@@ -351,8 +351,8 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
     const loaded = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/debug/location", {
-          headers: { authorization: `Basic ${btoa("opencode:secret")}` },
+        new Request("http://ocnano.local/api/debug/location", {
+          headers: { authorization: `Basic ${btoa("ocnano:secret")}` },
         }),
       ).then((response) => response.json()),
     )
@@ -360,10 +360,10 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
     const created = (yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/pty", {
+        new Request("http://ocnano.local/api/pty", {
           method: "POST",
           headers: {
-            authorization: `Basic ${btoa("opencode:secret")}`,
+            authorization: `Basic ${btoa("ocnano:secret")}`,
             "content-type": "application/json",
           },
           body: JSON.stringify({ command: process.execPath, args: ["-e", "setInterval(() => {}, 1000)"] }),
@@ -372,31 +372,31 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
     )) as { data: { id: string } }
     const issued = (yield* Effect.promise(() =>
       handler(
-        new Request(`http://opencode.local/api/pty/${created.data.id}/connect-token`, {
+        new Request(`http://ocnano.local/api/pty/${created.data.id}/connect-token`, {
           method: "POST",
           headers: {
-            authorization: `Basic ${btoa("opencode:secret")}`,
-            "x-opencode-ticket": "1",
+            authorization: `Basic ${btoa("ocnano:secret")}`,
+            "x-ocnano-ticket": "1",
           },
         }),
       ).then((response) => response.json()),
     )) as { data: { ticket: string } }
     yield* Effect.promise(() =>
       handler(
-        new Request(`http://opencode.local/api/pty/${created.data.id}`, {
+        new Request(`http://ocnano.local/api/pty/${created.data.id}`, {
           method: "DELETE",
-          headers: { authorization: `Basic ${btoa("opencode:secret")}` },
+          headers: { authorization: `Basic ${btoa("ocnano:secret")}` },
         }),
       ),
     )
 
     const consumed = yield* Effect.promise(() =>
-      handler(new Request(`http://opencode.local/api/pty/${created.data.id}/connect?ticket=${issued.data.ticket}`)),
+      handler(new Request(`http://ocnano.local/api/pty/${created.data.id}/connect?ticket=${issued.data.ticket}`)),
     )
     expect(consumed.status).toBe(404)
 
     const replayed = yield* Effect.promise(() =>
-      handler(new Request(`http://opencode.local/api/pty/${created.data.id}/connect?ticket=${issued.data.ticket}`)),
+      handler(new Request(`http://ocnano.local/api/pty/${created.data.id}/connect?ticket=${issued.data.ticket}`)),
     )
     expect(replayed.status).toBe(403)
   }).pipe(Effect.scoped),
@@ -404,13 +404,13 @@ it.live("applies custom CORS origins to HTTP responses and PTY ticket checks", (
 
 it.live("returns 404 when a previously readable file is deleted", () =>
   Effect.acquireUseRelease(
-    Effect.promise(() => tmpdir("opencode-fs-read-endpoint-")),
+    Effect.promise(() => tmpdir("ocnano-fs-read-endpoint-")),
     (tmp) =>
       Effect.gen(function* () {
         const handler = yield* ServerFetch.make(options)
         const file = path.join(tmp.path, "deleted.txt")
         yield* Effect.promise(() => fs.writeFile(file, "content"))
-        const url = new URL("http://opencode.local/api/fs/read/deleted.txt")
+        const url = new URL("http://ocnano.local/api/fs/read/deleted.txt")
         url.searchParams.set("location[directory]", tmp.path)
 
         const readable = yield* Effect.promise(() => handler(new Request(url)))
@@ -482,7 +482,7 @@ it.live("serves the session view operation and missing-session error", () =>
     const handler = yield* ServerFetch.make(options)
     const created = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/session", {
+        new Request("http://ocnano.local/api/session", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: "{}",
@@ -497,7 +497,7 @@ it.live("serves the session view operation and missing-session error", () =>
 
     const viewed = yield* Effect.promise(() =>
       handler(
-        new Request(`http://opencode.local/api/session/${data.id}/view`, {
+        new Request(`http://ocnano.local/api/session/${data.id}/view`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ idle: 0 }),
@@ -507,13 +507,13 @@ it.live("serves the session view operation and missing-session error", () =>
     expect(viewed.status).toBe(204)
 
     const invalid = yield* Effect.promise(() =>
-      handler(new Request(`http://opencode.local/api/session/${data.id}/view`, { method: "POST" })),
+      handler(new Request(`http://ocnano.local/api/session/${data.id}/view`, { method: "POST" })),
     )
     expect(invalid.status).toBe(400)
 
     const missing = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/session/ses_missing_view/view", {
+        new Request("http://ocnano.local/api/session/ses_missing_view/view", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ idle: 0 }),
@@ -526,7 +526,7 @@ it.live("serves the session view operation and missing-session error", () =>
 
 it.live("routes pending requests through the Session's instance", () =>
   Effect.gen(function* () {
-    const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-pending-read-")))
+    const config = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-pending-read-")))
     const handler = yield* ServerFetch.make({
       ...options,
       config: {
@@ -537,7 +537,7 @@ it.live("routes pending requests through the Session's instance", () =>
     })
     const created = (yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/session", {
+        new Request("http://ocnano.local/api/session", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: "{}",
@@ -547,30 +547,30 @@ it.live("routes pending requests through the Session's instance", () =>
 
     const loaded = () =>
       Effect.promise(() =>
-        handler(new Request("http://opencode.local/api/debug/location")).then(
+        handler(new Request("http://ocnano.local/api/debug/location")).then(
           (response) => response.json() as Promise<unknown[]>,
         ),
       )
 
     // Session routing must ignore the caller's unrelated Location.
-    const headers = { "x-opencode-directory": encodeURIComponent(config.path) }
+    const headers = { "x-ocnano-directory": encodeURIComponent(config.path) }
     expect(yield* loaded()).toEqual([])
     for (const resource of ["permission", "form"]) {
       const response = yield* Effect.promise(() =>
-        handler(new Request(`http://opencode.local/api/session/${created.data.id}/${resource}`, { headers })),
+        handler(new Request(`http://ocnano.local/api/session/${created.data.id}/${resource}`, { headers })),
       )
       expect(response.status).toBe(200)
       expect(yield* Effect.promise(() => response.json())).toEqual({ data: [] })
 
       const missing = yield* Effect.promise(() =>
-        handler(new Request(`http://opencode.local/api/session/ses_missing_pending/${resource}`, { headers })),
+        handler(new Request(`http://ocnano.local/api/session/ses_missing_pending/${resource}`, { headers })),
       )
       expect(missing.status).toBe(404)
     }
     const global = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/session/global/form", {
-          headers: { "x-opencode-directory": encodeURIComponent(process.cwd()) },
+        new Request("http://ocnano.local/api/session/global/form", {
+          headers: { "x-ocnano-directory": encodeURIComponent(process.cwd()) },
         }),
       ),
     )
@@ -580,7 +580,7 @@ it.live("routes pending requests through the Session's instance", () =>
 
     const createdForm = yield* Effect.promise(() =>
       handler(
-        new Request(`http://opencode.local/api/session/${created.data.id}/form`, {
+        new Request(`http://ocnano.local/api/session/${created.data.id}/form`, {
           method: "POST",
           headers: { "content-type": "application/json", ...headers },
           body: JSON.stringify({ title: "Test form", fields: [{ key: "answer", type: "string" }] }),
@@ -590,7 +590,7 @@ it.live("routes pending requests through the Session's instance", () =>
     expect(createdForm.status).toBe(200)
 
     const forms = yield* Effect.promise(() =>
-      handler(new Request(`http://opencode.local/api/session/${created.data.id}/form`, { headers })),
+      handler(new Request(`http://ocnano.local/api/session/${created.data.id}/form`, { headers })),
     )
     expect(forms.status).toBe(200)
     expect(yield* Effect.promise(() => forms.json())).toMatchObject({
@@ -600,11 +600,11 @@ it.live("routes pending requests through the Session's instance", () =>
 
     const globalForm = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/session/global/form", {
+        new Request("http://ocnano.local/api/session/global/form", {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            "x-opencode-directory": encodeURIComponent(process.cwd()),
+            "x-ocnano-directory": encodeURIComponent(process.cwd()),
           },
           body: JSON.stringify({ title: "Global form", fields: [{ key: "answer", type: "string" }] }),
         }),
@@ -614,8 +614,8 @@ it.live("routes pending requests through the Session's instance", () =>
 
     const globalForms = yield* Effect.promise(() =>
       handler(
-        new Request("http://opencode.local/api/session/global/form", {
-          headers: { "x-opencode-directory": encodeURIComponent(process.cwd()) },
+        new Request("http://ocnano.local/api/session/global/form", {
+          headers: { "x-ocnano-directory": encodeURIComponent(process.cwd()) },
         }),
       ),
     )
@@ -624,7 +624,7 @@ it.live("routes pending requests through the Session's instance", () =>
 
     // Agent permission policy is installed by plugin activation.
     yield* Effect.gen(function* () {
-      const response = yield* Effect.promise(() => handler(new Request("http://opencode.local/api/agent")))
+      const response = yield* Effect.promise(() => handler(new Request("http://ocnano.local/api/agent")))
       expect(response.status).toBe(200)
       const body = Schema.decodeUnknownSync(Schema.Struct({ data: Schema.Array(Agent.Info) }))(
         yield* Effect.promise(() => response.json()),
@@ -641,7 +641,7 @@ it.live("routes pending requests through the Session's instance", () =>
     )
     const createdPermission = yield* Effect.promise(() =>
       handler(
-        new Request(`http://opencode.local/api/session/${created.data.id}/permission`, {
+        new Request(`http://ocnano.local/api/session/${created.data.id}/permission`, {
           method: "POST",
           headers: { "content-type": "application/json", ...headers },
           body: JSON.stringify({ id: "per_pending_read", action: "shell", resources: ["pwd"] }),
@@ -654,7 +654,7 @@ it.live("routes pending requests through the Session's instance", () =>
     })
 
     const permissions = yield* Effect.promise(() =>
-      handler(new Request(`http://opencode.local/api/session/${created.data.id}/permission`, { headers })),
+      handler(new Request(`http://ocnano.local/api/session/${created.data.id}/permission`, { headers })),
     )
     expect(permissions.status).toBe(200)
     expect(yield* Effect.promise(() => permissions.json())).toMatchObject({
@@ -673,7 +673,7 @@ it.live("stays serviceable when the first request aborts", () =>
 
     const aborted = yield* Effect.promise(() => {
       const controller = new AbortController()
-      const first = handler(new Request("http://opencode.local/api/info", { signal: controller.signal }))
+      const first = handler(new Request("http://ocnano.local/api/info", { signal: controller.signal }))
       controller.abort()
       return first.then(
         () => "resolved" as const,
@@ -682,7 +682,7 @@ it.live("stays serviceable when the first request aborts", () =>
     })
     expect(["resolved", "rejected"]).toContain(aborted)
 
-    const second = yield* Effect.promise(() => handler(new Request("http://opencode.local/api/info")))
+    const second = yield* Effect.promise(() => handler(new Request("http://ocnano.local/api/info")))
     expect(second.status).toBe(200)
   }),
 )

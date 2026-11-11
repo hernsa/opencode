@@ -1,8 +1,8 @@
-import { Button } from "@opencode/ui/button"
-import { Icon } from "@opencode/ui/icon"
-import { Switch } from "@opencode/ui/switch"
-import { Tabs } from "@opencode/ui/tabs"
-import { isLocationNotFoundError } from "@opencode/client/promise"
+import { Button } from "@ocnano/ui/button"
+import { Icon } from "@ocnano/ui/icon"
+import { Switch } from "@ocnano/ui/switch"
+import { Tabs } from "@ocnano/ui/tabs"
+import { isLocationNotFoundError } from "@ocnano/client/promise"
 import {
   type Component,
   For,
@@ -55,7 +55,7 @@ const ExtensionRow: Component<{
   /** An MCP server's status, shown as a dot in the icon's place, as on the server-wide page. */
   status?: string
   name: string
-  /** Where OpenCode Console manages it; the name links there. */
+  /** Where OcNano Console manages it; the name links there. */
   console?: string
   /** Console's server of the same name, which the user's config replaces. */
   replaces?: string

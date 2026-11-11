@@ -16,16 +16,16 @@ export function desktopOS(platform: Platform | undefined): OS {
 
 /** Each desktop build's file in the update API's release metadata. */
 export const desktopAssets = {
-  "darwin-aarch64-dmg": "opencode-desktop-mac-arm64.dmg",
-  "darwin-x64-dmg": "opencode-desktop-mac-x64.dmg",
-  "windows-aarch64-nsis": "opencode-desktop-win-arm64.exe",
-  "windows-x64-nsis": "opencode-desktop-win-x64.exe",
-  "linux-x64-deb": "opencode-desktop-linux-amd64.deb",
-  "linux-aarch64-deb": "opencode-desktop-linux-arm64.deb",
-  "linux-x64-rpm": "opencode-desktop-linux-x86_64.rpm",
-  "linux-aarch64-rpm": "opencode-desktop-linux-aarch64.rpm",
-  "linux-x64-appimage": "opencode-desktop-linux-x86_64.AppImage",
-  "linux-aarch64-appimage": "opencode-desktop-linux-arm64.AppImage",
+  "darwin-aarch64-dmg": "ocnano-desktop-mac-arm64.dmg",
+  "darwin-x64-dmg": "ocnano-desktop-mac-x64.dmg",
+  "windows-aarch64-nsis": "ocnano-desktop-win-arm64.exe",
+  "windows-x64-nsis": "ocnano-desktop-win-x64.exe",
+  "linux-x64-deb": "ocnano-desktop-linux-amd64.deb",
+  "linux-aarch64-deb": "ocnano-desktop-linux-arm64.deb",
+  "linux-x64-rpm": "ocnano-desktop-linux-x86_64.rpm",
+  "linux-aarch64-rpm": "ocnano-desktop-linux-aarch64.rpm",
+  "linux-x64-appimage": "ocnano-desktop-linux-x86_64.AppImage",
+  "linux-aarch64-appimage": "ocnano-desktop-linux-arm64.AppImage",
 } as const satisfies Record<DownloadPlatform, string>
 
 /**
@@ -39,7 +39,7 @@ export const updateApi = "https://opencode.ai/update/api"
  * Absolute, so never pass it through `route()`.
  */
 export function getDownloadHref(platform: DownloadPlatform, channel: "latest" | "beta" = "latest") {
-  return `${updateApi}/${channel}/desktop/opencode/${desktopAssets[platform]}`
+  return `${updateApi}/${channel}/desktop/ocnano/${desktopAssets[platform]}`
 }
 
 /**

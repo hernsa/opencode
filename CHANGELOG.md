@@ -1,20 +1,20 @@
 # Changelog
 
-Release notes for OpenCode V2, newest first.
+Release notes for OC Nano V2, newest first.
 
 ## v2.2.7 — 2026-11-10
 
 ### Highlights
 
-- **GitHub Copilot Auto**: Pick **Auto** in the model picker when your Copilot account has an Auto pool, and Copilot's router chooses the model for each session at the Auto discount. If routing fails, OpenCode falls back to the account's default chat model. ([#62997](https://github.com/anomalyco/opencode/pull/62997))
+- **GitHub Copilot Auto**: Pick **Auto** in the model picker when your Copilot account has an Auto pool, and Copilot's router chooses the model for each session at the Auto discount. If routing fails, OC Nano falls back to the account's default chat model. ([#62997](https://github.com/anomalyco/opencode/pull/62997))
 - **Side Panel Tab Shortcuts**: Right-click a side panel tab and choose **Close tabs to the right**. `⌘W` now closes side panel tabs wherever focus is, `⌥⌘W` or `Ctrl+Alt+W` always closes the session tab, and `⌘⇧T` reopens the last closed tab of either kind where it was. ([#62922](https://github.com/anomalyco/opencode/pull/62922))
 - **Mark Sessions Read or Unread**: Open the menu on a tab, Home row, project row or inbox card and choose **Mark as unread** to keep its dot until you next visit. ([#62889](https://github.com/anomalyco/opencode/pull/62889))
 
 ### Breaking changes
 
-#### `@opencode/ai`: `ImageResponse.image` is removed
+#### `@ocnano/ai`: `ImageResponse.image` is removed
 
-This affects code that imports `@opencode/ai` directly. Read `response.images[0]` instead of `response.image`. ([#63011](https://github.com/anomalyco/opencode/pull/63011))
+This affects code that imports `@ocnano/ai` directly. Read `response.images[0]` instead of `response.image`. ([#63011](https://github.com/anomalyco/opencode/pull/63011))
 
 #### SDK: fewer endpoints wait for plugins to load
 
@@ -40,8 +40,8 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 - MCP tool calls no longer fail when the server's result doesn't match the tool's own output schema, so completed actions aren't reported as failed. ([#61254](https://github.com/anomalyco/opencode/pull/61254))
 - MCP prompts stay available when refreshing a server's prompt list fails. ([#62266](https://github.com/anomalyco/opencode/pull/62266))
 - With `background_compaction` on, a background summary no longer stops a running Claude Agent session mid tool call. ([#63025](https://github.com/anomalyco/opencode/pull/63025))
-- After `opencode auth logout` on a `.well-known` integration, its remote providers and policies stop applying until you log back in. ([#62760](https://github.com/anomalyco/opencode/pull/62760))
-- OpenCode Console workspace policies still apply when Console's instructions or skills fail to load. ([#62702](https://github.com/anomalyco/opencode/pull/62702))
+- After `ocnano auth logout` on a `.well-known` integration, its remote providers and policies stop applying until you log back in. ([#62760](https://github.com/anomalyco/opencode/pull/62760))
+- OC Nano Console workspace policies still apply when Console's instructions or skills fail to load. ([#62702](https://github.com/anomalyco/opencode/pull/62702))
 - Cloudflare AI Gateway providers set up with only `gatewayApiKey` now send that key. ([#62574](https://github.com/anomalyco/opencode/pull/62574))
 - A v1 model override that sets only some capabilities no longer resets the others, so catalog capabilities like PDF input are kept. ([#62573](https://github.com/anomalyco/opencode/pull/62573))
 - A v1 provider config that sets both `api` and `options.baseURL` keeps `options.baseURL`. ([#62570](https://github.com/anomalyco/opencode/pull/62570))
@@ -112,34 +112,34 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 - **Shared MCP Connections**: Turn on pooling for an MCP server to share one connection across projects with the same setup, so you run fewer processes and start faster. ([#61185](https://github.com/anomalyco/opencode/pull/61185))
 - **GUI Plugin Themes and New Slots**: GUI plugins can now add color themes, render or add actions to code blocks, and use native settings and menu components. ([#61485](https://github.com/anomalyco/opencode/pull/61485), [#61533](https://github.com/anomalyco/opencode/pull/61533), [#61527](https://github.com/anomalyco/opencode/pull/61527), [#61509](https://github.com/anomalyco/opencode/pull/61509))
 - **Mobile Composer Dock**: On phones and tablets, composer actions now sit in a touch dock above the keyboard with larger buttons. ([#61773](https://github.com/anomalyco/opencode/pull/61773))
-- **Scripted Runs in Worktrees**: Run `opencode run -w` to start the session in a new git worktree, or `--worktree=<name>` to name it. ([#60712](https://github.com/anomalyco/opencode/pull/60712))
-- **Automatically Archived Runs**: Add `--archived` to `opencode run` to keep scripted and CI sessions out of your inbox and session lists. ([#61270](https://github.com/anomalyco/opencode/pull/61270))
+- **Scripted Runs in Worktrees**: Run `ocnano run -w` to start the session in a new git worktree, or `--worktree=<name>` to name it. ([#60712](https://github.com/anomalyco/opencode/pull/60712))
+- **Automatically Archived Runs**: Add `--archived` to `ocnano run` to keep scripted and CI sessions out of your inbox and session lists. ([#61270](https://github.com/anomalyco/opencode/pull/61270))
 
 ### Core
 
 #### Improvements
 
 - Added opt-in MCP connection sharing through `pool: true`. ([#61185](https://github.com/anomalyco/opencode/pull/61185))
-- Added `opencode run --archived`, which creates the session already archived so scripted and CI runs stay out of the inbox, home, and session lists. Archived sessions are also hidden from the TUI session list and skipped by `--continue`. ([#61270](https://github.com/anomalyco/opencode/pull/61270))
-- Added `opencode run --worktree` (`-w`), which starts the session in a new git worktree. Use `--worktree=<name>` to choose the worktree name. It cannot be combined with `--continue` or `--session`. ([#60712](https://github.com/anomalyco/opencode/pull/60712))
+- Added `ocnano run --archived`, which creates the session already archived so scripted and CI runs stay out of the inbox, home, and session lists. Archived sessions are also hidden from the TUI session list and skipped by `--continue`. ([#61270](https://github.com/anomalyco/opencode/pull/61270))
+- Added `ocnano run --worktree` (`-w`), which starts the session in a new git worktree. Use `--worktree=<name>` to choose the worktree name. It cannot be combined with `--continue` or `--session`. ([#60712](https://github.com/anomalyco/opencode/pull/60712))
 - Added provider- and model-specific session warming settings, including an `interval: "auto"` mode based on cache TTL. ([#60025](https://github.com/anomalyco/opencode/pull/60025), [#60969](https://github.com/anomalyco/opencode/pull/60969))
-- Added the `websearch.use` policy action and switches for enabling all feature flags with `OPENCODE_FLAGS=all` or `experimental.all_flags`. ([#61557](https://github.com/anomalyco/opencode/pull/61557), [#61826](https://github.com/anomalyco/opencode/pull/61826))
-- Added an experimental bytecode VM for Code Mode. It is off by default; turn it on with `experimental.codemode_vm: true` or `OPENCODE_FLAGS=codemode_vm`. ([#62358](https://github.com/anomalyco/opencode/pull/62358))
+- Added the `websearch.use` policy action and switches for enabling all feature flags with `OCNANO_FLAGS=all` or `experimental.all_flags`. ([#61557](https://github.com/anomalyco/opencode/pull/61557), [#61826](https://github.com/anomalyco/opencode/pull/61826))
+- Added an experimental bytecode VM for Code Mode. It is off by default; turn it on with `experimental.codemode_vm: true` or `OCNANO_FLAGS=codemode_vm`. ([#62358](https://github.com/anomalyco/opencode/pull/62358))
 - Added support for Microsoft Store installations of PowerShell 7 on Windows. ([#61952](https://github.com/anomalyco/opencode/pull/61952))
 - Added Azure Messages support for Foundry Claude models. ([#60934](https://github.com/anomalyco/opencode/pull/60934))
 
 #### Bug fixes
 
-- `opencode run` now waits for the background shell commands, subagents, and image jobs that its prompt started, then lets the model respond to their results before it exits. While it waits, it prints `waiting for N background job(s)` (a `background_wait` event with `--format json`). There is no time limit: a job that never exits, such as a dev server or file watcher, keeps the run open until you press Ctrl+C or send SIGTERM, so set a timeout on CI jobs. ([#60699](https://github.com/anomalyco/opencode/pull/60699), [#61911](https://github.com/anomalyco/opencode/pull/61911))
-- Reworked noninteractive `opencode run` execution so arguments, cancellation, compiled WebSocket upgrades, and service shutdown complete reliably. SIGTERM now cancels the session and its background jobs and exits with code 143. ([#61911](https://github.com/anomalyco/opencode/pull/61911), [#61721](https://github.com/anomalyco/opencode/pull/61721), [#61518](https://github.com/anomalyco/opencode/pull/61518), [#61564](https://github.com/anomalyco/opencode/pull/61564))
+- `ocnano run` now waits for the background shell commands, subagents, and image jobs that its prompt started, then lets the model respond to their results before it exits. While it waits, it prints `waiting for N background job(s)` (a `background_wait` event with `--format json`). There is no time limit: a job that never exits, such as a dev server or file watcher, keeps the run open until you press Ctrl+C or send SIGTERM, so set a timeout on CI jobs. ([#60699](https://github.com/anomalyco/opencode/pull/60699), [#61911](https://github.com/anomalyco/opencode/pull/61911))
+- Reworked noninteractive `ocnano run` execution so arguments, cancellation, compiled WebSocket upgrades, and service shutdown complete reliably. SIGTERM now cancels the session and its background jobs and exits with code 143. ([#61911](https://github.com/anomalyco/opencode/pull/61911), [#61721](https://github.com/anomalyco/opencode/pull/61721), [#61518](https://github.com/anomalyco/opencode/pull/61518), [#61564](https://github.com/anomalyco/opencode/pull/61564))
 - Serve file reads and media from the server API as sandboxed downloads, and refuse cross-site browser navigations and requests from disallowed origins to `/api/*`, so a file in your project cannot run scripts on the server's origin. ([#62422](https://github.com/anomalyco/opencode/pull/62422))
 - Webfetch and Code Mode `fetch` now reject URLs that contain credentials and ignore the `#fragment` when matching permission rules, and Code Mode `fetch` checks every redirect against your webfetch rules. ([#60502](https://github.com/anomalyco/opencode/pull/60502), [#61701](https://github.com/anomalyco/opencode/pull/61701), [#62373](https://github.com/anomalyco/opencode/pull/62373))
 - Ask for `external_directory` permission before `session_move` leaves the current project. ([#62204](https://github.com/anomalyco/opencode/pull/62204))
-- Wait up to 2 seconds for MCP servers that are still connecting before a model call, so tools from servers that connect quickly reach the first prompt and `opencode run`. Also expand `~` in local MCP working directories, handle legacy stdio servers, and send `logo_uri` during dynamic registration. ([#60490](https://github.com/anomalyco/opencode/pull/60490), [#61496](https://github.com/anomalyco/opencode/pull/61496), [#61817](https://github.com/anomalyco/opencode/pull/61817), [#59031](https://github.com/anomalyco/opencode/pull/59031))
-- Time out OpenCode Console config requests after 5 seconds, so startup no longer hangs when the Console accepts the connection but never answers. ([#62404](https://github.com/anomalyco/opencode/pull/62404))
+- Wait up to 2 seconds for MCP servers that are still connecting before a model call, so tools from servers that connect quickly reach the first prompt and `ocnano run`. Also expand `~` in local MCP working directories, handle legacy stdio servers, and send `logo_uri` during dynamic registration. ([#60490](https://github.com/anomalyco/opencode/pull/60490), [#61496](https://github.com/anomalyco/opencode/pull/61496), [#61817](https://github.com/anomalyco/opencode/pull/61817), [#59031](https://github.com/anomalyco/opencode/pull/59031))
+- Time out OC Nano Console config requests after 5 seconds, so startup no longer hangs when the Console accepts the connection but never answers. ([#62404](https://github.com/anomalyco/opencode/pull/62404))
 - Retry provider requests while their host is unreachable and recover prematurely ended Cohere streams. ([#61880](https://github.com/anomalyco/opencode/pull/61880), [#61184](https://github.com/anomalyco/opencode/pull/61184))
 - Keep legacy custom providers whose models set only part of `limit`, such as only `limit.context`, instead of dropping the whole provider without an error. Thanks @Tarquinen. ([#62240](https://github.com/anomalyco/opencode/pull/62240))
-- `opencode acp` now removes a session that a client creates with `session/new` and closes without prompting, so IDE integrations no longer leave empty sessions behind. ([#62189](https://github.com/anomalyco/opencode/pull/62189))
+- `OC Nano acp` now removes a session that a client creates with `session/new` and closes without prompting, so IDE integrations no longer leave empty sessions behind. ([#62189](https://github.com/anomalyco/opencode/pull/62189))
 - Prevent repeated zsh `q` flags from freezing shell permission scanning. Thanks @yangguan-xue. ([#60791](https://github.com/anomalyco/opencode/pull/60791))
 - Allow npm upgrade install scripts again. Thanks @renatomoselli. ([#51554](https://github.com/anomalyco/opencode/pull/51554))
 
@@ -151,14 +151,14 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 
 #### Bug fixes
 
-- Allow Ctrl+Z to suspend OpenCode while a form or dialog is open. ([#62118](https://github.com/anomalyco/opencode/pull/62118))
+- Allow Ctrl+Z to suspend OC Nano while a form or dialog is open. ([#62118](https://github.com/anomalyco/opencode/pull/62118))
 - Keep focus on an open dialog when a question arrives and contain plugin dialogs that throw during rendering. ([#60365](https://github.com/anomalyco/opencode/pull/60365), [#62110](https://github.com/anomalyco/opencode/pull/62110))
 - Show an error when Ctrl+V cannot read the clipboard. Thanks @jimmyallinai. ([#61094](https://github.com/anomalyco/opencode/pull/61094))
 - Prevent session titles containing newlines from crashing the TUI. Thanks @vishalshekhar. ([#57523](https://github.com/anomalyco/opencode/pull/57523))
 - Improved message spacing and prevented older history from flashing while scrolling. ([#62104](https://github.com/anomalyco/opencode/pull/62104), [#59236](https://github.com/anomalyco/opencode/pull/59236))
 - Jump to the first or last message with Home, End, and Ctrl+G in subagent sessions. Thanks @ricky9408. ([#60817](https://github.com/anomalyco/opencode/pull/60817))
 - Keypad Home, End, Page Up, and Page Down now navigate the transcript like the main keys in terminals that use the kitty keyboard protocol. Thanks @argszero. ([#59770](https://github.com/anomalyco/opencode/pull/59770))
-- `opencode mini` now uses the agent colors from your config. Thanks @ferdinandyb. ([#62067](https://github.com/anomalyco/opencode/pull/62067))
+- `OC Nano mini` now uses the agent colors from your config. Thanks @ferdinandyb. ([#62067](https://github.com/anomalyco/opencode/pull/62067))
 - Return to the `/mcp` list after signing in to an MCP server, with that server still selected. Thanks @Tarquinen. ([#62245](https://github.com/anomalyco/opencode/pull/62245))
 - Allow favoriting models with Ctrl+F in `/models` when they come from a provider declared in config or an add-on instead of a saved connection. Thanks @Tarquinen. ([#62244](https://github.com/anomalyco/opencode/pull/62244))
 
@@ -192,7 +192,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 #### Improvements
 
 - Added `client.experimental.job.list()` and its Effect equivalent for listing background shell, subagent, and image jobs, with session, descendant, kind, and status filters. ([#60698](https://github.com/anomalyco/opencode/pull/60698))
-- Server embedders can provide a custom `fetch` implementation for OpenCode HTTP, model, web, and remote MCP traffic. ([#61582](https://github.com/anomalyco/opencode/pull/61582))
+- Server embedders can provide a custom `fetch` implementation for OC Nano HTTP, model, web, and remote MCP traffic. ([#61582](https://github.com/anomalyco/opencode/pull/61582))
 
 ### Extensions
 
@@ -213,7 +213,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 
 - **Worktree and Shell Mode Shortcuts**: Press `⌘⌥O` on macOS or `Ctrl+Alt+O` on Windows and Linux to choose a worktree, and `⌘⌥B` or `Ctrl+Alt+B` to choose its base branch. `⌘⇧X` or `Ctrl+Shift+X` now toggles shell mode in the composer. ([#60713](https://github.com/anomalyco/opencode/pull/60713))
 - **Send Quotes From the Comment Popup**: Hold `⌘` or `Ctrl` in the quote popup to turn its checkmark into send, or press `⌘Enter` or `Ctrl+Enter`, to send just that quote and comment while leaving the rest of the composer untouched. ([#60640](https://github.com/anomalyco/opencode/pull/60640))
-- **Percentage Compaction Buffer**: Set `"compaction": { "buffer": "20%" }` in `opencode.json` to keep a share of each model's context window free, so one setting fits models with small and large windows. Token counts still work. ([#60647](https://github.com/anomalyco/opencode/pull/60647))
+- **Percentage Compaction Buffer**: Set `"compaction": { "buffer": "20%" }` in `ocnano.json` to keep a share of each model's context window free, so one setting fits models with small and large windows. Token counts still work. ([#60647](https://github.com/anomalyco/opencode/pull/60647))
 
 ### Core
 
@@ -256,7 +256,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 ### Highlights
 
 - **Persistent Desktop Terminals**: Desktop terminals now belong to the session, survive server restarts with their scrollback, and stay synchronized with the TUI and other windows. Renamed terminals also keep their names across restarts. ([#60346](https://github.com/anomalyco/opencode/pull/60346))
-- **Publish Interactive Artifacts**: Enable `"experimental": { "artifacts": true }` in `opencode.json` to let agents publish, update, and serve HTML or static artifacts through the built-in local provider or plugin-provided storage. ([#60351](https://github.com/anomalyco/opencode/pull/60351))
+- **Publish Interactive Artifacts**: Enable `"experimental": { "artifacts": true }` in `ocnano.json` to let agents publish, update, and serve HTML or static artifacts through the built-in local provider or plugin-provided storage. ([#60351](https://github.com/anomalyco/opencode/pull/60351))
 - **Guided Claude Agent Setup**: Select **Claude Agent** from the provider picker to copy `claude auth login`, install Claude Code, and verify the connection before continuing to model selection. ([#60603](https://github.com/anomalyco/opencode/pull/60603))
 - **Choose a Base Branch Quickly**: While creating a worktree, open **Choose base branch** with `⌘⌥.` on macOS or `Ctrl+Alt+.` on Windows and Linux. The command is also available in the command palette and Settings › Shortcuts. ([#60579](https://github.com/anomalyco/opencode/pull/60579))
 
@@ -265,13 +265,13 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 #### Improvements
 
 - Added opt-in artifacts with `artifact_create`, `artifact_read`, `artifact_update`, and `artifact_delete`, including a built-in local static-file provider. ([#60351](https://github.com/anomalyco/opencode/pull/60351))
-- Made enabled schedules run under `opencode serve` and coordinated multiple server processes so a schedule fires only once. Schedules remain opt-in through `experimental.schedules`. ([#60478](https://github.com/anomalyco/opencode/pull/60478))
-- Raised OpenCode Go limits for DeepSeek V4.1 Flash. ([#60625](https://github.com/anomalyco/opencode/pull/60625))
+- Made enabled schedules run under `ocnano serve` and coordinated multiple server processes so a schedule fires only once. Schedules remain opt-in through `experimental.schedules`. ([#60478](https://github.com/anomalyco/opencode/pull/60478))
+- Raised OC Nano Go limits for DeepSeek V4.1 Flash. ([#60625](https://github.com/anomalyco/opencode/pull/60625))
 
 #### Bug fixes
 
 - Allowed user, project, and remote configuration to override Console-supplied provider names, limits, variants, settings, and headers. ([#60597](https://github.com/anomalyco/opencode/issues/60597))
-- Kept local OpenCode service requests out of environment-configured proxies. ([#60441](https://github.com/anomalyco/opencode/pull/60441))
+- Kept local OC Nano service requests out of environment-configured proxies. ([#60441](https://github.com/anomalyco/opencode/pull/60441))
 - Replaced Claude Code’s misleading `/login` instruction with `claude auth login`. Thanks [@Tarquinen](https://github.com/Tarquinen). ([#60592](https://github.com/anomalyco/opencode/pull/60592))
 
 ### TUI
@@ -315,7 +315,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 
 ### Highlights
 
-- **Use Claude Code in OpenCode**: Install Claude Code, run `claude auth login`, then select **Claude Agent** in `/connect` to use your Claude Code login and models. ([#58782](https://github.com/anomalyco/opencode/pull/58782))
+- **Use Claude Code in OC Nano**: Install Claude Code, run `claude auth login`, then select **Claude Agent** in `/connect` to use your Claude Code login and models. ([#58782](https://github.com/anomalyco/opencode/pull/58782))
 - **Faster Long Sessions in Desktop**: Streaming replies and long conversations now do much less rendering work. ([#60489](https://github.com/anomalyco/opencode/pull/60489), [#60521](https://github.com/anomalyco/opencode/pull/60521), [#60513](https://github.com/anomalyco/opencode/pull/60513), [#60481](https://github.com/anomalyco/opencode/pull/60481))
 - **Desktop Stability Fixes**: Fixes side-panel tabs, repeated "Session not found" toasts, and **Open file** over HTTP. ([#60430](https://github.com/anomalyco/opencode/pull/60430), [#60436](https://github.com/anomalyco/opencode/pull/60436), [#60459](https://github.com/anomalyco/opencode/pull/60459), [#60462](https://github.com/anomalyco/opencode/pull/60462))
 
@@ -324,7 +324,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 
 #### TUI plugins require OpenTUI 0.8
 
-`@opencode/plugin` now requires `@opentui/core` and `@opentui/solid` 0.8.0 or later. In OpenTUI 0.8, a ScrollBox's `wrapper`, `viewport`, `content`, and scrollbars are facade objects instead of renderables, and a custom `RenderContext` must implement `clock` and `onAnimationTick`. See the [OpenTUI 0.8.0 release notes](https://opentui.com/docs/releases/0.8.0). ([#60385](https://github.com/anomalyco/opencode/pull/60385))
+`@ocnano/plugin` now requires `@opentui/core` and `@opentui/solid` 0.8.0 or later. In OpenTUI 0.8, a ScrollBox's `wrapper`, `viewport`, `content`, and scrollbars are facade objects instead of renderables, and a custom `RenderContext` must implement `clock` and `onAnimationTick`. See the [OpenTUI 0.8.0 release notes](https://opentui.com/docs/releases/0.8.0). ([#60385](https://github.com/anomalyco/opencode/pull/60385))
 
 #### Managed policy: `integration.use` covers integrations only
 
@@ -334,7 +334,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 
 #### Improvements
 
-- Added the built-in **Claude Agent** provider. Install Claude Code, run `claude auth login`, and select **Claude Agent** in `/connect`; `OPENCODE_CLAUDE_PATH` can override the Claude executable. Thanks [@Tarquinen](https://github.com/Tarquinen). ([#58782](https://github.com/anomalyco/opencode/pull/58782))
+- Added the built-in **Claude Agent** provider. Install Claude Code, run `claude auth login`, and select **Claude Agent** in `/connect`; `OCNANO_CLAUDE_PATH` can override the Claude executable. Thanks [@Tarquinen](https://github.com/Tarquinen). ([#58782](https://github.com/anomalyco/opencode/pull/58782))
 - Added Code Mode JavaScript checks to experimental schedules, including statically authorized tool calls, persistent state, and custom wake messages. ([#60140](https://github.com/anomalyco/opencode/pull/60140))
 - Added separate managed-policy actions for connecting to integrations and using integrations, MCP servers, skills, and plugins. ([#60315](https://github.com/anomalyco/opencode/pull/60315))
 
@@ -501,9 +501,9 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 
 ### Breaking changes
 
-#### `@opencode/ai` provider removals and renames
+#### `@ocnano/ai` provider removals and renames
 
-These changes affect code that imports `@opencode/ai` directly. They don't change the CLI, Desktop, or the HTTP API.
+These changes affect code that imports `@ocnano/ai` directly. They don't change the CLI, Desktop, or the HTTP API.
 
 - The fal, Black Forest Labs, Replicate, and Stability providers are removed, along with their `./providers/fal`, `./providers/black-forest-labs`, `./providers/replicate`, and `./providers/stability` entry points. ([#59977](https://github.com/anomalyco/opencode/pull/59977))
 - Five legacy entry points are removed. Import the nested paths instead, which 2.2.0 already exports: `./providers/amazon-bedrock-mantle` → `./providers/amazon-bedrock/mantle`, and `./providers/google-vertex-chat`, `-interactions`, `-mistral`, and `-responses` → `./providers/google-vertex/chat`, `/interactions`, `/mistral`, and `/responses`. ([#59506](https://github.com/anomalyco/opencode/pull/59506))
@@ -551,7 +551,7 @@ These changes affect code that imports `@opencode/ai` directly. They don't chang
 - Make the redesigned searchable model picker the default, with dedicated Favorites and Recent sections and keyboard-accessible provider controls. ([#59997](https://github.com/anomalyco/opencode/pull/59997))
 - Show live output and a Stop action when you select a background shell from the activity pill. ([#59496](https://github.com/anomalyco/opencode/pull/59496))
 - Show `/goal` state and actions in a composer pill. ([#59437](https://github.com/anomalyco/opencode/pull/59437))
-- Redesign the integrations dialog and always include OpenCode free models in the model picker. ([#59976](https://github.com/anomalyco/opencode/pull/59976), [#60047](https://github.com/anomalyco/opencode/pull/60047))
+- Redesign the integrations dialog and always include OC Nano free models in the model picker. ([#59976](https://github.com/anomalyco/opencode/pull/59976), [#60047](https://github.com/anomalyco/opencode/pull/60047))
 - Add project, worktree, open-in-app, and terminal actions to the session location menu. ([#59607](https://github.com/anomalyco/opencode/pull/59607))
 - Refine project and worktree selection, command search, prompt-history focus, composer model labels, and artifact preview controls. ([#59397](https://github.com/anomalyco/opencode/pull/59397), [#59604](https://github.com/anomalyco/opencode/pull/59604), [#59626](https://github.com/anomalyco/opencode/pull/59626), [#59735](https://github.com/anomalyco/opencode/pull/59735), [#59657](https://github.com/anomalyco/opencode/pull/59657))
 - Highlight quoted timeline content while you write its first comment. ([#59286](https://github.com/anomalyco/opencode/pull/59286))
@@ -596,24 +596,24 @@ These changes affect code that imports `@opencode/ai` directly. They don't chang
 
 ### Breaking changes
 
-#### `@opencode/ai` root is now the Promise API
+#### `@ocnano/ai` root is now the Promise API
 
-`@opencode/ai` now works like `@opencode/sdk` and `@opencode/client`: the package root exports the Promise API, and the Effect API moved to `@opencode/ai/effect`. `@opencode/ai/promise` is removed, and the wildcard subpath export is replaced with an explicit list of provider and protocol entry points. ([#58847](https://github.com/anomalyco/opencode/pull/58847), [#59183](https://github.com/anomalyco/opencode/pull/59183))
+`@ocnano/ai` now works like `@ocnano/sdk` and `@ocnano/client`: the package root exports the Promise API, and the Effect API moved to `@ocnano/ai/effect`. `@ocnano/ai/promise` is removed, and the wildcard subpath export is replaced with an explicit list of provider and protocol entry points. ([#58847](https://github.com/anomalyco/opencode/pull/58847), [#59183](https://github.com/anomalyco/opencode/pull/59183))
 
 ```diff
--import { AI } from "@opencode/ai/promise"
--import { LLM } from "@opencode/ai"
-+import { AI } from "@opencode/ai"
-+import { LLM } from "@opencode/ai/effect"
+-import { AI } from "@ocnano/ai/promise"
+-import { LLM } from "@ocnano/ai"
++import { AI } from "@ocnano/ai"
++import { LLM } from "@ocnano/ai/effect"
 ```
 
-#### The OpenCode GitHub Action is removed
+#### The OC Nano GitHub Action is removed
 
-The OpenCode GitHub Action is no longer published. Remove it from your workflows. ([#59032](https://github.com/anomalyco/opencode/pull/59032))
+The OC Nano GitHub Action is no longer published. Remove it from your workflows. ([#59032](https://github.com/anomalyco/opencode/pull/59032))
 
 #### TUI plugins require OpenTUI 0.7
 
-`@opencode/plugin` now requires `@opentui/core` and `@opentui/solid` 0.7.0, up from 0.6.8 or later. Plugins that depend on OpenTUI 0.6 fail to install until they upgrade. In OpenTUI 0.7, custom renderables read their hooks from their class at construction: assign `renderBefore`, `renderAfter`, and `onLifecyclePass` in the constructor instead of as class fields, call `refreshHooks()` after adding a hook by reflection, and replace `defineNativeIntegration()` with a `static nativeIntegration` declaration. See the [OpenTUI 0.7.0 release notes](https://opentui.com/docs/releases/0.7.0). ([#59295](https://github.com/anomalyco/opencode/pull/59295))
+`@ocnano/plugin` now requires `@opentui/core` and `@opentui/solid` 0.7.0, up from 0.6.8 or later. Plugins that depend on OpenTUI 0.6 fail to install until they upgrade. In OpenTUI 0.7, custom renderables read their hooks from their class at construction: assign `renderBefore`, `renderAfter`, and `onLifecyclePass` in the constructor instead of as class fields, call `refreshHooks()` after adding a hook by reflection, and replace `defineNativeIntegration()` with a `static nativeIntegration` declaration. See the [OpenTUI 0.7.0 release notes](https://opentui.com/docs/releases/0.7.0). ([#59295](https://github.com/anomalyco/opencode/pull/59295))
 
 ### Core
 
@@ -636,11 +636,11 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 - Start session history from the latest completed compaction. ([#59020](https://github.com/anomalyco/opencode/pull/59020))
 - Reduce work encoding durable event payloads that are not persisted. ([#58923](https://github.com/anomalyco/opencode/pull/58923))
 - Expose MCP server titles from `serverInfo`. ([#58950](https://github.com/anomalyco/opencode/pull/58950))
-- Apply OpenCode Console workspace configuration as a configuration layer. ([#57703](https://github.com/anomalyco/opencode/pull/57703))
+- Apply OC Nano Console workspace configuration as a configuration layer. ([#57703](https://github.com/anomalyco/opencode/pull/57703))
 - Replace experimental evaluations with Decision APIs in the AI pkg, including OpenAI Decisions, System One, and Cloudflare Run models. ([#58758](https://github.com/anomalyco/opencode/pull/58758), [#58382](https://github.com/anomalyco/opencode/pull/58382), [#58379](https://github.com/anomalyco/opencode/pull/58379), [#58381](https://github.com/anomalyco/opencode/pull/58381))
 - Convert tool schemas once to speed up tool execution. ([#58798](https://github.com/anomalyco/opencode/pull/58798), [#58848](https://github.com/anomalyco/opencode/pull/58848))
 - Make Git project discovery faster while recognizing repository changes. ([#58616](https://github.com/anomalyco/opencode/pull/58616))
-- Show OpenCode Console budget limits and Go usage where they block you. ([#58694](https://github.com/anomalyco/opencode/pull/58694), [#58714](https://github.com/anomalyco/opencode/pull/58714))
+- Show OC Nano Console budget limits and Go usage where they block you. ([#58694](https://github.com/anomalyco/opencode/pull/58694), [#58714](https://github.com/anomalyco/opencode/pull/58714))
 - Record provider-reported session costs. ([#58562](https://github.com/anomalyco/opencode/pull/58562))
 - Find Git more reliably on macOS. ([#58602](https://github.com/anomalyco/opencode/pull/58602))
 - Resolve model details once per prompt step. ([#58601](https://github.com/anomalyco/opencode/pull/58601))
@@ -699,13 +699,13 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 #### Improvements
 
 - Reduce CPU use while animated session-tab pulses are visible. ([#59235](https://github.com/anomalyco/opencode/pull/59235))
-- List OpenCode Console before OpenCode Go in the integration picker. ([#59107](https://github.com/anomalyco/opencode/pull/59107))
-- Add `/usage`, model-picker, prompt, sidebar, warning, and error details for OpenCode Console usage limits. ([#58731](https://github.com/anomalyco/opencode/pull/58731))
+- List OC Nano Console before OC Nano Go in the integration picker. ([#59107](https://github.com/anomalyco/opencode/pull/59107))
+- Add `/usage`, model-picker, prompt, sidebar, warning, and error details for OC Nano Console usage limits. ([#58731](https://github.com/anomalyco/opencode/pull/58731))
 - Make CLI service registration more reliable when concurrent processes update its files. ([#59105](https://github.com/anomalyco/opencode/pull/59105))
 
 #### Bug fixes
 
-- Return `opencode run --format json` server connection errors as JSON. Thanks [@andreivince](https://github.com/andreivince). ([#59366](https://github.com/anomalyco/opencode/pull/59366))
+- Return `ocnano run --format json` server connection errors as JSON. Thanks [@andreivince](https://github.com/andreivince). ([#59366](https://github.com/anomalyco/opencode/pull/59366))
 - Preserve pasted prompt text when copying it back out. ([#59209](https://github.com/anomalyco/opencode/pull/59209))
 - Reliably update the background service on Windows when its files are briefly locked. ([#59105](https://github.com/anomalyco/opencode/pull/59105))
 - Keep the background service state directory out of tool shells and identify processes blocking its port. ([#58815](https://github.com/anomalyco/opencode/pull/58815))
@@ -827,7 +827,7 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 - Make links in user messages, shell output, and Code Mode output clickable. ([#57211](https://github.com/anomalyco/opencode/pull/57211), [#57303](https://github.com/anomalyco/opencode/pull/57303))
 - Make Check for Updates always report its result. ([#57296](https://github.com/anomalyco/opencode/pull/57296))
 - Reopen the last closed side-panel tab with ⇧⌘T and open a browser tab with ⌘T. ([#57269](https://github.com/anomalyco/opencode/pull/57269), [#57156](https://github.com/anomalyco/opencode/pull/57156))
-- Keep OpenCode keyboard shortcuts working in the browser pane. ([#56697](https://github.com/anomalyco/opencode/pull/56697), [#55240](https://github.com/anomalyco/opencode/pull/55240))
+- Keep OC Nano keyboard shortcuts working in the browser pane. ([#56697](https://github.com/anomalyco/opencode/pull/56697), [#55240](https://github.com/anomalyco/opencode/pull/55240))
 - Preview image attachments supplied by file path. ([#57249](https://github.com/anomalyco/opencode/pull/57249))
 - Apply configured code and UI fonts consistently. ([#57242](https://github.com/anomalyco/opencode/pull/57242))
 - Keep activity and busy indicators steady while switching sessions. ([#57196](https://github.com/anomalyco/opencode/pull/57196))
@@ -877,8 +877,8 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 
 - Added experimental background compaction through `experimental.background_compaction`. ([#57444](https://github.com/anomalyco/opencode/pull/57444), [#58294](https://github.com/anomalyco/opencode/pull/58294))
 - When a compaction request exceeds the provider limit, older tool output and exchanges are now shortened first, so more useful history survives. ([#58015](https://github.com/anomalyco/opencode/pull/58015))
-- ChatGPT sign-in context caps are now a documented built-in plugin. Add `"-opencode.provider.openai-context-caps"` to `plugins` to turn them off. ([#58194](https://github.com/anomalyco/opencode/pull/58194))
-- Added `opencode debug heap-dump [--server <url>]` to capture a running server's heap without restarting it. ([#58252](https://github.com/anomalyco/opencode/pull/58252))
+- ChatGPT sign-in context caps are now a documented built-in plugin. Add `"-ocnano.provider.openai-context-caps"` to `plugins` to turn them off. ([#58194](https://github.com/anomalyco/opencode/pull/58194))
+- Added `ocnano debug heap-dump [--server <url>]` to capture a running server's heap without restarting it. ([#58252](https://github.com/anomalyco/opencode/pull/58252))
 
 #### Bug fixes
 
@@ -893,7 +893,7 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 #### Improvements
 
 - Added an experimental **TUI tools** option in the experiments dialog, which lets agents open and type into the session terminal through `tui_open_terminal` and `tui_write_terminal` without taking keyboard focus. ([#57506](https://github.com/anomalyco/opencode/pull/57506))
-- After an update restart, the TUI now tells you to start OpenCode again. ([#58139](https://github.com/anomalyco/opencode/pull/58139))
+- After an update restart, the TUI now tells you to start OC Nano again. ([#58139](https://github.com/anomalyco/opencode/pull/58139))
 
 #### Bug fixes
 
@@ -931,9 +931,9 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 
 ### Highlights
 
-- **Bun 1.4.4 Security Fixes**: OpenCode now runs on Bun 1.4.4, which includes security fixes for Brotli, TLS, HTTP/3, WebSocket, and more, along with updated root certificates. ([#58087](https://github.com/anomalyco/opencode/pull/58087))
+- **Bun 1.4.4 Security Fixes**: OC Nano now runs on Bun 1.4.4, which includes security fixes for Brotli, TLS, HTTP/3, WebSocket, and more, along with updated root certificates. ([#58087](https://github.com/anomalyco/opencode/pull/58087))
 - **Faster Code Display**: Code blocks, file views, and review diffs in Desktop now use Pierre Highlights, reducing highlighting time and memory use for large files and diffs. ([#57937](https://github.com/anomalyco/opencode/pull/57937))
-- **Discover and Start Voice Models**: SDK clients can call `client.voice.models()` to find available experimental voice models and supported transports. Connected OpenCode Console workspaces can also host GPT-Live sessions through `client.voice.session()`. ([#57194](https://github.com/anomalyco/opencode/pull/57194), [#57735](https://github.com/anomalyco/opencode/pull/57735))
+- **Discover and Start Voice Models**: SDK clients can call `client.voice.models()` to find available experimental voice models and supported transports. Connected OC Nano Console workspaces can also host GPT-Live sessions through `client.voice.session()`. ([#57194](https://github.com/anomalyco/opencode/pull/57194), [#57735](https://github.com/anomalyco/opencode/pull/57735))
 
 ### Core
 
@@ -974,7 +974,7 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 #### Improvements
 
 - Added `client.voice.models()` to list experimental voice models, availability, and supported WebRTC or WebSocket transports. ([#57194](https://github.com/anomalyco/opencode/pull/57194))
-- Voice sessions can now use GPT-Live hosted by a connected OpenCode Console workspace. Hosted sessions expose an ID and support instruction updates through `client.voice.instructions()`. ([#57735](https://github.com/anomalyco/opencode/pull/57735))
+- Voice sessions can now use GPT-Live hosted by a connected OC Nano Console workspace. Hosted sessions expose an ID and support instruction updates through `client.voice.instructions()`. ([#57735](https://github.com/anomalyco/opencode/pull/57735))
 
 ### Extensions
 
@@ -988,20 +988,20 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 ### Highlights
 
 - **Clear Free-Limit Recovery**: When your free messages run out, Desktop and the TUI now show the reset time, restore your submitted prompt, and offer direct upgrade or model-switching actions instead of a generic error. ([#57466](https://github.com/anomalyco/opencode/pull/57466), [#57467](https://github.com/anomalyco/opencode/pull/57467), [#57471](https://github.com/anomalyco/opencode/pull/57471))
-- **Hide Free Models**: Set `OPENCODE_DISABLE_FREE_MODELS=1` or `true` to remove zero-cost models from OpenCode and OpenCode Go catalogs, defaults, and fallbacks. ([#57478](https://github.com/anomalyco/opencode/pull/57478))
+- **Hide Free Models**: Set `OCNANO_DISABLE_FREE_MODELS=1` or `true` to remove zero-cost models from OC Nano and OC Nano Go catalogs, defaults, and fallbacks. ([#57478](https://github.com/anomalyco/opencode/pull/57478))
 - **Configurable Location Unloading**: Set `experimental.location_idle_timeout` to a duration such as `"4 hours"`, or to `false`, to control when inactive location services unload. ([#57476](https://github.com/anomalyco/opencode/pull/57476))
-- **Reliable Fresh Installs**: The installer now creates `~/.zshrc` or Fish’s `config.fish` when missing, adds OpenCode to `PATH`, and tells you to run `exec $SHELL`. ([#57348](https://github.com/anomalyco/opencode/pull/57348))
+- **Reliable Fresh Installs**: The installer now creates `~/.zshrc` or Fish’s `config.fish` when missing, adds OC Nano to `PATH`, and tells you to run `exec $SHELL`. ([#57348](https://github.com/anomalyco/opencode/pull/57348))
 
 ### Core
 
 #### Improvements
 
-- Added `OPENCODE_DISABLE_FREE_MODELS` for hiding free OpenCode and OpenCode Go models. ([#57478](https://github.com/anomalyco/opencode/pull/57478))
+- Added `OCNANO_DISABLE_FREE_MODELS` for hiding free OC Nano and OC Nano Go models. ([#57478](https://github.com/anomalyco/opencode/pull/57478))
 - Added `experimental.location_idle_timeout`, accepting a duration string or `false`. ([#57476](https://github.com/anomalyco/opencode/pull/57476))
 
 #### Bug fixes
 
-- Fixed fresh zsh and Fish installations not adding OpenCode to `PATH` when their configuration file did not exist. ([#57348](https://github.com/anomalyco/opencode/pull/57348))
+- Fixed fresh zsh and Fish installations not adding OC Nano to `PATH` when their configuration file did not exist. ([#57348](https://github.com/anomalyco/opencode/pull/57348))
 - Kept locations loaded while sessions are waiting for input, running long tools, or owning background jobs. ([#57416](https://github.com/anomalyco/opencode/pull/57416))
 - Fixed legacy `console.opencode.ai` credentials not being forwarded to `opencode.ai/console`. ([#57588](https://github.com/anomalyco/opencode/pull/57588))
 - Reused recent Console configuration checks when inference is rejected, avoiding unnecessary repeated checks. ([#57465](https://github.com/anomalyco/opencode/pull/57465))
@@ -1011,7 +1011,7 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 #### Improvements
 
 - Added an inline free-limit notice with the reset time and `/connect` and `/models` actions, while restoring the submitted prompt when the composer is empty. ([#57467](https://github.com/anomalyco/opencode/pull/57467))
-- Restored the animated “Free limit reached” OpenCode Go dialog with **Subscribe**, **Dismiss**, and **Don’t show again** actions. ([#57471](https://github.com/anomalyco/opencode/pull/57471))
+- Restored the animated “Free limit reached” OC Nano Go dialog with **Subscribe**, **Dismiss**, and **Don’t show again** actions. ([#57471](https://github.com/anomalyco/opencode/pull/57471))
 
 #### Bug fixes
 
@@ -1022,7 +1022,7 @@ The OpenCode GitHub Action is no longer published. Remove it from your workflows
 
 #### Bug fixes
 
-- Restored the free-limit dialog, reset-time timeline notice, and submitted prompt after free usage is exhausted. Subscribing to OpenCode Go now updates the current session’s model instead of opening another draft. ([#57466](https://github.com/anomalyco/opencode/pull/57466))
+- Restored the free-limit dialog, reset-time timeline notice, and submitted prompt after free usage is exhausted. Subscribing to OC Nano Go now updates the current session’s model instead of opening another draft. ([#57466](https://github.com/anomalyco/opencode/pull/57466))
 
 ### SDK
 
@@ -1094,7 +1094,7 @@ Replay passes the merged blob to the protocol, which reads the fields it needs. 
  }
 ```
 
-Existing stored credentials and `opencode auth import` still accept the old shape. Legacy `configuration` is merged into `metadata`; the legacy configuration value wins when both contain the same key. This compatibility is for storage/import, not a reason to keep sending `configuration` in public writes.
+Existing stored credentials and `ocnano auth import` still accept the old shape. Legacy `configuration` is merged into `metadata`; the legacy configuration value wins when both contain the same key. This compatibility is for storage/import, not a reason to keep sending `configuration` in public writes.
 
 #### Summary compactions reference kept messages
 
@@ -1170,7 +1170,7 @@ The transitional `session.compacted` event is removed from the public event surf
 
 #### Bug fixes
 
-- Show free OpenCode models alongside their paid counterparts by default instead of hiding them when they share the same model family and release date. ([#55712](https://github.com/anomalyco/opencode/pull/55712))
+- Show free ocnano models alongside their paid counterparts by default instead of hiding them when they share the same model family and release date. ([#55712](https://github.com/anomalyco/opencode/pull/55712))
 
 ### SDK
 
@@ -1192,13 +1192,13 @@ The transitional `session.compacted` event is removed from the public event surf
 ### Highlights
 
 - **Copy the Latest Reply**: Run `/copy` in the TUI to copy the latest assistant message or completed compaction summary instead of the full transcript. ([#56053](https://github.com/anomalyco/opencode/pull/56053), [#56055](https://github.com/anomalyco/opencode/pull/56055))
-- **Auth Login in Headless Environments**: `opencode auth login` no longer crashes in a container or other headless environment that cannot open a browser; use the URL already printed in the terminal to continue. ([#56082](https://github.com/anomalyco/opencode/pull/56082))
+- **Auth Login in Headless Environments**: `ocnano auth login` no longer crashes in a container or other headless environment that cannot open a browser; use the URL already printed in the terminal to continue. ([#56082](https://github.com/anomalyco/opencode/pull/56082))
 
 ### Core
 
 #### Bug fixes
 
-- Prevented `opencode auth login` from crashing when no browser opener such as `xdg-open` is available. ([#56082](https://github.com/anomalyco/opencode/pull/56082))
+- Prevented `ocnano auth login` from crashing when no browser opener such as `xdg-open` is available. ([#56082](https://github.com/anomalyco/opencode/pull/56082))
 - Gemini sessions now retry or continue after intermittent `MALFORMED_RESPONSE` finishes instead of immediately failing. ([#56232](https://github.com/anomalyco/opencode/pull/56232))
 - Made snapshot capture resilient to concurrent Git object writes on Windows. ([#56190](https://github.com/anomalyco/opencode/pull/56190))
 
@@ -1231,13 +1231,13 @@ The transitional `session.compacted` event is removed from the public event surf
 #### Improvements
 
 - Load local glob patterns and remote URLs configured through `instructions`, and refresh them when configuration changes. ([#55539](https://github.com/anomalyco/opencode/pull/55539))
-- Honor `OPENCODE_DISABLE_CLAUDE_CODE` and `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS` when discovering `.claude` skills. ([#55774](https://github.com/anomalyco/opencode/pull/55774))
+- Honor `OCNANO_DISABLE_CLAUDE_CODE` and `OCNANO_DISABLE_CLAUDE_CODE_SKILLS` when discovering `.claude` skills. ([#55774](https://github.com/anomalyco/opencode/pull/55774))
 - Publish a configuration schema that accepts both V1 and V2 configuration shapes during migration. ([#55524](https://github.com/anomalyco/opencode/pull/55524))
 - Remove the retired session-sharing backend and unavailable `/share` command. ([#55716](https://github.com/anomalyco/opencode/pull/55716))
 
 #### Bug fixes
 
-- Use protocol-specific inference endpoints for OpenCode providers and accept `null` namespaces in Responses API function calls. ([#55680](https://github.com/anomalyco/opencode/pull/55680), [#55631](https://github.com/anomalyco/opencode/pull/55631))
+- Use protocol-specific inference endpoints for OC Nano providers and accept `null` namespaces in Responses API function calls. ([#55680](https://github.com/anomalyco/opencode/pull/55680), [#55631](https://github.com/anomalyco/opencode/pull/55631))
 - Fit compaction output limits to the request actually sent. ([#55613](https://github.com/anomalyco/opencode/pull/55613))
 - Restore authenticated TinyFish web search by initializing its MCP session. Thanks [@terry-an-investor](https://github.com/terry-an-investor). ([#54730](https://github.com/anomalyco/opencode/pull/54730))
 - Improve MCP compatibility by skipping unsupported catalog and codemode calls, advertising spec-compliant elicitation capabilities, and accepting `*.localhost` OAuth token endpoints. Thanks [@tsehla42](https://github.com/tsehla42) and [@donbowman](https://github.com/donbowman). ([#55474](https://github.com/anomalyco/opencode/pull/55474), [#55618](https://github.com/anomalyco/opencode/pull/55618), [#53196](https://github.com/anomalyco/opencode/pull/53196), [#55627](https://github.com/anomalyco/opencode/pull/55627))
@@ -1353,7 +1353,7 @@ The transitional `session.compacted` event is removed from the public event surf
 - **Release Highlights in the TUI**: After updating, the home screen shows the release highlights once. Run `/highlights` to reopen them, or disable automatic display with `highlights: false` in `cli.json`. ([#54969](https://github.com/anomalyco/opencode/pull/54969))
 - **Native Windows ARM64 Support**: Windows ARM64 downloads, CLI installs, and desktop updates now use native ARM64 builds instead of x64 emulation. ([#54689](https://github.com/anomalyco/opencode/pull/54689), [#54971](https://github.com/anomalyco/opencode/pull/54971))
 - **Continuous Gemini Responses**: Long Gemini and Vertex Gemini responses split by the provider now continue automatically as one response, including recovery from a dropped stream after a continuation checkpoint. ([#55056](https://github.com/anomalyco/opencode/pull/55056))
-- **Official WinGet Packages**: Install V2 with `winget install --id Anomaly.OpenCode -e` or `winget install --id Anomaly.OpenCode.Desktop -e`. OpenCode upgrades WinGet installations through WinGet. ([#54808](https://github.com/anomalyco/opencode/pull/54808))
+- **Official WinGet Packages**: Install V2 with `winget install --id Anomaly.OC Nano -e` or `winget install --id Anomaly.OC Nano.Desktop -e`. OC Nano upgrades WinGet installations through WinGet. ([#54808](https://github.com/anomalyco/opencode/pull/54808))
 
 ### Core
 
@@ -1424,9 +1424,9 @@ The transitional `session.compacted` event is removed from the public event surf
 
 ### Highlights
 
-- **Built-In Worktree Tools**: Ask OpenCode to use `worktree_create`, `worktree_list`, and `worktree_remove` in Code Mode. You can create isolated worktrees, move sessions into them, and remove them with normal edit approval. ([#53981](https://github.com/anomalyco/opencode/pull/53981))
-- **Safer Remote Pairing**: The first `opencode pair --remote` now warns that it will expose your server and asks for confirmation. For non-interactive use, pass `opencode pair --remote --yes`. ([#54561](https://github.com/anomalyco/opencode/pull/54561))
-- **Installable Web App**: Use Chrome or Edge’s **Install** button to install the OpenCode web app, including when it runs behind an authenticating proxy. ([#53905](https://github.com/anomalyco/opencode/pull/53905))
+- **Built-In Worktree Tools**: Ask OC Nano to use `worktree_create`, `worktree_list`, and `worktree_remove` in Code Mode. You can create isolated worktrees, move sessions into them, and remove them with normal edit approval. ([#53981](https://github.com/anomalyco/opencode/pull/53981))
+- **Safer Remote Pairing**: The first `ocnano pair --remote` now warns that it will expose your server and asks for confirmation. For non-interactive use, pass `ocnano pair --remote --yes`. ([#54561](https://github.com/anomalyco/opencode/pull/54561))
+- **Installable Web App**: Use Chrome or Edge’s **Install** button to install the ocnano web app, including when it runs behind an authenticating proxy. ([#53905](https://github.com/anomalyco/opencode/pull/53905))
 - **Clear Session Failures**: Desktop and TUI timelines now show execution errors that happen before or between model steps instead of ending without an explanation. ([#53826](https://github.com/anomalyco/opencode/pull/53826))
 - **Automatic Project Cleanup**: Projects whose directories no longer exist are automatically hidden from the project list. Opening the directory again restores the project. ([#54354](https://github.com/anomalyco/opencode/pull/54354))
 
@@ -1434,8 +1434,8 @@ The transitional `session.compacted` event is removed from the public event surf
 
 #### Improvements
 
-- Added the built-in Code Mode tools `opencode.worktree_create`, `opencode.worktree_list`, and `opencode.worktree_remove`. Removing a worktree requires edit approval, and `force: true` can discard modified or untracked files. ([#53981](https://github.com/anomalyco/opencode/pull/53981))
-- Added confirmation before `opencode pair --remote` first enables internet access, plus `--yes`/`-y` for scripts and other non-interactive use. ([#54561](https://github.com/anomalyco/opencode/pull/54561))
+- Added the built-in Code Mode tools `ocnano.worktree_create`, `ocnano.worktree_list`, and `ocnano.worktree_remove`. Removing a worktree requires edit approval, and `force: true` can discard modified or untracked files. ([#53981](https://github.com/anomalyco/opencode/pull/53981))
+- Added confirmation before `ocnano pair --remote` first enables internet access, plus `--yes`/`-y` for scripts and other non-interactive use. ([#54561](https://github.com/anomalyco/opencode/pull/54561))
 - Automatically archived projects when all known directories disappear. Reopening a project restores it, while surviving clones and linked worktrees keep it active. ([#54354](https://github.com/anomalyco/opencode/pull/54354))
 - Raised the ChatGPT OAuth input limit for `gpt-6.1-sol` and `gpt-6.1-sol-fast` to 500,000 tokens. ([#54668](https://github.com/anomalyco/opencode/pull/54668))
 - Added Vertex AI routes for Interactions and Mistral models. ([#54175](https://github.com/anomalyco/opencode/pull/54175), [#54058](https://github.com/anomalyco/opencode/pull/54058))
@@ -1480,8 +1480,8 @@ The transitional `session.compacted` event is removed from the public event surf
 
 #### Improvements
 
-- Added startup plugin seeding to Effect embedded hosts and workerd through `OpenCode.create({ plugins })` and `OpenCodeWorkerd.create({ plugins })`.
-- Re-exported `WorkspaceDriver`, `EnvironmentDriver`, and `EnvironmentFiles` from `@opencode/sdk/effect`.
+- Added startup plugin seeding to Effect embedded hosts and workerd through `OC Nano.create({ plugins })` and `OC NanoWorkerd.create({ plugins })`.
+- Re-exported `WorkspaceDriver`, `EnvironmentDriver`, and `EnvironmentFiles` from `@ocnano/sdk/effect`.
 
 #### Bug fixes
 
@@ -1505,7 +1505,7 @@ The transitional `session.compacted` event is removed from the public event surf
 - **Google Cloud Credentials for Vertex**: Run `/connect`, choose **Vertex**, then select **Google Cloud credentials (gcloud auth or environment)** to use Application Default Credentials. You can choose or enter the Google Cloud project and location. ([#53798](https://github.com/anomalyco/opencode/pull/53798))
 - **Faster, Safer Session Snapshots**: Session snapshots now add less overhead, recover from interrupted or concurrent captures, restore large selections faster, and pack stored objects to reduce disk usage. ([#51996](https://github.com/anomalyco/opencode/pull/51996))
 - **Working Transcript Links**: You can click links anywhere in a transcript, including any row of a wrapped URL. Hyperlinks also work in more terminals, and `FORCE_HYPERLINK=1` can enable them when automatic detection does not. ([#53903](https://github.com/anomalyco/opencode/pull/53903), [#53904](https://github.com/anomalyco/opencode/pull/53904))
-- **Step 5 Preview Free**: You can now select **Step 5 Preview Free** from OpenCode’s free model lineup for a limited time.
+- **Step 5 Preview Free**: You can now select **Step 5 Preview Free** from OC Nano’s free model lineup for a limited time.
 
 ### Core
 
@@ -1513,14 +1513,14 @@ The transitional `session.compacted` event is removed from the public event surf
 
 - Added **Google Cloud credentials (gcloud auth or environment)** to the Vertex connection flow, with project and location choices discovered from environment variables, gcloud configurations, and Application Default Credentials. ([#53798](https://github.com/anomalyco/opencode/pull/53798))
 - Reduced session snapshot overhead, accelerated multi-file restores, made capture resilient to crashes and concurrent processes, and added lossless background packing of snapshot objects. ([#51996](https://github.com/anomalyco/opencode/pull/51996))
-- Added **Step 5 Preview Free** to OpenCode’s free models for a limited time and removed the retired **Fledge Alpha Free** listing.
+- Added **Step 5 Preview Free** to OC Nano’s free models for a limited time and removed the retired **Fledge Alpha Free** listing.
 
 #### Bug fixes
 
 - Prevented working-tree diffs from timing out or stalling the server in repositories with many untracked files by batching Git operations. ([#53449](https://github.com/anomalyco/opencode/pull/53449))
 - Fixed large revert selections failing when their paths exceeded the operating system’s command-line limit. ([#53956](https://github.com/anomalyco/opencode/pull/53956))
 - Fixed snapshot and undo handling for literal filenames containing Git pathspec characters, corrupted or locked snapshot indexes, concurrent captures, and project directories whose names begin with `..`. ([#51996](https://github.com/anomalyco/opencode/pull/51996))
-- Changed `opencode service` remote-access URLs to use a persistent random subdomain rather than a predictable route. Disabling and re-enabling remote access generates a new address. ([#53962](https://github.com/anomalyco/opencode/pull/53962))
+- Changed `OC Nano service` remote-access URLs to use a persistent random subdomain rather than a predictable route. Disabling and re-enabling remote access generates a new address. ([#53962](https://github.com/anomalyco/opencode/pull/53962))
 
 ### TUI
 

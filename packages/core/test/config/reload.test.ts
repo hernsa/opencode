@@ -2,40 +2,40 @@ import path from "path"
 import fs from "fs/promises"
 import { writeFileSync } from "node:fs"
 import { describe, expect } from "bun:test"
-import { Document, Event, Info } from "@opencode/schema/config"
-import { Agent } from "@opencode/core/agent"
-import { Command } from "@opencode/core/command"
-import { Config } from "@opencode/core/config"
-import { ConfigAgentPlugin } from "@opencode/core/config/plugin/agent"
-import { ConfigCommandPlugin } from "@opencode/core/config/plugin/command"
-import { ConfigPolicyPlugin } from "@opencode/core/config/plugin/policy"
-import { ConfigProviderPlugin } from "@opencode/core/config/plugin/provider"
-import { ConfigReferencePlugin } from "@opencode/core/config/plugin/reference"
-import { ConfigCompatibilityPlugin } from "@opencode/core/config/plugin/compatibility"
-import { ConfigSkillPlugin } from "@opencode/core/config/plugin/skill"
-import { ConfigWebSearchPlugin } from "@opencode/core/config/plugin/websearch"
-import { Bus } from "@opencode/core/bus"
-import { Integration } from "@opencode/core/integration"
-import { Plugin } from "@opencode/core/plugin"
-import { PluginHost } from "@opencode/core/plugin/host"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { Provider } from "@opencode/core/provider"
-import { Reference } from "@opencode/core/reference"
-import { Skill } from "@opencode/core/skill"
-import { State } from "@opencode/core/state"
-import { WebSearch } from "@opencode/core/websearch"
-import { ShellSelect } from "@opencode/core/shell/select"
-import { Job } from "@opencode/core/job"
-import { SubagentJob } from "@opencode/core/session/subagent-job"
-import { Global } from "@opencode/util/global"
-import { Location } from "@opencode/core/location"
-import { Credential } from "@opencode/core/credential"
-import { WellKnown } from "@opencode/core/wellknown"
-import { Watcher } from "@opencode/core/filesystem/watcher"
-import { AppProcess } from "@opencode/util/process"
+import { Document, Event, Info } from "@ocnano/schema/config"
+import { Agent } from "@ocnano/core/agent"
+import { Command } from "@ocnano/core/command"
+import { Config } from "@ocnano/core/config"
+import { ConfigAgentPlugin } from "@ocnano/core/config/plugin/agent"
+import { ConfigCommandPlugin } from "@ocnano/core/config/plugin/command"
+import { ConfigPolicyPlugin } from "@ocnano/core/config/plugin/policy"
+import { ConfigProviderPlugin } from "@ocnano/core/config/plugin/provider"
+import { ConfigReferencePlugin } from "@ocnano/core/config/plugin/reference"
+import { ConfigCompatibilityPlugin } from "@ocnano/core/config/plugin/compatibility"
+import { ConfigSkillPlugin } from "@ocnano/core/config/plugin/skill"
+import { ConfigWebSearchPlugin } from "@ocnano/core/config/plugin/websearch"
+import { Bus } from "@ocnano/core/bus"
+import { Integration } from "@ocnano/core/integration"
+import { Plugin } from "@ocnano/core/plugin"
+import { PluginHost } from "@ocnano/core/plugin/host"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { Provider } from "@ocnano/core/provider"
+import { Reference } from "@ocnano/core/reference"
+import { Skill } from "@ocnano/core/skill"
+import { State } from "@ocnano/core/state"
+import { WebSearch } from "@ocnano/core/websearch"
+import { ShellSelect } from "@ocnano/core/shell/select"
+import { Job } from "@ocnano/core/job"
+import { SubagentJob } from "@ocnano/core/session/subagent-job"
+import { Global } from "@ocnano/util/global"
+import { Location } from "@ocnano/core/location"
+import { Credential } from "@ocnano/core/credential"
+import { WellKnown } from "@ocnano/core/wellknown"
+import { Watcher } from "@ocnano/core/filesystem/watcher"
+import { AppProcess } from "@ocnano/util/process"
 import { Deferred, Effect, Layer, Schema } from "effect"
-import { LayerNode } from "@opencode/util/effect/layer-node"
-import { AbsolutePath } from "@opencode/core/schema"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
+import { AbsolutePath } from "@ocnano/core/schema"
 import { waitUntil } from "../lib/eventually"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "../plugin/fixture"
@@ -50,7 +50,7 @@ const it = testEffect(
   ),
 )
 const decode = Schema.decodeUnknownSync(Info)
-const document = path.join(import.meta.dir, "opencode.json")
+const document = path.join(import.meta.dir, "ocnano.json")
 
 describe("config plugin reloads", () => {
   for (const input of [
@@ -65,7 +65,7 @@ describe("config plugin reloads", () => {
           Effect.gen(function* () {
             const project = path.join(tmp.path, "project")
             const root = path.resolve(project, input.root)
-            const file = path.join(project, "opencode.json")
+            const file = path.join(project, "ocnano.json")
             yield* Effect.promise(async () => {
               await fs.mkdir(path.join(project, "home"), { recursive: true })
               await fs.mkdir(path.join(project, "global"))
@@ -109,7 +109,7 @@ describe("config plugin reloads", () => {
             Effect.sync(() => {
               if (input.type === "entries" && input.target === tmp.path) {
                 // No event is emitted: only synchronous readiness can trigger the reload.
-                writeFileSync(path.join(tmp.path, "opencode.json"), JSON.stringify({ references: { docs: "./docs" } }))
+                writeFileSync(path.join(tmp.path, "ocnano.json"), JSON.stringify({ references: { docs: "./docs" } }))
               }
               return { unsubscribe: () => Promise.resolve() }
             }),
@@ -130,7 +130,7 @@ describe("config plugin reloads", () => {
     Effect.acquireDisposable(Effect.promise(() => tmpdir())).pipe(
       Effect.flatMap((tmp) =>
         Effect.gen(function* () {
-          const root = path.join(tmp.path, ".opencode")
+          const root = path.join(tmp.path, ".ocnano")
           const parent = yield* Deferred.make<(update: Watcher.Update) => void>()
           const starting = yield* Deferred.make<void>()
           const release = yield* Deferred.make<void>()
@@ -158,7 +158,7 @@ describe("config plugin reloads", () => {
             yield* Deferred.await(starting).pipe(Effect.timeout("2 seconds"))
             // No file event: the recursive native watch has not been acquired yet.
             yield* Effect.promise(() =>
-              fs.writeFile(path.join(root, "opencode.json"), JSON.stringify({ references: { docs: "./docs" } })),
+              fs.writeFile(path.join(root, "ocnano.json"), JSON.stringify({ references: { docs: "./docs" } })),
             )
             yield* Deferred.succeed(release, undefined)
             yield* waitUntil(references.list().pipe(Effect.map((items) => items.some((item) => item.name === "docs"))))
@@ -170,10 +170,10 @@ describe("config plugin reloads", () => {
   )
 
   for (const input of [
-    { file: "opencode.json", empty: false },
-    { file: "../opencode.jsonc", empty: false },
-    { file: ".opencode/opencode.json", empty: false },
-    { file: "../.opencode/opencode.jsonc", empty: true },
+    { file: "ocnano.json", empty: false },
+    { file: "../ocnano.jsonc", empty: false },
+    { file: ".ocnano/ocnano.json", empty: false },
+    { file: "../.ocnano/ocnano.jsonc", empty: true },
   ]) {
     it.live(`loads references when ${input.file} is first created and keeps watching it`, () =>
       Effect.acquireDisposable(Effect.promise(() => tmpdir())).pipe(
@@ -218,7 +218,7 @@ describe("config plugin reloads", () => {
               )
 
               yield* Effect.promise(() =>
-                fs.rm(input.file.includes(".opencode/") ? path.dirname(target) : target, { recursive: true }),
+                fs.rm(input.file.includes(".ocnano/") ? path.dirname(target) : target, { recursive: true }),
               )
               yield* waitUntil(references.list().pipe(Effect.map((items) => items.length === 0)))
               yield* Effect.promise(async () => {
@@ -260,11 +260,11 @@ describe("config plugin reloads", () => {
     }).pipe(
       Effect.provide(
         Config.testLayer([
-          referenceConfig("/config/first/opencode.json", {
+          referenceConfig("/config/first/ocnano.json", {
             shared: "./shared",
             first: "./first",
           }),
-          referenceConfig("/config/second/opencode.json", {
+          referenceConfig("/config/second/ocnano.json", {
             shared: "./shared",
             second: "./second",
           }),

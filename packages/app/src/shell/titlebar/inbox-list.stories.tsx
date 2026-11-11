@@ -1,4 +1,4 @@
-import { Button } from "@opencode/ui/button"
+import { Button } from "@ocnano/ui/button"
 import { createEffect, createMemo, For, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { InboxSessionCard, InboxSessionList } from "./inbox"
@@ -92,12 +92,12 @@ function SessionListStory(props: {
       {(session) => (
         <InboxSessionCard
           project={{
-            id: session.index % 3 === 2 ? "lab-port-ui" : "lab-opencode",
-            name: session.index % 3 === 2 ? "port-ui" : "opencode",
-            worktree: "/workspace/opencode",
+            id: session.index % 3 === 2 ? "lab-port-ui" : "lab-ocnano",
+            name: session.index % 3 === 2 ? "port-ui" : "ocnano",
+            worktree: "/workspace/ocnano",
             icon: { color: session.index % 3 === 2 ? "purple" : "blue" },
           }}
-          directory={session.index % 2 === 0 ? "/workspace/opencode/worktrees/tooltip-status" : "/workspace/opencode"}
+          directory={session.index % 2 === 0 ? "/workspace/ocnano/worktrees/tooltip-status" : "/workspace/ocnano"}
           title={session.title}
           status={session.status}
           selected={state.selected === session.id}

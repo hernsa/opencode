@@ -21,7 +21,7 @@ export type SoundName =
   | "menu-select"
   | "power-off"
 
-const muteKey = "opencode-arcade-muted"
+const muteKey = "ocnano-arcade-muted"
 const names: SoundName[] = [
   "ambience",
   "coin-pickup",

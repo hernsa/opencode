@@ -1,8 +1,8 @@
 import { bindings, defineConfig, triggers } from "cf/config"
 import { docsSets } from "./src/docs/config"
 
-// The opencode.ai website (SolidStart). `--mode dev` deploys opencode-site-dev on dev.opencode.ai;
-// any other mode deploys opencode-site-production on opencode.ai. It is the catch-all: more specific
+// The opencode.ai website (SolidStart). `--mode dev` deploys ocnano-site-dev on dev.opencode.ai;
+// any other mode deploys ocnano-site-production on opencode.ai. It is the catch-all: more specific
 // routes on the zone (Console, inference, changelog, update, files, stats, …) keep beating it. It
 // also serves the V2 docs at /docs (src/docs).
 //
@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
     // Anomaly
     accountId: "15d29c8639fd3733b1b5486a2acfd968",
     worker: {
-      name: dev ? "opencode-site-dev" : "opencode-site-production",
+      name: dev ? "ocnano-site-dev" : "ocnano-site-production",
       compatibilityDate: "2026-07-25",
       // The Nitro server is built with node compatibility (vite.config.ts).
       compatibilityFlags: ["nodejs_compat"],

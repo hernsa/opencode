@@ -1,7 +1,7 @@
 import path from "node:path"
 import { $ } from "bun"
 import { describe, expect } from "bun:test"
-import { SdkPlugins } from "@opencode/core/plugin/sdk"
+import { SdkPlugins } from "@ocnano/core/plugin/sdk"
 import { Effect, Layer, Schedule } from "effect"
 import { tmpdir } from "../../core/test/fixture/tmpdir"
 import { it } from "../../core/test/lib/effect"
@@ -13,7 +13,7 @@ it.live(
   "initializes Git in a markerless project and refreshes its location",
   () =>
     Effect.gen(function* () {
-      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-vcs-init-")))
+      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-vcs-init-")))
       yield* Effect.promise(() => Bun.write(path.join(tmp.path, "hello.txt"), "hello\n"))
       const server = yield* serveRoutes({
         database: { path: ":memory:" },
@@ -22,10 +22,10 @@ it.live(
         models: { fetch: false },
       })
       yield* server.pluginsLoaded(tmp.path)
-      const url = new URL("/api/vcs/init", "http://opencode.local")
+      const url = new URL("/api/vcs/init", "http://ocnano.local")
       url.searchParams.set("location[directory]", tmp.path)
       const before = yield* Effect.promise(() =>
-        server.fetch(new URL(`/api/location${url.search}`, "http://opencode.local")),
+        server.fetch(new URL(`/api/location${url.search}`, "http://ocnano.local")),
       )
       expect(before.status).toBe(200)
       const original = yield* Effect.promise(() => before.json())
@@ -38,7 +38,7 @@ it.live(
       const refreshed = yield* Effect.promise(() => location.json())
       expect(refreshed).toMatchObject({ project: { directory: tmp.path } })
       expect(refreshed.project.id).not.toBe(original.project.id)
-      const projects = yield* Effect.promise(() => server.fetch(new URL("/api/project", "http://opencode.local")))
+      const projects = yield* Effect.promise(() => server.fetch(new URL("/api/project", "http://ocnano.local")))
       expect(yield* Effect.promise(() => projects.json())).toContainEqual(
         expect.objectContaining({ id: refreshed.project.id, vcs: "git" }),
       )
@@ -73,7 +73,7 @@ it.live(
   "does not create a project directory while initializing Git",
   () =>
     Effect.gen(function* () {
-      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-vcs-missing-")))
+      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-vcs-missing-")))
       const server = yield* startServer(path.join(tmp.path, "config"))
       const directory = path.join(tmp.path, "absent")
       const url = new URL("/api/vcs/init", server.base)
@@ -89,7 +89,7 @@ it.live(
   "accepts an explicit Git provider and rejects unknown providers without initializing",
   () =>
     Effect.gen(function* () {
-      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-vcs-provider-")))
+      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-vcs-provider-")))
       const server = yield* serveRoutes({
         database: { path: ":memory:" },
         config: { directory: path.join(tmp.path, "config") },
@@ -97,7 +97,7 @@ it.live(
         models: { fetch: false },
       })
       yield* server.pluginsLoaded(tmp.path)
-      const url = new URL("/api/vcs/init", "http://opencode.local")
+      const url = new URL("/api/vcs/init", "http://ocnano.local")
       url.searchParams.set("location[directory]", tmp.path)
       url.searchParams.set("provider", "unknown")
       const unsupported = yield* Effect.promise(() => server.fetch(url, { method: "POST" }))
@@ -118,7 +118,7 @@ it.live(
 
 it.live("returns 501 when a registered VCS provider has no initializer", () =>
   Effect.gen(function* () {
-    const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-vcs-no-init-")))
+    const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-vcs-no-init-")))
     const server = yield* serveRoutes(
       {
         database: { path: ":memory:" },
@@ -157,7 +157,7 @@ it.live("returns 501 when a registered VCS provider has no initializer", () =>
       ],
     )
     yield* server.pluginsLoaded(tmp.path)
-    const url = new URL("http://opencode.local/api/vcs/init")
+    const url = new URL("http://ocnano.local/api/vcs/init")
     url.searchParams.set("location[directory]", tmp.path)
     url.searchParams.set("provider", "read-only")
     const response = yield* Effect.promise(() => server.handler(new Request(url, { method: "POST" })))
@@ -178,7 +178,7 @@ describeHg("Mercurial initialization", () => {
     "initializes and serves an untracked-file diff through the Hg provider",
     () =>
       Effect.gen(function* () {
-        const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-vcs-hg-init-")))
+        const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-vcs-hg-init-")))
         yield* Effect.promise(() => Bun.write(path.join(tmp.path, "hello.txt"), "hello\n"))
         const server = yield* serveRoutes({
           database: { path: ":memory:" },
@@ -187,7 +187,7 @@ describeHg("Mercurial initialization", () => {
           models: { fetch: false },
         })
         yield* server.pluginsLoaded(tmp.path)
-        const url = new URL("/api/vcs/init", "http://opencode.local")
+        const url = new URL("/api/vcs/init", "http://ocnano.local")
         url.searchParams.set("location[directory]", tmp.path)
         url.searchParams.set("provider", "hg")
         const initialized = yield* Effect.promise(() => server.fetch(url, { method: "POST" }))
@@ -226,11 +226,11 @@ it.live(
   "serves lazy review bases, committed diffs, and unavailable-base errors",
   () =>
     Effect.gen(function* () {
-      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-vcs-endpoint-")))
+      const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-vcs-endpoint-")))
       yield* Effect.promise(async () => {
         await $`git init -b main`.cwd(tmp.path).quiet()
         await $`git config commit.gpgsign false`.cwd(tmp.path).quiet()
-        await $`git config user.email test@opencode.test`.cwd(tmp.path).quiet()
+        await $`git config user.email test@ocnano.test`.cwd(tmp.path).quiet()
         await $`git config user.name Test`.cwd(tmp.path).quiet()
         await Bun.write(path.join(tmp.path, "file.txt"), "base\n")
         await $`git add .`.cwd(tmp.path).quiet()
@@ -293,7 +293,7 @@ it.live(
 
 it.live("maps a failing base provider to HTTP 503 instead of null metadata", () =>
   Effect.gen(function* () {
-    const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-vcs-failure-")))
+    const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-vcs-failure-")))
     const handler = yield* ServerFetch.make(
       {
         database: { path: ":memory:" },
@@ -335,7 +335,7 @@ it.live("maps a failing base provider to HTTP 503 instead of null metadata", () 
         ],
       },
     )
-    const url = new URL("http://opencode.local/api/vcs/base")
+    const url = new URL("http://ocnano.local/api/vcs/base")
     url.searchParams.set("location[directory]", tmp.path)
     const response = yield* Effect.promise(() => handler(new Request(url))).pipe(
       Effect.filterOrFail((response) => response.status === 503),

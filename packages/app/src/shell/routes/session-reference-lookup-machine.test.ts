@@ -1,4 +1,4 @@
-import type { SessionInfo } from "@opencode/client/promise"
+import type { SessionInfo } from "@ocnano/client/promise"
 import { describe, expect, test } from "bun:test"
 import {
   createSessionReferenceLookupState,

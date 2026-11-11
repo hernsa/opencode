@@ -19,11 +19,11 @@ const descriptions: Record<string, string> = {
 // Rows the sidebar's secondary nav doesn't have, after it.
 const extra = [
   { label: "Humans", href: "/humans.txt", description: "the team and contributors" },
-  { label: "Anomaly", href: "https://anoma.ly", description: "the company behind OpenCode" },
+  { label: "Anomaly", href: "https://anoma.ly", description: "the company behind OC Nano" },
 ]
 
 const secondaryDescriptions: Record<string, string> = {
-  "https://discord.gg/opencode": "chat with the team and other users",
+  "https://discord.gg/ocnano": "chat with the team and other users",
   "/press": "press kit and facts",
   "/brand": "logos, colors and usage",
   "/legal": "privacy policy and terms",

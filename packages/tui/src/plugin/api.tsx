@@ -1,4 +1,4 @@
-import { PluginContextProvider } from "@opencode/plugin/tui"
+import { PluginContextProvider } from "@ocnano/plugin/tui"
 import {
   children,
   createMemo,
@@ -22,7 +22,7 @@ import type {
   SlotMap,
   SlotPath,
   Toast,
-} from "@opencode/plugin/tui/context"
+} from "@ocnano/plugin/tui/context"
 import type { Placement, PlacementKind } from "./structure"
 import { infoStringToFiletype, type MarkdownCodeBlockRenderer } from "@opentui/core"
 import { useRenderer } from "@opentui/solid"

@@ -1,10 +1,10 @@
-import type { WslOpencodeCheck, WslServersState } from "./contract"
+import type { WslOcNanoCheck, WslServersState } from "./contract"
 
 /** A configured distro's settings row, from main's state alone. A server still starting can be updated or removed. */
 export function wslRowView(state: WslServersState | undefined, distro: string) {
   const job = state?.distroJobs[distro]
-  const check = state?.opencodeChecks[distro]
-  const action = opencodeAction(check)
+  const check = state?.ocnanoChecks[distro]
+  const action = ocnanoAction(check)
   const runtime = state?.servers.find((item) => item.config.distro === distro)?.runtime.kind
   const free = !job || job === "starting"
 
@@ -16,10 +16,10 @@ export function wslRowView(state: WslServersState | undefined, distro: string) {
   }
 }
 
-function opencodeAction(check: WslOpencodeCheck | undefined) {
+function ocnanoAction(check: WslOcNanoCheck | undefined) {
   if (!check) return
 
-  if (!check.resolvedPath) return "onboarding.installOpencode"
+  if (!check.resolvedPath) return "onboarding.installOC Nano"
 
-  if (check.matchesDesktop === false) return "onboarding.updateOpencode"
+  if (check.matchesDesktop === false) return "onboarding.updateOC Nano"
 }

@@ -1,12 +1,12 @@
 import fuzzysort from "fuzzysort"
-import type { WslInstalledDistro, WslOnlineDistro, WslOpencodeCheck, WslServersState } from "./contract"
+import type { WslInstalledDistro, WslOnlineDistro, WslOcNanoCheck, WslServersState } from "./contract"
 import {
   selectWslDialogAdding,
   selectWslDialogBusy,
   selectWslDialogCatalogSearch,
   selectWslDialogCatalogTarget,
   selectWslDialogInstallingCatalog,
-  selectWslDialogInstallingOpencode,
+  selectWslDialogInstallingOcNano,
   selectWslDialogSelectedDistro,
   selectWslDialogView,
   type WslDialogState,
@@ -28,7 +28,7 @@ export type AddServerPrimaryButton = {
   variant: "neutral" | "contrast"
   label: AddServerText
   disabled: boolean
-  action: "install-opencode" | "add" | null
+  action: "install-ocnano" | "add" | null
   loading: boolean
   width: string | null
 }
@@ -89,7 +89,7 @@ export function addServerViewModel(input: {
     addableInstalledDistros,
   )
 
-  const opencodeCheck = selectedDistro ? (state?.opencodeChecks[selectedDistro] ?? null) : null
+  const ocnanoCheck = selectedDistro ? (state?.ocnanoChecks[selectedDistro] ?? null) : null
   const installableDistros = addServerInstallableDistros(visibleInstalledDistros, visibleOnlineDistros)
   const filteredInstallableDistros = addServerFilteredInstallableDistros(installableDistros, catalogSearch)
   const catalogTarget = addServerCatalogTarget(selectWslDialogCatalogTarget(input.dialog), filteredInstallableDistros)
@@ -106,7 +106,7 @@ export function addServerViewModel(input: {
     visibleOnlineDistros,
     addableInstalledDistros,
     selectedDistro,
-    opencodeCheck,
+    ocnanoCheck,
     wslReady: !!state?.runtime?.available && !state?.pendingRestart,
     distroStatuses: Object.fromEntries(
       addableInstalledDistros.flatMap((item) => {
@@ -120,9 +120,9 @@ export function addServerViewModel(input: {
     primaryButton: addServerPrimaryButton({
       state,
       selectedDistro,
-      opencodeCheck,
+      ocnanoCheck,
       busy: working,
-      installingOpencode: selectWslDialogInstallingOpencode(input.dialog, selectedDistro),
+      installingOcNano: selectWslDialogInstallingOcNano(input.dialog, selectedDistro),
       adding: selectWslDialogAdding(input.dialog),
       probingAddable: input.probingAddable,
     }),
@@ -190,15 +190,15 @@ function addServerDistroStatus(input: {
     return { label: { key: "onboarding.distroStatus.missingTools" }, tone: "warning" }
   }
 
-  const check = input.state?.opencodeChecks[input.name]
+  const check = input.state?.ocnanoChecks[input.name]
 
   if (!check) return probing ? checkingStatus() : undefined
 
-  if (check.matchesDesktop === false) return { label: { key: "onboarding.updateOpencode" }, tone: "warning" }
+  if (check.matchesDesktop === false) return { label: { key: "onboarding.updateOC Nano" }, tone: "warning" }
 
-  if (!check.resolvedPath) return { label: { key: "onboarding.distroStatus.opencodeMissing" }, tone: "warning" }
+  if (!check.resolvedPath) return { label: { key: "onboarding.distroStatus.ocnanoMissing" }, tone: "warning" }
 
-  if (check.error) return { label: { key: "onboarding.installOpencode" }, tone: "warning" }
+  if (check.error) return { label: { key: "onboarding.installOC Nano" }, tone: "warning" }
 
   return { label: { key: "onboarding.distroStatus.ready" }, tone: "success" }
 }
@@ -210,21 +210,21 @@ function checkingStatus(): DistroStatus {
 function addServerPrimaryButton(input: {
   state: WslServersState | undefined
   selectedDistro: string | null
-  opencodeCheck: WslOpencodeCheck | null
+  ocnanoCheck: WslOcNanoCheck | null
   /** Main runs a job the dialog waits for, or the dialog waits for its own call. */
   busy: boolean
-  /** The dialog asked main to install OpenCode in the selected distro and waits for the answer. */
-  installingOpencode: boolean
+  /** The dialog asked main to install OcNano in the selected distro and waits for the answer. */
+  installingOcNano: boolean
   adding: boolean
   probingAddable: boolean
 }): AddServerPrimaryButton {
   const ready = !!input.selectedDistro && wslDistroReady(input.state, input.selectedDistro)
   const probingSelected = input.probingAddable && !addServerSelectedDistroSettled(input.state, input.selectedDistro)
   const job = input.selectedDistro ? input.state?.distroJobs[input.selectedDistro] : undefined
-  const probingOpencode = probingSelected || (ready && (!input.opencodeCheck || job === "probing"))
-  const installingOpencode = job === "updating" || input.installingOpencode
+  const probingOcNano = probingSelected || (ready && (!input.ocnanoCheck || job === "probing"))
+  const installingOcNano = job === "updating" || input.installingOcNano
 
-  if (!ready || probingOpencode) {
+  if (!ready || probingOcNano) {
     return {
       variant: "contrast",
       label: probingSelected ? { key: "onboarding.distroStatus.checking" } : { key: "server.add" },
@@ -235,19 +235,19 @@ function addServerPrimaryButton(input: {
     }
   }
 
-  if (!addServerOpencodeReady(input.opencodeCheck)) {
-    const update = !!input.opencodeCheck?.resolvedPath && input.opencodeCheck.matchesDesktop === false
+  if (!addServerOcNanoReady(input.ocnanoCheck)) {
+    const update = !!input.ocnanoCheck?.resolvedPath && input.ocnanoCheck.matchesDesktop === false
 
     return {
       variant: "neutral",
-      label: installingOpencode
-        ? { key: "onboarding.updatingOpencode" }
+      label: installingOcNano
+        ? { key: "onboarding.updatingOC Nano" }
         : update
-          ? { key: "onboarding.updateOpencode" }
-          : { key: "onboarding.installOpencode" },
+          ? { key: "onboarding.updateOC Nano" }
+          : { key: "onboarding.installOC Nano" },
       disabled: input.busy,
-      action: "install-opencode",
-      loading: installingOpencode,
+      action: "install-ocnano",
+      loading: installingOcNano,
       width: update ? "138px" : "129px",
     }
   }
@@ -262,7 +262,7 @@ function addServerPrimaryButton(input: {
   }
 }
 
-function addServerOpencodeReady(check: WslOpencodeCheck | null) {
+function addServerOcNanoReady(check: WslOcNanoCheck | null) {
   return !!check?.resolvedPath && check.matchesDesktop !== false && !check.error
 }
 
@@ -276,7 +276,7 @@ function addServerSelectedDistroSettled(state: WslServersState | undefined, sele
 
   if (!wslDistroReady(state, selectedDistro)) return true
 
-  return !!state.opencodeChecks[selectedDistro]
+  return !!state.ocnanoChecks[selectedDistro]
 }
 
 function addServerInstallableDistros(installedDistros: WslInstalledDistro[], onlineDistros: WslOnlineDistro[]) {
@@ -328,7 +328,7 @@ function addableProbePlan(input: {
 
     if (!state.distroProbes[item.name]) return [`distro:${item.name}`]
 
-    if (wslDistroReady(state, item.name) && !state.opencodeChecks[item.name]) return [`opencode:${item.name}`]
+    if (wslDistroReady(state, item.name) && !state.ocnanoChecks[item.name]) return [`ocnano:${item.name}`]
 
     return []
   })

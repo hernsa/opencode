@@ -14,15 +14,15 @@ import {
   UnknownProviderError,
   ToolFailure,
   HttpContext,
-} from "@opencode/ai/effect"
-import { RequestExecutor } from "@opencode/ai/route"
-import { Permission } from "@opencode/core/permission"
-import { ID } from "@opencode/core/model"
-import { ModelResolver } from "@opencode/core/model-resolver"
-import { Provider } from "@opencode/core/provider"
-import { Tool } from "@opencode/schema/tool"
-import { toSessionError } from "@opencode/core/session/to-session-error"
-import { SessionRunnerRetry } from "@opencode/core/session/runner/retry"
+} from "@ocnano/ai/effect"
+import { RequestExecutor } from "@ocnano/ai/route"
+import { Permission } from "@ocnano/core/permission"
+import { ID } from "@ocnano/core/model"
+import { ModelResolver } from "@ocnano/core/model-resolver"
+import { Provider } from "@ocnano/core/provider"
+import { Tool } from "@ocnano/schema/tool"
+import { toSessionError } from "@ocnano/core/session/to-session-error"
+import { SessionRunnerRetry } from "@ocnano/core/session/runner/retry"
 
 const llm = (reason: AIError["reason"]) => new AIError({ reason })
 
@@ -85,7 +85,7 @@ describe("toSessionError", () => {
     expect(SessionRunnerRetry.isRetryable(free)).toBe(false)
     expect(toSessionError(free)).toEqual({
       type: "provider.free-limit",
-      message: "Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      message: "Free usage limit reached. Connect a provider or subscribe to OC Nano Go to keep going, or switch models.",
       status: 429,
       response: { body: JSON.stringify(freeBody) },
       retryAfterMs: 3_600_000,
@@ -109,7 +109,7 @@ describe("toSessionError", () => {
     expect(toSessionError(go)).toEqual({
       type: "provider.go-limit",
       message:
-        "OpenCode Go 5 hour usage limit reached. Switch to a free model, or turn on Extra Usage on the Go page in OpenCode Console to keep going.",
+        "OC Nano Go 5 hour usage limit reached. Switch to a free model, or turn on Extra Usage on the Go page in OC Nano Console to keep going.",
       status: 429,
       response: { body: JSON.stringify(goBody) },
       retryAfterMs: 120_000,
@@ -300,7 +300,7 @@ describe("toSessionError", () => {
     const configuration = new ModelResolver.ModelConfigurationError({
       providerID: Provider.ID.make("azure"),
       modelID: ID.make("gpt-5.4-nano"),
-      package: "@opencode/ai/providers/azure/responses",
+      package: "@ocnano/ai/providers/azure/responses",
       detail: "Azure requires resourceName or baseURL",
     })
     expect(toSessionError(configuration)).toEqual({
@@ -310,13 +310,13 @@ describe("toSessionError", () => {
     const initialization = new ModelResolver.ModelInitializationError({
       providerID: Provider.ID.make("custom"),
       modelID: ID.make("model"),
-      package: "@opencode/ai/providers/custom",
+      package: "@ocnano/ai/providers/custom",
       phase: "load",
-      detail: "Provider package @opencode/ai/providers/custom is broken",
+      detail: "Provider package @ocnano/ai/providers/custom is broken",
     })
     expect(toSessionError(initialization)).toEqual({
       type: "provider.no-route",
-      message: "Cannot initialize custom/model: Provider package @opencode/ai/providers/custom is broken",
+      message: "Cannot initialize custom/model: Provider package @ocnano/ai/providers/custom is broken",
     })
   })
 

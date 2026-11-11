@@ -26,10 +26,10 @@ import {
 export type { ColorScheme } from "./machine"
 
 const STORAGE_KEYS = {
-  THEME_ID: "opencode-theme-id",
-  COLOR_SCHEME: "opencode-color-scheme",
-  THEME_CSS_LIGHT: "opencode-theme-css-light",
-  THEME_CSS_DARK: "opencode-theme-css-dark",
+  THEME_ID: "ocnano-theme-id",
+  COLOR_SCHEME: "ocnano-color-scheme",
+  THEME_CSS_LIGHT: "ocnano-theme-css-light",
+  THEME_CSS_DARK: "ocnano-theme-css-dark",
 } as const
 
 const THEME_STYLE_ID = "oc-theme"
@@ -65,7 +65,7 @@ function knownThemes() {
 
 const names = new Map(
   Object.entries({
-    "oc-2": "OpenCode",
+    "oc-2": "OC Nano",
     amoled: "AMOLED",
     aura: "Aura",
     ayu: "Ayu",

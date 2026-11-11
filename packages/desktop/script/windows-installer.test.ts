@@ -9,7 +9,7 @@ const windows = test.skipIf(process.platform !== "win32")
 const payloadHash = "0123456789ABCDEF0123456789ABCDEF"
 
 // The installer clears the uninstall entry of an install it moves; the tests point it at their own key.
-const uninstallKey = "Software\\OpenCodeInstallerTest"
+const uninstallKey = "Software\\OC NanoInstallerTest"
 
 async function harness() {
   const { getMakeNsisPath, getNsisPluginsPath } = await import("app-builder-lib/out/toolsets/windows")
@@ -18,7 +18,7 @@ async function harness() {
   const config = (await import("../electron-builder.config")).default
   const compiler = await getMakeNsisPath(config.toolsets?.nsis, config.nsis?.customNsisBinary)
   const plugins = await getNsisPluginsPath(config.toolsets?.nsis, config.nsis?.customNsisResources)
-  const dir = await mkdtemp(path.join(os.tmpdir(), "opencode-installer-"))
+  const dir = await mkdtemp(path.join(os.tmpdir(), "ocnano-installer-"))
   // electron-builder generates the command-line flags such as ${isUpdated}.
   const flags = new NsisScriptGenerator()
   flags.flags(["updated"])
@@ -54,12 +54,12 @@ LoadLanguageFile "\${NSISDIR}\\Contrib\\Language files\\English.nlf"
 LangString appRunning \${LANG_ENGLISH} "running"
 LangString appClosing \${LANG_ENGLISH} "closing"
 LangString appCannotBeClosed \${LANG_ENGLISH} "cannot close"
-!define APP_EXECUTABLE_FILENAME "OpenCode.exe"
-!define APP_ID "ai.opencode.desktop"
-!define APP_FILENAME "@opencodedesktop"
-!define UNINSTALL_FILENAME "Uninstall OpenCode.exe"
+!define APP_EXECUTABLE_FILENAME "OC Nano.exe"
+!define APP_ID "ai.ocnano.desktop"
+!define APP_FILENAME "@ocnanodesktop"
+!define UNINSTALL_FILENAME "Uninstall OC Nano.exe"
 !define UNINSTALL_REGISTRY_KEY "${uninstallKey}"
-!define SHORTCUT_NAME "OpenCode Installer Test"
+!define SHORTCUT_NAME "OC Nano Installer Test"
 !define APP_64 "${path.join(dir, "app.7z")}"
 !define APP_64_HASH "${payloadHash}"
 !define APP_64_UNPACKED_SIZE 1
@@ -84,7 +84,7 @@ windows(
     const installer = await harness()
 
     const succeed = async (cmd: string[]) => {
-      const result = await installer.run(cmd, { OPENCODE_INSTALLER_TEST_ROOT: installer.dir })
+      const result = await installer.run(cmd, { OCNANO_INSTALLER_TEST_ROOT: installer.dir })
       expect(result.code, `${result.stdout}\n${result.stderr}`).toBe(0)
 
       return result.stdout
@@ -96,7 +96,7 @@ windows(
         "-NoProfile",
         "-NonInteractive",
         "-Command",
-        `(Get-Acl -LiteralPath (Join-Path $env:OPENCODE_INSTALLER_TEST_ROOT '${file}')).Sddl`,
+        `(Get-Acl -LiteralPath (Join-Path $env:OCNANO_INSTALLER_TEST_ROOT '${file}')).Sddl`,
       ])
 
     try {
@@ -133,28 +133,28 @@ const stagedCases = [
   {
     name: "moves the staged app into the emptied install directory",
     installed: [],
-    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OpenCode.exe", "resources/app.asar"] },
+    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OC Nano.exe", "resources/app.asar"] },
     moved: true,
-    expected: ["OpenCode.exe", "resources/app.asar"],
+    expected: ["OC Nano.exe", "resources/app.asar"],
   },
   {
     name: "keeps an install directory that still holds files",
     installed: ["locked.dll"],
-    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OpenCode.exe"] },
+    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OC Nano.exe"] },
     moved: false,
     expected: ["locked.dll"],
   },
   {
     name: "discards an update staged from another payload",
     installed: [],
-    staged: { "update-FEDCBA9876543210": ["OpenCode.exe"] },
+    staged: { "update-FEDCBA9876543210": ["OC Nano.exe"] },
     moved: false,
     expected: [],
   },
   {
     name: "discards staging that never finished",
     installed: [],
-    staged: { staging: ["OpenCode.exe"] },
+    staged: { staging: ["OC Nano.exe"] },
     moved: false,
     expected: [],
   },
@@ -214,40 +214,40 @@ windows(
 const directoryCases = [
   {
     name: "a first install uses the app ID",
-    from: "@opencodedesktop",
+    from: "@ocnanodesktop",
     shared: [],
-    expected: "ai.opencode.desktop",
+    expected: "ai.ocnano.desktop",
     left: undefined,
     uninstallKept: true,
   },
   {
     name: "leaving the shared directory keeps the other channels",
-    from: "@opencodedesktop",
+    from: "@ocnanodesktop",
     shared: [
-      "OpenCode.exe",
-      "Uninstall OpenCode.exe",
-      "OpenCode Beta.exe",
-      "Uninstall OpenCode Beta.exe",
+      "OC Nano.exe",
+      "Uninstall OC Nano.exe",
+      "OC Nano Beta.exe",
+      "Uninstall OC Nano Beta.exe",
       "resources/app.asar",
     ],
-    expected: "ai.opencode.desktop",
-    left: ["OpenCode Beta.exe", "Uninstall OpenCode Beta.exe", "resources/app.asar"],
+    expected: "ai.ocnano.desktop",
+    left: ["OC Nano Beta.exe", "Uninstall OC Nano Beta.exe", "resources/app.asar"],
     uninstallKept: false,
   },
   {
     name: "the last channel removes the shared directory",
-    from: "@opencodedesktop",
-    shared: ["OpenCode.exe", "Uninstall OpenCode.exe", "resources/app.asar"],
-    expected: "ai.opencode.desktop",
+    from: "@ocnanodesktop",
+    shared: ["OC Nano.exe", "Uninstall OC Nano.exe", "resources/app.asar"],
+    expected: "ai.ocnano.desktop",
     left: undefined,
     uninstallKept: false,
   },
   {
     name: "an install elsewhere stays where it is",
     from: "custom",
-    shared: ["OpenCode.exe", "Uninstall OpenCode.exe"],
+    shared: ["OC Nano.exe", "Uninstall OC Nano.exe"],
     expected: "custom",
-    left: ["OpenCode.exe", "Uninstall OpenCode.exe"],
+    left: ["OC Nano.exe", "Uninstall OC Nano.exe"],
     uninstallKept: true,
   },
 ]

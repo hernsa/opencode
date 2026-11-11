@@ -1,3 +1,3 @@
-# @opencode/core
+# @ocnano/core
 
-Core runtime services for OpenCode.
+Core runtime services for OC Nano.

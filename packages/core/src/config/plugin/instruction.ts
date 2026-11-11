@@ -1,9 +1,9 @@
 export * as ConfigInstructionPlugin from "./instruction.js"
 
-import { define } from "@opencode/plugin/effect/plugin"
-import { FSUtil } from "@opencode/util/fs-util"
-import { Global } from "@opencode/util/global"
-import { sameDirectory } from "@opencode/util/path"
+import { define } from "@ocnano/plugin/effect/plugin"
+import { FSUtil } from "@ocnano/util/fs-util"
+import { Global } from "@ocnano/util/global"
+import { sameDirectory } from "@ocnano/util/path"
 import path, { dirname, join } from "path"
 import { Effect, FiberMap, PubSub, Semaphore, Stream } from "effect"
 import { HttpClient, HttpClientRequest } from "effect/http"
@@ -18,7 +18,7 @@ type Loaded =
   | { readonly type: "unavailable" }
 
 export const Plugin = define({
-  id: "opencode.config.instruction",
+  id: "ocnano.config.instruction",
   effect: Effect.fn(function* (ctx) {
     const discovery = yield* InstructionDiscovery.Service
     // Activate even when both discovery scopes are disabled: configured `instructions`

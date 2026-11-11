@@ -1,11 +1,11 @@
 export * as ConfigProviderPlugin from "./provider.js"
 
-import type { ModelEditor } from "@opencode/plugin/effect/model"
-import type { ProviderEditor } from "@opencode/plugin/effect/provider"
-import { define } from "@opencode/plugin/effect/plugin"
-import { Document, type Entry } from "@opencode/schema/config"
-import { ConfigProvider } from "@opencode/schema/config/provider"
-import { Money } from "@opencode/schema/money"
+import type { ModelEditor } from "@ocnano/plugin/effect/model"
+import type { ProviderEditor } from "@ocnano/plugin/effect/provider"
+import { define } from "@ocnano/plugin/effect/plugin"
+import { Document, type Entry } from "@ocnano/schema/config"
+import { ConfigProvider } from "@ocnano/schema/config/provider"
+import { Money } from "@ocnano/schema/money"
 import { Effect } from "effect"
 import { Config } from "../../config.js"
 import { Model } from "../../model.js"
@@ -15,7 +15,7 @@ import { ConfigIntegration } from "../integration.js"
 import { ConfigEntryObserver } from "./entry-observer.js"
 
 export const Plugin = define({
-  id: "opencode.config.provider",
+  id: "ocnano.config.provider",
   effect: Effect.fn(function* (ctx) {
     const config = yield* Config.Service
     const loaded = yield* ConfigEntryObserver.observe(

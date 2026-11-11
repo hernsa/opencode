@@ -245,8 +245,8 @@
   },
   "opencode-go": {
     "id": "opencode-go",
-    "name": "OpenCode Go",
-    "env": ["OPENCODE_API_KEY"],
+    "name": "OC Nano Go",
+    "env": ["OCNANO_API_KEY"],
     "models": {
       "minimax-m3": {
         "id": "minimax-m3",

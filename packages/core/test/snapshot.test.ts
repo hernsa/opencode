@@ -3,13 +3,13 @@ import { describe, expect } from "bun:test"
 import fs from "fs/promises"
 import path from "path"
 import { Deferred, Effect, Fiber, Layer, Logger } from "effect"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { Git } from "@opencode/core/git"
-import { Global } from "@opencode/util/global"
-import { Location } from "@opencode/core/location"
-import { AbsolutePath, RelativePath } from "@opencode/core/schema"
-import { Snapshot } from "@opencode/core/snapshot"
-import { Hash } from "@opencode/util/hash"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { Git } from "@ocnano/core/git"
+import { Global } from "@ocnano/util/global"
+import { Location } from "@ocnano/core/location"
+import { AbsolutePath, RelativePath } from "@ocnano/core/schema"
+import { Snapshot } from "@ocnano/core/snapshot"
+import { Hash } from "@ocnano/util/hash"
 import { withTempDir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 
@@ -484,5 +484,5 @@ async function initGit(directory: string, commit = false) {
   await $`git init`.cwd(directory).quiet()
   await $`git -c core.fsmonitor=false add .`.cwd(directory).quiet()
   if (!commit) return
-  await $`git -c user.email=test@opencode.test -c user.name=Test commit --no-gpg-sign -m initial`.cwd(directory).quiet()
+  await $`git -c user.email=test@ocnano.test -c user.name=Test commit --no-gpg-sign -m initial`.cwd(directory).quiet()
 }

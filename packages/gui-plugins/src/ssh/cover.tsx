@@ -1,8 +1,8 @@
-import { Button } from "@opencode/ui/button"
-import { Icon } from "@opencode/ui/icon"
-import { Loader } from "@opencode/ui/loader"
+import { Button } from "@ocnano/ui/button"
+import { Icon } from "@ocnano/ui/icon"
+import { Loader } from "@ocnano/ui/loader"
 import { Show } from "solid-js"
-import { createKeyed, usePlugin } from "@opencode/plugin/gui"
+import { createKeyed, usePlugin } from "@ocnano/plugin/gui"
 import { sshName } from "./name"
 import type { SshController } from "./state"
 

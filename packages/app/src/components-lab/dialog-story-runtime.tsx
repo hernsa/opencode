@@ -1,4 +1,4 @@
-import type { IntegrationInfo } from "@opencode/client/promise"
+import type { IntegrationInfo } from "@ocnano/client/promise"
 import { QueryClient, QueryClientProvider } from "@tanstack/solid-query"
 import type { ParentProps } from "solid-js"
 import { LocalProvider } from "@/providers/models/selection"
@@ -16,11 +16,11 @@ import { LocationProvider } from "@/workspaces/location"
 
 const STORY_SERVER_URL = "http://localhost:0"
 
-const STORY_UNAUTHORIZED_URL = "http://locked.opencode.local:4096"
+const STORY_UNAUTHORIZED_URL = "http://locked.ocnano.local:4096"
 
 const STORY_HOME = "/Users/alex"
 
-export const STORY_DIRECTORY = "/Users/alex/work/opencode"
+export const STORY_DIRECTORY = "/Users/alex/work/ocnano"
 
 export const STORY_SERVER: ServerConnection.Http = {
   type: "http",
@@ -47,7 +47,7 @@ const directoryTree = {
     { name: "notes", type: "directory" },
   ],
   "/Users/alex/work": [
-    { name: "opencode", type: "directory" },
+    { name: "ocnano", type: "directory" },
     { name: "docs", type: "directory" },
     { name: "website", type: "directory" },
   ],
@@ -84,12 +84,12 @@ const directoryTree = {
 
 export const STORY_PROJECTS = [
   {
-    id: "prj_opencode",
+    id: "prj_ocnano",
     worktree: STORY_DIRECTORY,
     canonical: STORY_DIRECTORY,
-    name: "opencode",
+    name: "ocnano",
     vcs: "git" as const,
-    sandboxes: ["/Users/alex/work/opencode-dialogs"],
+    sandboxes: ["/Users/alex/work/ocnano-dialogs"],
     time: { created: Date.UTC(2026, 8, 1), updated: Date.UTC(2026, 9, 28), active: Date.UTC(2026, 9, 28) },
   },
   {
@@ -113,8 +113,8 @@ export const STORY_PROJECTS = [
 ]
 
 const defaultProviders = [
-  { id: "opencode-go", name: "OpenCode Go", package: "opencode-go", activation: "enabled" },
-  { id: "opencode", name: "OpenCode Zen", package: "opencode", activation: "enabled" },
+  { id: "opencode-go", name: "OC Nano Go", package: "opencode-go", activation: "enabled" },
+  { id: "ocnano", name: "OC Nano Zen", package: "ocnano", activation: "enabled" },
   { id: "anthropic", name: "Anthropic", package: "anthropic", activation: "enabled" },
 ]
 
@@ -173,14 +173,14 @@ const defaultModels = [
   }),
   modelRecord({
     id: "big-pickle",
-    providerID: "opencode",
+    providerID: "ocnano",
     name: "Big Pickle",
     inputCost: 0,
     outputCost: 0,
   }),
   modelRecord({
     id: "claude-opus-5-5",
-    providerID: "opencode",
+    providerID: "ocnano",
     name: "Claude Opus 5.5",
     inputCost: 5,
     outputCost: 25,
@@ -188,7 +188,7 @@ const defaultModels = [
   }),
   modelRecord({
     id: "gpt-5-6",
-    providerID: "opencode",
+    providerID: "ocnano",
     name: "GPT-5.6",
     inputCost: 2.5,
     outputCost: 10,
@@ -219,18 +219,18 @@ const integrations = [
     ],
   },
   {
-    id: "opencode",
-    name: "OpenCode Console",
+    id: "ocnano",
+    name: "OC Nano Console",
     methods: [
-      { type: "oauth", id: "console", label: "OpenCode Console account" },
+      { type: "oauth", id: "console", label: "OC Nano Console account" },
       { type: "key", label: "API key (service account)" },
     ],
     connections: [],
   },
   {
     id: "opencode-go",
-    name: "OpenCode Go",
-    methods: [{ type: "oauth", id: "go", label: "Sign in with OpenCode" }],
+    name: "OC Nano Go",
+    methods: [{ type: "oauth", id: "go", label: "Sign in with OC Nano" }],
     connections: [],
   },
   {
@@ -270,7 +270,7 @@ function jsonResponse<T>(body: T, status = 200) {
 }
 
 function errorResponse(tag: string, message: string, status: number) {
-  // SAFETY: the server's HTTP wire body for a tagged error, decoded at the OpenCode client boundary.
+  // SAFETY: the server's HTTP wire body for a tagged error, decoded at the OcNano client boundary.
   // oxlint-disable-next-line anti-slop-effect/no-manual-tagged-construction -- see SAFETY above
   return jsonResponse({ _tag: tag, message }, status)
 }
@@ -401,7 +401,7 @@ function createStoryFetch(): typeof fetch {
         pid: 1,
         hostname: "MacBook-Pro",
         urls: [STORY_SERVER_URL],
-        paths: { tmp: "/tmp/opencode" },
+        paths: { tmp: "/tmp/ocnano" },
       })
     }
 

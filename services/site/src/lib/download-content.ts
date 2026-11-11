@@ -97,12 +97,12 @@ export function productDownloads(slug: PageSlug, route: (path: string) => string
           : slug === "ide"
             ? {
                 ...none,
-                lead: "Run opencode in your editor's integrated terminal and the extension installs itself, or install it yourself.",
+                lead: "Run ocnano in your editor's integrated terminal and the extension installs itself, or install it yourself.",
                 links: [
                   { label: "VS Code Marketplace", href: extensions.href, external: true },
                   {
                     label: "Open VSX (Cursor, Windsurf, VSCodium)",
-                    href: "https://open-vsx.org/extension/sst-dev/opencode",
+                    href: "https://open-vsx.org/extension/sst-dev/ocnano",
                     external: true,
                   },
                 ],
@@ -111,8 +111,8 @@ export function productDownloads(slug: PageSlug, route: (path: string) => string
             : slug === "mini"
               ? {
                   ...none,
-                  lead: "Mini comes with the OpenCode CLI. Install it with any of these, then run opencode mini.",
-                  commands: [...installs, { id: "run", command: "opencode mini" }],
+                  lead: "Mini comes with the OC Nano CLI. Install it with any of these, then run ocnano mini.",
+                  commands: [...installs, { id: "run", command: "ocnano mini" }],
                 }
               : none
   return result
@@ -162,26 +162,26 @@ function downloadAppsMarkdown(context: MarkdownContext) {
 }
 
 /**
- * Pairing a phone with OpenCode on a computer, for the Mobile page (pair-panel.tsx) and its Markdown.
- * From `opencode pair` (packages/cli/src/commands/handlers/pair.ts: one-time links that expire in 5
+ * Pairing a phone with OcNano on a computer, for the Mobile page (pair-panel.tsx) and its Markdown.
+ * From `ocnano pair` (packages/cli/src/commands/handlers/pair.ts: one-time links that expire in 5
  * minutes, and a QR code of the reachable addresses; --remote pairs through the OpenTunnel address,
  * turning remote access on if needed) and the iOS app (scan the code or paste the link; Pair From
  * Anywhere; after pairing, the computer's recent sessions open).
  */
 export function pairContent() {
-  const command = "opencode pair --remote"
+  const command = "ocnano pair --remote"
   return {
     title: "Connect your phone",
     cardTitle: "Pair your phone with one command",
     intro:
-      "OpenCode Mobile is a remote for OpenCode on your computer. Your sessions keep running there; the app shows them and lets you steer them.",
+      "OC Nano Mobile is a remote for OC Nano on your computer. Your sessions keep running there; the app shows them and lets you steer them.",
     command,
     steps: [
       {
         title: "Get the app",
         body: androidSoon
-          ? "Install the OpenCode beta on your iPhone from TestFlight. The Android app is coming soon."
-          : "Install the OpenCode beta on your iPhone from TestFlight, or the app on your Android phone.",
+          ? "Install the OC Nano beta on your iPhone from TestFlight. The Android app is coming soon."
+          : "Install the OC Nano beta on your iPhone from TestFlight, or the app on your Android phone.",
       },
       {
         title: "Run this on your computer",
@@ -193,12 +193,12 @@ export function pairContent() {
         body: "Scan the QR code with the app, or paste the link. Your computer's recent sessions open on your phone.",
       },
     ],
-    note: "--remote connects through an OpenTunnel address, so it works from any network. On the same Wi-Fi, run opencode service set hostname 0.0.0.0 once, then opencode pair.",
+    note: "--remote connects through an OpenTunnel address, so it works from any network. On the same Wi-Fi, run ocnano service set hostname 0.0.0.0 once, then ocnano pair.",
     facts: [
       "Pairing works from any network, because --remote connects through an OpenTunnel address.",
       "The link and code work once and expire in 5 minutes.",
       "Keep the computer on, because the agent runs there and not on the phone.",
-      "On the same Wi-Fi, run opencode service set hostname 0.0.0.0 once, then opencode pair.",
+      "On the same Wi-Fi, run ocnano service set hostname 0.0.0.0 once, then ocnano pair.",
     ],
   }
 }

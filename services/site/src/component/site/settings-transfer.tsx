@@ -45,7 +45,7 @@ export function SettingsTransfer(props: { theme: Theme; onTheme: (theme: Theme) 
     const url = URL.createObjectURL(new Blob([json()], { type: "application/json" }))
     const link = document.createElement("a")
     link.href = url
-    link.download = "opencode-site-settings.json"
+    link.download = "ocnano-site-settings.json"
     document.body.append(link)
     link.click()
     link.remove()

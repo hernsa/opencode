@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { UsageLimitsBudget, UsageLimitsInfo } from "@opencode/client/promise"
+import type { UsageLimitsBudget, UsageLimitsInfo } from "@ocnano/client/promise"
 import { modelUsage, usageView } from "./limits"
 
 const RESET = Date.UTC(2026, 10, 1)
@@ -23,9 +23,9 @@ const info = (...budgets: UsageLimitsBudget[]): UsageLimitsInfo => ({
   budgets,
 })
 
-const opus = { providerID: "opencode", modelID: "claude-opus-5", name: "Claude Opus 5" }
-const sonnet = { providerID: "opencode", modelID: "claude-sonnet-5", name: "Claude Sonnet 5" }
-const served = (id: string, provider = "opencode") => ({ id, provider: { id: provider, integrationID: "opencode" } })
+const opus = { providerID: "ocnano", modelID: "claude-opus-5", name: "Claude Opus 5" }
+const sonnet = { providerID: "ocnano", modelID: "claude-sonnet-5", name: "Claude Sonnet 5" }
+const served = (id: string, provider = "ocnano") => ({ id, provider: { id: provider, integrationID: "ocnano" } })
 
 describe("modelUsage", () => {
   test("covers a model by every budget that counts it and keeps the least left", () => {
@@ -47,7 +47,7 @@ describe("modelUsage", () => {
 
     expect(modelUsage(limits, served("claude-sonnet-5"))).toEqual({ left: 30, reached: false, resetsAt: RESET })
     expect(modelUsage(limits, served("claude-opus-5"))).toEqual({ left: 0, reached: true, resetsAt: RESET })
-    // A budget on all spend covers models served through the workspace, but not OpenCode Go or a direct provider.
+    // A budget on all spend covers models served through the workspace, but not OcNano Go or a direct provider.
     expect(modelUsage(limits, served("gpt-6-sol", "console-openai"))).toEqual({
       left: 400,
       reached: false,

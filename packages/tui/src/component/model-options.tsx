@@ -1,4 +1,4 @@
-import type { ModelInfo } from "@opencode/client"
+import type { ModelInfo } from "@ocnano/client"
 import { For, Show } from "solid-js"
 import { useTheme } from "../context/theme"
 import { modelPreferenceKey } from "../model-preference"
@@ -24,7 +24,7 @@ export function sortModelOptions<
   return options.toSorted((a, b) => {
     const provider = grouped
       ? Number(b.providerID === "opencode-go") - Number(a.providerID === "opencode-go") ||
-        Number(b.providerID === "opencode") - Number(a.providerID === "opencode")
+        Number(b.providerID === "ocnano") - Number(a.providerID === "ocnano")
       : 0
     if (provider !== 0) return provider
 

@@ -4,36 +4,36 @@ import { absoluteUrl, blocks, link, type MarkdownContext } from "~/lib/markdown"
 import { brandAssets, mediaUrl } from "~/lib/media"
 // Brand files at stable public URLs (public/brand/files), so links in /brand.md and the page never
 // change between builds. The sources stay in src/asset/brand.
-const logoLightPng = "/brand/files/opencode-logo-light.png"
-const logoDarkPng = "/brand/files/opencode-logo-dark.png"
-const logoLightSquarePng = "/brand/files/opencode-logo-light-square.png"
-const logoDarkSquarePng = "/brand/files/opencode-logo-dark-square.png"
-const wordmarkLightPng = "/brand/files/opencode-wordmark-light.png"
-const wordmarkDarkPng = "/brand/files/opencode-wordmark-dark.png"
-const wordmarkSimpleLightPng = "/brand/files/opencode-wordmark-simple-light.png"
-const wordmarkSimpleDarkPng = "/brand/files/opencode-wordmark-simple-dark.png"
-const logoLightSvg = "/brand/files/opencode-logo-light.svg"
-const logoDarkSvg = "/brand/files/opencode-logo-dark.svg"
-const logoLightSquareSvg = "/brand/files/opencode-logo-light-square.svg"
-const logoDarkSquareSvg = "/brand/files/opencode-logo-dark-square.svg"
-const wordmarkLightSvg = "/brand/files/opencode-wordmark-light.svg"
-const wordmarkDarkSvg = "/brand/files/opencode-wordmark-dark.svg"
-const wordmarkSimpleLightSvg = "/brand/files/opencode-wordmark-simple-light.svg"
-const wordmarkSimpleDarkSvg = "/brand/files/opencode-wordmark-simple-dark.svg"
-const logoTransparentLightPng = "/brand/files/opencode-logo-transparent-light.png"
-const logoTransparentDarkPng = "/brand/files/opencode-logo-transparent-dark.png"
-const wordmarkTransparentLightPng = "/brand/files/opencode-wordmark-transparent-light.png"
-const wordmarkTransparentDarkPng = "/brand/files/opencode-wordmark-transparent-dark.png"
-const wordmarkSolidLightPng = "/brand/files/opencode-wordmark-solid-light.png"
-const wordmarkSolidDarkPng = "/brand/files/opencode-wordmark-solid-dark.png"
-const logoTransparentLightSvg = "/brand/files/opencode-logo-transparent-light.svg"
-const logoTransparentDarkSvg = "/brand/files/opencode-logo-transparent-dark.svg"
-const wordmarkTransparentLightSvg = "/brand/files/opencode-wordmark-transparent-light.svg"
-const wordmarkTransparentDarkSvg = "/brand/files/opencode-wordmark-transparent-dark.svg"
-const wordmarkSolidLightSvg = "/brand/files/opencode-wordmark-solid-light.svg"
-const wordmarkSolidDarkSvg = "/brand/files/opencode-wordmark-solid-dark.svg"
-const avatarDark1024Png = "/brand/files/opencode-avatar-dark-1024.png"
-const avatarLight1024Png = "/brand/files/opencode-avatar-light-1024.png"
+const logoLightPng = "/brand/files/ocnano-logo-light.png"
+const logoDarkPng = "/brand/files/ocnano-logo-dark.png"
+const logoLightSquarePng = "/brand/files/ocnano-logo-light-square.png"
+const logoDarkSquarePng = "/brand/files/ocnano-logo-dark-square.png"
+const wordmarkLightPng = "/brand/files/ocnano-wordmark-light.png"
+const wordmarkDarkPng = "/brand/files/ocnano-wordmark-dark.png"
+const wordmarkSimpleLightPng = "/brand/files/ocnano-wordmark-simple-light.png"
+const wordmarkSimpleDarkPng = "/brand/files/ocnano-wordmark-simple-dark.png"
+const logoLightSvg = "/brand/files/ocnano-logo-light.svg"
+const logoDarkSvg = "/brand/files/ocnano-logo-dark.svg"
+const logoLightSquareSvg = "/brand/files/ocnano-logo-light-square.svg"
+const logoDarkSquareSvg = "/brand/files/ocnano-logo-dark-square.svg"
+const wordmarkLightSvg = "/brand/files/ocnano-wordmark-light.svg"
+const wordmarkDarkSvg = "/brand/files/ocnano-wordmark-dark.svg"
+const wordmarkSimpleLightSvg = "/brand/files/ocnano-wordmark-simple-light.svg"
+const wordmarkSimpleDarkSvg = "/brand/files/ocnano-wordmark-simple-dark.svg"
+const logoTransparentLightPng = "/brand/files/ocnano-logo-transparent-light.png"
+const logoTransparentDarkPng = "/brand/files/ocnano-logo-transparent-dark.png"
+const wordmarkTransparentLightPng = "/brand/files/ocnano-wordmark-transparent-light.png"
+const wordmarkTransparentDarkPng = "/brand/files/ocnano-wordmark-transparent-dark.png"
+const wordmarkSolidLightPng = "/brand/files/ocnano-wordmark-solid-light.png"
+const wordmarkSolidDarkPng = "/brand/files/ocnano-wordmark-solid-dark.png"
+const logoTransparentLightSvg = "/brand/files/ocnano-logo-transparent-light.svg"
+const logoTransparentDarkSvg = "/brand/files/ocnano-logo-transparent-dark.svg"
+const wordmarkTransparentLightSvg = "/brand/files/ocnano-wordmark-transparent-light.svg"
+const wordmarkTransparentDarkSvg = "/brand/files/ocnano-wordmark-transparent-dark.svg"
+const wordmarkSolidLightSvg = "/brand/files/ocnano-wordmark-solid-light.svg"
+const wordmarkSolidDarkSvg = "/brand/files/ocnano-wordmark-solid-dark.svg"
+const avatarDark1024Png = "/brand/files/ocnano-avatar-dark-1024.png"
+const avatarLight1024Png = "/brand/files/ocnano-avatar-light-1024.png"
 
 
 /** The brand page copy, shared by the page and its Markdown version. */
@@ -53,9 +53,9 @@ export function brandContent(t: Translate) {
     },
     naming: {
       title: "Naming",
-      body: "Write OpenCode as one word, with a capital O and a capital C. Do not write Opencode, Open Code, OpenCode AI or Open-Code.",
+      body: "Write OC Nano as one word, with a capital O and a capital C. Do not write OC Nano, Open Code, OC Nano AI or Open-Code.",
       // Names between backticks show as code.
-      code: "Use the lowercase `opencode` only in code and package names, such as `opencode-figma` or `@acme/opencode-plugin`.",
+      code: "Use the lowercase `ocnano` only in code and package names, such as `ocnano-figma` or `@acme/ocnano-plugin`.",
     },
     families: [
       {
@@ -63,18 +63,18 @@ export function brandContent(t: Translate) {
         body: "The logo on its own, for app icons, avatars and other small spaces. The square versions add padding for places that crop to a square.",
         kind: "logo",
         assets: [
-          { name: "Light", file: "opencode-logo-light", tone: "light", png: logoLightPng, svg: logoLightSvg },
-          { name: "Dark", file: "opencode-logo-dark", tone: "dark", png: logoDarkPng, svg: logoDarkSvg },
+          { name: "Light", file: "ocnano-logo-light", tone: "light", png: logoLightPng, svg: logoLightSvg },
+          { name: "Dark", file: "ocnano-logo-dark", tone: "dark", png: logoDarkPng, svg: logoDarkSvg },
           {
             name: "Square, light",
-            file: "opencode-logo-light-square",
+            file: "ocnano-logo-light-square",
             tone: "light",
             png: logoLightSquarePng,
             svg: logoLightSquareSvg,
           },
           {
             name: "Square, dark",
-            file: "opencode-logo-dark-square",
+            file: "ocnano-logo-dark-square",
             tone: "dark",
             png: logoDarkSquarePng,
             svg: logoDarkSquareSvg,
@@ -83,17 +83,17 @@ export function brandContent(t: Translate) {
       },
       {
         title: "Wordmark",
-        body: "The full name in the OpenCode letterforms. Use it wherever there is room to spell out the name.",
+        body: "The full name in the OC Nano letterforms. Use it wherever there is room to spell out the name.",
         kind: "wordmark",
         assets: [
           {
             name: "Light",
-            file: "opencode-wordmark-light",
+            file: "ocnano-wordmark-light",
             tone: "light",
             png: wordmarkLightPng,
             svg: wordmarkLightSvg,
           },
-          { name: "Dark", file: "opencode-wordmark-dark", tone: "dark", png: wordmarkDarkPng, svg: wordmarkDarkSvg },
+          { name: "Dark", file: "ocnano-wordmark-dark", tone: "dark", png: wordmarkDarkPng, svg: wordmarkDarkSvg },
         ],
       },
       {
@@ -103,14 +103,14 @@ export function brandContent(t: Translate) {
         assets: [
           {
             name: "Light",
-            file: "opencode-wordmark-simple-light",
+            file: "ocnano-wordmark-simple-light",
             tone: "light",
             png: wordmarkSimpleLightPng,
             svg: wordmarkSimpleLightSvg,
           },
           {
             name: "Dark",
-            file: "opencode-wordmark-simple-dark",
+            file: "ocnano-wordmark-simple-dark",
             tone: "dark",
             png: wordmarkSimpleDarkPng,
             svg: wordmarkSimpleDarkSvg,
@@ -125,14 +125,14 @@ export function brandContent(t: Translate) {
         {
           name: "Dark",
           tone: "light",
-          file: "opencode-avatar-dark",
+          file: "ocnano-avatar-dark",
           png: avatarDark1024Png,
           kind: "avatar",
         },
         {
           name: "Light",
           tone: "dark",
-          file: "opencode-avatar-light",
+          file: "ocnano-avatar-light",
           png: avatarLight1024Png,
           kind: "avatar",
         },
@@ -177,11 +177,11 @@ export function brandContent(t: Translate) {
                 tile(
                   "Dark",
                   "light",
-                  "opencode-logo-transparent-light",
+                  "ocnano-logo-transparent-light",
                   logoTransparentLightPng,
                   logoTransparentLightSvg,
                 ),
-                tile("Light", "dark", "opencode-logo-transparent-dark", logoTransparentDarkPng, logoTransparentDarkSvg),
+                tile("Light", "dark", "ocnano-logo-transparent-dark", logoTransparentDarkPng, logoTransparentDarkSvg),
               ],
             },
             {
@@ -190,14 +190,14 @@ export function brandContent(t: Translate) {
                 tile(
                   "Dark",
                   "light",
-                  "opencode-wordmark-transparent-light",
+                  "ocnano-wordmark-transparent-light",
                   wordmarkTransparentLightPng,
                   wordmarkTransparentLightSvg,
                 ),
                 tile(
                   "Light",
                   "dark",
-                  "opencode-wordmark-transparent-dark",
+                  "ocnano-wordmark-transparent-dark",
                   wordmarkTransparentDarkPng,
                   wordmarkTransparentDarkSvg,
                 ),
@@ -213,8 +213,8 @@ export function brandContent(t: Translate) {
             {
               title: "Wordmark",
               tiles: [
-                tile("Dark", "light", "opencode-wordmark-solid-light", wordmarkSolidLightPng, wordmarkSolidLightSvg),
-                tile("Light", "dark", "opencode-wordmark-solid-dark", wordmarkSolidDarkPng, wordmarkSolidDarkSvg),
+                tile("Dark", "light", "ocnano-wordmark-solid-light", wordmarkSolidLightPng, wordmarkSolidLightSvg),
+                tile("Light", "dark", "ocnano-wordmark-solid-dark", wordmarkSolidDarkPng, wordmarkSolidDarkSvg),
               ],
             },
           ],
@@ -300,23 +300,23 @@ export function brandContent(t: Translate) {
     },
     integrations: {
       title: "Integrations",
-      body: "Plugins, providers and tools that work with OpenCode, and projects built with it, can say so. Use a badge or a partner lockup, and name your project so it is clear that it is yours.",
+      body: "Plugins, providers and tools that work with OC Nano, and projects built with it, can say so. Use a badge or a partner lockup, and name your project so it is clear that it is yours.",
       badges: {
         body: "Put a badge in your README, docs or website and link it to opencode.ai. Pick the light or dark file for your background (the HTML switches by itself), and do not change the colors or the text.",
         sizes: "Every style comes in 20, 32 and 44px (Shields only in 20px), as SVG and as PNG at 2×.",
-        mono: "Each file also comes with OpenTUI Mono text. Add -mono before the extension, as in opencode-works-with-a-light-20-mono.svg, or -mono-caps for uppercase OpenTUI Mono.",
+        mono: "Each file also comes with OpenTUI Mono text. Add -mono before the extension, as in ocnano-works-with-a-light-20-mono.svg, or -mono-caps for uppercase OpenTUI Mono.",
         groups: [
           {
             label: "works-with",
             title: "Works with",
-            alt: "Works with OpenCode",
-            body: "For plugins, providers and tools that run with OpenCode.",
+            alt: "Works with OC Nano",
+            body: "For plugins, providers and tools that run with OC Nano.",
           },
           {
             label: "built-with",
             title: "Built with",
-            alt: "Built with OpenCode",
-            body: "For projects made with OpenCode.",
+            alt: "Built with OC Nano",
+            body: "For projects made with OC Nano.",
           },
         ],
         // The styles David picked from the badge options (A, C, F, G); G is shields.io "flat", 20px only.
@@ -329,19 +329,19 @@ export function brandContent(t: Translate) {
       },
       lockup: {
         title: "Partner lockup",
-        body: "Put the OpenCode logo and the partner logo side by side, with a × between them. Leave 3 strokes of space on each side of the ×, size the partner logo to look as tall as the OpenCode logo, and keep clear space around the whole lockup.",
+        body: "Put the OC Nano logo and the partner logo side by side, with a × between them. Leave 3 strokes of space on each side of the ×, size the partner logo to look as tall as the OC Nano logo, and keep clear space around the whole lockup.",
         partners: [{ name: "GitHub", tones: ["light", "dark"] }],
       },
       naming: {
         title: "Naming your project",
         body: "Lead with your own name, so it is clear that the project is yours.",
         // Names between backticks show as code.
-        rule: "Write `Linear for OpenCode` or name the package `opencode-linear`. Do not write `OpenCode Linear` or `Linear by OpenCode`.",
+        rule: "Write `Linear for OC Nano` or name the package `ocnano-linear`. Do not write `OC Nano Linear` or `Linear by OC Nano`.",
       },
     },
     trademarks: {
       title: "Trademarks",
-      body: "OpenCode and the OpenCode logo are trademarks of Anomaly. Do not use them to suggest that Anomaly endorses or sponsors you, in your product or company name, or on merchandise without permission.",
+      body: "OC Nano and the OC Nano logo are trademarks of Anomaly. Do not use them to suggest that Anomaly endorses or sponsors you, in your product or company name, or on merchandise without permission.",
       contact: { before: "For questions, email ", email: pressEmail, after: "." },
     },
   }
@@ -384,7 +384,7 @@ export function badgeFile(
   extension: "svg" | "png",
   font: BadgeFont = "sans",
 ) {
-  return `/brand/badges/opencode-${label}-${style}-${theme}-${size}${fontSuffix(font)}.${extension}`
+  return `/brand/badges/ocnano-${label}-${style}-${theme}-${size}${fontSuffix(font)}.${extension}`
 }
 
 /**
@@ -393,7 +393,7 @@ export function badgeFile(
  */
 export function badgeZip(label: string, style?: string, font: BadgeFont = "sans", theme?: string) {
   return mediaUrl(
-    `/brand/badges/opencode-${label}${style ? `-${style}` : ""}${theme ? `-${theme}` : ""}${fontSuffix(font)}.zip`,
+    `/brand/badges/ocnano-${label}${style ? `-${style}` : ""}${theme ? `-${theme}` : ""}${fontSuffix(font)}.zip`,
   )
 }
 

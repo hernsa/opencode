@@ -50,7 +50,7 @@ export default [
       // The V2 install script (`curl -fsSL https://opencode.ai/v2/install | bash`), always the latest.
       if (url.pathname === "/v2/install") return installScript()
       // The brand zip lived at the site root; it is in the files bucket now (src/lib/media.ts).
-      if (url.pathname === "/opencode-brand-assets.zip")
+      if (url.pathname === "/ocnano-brand-assets.zip")
         return new Response(null, { status: 301, headers: { Location: mediaUrl(url.pathname) } })
       const requested = url.pathname
       const locale = fromPathname(url.pathname)
@@ -115,7 +115,7 @@ export default [
         return new Response(event.request.method === "HEAD" ? null : await robotsTxt(), {
           headers: textHeaders,
         })
-      // The people behind OpenCode (https://humanstxt.org). Served here because public/ files get no
+      // The people behind OcNano (https://humanstxt.org). Served here because public/ files get no
       // charset, and without one browsers garble its block characters.
       if (path === "/humans.txt")
         return new Response(event.request.method === "HEAD" ? null : humansTxt, {

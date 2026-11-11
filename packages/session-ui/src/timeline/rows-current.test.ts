@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
 import { Predicate } from "effect"
-import type { SessionMessageAssistant, SessionMessageAssistantTool, SessionMessageInfo } from "@opencode/client/promise"
+import type { SessionMessageAssistant, SessionMessageAssistantTool, SessionMessageInfo } from "@ocnano/client/promise"
 import { storyDocument, storyTool } from "../storybook/current-session-scenarios"
 import { timelinePresets } from "./detail"
 import { createTimelineProjection, Timeline, TimelineRow } from "./projection"
@@ -1513,7 +1513,7 @@ describe("current session timeline rows", () => {
         id: "msg_idle",
         type: "idle",
         outcome: "failed",
-        error: { type: "provider.no-route", message: "Model unavailable: opencode/gpt-5.2" },
+        error: { type: "provider.no-route", message: "Model unavailable: ocnano/gpt-5.2" },
         time: { created: 2 },
       },
       {
@@ -1527,7 +1527,7 @@ describe("current session timeline rows", () => {
     const preStepRows = Timeline.constructSessionMessageRows(preStep, true, { type: "idle" }).rows
     expect(preStepRows.map((row) => row._tag)).toEqual(["UserMessage", "Error", "Notice"])
     expect(preStepRows[1]).toEqual(
-      new TimelineRow.Error({ userMessageID: "msg_user", text: "Model unavailable: opencode/gpt-5.2" }),
+      new TimelineRow.Error({ userMessageID: "msg_user", text: "Model unavailable: ocnano/gpt-5.2" }),
     )
 
     const betweenSteps = [
@@ -1618,7 +1618,7 @@ describe("current session timeline rows", () => {
       id: "msg_assistant",
       type: "assistant",
       agent: "build",
-      model: { id: "big-pickle", providerID: "opencode" },
+      model: { id: "big-pickle", providerID: "ocnano" },
       content: [],
       finish: "error",
       error,
@@ -1696,7 +1696,7 @@ describe("current session timeline rows", () => {
             id: "msg_assistant",
             type: "assistant",
             agent: "build",
-            model: { id: "claude-opus-5", providerID: "opencode" },
+            model: { id: "claude-opus-5", providerID: "ocnano" },
             content: [],
             finish: "error",
             error: body ? { ...error, response: { body } } : error,

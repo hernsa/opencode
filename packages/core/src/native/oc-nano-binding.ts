@@ -7,9 +7,9 @@ import path from "node:path"
 export default function load() {
   const require = createRequire(import.meta.url)
   const candidates = [
-    process.env.OPENCODE_OC_NANO_PATH,
-    process.env.OPENCODE_NODE_ASSETS_DIR
-      ? path.join(process.env.OPENCODE_NODE_ASSETS_DIR, "oc-nano/oc_nano_native.node")
+    process.env.OCNANO_OC_NANO_PATH,
+    process.env.OCNANO_NODE_ASSETS_DIR
+      ? path.join(process.env.OCNANO_NODE_ASSETS_DIR, "oc-nano/oc_nano_native.node")
       : undefined,
     path.join(path.dirname(process.execPath), "oc_nano_native.node"),
     path.join(path.dirname(process.execPath), "..", "resources", "oc-nano", "oc_nano_native.node"),

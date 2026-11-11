@@ -42,9 +42,9 @@
     "env": [],
     "models": {}
   },
-  "opencode": {
-    "id": "opencode",
-    "name": "OpenCode",
+  "ocnano": {
+    "id": "ocnano",
+    "name": "OC Nano",
     "env": [],
     "models": {
       "gpt-5.5": {

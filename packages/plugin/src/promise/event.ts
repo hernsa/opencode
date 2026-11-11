@@ -1,10 +1,10 @@
-import type { OpenCodeEvent } from "@opencode/client"
-import type { SelectedEvent, SubscribeOptions } from "@opencode/client/promise/api"
+import type { OcNanoEvent } from "@ocnano/client"
+import type { SelectedEvent, SubscribeOptions } from "@ocnano/client/promise/api"
 
-type EventType = Exclude<OpenCodeEvent["type"], "server.connected">
+type EventType = Exclude<OcNanoEvent["type"], "server.connected">
 
 export interface EventDomain {
   readonly subscribe: <Type extends EventType = EventType>(
     options?: SubscribeOptions<Type>,
-  ) => AsyncIterable<SelectedEvent<OpenCodeEvent, Type>>
+  ) => AsyncIterable<SelectedEvent<OcNanoEvent, Type>>
 }

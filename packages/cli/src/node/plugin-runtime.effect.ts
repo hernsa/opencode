@@ -9,10 +9,10 @@ import {
   Provider,
   Reference,
   Skill,
-} from "@opencode/plugin/effect"
-import { Tool } from "@opencode/schema/tool"
+} from "@ocnano/plugin/effect"
+import { Tool } from "@ocnano/schema/tool"
 
-const key = Symbol.for("opencode.plugin.v2.effect")
+const key = Symbol.for("ocnano.plugin.v2.effect")
 ;(globalThis as typeof globalThis & { [key]?: unknown })[key] = {
   Agent,
   Command,

@@ -1,7 +1,7 @@
-import { showToast } from "@opencode/ui/toast"
+import { showToast } from "@ocnano/ui/toast"
 import { createSignal, lazy, onCleanup, Suspense, untrack } from "solid-js"
-import { MenuItem, Server, Style, type ServerEntry, type ServerState, type Plugin } from "@opencode/plugin/gui"
-import { onIdle } from "@opencode/plugin/gui/builtin"
+import { MenuItem, Server, Style, type ServerEntry, type ServerState, type Plugin } from "@ocnano/plugin/gui"
+import { onIdle } from "@ocnano/plugin/gui/builtin"
 import {
   initialWslAdd,
   transitionWslAdd,

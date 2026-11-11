@@ -1,7 +1,7 @@
-import type { PermissionApi } from "@opencode/client/promise/api"
-import type { Agent } from "@opencode/schema/agent"
-import type { Permission } from "@opencode/schema/permission"
-import type { Session } from "@opencode/schema/session"
+import type { PermissionApi } from "@ocnano/client/promise/api"
+import type { Agent } from "@ocnano/schema/agent"
+import type { Permission } from "@ocnano/schema/permission"
+import type { Session } from "@ocnano/schema/session"
 import type { AssertInput } from "../permission.js"
 import type { Hooks } from "./registration.js"
 

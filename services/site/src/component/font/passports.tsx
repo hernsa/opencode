@@ -92,7 +92,7 @@ export function Passports() {
                     </div>
                     <div>
                       <dt data-anno>Born</dt>
-                      <dd>OpenCode wordmark</dd>
+                      <dd>OC Nano wordmark</dd>
                     </div>
                     <div>
                       <dt data-anno>Ink / shade</dt>

@@ -15,14 +15,14 @@ describe("legacy redirects", () => {
       const response = get("/download/latest/windows-x64-nsis", { method })
       expect(response?.status).toBe(302)
       expect(response?.headers.get("Location")).toBe(
-        "https://opencode.ai/update/api/latest/desktop/opencode/opencode-desktop-win-x64.exe",
+        "https://opencode.ai/update/api/latest/desktop/ocnano/ocnano-desktop-win-x64.exe",
       )
     }
     expect(get("/download/stable/linux-x64-deb")?.headers.get("Location")).toBe(
-      "https://opencode.ai/update/api/latest/desktop/opencode/opencode-desktop-linux-amd64.deb",
+      "https://opencode.ai/update/api/latest/desktop/ocnano/ocnano-desktop-linux-amd64.deb",
     )
     expect(get("/download/beta/darwin-aarch64-dmg")?.headers.get("Location")).toBe(
-      "https://opencode.ai/update/api/beta/desktop/opencode/opencode-desktop-mac-arm64.dmg",
+      "https://opencode.ai/update/api/beta/desktop/ocnano/ocnano-desktop-mac-arm64.dmg",
     )
     expect(get("/download/latest/not-a-platform")?.status).toBe(404)
     expect(get("/download/latest/toString")?.status).toBe(404)

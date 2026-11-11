@@ -17,10 +17,10 @@ export const content = {
       body: "Ein schnelles Terminal-UI für jede Shell, jeden Editor und jeden Remote-Server.",
       action: "Installieren",
     },
-    sdk: { body: "Steuere OpenCode aus deinen eigenen Skripten, CI-Jobs und Tools.", action: "Doku lesen" },
+    sdk: { body: "Steuere OC Nano aus deinen eigenen Skripten, CI-Jobs und Tools.", action: "Doku lesen" },
     ide: {
       name: "IDE-Extensions",
-      body: "Öffne OpenCode in VS Code, Cursor und Windsurf, oder über ACP in Zed und JetBrains-IDEs.",
+      body: "Öffne OC Nano in VS Code, Cursor und Windsurf, oder über ACP in Zed und JetBrains-IDEs.",
       action: "Installieren",
     },
     mini: {
@@ -30,9 +30,9 @@ export const content = {
   },
   productDetails: {
     desktop: {
-      title: "OpenCode | Desktop-App für macOS, Windows und Linux",
+      title: "OC Nano | Desktop-App für macOS, Windows und Linux",
       description:
-        "Lass so viele OpenCode-Agents parallel laufen, wie du willst, sieh jede Änderung im Browser daneben und mach auf jedem Gerät weiter. Für macOS, Windows und Linux.",
+        "Lass so viele OC Nano-Agents parallel laufen, wie du willst, sieh jede Änderung im Browser daneben und mach auf jedem Gerät weiter. Für macOS, Windows und Linux.",
       intro:
         "Lass mehrere Agents gleichzeitig laufen, jede Session in einem eigenen Tab. Prüfe jede Änderung als Diff, kommentiere jede Zeile und kontrolliere das Ergebnis im integrierten Browser. Für macOS, Windows und Linux.",
       showcase: {
@@ -50,16 +50,16 @@ export const content = {
         },
         "extend-it": {
           title: "Erweitern",
-          body: "Verbinde deine Tools und Dienste, damit der Agent mit allem arbeiten kann. Oder lass OpenCode Plugins für sich selbst bauen, mit eigener Oberfläche in der Seitenleiste.",
+          body: "Verbinde deine Tools und Dienste, damit der Agent mit allem arbeiten kann. Oder lass OC Nano Plugins für sich selbst bauen, mit eigener Oberfläche in der Seitenleiste.",
         },
       },
     },
     mobile: {
-      title: "OpenCode | Mobile, deine Coding-Sessions auf dem Smartphone",
+      title: "OC Nano | Mobile, deine Coding-Sessions auf dem Smartphone",
       description:
-        "Starte und steuere OpenCode-Sessions vom Smartphone aus. Sprich mit dem Agent, während er auf deinem Computer läuft.",
+        "Starte und steuere OC Nano-Sessions vom Smartphone aus. Sprich mit dem Agent, während er auf deinem Computer läuft.",
       intro:
-        "Starte und steuere Sessions vom Smartphone aus, wo immer du bist. Ruf eine Session an und sprich mit dem Agent, oder öffne eine Session und mach dort weiter, wo du aufgehört hast, alles mit OpenCode auf deinem eigenen Computer.",
+        "Starte und steuere Sessions vom Smartphone aus, wo immer du bist. Ruf eine Session an und sprich mit dem Agent, oder öffne eine Session und mach dort weiter, wo du aufgehört hast, alles mit OC Nano auf deinem eigenen Computer.",
       features: {
         "notify-when-done": {
           title: "Benachrichtigung",
@@ -67,7 +67,7 @@ export const content = {
         },
         "pair-from-anywhere": {
           title: "Von überall koppeln",
-          body: "Verbinde dich mit opencode pair --remote aus jedem Netzwerk.",
+          body: "Verbinde dich mit ocnano pair --remote aus jedem Netzwerk.",
         },
         "every-computer": {
           title: "Jeder Computer",
@@ -81,7 +81,7 @@ export const content = {
           title: "Mitverfolgen",
           body: "Sieh zu, wie sich die Timeline aktualisiert, während der Agent arbeitet.",
         },
-        "your-computer": { title: "Dein Computer", body: "Verbindet sich mit OpenCode auf deinem eigenen Rechner." },
+        "your-computer": { title: "Dein Computer", body: "Verbindet sich mit OC Nano auf deinem eigenen Rechner." },
         "share-sheet": { title: "Teilen-Menü", body: "Teile alles mit einer Session, ohne die App zu öffnen." },
         "mute-sessions": {
           title: "Stummschalten",
@@ -102,9 +102,9 @@ export const content = {
       },
     },
     terminal: {
-      title: "OpenCode | Terminal-UI für den Open-Source-Coding-Agent",
+      title: "OC Nano | Terminal-UI für den Open-Source-Coding-Agent",
       description:
-        "Ein schnelles Terminal-UI für OpenCode, das in jeder Shell, jedem Editor und auf jedem Remote-Server läuft. Beschreibe, was du willst, sieh jede Änderung als Diff und genehmige Befehle.",
+        "Ein schnelles Terminal-UI für OC Nano, das in jeder Shell, jedem Editor und auf jedem Remote-Server läuft. Beschreibe, was du willst, sieh jede Änderung als Diff und genehmige Befehle.",
       intro:
         "Ein schnelles Terminal-UI für jede Shell, jeden Editor und jeden Remote-Server. Beschreibe in einfachen Worten, was du willst, sieh jede Änderung als Diff entstehen und lege fest, welche Befehle von selbst laufen.",
       features: {
@@ -122,7 +122,7 @@ export const content = {
         },
         "one-off-runs": {
           title: "Einzelne Läufe",
-          body: "opencode run sendet eine Nachricht und gibt die Antwort aus.",
+          body: "ocnano run sendet eine Nachricht und gibt die Antwort aus.",
         },
         "agents-and-commands": {
           title: "Agents und Befehle",
@@ -132,8 +132,8 @@ export const content = {
           title: "Auto-Freigabe",
           body: "Mit --auto erlaubst du jede Aktion, die du nicht abgelehnt hast.",
         },
-        "any-server": { title: "Jeder Server", body: "Verbinde dich mit --server per URL mit einem OpenCode-Server." },
-        "usage-stats": { title: "Statistiken", body: "opencode stats zeigt teilbare Nutzungsstatistiken." },
+        "any-server": { title: "Jeder Server", body: "Verbinde dich mit --server per URL mit einem OC Nano-Server." },
+        "usage-stats": { title: "Statistiken", body: "ocnano stats zeigt teilbare Nutzungsstatistiken." },
       },
       showcase: {
         "ask-in-plain-words": {
@@ -148,32 +148,32 @@ export const content = {
           title: "Mach es zu deinem",
           body: "Wechsle Themes mit einem Tastendruck, vom Standard bis zu tokyonight und mehr.",
         },
-        mini: { title: "Mini", body: "Mit opencode mini landen Antworten in deinem eigenen Scrollback." },
+        mini: { title: "Mini", body: "Mit ocnano mini landen Antworten in deinem eigenen Scrollback." },
       },
     },
     sdk: {
-      title: "OpenCode | TypeScript-SDK für Skripte, CI-Jobs und Tools",
+      title: "OC Nano | TypeScript-SDK für Skripte, CI-Jobs und Tools",
       description:
-        "Steuere OpenCode aus deinen eigenen Skripten, CI-Jobs und Tools. Der typisierte TypeScript-Client erstellt Sessions, sendet Prompts und streamt jedes Event in Echtzeit.",
+        "Steuere OC Nano aus deinen eigenen Skripten, CI-Jobs und Tools. Der typisierte TypeScript-Client erstellt Sessions, sendet Prompts und streamt jedes Event in Echtzeit.",
       intro:
-        "Steuere OpenCode aus deinen eigenen Skripten, CI-Jobs und Tools. Das SDK führt OpenCode in deinem Prozess aus, mit deiner Konfiguration und deinen Modellen, und sein typisierter Client erstellt Sessions, sendet Prompts und streamt jedes Event.",
+        "Steuere OC Nano aus deinen eigenen Skripten, CI-Jobs und Tools. Das SDK führt OC Nano in deinem Prozess aus, mit deiner Konfiguration und deinen Modellen, und sein typisierter Client erstellt Sessions, sendet Prompts und streamt jedes Event.",
       features: {
         "typescript-client": {
           title: "TypeScript-Client",
-          body: "Typisierte Requests und Events, mit denselben Werten wie @opencode/client.",
+          body: "Typisierte Requests und Events, mit denselben Werten wie @ocnano/client.",
         },
         "sessions-from-code": {
           title: "Sessions aus Code",
           body: "Erstelle Sessions und sende Prompts aus jedem Skript.",
         },
-        "any-model": { title: "Jedes Modell", body: "Nutzt die Modelle, die dein OpenCode-Setup hat." },
+        "any-model": { title: "Jedes Modell", body: "Nutzt die Modelle, die dein OC Nano-Setup hat." },
         "npm-or-bun": {
           title: "npm oder bun",
-          body: "Installiere es mit npm i @opencode/sdk oder bun add @opencode/sdk.",
+          body: "Installiere es mit npm i @ocnano/sdk oder bun add @ocnano/sdk.",
         },
         "in-process-host": {
           title: "In-Process-Host",
-          body: "Führt OpenCode im Speicher aus, ohne Umweg übers Netzwerk.",
+          body: "Führt OC Nano im Speicher aus, ohne Umweg übers Netzwerk.",
         },
         "your-plugins": {
           title: "Deine Plugins",
@@ -185,13 +185,13 @@ export const content = {
         },
         "cloudflare-workers": {
           title: "Cloudflare Workers",
-          body: "Führe OpenCode in einem Cloudflare Durable Object auf Workers aus.",
+          body: "Führe OC Nano in einem Cloudflare Durable Object auf Workers aus.",
         },
       },
       showcase: {
         "fix-ci-from-code": {
           title: "CI per Code reparieren",
-          body: "Ein Skript lässt OpenCode kaputte Tests reparieren und führt sie neu aus.",
+          body: "Ein Skript lässt OC Nano kaputte Tests reparieren und führt sie neu aus.",
         },
         "follow-every-step": {
           title: "Jeden Schritt verfolgen",
@@ -199,46 +199,46 @@ export const content = {
         },
         "build-your-own-tools": {
           title: "Eigene Tools bauen",
-          body: "Binde OpenCode mit wenigen Zeilen in Bots, Dashboards und Workflows ein.",
+          body: "Binde OC Nano mit wenigen Zeilen in Bots, Dashboards und Workflows ein.",
         },
         "in-your-process": {
           title: "In deinem Prozess",
-          body: "OpenCode läuft in deinem Prozess, mit deiner Config und deinen Modellen.",
+          body: "OC Nano läuft in deinem Prozess, mit deiner Config und deinen Modellen.",
         },
       },
     },
     ide: {
-      title: "OpenCode | Editor-Integrationen für VS Code, Cursor und Zed",
+      title: "OC Nano | Editor-Integrationen für VS Code, Cursor und Zed",
       description:
-        "Nutze OpenCode in deinem Editor, mit der Extension für VS Code, Cursor, Windsurf und VSCodium und mit opencode acp für Zed, JetBrains-IDEs und andere ACP-Editoren.",
+        "Nutze OC Nano in deinem Editor, mit der Extension für VS Code, Cursor, Windsurf und VSCodium und mit ocnano acp für Zed, JetBrains-IDEs und andere ACP-Editoren.",
       intro:
-        "Nutze OpenCode in deinem Editor. In VS Code, Cursor, Windsurf und VSCodium führst du opencode im integrierten Terminal aus, und die Extension installiert sich selbst. Zed, JetBrains-IDEs und andere Editoren mit Unterstützung für das Agent Client Protocol starten OpenCode mit opencode acp.",
+        "Nutze OC Nano in deinem Editor. In VS Code, Cursor, Windsurf und VSCodium führst du ocnano im integrierten Terminal aus, und die Extension installiert sich selbst. Zed, JetBrains-IDEs und andere Editoren mit Unterstützung für das Agent Client Protocol starten OC Nano mit ocnano acp.",
       features: {
         "quick-launch": {
           title: "Schnellstart",
-          body: "Cmd+Esc oder Ctrl+Esc öffnet OpenCode in einem geteilten Terminal.",
+          body: "Cmd+Esc oder Ctrl+Esc öffnet OC Nano in einem geteilten Terminal.",
         },
         "new-session": {
           title: "Neue Session",
           body: "Cmd+Shift+Esc oder Ctrl+Shift+Esc startet eine weitere Session.",
         },
-        context: { title: "Kontext", body: "Teilt deine aktuelle Auswahl oder deinen Tab mit OpenCode." },
+        context: { title: "Kontext", body: "Teilt deine aktuelle Auswahl oder deinen Tab mit OC Nano." },
         "file-references": { title: "Dateiverweise", body: "Cmd+Option+K oder Alt+Ctrl+K fügt @File#L37-42 ein." },
         "installs-itself": {
           title: "Auto-Installation",
-          body: "Führe opencode im integrierten Terminal aus, um sie hinzuzufügen.",
+          body: "Führe ocnano im integrierten Terminal aus, um sie hinzuzufügen.",
         },
         "acp-editors": { title: "ACP-Editoren", body: "Zed, JetBrains-IDEs, Avante.nvim und CodeCompanion.nvim." },
         "open-vsx": { title: "Open VSX", body: "Auch auf Open VSX für Cursor, Windsurf und VSCodium." },
-        "same-agent": { title: "Derselbe Agent", body: "Das OpenCode aus deinem Terminal, direkt neben deinem Code." },
+        "same-agent": { title: "Derselbe Agent", body: "Das OC Nano aus deinem Terminal, direkt neben deinem Code." },
       },
     },
     mini: {
-      title: "OpenCode | Mini, ein minimales Terminal-Interface für den Agent",
+      title: "OC Nano | Mini, ein minimales Terminal-Interface für den Agent",
       description:
-        "Mini führt OpenCode in einem minimalen Terminal-Interface aus. Antworten landen im Scrollback deines Terminals, und nur ein Prompt und eine Statuszeile bleiben unten.",
+        "Mini führt OC Nano in einem minimalen Terminal-Interface aus. Antworten landen im Scrollback deines Terminals, und nur ein Prompt und eine Statuszeile bleiben unten.",
       intro:
-        "Ein minimales Terminal-Interface für OpenCode. Führe opencode mini aus, und Antworten landen direkt im Scrollback deines Terminals. Du scrollst, suchst und kopierst sie wie jede andere Ausgabe. Nur der Prompt und eine Statuszeile bleiben unten.",
+        "Ein minimales Terminal-Interface für OC Nano. Führe ocnano mini aus, und Antworten landen direkt im Scrollback deines Terminals. Du scrollst, suchst und kopierst sie wie jede andere Ausgabe. Nur der Prompt und eine Statuszeile bleiben unten.",
       features: {
         "your-scrollback": { title: "Dein Scrollback", body: "Antworten werden zu normalem Terminal-Verlauf." },
         "one-prompt": { title: "Ein Prompt", body: "Agent, Modell, Kontext und Kosten in einer Statuszeile." },
@@ -251,8 +251,8 @@ export const content = {
           title: "Weitermachen",
           body: "Setze die letzte Session mit -c fort, oder eine beliebige mit -s.",
         },
-        "same-opencode": {
-          title: "Dasselbe OpenCode",
+        "same-ocnano": {
+          title: "Dasselbe OC Nano",
           body: "Derselbe Server, dieselben Agents und Modelle wie die anderen Apps.",
         },
         agents: { title: "Agents", body: "Wechsle Agents direkt im Prompt." },
@@ -262,15 +262,15 @@ export const content = {
   },
   extensionCard: {
     name: "Extensions",
-    body: "Nutze OpenCode in VS Code, oder über ACP in Zed und anderen Editoren.",
+    body: "Nutze OC Nano in VS Code, oder über ACP in Zed und anderen Editoren.",
     action: "Installieren",
   },
   extensions: {
     browse: {
       body: "Lass Agents deinen echten Browser nutzen.",
-      title: "OpenCode | Browse, dein echter Browser für Coding-Agents",
+      title: "OC Nano | Browse, dein echter Browser für Coding-Agents",
       description:
-        "Mit Browse nutzen OpenCode und andere MCP-Clients deinen echten Browser. Agents steuern Tabs im Hintergrund mit Playwright und geben Logins und 2FA an dich zurück.",
+        "Mit Browse nutzen OC Nano und andere MCP-Clients deinen echten Browser. Agents steuern Tabs im Hintergrund mit Playwright und geben Logins und 2FA an dich zurück.",
       intro:
         "Ein MCP-Server und eine Chromium-Extension, mit denen deine Agents deinen echten Browser nutzen, mit deinen Tabs, Logins und Extensions. Sie öffnen und steuern Tabs mit Playwright, machen Screenshots und Bildschirmaufnahmen, in Hintergrund-Tabs, die gruppiert und dir aus dem Weg sind. Bist du dran, etwa für einen Login, eine 2FA-Abfrage oder eine Zahlung, geben sie dir den Tab zurück und machen weiter, sobald du auf Continue klickst.",
       features: {
@@ -293,7 +293,7 @@ export const content = {
         },
         "any-mcp-client": {
           title: "Jeder MCP-Client",
-          body: "OpenCode, Claude Code, Cursor, Codex, Zed und viele mehr.",
+          body: "OC Nano, Claude Code, Cursor, Codex, Zed und viele mehr.",
         },
         "all-your-logins": {
           title: "Alle deine Logins",
@@ -316,9 +316,9 @@ export const content = {
   },
   getStarted: {
     title: "Loslegen",
-    lead: "Am einfachsten startest du, indem du OpenCode herunterlädst und die kostenlosen Modelle nutzt. Ohne Account. Für mehr bringst du dein eigenes Abo mit oder nutzt OpenCode Go.",
+    lead: "Am einfachsten startest du, indem du OC Nano herunterlädst und die kostenlosen Modelle nutzt. Ohne Account. Für mehr bringst du dein eigenes Abo mit oder nutzt OC Nano Go.",
     phrases: {
-      "download-opencode": { text: "OpenCode herunterlädst" },
+      "download-ocnano": { text: "OC Nano herunterlädst" },
       "free-models": { text: "kostenlosen Modelle" },
       "your-own-subscription": { text: "dein eigenes Abo" },
       "a-subscription-you-already-have": { text: "ein Abo, das du schon hast" },
@@ -328,30 +328,30 @@ export const content = {
       download: { title: "Download", line: "Desktop, Terminal oder Mobile." },
       "use-free-models": {
         title: "Gratis-Modelle nutzen",
-        line: "OpenCode bringt eine Reihe kostenloser Modelle mit. Ohne Account.",
+        line: "OC Nano bringt eine Reihe kostenloser Modelle mit. Ohne Account.",
       },
       "add-more-models": {
         title: "Mehr Modelle",
-        line: "Bring dein eigenes Abo mit oder nutze die kuratierten Modelle von OpenCode Go ab $10/Monat.",
+        line: "Bring dein eigenes Abo mit oder nutze die kuratierten Modelle von OC Nano Go ab $10/Monat.",
       },
     },
     sentence:
-      "Lade OpenCode herunter, starte mit kostenlosen Modellen und bring dein eigenes Abo oder OpenCode Go mit, wenn du mehr willst.",
+      "Lade OC Nano herunter, starte mit kostenlosen Modellen und bring dein eigenes Abo oder OC Nano Go mit, wenn du mehr willst.",
   },
   byos: {
     title: "Eigenes Abo mitbringen",
     headline: "Nutze die Abos, die du schon hast.",
-    line: "Melde dich mit ChatGPT Plus oder Pro oder mit GitHub Copilot an. Oder nutze ein OpenCode-Abo.",
+    line: "Melde dich mit ChatGPT Plus oder Pro oder mit GitHub Copilot an. Oder nutze ein OC Nano-Abo.",
     yours: { label: "Dein Abo", items: { "chatgpt-plus-pro": { name: "ChatGPT Plus/Pro" } } },
-    planLinks: ["OpenCode-Abo"],
-    ours: { label: "OpenCode-Pläne" },
+    planLinks: ["OC Nano-Abo"],
+    ours: { label: "OC Nano-Pläne" },
   },
   brand: {
     hero: { copy: { text: "Regeln für Agents", copied: "Regeln kopiert" } },
     naming: {
       title: "Name",
-      body: "Schreib OpenCode als ein Wort, mit großem O und großem C. Schreib nicht Opencode, Open Code, OpenCode AI oder Open-Code.",
-      code: "Nutze das kleingeschriebene `opencode` nur in Code und Paketnamen, etwa `opencode-figma` oder `@acme/opencode-plugin`.",
+      body: "Schreib OC Nano als ein Wort, mit großem O und großem C. Schreib nicht OC Nano, Open Code, OC Nano AI oder Open-Code.",
+      code: "Nutze das kleingeschriebene `ocnano` nur in Code und Paketnamen, etwa `ocnano-figma` oder `@acme/ocnano-plugin`.",
     },
     families: {
       logo: {
@@ -366,7 +366,7 @@ export const content = {
       },
       wordmark: {
         title: "Wortmarke",
-        body: "Der volle Name in den OpenCode-Buchstabenformen. Nutze sie überall, wo Platz für den ausgeschriebenen Namen ist.",
+        body: "Der volle Name in den OC Nano-Buchstabenformen. Nutze sie überall, wo Platz für den ausgeschriebenen Namen ist.",
         assets: { light: { name: "Hell" }, dark: { name: "Dunkel" } },
       },
       "simple-wordmark": {
@@ -477,53 +477,53 @@ export const content = {
     },
     integrations: {
       title: "Integrationen",
-      body: "Plugins, Anbieter und Tools, die mit OpenCode funktionieren, und Projekte, die damit gebaut sind, dürfen das sagen. Nutze ein Badge oder ein Partner-Lockup und benenne dein Projekt so, dass klar ist, dass es deins ist.",
+      body: "Plugins, Anbieter und Tools, die mit OC Nano funktionieren, und Projekte, die damit gebaut sind, dürfen das sagen. Nutze ein Badge oder ein Partner-Lockup und benenne dein Projekt so, dass klar ist, dass es deins ist.",
       badges: {
         body: "Setz ein Badge in deine README, Doku oder Website und verlinke es auf opencode.ai. Wähle die helle oder dunkle Datei für deinen Hintergrund (das HTML wechselt von selbst) und ändere weder Farben noch Text.",
         sizes: "Jeder Stil kommt in 20, 32 und 44px (Shields nur in 20px), als SVG und als PNG in 2×.",
-        mono: "Jede Datei gibt es auch mit Text in OpenTUI Mono. Füge -mono vor der Endung ein, wie in opencode-works-with-a-light-20-mono.svg, oder -mono-caps für OpenTUI Mono in Großbuchstaben.",
+        mono: "Jede Datei gibt es auch mit Text in OpenTUI Mono. Füge -mono vor der Endung ein, wie in ocnano-works-with-a-light-20-mono.svg, oder -mono-caps für OpenTUI Mono in Großbuchstaben.",
         groups: {
           "works-with": {
             title: "Läuft mit",
-            alt: "Funktioniert mit OpenCode",
-            body: "Für Plugins, Anbieter und Tools, die mit OpenCode laufen.",
+            alt: "Funktioniert mit OC Nano",
+            body: "Für Plugins, Anbieter und Tools, die mit OC Nano laufen.",
           },
           "built-with": {
             title: "Gebaut mit",
-            alt: "Gebaut mit OpenCode",
-            body: "Für Projekte, die mit OpenCode entstanden sind.",
+            alt: "Gebaut mit OC Nano",
+            body: "Für Projekte, die mit OC Nano entstanden sind.",
           },
         },
         styles: { a: { name: "Rahmen" }, c: { name: "Zellen" }, f: { name: "Vollfarbe" }, g: { name: "Shields" } },
       },
       lockup: {
         title: "Partner-Lockup",
-        body: "Stell das OpenCode-Logo und das Partnerlogo nebeneinander, mit einem × dazwischen. Lass auf jeder Seite des × 3 Striche Platz, skaliere das Partnerlogo so, dass es so hoch wirkt wie das OpenCode-Logo, und halte Schutzraum um das ganze Lockup.",
+        body: "Stell das OC Nano-Logo und das Partnerlogo nebeneinander, mit einem × dazwischen. Lass auf jeder Seite des × 3 Striche Platz, skaliere das Partnerlogo so, dass es so hoch wirkt wie das OC Nano-Logo, und halte Schutzraum um das ganze Lockup.",
       },
       naming: {
         title: "Dein Projekt benennen",
         body: "Stell deinen eigenen Namen voran, damit klar ist, dass das Projekt deins ist.",
-        rule: "Schreib `Linear for OpenCode` oder nenne das Paket `opencode-linear`. Schreib nicht `OpenCode Linear` oder `Linear by OpenCode`.",
+        rule: "Schreib `Linear for OC Nano` oder nenne das Paket `ocnano-linear`. Schreib nicht `OC Nano Linear` oder `Linear by OC Nano`.",
       },
     },
     trademarks: {
       title: "Marken",
-      body: "OpenCode und das OpenCode-Logo sind Marken von Anomaly. Nutze sie nicht, um zu suggerieren, dass Anomaly dich unterstützt oder sponsert, nicht in deinem Produkt- oder Firmennamen und nicht ohne Erlaubnis auf Merchandise.",
+      body: "OC Nano und das OC Nano-Logo sind Marken von Anomaly. Nutze sie nicht, um zu suggerieren, dass Anomaly dich unterstützt oder sponsert, nicht in deinem Produkt- oder Firmennamen und nicht ohne Erlaubnis auf Merchandise.",
       contact: { before: "Bei Fragen schreib an " },
     },
   },
   press: {
-    title: "OpenCode | Pressekit mit Fakten zum Unternehmen und Marken-Assets",
+    title: "OC Nano | Pressekit mit Fakten zum Unternehmen und Marken-Assets",
     description:
-      "Das Pressekit von OpenCode, mit Fakten zu OpenCode und Anomaly, dem Unternehmen dahinter, dazu Logos und Wortmarken zum Download und ein Kontakt für Presseanfragen.",
-    hero: { title: "Presse", body: "Fakten, Marken-Assets und Kontakte für Berichte über OpenCode und Anomaly." },
+      "Das Pressekit von OC Nano, mit Fakten zu OC Nano und Anomaly, dem Unternehmen dahinter, dazu Logos und Wortmarken zum Download und ein Kontakt für Presseanfragen.",
+    hero: { title: "Presse", body: "Fakten, Marken-Assets und Kontakte für Berichte über OC Nano und Anomaly." },
     company: {
       title: "Über Anomaly",
-      lead: "Anomaly ist das Unternehmen hinter OpenCode. Es baut Open-Source-Tools für Entwickler.",
+      lead: "Anomaly ist das Unternehmen hinter OC Nano. Es baut Open-Source-Tools für Entwickler.",
       more: "Weitere Projekte sind SST und OpenTUI, alle als Open Source auf [GitHub](github).",
       learnMore: "Mehr erfährst du auf [anoma.ly](site).",
       projects: {
-        opencode: {
+        ocnano: {
           body: "Der Open-Source-Coding-Agent, mit Apps für Desktop, Terminal und Mobile sowie einem SDK. MIT-lizenziert, über 220.000 GitHub-Sterne.",
         },
         sst: {
@@ -531,7 +531,7 @@ export const content = {
         },
         opentui: {
           name: "OpenTUI",
-          body: "Eine Bibliothek für Terminal-UIs in TypeScript, React oder Solid, mit einem Kern in Zig. OpenCode nutzt sie in Produktion. Über 13.000 GitHub-Sterne.",
+          body: "Eine Bibliothek für Terminal-UIs in TypeScript, React oder Solid, mit einem Kern in Zig. OC Nano nutzt sie in Produktion. Über 13.000 GitHub-Sterne.",
         },
         "models-dev": {
           body: "Eine Open-Source-Datenbank mit Spezifikationen, Preisen und Fähigkeiten von KI-Modellen und einer öffentlichen API. Sie listet über 8.900 Modelle von über 200 Anbietern.",
@@ -545,30 +545,30 @@ export const content = {
       },
     },
     about: {
-      title: "Über OpenCode",
-      body: "Beschreibungen von OpenCode und seinen Produkten in langer und kurzer Fassung, bereit zum Kopieren.",
+      title: "Über OC Nano",
+      body: "Beschreibungen von OC Nano und seinen Produkten in langer und kurzer Fassung, bereit zum Kopieren.",
       boilerplate: {
-        long: "OpenCode ist ein Open-Source-Coding-Agent. Es gibt ihn als Desktop-App, Terminal-UI, Mobile-App und SDK, und er funktioniert mit Modellen jedes Anbieters, darunter Claude, GPT und Gemini. OpenCode ist MIT-lizenziert und wird von Anomaly entwickelt. Es hat über 220.000 GitHub-Sterne und mehr als 1.000 Mitwirkende, und über 22 Millionen Entwickler nutzen es jeden Monat.",
+        long: "OC Nano ist ein Open-Source-Coding-Agent. Es gibt ihn als Desktop-App, Terminal-UI, Mobile-App und SDK, und er funktioniert mit Modellen jedes Anbieters, darunter Claude, GPT und Gemini. OC Nano ist MIT-lizenziert und wird von Anomaly entwickelt. Es hat über 220.000 GitHub-Sterne und mehr als 1.000 Mitwirkende, und über 22 Millionen Entwickler nutzen es jeden Monat.",
         short:
-          "OpenCode ist ein Open-Source-Coding-Agent von Anomaly, mit Apps für Desktop, Terminal und Mobile sowie einem SDK.",
+          "OC Nano ist ein Open-Source-Coding-Agent von Anomaly, mit Apps für Desktop, Terminal und Mobile sowie einem SDK.",
       },
       products: {
-        "opencode-console": {
-          name: "OpenCode Console",
-          long: "OpenCode Console ist die Web-App, in der Entwickler und Teams Zugang zu KI-Modellen für OpenCode und andere Coding-Agents kaufen und verwalten. Sie bietet Pay-as-you-go-Inferenz für Frontier- und Open-Weight-Modelle, abgerechnet pro Request aus vorausbezahltem Guthaben, sowie Abos für OpenCode Go. Teams bekommen Workspaces mit den Rollen Member, Admin und Owner, Ausgabenlimits für Workspace und einzelne Nutzer, Single Sign-on mit Okta, Microsoft Entra ID oder Google Workspace sowie SCIM. Console unterstützt mehr als 30 Anbieter, sodass Teams vorhandene Anbieter-Accounts verbinden können, und die eigene Inferenz ist optional. Sie ist unter opencode.ai/console erreichbar.",
+        "ocnano-console": {
+          name: "OC Nano Console",
+          long: "OC Nano Console ist die Web-App, in der Entwickler und Teams Zugang zu KI-Modellen für OC Nano und andere Coding-Agents kaufen und verwalten. Sie bietet Pay-as-you-go-Inferenz für Frontier- und Open-Weight-Modelle, abgerechnet pro Request aus vorausbezahltem Guthaben, sowie Abos für OC Nano Go. Teams bekommen Workspaces mit den Rollen Member, Admin und Owner, Ausgabenlimits für Workspace und einzelne Nutzer, Single Sign-on mit Okta, Microsoft Entra ID oder Google Workspace sowie SCIM. Console unterstützt mehr als 30 Anbieter, sodass Teams vorhandene Anbieter-Accounts verbinden können, und die eigene Inferenz ist optional. Sie ist unter opencode.ai/console erreichbar.",
           short:
-            "OpenCode Console ist die Web-App von Anomaly für Pay-as-you-go-Zugang zu KI-Modellen, Abos für OpenCode Go und Team-Kontrollen wie Budgets und Single Sign-on.",
+            "OC Nano Console ist die Web-App von Anomaly für Pay-as-you-go-Zugang zu KI-Modellen, Abos für OC Nano Go und Team-Kontrollen wie Budgets und Single Sign-on.",
         },
         "opencode-go": {
-          long: "OpenCode Go ist ein Abo für Entwickler, die einen festen Monatspreis für Coding-Modelle wollen. Go kostet $10/Monat, Go Plus kostet $40/Monat mit höheren Limits, und Go Teams kostet $20/Monat pro Mitglied. Jeder Plan enthält eine kuratierte Auswahl an Modellen, die für agentisches Coding getestet sind. Die Nutzungslimits sind monatliche Dollarbeträge pro Modell, mit rollierenden 5-Stunden- und Wochenkontingenten von 20% und 50% des Monatslimits. Abonnenten können Guthaben aufladen, auf ein Pay-as-you-go-Guthaben ausweichen und jederzeit kündigen. Go funktioniert mit OpenCode und anderen Agents. Es ist unter opencode.ai/console/go erreichbar.",
+          long: "OC Nano Go ist ein Abo für Entwickler, die einen festen Monatspreis für Coding-Modelle wollen. Go kostet $10/Monat, Go Plus kostet $40/Monat mit höheren Limits, und Go Teams kostet $20/Monat pro Mitglied. Jeder Plan enthält eine kuratierte Auswahl an Modellen, die für agentisches Coding getestet sind. Die Nutzungslimits sind monatliche Dollarbeträge pro Modell, mit rollierenden 5-Stunden- und Wochenkontingenten von 20% und 50% des Monatslimits. Abonnenten können Guthaben aufladen, auf ein Pay-as-you-go-Guthaben ausweichen und jederzeit kündigen. Go funktioniert mit OC Nano und anderen Agents. Es ist unter opencode.ai/console/go erreichbar.",
           short:
-            "OpenCode Go ist ein Monatsabo von Anomaly, das Entwicklern monatliche Nutzungslimits für eine kuratierte Auswahl an Coding-Modellen gibt, ab $10/Monat.",
+            "OC Nano Go ist ein Monatsabo von Anomaly, das Entwicklern monatliche Nutzungslimits für eine kuratierte Auswahl an Coding-Modellen gibt, ab $10/Monat.",
         },
-        "opencode-data": {
-          name: "OpenCode Data",
-          long: "OpenCode Data ist ein öffentliches Dashboard, das zeigt, welche KI-Modelle Entwickler in OpenCode nutzen und wie sich diese Verteilung über die Zeit verändert. Es veröffentlicht eine Rangliste der Top-Modelle, Token-Nutzung, Kosten pro Session und Token, Cache-Quoten, Marktanteile und eine Aufschlüsselung nach Ländern. Die Zahlen werden stündlich aggregiert, Tage und Wochen in UTC. Nutzer- und Session-Zahlen sind Näherungswerte, und Kosten basieren auf Listenpreisen aus dem OpenCode-Modellkatalog. Journalisten können es als OpenCode Data (opencode.ai/data) mit dem auf der Seite angezeigten Aktualisierungszeitpunkt zitieren.",
+        "ocnano-data": {
+          name: "OC Nano Data",
+          long: "OC Nano Data ist ein öffentliches Dashboard, das zeigt, welche KI-Modelle Entwickler in OC Nano nutzen und wie sich diese Verteilung über die Zeit verändert. Es veröffentlicht eine Rangliste der Top-Modelle, Token-Nutzung, Kosten pro Session und Token, Cache-Quoten, Marktanteile und eine Aufschlüsselung nach Ländern. Die Zahlen werden stündlich aggregiert, Tage und Wochen in UTC. Nutzer- und Session-Zahlen sind Näherungswerte, und Kosten basieren auf Listenpreisen aus dem OC Nano-Modellkatalog. Journalisten können es als OC Nano Data (opencode.ai/data) mit dem auf der Seite angezeigten Aktualisierungszeitpunkt zitieren.",
           short:
-            "OpenCode Data ist ein öffentliches Dashboard unter opencode.ai/data, das KI-Modelle nach echter Nutzung in OpenCode einordnet, mit Tokens, Kosten und Marktanteilen, stündlich aktualisiert.",
+            "OC Nano Data ist ein öffentliches Dashboard unter opencode.ai/data, das KI-Modelle nach echter Nutzung in OC Nano einordnet, mit Tokens, Kosten und Marktanteilen, stündlich aktualisiert.",
         },
       },
     },
@@ -585,23 +585,23 @@ export const content = {
       items: {
         "first-release-v0-0-1": { date: "Apr. 2025", text: "Erstes Release, v0.0.1" },
         "1-million-downloads": { date: "Okt. 2025", text: "Über 1 Million Downloads" },
-        "opencode-1-0": { date: "Okt. 2025", text: "OpenCode 1.0" },
+        "ocnano-1-0": { date: "Okt. 2025", text: "OC Nano 1.0" },
         "desktop-app-ships": { date: "Dez. 2025", text: "Desktop-App erscheint" },
         "10-million-downloads": { date: "Jan. 2026", text: "Über 10 Millionen Downloads" },
-        "opencode-2-0": { date: "Sep. 2026", text: "OpenCode 2.0" },
+        "ocnano-2-0": { date: "Sep. 2026", text: "OC Nano 2.0" },
         "220-000-github-stars": { date: "Nov. 2026", text: "Über 220.000 GitHub-Sterne" },
       },
     },
     news: {
       title: "Neueste Releases",
-      intro: "OpenCode erscheint oft. Das sind die neuesten Releases mit neuen Funktionen.",
+      intro: "OC Nano erscheint oft. Das sind die neuesten Releases mit neuen Funktionen.",
       changelog: { text: "Ganzer Changelog" },
       feed: { text: "RSS-Feed" },
     },
     media: {
       title: "Medien",
       intro:
-        "Standbilder und kurze Videos jeder App, aufgenommen im echten Produkt. Du kannst sie für Berichte über OpenCode verwenden.",
+        "Standbilder und kurze Videos jeder App, aufgenommen im echten Produkt. Du kannst sie für Berichte über OC Nano verwenden.",
       note: "Alle Aufnahmen nutzen das dunkle Design. Standbilder und Poster sind JPGs bis 1920 × 1080, oder 1080 × 1350 im Hochformat. Videos sind MP4-Clips ohne Ton.",
       products: {
         desktop: {
@@ -676,10 +676,10 @@ export const content = {
     brand: {
       title: "Marke",
       before:
-        "Lade die OpenCode-Logos und -Wortmarken in einer ZIP-Datei herunter. Einzelne Dateien, Varianten und Regeln zur Verwendung findest du auf der ",
+        "Lade die OC Nano-Logos und -Wortmarken in einer ZIP-Datei herunter. Einzelne Dateien, Varianten und Regeln zur Verwendung findest du auf der ",
       link: { text: "Markenseite" },
       usage:
-        "Du kannst diese Dateien für Berichte über OpenCode verwenden. Ändere sie nicht und erwecke nicht den Eindruck, dass OpenCode deine Arbeit unterstützt.",
+        "Du kannst diese Dateien für Berichte über OC Nano verwenden. Ändere sie nicht und erwecke nicht den Eindruck, dass OC Nano deine Arbeit unterstützt.",
     },
     product: {
       title: "Produkt",
@@ -690,7 +690,7 @@ export const content = {
         },
         mobile: {
           name: "Mobile",
-          body: "Die neueste OpenCode-App. Ruf eine Session an, um mit dem Agent zu sprechen, und prüfe und genehmige seine Änderungen von überall auf dem Smartphone.",
+          body: "Die neueste OC Nano-App. Ruf eine Session an, um mit dem Agent zu sprechen, und prüfe und genehmige seine Änderungen von überall auf dem Smartphone.",
         },
         terminal: {
           name: "Terminal",
@@ -707,7 +707,7 @@ export const content = {
         press: { title: "Presse", body: "Für Journalisten und Analysten. Wir antworten nur auf Medienanfragen." },
         support: {
           title: "Support",
-          body: "Für Hilfe mit OpenCode eröffne ein Issue oder frag die Community. Bei Fragen zu Account und Abrechnung schreib uns eine E-Mail.",
+          body: "Für Hilfe mit OC Nano eröffne ein Issue oder frag die Community. Bei Fragen zu Account und Abrechnung schreib uns eine E-Mail.",
           links: { "github-issues": { text: "GitHub-Issues" }, "help-anoma-ly": { text: "help@anoma.ly" } },
         },
         security: {
@@ -739,7 +739,7 @@ export const content = {
     terminal: { commands: { curl: { name: "Skript" } } },
     sdk: { more: { label: "SDK-Doku lesen" } },
     ide: {
-      lead: "Führe opencode im integrierten Terminal deines Editors aus, und die Extension installiert sich selbst. Oder installiere sie manuell.",
+      lead: "Führe ocnano im integrierten Terminal deines Editors aus, und die Extension installiert sich selbst. Oder installiere sie manuell.",
       links: {
         "vs-code-marketplace": { label: "VS Code Marketplace" },
         "open-vsx-cursor-windsurf-vscodium": { label: "Open VSX (Cursor, Windsurf, VSCodium)" },
@@ -748,18 +748,18 @@ export const content = {
     },
     mini: {
       commands: { curl: { name: "Skript" } },
-      lead: "Mini ist Teil der OpenCode CLI. Installiere sie auf einem dieser Wege und führe dann opencode mini aus.",
+      lead: "Mini ist Teil der OC Nano CLI. Installiere sie auf einem dieser Wege und führe dann ocnano mini aus.",
     },
   },
   pair: {
     title: "Smartphone verbinden",
     cardTitle: "Koppel dein Smartphone mit einem Befehl",
     intro:
-      "OpenCode Mobile ist eine Fernbedienung für OpenCode auf deinem Computer. Deine Sessions laufen dort weiter, und die App zeigt sie dir und lässt dich sie steuern.",
+      "OC Nano Mobile ist eine Fernbedienung für OC Nano auf deinem Computer. Deine Sessions laufen dort weiter, und die App zeigt sie dir und lässt dich sie steuern.",
     steps: {
       "get-the-app": {
         title: "App holen",
-        body: "Installiere die OpenCode-Beta über TestFlight auf deinem iPhone. Die Android-App folgt bald.",
+        body: "Installiere die OC Nano-Beta über TestFlight auf deinem iPhone. Die Android-App folgt bald.",
       },
       "run-this-on-your-computer": {
         title: "Auf dem Computer ausführen",
@@ -770,12 +770,12 @@ export const content = {
         body: "Scanne den QR-Code mit der App oder füge den Link ein. Die letzten Sessions deines Computers öffnen sich auf dem Smartphone.",
       },
     },
-    note: "--remote verbindet über eine OpenTunnel-Adresse und funktioniert so aus jedem Netzwerk. Im selben WLAN führst du einmal opencode service set hostname 0.0.0.0 aus und dann opencode pair.",
+    note: "--remote verbindet über eine OpenTunnel-Adresse und funktioniert so aus jedem Netzwerk. Im selben WLAN führst du einmal ocnano service set hostname 0.0.0.0 aus und dann ocnano pair.",
     facts: [
       "Die Kopplung funktioniert aus jedem Netzwerk, denn --remote verbindet über eine OpenTunnel-Adresse.",
       "Link und Code funktionieren einmal und laufen nach 5 Minuten ab.",
       "Lass den Computer an, denn der Agent läuft dort und nicht auf dem Smartphone.",
-      "Im selben WLAN führst du einmal opencode service set hostname 0.0.0.0 aus und dann opencode pair.",
+      "Im selben WLAN führst du einmal ocnano service set hostname 0.0.0.0 aus und dann ocnano pair.",
     ],
   },
   announcements: {
@@ -790,7 +790,7 @@ export const content = {
     "agents-can-now-generate-images": { text: "Agents können jetzt Bilder erzeugen.", link: "v2.2.1 ansehen" },
     "steer-your-sessions-from-your-phone": {
       text: "Steuere deine Sessions vom Smartphone aus.",
-      link: "OpenCode Mobile entdecken",
+      link: "OC Nano Mobile entdecken",
     },
     "a-refreshed-desktop-app": { text: "Eine überarbeitete Desktop-App.", link: "Neu in 2.2 ansehen" },
   },

@@ -1,10 +1,10 @@
 {
   "groups": [
     {
-      "name": "OpenCode",
+      "name": "OC Nano",
       "layers": [
         {
-          "name": "OpenCode",
+          "name": "OC Nano",
           "image-name": "icon.png",
           "glass": false
         }

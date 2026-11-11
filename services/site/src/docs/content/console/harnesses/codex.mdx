@@ -12,12 +12,12 @@ Add Console as a model provider in `~/.codex/config.toml` and make it the defaul
 
 ```toml title="~/.codex/config.toml"
 model = "gpt-6.1-sol"
-model_provider = "opencode"
+model_provider = "OC Nano"
 
-[model_providers.opencode]
-name = "OpenCode Console"
+[model_providers.ocnano]
+name = "OC Nano Console"
 base_url = "https://opencode.ai/inference/openai/v1"
-env_key = "OPENCODE_API_KEY"
+env_key = "OCNANO_API_KEY"
 wire_api = "responses"
 ```
 
@@ -25,7 +25,7 @@ Codex appends `/responses` to the base URL and reads the key from `env_key`. Cre
 [personal API key](/console/harnesses#get-an-api-key), then export it.
 
 ```bash
-export OPENCODE_API_KEY="oc_sk_..."
+export OCNANO_API_KEY="oc_sk_..."
 codex
 ```
 
@@ -42,9 +42,9 @@ model = "kimi-k3"
 model_provider = "opencode-go"
 
 [model_providers.opencode-go]
-name = "OpenCode Go"
+name = "OC Nano Go"
 base_url = "https://opencode.ai/inference/go/openai/v1"
-env_key = "OPENCODE_API_KEY"
+env_key = "OCNANO_API_KEY"
 wire_api = "responses"
 ```
 
@@ -79,11 +79,11 @@ codex --profile go
 Add the [Console MCP](/console/harnesses#console-mcp) server and sign in from the browser.
 
 ```bash
-codex mcp add opencode-console --url https://opencode.ai/console/mcp
+codex mcp add ocnano-console --url https://opencode.ai/console/mcp
 ```
 
 If the sign-in doesn't start automatically, run it yourself.
 
 ```bash
-codex mcp login opencode-console
+codex mcp login ocnano-console
 ```

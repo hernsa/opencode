@@ -1,9 +1,9 @@
 import { expect, test } from "bun:test"
-import { CopilotModels } from "@opencode/core/github-copilot/models"
+import { CopilotModels } from "@ocnano/core/github-copilot/models"
 import { Effect } from "effect"
 import { FetchHttpClient, HttpClient } from "effect/http"
-import { Model } from "@opencode/core/model"
-import { Provider } from "@opencode/core/provider"
+import { Model } from "@ocnano/core/model"
+import { Provider } from "@ocnano/core/provider"
 
 const run = <A, E>(effect: (http: HttpClient.HttpClient) => Effect.Effect<A, E>) =>
   Effect.runPromise(HttpClient.HttpClient.pipe(Effect.flatMap(effect), Effect.provide(FetchHttpClient.layer)))
@@ -102,7 +102,7 @@ test("defensively syncs advertised Copilot models", async () => {
     const model = models.get(Model.ID.make("gpt-5"))
 
     expect(model?.name).toBe("GPT-5 local")
-    expect(model?.package).toBe("@opencode/ai/providers/openai-compatible-responses")
+    expect(model?.package).toBe("@ocnano/ai/providers/openai-compatible-responses")
     expect(model?.settings).toEqual({ baseURL: server.url.origin })
     expect(model?.cost[0]).toMatchObject({ input: 0, output: 0, cache: { read: 0, write: 0 } })
     expect(model?.variants.map((variant) => variant.id)).toEqual([
@@ -110,7 +110,7 @@ test("defensively syncs advertised Copilot models", async () => {
       Model.VariantID.make("high"),
     ])
     expect(model?.capabilities.input).toEqual(["text", "image", "pdf"])
-    expect(models.get(Model.ID.make("claude-sonnet"))?.package).toBe("@opencode/ai/providers/anthropic")
+    expect(models.get(Model.ID.make("claude-sonnet"))?.package).toBe("@ocnano/ai/providers/anthropic")
     expect(models.get(Model.ID.make("claude-sonnet"))?.settings).toEqual({ baseURL: `${server.url.origin}/v1` })
     expect(models.get(Model.ID.make("vision-only"))?.capabilities.input).toEqual(["text", "image"])
     expect(models.get(Model.ID.make("utility"))?.enabled).toBe(false)

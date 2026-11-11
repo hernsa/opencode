@@ -39,7 +39,7 @@ const v1ConfigValues = {
  */
 export function docs(): Plugin {
   return {
-    name: "opencode-docs",
+    name: "ocnano-docs",
     enforce: "pre",
     resolveId(id, importer) {
       if (id === pages) return `\0${pages}`

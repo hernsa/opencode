@@ -1,4 +1,4 @@
-/* The OpenCode nav menus (index.ts): the logo menu and the product menu, one card style, as opencode.ai's logo menu
+/* The OcNano nav menus (index.ts): the logo menu and the product menu, one card style, as opencode.ai's logo menu
    (cards, blue hover). No panel; each item is a card on the see-through pop-up surface, its thumbnail, a divider, then
    its label. The menus sit in the page's body (or the top layer), so only these rules style them. A host recolours
    them by setting these on an ancestor of its triggers (the menu copies them when it opens):
@@ -294,7 +294,7 @@
   }
 }
 
-/* The OpenCode bar's metrics, opencode.ai's (site.css: the logo 25px from the top and the start edge, in the box of
+/* The OcNano bar's metrics, opencode.ai's (site.css: the logo 25px from the top and the start edge, in the box of
    "[1]" at 15px; the 56px phone top bar with its 24 × 30 logo box), so a product's bar puts everything where
    opencode.ai does and moving between them never jumps:
      --nav-bar-height     the bar, its 1px rule included (75 + 1; 56 on phones, the rule drawn inside)

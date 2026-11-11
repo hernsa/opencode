@@ -1,5 +1,5 @@
-import { DataProvider, type TurnDiffInput } from "@opencode/session-ui/context"
-import { MarkdownProvider, type ReadMarkdownImage } from "@opencode/session-ui/context/markdown"
+import { DataProvider, type TurnDiffInput } from "@ocnano/session-ui/context"
+import { MarkdownProvider, type ReadMarkdownImage } from "@ocnano/session-ui/context/markdown"
 import { useNavigate, useParams } from "@solidjs/router"
 import { useQuery } from "@tanstack/solid-query"
 import { createEffect, createMemo, createSignal, on, onCleanup, untrack, type ParentProps } from "solid-js"
@@ -46,7 +46,7 @@ export function SessionUIProvider(
   const language = useLanguage()
   const settings = useSettings()
   const directory = () => props.directory
-  const releaseChannel = import.meta.env.VITE_OPENCODE_CHANNEL ?? "local"
+  const releaseChannel = import.meta.env.VITE_OCNANO_CHANNEL ?? "local"
   const copyAlwaysVisible = releaseChannel === "dev" || releaseChannel === "local"
 
   const readImage = createMemo<ReadMarkdownImage>(() => {

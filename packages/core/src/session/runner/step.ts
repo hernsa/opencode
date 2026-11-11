@@ -6,10 +6,10 @@ import {
   LLMClient,
   isContextOverflowFailure,
   type ToolCall,
-} from "@opencode/ai/effect"
-import type { Agent } from "@opencode/schema/agent"
+} from "@ocnano/ai/effect"
+import type { Agent } from "@ocnano/schema/agent"
 import { Cause, Clock, Data, Effect, Exit, Fiber, Option, Stream } from "effect"
-import { SessionError } from "@opencode/schema/session-error"
+import { SessionError } from "@ocnano/schema/session-error"
 import { Bus } from "../../bus.js"
 import { Permission } from "../../permission.js"
 import { Snapshot } from "../../snapshot.js"
@@ -83,7 +83,7 @@ export const make = Effect.gen(function* () {
     yield* Effect.annotateCurrentSpan({
       ...modelAttributes,
       "gen_ai.agent.name": input.agent,
-      ...(input.retryAttempt === undefined ? {} : { "opencode.retry.attempt": input.retryAttempt }),
+      ...(input.retryAttempt === undefined ? {} : { "ocnano.retry.attempt": input.retryAttempt }),
     })
     const publisher = createLLMEventPublisher(bus, {
       sessionID: input.sessionID,
@@ -190,7 +190,7 @@ export const make = Effect.gen(function* () {
         const llmError = llmFailure && !recorded.providerFailed ? toSessionError(llmFailure) : undefined
         const tokens = recorded.finish?.usage
         yield* Effect.annotateCurrentSpan({
-          ...(firstOutputAt === undefined ? {} : { "opencode.llm.first_output_ms": firstOutputAt - started }),
+          ...(firstOutputAt === undefined ? {} : { "ocnano.llm.first_output_ms": firstOutputAt - started }),
           ...(recorded.finish === undefined ? {} : { "gen_ai.response.finish_reasons": [recorded.finish.finish] }),
           ...(tokens?.inputTokens === undefined ? {} : { "gen_ai.usage.input_tokens": tokens.inputTokens }),
           ...(tokens?.outputTokens === undefined ? {} : { "gen_ai.usage.output_tokens": tokens.outputTokens }),
@@ -267,7 +267,7 @@ export const make = Effect.gen(function* () {
                     .pipe(Effect.orElseSucceed(() => undefined))
               : undefined
           const usage = record.finish ? SessionUsage.record(record.finish.usage, input.model.cost) : undefined
-          if (usage) yield* Effect.annotateCurrentSpan("opencode.usage.cost_usd", usage.cost)
+          if (usage) yield* Effect.annotateCurrentSpan("ocnano.usage.cost_usd", usage.cost)
           if (record.failure) yield* publisher.publishStepFailure({ ...usage, snapshot, files })
           if (record.finish && usage && !record.failure)
             yield* bus.publish(SessionEvent.Step.Ended, {

@@ -1,15 +1,15 @@
-import { Bus } from "@opencode/core/bus"
-import { Config } from "@opencode/core/config"
-import { Environment, makeFiles } from "@opencode/core/environment/index"
-import { EnvironmentUnavailable } from "@opencode/core/environment/unavailable"
-import { Integration } from "@opencode/core/integration"
-import { Model } from "@opencode/core/model"
-import { Plugin } from "@opencode/core/plugin"
-import { PluginHost } from "@opencode/core/plugin/host"
-import { OllamaPlugin, make } from "@opencode/core/plugin/provider/ollama"
-import { ProviderPlugins } from "@opencode/core/plugin/provider"
-import { Provider } from "@opencode/core/provider"
-import { Document, Event, Info } from "@opencode/schema/config"
+import { Bus } from "@ocnano/core/bus"
+import { Config } from "@ocnano/core/config"
+import { Environment, makeFiles } from "@ocnano/core/environment/index"
+import { EnvironmentUnavailable } from "@ocnano/core/environment/unavailable"
+import { Integration } from "@ocnano/core/integration"
+import { Model } from "@ocnano/core/model"
+import { Plugin } from "@ocnano/core/plugin"
+import { PluginHost } from "@ocnano/core/plugin/host"
+import { OllamaPlugin, make } from "@ocnano/core/plugin/provider/ollama"
+import { ProviderPlugins } from "@ocnano/core/plugin/provider"
+import { Provider } from "@ocnano/core/provider"
+import { Document, Event, Info } from "@ocnano/schema/config"
 import { describe, expect } from "bun:test"
 import { Duration, Effect, Layer, Schema } from "effect"
 import { eventually } from "../lib/eventually"
@@ -89,8 +89,8 @@ describe("OllamaPlugin", () => {
           const providers = yield* Provider.Service
           const modelState = yield* Model.Service
           const providerID = Provider.ID.make("ollama")
-          expect(OllamaPlugin.id).toBe("opencode.provider.ollama")
-          expect(ProviderPlugins.map((item) => item.id)).toContain("opencode.provider.ollama")
+          expect(OllamaPlugin.id).toBe("ocnano.provider.ollama")
+          expect(ProviderPlugins.map((item) => item.id)).toContain("ocnano.provider.ollama")
           yield* addPlugin(server.url.origin)
           const model = yield* eventually(
             modelState.get(providerID, Model.ID.make("gemma3:4b")),
@@ -101,7 +101,7 @@ describe("OllamaPlugin", () => {
             id: providerID,
             name: "Ollama",
             activation: "enabled",
-            package: "@opencode/ai/providers/openai-compatible",
+            package: "@ocnano/ai/providers/openai-compatible",
             settings: { baseURL: `${server.url.origin}/v1`, provider: "ollama", apiKey: "" },
           })
           expect(model).toMatchObject({
@@ -209,7 +209,7 @@ describe("OllamaPlugin", () => {
           yield* providers.transform((editor) => {
             editor.update(providerID, (provider) => {
               provider.name = "Ollama"
-              provider.package = "@opencode/ai/providers/openai-compatible"
+              provider.package = "@ocnano/ai/providers/openai-compatible"
               provider.integrationID = Integration.ID.make("ollama")
             })
             editor.models.update(providerID, Model.ID.make("static-model"), () => {})

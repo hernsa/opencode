@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { Button } from "@opencode/ui/button"
-import { useDialog } from "@opencode/ui/context/dialog"
+import { Button } from "@ocnano/ui/button"
+import { useDialog } from "@ocnano/ui/context/dialog"
 import { createSignal, onMount } from "solid-js"
 import { DialogSelectModelUnpaid } from "./unpaid"
 import { DialogStoryRuntime } from "@/components-lab/dialog-story-runtime"
@@ -20,7 +20,7 @@ function SelectModelWithoutProviders(props) {
   const models = names.map((name, index) => ({
     id: name.toLowerCase().replaceAll(" ", "-"),
     name,
-    provider: { id: "opencode", name: "OpenCode" },
+    provider: { id: "ocnano", name: "OC Nano" },
     cost: { input: 0, output: 0 },
     limit: { context: 128_000 },
     capabilities: {

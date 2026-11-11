@@ -1,13 +1,13 @@
 import { WorkflowEntrypoint, type WorkflowEvent, type WorkflowStep, type WorkflowStepConfig } from "cloudflare:workers"
-import { R2Sql } from "@opencode/stats-core/r2-sql"
-import { layer } from "@opencode/stats-core/runtime"
+import { R2Sql } from "@ocnano/stats-core/r2-sql"
+import { layer } from "@ocnano/stats-core/runtime"
 import {
   deterministicFailureAsResult,
   planStatsSync,
   syncRetentionCohort,
   syncStatPeriod,
   type SyncStatsError,
-} from "@opencode/stats-core/stat-sync"
+} from "@ocnano/stats-core/stat-sync"
 import { Effect, Layer } from "effect"
 import type { StatsSyncParams } from "./schedule"
 

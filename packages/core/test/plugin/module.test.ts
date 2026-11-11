@@ -2,20 +2,20 @@ import { expect } from "bun:test"
 import { cp, mkdir } from "node:fs/promises"
 import path from "node:path"
 import { Brand, Cause, Deferred, Effect, Exit, Fiber, Layer, Option, Schedule, Schema, Scope, Stream } from "effect"
-import { Agent } from "@opencode/schema/agent"
-import { Session } from "@opencode/schema/session"
-import { SessionMessage } from "@opencode/schema/session-message"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { Watcher } from "@opencode/core/filesystem/watcher"
-import { Plugin } from "@opencode/core/plugin"
-import { PluginModule } from "@opencode/core/plugin/module"
-import { Rpc } from "@opencode/core/rpc"
-import { Tool } from "@opencode/core/tool"
-import { execute } from "@opencode/core/tool/runtime"
-import { Global } from "@opencode/util/global"
-import { Npm } from "@opencode/util/npm"
-import { createForeignPackageFilter, ensurePluginRuntime } from "@opencode/plugin/runtime"
-import { createLoader, discoverPluginRuntimeSpecifiers, pluginRuntimeLoaderCode } from "@opencode/plugin/runtime-modules"
+import { Agent } from "@ocnano/schema/agent"
+import { Session } from "@ocnano/schema/session"
+import { SessionMessage } from "@ocnano/schema/session-message"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { Watcher } from "@ocnano/core/filesystem/watcher"
+import { Plugin } from "@ocnano/core/plugin"
+import { PluginModule } from "@ocnano/core/plugin/module"
+import { Rpc } from "@ocnano/core/rpc"
+import { Tool } from "@ocnano/core/tool"
+import { execute } from "@ocnano/core/tool/runtime"
+import { Global } from "@ocnano/util/global"
+import { Npm } from "@ocnano/util/npm"
+import { createForeignPackageFilter, ensurePluginRuntime } from "@ocnano/plugin/runtime"
+import { createLoader, discoverPluginRuntimeSpecifiers, pluginRuntimeLoaderCode } from "@ocnano/plugin/runtime-modules"
 import { tempGlobalLayer } from "../fixture/global"
 import { setOrganizationPolicy } from "../fixture/policy"
 import { tmpdirScoped } from "../fixture/tmpdir"
@@ -115,7 +115,7 @@ it.live("interrupts pending watcher setup when the loader scope closes during mo
   }),
 )
 
-it.live("loads plugins and their transitive dependencies against the host's Effect and @opencode/plugin instances", () =>
+it.live("loads plugins and their transitive dependencies against the host's Effect and @ocnano/plugin instances", () =>
   Effect.gen(function* () {
     const directory = yield* tmpdirScoped()
     const pluginDir = path.join(directory.path, "plugin")
@@ -162,12 +162,12 @@ export const depToolInput = Schema.Struct({
   code: Schema.Trim.check(Schema.isPattern(/^v[0-9]+$/)),
 })
 export const depCaptured = { Effect, Schema, some }`,
-        "node_modules/@opencode/plugin/package.json":
-          '{"name":"@opencode/plugin","type":"module","exports":{"./effect":"./effect.js","./rpc":"./rpc.js"}}',
-        "node_modules/@opencode/plugin/effect.js": "export const Plugin = { define: (p) => p }",
-        "node_modules/@opencode/plugin/rpc.js": "export const Rpc = { define: (d) => d }",
-        "index.ts": `import { Plugin } from "@opencode/plugin/effect"
-import { Rpc } from "@opencode/plugin/rpc"
+        "node_modules/@ocnano/plugin/package.json":
+          '{"name":"@ocnano/plugin","type":"module","exports":{"./effect":"./effect.js","./rpc":"./rpc.js"}}',
+        "node_modules/@ocnano/plugin/effect.js": "export const Plugin = { define: (p) => p }",
+        "node_modules/@ocnano/plugin/rpc.js": "export const Rpc = { define: (d) => d }",
+        "index.ts": `import { Plugin } from "@ocnano/plugin/effect"
+import { Rpc } from "@ocnano/plugin/rpc"
 import { Effect, Schema } from "effect"
 import { some } from "effect/Option"
 import { nominal } from "effect/Brand"
@@ -333,8 +333,8 @@ it.live("discovers exported specifiers from the resolved tree even when dist/ ex
 
     yield* Effect.promise(() =>
       writeFiles(directory.path, {
-        "consumer/node_modules/@opencode/plugin/package.json": JSON.stringify({
-          name: "@opencode/plugin",
+        "consumer/node_modules/@ocnano/plugin/package.json": JSON.stringify({
+          name: "@ocnano/plugin",
           type: "module",
           exports: {
             ".": "./src/promise/index.ts",
@@ -343,25 +343,25 @@ it.live("discovers exported specifiers from the resolved tree even when dist/ ex
             "./gui/*": "./src/gui/*.ts",
           },
         }),
-        "consumer/node_modules/@opencode/plugin/src/promise/index.ts": "export const root = 'src'",
-        "consumer/node_modules/@opencode/plugin/src/effect/index.ts": "export * as plugin from './plugin.ts'",
-        "consumer/node_modules/@opencode/plugin/src/effect/plugin.ts": "export const leaf = 'src'",
-        "consumer/node_modules/@opencode/plugin/src/unexported.ts": "export const secret = true",
-        "consumer/node_modules/@opencode/plugin/src/gui/sdk/index.ts": "export const window = true",
-        "consumer/node_modules/@opencode/plugin/dist/promise/index.js": "export const root = 'dist'",
-        "consumer/node_modules/@opencode/plugin/dist/effect/index.js": "export const index = 'dist'",
-        "consumer/node_modules/@opencode/plugin/dist/effect/plugin.js": "export const leaf = 'dist'",
+        "consumer/node_modules/@ocnano/plugin/src/promise/index.ts": "export const root = 'src'",
+        "consumer/node_modules/@ocnano/plugin/src/effect/index.ts": "export * as plugin from './plugin.ts'",
+        "consumer/node_modules/@ocnano/plugin/src/effect/plugin.ts": "export const leaf = 'src'",
+        "consumer/node_modules/@ocnano/plugin/src/unexported.ts": "export const secret = true",
+        "consumer/node_modules/@ocnano/plugin/src/gui/sdk/index.ts": "export const window = true",
+        "consumer/node_modules/@ocnano/plugin/dist/promise/index.js": "export const root = 'dist'",
+        "consumer/node_modules/@ocnano/plugin/dist/effect/index.js": "export const index = 'dist'",
+        "consumer/node_modules/@ocnano/plugin/dist/effect/plugin.js": "export const leaf = 'dist'",
         "async-mod.ts": "await new Promise((r) => setTimeout(r, 20)); export const nonce = Math.random()",
       }),
     )
 
-    const discovered = discoverPluginRuntimeSpecifiers(consumerDir, ["@opencode/plugin"])
-    expect(discovered.get("@opencode/plugin")?.replaceAll("\\", "/")).toEndWith("src/promise/index.ts")
-    expect(discovered.get("@opencode/plugin/effect")?.replaceAll("\\", "/")).toEndWith("src/effect/index.ts")
-    expect(discovered.get("@opencode/plugin/effect/plugin")?.replaceAll("\\", "/")).toEndWith("src/effect/plugin.ts")
-    expect(discovered.has("@opencode/plugin/unexported")).toBe(false)
+    const discovered = discoverPluginRuntimeSpecifiers(consumerDir, ["@ocnano/plugin"])
+    expect(discovered.get("@ocnano/plugin")?.replaceAll("\\", "/")).toEndWith("src/promise/index.ts")
+    expect(discovered.get("@ocnano/plugin/effect")?.replaceAll("\\", "/")).toEndWith("src/effect/index.ts")
+    expect(discovered.get("@ocnano/plugin/effect/plugin")?.replaceAll("\\", "/")).toEndWith("src/effect/plugin.ts")
+    expect(discovered.has("@ocnano/plugin/unexported")).toBe(false)
     // The GUI SDK runs in the app; the server and TUI runtime never load it.
-    expect([...discovered.keys()].filter((specifier) => specifier.startsWith("@opencode/plugin/gui"))).toEqual([])
+    expect([...discovered.keys()].filter((specifier) => specifier.startsWith("@ocnano/plugin/gui"))).toEqual([])
 
     const hostDiscovered = discoverPluginRuntimeSpecifiers()
     expect(hostDiscovered.has("effect/schema/SchemaJITCompiler")).toBe(true)
@@ -388,16 +388,16 @@ it.live("discovers exported specifiers from the resolved tree even when dist/ ex
     expect(res1).toBe(res2)
 
     const winFilter = createForeignPackageFilter([
-      "C:\\runner\\_work\\opencode\\node_modules\\.bun\\effect@4.0.0-rc.112\\node_modules\\effect",
+      "C:\\runner\\_work\\ocnano\\node_modules\\.bun\\effect@4.0.0-rc.112\\node_modules\\effect",
     ])
     expect(
       winFilter.test(
-        "C:\\runner\\_work\\opencode\\node_modules\\.bun\\effect@4.0.0-rc.112\\node_modules\\effect\\dist\\index.js",
+        "C:\\runner\\_work\\ocnano\\node_modules\\.bun\\effect@4.0.0-rc.112\\node_modules\\effect\\dist\\index.js",
       ),
     ).toBe(false)
     expect(
       winFilter.test(
-        "C:/runner/_work/opencode/node_modules/.bun/effect@4.0.0-rc.112/node_modules/effect/dist/index.js",
+        "C:/runner/_work/ocnano/node_modules/.bun/effect@4.0.0-rc.112/node_modules/effect/dist/index.js",
       ),
     ).toBe(false)
     expect(winFilter.test("C:\\Users\\plugin\\node_modules\\effect\\dist\\index.js")).toBe(true)
@@ -444,7 +444,7 @@ it.live("loads a GUI-only package under its package name without running it, and
     yield* Effect.promise(() =>
       writeFiles(directory.path, {
         "gui/package.json": JSON.stringify({
-          name: "opencode-acme-gui",
+          name: "ocnano-acme-gui",
           exports: { "./gui-experimental": "./dist/gui-experimental.cjs" },
         }),
         "gui/dist/gui-experimental.cjs": evaluated,
@@ -456,7 +456,7 @@ it.live("loads a GUI-only package under its package name without running it, and
 
     const loaded = yield* modules.load({ type: "add", target: gui, options: { region: "eu" } })
     expect(loaded).toMatchObject({
-      id: "opencode-acme-gui",
+      id: "ocnano-acme-gui",
       features: { gui: true },
       gui: { options: { region: "eu" } },
       source: { type: "local", path: gui },
@@ -470,7 +470,7 @@ it.live("loads a GUI-only package under its package name without running it, and
     yield* plugins.awaitActivation
     expect((yield* plugins.list()).filter((plugin) => plugin.source.type === "local")).toEqual([
       {
-        id: Plugin.ID.make("opencode-acme-gui"),
+        id: Plugin.ID.make("ocnano-acme-gui"),
         source: { type: "local", path: gui },
         state: { status: "active" },
         features: { gui: true },

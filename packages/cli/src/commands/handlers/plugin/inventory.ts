@@ -1,8 +1,8 @@
 import { EOL } from "node:os"
 import { Cause, Effect, Exit } from "effect"
-import { OpenCode } from "@opencode/client"
-import { Service } from "@opencode/client/effect/service"
-import { Npm } from "@opencode/util/npm"
+import { OcNano } from "@ocnano/client"
+import { Service } from "@ocnano/client/effect/service"
+import { Npm } from "@ocnano/util/npm"
 import { Config } from "../../../config"
 import { ServerConnection } from "../../../services/server-connection"
 
@@ -17,7 +17,7 @@ export interface Item {
 
 export const inspect = Effect.fn("cli.plugin.inspect")(function* (selected?: string) {
   const { endpoint } = yield* ServerConnection.resolve()
-  const client = OpenCode.make({ baseUrl: endpoint.url, headers: Service.headers(endpoint) })
+  const client = OcNano.make({ baseUrl: endpoint.url, headers: Service.headers(endpoint) })
   const location = { directory: process.cwd() }
   const listed = yield* Effect.promise(() => client.plugin.list({ location }))
   const serverTargets = new Set(
@@ -48,7 +48,7 @@ export const inspect = Effect.fn("cli.plugin.inspect")(function* (selected?: str
     ...new Set(
       (info.plugins ?? []).flatMap((entry) => {
         const target = typeof entry === "string" ? entry : entry.package
-        if (target.startsWith("-") || target === "*" || target.endsWith(".*") || target.startsWith("opencode.")) return []
+        if (target.startsWith("-") || target === "*" || target.endsWith(".*") || target.startsWith("ocnano.")) return []
         return [target]
       }),
     ),

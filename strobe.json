@@ -2,32 +2,32 @@
   "build": { "command": "bun run build", "cwd": "packages/app", "output": "packages/app/dist" },
   "serve": { "command": "bun e2e/utils/serve.ts --host 127.0.0.1 --port {port}", "cwd": "packages/app" },
   "apps": {
-    "opencode": {
+    "ocnano": {
       "exe": {
-        "windows": "%LOCALAPPDATA%/Programs/ai.opencode.desktop/OpenCode.exe",
-        "macos": "/Applications/OpenCode.app/Contents/MacOS/OpenCode"
+        "windows": "%LOCALAPPDATA%/Programs/ai.ocnano.desktop/OC Nano.exe",
+        "macos": "/Applications/OC Nano.app/Contents/MacOS/OC Nano"
       },
-      "unset": ["OPENCODE_*", "OTEL_*", "SENTRY_*"],
+      "unset": ["OCNANO_*", "OTEL_*", "SENTRY_*"],
       "env": {
-        "OPENCODE_DB": "{home}/.local/share/opencode/opencode.db",
-        "OPENCODE_CONFIG_DIR": "{home}/.config/opencode",
+        "OCNANO_DB": "{home}/.local/share/ocnano/ocnano.db",
+        "OCNANO_CONFIG_DIR": "{home}/.config/ocnano",
         "HTTP_PROXY": "http://127.0.0.1:9",
         "HTTPS_PROXY": "http://127.0.0.1:9",
         "NO_PROXY": "localhost,127.0.0.1,::1"
       },
-      "dirs": [".local/share/opencode"],
+      "dirs": [".local/share/ocnano"],
       "files": {
-        ".config/opencode/service.json": { "port": "{port}" },
-        "AppData/Local/@opencodedesktop-updater": "a file, not a folder: the updater cannot stage a download while strobe measures"
+        ".config/ocnano/service.json": { "port": "{port}" },
+        "AppData/Local/@ocnanodesktop-updater": "a file, not a folder: the updater cannot stage a download while strobe measures"
       },
-      "guard": [{ "file": "~/.local/state/opencode/service.json", "pid": "pid", "url": "url" }],
-      "protocols": ["opencode"]
+      "guard": [{ "file": "~/.local/state/ocnano/service.json", "pid": "pid", "url": "url" }],
+      "protocols": ["ocnano"]
     },
-    "opencode-beta": {
-      "extends": "opencode",
+    "ocnano-beta": {
+      "extends": "ocnano",
       "exe": {
-        "windows": "%LOCALAPPDATA%/Programs/ai.opencode.desktop.beta/OpenCode Beta.exe",
-        "macos": "/Applications/OpenCode Beta.app/Contents/MacOS/OpenCode Beta"
+        "windows": "%LOCALAPPDATA%/Programs/ai.ocnano.desktop.beta/OC Nano Beta.exe",
+        "macos": "/Applications/OC Nano Beta.app/Contents/MacOS/OC Nano Beta"
       }
     }
   }

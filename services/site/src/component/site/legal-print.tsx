@@ -33,8 +33,8 @@ import type { PatternParams } from "~/lib/legal/pattern"
 
 export type LegalPrintStyle = (typeof legalPrintStyles)[number]
 
-const wordmark = "/brand/files/opencode-wordmark-light.svg"
-const logo = "/brand/files/opencode-logo-light.svg"
+const wordmark = "/brand/files/ocnano-wordmark-light.svg"
+const logo = "/brand/files/ocnano-logo-light.svg"
 const entity = "Anomaly Innovations, Inc."
 const address = ["2443 Fillmore St #380-6343", "San Francisco, CA 94115", "United States"]
 const contact = "help@anoma.ly"
@@ -195,7 +195,7 @@ function Exhibit(props: { info: Facts }) {
         <span>(EN)</span>
       </p>
       <div data-slot="brand">
-        <img src={wordmark} alt="OpenCode" />
+        <img src={wordmark} alt="OC Nano" />
         <span>{entity}</span>
       </div>
     </>
@@ -274,7 +274,7 @@ export function ArchitectCover(props: {
         )}
       </Show>
       {/* One small logo: 4:5, above the 16 × 20px minimum; the interior pages repeat it here. */}
-      <img data-architect-part="logo" src={logoImage(cover().logo).source} alt="OpenCode" />
+      <img data-architect-part="logo" src={logoImage(cover().logo).source} alt="OC Nano" />
       <div data-architect-part="title">
         <Editable key="kicker" as="p" />
         <div data-slot="cover-title">{props.info.title}</div>
@@ -365,7 +365,7 @@ function Letterhead(props: { info: Facts }) {
   return (
     <>
       <header data-slot="head">
-        <img src={wordmark} alt="OpenCode" />
+        <img src={wordmark} alt="OC Nano" />
         <p>{props.info.effective}</p>
       </header>
       <div data-slot="grid">
@@ -427,9 +427,9 @@ function Modular(props: { info: Facts }) {
   return (
     <>
       <header data-slot="head">
-        <img src={logo} alt="OpenCode" />
+        <img src={logo} alt="OC Nano" />
         <p>
-          OpenCode
+          OC Nano
           <br />
           opencode.ai
         </p>
@@ -444,7 +444,7 @@ function Modular(props: { info: Facts }) {
           Legal
         </p>
       </header>
-      <ModuleWord word="opencode" />
+      <ModuleWord word="ocnano" />
       <div data-slot="cover-title">{props.info.title}</div>
       <div data-slot="grid">
         <dl data-slot="meta">
@@ -516,7 +516,7 @@ function Swiss(props: { info: Facts }) {
         </div>
       </dl>
       <div data-slot="brand">
-        <img src={wordmark} alt="OpenCode" />
+        <img src={wordmark} alt="OC Nano" />
         <span>{entity}</span>
       </div>
     </>
@@ -577,7 +577,7 @@ function Colophon(props: {
           </div>
           <div>
             <dt>Type</dt>
-            <dd>Inter and OpenTUI Mono. Marks: the OpenCode logo, wordmark and font.</dd>
+            <dd>Inter and OpenTUI Mono. Marks: the OC Nano logo, wordmark and font.</dd>
           </div>
         </dl>
       </div>
@@ -603,7 +603,7 @@ function DotMatrix(props: { columns: number; rows: number }) {
   )
 }
 
-/** A word set in the OpenCode font's modules: each glyph is 4 × 7 squares, ink and shade. */
+/** A word set in the OcNano font's modules: each glyph is 4 × 7 squares, ink and shade. */
 function ModuleWord(props: { word: string }) {
   const letters = () => [...props.word].filter((letter): letter is Letter => letter in modules)
   return (
@@ -669,7 +669,7 @@ function pageRules(style: LegalPrintStyle, info: Facts) {
     letterhead: {
       margin: "26mm 20mm 26mm",
       boxes: `
-        @top-left { content: ${text(`OpenCode — ${info.title}`)}; ${sans} }
+        @top-left { content: ${text(`OcNano — ${info.title}`)}; ${sans} }
         @top-right { content: ${text(info.effective)}; ${sans} }
         @bottom-left { content: ${text(entity)}; ${sans} border-top: 0.5pt solid #000; vertical-align: top; padding-top: 2mm; }
         @bottom-center { content: ${text(info.host)}; ${sans} border-top: 0.5pt solid #000; vertical-align: top; padding-top: 2mm; }
@@ -678,7 +678,7 @@ function pageRules(style: LegalPrintStyle, info: Facts) {
     modular: {
       margin: "22mm 18mm 24mm",
       boxes: `
-        @top-left { content: ${text(`OPENCODE / ${info.title.toUpperCase()}`)}; ${mono} letter-spacing: 0.06em; }
+        @top-left { content: ${text(`OCNANO / ${info.title.toUpperCase()}`)}; ${mono} letter-spacing: 0.06em; }
         @top-right { content: ${text(info.reference)}; ${mono} }
         @bottom-left { content: ${text(info.host)}; ${mono} }
         @bottom-right { content: ${page}; ${mono} }`,

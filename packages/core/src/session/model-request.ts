@@ -16,8 +16,8 @@ import {
   ToolMessage,
   type ToolResultPart,
   UserMessage,
-} from "@opencode/ai/effect"
-import type { StreamOptions } from "@opencode/ai/route"
+} from "@ocnano/ai/effect"
+import type { StreamOptions } from "@ocnano/ai/route"
 import type {
   SessionCompaction,
   SessionContext,
@@ -25,13 +25,13 @@ import type {
   SessionRequest,
   SessionRequestKind,
   SessionTitle,
-} from "@opencode/plugin/effect/session"
-import type { Agent } from "@opencode/schema/agent"
-import type { Model } from "@opencode/schema/model"
-import type { Content } from "@opencode/schema/tool"
+} from "@ocnano/plugin/effect/session"
+import type { Agent } from "@ocnano/schema/agent"
+import type { Model } from "@ocnano/schema/model"
+import type { Content } from "@ocnano/schema/tool"
 import { Cause, Context, Effect, Layer, Result, Stream } from "effect"
 import { HttpClientRequest, HttpClientResponse } from "effect/http"
-import { makeLocationNode } from "@opencode/util/effect/app-node"
+import { makeLocationNode } from "@ocnano/util/effect/app-node"
 import { App } from "../app.js"
 import { Instructions } from "../instructions/index.js"
 import { Permission } from "../permission.js"
@@ -253,7 +253,7 @@ export interface Interface {
   readonly title: (input: Input) => Effect.Effect<Prepared<SessionTitle>>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/SessionModelRequest") {}
+export class Service extends Context.Service<Service, Interface>()("@ocnano/SessionModelRequest") {}
 
 export const layer = Layer.effect(
   Service,
@@ -313,15 +313,15 @@ export const layer = Layer.effect(
       const base = ai.request({
         model: model.model,
         headers: {
-          "x-opencode-session-id": session.id,
-          ...(session.parentID ? { "x-opencode-parent-session-id": session.parentID } : {}),
+          "x-ocnano-session-id": session.id,
+          ...(session.parentID ? { "x-ocnano-parent-session-id": session.parentID } : {}),
           "x-session-affinity": affinity,
           "X-Session-Id": affinity,
           ...(session.parentID ? { "x-parent-session-id": session.parentID } : {}),
           "User-Agent": App.useragent(app),
-          "x-opencode-project": session.projectID,
-          "x-opencode-session": affinity,
-          "x-opencode-client": app.name,
+          "x-ocnano-project": session.projectID,
+          "x-ocnano-session": affinity,
+          "x-ocnano-client": app.name,
         },
         // TODO: Persist cache lineage so nested forks reuse the root session's cache key.
         promptCacheKey: /^ses_[0-9a-f]{64}$/.test(affinity) ? affinity.slice(4) : affinity,

@@ -1,28 +1,28 @@
-import { App } from "@opencode/core/app"
-import { Agent } from "@opencode/schema/agent"
-import { Session } from "@opencode/core/session"
-import { Location } from "@opencode/core/location"
+import { App } from "@ocnano/core/app"
+import { Agent } from "@ocnano/schema/agent"
+import { Session } from "@ocnano/core/session"
+import { Location } from "@ocnano/core/location"
 import { describe, expect, test } from "bun:test"
 import { Effect } from "effect"
 import { FetchHttpClient, HttpClient, HttpClientResponse } from "effect/http"
 import { TestClock } from "effect/testing"
-import { Model } from "@opencode/core/model"
-import { ModelResolver } from "@opencode/core/model-resolver"
-import { Plugin } from "@opencode/core/plugin"
-import { PluginHost } from "@opencode/core/plugin/host"
-import { PluginHooks } from "@opencode/core/plugin/hooks"
+import { Model } from "@ocnano/core/model"
+import { ModelResolver } from "@ocnano/core/model-resolver"
+import { Plugin } from "@ocnano/core/plugin"
+import { PluginHost } from "@ocnano/core/plugin/host"
+import { PluginHooks } from "@ocnano/core/plugin/hooks"
 import {
   copilotBaseURL,
   copilotEntitlementError,
   GithubCopilotPlugin,
   utilityTitle,
-} from "@opencode/core/plugin/provider/github-copilot"
-import { Message, SystemPart } from "@opencode/ai/effect"
-import { Provider } from "@opencode/core/provider"
-import { Integration } from "@opencode/core/integration"
-import { Credential } from "@opencode/core/credential"
+} from "@ocnano/core/plugin/provider/github-copilot"
+import { Message, SystemPart } from "@ocnano/ai/effect"
+import { Provider } from "@ocnano/core/provider"
+import { Integration } from "@ocnano/core/integration"
+import { Credential } from "@ocnano/core/credential"
 import { advance, drain } from "../lib/clock"
-import type { SessionRequestKind } from "@opencode/plugin/effect/session"
+import type { SessionRequestKind } from "@ocnano/plugin/effect/session"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -205,7 +205,7 @@ describe("GithubCopilotPlugin", () => {
     const requests: string[] = []
     yield* providers.transform((editor) => {
       editor.models.update(Provider.ID.githubCopilot, Model.ID.make("gpt-4o"), (model) => {
-        model.package = "@opencode/ai/providers/openai-compatible"
+        model.package = "@ocnano/ai/providers/openai-compatible"
       })
     })
     yield* connect(metadata)
@@ -607,15 +607,15 @@ describe("GithubCopilotPlugin", () => {
       const providers = yield* Provider.Service
       const models = yield* Model.Service
       const fallback = {
-        "claude-sonnet-4.5": "@opencode/ai/providers/anthropic",
-        "gpt-4.1": "@opencode/ai/providers/openai",
-        "gpt-5": "@opencode/ai/providers/openai-compatible",
-        "gpt-5.1-codex": "@opencode/ai/providers/openai-compatible",
-        "gpt-5-mini": "@opencode/ai/providers/openai-compatible",
-        "gpt-4o": "@opencode/ai/providers/openai-compatible",
-        "grok-4.5": "@opencode/ai/providers/openai-compatible",
-        "mai-code-1.1-flash": "@opencode/ai/providers/openai-compatible",
-        "gemini-3.8-flash": "@opencode/ai/providers/openai-compatible",
+        "claude-sonnet-4.5": "@ocnano/ai/providers/anthropic",
+        "gpt-4.1": "@ocnano/ai/providers/openai",
+        "gpt-5": "@ocnano/ai/providers/openai-compatible",
+        "gpt-5.1-codex": "@ocnano/ai/providers/openai-compatible",
+        "gpt-5-mini": "@ocnano/ai/providers/openai-compatible",
+        "gpt-4o": "@ocnano/ai/providers/openai-compatible",
+        "grok-4.5": "@ocnano/ai/providers/openai-compatible",
+        "mai-code-1.1-flash": "@ocnano/ai/providers/openai-compatible",
+        "gemini-3.8-flash": "@ocnano/ai/providers/openai-compatible",
       }
       yield* providers.transform((editor) => {
         editor.update(Provider.ID.githubCopilot, (provider) => {
@@ -627,7 +627,7 @@ describe("GithubCopilotPlugin", () => {
           })
         editor.models.update(Provider.ID.githubCopilot, Model.ID.make("small"), (model) => {
           model.modelID = Model.ID.make("gpt-5-mini")
-          model.package = "@opencode/ai/providers/openai-compatible"
+          model.package = "@ocnano/ai/providers/openai-compatible"
         })
       })
       yield* addPlugin()
@@ -635,12 +635,12 @@ describe("GithubCopilotPlugin", () => {
         const model = required(yield* models.get(Provider.ID.githubCopilot, Model.ID.make(id)))
         return { package: model.package, baseURL: model.settings?.baseURL }
       })
-      const messages = { package: "@opencode/ai/providers/anthropic", baseURL: "https://api.githubcopilot.com/v1" }
+      const messages = { package: "@ocnano/ai/providers/anthropic", baseURL: "https://api.githubcopilot.com/v1" }
       const responses = {
-        package: "@opencode/ai/providers/openai-compatible-responses",
+        package: "@ocnano/ai/providers/openai-compatible-responses",
         baseURL: "https://api.githubcopilot.com",
       }
-      const chat = { package: "@opencode/ai/providers/openai-compatible", baseURL: "https://api.githubcopilot.com" }
+      const chat = { package: "@ocnano/ai/providers/openai-compatible", baseURL: "https://api.githubcopilot.com" }
       expect(yield* route("claude-sonnet-4.5")).toEqual(messages)
       expect(yield* route("gpt-4.1")).toEqual(responses)
       expect(yield* route("gpt-5")).toEqual(responses)

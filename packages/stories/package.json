@@ -1,15 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@opencode/stories",
+  "name": "@ocnano/stories",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --port 6006"
   },
   "devDependencies": {
-    "@opencode/client": "workspace:*",
-    "@opencode/session-ui": "workspace:*",
-    "@opencode/ui": "workspace:*",
+    "@ocnano/client": "workspace:*",
+    "@ocnano/session-ui": "workspace:*",
+    "@ocnano/ui": "workspace:*",
     "@playwright/test": "catalog:",
     "@solidjs/meta": "catalog:",
     "@tailwindcss/vite": "catalog:",

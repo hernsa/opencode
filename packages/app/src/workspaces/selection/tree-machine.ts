@@ -1,4 +1,4 @@
-import { getFilename } from "@opencode/util/path"
+import { getFilename } from "@ocnano/util/path"
 import {
   pickerFileSearchQuery,
   pickerParent,

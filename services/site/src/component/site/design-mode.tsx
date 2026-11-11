@@ -19,8 +19,8 @@ import { logoLabels, setSiteSetting } from "./settings"
  * none of it. Pages read the chosen copy through design-copy.ts.
  */
 
-const modeKey = "opencode-site-design-mode"
-const copyKey = "opencode-site-design-copy-v2"
+const modeKey = "ocnano-site-design-mode"
+const copyKey = "ocnano-site-design-copy-v2"
 export const selector = "[data-design], [data-design-copy]"
 
 export { designMode, editing, fallbacks, setEditing } from "./design-copy"
@@ -54,7 +54,7 @@ export const copyVariants = {
     options: [
       "Connect any model from any provider,\nincluding Claude, GPT, Gemini and more.",
       "An open source agent that helps you write code\non your desktop, in your terminal or in your IDE.",
-      // Subscriptions OpenCode signs in with (core plugin/provider: chatgpt.ts, github-copilot.ts).
+      // Subscriptions OcNano signs in with (core plugin/provider: chatgpt.ts, github-copilot.ts).
       // Claude Pro/Max is not one of them; Anthropic prohibits it (docs: providers#anthropic).
       "Sign in with your ChatGPT or GitHub Copilot plan,\nor use free models, any API key or a local model.",
       "Use the ChatGPT or GitHub Copilot plan you already pay for,\nor connect any model from any provider.",
@@ -64,12 +64,12 @@ export const copyVariants = {
       // The default before "Start with free models…" (now the page's own copy, option 0).
       "Free models included or connect any model from any provider,\nincluding Claude, GPT, Gemini and more.",
       // From the coding-agents review (positioningRec), adjusted to the site copy rules: no "no
-      // account", no plan names, "OpenCode" rather than "It", products in the site's order.
-      "Start with free models or bring any of 200+ providers.\nOpenCode runs on your machine, and you can control it from the desktop, the terminal, your phone or your own code.",
-      "OpenCode is an open source coding agent. Use the free models or any of 200+ providers,\nand steer your sessions from the desktop, the terminal or your phone.",
+      // account", no plan names, "OcNano" rather than "It", products in the site's order.
+      "Start with free models or bring any of 200+ providers.\nOC Nano runs on your machine, and you can control it from the desktop, the terminal, your phone or your own code.",
+      "OC Nano is an open source coding agent. Use the free models or any of 200+ providers,\nand steer your sessions from the desktop, the terminal or your phone.",
       "Start a session in the desktop app, approve it from your phone and pick it up in the terminal.\nUse any model, including the free models.",
-      "Use the plan you already pay for, any of 200+ providers or the free models.\nOpenCode is open source and runs on your machine.",
-      "Open source, any model, and sessions that stay on your computer.\nControl OpenCode from the desktop, the terminal, your phone or the SDK.",
+      "Use the plan you already pay for, any of 200+ providers or the free models.\nOC Nano is open source and runs on your machine.",
+      "Open source, any model, and sessions that stay on your computer.\nControl OC Nano from the desktop, the terminal, your phone or the SDK.",
     ],
   },
   // The button above the product carousel that copies an install prompt. Short labels; its
@@ -94,15 +94,15 @@ export const copyVariants = {
     options: ["Every line is yours to change.", "Fork it, change it, ship it."],
   },
   "home.what.lead": {
-    label: "What is OpenCode? intro",
+    label: "What is OC Nano? intro",
     lines: 3,
     options: [
-      "OpenCode is an open source coding agent that works with any model. Run it as a desktop app, in the terminal, from your phone or inside your own tools with the SDK.",
-      "OpenCode is an open source coding agent. Use it in the desktop app, in your terminal, on your phone, or from your own code with the SDK.",
-      "OpenCode writes, edits and explains code with the model of your choice. It's open source, and runs on your desktop, your terminal, your phone and your own code.",
+      "OC Nano is an open source coding agent that works with any model. Run it as a desktop app, in the terminal, from your phone or inside your own tools with the SDK.",
+      "OC Nano is an open source coding agent. Use it in the desktop app, in your terminal, on your phone, or from your own code with the SDK.",
+      "OC Nano writes, edits and explains code with the model of your choice. It's open source, and runs on your desktop, your terminal, your phone and your own code.",
       "One open source coding agent for every place you work: a desktop app, a terminal interface, a phone app and an SDK.",
       // From the coding-agents review (positioningRec), adjusted to the site copy rules.
-      "OpenCode is an open source coding agent. It runs on your computer, and the desktop app, terminal, phone and SDK all connect to the same sessions.",
+      "OC Nano is an open source coding agent. It runs on your computer, and the desktop app, terminal, phone and SDK all connect to the same sessions.",
     ],
   },
   "home.logos.label": {
@@ -130,20 +130,20 @@ export const copyVariants = {
   "home.feature.anyDevice.body": {
     label: "Any device feature",
     lines: 1,
-    options: ["Desktop, terminal, phone and web, all connected to one OpenCode server"],
+    options: ["Desktop, terminal, phone and web, all connected to one OC Nano server"],
   },
   "home.tools.lead": {
     label: "Bring your own tools intro",
     lines: 1,
     options: [
-      "Connect the services you already use with MCP servers, hook into OpenCode with plugins, teach agents your workflows with skills, and use it from Zed and other editors through ACP.",
+      "Connect the services you already use with MCP servers, hook into OC Nano with plugins, teach agents your workflows with skills, and use it from Zed and other editors through ACP.",
     ],
   },
   "home.openSource.lead": {
     label: "Open source intro",
     lines: 1,
     options: [
-      `OpenCode is MIT licensed. ${config.stats.contributors} contributors have made ${config.stats.commits}+ commits, and ${config.stats.monthlyUsers} developers use it every month.`,
+      `OC Nano is MIT licensed. ${config.stats.contributors} contributors have made ${config.stats.commits}+ commits, and ${config.stats.monthlyUsers} developers use it every month.`,
     ],
   },
   // The home page's "New" bar (announcement.ts): each option keeps its own link.
@@ -153,9 +153,9 @@ export const copyVariants = {
     label: "Get started lead",
     lines: 2,
     options: [
-      "The easiest way to start is to download OpenCode and use the free models. No account needed. For more, bring your own subscription or use OpenCode Go.",
-      "Download OpenCode and start with free models, no account needed. Later, log in with a subscription you already have, or get OpenCode Go from $10/month.",
-      "Start free. Download OpenCode and pick a free model. When you need more, bring your own subscription or use OpenCode Go.",
+      "The easiest way to start is to download OC Nano and use the free models. No account needed. For more, bring your own subscription or use OC Nano Go.",
+      "Download OC Nano and start with free models, no account needed. Later, log in with a subscription you already have, or get OC Nano Go from $10/month.",
+      "Start free. Download OC Nano and pick a free model. When you need more, bring your own subscription or use OC Nano Go.",
     ],
   },
   // "Bring your own subs" (lib/byos.ts), worded like the live opencode.ai; the first option is the
@@ -169,9 +169,9 @@ export const copyVariants = {
     label: "Own subs line",
     lines: 1,
     options: [
-      "Log in with ChatGPT Plus or Pro or GitHub Copilot. Or use an OpenCode subscription.",
+      "Log in with ChatGPT Plus or Pro or GitHub Copilot. Or use an OC Nano subscription.",
       "Log in with OpenAI to use your ChatGPT Plus or Pro account, or with GitHub to use your Copilot account.",
-      "Log in with ChatGPT or GitHub Copilot, add any API key, or subscribe to OpenCode Go.",
+      "Log in with ChatGPT or GitHub Copilot, add any API key, or subscribe to OC Nano Go.",
     ],
   },
   "footer.status.ok": {
@@ -186,7 +186,7 @@ export const copyVariants = {
     lines: 1,
     options: [
       "Every session in its own tab, on macOS, Windows and Linux. Keep several agents working at once, read each change as a diff, and see the result in the browser beside it.",
-      "The OpenCode app for your desktop. Run sessions side by side, comment on any line of a diff to send it back to the agent, and preview the work as it lands.",
+      "The OC Nano app for your desktop. Run sessions side by side, comment on any line of a diff to send it back to the agent, and preview the work as it lands.",
       "Keep every project and session in one window. Tabs for parallel agents, a diff for every edit, and a built-in browser to check what the agent built.",
       "A desktop home for your agents. Start a session per task, review and comment on each change, and use the free models included or connect any provider.",
     ],
@@ -198,16 +198,16 @@ export const copyVariants = {
       "Your sessions in your pocket. Call a session to talk to the agent, follow its timeline as it works, and approve each request from your phone.",
       "Keep work moving when you're away from your desk. Start a session by voice, review the diff the agent proposes, and allow it once or always.",
       "Steer the agent from anywhere. Open any session on your computer, send a follow-up to change direction, and answer permission requests as they come in.",
-      "Start, steer and approve sessions from your phone. It connects to OpenCode on your own machine, so your code and projects stay where they are.",
+      "Start, steer and approve sessions from your phone. It connects to OC Nano on your own machine, so your code and projects stay where they are.",
     ],
   },
   "product.terminal.intro": {
     label: "Terminal intro",
     lines: 1,
     options: [
-      "OpenCode in your terminal. Ask in plain words, watch the plan and each diff appear in the timeline, and approve commands before they run.",
+      "OC Nano in your terminal. Ask in plain words, watch the plan and each diff appear in the timeline, and approve commands before they run.",
       "Works in any shell, editor or remote server. Switch agents with shift+tab, open every command with ctrl+p, and pick a theme that suits your setup.",
-      "The full-screen terminal interface for OpenCode. Describe the task, follow every read, edit and test run, and keep control of what runs on its own.",
+      "The full-screen terminal interface for OC Nano. Describe the task, follow every read, edit and test run, and keep control of what runs on its own.",
       "A fast TUI for working with agents over SSH or locally. Edits arrive as diffs, permissions ask first, and themes and keybinds are yours to change.",
     ],
   },
@@ -215,10 +215,10 @@ export const copyVariants = {
     label: "SDK intro",
     lines: 1,
     options: [
-      "OpenCode as a library. Create sessions, send prompts and subscribe to events from TypeScript, then run the same agent in scripts, bots and pipelines.",
-      "Automate OpenCode from code. A short script can ask the agent to fix failing tests in CI and stream each tool call as it happens.",
-      "A typed client for the OpenCode server. Start sessions from any script, follow every event live, and build your own tools on the same agent as the apps.",
-      "Bring the agent into your workflows. Call OpenCode from CI jobs, dashboards and chat bots, with the same models and settings as your local setup.",
+      "OC Nano as a library. Create sessions, send prompts and subscribe to events from TypeScript, then run the same agent in scripts, bots and pipelines.",
+      "Automate OC Nano from code. A short script can ask the agent to fix failing tests in CI and stream each tool call as it happens.",
+      "A typed client for the OC Nano server. Start sessions from any script, follow every event live, and build your own tools on the same agent as the apps.",
+      "Bring the agent into your workflows. Call OC Nano from CI jobs, dashboards and chat bots, with the same models and settings as your local setup.",
     ],
   },
   // Home carousel card descriptions; the card's own text (product-data.ts) is the first option.
@@ -269,7 +269,7 @@ export const copyVariants = {
       "Create sessions and stream every event from TypeScript.",
       "Fix failing tests in CI with a few lines of code.",
       "Build bots, dashboards and tools on the same agent.",
-      "A typed client for the OpenCode server and its models.",
+      "A typed client for the OC Nano server and its models.",
       // From the coding-agents review (positioningRec), adjusted to the site copy rules.
       "Run the same agent from your own scripts, CI jobs and tools.",
     ],
@@ -311,23 +311,23 @@ export const copyVariants = {
     label: "Extensions card",
     lines: 1,
     options: [
-      "Bring OpenCode into VS Code and other editors.",
+      "Bring OC Nano into VS Code and other editors.",
       "The same agent inside your editor, through ACP.",
-      "Work with OpenCode without leaving VS Code or Zed.",
+      "Work with OC Nano without leaving VS Code or Zed.",
       "Install the extension and start a session in your editor.",
     ],
   },
-  // The /product hero subtitle. The apps talk to the same OpenCode server (the background service
-  // the terminal and desktop app share) and `opencode pair` connects the phone; the SDK runs its own
-  // OpenCode inside your process, with your config and models.
+  // The /product hero subtitle. The apps talk to the same OcNano server (the background service
+  // the terminal and desktop app share) and `ocnano pair` connects the phone; the SDK runs its own
+  // OcNano inside your process, with your config and models.
   "products.hero.body": {
     label: "Product subtitle",
     lines: 1,
     options: [
       "One agent, every surface. Start a session on your desktop, steer it from your phone, pick it up in the terminal or drive it from your own code.",
-      "OpenCode runs on desktop, the terminal and mobile, and from your own code. Every app shares the same sessions, so you start on one and carry on in another.",
-      "Desktop, terminal and mobile on one OpenCode server, and the SDK inside your own code. A session started in one app is already there in the others.",
-      "Use OpenCode wherever you work. The apps share one server and the same sessions: start at your desk, approve from your phone, finish in the terminal.",
+      "OC Nano runs on desktop, the terminal and mobile, and from your own code. Every app shares the same sessions, so you start on one and carry on in another.",
+      "Desktop, terminal and mobile on one OC Nano server, and the SDK inside your own code. A session started in one app is already there in the others.",
+      "Use OC Nano wherever you work. The apps share one server and the same sessions: start at your desk, approve from your phone, finish in the terminal.",
       "The same agent on desktop, the terminal, mobile and the SDK, with the same sessions across the apps. Switch surfaces without losing your place.",
     ],
   },
@@ -336,15 +336,15 @@ export const copyVariants = {
     label: "IDE extensions card",
     lines: 1,
     options: [
-      "OpenCode in VS Code and its forks, and in any ACP editor.",
-      "Run opencode in your editor's terminal and the extension installs itself.",
+      "OC Nano in VS Code and its forks, and in any ACP editor.",
+      "Run ocnano in your editor's terminal and the extension installs itself.",
     ],
   },
   "card.mini.body": {
     label: "Mini card",
     lines: 1,
     options: [
-      "Run opencode mini: replies land in your terminal's own scrollback.",
+      "Run ocnano mini: replies land in your terminal's own scrollback.",
       "The agent in your terminal, with only a prompt and a status line.",
     ],
   },
@@ -352,14 +352,14 @@ export const copyVariants = {
     label: "IDE extensions intro",
     lines: 1,
     options: [
-      "OpenCode beside your code. Open it in a split terminal with Cmd+Esc, share your selection, and insert file references, in VS Code and its forks or any editor that speaks ACP.",
+      "OC Nano beside your code. Open it in a split terminal with Cmd+Esc, share your selection, and insert file references, in VS Code and its forks or any editor that speaks ACP.",
     ],
   },
   "product.mini.intro": {
     label: "Mini intro",
     lines: 1,
     options: [
-      "OpenCode with nothing in the way. Replies print into your terminal's scrollback like any command's output, and a single prompt with a status line waits at the bottom.",
+      "OC Nano with nothing in the way. Replies print into your terminal's scrollback like any command's output, and a single prompt with a status line waits at the bottom.",
     ],
   },
 } satisfies Record<string, { label: string; lines: number; options: readonly string[] }>
@@ -474,7 +474,7 @@ export default function DesignMode(props: { onSettings?: () => void }) {
     if (localStorage.getItem(modeKey) === "1" && !window.frameElement?.hasAttribute("data-device-preview-frame"))
       setDesignModeState(true)
     // The old "tucked" choice for the corner buttons, which are gone.
-    localStorage.removeItem("opencode-site-dev-tools")
+    localStorage.removeItem("ocnano-site-dev-tools")
     const saved = copySchema.safeParse(readJson(localStorage.getItem(copyKey)))
     if (saved.success) setCopy(reconcile(saved.data))
     recordedCopy = structuredClone(unwrap(copy))

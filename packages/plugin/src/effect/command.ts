@@ -1,7 +1,7 @@
-import type { CommandApi } from "@opencode/client/effect/api"
-import type { PromptInput } from "@opencode/schema/prompt-input"
-import type { Session } from "@opencode/schema/session"
-import type { SessionInbox } from "@opencode/schema/session-inbox"
+import type { CommandApi } from "@ocnano/client/effect/api"
+import type { PromptInput } from "@ocnano/schema/prompt-input"
+import type { Session } from "@ocnano/schema/session"
+import type { SessionInbox } from "@ocnano/schema/session-inbox"
 import type { Effect } from "effect"
 import type { Transform } from "./registration.js"
 

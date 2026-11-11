@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test"
-import type { OpenCodeEvent, SessionInfo } from "@opencode/client/promise"
+import type { OcNanoEvent, SessionInfo } from "@ocnano/client/promise"
 import { createSidebarSessionActivity, isSidebarSessionActivity, mergeSidebarSessions } from "./sidebar-sessions"
 
 const session: SessionInfo = {
@@ -84,7 +84,7 @@ test.each([
     event: { ...envelope, type: "session.renamed", data: { sessionID: session.id, title: "New title" } },
     expected: true,
   },
-] satisfies { event: OpenCodeEvent; expected: boolean }[])(
+] satisfies { event: OcNanoEvent; expected: boolean }[])(
   "$event.type counts as sidebar activity: $expected",
   ({ event, expected }) => {
     expect(isSidebarSessionActivity(event)).toBe(expected)

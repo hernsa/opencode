@@ -1,13 +1,13 @@
 import { afterAll, describe, expect, test } from "bun:test"
 import { auth, OAuthError, refreshAuthorization, type FetchLike } from "@modelcontextprotocol/client"
 import path from "path"
-import { ConfigMCP } from "@opencode/schema/config/mcp"
-import { Credential } from "@opencode/core/credential"
-import { Database } from "@opencode/core/database/database"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { Integration } from "@opencode/core/integration"
-import { McpClient } from "@opencode/core/mcp/client"
-import { McpOAuth } from "@opencode/core/mcp/oauth"
+import { ConfigMCP } from "@ocnano/schema/config/mcp"
+import { Credential } from "@ocnano/core/credential"
+import { Database } from "@ocnano/core/database/database"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { Integration } from "@ocnano/core/integration"
+import { McpClient } from "@ocnano/core/mcp/client"
+import { McpOAuth } from "@ocnano/core/mcp/oauth"
 import { Cause, Effect, Exit, ManagedRuntime } from "effect"
 import { TestClock } from "effect/testing"
 import { hostEnvironmentLayer } from "./fixture/environment"
@@ -659,7 +659,7 @@ describe("MCP OAuth", () => {
       expect(url.searchParams.get("client_id")).toBe("registered")
       expect(registrations).toHaveLength(1)
       expect(registrations[0]).toMatchObject({
-        client_name: "opencode",
+        client_name: "ocnano",
         client_uri: "https://opencode.ai",
         logo_uri: "https://opencode.ai/web-app-manifest-512x512.png",
       })
@@ -748,7 +748,7 @@ describe("MCP OAuth refresh across processes", () => {
 
   const setup = async (url: string) => {
     const tmp = await tmpdir()
-    const file = path.join(tmp.path, "opencode.db")
+    const file = path.join(tmp.path, "ocnano.db")
     const first = instance(file)
     const second = instance(file)
     await first.runPromise(

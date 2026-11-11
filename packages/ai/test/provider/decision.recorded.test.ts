@@ -7,7 +7,7 @@ import {
   CloudflareWorkersAI,
   DigitalOcean,
   OpenAI,
-  OpenCode,
+  OcNano,
   OpenRouter,
   TypeSafeAI,
 } from "../../src/providers.js"
@@ -47,11 +47,11 @@ const typesafe = recordedTests({
   metadata: { model: "jev-latest" },
 })
 
-const opencode = recordedTests({
-  prefix: "opencode-decision",
-  provider: "opencode",
+const ocnano = recordedTests({
+  prefix: "ocnano-decision",
+  provider: "ocnano",
   protocol: "system-one",
-  requires: ["OPENCODE_API_KEY"],
+  requires: ["OCNANO_API_KEY"],
   metadata: { model: "jev-1.13-free" },
 })
 
@@ -114,8 +114,8 @@ describe("Decision recorded", () => {
     assertDecision(TypeSafeAI.configure({ apiKey: process.env.TYPESAFE_API_KEY ?? "fixture" }).decision("jev-latest")),
   )
 
-  opencode.effect("decides choice score and predicate questions", () =>
-    assertDecision(OpenCode.configure({ apiKey: process.env.OPENCODE_API_KEY ?? "fixture" }).decision("jev-1.13-free")),
+  ocnano.effect("decides choice score and predicate questions", () =>
+    assertDecision(OcNano.configure({ apiKey: process.env.OCNANO_API_KEY ?? "fixture" }).decision("jev-1.13-free")),
   )
 
   openrouter.effect("decides choice score and predicate questions", () =>

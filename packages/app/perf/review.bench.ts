@@ -16,7 +16,7 @@ export default bench({
 
   targets: {
     web: web({
-      expect: { title: "OpenCode" },
+      expect: { title: "OC Nano" },
       viewport: { width: 1366, height: 768 },
       async prepare(ctx) {
         const { params, url } = ctx

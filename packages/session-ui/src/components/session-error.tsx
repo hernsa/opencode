@@ -1,6 +1,6 @@
 import { createMemo, Show } from "solid-js"
-import { Card } from "@opencode/ui/card"
-import { Icon } from "@opencode/ui/icon"
+import { Card } from "@ocnano/ui/card"
+import { Icon } from "@ocnano/ui/icon"
 import { LinkedText } from "./linked-text"
 
 export function SessionErrorMessage(props: { message: string; links?: boolean }) {

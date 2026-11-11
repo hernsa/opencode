@@ -13,28 +13,28 @@ import { CLI_BINARIES, nodePtyPackage } from "./script/utils"
 const { FileMatcher } = createRequire(import.meta.resolve("electron-builder"))("app-builder-lib/out/fileMatcher")
 
 const channels = [
-  { channel: "dev", appId: "ai.opencode.desktop.dev", feed: "dev" },
-  { channel: "beta", appId: "ai.opencode.desktop.beta", feed: "beta" },
-  { channel: "prod", appId: "ai.opencode.desktop", feed: "latest" },
+  { channel: "dev", appId: "ai.ocnano.desktop.dev", feed: "dev" },
+  { channel: "beta", appId: "ai.ocnano.desktop.beta", feed: "beta" },
+  { channel: "prod", appId: "ai.ocnano.desktop", feed: "latest" },
 ] as const
 
 function load(channel: string, target?: string): Configuration {
-  const previous = process.env.OPENCODE_CHANNEL
-  const previousTarget = process.env.OPENCODE_TARGET
-  process.env.OPENCODE_CHANNEL = channel
+  const previous = process.env.OCNANO_CHANNEL
+  const previousTarget = process.env.OCNANO_TARGET
+  process.env.OCNANO_CHANNEL = channel
 
-  if (target !== undefined) process.env.OPENCODE_TARGET = target
-  else delete process.env.OPENCODE_TARGET
+  if (target !== undefined) process.env.OCNANO_TARGET = target
+  else delete process.env.OCNANO_TARGET
 
   try {
     return getConfig()
   } finally {
-    delete process.env.OPENCODE_CHANNEL
-    delete process.env.OPENCODE_TARGET
+    delete process.env.OCNANO_CHANNEL
+    delete process.env.OCNANO_TARGET
 
-    if (previous !== undefined) process.env.OPENCODE_CHANNEL = previous
+    if (previous !== undefined) process.env.OCNANO_CHANNEL = previous
 
-    if (previousTarget !== undefined) process.env.OPENCODE_TARGET = previousTarget
+    if (previousTarget !== undefined) process.env.OCNANO_TARGET = previousTarget
   }
 }
 
@@ -53,7 +53,7 @@ test.each(channels)("channel identity for $channel", ({ channel, appId, feed }) 
   // Every published channel updates from its own feed on the update service.
   expect(config.publish).toEqual({
     provider: "generic",
-    url: `https://opencode.ai/update/api/${feed}/desktop/opencode/`,
+    url: `https://opencode.ai/update/api/${feed}/desktop/ocnano/`,
     channel: "latest",
   })
   expect(config.extraMetadata?.desktopName).toBe(`${appId}.desktop`)
@@ -70,7 +70,7 @@ test.each(channels)("channel identity for $channel", ({ channel, appId, feed }) 
   for (const fpm of [config.deb?.fpm, config.rpm?.fpm]) {
     expect(fpm).toContainEqual(expect.stringContaining(`/usr/share/metainfo/${appId}.metainfo.xml`))
     expect(
-      fpm?.some((entry) => entry.endsWith("opencode-desktop.desktop=/usr/share/applications/opencode-desktop.desktop")),
+      fpm?.some((entry) => entry.endsWith("ocnano-desktop.desktop=/usr/share/applications/ocnano-desktop.desktop")),
     ).toBe(channel === "prod")
   }
 
@@ -81,10 +81,10 @@ test.each(channels)("channel identity for $channel", ({ channel, appId, feed }) 
 })
 
 test("legacy Linux launcher stays hidden", async () => {
-  const desktop = await Bun.file(path.join(import.meta.dirname, "resources/linux/opencode-desktop.desktop")).text()
-  expect(desktop).toContain("Exec=/opt/OpenCode/ai.opencode %U")
-  expect(desktop).toContain("Icon=ai.opencode")
-  expect(desktop).toContain("StartupWMClass=ai.opencode.desktop")
+  const desktop = await Bun.file(path.join(import.meta.dirname, "resources/linux/ocnano-desktop.desktop")).text()
+  expect(desktop).toContain("Exec=/opt/OC Nano/ai.ocnano %U")
+  expect(desktop).toContain("Icon=ai.ocnano")
+  expect(desktop).toContain("StartupWMClass=ai.ocnano.desktop")
   expect(desktop).toContain("NoDisplay=true")
 })
 
@@ -124,7 +124,7 @@ test("shared packaging defaults", async () => {
   const include = path.join(import.meta.dirname, "resources/windows/installer.nsh")
   expect(config.nsis?.include).toBe(include)
   expect(await Bun.file(include).exists()).toBe(true)
-  expect(config.files).toContain("!resources/opencode-cli*")
+  expect(config.files).toContain("!resources/ocnano-cli*")
 })
 
 // The oc-nano addon is a native module, so it ships as an extra resource next to the app instead
@@ -132,7 +132,7 @@ test("shared packaging defaults", async () => {
 // runtime fallback instead of carrying a binary they cannot load.
 test.each(CLI_BINARIES)("oc-nano addon resources for $target", ({ target, os, cpu }) => {
   const config = load("dev", target)
-  const cli = { from: "resources/", to: "", filter: ["opencode-cli", "opencode-cli.exe", "opencode-cli.version"] }
+  const cli = { from: "resources/", to: "", filter: ["ocnano-cli", "ocnano-cli.exe", "ocnano-cli.version"] }
   const addon = { from: "../core/src/native", to: "oc-nano", filter: ["oc_nano_native.node"] }
 
   expect(config.extraResources).toEqual(os === "win32" && cpu === "x64" ? [cli, addon] : [cli])
@@ -207,7 +207,7 @@ test("trims external dependencies without excluding runtime files", () => {
 
 test("the trimmed Zip.js package can still export compressed logs", async () => {
   const config = load("dev")
-  const dir = await mkdtemp(path.join(os.tmpdir(), "opencode-zip-package-"))
+  const dir = await mkdtemp(path.join(os.tmpdir(), "ocnano-zip-package-"))
   const source = path.dirname(fileURLToPath(import.meta.resolve("@zip.js/zip.js/package.json")))
   const filter = trimFilter(dir, config)
 

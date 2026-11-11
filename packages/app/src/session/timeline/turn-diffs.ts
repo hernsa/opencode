@@ -1,5 +1,5 @@
-import type { FileDiffInfo } from "@opencode/client/promise"
-import type { TurnDiffInput } from "@opencode/session-ui/context"
+import type { FileDiffInfo } from "@ocnano/client/promise"
+import type { TurnDiffInput } from "@ocnano/session-ui/context"
 import { createSignal, onCleanup, untrack } from "solid-js"
 import {
   createTurnDiffCacheState,

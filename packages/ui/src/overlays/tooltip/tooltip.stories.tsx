@@ -1,7 +1,7 @@
 import { Tooltip } from "./tooltip"
-import { Button } from "@opencode/ui/button"
-import { Keybind } from "@opencode/ui/keybind"
-import { Menu } from "@opencode/ui/menu"
+import { Button } from "@ocnano/ui/button"
+import { Keybind } from "@ocnano/ui/keybind"
+import { Menu } from "@ocnano/ui/menu"
 
 const docs = `### Overview
 Floating tooltip built on Kobalte's tooltip primitive.

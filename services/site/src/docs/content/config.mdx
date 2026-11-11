@@ -2,22 +2,22 @@
 title: "Config"
 ---
 
-Create `opencode.jsonc` in your project to configure OpenCode. Add the schema for editor validation, then set only the options you need.
+Create `ocnano.jsonc` in your project to configure OC Nano. Add the schema for editor validation, then set only the options you need.
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "anthropic/claude-sonnet-5-5",
 }
 ```
 
-You can also ask OpenCode to update this file for you.
+You can also ask OC Nano to update this file for you.
 
 ## Format
 
-OpenCode supports JSON and JSONC. Use JSONC when you want comments or trailing commas.
+OC Nano supports JSON and JSONC. Use JSONC when you want comments or trailing commas.
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "$schema": "https://opencode.ai/config.json",
   // Use this model by default.
@@ -31,29 +31,29 @@ Put managed, machine-wide settings in the system configuration directory:
 
 | Platform | Directory                               |
 | -------- | --------------------------------------- |
-| macOS    | `/Library/Application Support/opencode` |
-| Linux    | `/etc/opencode`                         |
-| Windows  | `%ProgramData%\opencode`                |
+| macOS    | `/Library/Application Support/ocnano` |
+| Linux    | `/etc/ocnano`                         |
+| Windows  | `%ProgramData%\OC Nano`                |
 
 The system directory works like the global directory. Besides
-`opencode.json(c)`, it loads `agents/`, `commands/`, `skills/`, and `plugins/`
+`ocnano.json(c)`, it loads `agents/`, `commands/`, `skills/`, and `plugins/`
 for every user on the machine:
 
 ```text
-/etc/opencode/
-├── opencode.json
+/etc/ocnano/
+├── ocnano.json
 ├── agents/review.md
 ├── commands/release.md
 └── skills/deploy/SKILL.md
 ```
 
-On macOS, OpenCode also reads managed preferences that MDM tools deploy for the
-`ai.opencode.managed` domain. A user-specific profile replaces the
+On macOS, OC Nano also reads managed preferences that MDM tools deploy for the
+`ai.ocnano.managed` domain. A user-specific profile replaces the
 machine-wide one:
 
 ```text
-/Library/Managed Preferences/<user>/ai.opencode.managed.plist
-/Library/Managed Preferences/ai.opencode.managed.plist
+/Library/Managed Preferences/<user>/ai.ocnano.managed.plist
+/Library/Managed Preferences/ai.ocnano.managed.plist
 ```
 
 Managed settings have the highest precedence, so users and projects cannot
@@ -65,42 +65,42 @@ configuration to enforce restrictions.
 Put user settings for every project in the global configuration:
 
 ```text
-~/.config/opencode/opencode.json(c)
+~/.config/ocnano/ocnano.json(c)
 ```
 
 Put project settings in either of these files:
 
 ```text
-/home/user/projects/my-app/opencode.json(c)
-/home/user/projects/my-app/.opencode/opencode.json(c)
+/home/user/projects/my-app/ocnano.json(c)
+/home/user/projects/my-app/.ocnano/ocnano.json(c)
 ```
 
-OpenCode searches from the current directory to the filesystem root. It first
-merges direct `opencode.json(c)` files from the farthest directory to the
-closest, then merges files inside `.opencode` directories in the same order.
-This means every discovered `.opencode` config overrides every direct config.
+OC Nano searches from the current directory to the filesystem root. It first
+merges direct `ocnano.json(c)` files from the farthest directory to the
+closest, then merges files inside `.ocnano` directories in the same order.
+This means every discovered `.ocnano` config overrides every direct config.
 Use one form throughout a directory tree unless you need that behavior.
 
-For example, start OpenCode from `/home/user/projects/acme/packages/web`:
+For example, start OC Nano from `/home/user/projects/acme/packages/web`:
 
 ```text
-/etc/opencode/opencode.json
-~/.config/opencode/opencode.json
+/etc/ocnano/ocnano.json
+~/.config/ocnano/ocnano.json
 
 /home/user/projects/acme/
-├── opencode.json
+├── ocnano.json
 └── packages/
     └── web/
-        ├── opencode.json
+        ├── ocnano.json
         └── src/
 ```
 
-OpenCode applies these files from lowest to highest precedence:
+OC Nano applies these files from lowest to highest precedence:
 
-1. `~/.config/opencode/opencode.json`
-2. `/home/user/projects/acme/opencode.json`
-3. `/home/user/projects/acme/packages/web/opencode.json`
-4. `/etc/opencode/opencode.json`
+1. `~/.config/ocnano/ocnano.json`
+2. `/home/user/projects/acme/ocnano.json`
+3. `/home/user/projects/acme/packages/web/ocnano.json`
+4. `/etc/ocnano/ocnano.json`
 
 The package config overrides matching settings from the repository config,
 which overrides the global config. The system config overrides all of them.
@@ -110,13 +110,13 @@ policies outrank all of them.
 
 ## Schema
 
-The complete OpenCode configuration schema is available at
+The complete OC Nano configuration schema is available at
 [opencode.ai/config.json](https://opencode.ai/config.json).
 
 Add the `$schema` field to your configuration file to enable validation and
 autocomplete in editors that support JSON Schema:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "$schema": "https://opencode.ai/config.json"
 }
@@ -178,7 +178,7 @@ Project-level values are ignored.
 
 ### Username
 
-Set a username. OpenCode accepts this field but does not display it in
+Set a username. OC Nano accepts this field but does not display it in
 conversations.
 
 ```jsonc
@@ -317,7 +317,7 @@ Set the maximum number of lines and bytes retained from a tool result.
 
 ### Search
 
-Choose how OpenCode searches the web. Use `"random"` to select an available
+Choose how OC Nano searches the web. Use `"random"` to select an available
 provider automatically.
 
 ```jsonc
@@ -416,7 +416,7 @@ considerations, and [cache lifetime](/models#cache-lifetime) for `cache.ttl`.
 
 ### Skills
 
-Add directories or URLs that OpenCode should search for agent skills.
+Add directories or URLs that OC Nano should search for agent skills.
 
 ```jsonc
 {
@@ -424,7 +424,7 @@ Add directories or URLs that OpenCode should search for agent skills.
 }
 ```
 
-See the [skills guide](/skills) for skill structure and automatic discovery under `.opencode/skills/`.
+See the [skills guide](/skills) for skill structure and automatic discovery under `.ocnano/skills/`.
 
 ### Commands
 
@@ -445,7 +445,7 @@ See the [commands guide](/commands) for arguments, models, agents, and file-base
 
 ### Instructions
 
-Declare additional instruction files, globs, or HTTP(S) URLs. OpenCode loads
+Declare additional instruction files, globs, or HTTP(S) URLs. OC Nano loads
 them alongside discovered `AGENTS.md` files.
 
 ```jsonc
@@ -480,7 +480,7 @@ See the [references guide](/references) for shorthand, visibility, and path reso
 
 ### Worktrees
 
-Set the parent directory for new local worktrees. OpenCode appends the requested or generated worktree name.
+Set the parent directory for new local worktrees. OC Nano appends the requested or generated worktree name.
 
 ```jsonc
 {
@@ -520,7 +520,7 @@ accepts options.
 ```jsonc
 {
   "plugins": [
-    "opencode-example-plugin",
+    "ocnano-example-plugin",
     {
       "package": "./plugins/local",
       "options": {
@@ -569,10 +569,10 @@ You can use variable substitution in your config files to reference environment 
 
 Use `{env:VARIABLE_NAME}` to substitute environment variables:
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "{env:OPENCODE_MODEL}",
+  "model": "{env:OCNANO_MODEL}",
   "providers": {
     "anthropic": {
       "settings": {
@@ -589,7 +589,7 @@ If the environment variable is not set, it will be replaced with an empty string
 
 Use `{file:path/to/file}` to substitute the contents of a file:
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "$schema": "https://opencode.ai/config.json",
   "providers": {
@@ -623,7 +623,7 @@ These are useful for:
 
 All experimental settings live under the `experimental` key:
 
-```jsonc title="opencode.jsonc"
+```jsonc title="ocnano.jsonc"
 {
   "$schema": "https://opencode.ai/config.json",
   "experimental": {
@@ -662,7 +662,7 @@ automatic compaction doesn't pause the session. Defaults to `false`. See
 ### Image generation
 
 `image_generate` sets the default model for the [`experimental_image_generate`](/tools#image-generate) tool, as
-`providerID/modelID`, optionally with `#variant`. When that model isn't available or can't handle a request, OpenCode
+`providerID/modelID`, optionally with `#variant`. When that model isn't available or can't handle a request, OC Nano
 picks another image model automatically.
 
 ```jsonc
@@ -677,7 +677,7 @@ picks another image model automatically.
 
 ### Location idle timeout
 
-`location_idle_timeout` controls how long a project location can go without session activity before OpenCode unloads
+`location_idle_timeout` controls how long a project location can go without session activity before OC Nano unloads
 its services. It takes a duration such as `"2 hours"` and defaults to `"60 minutes"`. Running sessions and background
 jobs keep a location loaded. Set it to `false` to never unload idle locations. Project config can override the global
 value.

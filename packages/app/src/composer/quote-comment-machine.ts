@@ -1,5 +1,5 @@
 import { createSignal, getOwner, onCleanup, untrack } from "solid-js"
-import type { ComposerQuoteAnchor } from "@opencode/plugin/gui"
+import type { ComposerQuoteAnchor } from "@ocnano/plugin/gui"
 import type { QuoteSource } from "./quote-source"
 
 /**

@@ -1,7 +1,7 @@
 import { expect } from "bun:test"
-import { Location } from "@opencode/core/location"
-import { LocationServiceMap } from "@opencode/core/location-service-map"
-import { Mcp } from "@opencode/core/mcp/index"
+import { Location } from "@ocnano/core/location"
+import { LocationServiceMap } from "@ocnano/core/location-service-map"
+import { Mcp } from "@ocnano/core/mcp/index"
 import { Context, Effect, Layer } from "effect"
 import { HttpEffect, HttpRouter, HttpServer } from "effect/http"
 import { echoMcpHandler } from "../../core/test/fixture/mcp-echo"
@@ -16,7 +16,7 @@ const mcpServer = "https://mcp.invalid/mcp"
 
 it.live("sends Console config and remote MCP requests through the embedder's fetch", () =>
   Effect.gen(function* () {
-    const tmp = yield* tmpdirScoped("opencode-fetch-option-")
+    const tmp = yield* tmpdirScoped("ocnano-fetch-option-")
     const requested: string[] = []
     const methods: string[] = []
     const mcp = echoMcpHandler()
@@ -51,13 +51,13 @@ it.live("sends Console config and remote MCP requests through the embedder's fet
       .pipe(HttpEffect.toWebHandlerWith(context))
     const request = (method: "GET" | "POST", route: string, body?: unknown) =>
       Effect.promise(async (signal) => {
-        const url = new URL(route, "http://opencode.local")
+        const url = new URL(route, "http://ocnano.local")
         url.searchParams.set("location[directory]", tmp.path)
         const response = await handler(
           new Request(url, {
             method,
             headers: {
-              authorization: `Basic ${btoa("opencode:secret")}`,
+              authorization: `Basic ${btoa("ocnano:secret")}`,
               ...(body === undefined ? {} : { "content-type": "application/json" }),
             },
             body: body === undefined ? undefined : JSON.stringify(body),
@@ -78,7 +78,7 @@ it.live("sends Console config and remote MCP requests through the embedder's fet
 
     expect(
       yield* request("POST", "/api/credential", {
-        integrationID: "opencode",
+        integrationID: "ocnano",
         value: { type: "key", key: "secret", metadata: { server: consoleServer } },
       }),
     ).toBe(200)

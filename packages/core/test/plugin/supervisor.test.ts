@@ -2,22 +2,22 @@ import { describe, expect } from "bun:test"
 import { Deferred, Duration, Effect, Layer, LayerMap, Stream } from "effect"
 import { TestClock } from "effect/testing"
 import type { LanguageModelV3 } from "@ai-sdk/provider"
-import { define } from "@opencode/plugin/effect/plugin"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { LayerNode } from "@opencode/util/effect/layer-node"
-import { Global } from "@opencode/util/global"
-import { Npm } from "@opencode/util/npm"
-import { AISDK } from "@opencode/core/aisdk"
-import { Command } from "@opencode/core/command"
-import { ConfigPluginSource } from "@opencode/core/config/plugin/source"
-import { Instance } from "@opencode/core/instance"
-import { LocationServiceMap } from "@opencode/core/location-services"
-import { Location } from "@opencode/core/location"
-import { Model } from "@opencode/core/model"
-import { Plugin } from "@opencode/core/plugin"
-import { Provider } from "@opencode/core/provider"
-import { SdkPlugins } from "@opencode/core/plugin/sdk"
-import { AbsolutePath } from "@opencode/core/schema"
+import { define } from "@ocnano/plugin/effect/plugin"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
+import { Global } from "@ocnano/util/global"
+import { Npm } from "@ocnano/util/npm"
+import { AISDK } from "@ocnano/core/aisdk"
+import { Command } from "@ocnano/core/command"
+import { ConfigPluginSource } from "@ocnano/core/config/plugin/source"
+import { Instance } from "@ocnano/core/instance"
+import { LocationServiceMap } from "@ocnano/core/location-services"
+import { Location } from "@ocnano/core/location"
+import { Model } from "@ocnano/core/model"
+import { Plugin } from "@ocnano/core/plugin"
+import { Provider } from "@ocnano/core/provider"
+import { SdkPlugins } from "@ocnano/core/plugin/sdk"
+import { AbsolutePath } from "@ocnano/core/schema"
 import { Database } from "../../src/database/database"
 import { Bus } from "../../src/bus"
 import { tempGlobalLayer } from "../fixture/global"
@@ -142,7 +142,7 @@ describe("PluginSupervisor", () => {
       expect(state.instance).toBeUndefined()
       // Builtins stay active: the duplicate is a plugin failure, not a generation defect.
       expect(
-        state.inventory.some((plugin) => plugin.id?.startsWith("opencode.") && plugin.state.status === "active"),
+        state.inventory.some((plugin) => plugin.id?.startsWith("ocnano.") && plugin.state.status === "active"),
       ).toBe(true)
     }),
   )
@@ -233,7 +233,7 @@ describe("PluginSupervisor", () => {
     }),
   )
 
-  for (const targets of [["opencode.config.policy", "opencode.provider.opencode", "opencode.config.agent"], ["*"]]) {
+  for (const targets of [["ocnano.config.policy", "ocnano.provider.ocnano", "ocnano.config.agent"], ["*"]]) {
     it.effect(`keeps policy enforcement and the Console connection through plugin removals: ${targets}`, () =>
       Effect.gen(function* () {
         source.operations = targets.map((target) => ({ type: "remove", target }))
@@ -248,10 +248,10 @@ describe("PluginSupervisor", () => {
           Effect.provide(locations.get(Location.Ref.make({ directory: AbsolutePath.make(directory.path) }))),
         )
         const status = (id: string) => inventory.find((plugin) => plugin.id === id)?.state.status
-        expect(status("opencode.config.policy")).toBe("active")
-        expect(status("opencode.provider.opencode")).toBe("active")
+        expect(status("ocnano.config.policy")).toBe("active")
+        expect(status("ocnano.provider.ocnano")).toBe("active")
         // Removals still apply to everything else, including instance and builtin plugins.
-        expect(status("opencode.config.agent")).toBeUndefined()
+        expect(status("ocnano.config.agent")).toBeUndefined()
         expect(inventory.some((plugin) => plugin.id === id)).toBe(targets[0] !== "*")
       }).pipe(
         Effect.ensuring(
@@ -350,7 +350,7 @@ describe("PluginSupervisor", () => {
               .hook(
                 "sdk",
                 (evt) => {
-                  if (evt.package !== "agents/models/opencode") return Effect.void
+                  if (evt.package !== "agents/models/ocnano") return Effect.void
                   evt.sdk = { languageModel: () => fakeLanguageModel }
                   return Effect.void
                 },
@@ -369,7 +369,7 @@ describe("PluginSupervisor", () => {
           Model.Info.make({
             ...Model.Info.default(providerID, Model.ID.make("workers-ai")),
             modelID: Model.ID.make("workers-ai"),
-            package: "aisdk:agents/models/opencode",
+            package: "aisdk:agents/models/ocnano",
           }),
         )
       }).pipe(

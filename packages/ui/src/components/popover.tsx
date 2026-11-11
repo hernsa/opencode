@@ -15,8 +15,8 @@ import {
   ValidComponent,
 } from "solid-js"
 import { useI18n } from "../context/i18n"
-import { Icon } from "@opencode/ui/icon"
-import { IconButton } from "@opencode/ui/icon-button"
+import { Icon } from "@ocnano/ui/icon"
+import { IconButton } from "@ocnano/ui/icon-button"
 import {
   createPopoverState,
   EMPTY_POPOVER_STACK,

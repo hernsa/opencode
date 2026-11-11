@@ -21,14 +21,14 @@ export function renderLlmsTxt(site: URL, set: DocsSet = latestDocs, navigation: 
   return [
     ...(set.id === "latest"
       ? [
-          "# OpenCode V2 Documentation",
+          "# OC Nano V2 Documentation",
           "",
-          "> Official documentation for using, configuring, and building with OpenCode V2.",
+          "> Official documentation for using, configuring, and building with OC Nano V2.",
         ]
       : [
-          "# OpenCode V1 Documentation",
+          "# OC Nano V1 Documentation",
           "",
-          "> Documentation for OpenCode V1. The latest docs, for OpenCode V2, are at https://opencode.ai/docs/llms.txt.",
+          "> Documentation for OC Nano V1. The latest docs, for OC Nano V2, are at https://opencode.ai/docs/llms.txt.",
         ]),
     "",
     ...sections,

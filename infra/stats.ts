@@ -9,7 +9,7 @@ import { domain, zoneID } from "./stage"
 ////////////////
 
 const cluster = planetscale.getDatabaseOutput({
-  name: "opencode-stats",
+  name: "ocnano-stats",
   organization: "anomalyco",
 })
 

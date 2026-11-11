@@ -1,18 +1,18 @@
 import { describe, expect } from "bun:test"
-import { LanguageModel } from "@opencode/ai/effect"
-import { OpenAIChat } from "@opencode/ai/protocols"
+import { LanguageModel } from "@ocnano/ai/effect"
+import { OpenAIChat } from "@ocnano/ai/protocols"
 import { Effect, Fiber, Layer, Ref, Stream } from "effect"
-import { Integration } from "@opencode/core/integration"
-import { Credential } from "@opencode/core/credential"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { LayerNode } from "@opencode/util/effect/layer-node"
-import { Bus } from "@opencode/core/bus"
-import { Location } from "@opencode/core/location"
-import { Model } from "@opencode/core/model"
-import { ModelResolver } from "@opencode/core/model-resolver"
-import { Provider } from "@opencode/core/provider"
-import { AbsolutePath } from "@opencode/core/schema"
-import { Money } from "@opencode/schema/money"
+import { Integration } from "@ocnano/core/integration"
+import { Credential } from "@ocnano/core/credential"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
+import { Bus } from "@ocnano/core/bus"
+import { Location } from "@ocnano/core/location"
+import { Model } from "@ocnano/core/model"
+import { ModelResolver } from "@ocnano/core/model-resolver"
+import { Provider } from "@ocnano/core/provider"
+import { AbsolutePath } from "@ocnano/core/schema"
+import { Money } from "@ocnano/schema/money"
 import { withEnv } from "./fixture/env"
 import { location } from "./fixture/location"
 import { testEffect } from "./lib/effect"
@@ -43,7 +43,7 @@ describe("Provider and Model", () => {
         yield* providers.transform((editor) => editor.update(providerID, () => {}))
         yield* models.transform((editor) =>
           editor.update(providerID, modelID, (model) => {
-            model.package = path === "aisdk" ? Provider.aisdk("@ai-sdk/fixture") : "@opencode/ai/providers/openai"
+            model.package = path === "aisdk" ? Provider.aisdk("@ai-sdk/fixture") : "@ocnano/ai/providers/openai"
             model.settings = {
               apiKey: path === "empty-key" ? "" : "fixture-key",
               baseURL: "https://fixture.example/v1",
@@ -477,12 +477,12 @@ describe("Provider and Model", () => {
       })
 
       expect(required(yield* providers.get(providerID))).toMatchObject({
-        package: "@opencode/ai/providers/amazon-bedrock",
+        package: "@ocnano/ai/providers/amazon-bedrock",
         settings: { region: "us-east-1" },
         body: { tag: "provider" },
       })
       const model = required(yield* models.get(providerID, modelID))
-      expect(model.package).toBe("@opencode/ai/providers/amazon-bedrock")
+      expect(model.package).toBe("@ocnano/ai/providers/amazon-bedrock")
       expect(model.settings).not.toHaveProperty("reasoningConfig")
       expect(model.body).toMatchObject({
         additionalModelRequestFields: { thinking: { type: "adaptive" }, output_config: { effort: "high" } },
@@ -559,15 +559,15 @@ describe("Provider and Model", () => {
     }),
   )
 
-  it.effect("defaults to big-pickle when only free OpenCode models are available", () =>
+  it.effect("defaults to big-pickle when only free ocnano models are available", () =>
     Effect.gen(function* () {
       const providers = yield* Provider.Service
       const models = yield* Model.Service
       yield* providers.transform((editor) => {
-        editor.update(Provider.ID.opencode, () => {})
+        editor.update(Provider.ID.ocnano, () => {})
         ;["muse-spark-1.3-contributor-free", "new-free", "deepseek-v4.1-flash-free", "big-pickle"].forEach(
           (id, index) =>
-            editor.models.update(Provider.ID.opencode, Model.ID.make(id), (model) => {
+            editor.models.update(Provider.ID.ocnano, Model.ID.make(id), (model) => {
               model.time.released = 4000 - index * 1000
             }),
         )
@@ -588,11 +588,11 @@ describe("Provider and Model", () => {
       const providers = yield* Provider.Service
       const models = yield* Model.Service
       yield* providers.transform((editor) => {
-        editor.update(Provider.ID.opencode, () => {})
-        editor.models.update(Provider.ID.opencode, Model.ID.make("big-pickle"), (model) => {
+        editor.update(Provider.ID.ocnano, () => {})
+        editor.models.update(Provider.ID.ocnano, Model.ID.make("big-pickle"), (model) => {
           model.time.released = 1000
         })
-        editor.models.update(Provider.ID.opencode, Model.ID.make("paid"), (model) => {
+        editor.models.update(Provider.ID.ocnano, Model.ID.make("paid"), (model) => {
           model.time.released = 2000
           model.cost = [
             {

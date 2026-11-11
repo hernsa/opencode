@@ -13,19 +13,19 @@ import {
 import { createStore } from "solid-js/store"
 import { Dynamic } from "solid-js/web"
 import { createResizeObserver } from "@solid-primitives/resize-observer"
-import { PreviewControls } from "@opencode/ui/preview-controls"
-import { useDialog } from "@opencode/ui/context/dialog"
-import { FileIcon } from "@opencode/ui/file-icon"
-import { Icon } from "@opencode/ui/icon"
-import { IconButton } from "@opencode/ui/icon-button"
-import { ImagePreview } from "@opencode/ui/image-preview"
-import { Loader } from "@opencode/ui/loader"
-import { showToast } from "@opencode/ui/toast"
-import { Markdown } from "@opencode/session-ui/markdown"
-import { MarkdownProvider, useMarkdown } from "@opencode/session-ui/context/markdown"
-import { artifactKind } from "@opencode/util/artifact"
-import { getDirectory, getFilename } from "@opencode/util/path"
-import { createKeyed, usePlugin, type FileContent, type MountedSession, type SessionScreen } from "@opencode/plugin/gui"
+import { PreviewControls } from "@ocnano/ui/preview-controls"
+import { useDialog } from "@ocnano/ui/context/dialog"
+import { FileIcon } from "@ocnano/ui/file-icon"
+import { Icon } from "@ocnano/ui/icon"
+import { IconButton } from "@ocnano/ui/icon-button"
+import { ImagePreview } from "@ocnano/ui/image-preview"
+import { Loader } from "@ocnano/ui/loader"
+import { showToast } from "@ocnano/ui/toast"
+import { Markdown } from "@ocnano/session-ui/markdown"
+import { MarkdownProvider, useMarkdown } from "@ocnano/session-ui/context/markdown"
+import { artifactKind } from "@ocnano/util/artifact"
+import { getDirectory, getFilename } from "@ocnano/util/path"
+import { createKeyed, usePlugin, type FileContent, type MountedSession, type SessionScreen } from "@ocnano/plugin/gui"
 import {
   blobUrlFromContent,
   bytesFromContent,
@@ -35,8 +35,8 @@ import {
   splitFrontmatter,
   type FrontmatterProperty,
 } from "./artifact"
-import { FileViewer } from "@opencode/plugin/gui/file"
-import { uuid } from "@opencode/util/uuid"
+import { FileViewer } from "@ocnano/plugin/gui/file"
+import { uuid } from "@ocnano/util/uuid"
 import { ArtifactToolbar } from "./artifact-toolbar"
 import {
   createArtifactViewerState,

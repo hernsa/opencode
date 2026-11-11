@@ -76,7 +76,7 @@ export function localeOf(path: string) {
  * channel and whether they're for the visitor's system, and the app stores and editor marketplaces (`mobile`, `ide`).
  */
 export function downloadOf(link: URL) {
-  const build = /^\/update\/api\/([a-z0-9-]+)\/(desktop|cli)\/opencode\/([A-Za-z0-9_.-]+)$/.exec(link.pathname)
+  const build = /^\/update\/api\/([a-z0-9-]+)\/(desktop|cli)\/ocnano\/([A-Za-z0-9_.-]+)$/.exec(link.pathname)
   // Always production's: there is one release service (lib/download.ts).
   if (build && link.hostname === "opencode.ai")
     return {

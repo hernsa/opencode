@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test"
 import { Deferred, Effect, Fiber } from "effect"
-import { Credential } from "@opencode/core/credential"
-import { Integration } from "@opencode/schema/integration"
-import { LayerNode } from "@opencode/util/effect/layer-node"
+import { Credential } from "@ocnano/core/credential"
+import { Integration } from "@ocnano/schema/integration"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
 import { testEffect } from "./lib/effect"
 
 const it = testEffect(LayerNode.compile(Credential.node))

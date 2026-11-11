@@ -8,7 +8,7 @@ import { pluginsLoaded } from "./fixture/routes"
 
 it.live("integration policy filters /connect and blocks denied integrations and providers", () =>
   Effect.gen(function* () {
-    const tmp = yield* tmpdirScoped("opencode-integration-policy-")
+    const tmp = yield* tmpdirScoped("ocnano-integration-policy-")
     const context = yield* Layer.build(
       createRoutes({
         password: "secret",
@@ -22,7 +22,7 @@ it.live("integration policy filters /connect and blocks denied integrations and 
             providers: {
               custom: {
                 name: "Configured Custom Provider",
-                package: "@opencode/ai/providers/openai-compatible",
+                package: "@ocnano/ai/providers/openai-compatible",
                 settings: { apiKey: "secret" },
                 models: { chat: {} },
               },
@@ -30,9 +30,9 @@ it.live("integration policy filters /connect and blocks denied integrations and 
             mcp: { servers: { wiki: { type: "remote", url: "http://127.0.0.1:9/mcp" } } },
             policies: [
               { action: "integration.connect", resource: "*", effect: "deny" },
-              { action: "integration.connect", resource: "opencode", effect: "allow" },
+              { action: "integration.connect", resource: "ocnano", effect: "allow" },
               { action: "integration.use", resource: "*", effect: "deny" },
-              { action: "integration.use", resource: "opencode#org_01M3CAP8H43Z49CER6NT0Y3ZF1", effect: "allow" },
+              { action: "integration.use", resource: "ocnano#org_01M3CAP8H43Z49CER6NT0Y3ZF1", effect: "allow" },
             ],
           }),
         },
@@ -43,13 +43,13 @@ it.live("integration policy filters /connect and blocks denied integrations and 
       .pipe(HttpEffect.toWebHandlerWith(context))
     const request = (method: "GET" | "POST", route: string, body?: unknown) =>
       Effect.promise(async (signal) => {
-        const url = new URL(route, "http://opencode.local")
+        const url = new URL(route, "http://ocnano.local")
         url.searchParams.set("location[directory]", tmp.path)
         const response = await handler(
           new Request(url, {
             method,
             headers: {
-              authorization: `Basic ${btoa("opencode:secret")}`,
+              authorization: `Basic ${btoa("ocnano:secret")}`,
               ...(body === undefined ? {} : { "content-type": "application/json" }),
             },
             body: body === undefined ? undefined : JSON.stringify(body),
@@ -65,7 +65,7 @@ it.live("integration policy filters /connect and blocks denied integrations and 
     // MCP sign-ins are outside integration policy; `mcp.use` governs MCP servers.
     const listed: { id: string; metadata?: { source?: string } }[] = integrations.body.data
     expect(listed.filter((integration) => integration.metadata?.source !== "mcp").map((item) => item.id)).toEqual([
-      "opencode",
+      "ocnano",
     ])
     const mcp = listed.find((integration) => integration.metadata?.source === "mcp")
     expect(mcp?.id).toStartWith("mcp_")

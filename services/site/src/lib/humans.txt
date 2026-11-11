@@ -61,7 +61,7 @@
     Hosting .......... Cloudflare via SST 4
     Text face ....................... Inter
     Code face ................ OpenTUI Mono
-    opencode.try() ................ Text.js
+    ocnano.try() ................ Text.js
     Data ............... GitHub, models.dev
 
 

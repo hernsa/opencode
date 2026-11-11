@@ -1,7 +1,7 @@
 {
-  "name": "@opencode/pty",
+  "name": "@ocnano/pty",
   "version": "0.5.0",
-  "description": "Persistent PTY service for OpenCode",
+  "description": "Persistent PTY service for OC Nano",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -17,7 +17,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "opencode-pty": "./bin/opencode-pty.js"
+    "ocnano-pty": "./bin/ocnano-pty.js"
   },
   "files": [
     "bin",

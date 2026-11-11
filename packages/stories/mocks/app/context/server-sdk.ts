@@ -3,7 +3,7 @@ import { ServerScope } from "@/runtime/server/scope"
 
 const providers = [
   "opencode-go",
-  "opencode",
+  "ocnano",
   "anthropic",
   "openai",
   "google",

@@ -1,5 +1,5 @@
-import type { FileContent } from "@opencode/plugin/gui"
-import { artifactKind, type ArtifactKind } from "@opencode/util/artifact"
+import type { FileContent } from "@ocnano/plugin/gui"
+import { artifactKind, type ArtifactKind } from "@ocnano/util/artifact"
 
 export type ArtifactMode = "preview" | "source"
 

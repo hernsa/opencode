@@ -1,4 +1,4 @@
-import type { SessionMessageInfo } from "@opencode/client/promise"
+import type { SessionMessageInfo } from "@ocnano/client/promise"
 import { expect, test, type Page } from "@playwright/test"
 import { REMOTE_SERVER, seed, sessionHref } from "../utils/app"
 import { fixture, mockStressTimeline } from "../utils/session-fixture"
@@ -124,7 +124,7 @@ for (const direction of ["ltr", "rtl"] as const) {
     await expect(menu.getByRole("button", { name: "Plugins", exact: true })).toBeVisible()
     await expect(menu).not.toContainText(fixture.project.name)
     await expect(menu.getByText("No changes", { exact: true })).toHaveCount(0)
-    await expect(details.locator('use[href="#opencode-v2-icon-window-analytics"]')).toHaveCount(1)
+    await expect(details.locator('use[href="#ocnano-v2-icon-window-analytics"]')).toHaveCount(1)
 
     await page.keyboard.press("Escape")
     await expect(menu).toBeHidden()
@@ -204,8 +204,8 @@ test("the web session header leaves window dragging to the browser", async ({ pa
 })
 
 test.describe("location", () => {
-  const root = "C:/OpenCode/Location"
-  const worktree = "C:/OpenCode/Worktrees/location/quiet-falcon"
+  const root = "C:/OC Nano/Location"
+  const worktree = "C:/OC Nano/Worktrees/location/quiet-falcon"
   const trigger = (page: Page) => page.locator('[data-slot="session-location-trigger"]')
 
   const workspace = {
@@ -374,7 +374,7 @@ test.describe("location", () => {
     await expect(trigger(page).locator('[data-slot="session-location-project"]')).toHaveText("Location")
     await expect(trigger(page).locator('[data-slot="session-location-worktree"]')).toHaveText("quiet-falcon")
     await expect(trigger(page)).not.toContainText("/")
-    await expect(trigger(page).locator('svg:has(use[href="#opencode-v2-icon-outline-worktree"])')).toBeVisible()
+    await expect(trigger(page).locator('svg:has(use[href="#ocnano-v2-icon-outline-worktree"])')).toBeVisible()
     await trigger(page).click()
     const card = page.locator('[data-slot="session-location-card"]')
     const path = card.getByRole("menuitem", { name: worktree, exact: true })
@@ -474,7 +474,7 @@ test.describe("location", () => {
         seed: {
           storage: {
             ...reviewTabs(worktree, "ses_location"),
-            "opencode.global.dat:plugin.file.app": { app: app.id },
+            "ocnano.global.dat:plugin.file.app": { app: app.id },
           },
         },
       })
@@ -516,7 +516,7 @@ test.describe("location", () => {
     const mock = await mockWorkspace(page, {
       ...workspace,
       seed: {
-        storage: { ...reviewTabs(worktree, "ses_location"), "opencode.global.dat:plugin.file.app": { app: "vscode" } },
+        storage: { ...reviewTabs(worktree, "ses_location"), "ocnano.global.dat:plugin.file.app": { app: "vscode" } },
       },
     })
 
@@ -703,7 +703,7 @@ test.describe("revert", () => {
       id: "msg_first_reply",
       type: "assistant",
       agent: "build",
-      model: { id: "test", providerID: "opencode" },
+      model: { id: "test", providerID: "ocnano" },
       content: [{ type: "text", text: "First reply" }],
       time: { created: 2, completed: 3 },
     },

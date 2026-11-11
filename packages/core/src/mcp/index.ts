@@ -1,9 +1,9 @@
 export * as Mcp from "./index.js"
 
-import { Mcp } from "@opencode/schema/mcp"
-import { McpEvent } from "@opencode/schema/mcp-event"
-import { ephemeral } from "@opencode/schema/event"
-import type { Session } from "@opencode/schema/session"
+import { Mcp } from "@ocnano/schema/mcp"
+import { McpEvent } from "@ocnano/schema/mcp-event"
+import { ephemeral } from "@ocnano/schema/event"
+import type { Session } from "@ocnano/schema/session"
 import type { Transport } from "@modelcontextprotocol/client"
 import { createHash } from "node:crypto"
 import { isDeepStrictEqual } from "node:util"
@@ -23,8 +23,8 @@ import {
   Types,
 } from "effect"
 import { FetchHttpClient } from "effect/http"
-import { makeLocationNode } from "@opencode/util/effect/app-node"
-import { httpFetch } from "@opencode/util/effect/app-node-platform"
+import { makeLocationNode } from "@ocnano/util/effect/app-node"
+import { httpFetch } from "@ocnano/util/effect/app-node-platform"
 import { Credential } from "../credential.js"
 import { Bus } from "../bus.js"
 import { Environment } from "../environment/index.js"
@@ -32,7 +32,7 @@ import { Form } from "../form.js"
 import { Integration } from "../integration.js"
 import { KeyedMutex } from "../effect/keyed-mutex.js"
 import { Location } from "../location.js"
-import { waitForAbort } from "@opencode/util/process"
+import { waitForAbort } from "@ocnano/util/process"
 import { State } from "../state.js"
 import type { McpClient } from "./client.js"
 import { McpConnection } from "./connection.js"
@@ -184,7 +184,7 @@ export interface Interface extends State.Transformable<Editor> {
   }) => Effect.Effect<ResourceContent | undefined, Error>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/MCP") {}
+export class Service extends Context.Service<Service, Interface>()("@ocnano/MCP") {}
 
 export const Options = Schema.Struct({
   clientInfo: Schema.optional(

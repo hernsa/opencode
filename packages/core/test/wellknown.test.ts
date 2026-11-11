@@ -1,12 +1,12 @@
 import { expect } from "bun:test"
 import { Effect, Fiber, Stream } from "effect"
 import { FetchHttpClient } from "effect/http"
-import { KV } from "@opencode/core/kv"
-import { LayerNode } from "@opencode/util/effect/layer-node"
-import { Bus } from "@opencode/core/bus"
-import { Location } from "@opencode/core/location"
-import { AbsolutePath } from "@opencode/core/schema"
-import { WellKnown } from "@opencode/core/wellknown"
+import { KV } from "@ocnano/core/kv"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
+import { Bus } from "@ocnano/core/bus"
+import { Location } from "@ocnano/core/location"
+import { AbsolutePath } from "@ocnano/core/schema"
+import { WellKnown } from "@ocnano/core/wellknown"
 import { location } from "./fixture/location"
 import { testEffect } from "./lib/effect"
 
@@ -20,7 +20,7 @@ it.live("loads embedded and remote configuration", () =>
         port: 0,
         fetch(request) {
           const url = new URL(request.url)
-          if (url.pathname === "/.well-known/opencode") {
+          if (url.pathname === "/.well-known/ocnano") {
             return Response.json({
               auth: { command: ["login"], env: "TOKEN" },
               config: { model: "embedded/model" },

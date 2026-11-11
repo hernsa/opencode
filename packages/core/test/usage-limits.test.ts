@@ -1,10 +1,10 @@
 import { expect } from "bun:test"
-import { Credential } from "@opencode/core/credential"
-import { Integration } from "@opencode/core/integration"
-import { UsageLimits } from "@opencode/core/usage-limits"
-import { Model } from "@opencode/schema/model"
-import { Money } from "@opencode/schema/money"
-import { Provider } from "@opencode/schema/provider"
+import { Credential } from "@ocnano/core/credential"
+import { Integration } from "@ocnano/core/integration"
+import { UsageLimits } from "@ocnano/core/usage-limits"
+import { Model } from "@ocnano/schema/model"
+import { Money } from "@ocnano/schema/money"
+import { Provider } from "@ocnano/schema/provider"
 import { Effect, Exit, Layer } from "effect"
 import { HttpClient, type HttpClientRequest, HttpClientResponse } from "effect/http"
 import { testEffect } from "./lib/effect"
@@ -33,7 +33,7 @@ const budget = {
   coverage: "models",
   models: [
     {
-      providerID: "opencode",
+      providerID: "ocnano",
       connectionID: "conn_managed",
       modelID: "gpt-6-astra",
       name: "GPT-6 Astra",
@@ -49,7 +49,7 @@ const budget = {
 
 const meter = (status: string, percent: number) => ({ status, percent, resetsAt: "2026-10-24T17:00:00.000Z" })
 
-/** Reads usage limits for a location whose active OpenCode Console connection resolves to `credential`. */
+/** Reads usage limits for a location whose active OcNano Console connection resolves to `credential`. */
 const read = (
   credential: Credential.Value | undefined,
   respond: (url: string) => Response,
@@ -134,7 +134,7 @@ it.effect("reads the member's Go allowance and budgets from the Console they sig
           coverage: "models",
           models: [
             {
-              providerID: Provider.ID.make("opencode"),
+              providerID: Provider.ID.make("ocnano"),
               modelID: Model.ID.make("gpt-6-astra"),
               name: "GPT-6 Astra",
               spent: Money.USD.make(15),
@@ -148,7 +148,7 @@ it.effect("reads the member's Go allowance and budgets from the Console they sig
         },
       ],
     })
-    // Console reads the workspace from x-org-id; inference, which serves Go, from x-opencode-org-id.
+    // Console reads the workspace from x-org-id; inference, which serves Go, from x-ocnano-org-id.
     expect(
       requests
         .map((request) => ({
@@ -166,7 +166,7 @@ it.effect("reads the member's Go allowance and budgets from the Console they sig
       {
         url: "https://dev.opencode.ai/zen/go/v1/usage",
         authorization: "Bearer console-access",
-        workspace: [["x-opencode-org-id", "wrk_anomaly"]],
+        workspace: [["x-ocnano-org-id", "wrk_anomaly"]],
       },
     ])
   }),
@@ -188,7 +188,7 @@ it.effect("has no Go allowance or budgets to show where Console refuses them", (
   }),
 )
 
-it.effect("has nothing to show for a location that isn't signed in to OpenCode Console", () =>
+it.effect("has nothing to show for a location that isn't signed in to OC Nano Console", () =>
   Effect.gen(function* () {
     expect(yield* read(undefined, () => Response.json([budget]))).toBeUndefined()
   }),

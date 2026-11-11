@@ -1,16 +1,16 @@
-import type { PluginInfo } from "@opencode/client"
-import { Button } from "@opencode/ui/button"
-import { Dialog, DialogBody, DialogHeader, DialogTitleGroup } from "@opencode/ui/dialog"
-import { ErrorDetails } from "@opencode/ui/error-details"
-import { Icon } from "@opencode/ui/icon"
-import { Loader } from "@opencode/ui/loader"
-import { createMcpSignIn, type McpSignInFailure } from "@opencode/ui/mcp-sign-in"
-import { MenuScroll } from "@opencode/ui/menu-scroll"
-import { Switch } from "@opencode/ui/switch"
-import { TextInput } from "@opencode/ui/text-input"
-import { showToast } from "@opencode/ui/toast"
-import { Tooltip } from "@opencode/ui/tooltip"
-import { TruncatedText } from "@opencode/ui/truncated-text"
+import type { PluginInfo } from "@ocnano/client"
+import { Button } from "@ocnano/ui/button"
+import { Dialog, DialogBody, DialogHeader, DialogTitleGroup } from "@ocnano/ui/dialog"
+import { ErrorDetails } from "@ocnano/ui/error-details"
+import { Icon } from "@ocnano/ui/icon"
+import { Loader } from "@ocnano/ui/loader"
+import { createMcpSignIn, type McpSignInFailure } from "@ocnano/ui/mcp-sign-in"
+import { MenuScroll } from "@ocnano/ui/menu-scroll"
+import { Switch } from "@ocnano/ui/switch"
+import { TextInput } from "@ocnano/ui/text-input"
+import { showToast } from "@ocnano/ui/toast"
+import { Tooltip } from "@ocnano/ui/tooltip"
+import { TruncatedText } from "@ocnano/ui/truncated-text"
 import {
   children,
   createMemo,
@@ -27,9 +27,9 @@ import {
   type JSX,
 } from "solid-js"
 import { createStore } from "solid-js/store"
-import { createKeyed, useDrawer, usePlugin, type MountedSession, type ServerRef } from "@opencode/plugin/gui"
+import { createKeyed, useDrawer, usePlugin, type MountedSession, type ServerRef } from "@ocnano/plugin/gui"
 import { globalConfigDirectory, serviceConfigFile } from "./config-file"
-import { builtinContext } from "@opencode/plugin/gui/builtin"
+import { builtinContext } from "@ocnano/plugin/gui/builtin"
 import { createFlyoutMotion } from "./flyout-motion"
 import {
   configActionView,
@@ -996,7 +996,7 @@ function ServiceConfigLink(props: { owner: ServiceProps; service: Service }) {
   )
 }
 
-// Starts a draft session in the global configuration's directory that asks OpenCode to set the service up.
+// Starts a draft session in the global configuration's directory that asks OcNano to set the service up.
 function ServiceSetup(props: { owner: ServiceProps; service: Service }) {
   const ctx = usePlugin()
 

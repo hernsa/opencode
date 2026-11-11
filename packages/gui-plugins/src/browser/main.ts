@@ -1,5 +1,5 @@
-import { builtinMainContext } from "@opencode/plugin/gui/builtin"
-import type { Plugin } from "@opencode/plugin/gui/main"
+import { builtinMainContext } from "@ocnano/plugin/gui/builtin"
+import type { Plugin } from "@ocnano/plugin/gui/main"
 import type { Pane } from "./pane"
 import { RefsStore } from "./refs"
 import { BrowserPane } from "./ipc"

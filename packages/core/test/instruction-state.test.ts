@@ -1,26 +1,26 @@
 import { describe, expect } from "bun:test"
 import { and, asc, eq } from "drizzle-orm"
 import { Effect, Schema } from "effect"
-import { Database } from "@opencode/core/database/database"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { LayerNode } from "@opencode/util/effect/layer-node"
-import { Bus } from "@opencode/core/bus"
-import { Event } from "@opencode/schema/event"
-import { EventTable } from "@opencode/core/event/sql"
-import { InstructionDiscovery } from "@opencode/core/instruction-discovery"
-import { Instructions } from "@opencode/core/instructions/index"
-import { Project } from "@opencode/core/project"
-import { ProjectTable } from "@opencode/core/project/sql"
-import { AbsolutePath } from "@opencode/core/schema"
-import { InstructionState } from "@opencode/core/session/instruction-state"
-import { SessionProjector } from "@opencode/core/session/projector"
-import { SessionSchema } from "@opencode/core/session/schema"
+import { Database } from "@ocnano/core/database/database"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
+import { Bus } from "@ocnano/core/bus"
+import { Event } from "@ocnano/schema/event"
+import { EventTable } from "@ocnano/core/event/sql"
+import { InstructionDiscovery } from "@ocnano/core/instruction-discovery"
+import { Instructions } from "@ocnano/core/instructions/index"
+import { Project } from "@ocnano/core/project"
+import { ProjectTable } from "@ocnano/core/project/sql"
+import { AbsolutePath } from "@ocnano/core/schema"
+import { InstructionState } from "@ocnano/core/session/instruction-state"
+import { SessionProjector } from "@ocnano/core/session/projector"
+import { SessionSchema } from "@ocnano/core/session/schema"
 import {
   InstructionBlobTable,
   InstructionStateTable,
   SessionMessageTable,
   SessionTable,
-} from "@opencode/core/session/sql"
+} from "@ocnano/core/session/sql"
 import { testEffect } from "./lib/effect"
 
 const it = testEffect(

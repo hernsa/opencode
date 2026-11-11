@@ -8,10 +8,10 @@ import { serveRoutes } from "./fixture/routes"
 
 it.live("lists configured models filtered by type", () =>
   Effect.gen(function* () {
-    const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("opencode-model-endpoint-")))
+    const tmp = yield* Effect.acquireDisposable(Effect.promise(() => tmpdir("ocnano-model-endpoint-")))
     yield* Effect.promise(() =>
       fs.writeFile(
-        path.join(tmp.path, "opencode.json"),
+        path.join(tmp.path, "ocnano.json"),
         JSON.stringify({
           providers: {
             custom: {
@@ -30,7 +30,7 @@ it.live("lists configured models filtered by type", () =>
       models: { fetch: false },
     })
     yield* server.pluginsLoaded(tmp.path)
-    const url = new URL("/api/model", "http://opencode.local")
+    const url = new URL("/api/model", "http://ocnano.local")
     url.searchParams.set("location[directory]", tmp.path)
     const response = yield* Effect.promise(() => server.fetch(url))
 

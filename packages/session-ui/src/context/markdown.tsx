@@ -1,4 +1,4 @@
-import type { IconName } from "@opencode/ui/icons/catalog"
+import type { IconName } from "@ocnano/ui/icons/catalog"
 import { createContext, useContext, type ParentProps } from "solid-js"
 import type { SessionReferenceMenu } from "../components/markdown-session-links"
 

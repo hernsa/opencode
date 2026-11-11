@@ -1,5 +1,5 @@
-import { Button } from "@opencode/ui/button"
-import { useDialog } from "@opencode/ui/context/dialog"
+import { Button } from "@ocnano/ui/button"
+import { useDialog } from "@ocnano/ui/context/dialog"
 import { onMount } from "solid-js"
 import { createStore } from "solid-js/store"
 import { DialogStoryRuntime } from "@/components-lab/dialog-story-runtime"
@@ -25,7 +25,7 @@ function makeModel(input: {
     api: {
       id: input.id,
       url: `https://api.${input.providerID}.example/v1`,
-      npm: `@opencode/ai/providers/${input.providerID}`,
+      npm: `@ocnano/ai/providers/${input.providerID}`,
     },
     name: input.name,
     family: input.family,
@@ -62,7 +62,7 @@ const models: StoryModel[] = [
     id: "kimi-k3",
     name: "Kimi K3",
     providerID: "opencode-go",
-    providerName: "OpenCode Go",
+    providerName: "OC Nano Go",
     family: "kimi",
     inputCost: 1,
     outputCost: 3,
@@ -71,8 +71,8 @@ const models: StoryModel[] = [
   makeModel({
     id: "big-pickle",
     name: "Big Pickle",
-    providerID: "opencode",
-    providerName: "OpenCode Zen",
+    providerID: "ocnano",
+    providerName: "OC Nano Zen",
     family: "pickle",
     inputCost: 0,
     outputCost: 0,
@@ -80,8 +80,8 @@ const models: StoryModel[] = [
   makeModel({
     id: "claude-opus-5-5",
     name: "Claude Opus 5.5",
-    providerID: "opencode",
-    providerName: "OpenCode Zen",
+    providerID: "ocnano",
+    providerName: "OC Nano Zen",
     family: "claude-opus",
     inputCost: 5,
     outputCost: 25,
@@ -105,7 +105,7 @@ function SelectorStory(props: { favorite?: boolean }) {
   const dialog = useDialog()
 
   const [store, setStore] = createStore<{ current: string; favorite: string[]; variant?: string }>({
-    current: "opencode:claude-opus-5-5",
+    current: "ocnano:claude-opus-5-5",
     favorite: props.favorite ? ["anthropic:claude-sonnet-5"] : [],
   })
 

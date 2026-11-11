@@ -1,8 +1,8 @@
-import type { Data } from "@opencode/client/solid"
-import { isSessionNotFoundError, type OpenCodeEvent, type SessionInfo } from "@opencode/client/promise"
+import type { Data } from "@ocnano/client/solid"
+import { isSessionNotFoundError, type OcNanoEvent, type SessionInfo } from "@ocnano/client/promise"
 import { onCleanup } from "solid-js"
 import { createStore } from "solid-js/store"
-import { uuid } from "@opencode/util/uuid"
+import { uuid } from "@ocnano/util/uuid"
 
 type SessionMutation = { readonly id: string; readonly type: "remove"; readonly sessionID: string }
 
@@ -25,7 +25,7 @@ const SESSION_ACTIVITY = [
   "session.revert.staged",
   "session.revert.cleared",
   "session.revert.committed",
-] satisfies OpenCodeEvent["type"][]
+] satisfies OcNanoEvent["type"][]
 
 export function createDesktopData(input: { data: Data; remove: (sessionID: string) => Promise<void> }) {
   const mutation = createSessionMutations(input.remove)

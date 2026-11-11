@@ -265,7 +265,7 @@ body {
    before it sit where the Console's and opencode.ai's do: the button's centre where the site's 44px button has it
    (its 32px box 6px further in), the mark's 16px before it. */
 @media (max-width: 60rem) {
-  /* 12px at least between the lockup's chevron and TRY OPENCODE, so the 20px name still fits at 375px. */
+  /* 12px at least between the lockup's chevron and TRY OCNANO, so the 20px name still fits at 375px. */
   [data-page="stats"] [data-slot="header-bar"] {
     gap: 12px;
     border-bottom: 0;
@@ -312,7 +312,7 @@ body {
   color: var(--stats-text);
 }
 
-/* Try OpenCode, the GitHub mark and the menu button sit 24px apart, ink to ink: the button's edge to the mark, and the
+/* Try OcNano, the GitHub mark and the menu button sit 24px apart, ink to ink: the button's edge to the mark, and the
    mark to the menu's lines. That is as close as their 44px targets go without overlapping. */
 [data-page="stats"] [data-slot="header-actions"] {
   flex: 0 0 auto;
@@ -331,7 +331,7 @@ body {
   text-transform: uppercase;
 }
 
-/* Phones show the short label (header.tryOpenCodeShort: "Try now" where "Try OpenCode" doesn't fit beside the 20px
+/* Phones show the short label (header.tryOC NanoShort: "Try now" where "Try OC Nano" doesn't fit beside the 20px
    product name), on a button 4px shorter, 28px, with a 44px tall target. The link's aria-label keeps the full name. */
 [data-page="stats"] [data-slot="header-actions"] [data-slot="header-button"] [data-slot="label-short"] {
   display: none;
@@ -591,7 +591,7 @@ body {
   color: var(--stats-text);
 }
 
-[data-page="stats"] [data-slot="footer-mark"] [data-slot="opencode-mark"] {
+[data-page="stats"] [data-slot="footer-mark"] [data-slot="ocnano-mark"] {
   display: block;
   width: 40px;
   height: 40px;

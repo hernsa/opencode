@@ -1,23 +1,23 @@
 import { describe, expect } from "bun:test"
 import { Effect, Fiber, Layer, Option, Stream } from "effect"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { LayerNode } from "@opencode/util/effect/layer-node"
-import { Database } from "@opencode/core/database/database"
-import { Bus } from "@opencode/core/bus"
-import { Instance } from "@opencode/core/instance/service"
-import { Location } from "@opencode/core/location"
-import { PersistentPty } from "@opencode/core/persistent-pty"
-import { Project } from "@opencode/core/project"
-import { AbsolutePath } from "@opencode/core/schema"
-import { Session } from "@opencode/core/session"
-import { SessionExecution } from "@opencode/core/session/execution"
-import { SessionModelTransport } from "@opencode/core/session/model-transport"
-import { SessionProjector } from "@opencode/core/session/projector"
-import { SessionStore } from "@opencode/core/session/store"
-import { SessionEnvironment } from "@opencode/core/session/environment"
-import { LocationServiceMap } from "@opencode/core/location-services"
-import { Removed, Updated } from "@opencode/schema/persistent-pty"
-import { Pty } from "@opencode/schema/pty"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
+import { Database } from "@ocnano/core/database/database"
+import { Bus } from "@ocnano/core/bus"
+import { Instance } from "@ocnano/core/instance/service"
+import { Location } from "@ocnano/core/location"
+import { PersistentPty } from "@ocnano/core/persistent-pty"
+import { Project } from "@ocnano/core/project"
+import { AbsolutePath } from "@ocnano/core/schema"
+import { Session } from "@ocnano/core/session"
+import { SessionExecution } from "@ocnano/core/session/execution"
+import { SessionModelTransport } from "@ocnano/core/session/model-transport"
+import { SessionProjector } from "@ocnano/core/session/projector"
+import { SessionStore } from "@ocnano/core/session/store"
+import { SessionEnvironment } from "@ocnano/core/session/environment"
+import { LocationServiceMap } from "@ocnano/core/location-services"
+import { Removed, Updated } from "@ocnano/schema/persistent-pty"
+import { Pty } from "@ocnano/schema/pty"
 import { fakeDaemon } from "./fixture/persistent-pty-daemon"
 import { it } from "./lib/effect"
 import { globalProjectNode } from "./lib/project"
@@ -110,7 +110,7 @@ describe("PersistentPty rename", () => {
   )
 })
 
-// Pipe mode is Unix-only: Windows daemons reject create_pipe, so OpenCode keeps spawning shell commands there.
+// Pipe mode is Unix-only: Windows daemons reject create_pipe, so OcNano keeps spawning shell commands there.
 describe.skipIf(process.platform === "win32")("PersistentPty pipe processes", () => {
   const input = {
     program: "/bin/sh",

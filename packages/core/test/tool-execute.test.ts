@@ -1,16 +1,16 @@
 import { afterAll, beforeAll, describe, expect, test } from "bun:test"
-import { CodeModeTool } from "@opencode/core/codemode/tool"
-import { Config } from "@opencode/core/config"
-import { Flag } from "@opencode/core/flag"
-import { Permission } from "@opencode/core/permission"
-import { Tool } from "@opencode/core/tool"
-import { execute } from "@opencode/core/tool/runtime"
-import { Agent } from "@opencode/schema/agent"
-import { Document, Info as ConfigInfo } from "@opencode/schema/config"
-import { ConfigExperimental } from "@opencode/schema/config/experimental"
-import { Session } from "@opencode/schema/session"
-import { SessionMessage } from "@opencode/schema/session-message"
-import type { Info } from "@opencode/schema/tool"
+import { CodeModeTool } from "@ocnano/core/codemode/tool"
+import { Config } from "@ocnano/core/config"
+import { Flag } from "@ocnano/core/flag"
+import { Permission } from "@ocnano/core/permission"
+import { Tool } from "@ocnano/core/tool"
+import { execute } from "@ocnano/core/tool/runtime"
+import { Agent } from "@ocnano/schema/agent"
+import { Document, Info as ConfigInfo } from "@ocnano/schema/config"
+import { ConfigExperimental } from "@ocnano/schema/config/experimental"
+import { Session } from "@ocnano/schema/session"
+import { SessionMessage } from "@ocnano/schema/session-message"
+import type { Info } from "@ocnano/schema/tool"
 import { Deferred, Effect, Fiber, Schema } from "effect"
 import { TestClock } from "effect/testing"
 import { it } from "./lib/effect"
@@ -582,14 +582,14 @@ describe("codemode_vm follows the flag registry", () => {
     })
   })
 
-  test("a release build opts in with OPENCODE_FLAGS, config, all or all_flags", async () => {
+  test("a release build opts in with OCNANO_FLAGS, config, all or all_flags", async () => {
     expect(await engine({ channel: "latest", overrides: "codemode_vm" })).toBe("vm")
     expect(await engine({ channel: "latest", entries: [document({ codemode_vm: true })] })).toBe("vm")
     expect(await engine({ channel: "latest", overrides: "all" })).toBe("vm")
     expect(await engine({ channel: "latest", entries: [document({ all_flags: true })] })).toBe("vm")
   })
 
-  test("a dev build opts out with OPENCODE_FLAGS or config", async () => {
+  test("a dev build opts out with OCNANO_FLAGS or config", async () => {
     expect(await engine({ channel: "dev", overrides: "-codemode_vm" })).toBe("legacy")
     expect(await engine({ channel: "dev", overrides: "all,-codemode_vm" })).toBe("legacy")
     expect(await engine({ channel: "dev", entries: [document({ codemode_vm: false })] })).toBe("legacy")

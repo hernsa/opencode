@@ -1,55 +1,55 @@
 import { NodeFileSystem } from "@effect/platform-node"
-import { compile, emitEffectImported, emitEffectShape, emitPromise, write } from "@opencode/httpapi-codegen"
+import { compile, emitEffectImported, emitEffectShape, emitPromise, write } from "@ocnano/httpapi-codegen"
 import {
   ClientApi,
   clientNamespace,
   effectOmitEndpoints,
   groupNames,
   promiseOmitEndpoints,
-} from "@opencode/protocol/client"
-import { Agent } from "@opencode/schema/agent"
-import { Artifact } from "@opencode/schema/artifact"
-import { Command } from "@opencode/schema/command"
-import { Config } from "@opencode/schema/config"
-import { Credential } from "@opencode/schema/credential"
-import { Event } from "@opencode/schema/event"
-import { EventLog } from "@opencode/schema/event-log"
-import { FileDiff } from "@opencode/schema/file-diff"
-import { FileSystem } from "@opencode/schema/filesystem"
-import { Form } from "@opencode/schema/form"
-import { Generate } from "@opencode/schema/generate"
-import { Instruction } from "@opencode/schema/instruction"
-import { InstructionEntry } from "@opencode/schema/instruction-entry"
-import { Integration } from "@opencode/schema/integration"
-import { Job } from "@opencode/schema/job"
-import { Location } from "@opencode/schema/location"
-import { Mcp } from "@opencode/schema/mcp"
-import { Model } from "@opencode/schema/model"
-import { Money } from "@opencode/schema/money"
-import { Permission } from "@opencode/schema/permission"
-import { PermissionSaved } from "@opencode/schema/permission-saved"
-import { Plugin } from "@opencode/schema/plugin"
-import { Project } from "@opencode/schema/project"
-import { Worktree } from "@opencode/schema/worktree"
-import { AgentAttachment, FileAttachment, Prompt, PromptMention } from "@opencode/schema/prompt"
-import { PromptInput } from "@opencode/schema/prompt-input"
-import { Provider } from "@opencode/schema/provider"
-import { Pty } from "@opencode/schema/pty"
-import { PtyTicket } from "@opencode/schema/pty-ticket"
-import { Question } from "@opencode/schema/question"
-import { Reference } from "@opencode/schema/reference"
-import { AbsolutePath, RelativePath } from "@opencode/schema/schema"
-import { Schedule } from "@opencode/schema/schedule"
-import { Session } from "@opencode/schema/session"
-import { SessionMessage } from "@opencode/schema/session-message"
-import { SessionInbox } from "@opencode/schema/session-inbox"
-import { Shell } from "@opencode/schema/shell"
-import { Skill } from "@opencode/schema/skill"
-import { Snapshot } from "@opencode/schema/snapshot"
-import { UsageLimits } from "@opencode/schema/usage-limits"
-import { Vcs } from "@opencode/schema/vcs"
-import { WebSearch } from "@opencode/schema/websearch"
-import { Workspace } from "@opencode/schema/workspace"
+} from "@ocnano/protocol/client"
+import { Agent } from "@ocnano/schema/agent"
+import { Artifact } from "@ocnano/schema/artifact"
+import { Command } from "@ocnano/schema/command"
+import { Config } from "@ocnano/schema/config"
+import { Credential } from "@ocnano/schema/credential"
+import { Event } from "@ocnano/schema/event"
+import { EventLog } from "@ocnano/schema/event-log"
+import { FileDiff } from "@ocnano/schema/file-diff"
+import { FileSystem } from "@ocnano/schema/filesystem"
+import { Form } from "@ocnano/schema/form"
+import { Generate } from "@ocnano/schema/generate"
+import { Instruction } from "@ocnano/schema/instruction"
+import { InstructionEntry } from "@ocnano/schema/instruction-entry"
+import { Integration } from "@ocnano/schema/integration"
+import { Job } from "@ocnano/schema/job"
+import { Location } from "@ocnano/schema/location"
+import { Mcp } from "@ocnano/schema/mcp"
+import { Model } from "@ocnano/schema/model"
+import { Money } from "@ocnano/schema/money"
+import { Permission } from "@ocnano/schema/permission"
+import { PermissionSaved } from "@ocnano/schema/permission-saved"
+import { Plugin } from "@ocnano/schema/plugin"
+import { Project } from "@ocnano/schema/project"
+import { Worktree } from "@ocnano/schema/worktree"
+import { AgentAttachment, FileAttachment, Prompt, PromptMention } from "@ocnano/schema/prompt"
+import { PromptInput } from "@ocnano/schema/prompt-input"
+import { Provider } from "@ocnano/schema/provider"
+import { Pty } from "@ocnano/schema/pty"
+import { PtyTicket } from "@ocnano/schema/pty-ticket"
+import { Question } from "@ocnano/schema/question"
+import { Reference } from "@ocnano/schema/reference"
+import { AbsolutePath, RelativePath } from "@ocnano/schema/schema"
+import { Schedule } from "@ocnano/schema/schedule"
+import { Session } from "@ocnano/schema/session"
+import { SessionMessage } from "@ocnano/schema/session-message"
+import { SessionInbox } from "@ocnano/schema/session-inbox"
+import { Shell } from "@ocnano/schema/shell"
+import { Skill } from "@ocnano/schema/skill"
+import { Snapshot } from "@ocnano/schema/snapshot"
+import { UsageLimits } from "@ocnano/schema/usage-limits"
+import { Vcs } from "@ocnano/schema/vcs"
+import { WebSearch } from "@ocnano/schema/websearch"
+import { Workspace } from "@ocnano/schema/workspace"
 import { Effect, Schema } from "effect"
 import { fileURLToPath } from "url"
 
@@ -66,54 +66,54 @@ const effectContract = compile(ClientApi, {
   aliases: true,
 })
 const effectTypeReferences = [
-  ...namespaceTypes("Agent", "@opencode/schema/agent", Agent),
-  ...namespaceTypes("Artifact", "@opencode/schema/artifact", Artifact),
-  ...namespaceTypes("Command", "@opencode/schema/command", Command),
-  ...namespaceTypes("Config", "@opencode/schema/config", Config),
-  ...namespaceTypes("Credential", "@opencode/schema/credential", Credential),
-  ...namespaceTypes("Event", "@opencode/schema/event", Event),
-  ...namespaceTypes("EventLog", "@opencode/schema/event-log", EventLog),
-  ...namespaceTypes("FileDiff", "@opencode/schema/file-diff", FileDiff),
-  ...namespaceTypes("FileSystem", "@opencode/schema/filesystem", FileSystem),
-  ...namespaceTypes("Form", "@opencode/schema/form", Form),
-  ...namespaceTypes("Generate", "@opencode/schema/generate", Generate),
-  ...namespaceTypes("Instruction", "@opencode/schema/instruction", Instruction),
-  ...namespaceTypes("InstructionEntry", "@opencode/schema/instruction-entry", InstructionEntry),
-  ...namespaceTypes("Integration", "@opencode/schema/integration", Integration),
-  ...namespaceTypes("Job", "@opencode/schema/job", Job),
-  typeReference("Location.PublicRef", "@opencode/schema/location", Location.PublicRef),
-  typeReference("Location.PublicInfo", "@opencode/schema/location", Location.PublicInfo),
-  ...namespaceTypes("Mcp", "@opencode/schema/mcp", Mcp),
-  ...namespaceTypes("Model", "@opencode/schema/model", Model),
-  ...namespaceTypes("Money", "@opencode/schema/money", Money),
-  ...namespaceTypes("Permission", "@opencode/schema/permission", Permission),
-  ...namespaceTypes("PermissionSaved", "@opencode/schema/permission-saved", PermissionSaved),
-  ...namespaceTypes("Plugin", "@opencode/schema/plugin", Plugin),
-  ...namespaceTypes("Project", "@opencode/schema/project", Project),
-  ...namespaceTypes("Worktree", "@opencode/schema/worktree", Worktree),
-  ...namespaceTypes("PromptInput", "@opencode/schema/prompt-input", PromptInput),
-  ...namespaceTypes("Provider", "@opencode/schema/provider", Provider),
-  ...namespaceTypes("Pty", "@opencode/schema/pty", Pty),
-  ...namespaceTypes("PtyTicket", "@opencode/schema/pty-ticket", PtyTicket),
-  ...namespaceTypes("Question", "@opencode/schema/question", Question),
-  ...namespaceTypes("Reference", "@opencode/schema/reference", Reference),
-  ...namespaceTypes("Schedule", "@opencode/schema/schedule", Schedule),
-  ...namespaceTypes("Session", "@opencode/schema/session", Session),
-  ...namespaceTypes("SessionMessage", "@opencode/schema/session-message", SessionMessage),
-  ...namespaceTypes("SessionInbox", "@opencode/schema/session-inbox", SessionInbox),
-  ...namespaceTypes("Shell", "@opencode/schema/shell", Shell),
-  ...namespaceTypes("Skill", "@opencode/schema/skill", Skill),
-  ...namespaceTypes("Snapshot", "@opencode/schema/snapshot", Snapshot),
-  ...namespaceTypes("UsageLimits", "@opencode/schema/usage-limits", UsageLimits),
-  ...namespaceTypes("Vcs", "@opencode/schema/vcs", Vcs),
-  ...namespaceTypes("WebSearch", "@opencode/schema/websearch", WebSearch),
-  ...namespaceTypes("Workspace", "@opencode/schema/workspace", Workspace),
-  typeReference("Prompt", "@opencode/schema/prompt", Prompt),
-  typeReference("PromptMention", "@opencode/schema/prompt", PromptMention),
-  typeReference("FileAttachment", "@opencode/schema/prompt", FileAttachment),
-  typeReference("AgentAttachment", "@opencode/schema/prompt", AgentAttachment),
-  typeReference("AbsolutePath", "@opencode/schema/schema", AbsolutePath),
-  typeReference("RelativePath", "@opencode/schema/schema", RelativePath),
+  ...namespaceTypes("Agent", "@ocnano/schema/agent", Agent),
+  ...namespaceTypes("Artifact", "@ocnano/schema/artifact", Artifact),
+  ...namespaceTypes("Command", "@ocnano/schema/command", Command),
+  ...namespaceTypes("Config", "@ocnano/schema/config", Config),
+  ...namespaceTypes("Credential", "@ocnano/schema/credential", Credential),
+  ...namespaceTypes("Event", "@ocnano/schema/event", Event),
+  ...namespaceTypes("EventLog", "@ocnano/schema/event-log", EventLog),
+  ...namespaceTypes("FileDiff", "@ocnano/schema/file-diff", FileDiff),
+  ...namespaceTypes("FileSystem", "@ocnano/schema/filesystem", FileSystem),
+  ...namespaceTypes("Form", "@ocnano/schema/form", Form),
+  ...namespaceTypes("Generate", "@ocnano/schema/generate", Generate),
+  ...namespaceTypes("Instruction", "@ocnano/schema/instruction", Instruction),
+  ...namespaceTypes("InstructionEntry", "@ocnano/schema/instruction-entry", InstructionEntry),
+  ...namespaceTypes("Integration", "@ocnano/schema/integration", Integration),
+  ...namespaceTypes("Job", "@ocnano/schema/job", Job),
+  typeReference("Location.PublicRef", "@ocnano/schema/location", Location.PublicRef),
+  typeReference("Location.PublicInfo", "@ocnano/schema/location", Location.PublicInfo),
+  ...namespaceTypes("Mcp", "@ocnano/schema/mcp", Mcp),
+  ...namespaceTypes("Model", "@ocnano/schema/model", Model),
+  ...namespaceTypes("Money", "@ocnano/schema/money", Money),
+  ...namespaceTypes("Permission", "@ocnano/schema/permission", Permission),
+  ...namespaceTypes("PermissionSaved", "@ocnano/schema/permission-saved", PermissionSaved),
+  ...namespaceTypes("Plugin", "@ocnano/schema/plugin", Plugin),
+  ...namespaceTypes("Project", "@ocnano/schema/project", Project),
+  ...namespaceTypes("Worktree", "@ocnano/schema/worktree", Worktree),
+  ...namespaceTypes("PromptInput", "@ocnano/schema/prompt-input", PromptInput),
+  ...namespaceTypes("Provider", "@ocnano/schema/provider", Provider),
+  ...namespaceTypes("Pty", "@ocnano/schema/pty", Pty),
+  ...namespaceTypes("PtyTicket", "@ocnano/schema/pty-ticket", PtyTicket),
+  ...namespaceTypes("Question", "@ocnano/schema/question", Question),
+  ...namespaceTypes("Reference", "@ocnano/schema/reference", Reference),
+  ...namespaceTypes("Schedule", "@ocnano/schema/schedule", Schedule),
+  ...namespaceTypes("Session", "@ocnano/schema/session", Session),
+  ...namespaceTypes("SessionMessage", "@ocnano/schema/session-message", SessionMessage),
+  ...namespaceTypes("SessionInbox", "@ocnano/schema/session-inbox", SessionInbox),
+  ...namespaceTypes("Shell", "@ocnano/schema/shell", Shell),
+  ...namespaceTypes("Skill", "@ocnano/schema/skill", Skill),
+  ...namespaceTypes("Snapshot", "@ocnano/schema/snapshot", Snapshot),
+  ...namespaceTypes("UsageLimits", "@ocnano/schema/usage-limits", UsageLimits),
+  ...namespaceTypes("Vcs", "@ocnano/schema/vcs", Vcs),
+  ...namespaceTypes("WebSearch", "@ocnano/schema/websearch", WebSearch),
+  ...namespaceTypes("Workspace", "@ocnano/schema/workspace", Workspace),
+  typeReference("Prompt", "@ocnano/schema/prompt", Prompt),
+  typeReference("PromptMention", "@ocnano/schema/prompt", PromptMention),
+  typeReference("FileAttachment", "@ocnano/schema/prompt", FileAttachment),
+  typeReference("AgentAttachment", "@ocnano/schema/prompt", AgentAttachment),
+  typeReference("AbsolutePath", "@ocnano/schema/schema", AbsolutePath),
+  typeReference("RelativePath", "@ocnano/schema/schema", RelativePath),
 ]
 
 await Effect.runPromise(
@@ -138,8 +138,8 @@ await Effect.runPromise(
           typeReferences: effectTypeReferences,
           outputTypes: {
             "event.subscribe": {
-              name: "OpenCodeEvent",
-              import: 'import type { OpenCodeEvent } from "@opencode/protocol/groups/event"',
+              name: "OC NanoEvent",
+              import: 'import type { OC NanoEvent } from "@ocnano/protocol/groups/event"',
             },
           },
         }),

@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test"
-import type { SessionInfo } from "@opencode/client/promise"
+import type { SessionInfo } from "@ocnano/client/promise"
 import { ServerConnection } from "@/runtime/server/registry"
 import {
   createSessionExportState,

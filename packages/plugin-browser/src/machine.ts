@@ -1,8 +1,8 @@
 export * as BrowserMachine from "./machine.js"
 
-import type { Permission } from "@opencode/schema/permission"
-import type { Session } from "@opencode/schema/session"
-import { Tool } from "@opencode/schema/tool"
+import type { Permission } from "@ocnano/schema/permission"
+import type { Session } from "@ocnano/schema/session"
+import { Tool } from "@ocnano/schema/tool"
 import type { Browser } from "./rpc.js"
 import { BrowserSkill } from "./skill.js"
 

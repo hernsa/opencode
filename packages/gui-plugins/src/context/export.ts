@@ -1,4 +1,4 @@
-import type { OpenCodeClient, SessionInfo, SessionMessageInfo } from "@opencode/client/promise"
+import type { OcNanoClient, SessionInfo, SessionMessageInfo } from "@ocnano/client/promise"
 
 export type SessionExportData = {
   info: SessionInfo
@@ -10,7 +10,7 @@ export const EXPORT_REQUEST_TIMEOUT_MS = 60_000
 
 export async function fetchSessionExport(input: {
   sessionID: string
-  api: Pick<OpenCodeClient, "session" | "message">
+  api: Pick<OcNanoClient, "session" | "message">
   signal?: AbortSignal
 }): Promise<SessionExportData> {
   const signal = () =>

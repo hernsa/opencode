@@ -5,42 +5,42 @@ import path from "path"
 import { describe, expect } from "bun:test"
 import { Cause, Deferred, Duration, Effect, Exit, Fiber, Layer, Queue, Scope, Stream, Tracer } from "effect"
 import { TestClock } from "effect/testing"
-import { Money } from "@opencode/schema/money"
-import { AppNodeBuilder } from "@opencode/core/effect/app-node-builder"
-import { LayerNode } from "@opencode/util/effect/layer-node"
-import { makeGlobalNode, makeLocationNode } from "@opencode/util/effect/app-node"
-import { filesystem } from "@opencode/util/effect/app-node-platform"
-import { Database } from "@opencode/core/database/database"
-import { Bus } from "@opencode/core/bus"
-import { Config } from "@opencode/core/config"
-import { Environment } from "@opencode/core/environment/index"
-import { FSUtil } from "@opencode/util/fs-util"
-import { Global } from "@opencode/util/global"
-import { Location } from "@opencode/core/location"
-import { FileAccess } from "@opencode/core/file-access"
-import { Flag } from "@opencode/core/flag"
-import { LocationServiceMap } from "@opencode/core/location-service-map"
-import { Model } from "@opencode/core/model"
-import { Provider } from "@opencode/core/provider"
-import { AbsolutePath } from "@opencode/core/schema"
-import { Agent } from "@opencode/core/agent"
-import { Job } from "@opencode/core/job"
-import { Session } from "@opencode/core/session"
-import { SessionEvent } from "@opencode/core/session/event"
-import { SessionExecution } from "@opencode/core/session/execution"
-import { SessionMessage } from "@opencode/core/session/message"
-import { SessionStore } from "@opencode/core/session/store"
-import { Permission } from "@opencode/core/permission"
-import { PermissionSaved } from "@opencode/core/permission/saved"
-import { Plugin } from "@opencode/core/plugin"
-import { PluginSupervisor } from "@opencode/core/plugin/supervisor"
-import { Shell } from "@opencode/core/shell"
-import { ShellSelect } from "@opencode/core/shell/select"
-import { ShellResult } from "@opencode/core/shell/result"
-import { ID } from "@opencode/schema/shell"
-import { ShellTool } from "@opencode/core/tool/plugin/shell"
-import { ToolOutput } from "@opencode/core/tool-output"
-import { Tool } from "@opencode/core/tool"
+import { Money } from "@ocnano/schema/money"
+import { AppNodeBuilder } from "@ocnano/core/effect/app-node-builder"
+import { LayerNode } from "@ocnano/util/effect/layer-node"
+import { makeGlobalNode, makeLocationNode } from "@ocnano/util/effect/app-node"
+import { filesystem } from "@ocnano/util/effect/app-node-platform"
+import { Database } from "@ocnano/core/database/database"
+import { Bus } from "@ocnano/core/bus"
+import { Config } from "@ocnano/core/config"
+import { Environment } from "@ocnano/core/environment/index"
+import { FSUtil } from "@ocnano/util/fs-util"
+import { Global } from "@ocnano/util/global"
+import { Location } from "@ocnano/core/location"
+import { FileAccess } from "@ocnano/core/file-access"
+import { Flag } from "@ocnano/core/flag"
+import { LocationServiceMap } from "@ocnano/core/location-service-map"
+import { Model } from "@ocnano/core/model"
+import { Provider } from "@ocnano/core/provider"
+import { AbsolutePath } from "@ocnano/core/schema"
+import { Agent } from "@ocnano/core/agent"
+import { Job } from "@ocnano/core/job"
+import { Session } from "@ocnano/core/session"
+import { SessionEvent } from "@ocnano/core/session/event"
+import { SessionExecution } from "@ocnano/core/session/execution"
+import { SessionMessage } from "@ocnano/core/session/message"
+import { SessionStore } from "@ocnano/core/session/store"
+import { Permission } from "@ocnano/core/permission"
+import { PermissionSaved } from "@ocnano/core/permission/saved"
+import { Plugin } from "@ocnano/core/plugin"
+import { PluginSupervisor } from "@ocnano/core/plugin/supervisor"
+import { Shell } from "@ocnano/core/shell"
+import { ShellSelect } from "@ocnano/core/shell/select"
+import { ShellResult } from "@ocnano/core/shell/result"
+import { ID } from "@ocnano/schema/shell"
+import { ShellTool } from "@ocnano/core/tool/plugin/shell"
+import { ToolOutput } from "@ocnano/core/tool-output"
+import { Tool } from "@ocnano/core/tool"
 import { tmpdir, tmpdirScoped, withTempDir } from "./fixture/tmpdir"
 import { tempGlobalLayer } from "./fixture/global"
 import { offlineModels } from "./fixture/models"
@@ -226,7 +226,7 @@ const withSession = <A, E, R>(
     if (autoBackground !== undefined)
       yield* Effect.promise(() =>
         Bun.write(
-          path.join(directory, "opencode.json"),
+          path.join(directory, "ocnano.json"),
           JSON.stringify({ experimental: { shell_timeout_background: autoBackground } }),
         ),
       )
@@ -903,11 +903,11 @@ describe("ShellTool", () => {
             const sessions = yield* Session.Service
             yield* sessions.environment({
               sessionID,
-              variables: { OPENCODE_SESSION_ENV_TEST: "from-session" },
+              variables: { OCNANO_SESSION_ENV_TEST: "from-session" },
             })
             const command = isWindows
-              ? "[Console]::Out.Write($env:OPENCODE_SESSION_ENV_TEST)"
-              : 'printf %s "$OPENCODE_SESSION_ENV_TEST"'
+              ? "[Console]::Out.Write($env:OCNANO_SESSION_ENV_TEST)"
+              : 'printf %s "$OCNANO_SESSION_ENV_TEST"'
 
             const settled = yield* executeTool(registry, call({ command }))
 
@@ -929,15 +929,15 @@ describe("ShellTool", () => {
             const sessions = yield* Session.Service
             yield* sessions.environment({
               sessionID,
-              variables: { AGENT: "0", OPENCODE: "0", AI_AGENT: "", OPENCODE_SESSION_ID: "stale" },
+              variables: { AGENT: "0", OCNANO: "0", AI_AGENT: "", OCNANO_SESSION_ID: "stale" },
             })
             const command = isWindows
-              ? '[Console]::Out.Write("$env:AGENT|$env:OPENCODE|$env:AI_AGENT|$env:OPENCODE_SESSION_ID")'
-              : 'printf %s "$AGENT|$OPENCODE|$AI_AGENT|$OPENCODE_SESSION_ID"'
+              ? '[Console]::Out.Write("$env:AGENT|$env:OCNANO|$env:AI_AGENT|$env:OCNANO_SESSION_ID")'
+              : 'printf %s "$AGENT|$OCNANO|$AI_AGENT|$OCNANO_SESSION_ID"'
             const settled = yield* executeTool(registry, call({ command }))
 
             expect(settled.status).toBe("completed")
-            expect(settled.content?.[0]).toEqual({ type: "text", text: `1|1|opencode|${sessionID}` })
+            expect(settled.content?.[0]).toEqual({ type: "text", text: `1|1|ocnano|${sessionID}` })
           }),
         )
       }),
@@ -1187,7 +1187,7 @@ describe("ShellTool", () => {
           name: `test/shell-plugins-${channel}`,
           layer: Layer.effectDiscard(
             registerToolPlugin(ShellTool.Plugin, {
-              app: { name: "opencode", version: "test", channel },
+              app: { name: "ocnano", version: "test", channel },
             }),
           ),
           deps: [
@@ -1561,7 +1561,7 @@ describe("ShellTool", () => {
       return Effect.gen(function* () {
         yield* Effect.promise(() =>
           Bun.write(
-            path.join(tmp.path, "opencode.json"),
+            path.join(tmp.path, "ocnano.json"),
             JSON.stringify({ tool_output: { max_lines: 2, max_bytes: 1_000 } }),
           ),
         )
@@ -1724,14 +1724,14 @@ describe("ShellTool", () => {
                 .filter((span) => span.name === name && span.attributes.get("gen_ai.tool.call.id") === callID)
                 .map((span) => Object.fromEntries(span.attributes))
             expect(attributes("Shell.create", "call-traced")).toEqual([
-              expect.objectContaining({ "session.id": sessionID, "opencode.shell.command": bodyExitCommand }),
+              expect.objectContaining({ "session.id": sessionID, "ocnano.shell.command": bodyExitCommand }),
             ])
-            expect(attributes("Shell.create", "call-traced")[0]).not.toHaveProperty("opencode.shell.background")
+            expect(attributes("Shell.create", "call-traced")[0]).not.toHaveProperty("ocnano.shell.background")
             expect(attributes("Shell.result", "call-traced")).toEqual([
               expect.objectContaining({ "session.id": sessionID, "process.exit.code": 7 }),
             ])
             expect(attributes("Shell.create", "call-traced-background")).toEqual([
-              expect.objectContaining({ "session.id": sessionID, "opencode.shell.background": true }),
+              expect.objectContaining({ "session.id": sessionID, "ocnano.shell.background": true }),
             ])
           }),
         ),

@@ -1,8 +1,8 @@
 import { Predicate, Schema, SchemaGetter } from "effect"
 import { HttpApi, HttpApiEndpoint, HttpApiGroup, HttpApiSchema } from "effect/http-api"
-import { PersistentPty } from "@opencode/schema/persistent-pty"
-import { Pty } from "@opencode/schema/pty"
-import { Worktree } from "@opencode/schema/worktree"
+import { PersistentPty } from "@ocnano/schema/persistent-pty"
+import { Pty } from "@ocnano/schema/pty"
+import { Worktree } from "@ocnano/schema/worktree"
 
 // Handlers answer plain fixture data: undefined properties are dropped, and other non-JSON values become null.
 const Json = Schema.Json.pipe(
@@ -72,13 +72,13 @@ export class MockPtyNotFound extends Schema.TaggedError<MockPtyNotFound>()("PtyN
   message: Schema.String,
 }) {}
 
-// The server's error when a service it needs, such as the opencode-pty daemon, cannot run.
+// The server's error when a service it needs, such as the ocnano-pty daemon, cannot run.
 export class MockServiceUnavailable extends Schema.TaggedError<MockServiceUnavailable>()("ServiceUnavailableError", {
   message: Schema.String,
   service: Schema.optional(Schema.String),
 }) {}
 
-// The server's error for a feature the connected opencode-pty daemon lacks, such as `rename`.
+// The server's error for a feature the connected ocnano-pty daemon lacks, such as `rename`.
 export class MockPtyFeatureUnsupported extends Schema.TaggedError<MockPtyFeatureUnsupported>()(
   "PtyFeatureUnsupportedError",
   { feature: Schema.String, message: Schema.String },

@@ -3,9 +3,9 @@ import type {
   SessionMessageInfo,
   SessionMessageUser,
   SessionStatus,
-} from "@opencode/client/promise"
-import { useI18n } from "@opencode/ui/context/i18n"
-import { SessionTurn } from "@opencode/util/session-turn"
+} from "@ocnano/client/promise"
+import { useI18n } from "@ocnano/ui/context/i18n"
+import { SessionTurn } from "@ocnano/util/session-turn"
 import { Option, Predicate, Schema } from "effect"
 import {
   For,
@@ -21,10 +21,10 @@ import {
   type Accessor,
   type JSX,
 } from "solid-js"
-import { DiffChanges } from "@opencode/ui/diff-changes"
-import { Icon } from "@opencode/ui/icon"
-import { Spring, frameLoop, prefersReducedMotion } from "@opencode/ui/motion"
-import { springStyle } from "@opencode/ui/motion/solid"
+import { DiffChanges } from "@ocnano/ui/diff-changes"
+import { Icon } from "@ocnano/ui/icon"
+import { Spring, frameLoop, prefersReducedMotion } from "@ocnano/ui/motion"
+import { springStyle } from "@ocnano/ui/motion/solid"
 import { Dynamic } from "solid-js/web"
 import type { SessionUserActions, SessionUserAttachmentReference, SessionUserComment } from "../actions"
 import { useData } from "../context"

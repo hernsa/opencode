@@ -1,8 +1,8 @@
-import { Model } from "@opencode/schema/model"
+import { Model } from "@ocnano/schema/model"
 import { Provider } from "./provider.js"
 import type { DeepMutable } from "./schema.js"
 import { Context, Effect, Layer, Stream } from "effect"
-import { makeLocationNode } from "@opencode/util/effect/app-node"
+import { makeLocationNode } from "@ocnano/util/effect/app-node"
 import { Bus } from "./bus.js"
 import { State } from "./state.js"
 import { Location } from "./location.js"
@@ -55,7 +55,7 @@ export type RuntimeInfo = Omit<Info, "settings"> & { readonly settings?: Provide
 
 export type MutableInfo = DeepMutable<Info>
 
-export { Event } from "@opencode/schema/model"
+export { Event } from "@ocnano/schema/model"
 
 export interface Editor {
   /** Includes disabled candidates so later transforms can re-enable them. */
@@ -83,7 +83,7 @@ export interface Interface extends State.Transformable<Editor> {
   readonly small: (providerID: Provider.ID) => Effect.Effect<Info | undefined>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Model") {}
+export class Service extends Context.Service<Service, Interface>()("@ocnano/Model") {}
 
 type Data = {
   models: Map<Provider.ID, ReadonlyMap<ID, Info>>
@@ -96,7 +96,7 @@ const layer = Layer.effect(
     const providers = yield* Provider.Service
     const bus = yield* Bus.Service
     const location = yield* Location.Service
-    const disableFree = ["1", "true"].includes(process.env.OPENCODE_DISABLE_FREE_MODELS?.toLowerCase() ?? "")
+    const disableFree = ["1", "true"].includes(process.env.OCNANO_DISABLE_FREE_MODELS?.toLowerCase() ?? "")
     let input: Provider.Snapshot | undefined
     const state: State.Interface<Data, Editor> = State.create<Data, Editor>({
       name: "model",
@@ -228,7 +228,7 @@ const layer = Layer.effect(
           }),
         )
         if (disableFree)
-          for (const providerID of [Provider.ID.opencode, Provider.ID.make("opencode-go")])
+          for (const providerID of [Provider.ID.ocnano, Provider.ID.make("opencode-go")])
             byProvider.get(providerID)?.forEach((model, id, models) => {
               if (!model.cost.some((cost) => cost.input > 0)) models.delete(id)
             })
@@ -323,7 +323,7 @@ const layer = Layer.effect(
 
 export const node = makeLocationNode({ service: Service, layer, deps: [Provider.node, Bus.node, Location.node] })
 
-// Signed out, only free OpenCode models are enabled. Clients default to the first available model, so keep
+// Signed out, only free OcNano models are enabled. Clients default to the first available model, so keep
 // these free models ahead of each new free launch instead of letting release order pick the default.
 const PREFERRED_FREE = [
   "big-pickle",
@@ -334,7 +334,7 @@ const PREFERRED_FREE = [
 
 function preferFree(models: Info[]) {
   const freeOnly = models.every(
-    (model) => model.providerID === Provider.ID.opencode && !model.cost.some((cost) => cost.input > 0),
+    (model) => model.providerID === Provider.ID.ocnano && !model.cost.some((cost) => cost.input > 0),
   )
   if (!freeOnly) return models
   const picks = PREFERRED_FREE.flatMap((id) => models.find((model) => model.id === id) ?? [])

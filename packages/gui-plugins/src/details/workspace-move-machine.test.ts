@@ -13,9 +13,9 @@ import {
   type WorkspaceMoveTransition,
 } from "./workspace-move-machine"
 
-const root = "C:/OpenCode/repo"
+const root = "C:/OC Nano/repo"
 
-const created = "C:/OpenCode/worktrees/quiet-river"
+const created = "C:/OC Nano/worktrees/quiet-river"
 
 const project = { id: "proj_repo", worktree: root, sandboxes: [`${root}-feature`] }
 
@@ -461,21 +461,21 @@ describe("workspaceMenuView", () => {
         attempt: 1,
         items: [
           { directory: root },
-          { directory: "C:/OpenCode/repo-feature" },
-          { directory: "c:/opencode/REPO-FEATURE" },
-          { directory: "C:/OpenCode/repo-other" },
+          { directory: "C:/OC Nano/repo-feature" },
+          { directory: "c:/ocnano/REPO-FEATURE" },
+          { directory: "C:/OC Nano/repo-other" },
         ],
       },
     ]).state
 
-    expect(workspaceMenuView(listed, "C:/OpenCode/repo-feature/packages/app", project, false)).toEqual({
+    expect(workspaceMenuView(listed, "C:/OC Nano/repo-feature/packages/app", project, false)).toEqual({
       disabled: false,
       showLocal: true,
-      workspaces: ["C:/OpenCode/repo-other"],
+      workspaces: ["C:/OC Nano/repo-other"],
     })
-    expect(workspaceMenuView(listed, "c:/opencode/repo", project, false)).toMatchObject({
+    expect(workspaceMenuView(listed, "c:/ocnano/repo", project, false)).toMatchObject({
       showLocal: false,
-      workspaces: ["C:/OpenCode/repo-feature", "C:/OpenCode/repo-other"],
+      workspaces: ["C:/OC Nano/repo-feature", "C:/OC Nano/repo-other"],
     })
     expect(workspaceMenuView(listed, root, project, true).disabled).toBe(true)
   })

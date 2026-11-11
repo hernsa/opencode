@@ -1,4 +1,4 @@
-import { binaryPath } from "@opencode/pty"
+import { binaryPath } from "@ocnano/pty"
 
 const binding: string | { readonly path: string; readonly version: string; readonly sha256: string } | undefined =
   binaryPath

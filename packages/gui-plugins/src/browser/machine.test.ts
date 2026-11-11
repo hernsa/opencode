@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { Browser } from "@opencode/plugin-browser/rpc"
+import { Browser } from "@ocnano/plugin-browser/rpc"
 import {
   addressFocusTab,
   createInitialState,

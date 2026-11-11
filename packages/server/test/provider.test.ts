@@ -1,6 +1,6 @@
 import { expect } from "bun:test"
-import { SdkPlugins } from "@opencode/core/plugin/sdk"
-import { Plugin } from "@opencode/plugin/effect"
+import { SdkPlugins } from "@ocnano/core/plugin/sdk"
+import { Plugin } from "@ocnano/plugin/effect"
 import { Context, Deferred, Effect, Fiber, Layer, Option } from "effect"
 import { HttpEffect, HttpRouter, HttpServer } from "effect/http"
 import { tmpdirScoped } from "../../core/test/fixture/tmpdir"
@@ -11,7 +11,7 @@ it.live(
   "policy-controlled endpoints wait for plugins while other catalog reads answer",
   () =>
     Effect.gen(function* () {
-      const tmp = yield* tmpdirScoped("opencode-provider-endpoints-")
+      const tmp = yield* tmpdirScoped("ocnano-provider-endpoints-")
       const started = yield* Deferred.make<void>()
       const release = yield* Deferred.make<void>()
       const context = yield* Layer.build(
@@ -27,7 +27,7 @@ it.live(
               providers: {
                 custom: {
                   name: "Configured Custom Provider",
-                  package: "@opencode/ai/providers/openai-compatible",
+                  package: "@ocnano/ai/providers/openai-compatible",
                   settings: { apiKey: "secret" },
                   models: { chat: {} },
                 },
@@ -53,13 +53,13 @@ it.live(
         .pipe(HttpEffect.toWebHandlerWith(context))
       const request = (method: "GET" | "POST", route: string, body?: unknown) =>
         Effect.promise((signal) => {
-          const url = new URL(route, "http://opencode.local")
+          const url = new URL(route, "http://ocnano.local")
           url.searchParams.set("location[directory]", tmp.path)
           return handler(
             new Request(url, {
               method,
               headers: {
-                authorization: `Basic ${btoa("opencode:secret")}`,
+                authorization: `Basic ${btoa("ocnano:secret")}`,
                 ...(body === undefined ? {} : { "content-type": "application/json" }),
               },
               body: body === undefined ? undefined : JSON.stringify(body),
@@ -73,7 +73,7 @@ it.live(
       // activation finishes rather than serve a provider it would remove.
       const providers = yield* request("GET", "/api/provider").pipe(Effect.forkScoped)
       const models = yield* request("GET", "/api/model").pipe(Effect.forkScoped)
-      const search = yield* request("POST", "/api/websearch", { query: "opencode" }).pipe(
+      const search = yield* request("POST", "/api/websearch", { query: "ocnano" }).pipe(
         Effect.forkScoped,
       )
       // Everything else answers with the current snapshot, and clients refresh on the matching *.updated events.

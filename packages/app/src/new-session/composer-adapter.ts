@@ -1,6 +1,6 @@
 import { Predicate } from "effect"
-import { base64Encode } from "@opencode/util/encode"
-import { Session } from "@opencode/schema/session"
+import { base64Encode } from "@ocnano/util/encode"
+import { Session } from "@ocnano/schema/session"
 import { createMemo, createSignal, onCleanup, startTransition, untrack } from "solid-js"
 import type { ComposerSession, NewSessionComposerAdapter } from "@/composer/adapter"
 import { useComposerState } from "@/composer/persistence"

@@ -1,4 +1,4 @@
-import { Integration } from "@opencode/core/integration"
+import { Integration } from "@ocnano/core/integration"
 import { Effect } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/http-api"
 import { Api } from "../api"
@@ -7,11 +7,11 @@ import {
   IntegrationMethodNotFoundError,
   IntegrationNotFoundError,
   InvalidRequestError,
-} from "@opencode/protocol/errors"
+} from "@ocnano/protocol/errors"
 import { response } from "../location"
-import { WellKnown } from "@opencode/core/wellknown"
-import { Config } from "@opencode/core/config"
-import { ManagedPolicy } from "@opencode/core/managed-policy"
+import { WellKnown } from "@ocnano/core/wellknown"
+import { Config } from "@ocnano/core/config"
+import { ManagedPolicy } from "@ocnano/core/managed-policy"
 
 const statements = Effect.fnUntraced(function* () {
   const config = yield* Config.Service

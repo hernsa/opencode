@@ -1,9 +1,9 @@
-import { Button } from "@opencode/ui/button"
-import { Icon } from "@opencode/ui/icon"
-import { IconButton } from "@opencode/ui/icon-button"
-import { Menu } from "@opencode/ui/menu"
+import { Button } from "@ocnano/ui/button"
+import { Icon } from "@ocnano/ui/icon"
+import { IconButton } from "@ocnano/ui/icon-button"
+import { Menu } from "@ocnano/ui/menu"
 import { createMemo, Show } from "solid-js"
-import { usePlugin, type IpcClient, type ServerRow } from "@opencode/plugin/gui"
+import { usePlugin, type IpcClient, type ServerRow } from "@ocnano/plugin/gui"
 import type { Wsl, WslServersState } from "./contract"
 import { wslRowView } from "./row-view"
 
@@ -41,7 +41,7 @@ export default function WslRow(props: {
                 <Button
                   size="small"
                   disabled={button().disabled}
-                  onClick={() => props.run(() => api().installOpencode({ name: props.distro }))}
+                  onClick={() => props.run(() => api().installOcNano({ name: props.distro }))}
                 >
                   {plugin.t(button().label)}
                 </Button>

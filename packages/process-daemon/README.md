@@ -1,10 +1,10 @@
-# opencode-pty
+# ocnano-pty
 
 Moved from [anomalyco/opencode-pty](https://github.com/anomalyco/opencode-pty)
-(at 443945a, v0.3.1). It lives in the OpenCode monorepo at
+(at 443945a, v0.3.1). It lives in the OC Nano monorepo at
 `packages/process-daemon`; run the commands below from that directory.
 
-Experimental threaded PTY service core for OpenCode.
+Experimental threaded PTY service core for OC Nano.
 
 It uses `portable-pty` to own terminal child processes and `libghostty-vt` to
 maintain authoritative terminal state and answer terminal protocol queries.
@@ -17,7 +17,7 @@ terminals. Observer commands connect to an existing daemon without taking owners
 The service uses a private authenticated local byte stream (Unix socket or Windows
 named pipe) and an atomic registration file.
 
-Integrations launch `opencode-pty daemon --name NAME [--runtime-dir DIR]` (protocol 8).
+Integrations launch `ocnano-pty daemon --name NAME [--runtime-dir DIR]` (protocol 8).
 The server must claim the daemon within 5 seconds by sending the authenticated
 framed envelope `{"token":"...","request":{"op":"own","instance_id":"..."}}`.
 The response is `{"type":"owned"}`; that connection stays open as the sole
@@ -39,19 +39,19 @@ current owner, stops the daemon even during handoff. No ownership or handoff sta
 is persisted.
 
 Every command requires `--name NAME`, which selects the runtime directory
-`DIR/NAME`. `--runtime-dir DIR` is optional and defaults to OpenCode's state
-directory, `${XDG_STATE_HOME:-~/.local/state}/opencode/pty`. Names are a single
+`DIR/NAME`. `--runtime-dir DIR` is optional and defaults to OC Nano's state
+directory, `${XDG_STATE_HOME:-~/.local/state}/ocnano/pty`. Names are a single
 path component of letters, digits, `.`, `_`, or `-`. The registration
 (`service.json`) and lock (`service.lock`) live in that directory. They only
 default to a temporary directory when no home directory exists, because macOS deletes unaccessed regular files
-there after three days. The socket defaults to `/tmp/opencode-pty-<uid>/` to fit
+there after three days. The socket defaults to `/tmp/ocnano-pty-<uid>/` to fit
 socket path limits; temporary cleaners skip sockets. A stopping daemon removes
 its own files and runtime directory, and a starting daemon removes abandoned
 sibling runtime directories older than ten minutes.
 
-On Unix, set `OPENCODE_PTY_SOCKET_DIR` to use a different socket directory. The
+On Unix, set `OCNANO_PTY_SOCKET_DIR` to use a different socket directory. The
 value must be an absolute path without `..` components. Sockets go in an
-`opencode-pty-<uid>` child of that directory, which gets the existing ownership
+`ocnano-pty-<uid>` child of that directory, which gets the existing ownership
 and symlink checks and mode `0700`; the directory itself is left unchanged.
 Socket path length limits still apply. Registration and lock files continue to
 use the runtime directory.
@@ -72,7 +72,7 @@ polls every 25 ms.
 
 The Windows named-pipe backend keeps protocol 8 and the registration fields
 `instance_id`, `pid`, `protocol`, `socket`, `token`, and `features`. Treat `socket` as an opaque
-local endpoint: on Windows it is `\\.\pipe\opencode-pty-<instance_id>`, not a
+local endpoint: on Windows it is `\\.\pipe\ocnano-pty-<instance_id>`, not a
 filesystem socket. A random per-instance name, exclusive first pipe instance,
 current-user access control, and rejection of remote clients protect the endpoint;
 the private registration file remains the discovery and authentication source.
@@ -92,9 +92,9 @@ it never calls the potentially unbounded `FlushFileBuffers`. Stopping acceptance
 retains a pipe instance until registration is removed, preventing namespace
 squatting during cleanup.
 
-On Windows, `opencode-pty daemon --name NAME [--runtime-dir DIR]` uses the same
+On Windows, `ocnano-pty daemon --name NAME [--runtime-dir DIR]` uses the same
 `DIR/NAME` runtime directory; the default `DIR` resolves through `XDG_STATE_HOME`
-or the user profile's `.local\state\opencode\pty`, matching OpenCode's state
+or the user profile's `.local\state\OC Nano\pty`, matching OC Nano's state
 directory. The runtime directory must be absolute. Storage entries must not be
 reparse points or owned by another user; the directory, lock, and registration
 use protected current-user-only ACLs, and clients verify the registration's owner
@@ -121,7 +121,7 @@ sending the token. Discard a connection after any read/write timeout.
 ## Architecture
 
 ```text
-opencode-pty process
+ocnano-pty process
 ├── atomic private service registration
 ├── authenticated framed IPC
 ├── terminal registry
@@ -299,7 +299,7 @@ stack-trace helper, which otherwise fails to compile for ARM64.
 The workflow runs on pull requests and pushes to `dev` that touch
 `packages/process-daemon`, independently of the release workflow.
 It checks formatting, builds the executable, runs all enabled tests, and checks
-`opencode-pty.exe --version`. It also copies the library test executable out of
+`ocnano-pty.exe --version`. It also copies the library test executable out of
 the build tree and runs it without Cargo's DLL search paths, verifying that
 libghostty is statically linked. It does not publish packages or releases.
 
@@ -373,26 +373,26 @@ git push origin process-daemon-vX.Y.Z
 
 The tag creates an unsigned GitHub release titled `process-daemon vX.Y.Z`. It
 is never marked Latest, because the monorepo's Latest release drives
-OpenCode's own update paths. The release contains x86-64 and arm64 binaries
+OC Nano's own update paths. The release contains x86-64 and arm64 binaries
 for Linux GNU, Linux musl, macOS, and Windows (MSVC, statically linked C
 runtime), plus `SHA256SUMS`, a machine-readable `release-manifest.json`, and
 GitHub build-provenance attestations. Release builds force Ghostty's Zig code
 generation to its baseline CPU target so artifacts do not inherit
 instruction-set extensions from CI runners (Windows builds set
-`OPENCODE_ZIG_CPU=baseline`, since the Unix Zig wrapper is a shell script).
+`OCNANO_ZIG_CPU=baseline`, since the Unix Zig wrapper is a shell script).
 Linux GNU artifacts support glibc 2.30 and newer.
 
-Tagged releases also publish `@opencode/pty` to npm with optional,
+Tagged releases also publish `@ocnano/pty` to npm with optional,
 platform-specific binary packages. Installing the npm package selects the native
-binary for the current platform (`opencode-pty.exe` on Windows) and exposes
+binary for the current platform (`ocnano-pty.exe` on Windows) and exposes
 its path as `binaryPath`:
 
 ```js
-import { binaryPath } from "@opencode/pty"
+import { binaryPath } from "@ocnano/pty"
 ```
 
 npm publishing uses trusted publishing with provenance. Each of the nine
-packages (`@opencode/pty` and the eight `@opencode/pty-<platform>`
+packages (`@ocnano/pty` and the eight `@ocnano/pty-<platform>`
 packages) must list anomalyco/opencode with workflow
 `release-process-daemon.yml` as its trusted publisher, with no environment
 (the release job does not use one).
@@ -408,7 +408,7 @@ Platform signing will be added later.
   TerminalClient/play/watch CLI.
 - Ordinary API operations use one framed JSON request per connection;
   subscriptions keep the authenticated connection open for ordered live events.
-- The OpenCode backend proxy and ordered group APIs are implemented, but the
+- The OC Nano backend proxy and ordered group APIs are implemented, but the
   OpenTUI client integration is not.
 - Windows uses portable-pty's published ConPTY backend and is not hardened yet.
 - Child process-tree cleanup is not complete beyond portable-pty's root killer.

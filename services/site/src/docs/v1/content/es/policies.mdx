@@ -1,15 +1,15 @@
 ---
 title: Políticas
-description: Controle qué recursos configurados puede usar OpenCode.
+description: Controle qué recursos configurados puede usar OC Nano.
 ---
 
-:::caution[Requiere OpenCode 2]
-Las políticas no se aplican en OpenCode 1. Los ejemplos de esta página requieren OpenCode 2. En OpenCode 1, use [`disabled_providers`](/docs/config#disabled-providers) o [`enabled_providers`](/docs/config#enabled-providers) para controlar la disponibilidad de los proveedores. Consulte la [documentación de políticas de OpenCode 2](https://opencode.ai/docs/policies/) para conocer el uso actual.
+:::caution[Requiere OC Nano 2]
+Las políticas no se aplican en OC Nano 1. Los ejemplos de esta página requieren OC Nano 2. En OC Nano 1, use [`disabled_providers`](/docs/config#disabled-providers) o [`enabled_providers`](/docs/config#enabled-providers) para controlar la disponibilidad de los proveedores. Consulte la [documentación de políticas de OC Nano 2](https://opencode.ai/docs/policies/) para conocer el uso actual.
 :::
 
-Las políticas controlan si OpenCode puede realizar una acción sobre un recurso con nombre. Esta función de OpenCode 2 es experimental y se configura con el array `experimental.policies` en `opencode.json`.
+Las políticas controlan si OC Nano puede realizar una acción sobre un recurso con nombre. Esta función de OC Nano 2 es experimental y se configura con el array `experimental.policies` en `ocnano.json`.
 
-Las políticas son independientes de los [permisos](/docs/permissions). Los permisos controlan lo que pueden hacer las herramientas durante una sesión, mientras que las políticas controlan si OpenCode puede usar un recurso como un proveedor de LLM.
+Las políticas son independientes de los [permisos](/docs/permissions). Los permisos controlan lo que pueden hacer las herramientas durante una sesión, mientras que las políticas controlan si OC Nano puede usar un recurso como un proveedor de LLM.
 
 ---
 
@@ -23,7 +23,7 @@ Cada declaración de política tiene tres campos:
 
 Por ejemplo, para denegar el uso del proveedor `openai`:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "$schema": "https://opencode.ai/config.json",
   "experimental": {
@@ -44,7 +44,7 @@ Un proveedor denegado por una política no está disponible para seleccionar ni 
 
 ## Políticas disponibles
 
-Actualmente, OpenCode admite una acción de política:
+Actualmente, OC Nano admite una acción de política:
 
 | Acción         | Recurso                                | Descripción                                      |
 | -------------- | -------------------------------------- | ------------------------------------------------ |
@@ -58,7 +58,7 @@ Es posible que se añadan más acciones de política en el futuro.
 
 El campo `resource` admite coincidencia con comodines. Use `*` para coincidir con cero o más caracteres y `?` para coincidir con un solo carácter.
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "$schema": "https://opencode.ai/config.json",
   "experimental": {
@@ -83,7 +83,7 @@ Cuando coinciden varias declaraciones, gana la última declaración coincidente.
 
 Por ejemplo, para permitir solo Anthropic:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "$schema": "https://opencode.ai/config.json",
   "experimental": {
@@ -111,11 +111,11 @@ Las políticas pueden establecerse tanto en su configuración global como en la 
 
 ## Listas de proveedores
 
-En OpenCode 2, use políticas en lugar de las opciones anteriores `disabled_providers` y `enabled_providers` para controlar el acceso a los proveedores. En OpenCode 1, siga usando esas listas de proveedores.
+En OC Nano 2, use políticas en lugar de las opciones anteriores `disabled_providers` y `enabled_providers` para controlar el acceso a los proveedores. En OC Nano 1, siga usando esas listas de proveedores.
 
 Para reemplazar `disabled_providers`:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "experimental": {
     "policies": [
@@ -128,7 +128,7 @@ Para reemplazar `disabled_providers`:
 
 Para reemplazar `enabled_providers`, deniegue primero todos los proveedores y después permita los proveedores seleccionados:
 
-```json title="opencode.json"
+```json title="ocnano.json"
 {
   "experimental": {
     "policies": [

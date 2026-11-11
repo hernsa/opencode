@@ -1,5 +1,5 @@
-import { encodeFilePath } from "@opencode/util/path"
-import type { Files } from "@opencode/plugin/gui"
+import { encodeFilePath } from "@ocnano/util/path"
+import type { Files } from "@ocnano/plugin/gui"
 
 export function pathToFileUrl(filepath: string): string {
   return `file://${encodeFilePath(filepath)}`

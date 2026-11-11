@@ -4,20 +4,20 @@
 import { docsUrl } from "~/lib/docs"
 import { isMobile, requestPlatform } from "~/lib/platform"
 
-/** Where the SDK's "Read docs" action leads: the @opencode/sdk docs (the in-process host). */
+/** Where the SDK's "Read docs" action leads: the @ocnano/sdk docs (the in-process host). */
 export const sdkDocs = docsUrl("/build/sdk/")
 
 export { installs } from "~/lib/install-commands"
 
-// The real v2 @opencode/sdk API (packages/sdk README, opencode.ai/docs/build/sdk), trimmed from
+// The real v2 @ocnano/sdk API (packages/sdk README, opencode.ai/docs/build/sdk), trimmed from
 // the script in the SDK video. `sessions.create()` without a location uses the working directory.
 // Lines stay within 32 characters so the card sizes code to its width.
 export const sdkSnippet = [
-  `<span data-k>import</span> <span data-p>{</span> <span data-v>OpenCode</span> <span data-p>}</span>`,
-  `  <span data-k>from</span> <span data-s>"@opencode/sdk"</span>`,
+  `<span data-k>import</span> <span data-p>{</span> <span data-v>OC Nano</span> <span data-p>}</span>`,
+  `  <span data-k>from</span> <span data-s>"@ocnano/sdk"</span>`,
   ``,
   `<span data-k>await using</span> <span data-v>oc</span> <span data-o>=</span>`,
-  `  <span data-k>await</span> OpenCode<span data-p>.</span><span data-f>create</span><span data-p>()</span>`,
+  `  <span data-k>await</span> OC Nano<span data-p>.</span><span data-f>create</span><span data-p>()</span>`,
   `<span data-k>const</span> <span data-v>s</span> <span data-o>=</span>`,
   `  <span data-k>await</span> <span data-v>oc</span><span data-p>.</span>sessions<span data-p>.</span><span data-f>create</span><span data-p>()</span>`,
   `<span data-k>await</span> <span data-v>oc</span><span data-p>.</span>sessions<span data-p>.</span><span data-f>prompt</span><span data-p>({</span>`,
@@ -59,7 +59,7 @@ export const products = [
   {
     slug: "sdk",
     name: "SDK",
-    body: "Drive OpenCode from your own scripts, CI jobs and tools.",
+    body: "Drive OC Nano from your own scripts, CI jobs and tools.",
     action: "Read docs",
   },
 ] as const satisfies readonly {
@@ -73,14 +73,14 @@ export const products = [
 /**
  * The products /product lists after the carousel's four, in this order. Copy follows each one's
  * README and docs: IDE extensions is the VS Code extension (sdks/vscode, publisher sst-dev; docs
- * /docs/ide) plus `opencode acp` for ACP editors (docs /cli/acp), and Mini is `opencode mini`
+ * /docs/ide) plus `ocnano acp` for ACP editors (docs /cli/acp), and Mini is `ocnano mini`
  * (packages/tui/src/mini).
  */
 export const moreProducts = [
   {
     slug: "ide",
     name: "IDE extensions",
-    body: "Open OpenCode in VS Code, Cursor and Windsurf, or in Zed and JetBrains IDEs through ACP.",
+    body: "Open OC Nano in VS Code, Cursor and Windsurf, or in Zed and JetBrains IDEs through ACP.",
     action: "Install",
   },
   {
@@ -107,18 +107,18 @@ export const allProductPages = [...products, ...moreProducts]
  */
 export const productPages = allProductPages.filter((product) => product.slug !== "ide" && product.slug !== "mini")
 
-/** The ACP docs: Zed, JetBrains IDEs and other ACP editors run `opencode acp`. */
+/** The ACP docs: Zed, JetBrains IDEs and other ACP editors run `ocnano acp`. */
 export const acpDocs = docsUrl("/cli/acp/")
 
 /**
- * Settings › Extensions card: OpenCode inside editors. The VS Code extension is sdks/vscode
- * (publisher sst-dev); Zed and other ACP clients run `opencode acp` (docs: /cli/acp).
+ * Settings › Extensions card: OcNano inside editors. The VS Code extension is sdks/vscode
+ * (publisher sst-dev); Zed and other ACP clients run `ocnano acp` (docs: /cli/acp).
  */
 export const extensions = {
   name: "Extensions",
-  body: "Use OpenCode inside VS Code, or in Zed and other editors through ACP.",
+  body: "Use OC Nano inside VS Code, or in Zed and other editors through ACP.",
   action: "Install",
-  href: "https://marketplace.visualstudio.com/items?itemName=sst-dev.opencode",
+  href: "https://marketplace.visualstudio.com/items?itemName=sst-dev.ocnano",
 }
 
 /**

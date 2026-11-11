@@ -1,5 +1,5 @@
-import { useFilteredList } from "@opencode/ui/hooks"
-import { Switch } from "@opencode/ui/switch"
+import { useFilteredList } from "@ocnano/ui/hooks"
+import { Switch } from "@ocnano/ui/switch"
 import {
   type Component,
   createEffect,

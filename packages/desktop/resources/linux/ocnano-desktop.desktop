@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OcNano
+Exec=/opt/OcNano/ai.ocnano %U
+Terminal=false
+Type=Application
+Icon=ai.ocnano
+StartupWMClass=ai.ocnano.desktop
+NoDisplay=true
+Comment=Open source AI coding agent
+Categories=Development;

@@ -13,12 +13,12 @@ use std::thread;
 use std::time::{Duration, Instant};
 
 use base64::Engine;
-use opencode_pty::daemon::{PipeConnection, Registration};
-use opencode_pty::protocol::{
+use ocnano_pty::daemon::{PipeConnection, Registration};
+use ocnano_pty::protocol::{
     AttachmentRole, Envelope, Request, Response, SubscriptionEvent, read_frame,
     read_subscription_event, write_frame,
 };
-use opencode_pty::service::{CreatePty, ProcessInfo, ProcessMode, TerminalLifecycle};
+use ocnano_pty::service::{CreatePty, ProcessInfo, ProcessMode, TerminalLifecycle};
 use terminal_fixture::{Command as FixtureCommand, Deadline, Fixture, TempDir};
 use windows_sys::Win32::Foundation::WAIT_OBJECT_0;
 use windows_sys::Win32::System::Threading::{
@@ -178,7 +178,7 @@ impl Drop for Daemon {
 }
 
 fn spawn(directory: &Path) -> Child {
-    Command::new(env!("CARGO_BIN_EXE_opencode-pty"))
+    Command::new(env!("CARGO_BIN_EXE_ocnano-pty"))
         .args(["daemon", "--name"])
         .arg(directory.file_name().unwrap())
         .arg("--runtime-dir")
@@ -193,14 +193,14 @@ fn registration(child: &mut Child, directory: &Path) -> Registration {
     let deadline = Instant::now() + Duration::from_secs(4);
     loop {
         // The checked reader also proves the published file is private.
-        if let Ok(registration) = opencode_pty::daemon::read_registration(directory)
+        if let Ok(registration) = ocnano_pty::daemon::read_registration(directory)
             && registration.pid == child.id()
         {
             assert_eq!(registration.protocol, 8);
             assert_eq!(
                 registration.socket,
                 PathBuf::from(format!(
-                    r"\\.\pipe\opencode-pty-{}",
+                    r"\\.\pipe\ocnano-pty-{}",
                     registration.instance_id
                 ))
             );

@@ -1,5 +1,5 @@
-import type { Artifact } from "@opencode/schema/artifact"
-import type { Session } from "@opencode/schema/session"
+import type { Artifact } from "@ocnano/schema/artifact"
+import type { Session } from "@ocnano/schema/session"
 import type { Transform } from "./registration.js"
 
 export interface ArtifactProviderCreateInput {

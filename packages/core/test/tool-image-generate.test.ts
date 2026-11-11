@@ -1,25 +1,25 @@
 import { describe, expect } from "bun:test"
 import fs from "fs/promises"
 import path from "path"
-import { Bus } from "@opencode/core/bus"
-import { Config } from "@opencode/core/config"
-import { Generate } from "@opencode/core/generate"
-import { Job } from "@opencode/core/job"
-import { Location } from "@opencode/core/location"
-import { Model } from "@opencode/core/model"
-import { Permission } from "@opencode/core/permission"
-import { Plugin } from "@opencode/core/plugin"
-import { PluginHost } from "@opencode/core/plugin/host"
-import { Provider } from "@opencode/core/provider"
-import { Session } from "@opencode/core/session"
-import { SessionEvent } from "@opencode/core/session/event"
-import { Tool } from "@opencode/core/tool"
-import { ImageGenerateTool } from "@opencode/core/tool/plugin/image-generate"
-import { OpenCodeTools } from "@opencode/core/tool/plugin/opencode"
-import { Document, Event, Info } from "@opencode/schema/config"
-import { ConfigExperimental } from "@opencode/schema/config/experimental"
-import type { ImageRequest, ImageResult } from "@opencode/schema/generate"
-import { Global } from "@opencode/util/global"
+import { Bus } from "@ocnano/core/bus"
+import { Config } from "@ocnano/core/config"
+import { Generate } from "@ocnano/core/generate"
+import { Job } from "@ocnano/core/job"
+import { Location } from "@ocnano/core/location"
+import { Model } from "@ocnano/core/model"
+import { Permission } from "@ocnano/core/permission"
+import { Plugin } from "@ocnano/core/plugin"
+import { PluginHost } from "@ocnano/core/plugin/host"
+import { Provider } from "@ocnano/core/provider"
+import { Session } from "@ocnano/core/session"
+import { SessionEvent } from "@ocnano/core/session/event"
+import { Tool } from "@ocnano/core/tool"
+import { ImageGenerateTool } from "@ocnano/core/tool/plugin/image-generate"
+import { OcNanoTools } from "@ocnano/core/tool/plugin/ocnano"
+import { Document, Event, Info } from "@ocnano/schema/config"
+import { ConfigExperimental } from "@ocnano/schema/config/experimental"
+import type { ImageRequest, ImageResult } from "@ocnano/schema/generate"
+import { Global } from "@ocnano/util/global"
 import { Effect, Layer, Schedule, Stream } from "effect"
 import { testEffect } from "./lib/effect"
 import { permissionLayer } from "./lib/permission"
@@ -98,7 +98,7 @@ const setup = (providerID = "test") =>
     const location = yield* Location.Service
     const host = yield* PluginHost.make(plugins, "test")
     yield* ImageGenerateTool.Plugin.effect(host)
-    yield* OpenCodeTools.Plugin.effect(host)
+    yield* OcNanoTools.Plugin.effect(host)
     const session = yield* sessions.create({
       location: Location.Ref.make({ directory: location.directory }),
       model: Model.Ref.make({ providerID: Provider.ID.make(providerID), id: Model.ID.make("chat") }),
@@ -487,7 +487,7 @@ describe("experimental_image_generate", () => {
             type: "tool-call",
             id: `models-${JSON.stringify(input)}`,
             name: "execute",
-            input: { code: `return await tools.opencode.models(${JSON.stringify(input)})` },
+            input: { code: `return await tools.ocnano.models(${JSON.stringify(input)})` },
           },
         }).pipe(
           Effect.map((result) =>

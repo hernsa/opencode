@@ -1,5 +1,5 @@
-import type { FileDiffInfo } from "@opencode/client/promise"
-import { Contract, type SessionRef } from "@opencode/plugin/gui"
+import type { FileDiffInfo } from "@ocnano/client/promise"
+import { Contract, type SessionRef } from "@ocnano/plugin/gui"
 
 /** Why the session directory's uncommitted changes did not load: the request failed, or took too long. */
 export type ReviewDetailsFailure =

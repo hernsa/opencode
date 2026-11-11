@@ -1,10 +1,10 @@
 export * as McpPool from "./pool.js"
 
 import type { OAuthClientProvider } from "@modelcontextprotocol/client"
-import type { Mcp } from "@opencode/schema/mcp"
-import { CrossSpawnSpawner } from "@opencode/util/cross-spawn-spawner"
-import { makeGlobalNode } from "@opencode/util/effect/app-node"
-import { httpFetch } from "@opencode/util/effect/app-node-platform"
+import type { Mcp } from "@ocnano/schema/mcp"
+import { CrossSpawnSpawner } from "@ocnano/util/cross-spawn-spawner"
+import { makeGlobalNode } from "@ocnano/util/effect/app-node"
+import { httpFetch } from "@ocnano/util/effect/app-node-platform"
 import { Cause, Context, Deferred, Effect, Exit, Fiber, FiberSet, Layer, Result, Scope, Semaphore } from "effect"
 import { FetchHttpClient } from "effect/http"
 import { ChildProcessSpawner } from "effect/process/ChildProcessSpawner"
@@ -39,7 +39,7 @@ export interface Interface {
   readonly connection: (input: Input) => McpConnection.Connection
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/McpPool") {}
+export class Service extends Context.Service<Service, Interface>()("@ocnano/McpPool") {}
 
 /**
  * Everything that could make two connections behave differently, so only identical ones are shared.
@@ -89,7 +89,7 @@ function fingerprint(secret: string | Record<string, string> | undefined) {
 // The native pool mirrors the pooled connections this layer holds: a bounded, expiring record
 // of them, so a long-lived process keeps at most NATIVE_POOL_CAPACITY of them natively instead
 // of every connection it ever made. The JavaScript maps below stay the source of truth for
-// what OpenCode does; the mirror only bounds what the native side retains.
+// what OcNano does; the mirror only bounds what the native side retains.
 const NATIVE_POOL_CAPACITY = 64
 const NATIVE_POOL_TTL_SECS = 300
 

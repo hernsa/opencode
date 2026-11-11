@@ -1,5 +1,5 @@
-import type { OpenCodeEvent } from "@opencode/client/promise"
-import { createClientConnection, type ClientConnectionStatus } from "@opencode/client/solid"
+import type { OcNanoEvent } from "@ocnano/client/promise"
+import { createClientConnection, type ClientConnectionStatus } from "@ocnano/client/solid"
 import { createGlobalEmitter } from "@solid-primitives/event-bus"
 import { type Accessor, createEffect, on, onCleanup } from "solid-js"
 import { createApiForServer, type ServerApi } from "@/runtime/server/api"
@@ -13,21 +13,21 @@ import { ServerScope } from "@/runtime/server/scope"
 import { useServer } from "./current"
 import { createEndpointSyncState, transitionEndpointSync, type EndpointSyncEvent } from "./server-sync/endpoint-machine"
 
-type OpenCodeEventMap = { [Type in OpenCodeEvent["type"]]: Extract<OpenCodeEvent, { type: Type }> }
+type OcNanoEventMap = { [Type in OcNanoEvent["type"]]: Extract<OcNanoEvent, { type: Type }> }
 
-export type OpenCodeEventStream = {
-  on<Type extends OpenCodeEvent["type"]>(type: Type, handler: (event: OpenCodeEventMap[Type]) => void): VoidFunction
-  listen(handler: (event: OpenCodeEvent) => void): VoidFunction
+export type OcNanoEventStream = {
+  on<Type extends OcNanoEvent["type"]>(type: Type, handler: (event: OcNanoEventMap[Type]) => void): VoidFunction
+  listen(handler: (event: OcNanoEvent) => void): VoidFunction
 }
 
-type OpenCodeEventSource = OpenCodeEventStream & {
-  location(directory: string): OpenCodeEventStream
+type OcNanoEventSource = OcNanoEventStream & {
+  location(directory: string): OcNanoEventStream
 }
 
-export function createOpenCodeEventSource() {
-  const emitter = createGlobalEmitter<OpenCodeEventMap>()
+export function createOcNanoEventSource() {
+  const emitter = createGlobalEmitter<OcNanoEventMap>()
 
-  function stream(directory?: string): OpenCodeEventStream {
+  function stream(directory?: string): OcNanoEventStream {
     return {
       on(type, handler) {
         return emitter.on(type, (event) => {
@@ -44,7 +44,7 @@ export function createOpenCodeEventSource() {
     }
   }
 
-  const event: OpenCodeEventSource = {
+  const event: OcNanoEventSource = {
     ...stream(),
     location: (directory) => stream(directory),
   }
@@ -53,7 +53,7 @@ export function createOpenCodeEventSource() {
 
   return {
     event,
-    publish(event: OpenCodeEvent) {
+    publish(event: OcNanoEvent) {
       emitter.emit(event.type, event)
     },
   }
@@ -74,7 +74,7 @@ type ServerSDKBase = {
     attempt: Accessor<number>
     error: Accessor<string | undefined>
   }
-  event: OpenCodeEventSource
+  event: OcNanoEventSource
 }
 
 // Where a plugin server's transport points until the plugin reports the server ready; it never answers. The server has
@@ -92,7 +92,7 @@ function createServerSdkContextBase(server: ServerConnection.Any, scope: ServerS
     media.dispose()
   })
 
-  const events = createOpenCodeEventSource()
+  const events = createOcNanoEventSource()
   const reconnect = resolveEndpoint(server)
   // Read only by `dispatchEndpoint`, the transport's only writer.
   let endpoint = createEndpointSyncState(transport.http)
@@ -281,7 +281,7 @@ export const useServerSDK = () => {
 
 export type LocationContext = {
   directory: string
-  event: OpenCodeEventStream
+  event: OcNanoEventStream
 }
 
 function createDirSdkContext(directory: string, serverSDK: ServerSDKBase): LocationContext {

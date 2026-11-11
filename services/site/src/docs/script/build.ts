@@ -178,7 +178,7 @@ function checkFileNames() {
 
 /** Fails when a docs page, or a stylesheet it links, loads a file from outside the docs' sets. */
 async function checkAssetPrefix() {
-  const origin = "https://opencode.local"
+  const origin = "https://ocnano.local"
   const pages = (
     await Promise.all(
       docsSets.map((set) => Array.fromAsync(new Bun.Glob(`${set.base.slice(1)}**/*.html`).scan({ cwd: output }))),
