@@ -5,7 +5,7 @@ In-process OC Nano host for Promise and Effect applications. The SDK executes Se
 ```ts
 import { OC Nano } from "@ocnano/sdk"
 
-await using OC Nano = await OC Nano.create()
+await using ocnano = await OC Nano.create()
 const session = await ocnano.sessions.create({
   location: { directory: "/workspace" },
 })
@@ -18,7 +18,7 @@ The Promise API uses the same values, errors, request options, and `AsyncIterabl
 Embedded hosts are silent by default. Set `log` to receive structured log entries:
 
 ```ts
-await using OC Nano = await OC Nano.create({
+await using ocnano = await OC Nano.create({
   log: {
     level: "warn",
     emit: (entry) => console.error(entry.message, entry.attributes, entry.cause),
@@ -37,7 +37,7 @@ import { OC Nano } from "@ocnano/sdk"
 import { threads } from "./threads"
 import { slackPlugin } from "./slack-plugin"
 
-await using OC Nano = await OC Nano.create({
+await using ocnano = await OC Nano.create({
   database: { path: "./sessions.db" },
   instances: {
     key(session) {
@@ -69,7 +69,7 @@ await ocnano.sessions.prompt({ sessionID: session.id, text: "Review the changes"
 
 ### Restart and Lifetime
 
-The selector is installed before automatic recovery starts. Its callbacks must be able to load application data without depending on the returned `OC Nano` handle or a later registration call. Functions are reconstructed, not serialized.
+The selector is installed before automatic recovery starts. Its callbacks must be able to load application data without depending on the returned `ocnano` handle or a later registration call. Functions are reconstructed, not serialized.
 
 Use a persistent `database.path` to recover Sessions after restart; the default database is in memory. Workerd uses its injected Durable Object storage. After restart, the next capability-dependent operation or recovery drain rebuilds the selected instance from saved Session metadata and application data.
 
@@ -84,7 +84,7 @@ import { OC NanoWorkerd } from "@ocnano/sdk/workerd"
 import myPlugin from "./my-plugin"
 
 export class OC NanoDO {
-  private readonly OC Nano: Promise<OC NanoWorkerd.Interface>
+  private readonly ocnano: Promise<OC NanoWorkerd.Interface>
 
   constructor(state: DurableObjectState) {
     this.ocnano = state.blockConcurrencyWhile(() =>
@@ -97,7 +97,7 @@ export class OC NanoDO {
   }
 
   async fetch() {
-    const OC Nano = await this.ocnano
+    const ocnano = await this.ocnano
     return Response.json(await ocnano.server.info())
   }
 }
@@ -112,7 +112,7 @@ The Effect-native API remains available from `@ocnano/sdk/effect`:
 ```ts
 import { OC Nano } from "@ocnano/sdk/effect"
 
-const OC Nano = yield * OC Nano.create()
+const ocnano = yield * OC Nano.create()
 const session = yield * ocnano.sessions.get({ sessionID })
 ```
 
@@ -127,7 +127,7 @@ import { Threads } from "./threads-effect"
 import { slackPlugin } from "./slack-plugin-effect"
 
 const threadMetadata = Schema.decodeUnknownSync(Schema.Struct({ threadID: Schema.String }))
-const OC Nano = OC Nano.layer({
+const ocnano = OC Nano.layer({
   database: { path: "./sessions.db" },
   instances: {
     key: (session) => threadMetadata(session.metadata).threadID,

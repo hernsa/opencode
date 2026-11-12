@@ -1145,7 +1145,7 @@ test.describe("pages open before slow data", () => {
     const { settings } = await open(page, {
       mcp: [{ name: "demo-mcp", status: { status: "connected" } }],
       skills: [
-        { id: "ocnano", name: "OC Nano", path: "skill://ocnano/SKILL.md", content: "ocnano help" },
+        { id: "ocnano", name: "OC Nano", path: "skill://ocnano/SKILL.md", content: "OC Nano help" },
         { id: "plugin-skill", name: "Plugin skill", path: "skill://plugin-skill/SKILL.md", content: "Plugin help" },
       ],
     })
@@ -1254,7 +1254,7 @@ test.describe("pages open before slow data", () => {
           path: "/home/test/.config/ocnano/skills/review/SKILL.md",
           content: "Review code",
         },
-        { id: "ocnano", name: "OC Nano", path: "skill://ocnano/SKILL.md", content: "ocnano help" },
+        { id: "ocnano", name: "OC Nano", path: "skill://ocnano/SKILL.md", content: "OC Nano help" },
         { id: "report", name: "Report", path: "skill://report/SKILL.md", content: "Report bugs" },
         { id: "browser", name: "Browser", path: "skill://browser/SKILL.md", content: "Browser help" },
         { id: "funnel", name: "Funnel analytics", path: "skill://funnel/SKILL.md", content: "Analyze the funnel" },

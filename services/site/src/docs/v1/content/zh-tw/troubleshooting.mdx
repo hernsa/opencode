@@ -12,11 +12,11 @@ description: 常見問題及其解決方法。
 日誌檔案寫入位置：
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.local\share\ocnano\log`
 
 日誌檔案以時間戳記命名（例如 `2025-01-09T123456.log`），並保留最近的 10 個日誌檔案。
 
-你可以透過 `--log-level` 命令列選項設定日誌等級以取得更詳細的偵錯資訊。例如：`OC Nano --log-level DEBUG`。
+你可以透過 `--log-level` 命令列選項設定日誌等級以取得更詳細的偵錯資訊。例如：`ocnano --log-level DEBUG`。
 
 ---
 
@@ -25,7 +25,7 @@ description: 常見問題及其解決方法。
 OC Nano 將工作階段資料和其他應用程式資料儲存在磁碟上：
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.local\share\ocnano`
 
 該目錄包含：
 
@@ -59,7 +59,7 @@ OC Nano Desktop 會在背景執行一個本地 OC Nano 伺服器（即 `ocnano-c
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc`（或 `~/.config/ocnano/ocnano.json`）
 - **macOS/Linux**（舊版安裝）: `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 如果你設定了外掛，請透過移除該鍵或將其設定為空陣列來暫時停用它們：
 
@@ -76,7 +76,7 @@ OC Nano 還可以從磁碟載入本地外掛。暫時將這些外掛移走（或
 
 - **全域外掛**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.config\ocnano\plugins`
 - **專案外掛**（僅當你使用了專案級設定時）
   - `<your-project>/.ocnano/plugins/`
 
@@ -93,7 +93,7 @@ OC Nano 還可以從磁碟載入本地外掛。暫時將這些外掛移走（或
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> 貼上 `~/.cache/ocnano`
 - **Linux**: 刪除 `~/.cache/ocnano`（或執行 `rm -rf ~/.cache/ocnano`）
-- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: 按 `WIN+R` 並貼上 `%USERPROFILE%\.cache\ocnano`
 
 3. 重新啟動 OC Nano Desktop。
 
@@ -243,7 +243,7 @@ OC Nano Desktop 僅在以下情況下顯示系統通知：
    rm -rf ~/.local/share/ocnano
    ```
 
-   在 Windows 上，按 `WIN+R` 並刪除：`%USERPROFILE%\.local\share\OC Nano`
+   在 Windows 上，按 `WIN+R` 並刪除：`%USERPROFILE%\.local\share\ocnano`
 
 3. 在 TUI 中使用 `/connect` 指令重新與供應商進行身分驗證。
 
@@ -261,7 +261,7 @@ OC Nano Desktop 僅在以下情況下顯示系統通知：
    rm -rf ~/.cache/ocnano
    ```
 
-   在 Windows 上，按 `WIN+R` 並刪除：`%USERPROFILE%\.cache\OC Nano`
+   在 Windows 上，按 `WIN+R` 並刪除：`%USERPROFILE%\.cache\ocnano`
 
 2. 重新啟動 OC Nano 以重新安裝最新的供應商套件
 

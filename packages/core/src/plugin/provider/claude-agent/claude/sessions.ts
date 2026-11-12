@@ -296,7 +296,7 @@ export function registry() {
         live.waiting = parked ? waiting : undefined
       })
 
-      // A tool boundary ends only the OcNano step; the Claude turn waits for the results. Anything else interrupts and drains it.
+      // A tool boundary ends only the OC Nano step; the Claude turn waits for the results. Anything else interrupts and drains it.
       const interruptUnlessParked = Effect.gen(function* () {
         if (parked) return
         yield* interrupt(entry).pipe(Effect.orDie)
@@ -341,7 +341,7 @@ export function registry() {
         return
       }
       // A turn waiting for tool results is still busy. Subagents, permission prompts and questions can take longer
-      // than IDLE_MS, so idle() starts the timer once OcNano stops running the session.
+      // than IDLE_MS, so idle() starts the timer once OC Nano stops running the session.
       if (entry.process?.waiting) return
       yield* armIdle(entry)
     })

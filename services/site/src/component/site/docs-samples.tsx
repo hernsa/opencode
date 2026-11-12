@@ -544,7 +544,7 @@ export function DocsSamples(props: {
         <props.Sample variant="media" label="image and video">
           <figure>
             <img src={ogImage("/docs").src} alt="The OC Nano docs" width="1200" height="630" />
-            <figcaption>The OcNano terminal interface.</figcaption>
+            <figcaption>The OC Nano terminal interface.</figcaption>
           </figure>
           <figure>
             <video controls muted playsinline preload="none" poster={ogImage("/docs").src} width="1200" height="630" />
@@ -586,7 +586,7 @@ export function DocsSamples(props: {
                 <code>ocnano run [message..]</code>
               </pre>
             </CodeFrame>
-            <p>Run OcNano with a message, without the terminal interface.</p>
+            <p>Run OC Nano with a message, without the terminal interface.</p>
             <table>
               <thead>
                 <tr>
@@ -741,7 +741,7 @@ export const docsSampleSections = [
 ] as const satisfies readonly { id: string; title: string; source: string; components: readonly DocsVariantKey[] }[]
 
 const countLines = [
-  'import { tool } from "@ocnano-ai/plugin"',
+  'import { tool } from "@opencode-ai/plugin"',
   "",
   "export default tool({",
   '  description: "Count lines in a file",',

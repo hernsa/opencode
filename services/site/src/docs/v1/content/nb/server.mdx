@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Autentisering
 
-Sett `OCNANO_SERVER_PASSWORD` for å beskytte serveren med HTTP grunnleggende autentisering. Brukernavnet er satt til `OC Nano` som standard, eller sett `OCNANO_SERVER_USERNAME` for å overstyre det. Dette gjelder både `ocnano serve` og `ocnano web`.
+Sett `OCNANO_SERVER_PASSWORD` for å beskytte serveren med HTTP grunnleggende autentisering. Brukernavnet er satt til `ocnano` som standard, eller sett `OCNANO_SERVER_USERNAME` for å overstyre det. Dette gjelder både `ocnano serve` og `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,7 +46,7 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### Slik fungerer det
 
-Når du kjører `OC Nano` starter den en TUI og en server. Der TUI er
+Når du kjører `ocnano` starter den en TUI og en server. Der TUI er
 klient som snakker med serveren. Serveren viser en OpenAPI 3.1-spesifikasjon
 endepunkt. Dette endepunktet brukes også til å generere en [SDK](/docs/sdk).
 

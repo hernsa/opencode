@@ -12,11 +12,11 @@ For å feilsøke problemer med OC Nano, start med å sjekke loggene og lokale da
 Loggfiler skrives til:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.local\share\ocnano\log`
 
 Loggfiler navngis med tidsstempler (f.eks. `2025-01-09T123456.log`) og de siste 10 loggfilene beholdes.
 
-Du kan angi loggnivået med kommandolinjealternativet `--log-level` for å få mer detaljert feilsøkingsinformasjon. For eksempel `OC Nano --log-level DEBUG`.
+Du kan angi loggnivået med kommandolinjealternativet `--log-level` for å få mer detaljert feilsøkingsinformasjon. For eksempel `ocnano --log-level DEBUG`.
 
 ---
 
@@ -25,7 +25,7 @@ Du kan angi loggnivået med kommandolinjealternativet `--log-level` for å få m
 OC Nano lagrer øktdata og andre applikasjonsdata på disken på:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.local\share\ocnano`
 
 Denne katalogen inneholder:
 
@@ -59,7 +59,7 @@ Hvis skrivebordsappen krasjer ved oppstart, henger eller oppfører seg merkelig,
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (eller `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (eldre installasjoner): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 Hvis du har konfigurert plugins, deaktiver dem midlertidig ved å fjerne nøkkelen eller sette den til en tom matrise:
 
@@ -76,7 +76,7 @@ OC Nano kan også laste lokale plugins fra disken. Flytt disse midlertidig ut av
 
 - **Globale plugins**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.config\ocnano\plugins`
 - **Prosjektplugins** (bare hvis du bruker konfigurasjon per prosjekt)
   - `<your-project>/.ocnano/plugins/`
 
@@ -93,7 +93,7 @@ Hvis deaktivering av plugins ikke hjelper (eller en plugin-installasjon sitter f
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> lim inn `~/.cache/ocnano`
 - **Linux**: slett `~/.cache/ocnano` (eller kjør `rm -rf ~/.cache/ocnano`)
-- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: Trykk `WIN+R` og lim inn `%USERPROFILE%\.cache\ocnano`
 
 3. Start OC Nano Desktop på nytt.
 
@@ -187,7 +187,7 @@ For å løse problemer med leverandørpakke:
    rm -rf ~/.cache/ocnano
    ```
 
-   På Windows, trykk `WIN+R` og slett: `%USERPROFILE%\.cache\OC Nano`
+   På Windows, trykk `WIN+R` og slett: `%USERPROFILE%\.cache\ocnano`
 
 2. Start OC Nano på nytt for å installere de nyeste provider-pakkene på nytt
 

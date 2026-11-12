@@ -36,7 +36,7 @@ Rules for every surface:
 - **Stable text.** A scripted model (`script/assets/stub-model.ts`) replaces only the model. OC Nano still runs the tools: reads, the edit and its diff, the permission prompt and `bun test`. The model is named **"Claude Opus 5.5"** (provider "OC Nano").
 - **Fixed geometry.** Logical window 1600×1000 at 2× (3200×2000 PNG). Light and dark from the product's own theme setting.
 - **Names.** `<surface>/<surface>-<beat>-<mode>@2x.png`, for example `terminal/terminal-permission-light@2x.png`.
-- **Manifest.** `manifest.json` records the ocnano version, the capture time, the generator commit, and the width, height, size and SHA-256 of each file.
+- **Manifest.** `manifest.json` records the OC Nano version, the capture time, the generator commit, and the width, height, size and SHA-256 of each file.
 
 ### Terminal (TUI): automated
 
@@ -48,11 +48,11 @@ bun script/capture-assets.ts   # about 1 minute; writes ../../../../fresh-assets
 How it works:
 
 1. It starts the scripted model on a free local port (Bun.serve, OpenAI-compatible SSE).
-2. For each mode, it writes an isolated `HOME` with `ocnano.json` (provider `demo`, model "Claude Opus 5.5"), `cli.json` (`theme: { name: "OC Nano", mode }`, or the `--theme` and `--experiment` options) and the `my-app` fixture repo (git `main`, fixed commit date). It also dismisses the sidebar "Getting started" card. That card shows when no real provider is connected.
-3. It writes a VHS tape that runs `OC Nano --standalone`, types the prompt and takes three `Screenshot`s: `home` (prompt typed), `permission` (diff and "Allow once"), and `done` (tests pass and summary). `Wait+Screen` reacts to the real UI, so there are no fixed sleeps for model output.
+2. For each mode, it writes an isolated `HOME` with `ocnano.json` (provider `demo`, model "Claude Opus 5.5"), `cli.json` (`theme: { name: "ocnano", mode }`, or the `--theme` and `--experiment` options) and the `my-app` fixture repo (git `main`, fixed commit date). It also dismisses the sidebar "Getting started" card. That card shows when no real provider is connected.
+3. It writes a VHS tape that runs `ocnano --standalone`, types the prompt and takes three `Screenshot`s: `home` (prompt typed), `permission` (diff and "Allow once"), and `done` (tests pass and summary). `Wait+Screen` reacts to the real UI, so there are no fixed sleeps for model output.
 4. It writes `manifest.json` and `ocnano-terminal-screenshots.zip`.
 
-Requirements: `OC Nano` (or `OCNANO_BIN=/path/to/build`), `vhs` 0.12+ (`brew install vhs`, which installs ttyd and uses headless Chrome), `bun`, `git` and `zip`. Font: `--font` / `CAPTURE_FONT` (default OpenTUI Mono, which must be installed; its OFL files are in anomalyco/opentui `packages/web/public/fonts`).
+Requirements: `ocnano` (or `OCNANO_BIN=/path/to/build`), `vhs` 0.12+ (`brew install vhs`, which installs ttyd and uses headless Chrome), `bun`, `git` and `zip`. Font: `--font` / `CAPTURE_FONT` (default OpenTUI Mono, which must be installed; its OFL files are in anomalyco/opentui `packages/web/public/fonts`).
 
 Output: `fresh-assets/` next to the checkout (override with `--out` or `FRESH_ASSETS_DIR`; not the temp folder, which a reboot wipes): 6 PNGs, 3200×2000, light and dark, manifest and zip. The /brand terminal pair is the `done` beat, copied to `public/brand/screenshots/ocnano-terminal-{dark,light}.png` with 1600×1000 WebP previews (`cwebp -q 82 -m 6 -resize 1600 1000`), and `manifest.json` next to them feeds the "captured from" line.
 

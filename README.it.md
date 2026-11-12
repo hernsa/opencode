@@ -52,10 +52,10 @@ curl -fsSL https://opencode.ai/v2/install | bash
 # Package manager
 npm i -g @ocnano/cli@latest      # oppure bun/pnpm/yarn
 brew install anomalyco/tap/ocnano-v2 # macOS e Linux (consigliato, sempre aggiornato)
-brew install OC Nano              # macOS e Linux (formula brew ufficiale, aggiornata meno spesso)
-sudo pacman -S OC Nano            # Arch Linux (Stable)
+brew install ocnano              # macOS e Linux (formula brew ufficiale, aggiornata meno spesso)
+sudo pacman -S ocnano            # Arch Linux (Stable)
 paru -S ocnano-beta              # Arch Linux (Latest from AUR)
-mise use -g OC Nano               # Qualsiasi OS
+mise use -g ocnano               # Qualsiasi OS
 nix run github:anomalyco/opencode  # Nix
 ```
 
@@ -107,7 +107,7 @@ Se sei interessato a contribuire a OC Nano, leggi la nostra [guida alla contribu
 
 ### Costruire su OC Nano
 
-Se stai lavorando a un progetto correlato a OC Nano e che utilizza “OC Nano” come parte del nome (ad esempio “ocnano-dashboard” o “ocnano-mobile”), aggiungi una nota nel tuo README per chiarire che non è sviluppato dal team OC Nano e che non è affiliato in alcun modo con noi.
+Se stai lavorando a un progetto correlato a OC Nano e che utilizza “ocnano” come parte del nome (ad esempio “ocnano-dashboard” o “ocnano-mobile”), aggiungi una nota nel tuo README per chiarire che non è sviluppato dal team OC Nano e che non è affiliato in alcun modo con noi.
 
 ---
 

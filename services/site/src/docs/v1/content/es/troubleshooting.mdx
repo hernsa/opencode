@@ -12,20 +12,20 @@ Para depurar problemas con OC Nano, comience verificando los registros y los dat
 Los archivos de registro se escriben en:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.local\share\ocnano\log`
 
 Los archivos de registro reciben nombres con marcas de tiempo (por ejemplo, `2025-01-09T123456.log`) y se conservan los 10 archivos de registro más recientes.
 
-Puede configurar el nivel de registro con la opción de línea de comandos `--log-level` para obtener información de depuración más detallada. Por ejemplo, `OC Nano --log-level DEBUG`.
+Puede configurar el nivel de registro con la opción de línea de comandos `--log-level` para obtener información de depuración más detallada. Por ejemplo, `ocnano --log-level DEBUG`.
 
 ---
 
 ## Almacenamiento
 
-OC Nano almacena datos de sesión y otros datos de aplicaciones en el disco en:
+ocnano almacena datos de sesión y otros datos de aplicaciones en el disco en:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.local\share\ocnano`
 
 Este directorio contiene:
 
@@ -59,7 +59,7 @@ Abra su archivo de configuración global y busque una clave `plugin`.
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (o `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (instalaciones anteriores): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 Si tiene complementos configurados, desactívelos temporalmente eliminando la clave o configurándola en una matriz vacía:
 
@@ -76,7 +76,7 @@ OC Nano también puede cargar complementos locales desde el disco. Quítelos tem
 
 - **Complementos globales**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.config\ocnano\plugins`
 - **Complementos de proyecto** (solo si usas la configuración por proyecto)
   - `<your-project>/.ocnano/plugins/`
 
@@ -93,7 +93,7 @@ Si deshabilitar los complementos no ayuda (o la instalación de un complemento e
 
 - **macOS**: Buscador -> `Cmd+Shift+G` -> pegar `~/.cache/ocnano`
 - **Linux**: eliminar `~/.cache/ocnano` (o ejecutar `rm -rf ~/.cache/ocnano`)
-- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: Presione `WIN+R` y pegue `%USERPROFILE%\.cache\ocnano`
 
 3. Reinicie el escritorio OC Nano.
 
@@ -244,7 +244,7 @@ Para resolver esto:
    rm -rf ~/.local/share/ocnano
    ```
 
-   En Windows, presione `WIN+R` y elimine: `%USERPROFILE%\.local\share\OC Nano`
+   En Windows, presione `WIN+R` y elimine: `%USERPROFILE%\.local\share\ocnano`
 
 3. Vuelva a autenticarse con su proveedor utilizando el comando `/connect` en TUI.
 
@@ -252,7 +252,7 @@ Para resolver esto:
 
 ### AI_APICallError y problemas con el paquete del proveedor
 
-Si encuentra errores de llamada API, esto puede deberse a paquetes de proveedores obsoletos. OC Nano instala dinámicamente paquetes de proveedores (OpenAI, Anthropic, Google, etc.) según sea necesario y los almacena en caché localmente.
+Si encuentra errores de llamada API, esto puede deberse a paquetes de proveedores obsoletos. ocnano instala dinámicamente paquetes de proveedores (OpenAI, Anthropic, Google, etc.) según sea necesario y los almacena en caché localmente.
 
 Para resolver problemas con el paquete del proveedor:
 
@@ -262,11 +262,11 @@ Para resolver problemas con el paquete del proveedor:
    rm -rf ~/.cache/ocnano
    ```
 
-   En Windows, presione `WIN+R` y elimine: `%USERPROFILE%\.cache\OC Nano`
+   En Windows, presione `WIN+R` y elimine: `%USERPROFILE%\.cache\ocnano`
 
-2. Reinicie OC Nano para reinstalar los paquetes del proveedor más recientes.
+2. Reinicie ocnano para reinstalar los paquetes del proveedor más recientes.
 
-Esto obligará a OC Nano a descargar las versiones más recientes de los paquetes del proveedor, lo que a menudo resuelve problemas de compatibilidad con los parámetros del modelo y los cambios de API.
+Esto obligará a ocnano a descargar las versiones más recientes de los paquetes del proveedor, lo que a menudo resuelve problemas de compatibilidad con los parámetros del modelo y los cambios de API.
 
 ---
 
@@ -297,4 +297,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-OC Nano detectará si estás usando Wayland y prefieres `wl-clipboard`; de lo contrario, intentará encontrar herramientas del portapapeles en el orden de: `xclip` y `xsel`.
+ocnano detectará si estás usando Wayland y prefieres `wl-clipboard`; de lo contrario, intentará encontrar herramientas del portapapeles en el orden de: `xclip` y `xsel`.

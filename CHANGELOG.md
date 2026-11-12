@@ -139,7 +139,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 - Time out OC Nano Console config requests after 5 seconds, so startup no longer hangs when the Console accepts the connection but never answers. ([#62404](https://github.com/anomalyco/opencode/pull/62404))
 - Retry provider requests while their host is unreachable and recover prematurely ended Cohere streams. ([#61880](https://github.com/anomalyco/opencode/pull/61880), [#61184](https://github.com/anomalyco/opencode/pull/61184))
 - Keep legacy custom providers whose models set only part of `limit`, such as only `limit.context`, instead of dropping the whole provider without an error. Thanks @Tarquinen. ([#62240](https://github.com/anomalyco/opencode/pull/62240))
-- `OC Nano acp` now removes a session that a client creates with `session/new` and closes without prompting, so IDE integrations no longer leave empty sessions behind. ([#62189](https://github.com/anomalyco/opencode/pull/62189))
+- `ocnano acp` now removes a session that a client creates with `session/new` and closes without prompting, so IDE integrations no longer leave empty sessions behind. ([#62189](https://github.com/anomalyco/opencode/pull/62189))
 - Prevent repeated zsh `q` flags from freezing shell permission scanning. Thanks @yangguan-xue. ([#60791](https://github.com/anomalyco/opencode/pull/60791))
 - Allow npm upgrade install scripts again. Thanks @renatomoselli. ([#51554](https://github.com/anomalyco/opencode/pull/51554))
 
@@ -158,7 +158,7 @@ On a Location that is still loading plugins, `agent.list` returns the agents loa
 - Improved message spacing and prevented older history from flashing while scrolling. ([#62104](https://github.com/anomalyco/opencode/pull/62104), [#59236](https://github.com/anomalyco/opencode/pull/59236))
 - Jump to the first or last message with Home, End, and Ctrl+G in subagent sessions. Thanks @ricky9408. ([#60817](https://github.com/anomalyco/opencode/pull/60817))
 - Keypad Home, End, Page Up, and Page Down now navigate the transcript like the main keys in terminals that use the kitty keyboard protocol. Thanks @argszero. ([#59770](https://github.com/anomalyco/opencode/pull/59770))
-- `OC Nano mini` now uses the agent colors from your config. Thanks @ferdinandyb. ([#62067](https://github.com/anomalyco/opencode/pull/62067))
+- `ocnano mini` now uses the agent colors from your config. Thanks @ferdinandyb. ([#62067](https://github.com/anomalyco/opencode/pull/62067))
 - Return to the `/mcp` list after signing in to an MCP server, with that server still selected. Thanks @Tarquinen. ([#62245](https://github.com/anomalyco/opencode/pull/62245))
 - Allow favoriting models with Ctrl+F in `/models` when they come from a provider declared in config or an add-on instead of a saved connection. Thanks @Tarquinen. ([#62244](https://github.com/anomalyco/opencode/pull/62244))
 
@@ -1170,7 +1170,7 @@ The transitional `session.compacted` event is removed from the public event surf
 
 #### Bug fixes
 
-- Show free ocnano models alongside their paid counterparts by default instead of hiding them when they share the same model family and release date. ([#55712](https://github.com/anomalyco/opencode/pull/55712))
+- Show free OC Nano models alongside their paid counterparts by default instead of hiding them when they share the same model family and release date. ([#55712](https://github.com/anomalyco/opencode/pull/55712))
 
 ### SDK
 
@@ -1426,7 +1426,7 @@ The transitional `session.compacted` event is removed from the public event surf
 
 - **Built-In Worktree Tools**: Ask OC Nano to use `worktree_create`, `worktree_list`, and `worktree_remove` in Code Mode. You can create isolated worktrees, move sessions into them, and remove them with normal edit approval. ([#53981](https://github.com/anomalyco/opencode/pull/53981))
 - **Safer Remote Pairing**: The first `ocnano pair --remote` now warns that it will expose your server and asks for confirmation. For non-interactive use, pass `ocnano pair --remote --yes`. ([#54561](https://github.com/anomalyco/opencode/pull/54561))
-- **Installable Web App**: Use Chrome or Edge’s **Install** button to install the ocnano web app, including when it runs behind an authenticating proxy. ([#53905](https://github.com/anomalyco/opencode/pull/53905))
+- **Installable Web App**: Use Chrome or Edge’s **Install** button to install the OC Nano web app, including when it runs behind an authenticating proxy. ([#53905](https://github.com/anomalyco/opencode/pull/53905))
 - **Clear Session Failures**: Desktop and TUI timelines now show execution errors that happen before or between model steps instead of ending without an explanation. ([#53826](https://github.com/anomalyco/opencode/pull/53826))
 - **Automatic Project Cleanup**: Projects whose directories no longer exist are automatically hidden from the project list. Opening the directory again restores the project. ([#54354](https://github.com/anomalyco/opencode/pull/54354))
 
@@ -1520,7 +1520,7 @@ The transitional `session.compacted` event is removed from the public event surf
 - Prevented working-tree diffs from timing out or stalling the server in repositories with many untracked files by batching Git operations. ([#53449](https://github.com/anomalyco/opencode/pull/53449))
 - Fixed large revert selections failing when their paths exceeded the operating system’s command-line limit. ([#53956](https://github.com/anomalyco/opencode/pull/53956))
 - Fixed snapshot and undo handling for literal filenames containing Git pathspec characters, corrupted or locked snapshot indexes, concurrent captures, and project directories whose names begin with `..`. ([#51996](https://github.com/anomalyco/opencode/pull/51996))
-- Changed `OC Nano service` remote-access URLs to use a persistent random subdomain rather than a predictable route. Disabling and re-enabling remote access generates a new address. ([#53962](https://github.com/anomalyco/opencode/pull/53962))
+- Changed `ocnano service` remote-access URLs to use a persistent random subdomain rather than a predictable route. Disabling and re-enabling remote access generates a new address. ([#53962](https://github.com/anomalyco/opencode/pull/53962))
 
 ### TUI
 

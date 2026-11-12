@@ -20,7 +20,7 @@ OC Nano는 GitHub 워크플로와 통합됩니다. 댓글에 `/ocnano` 또는 `/
 GitHub repo에 연결된 프로젝트에서 아래 명령을 실행하세요.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 이 명령은 GitHub app 설치, workflow 생성, secrets 설정 과정을 안내합니다.
@@ -40,7 +40,7 @@ OC Nano github install
    아래 workflow 파일을 repo의 `.github/workflows/ocnano.yml`에 추가하세요. `env`에는 필요한 API key를 넣고, `model`은 환경에 맞게 설정하세요.
 
    ```yml title=".github/workflows/ocnano.yml" {24,26}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ OC Nano github install
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

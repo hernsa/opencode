@@ -3,7 +3,7 @@ title: Rozwiązywanie problemów
 description: Typowe problemy i sposoby ich rozwiązywania.
 ---
 
-Aby debugować problemy z OC Nano, zacznij od sprawdzenia dzienników i danych lokalnych przechowywanych na dysku.
+Aby debugować problemy z ocnano, zacznij od sprawdzenia dzienników i danych lokalnych przechowywanych na dysku.
 
 ---
 
@@ -12,20 +12,20 @@ Aby debugować problemy z OC Nano, zacznij od sprawdzenia dzienników i danych l
 Pliki logów są zapisywane w:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.local\share\ocnano\log`
 
 Nazwy plików dziennika zawierają znaczniki czasu (np. `2025-01-09T123456.log`) i przechowywanych jest 10 ostatnich plików dziennika.
 
-Możesz ustawić poziom dziennika za pomocą opcji wiersza poleceń `--log-level`, aby uzyskać bardziej szczegółowe informacje debugowania. Na przykład `OC Nano --log-level DEBUG`.
+Możesz ustawić poziom dziennika za pomocą opcji wiersza poleceń `--log-level`, aby uzyskać bardziej szczegółowe informacje debugowania. Na przykład `ocnano --log-level DEBUG`.
 
 ---
 
 ## Przechowywanie danych
 
-OC Nano przechowuje dane sesji i inne dane aplikacji na dysku pod adresem:
+ocnano przechowuje dane sesji i inne dane aplikacji na dysku pod adresem:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.local\share\ocnano`
 
 Ten katalog zawiera:
 
@@ -39,7 +39,7 @@ Ten katalog zawiera:
 
 ## Aplikacja desktopowa
 
-OC Nano Desktop uruchamia w tle lokalny serwer OC Nano (sidecar `ocnano-cli`). Większość problemów jest spowodowana nieprawidłowo działającą wtyczką, uszkodzoną pamięcią podręczną lub złymi ustawieniami serwera.
+ocnano Desktop uruchamia w tle lokalny serwer ocnano (sidecar `ocnano-cli`). Większość problemów jest spowodowana nieprawidłowo działającą wtyczką, uszkodzoną pamięcią podręczną lub złymi ustawieniami serwera.
 
 ### Szybkie sprawdzenie
 
@@ -59,7 +59,7 @@ Otwórz globalny plik konfiguracyjny i poszukaj klucza `plugin`.
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (lub `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (starsze instalacje): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 Jeśli masz skonfigurowane wtyczki, tymczasowo je wyłącz, usuwając klucz lub ustawiając go na pustą tablicę:
 
@@ -72,11 +72,11 @@ Jeśli masz skonfigurowane wtyczki, tymczasowo je wyłącz, usuwając klucz lub 
 
 #### Sprawdź katalogi wtyczek
 
-OC Nano może także ładować lokalne wtyczki z dysku. Tymczasowo usuń je (lub zmień nazwę folderu) i uruchom ponownie aplikację komputerową:
+ocnano może także ładować lokalne wtyczki z dysku. Tymczasowo usuń je (lub zmień nazwę folderu) i uruchom ponownie aplikację komputerową:
 
 - **Wtyczki globalne**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.config\ocnano\plugins`
 - **Wtyczki projektowe** (tylko jeśli używasz konfiguracji dla poszczególnych projektów)
   - `<your-project>/.ocnano/plugins/`
 
@@ -86,22 +86,22 @@ Jeśli aplikacja ponownie zacznie działać, włączaj ponownie wtyczki pojedync
 
 ### Wyczyść pamięć podręczną
 
-Jeśli wyłączenie wtyczek nie pomoże (lub instalacja wtyczki utknęła), wyczyść pamięć podręczną, aby OC Nano mógł ją odbudować.
+Jeśli wyłączenie wtyczek nie pomoże (lub instalacja wtyczki utknęła), wyczyść pamięć podręczną, aby ocnano mógł ją odbudować.
 
-1. Całkowicie zamknij OC Nano Desktop.
+1. Całkowicie zamknij ocnano Desktop.
 2. Usuń katalog pamięci podręcznej:
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> paste `~/.cache/ocnano`
 - **Linux**: usuń `~/.cache/ocnano` (lub uruchom `rm -rf ~/.cache/ocnano`)
-- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: Naciśnij `WIN+R` i wklej `%USERPROFILE%\.cache\ocnano`
 
-3. Uruchom ponownie OC Nano Desktop.
+3. Uruchom ponownie ocnano Desktop.
 
 ---
 
 ### Napraw problemy z połączeniem z serwerem
 
-OC Nano Desktop może uruchomić własny serwer lokalny (domyślnie) lub połączyć się ze skonfigurowanym adresem URL serwera.
+ocnano Desktop może uruchomić własny serwer lokalny (domyślnie) lub połączyć się ze skonfigurowanym adresem URL serwera.
 
 Jeśli zobaczysz okno dialogowe **„Połączenie nie powiodło się”** (lub aplikacja nigdy nie wychodzi poza ekran powitalny), sprawdź, czy jest niestandardowy adres URL serwera.
 
@@ -132,7 +132,7 @@ W systemie Linux, niektóre konfiguracje Wayland mogą powodować puste okna lub
 
 ### Windows: Środowisko uruchomieniowe WebView2
 
-W systemie Windows OC Nano Desktop wymaga Microsoft Edge **WebView2 Runtime**. Jeśli aplikacja otwiera się w pustym oknie lub nie uruchamia się, zainstaluj/zaktualizuj WebView2 i spróbuj ponownie.
+W systemie Windows ocnano Desktop wymaga Microsoft Edge **WebView2 Runtime**. Jeśli aplikacja otwiera się w pustym oknie lub nie uruchamia się, zainstaluj/zaktualizuj WebView2 i spróbuj ponownie.
 
 ---
 
@@ -144,9 +144,9 @@ Jeśli doświadczasz niskiej wydajności, problemów z dostępem do plików lub 
 
 ### Brak powiadomień
 
-OC Nano Desktop pokazuje powiadomienia systemowe tylko wtedy, gdy:
+ocnano Desktop pokazuje powiadomienia systemowe tylko wtedy, gdy:
 
-- powiadomienia są włączone dla OC Nano w ustawieniach systemu operacyjnego, oraz
+- powiadomienia są włączone dla ocnano w ustawieniach systemu operacyjnego, oraz
 - okno aplikacji nie jest aktywne.
 
 ---
@@ -155,8 +155,8 @@ OC Nano Desktop pokazuje powiadomienia systemowe tylko wtedy, gdy:
 
 Jeśli aplikacja nie uruchamia się i nie możesz wyczyścić ustawień w interfejsie użytkownika, zresetuj zapisany stan aplikacji komputerowej.
 
-1. Zamknij całkowicie OC Nano Desktop.
-2. Znajdź i usuń te pliki (znajdują się w katalogu danych aplikacji OC Nano Desktop):
+1. Zamknij całkowicie ocnano Desktop.
+2. Znajdź i usuń te pliki (znajdują się w katalogu danych aplikacji ocnano Desktop):
 
 - `ocnano.settings.dat` (domyślny adres URL serwera na komputerze stacjonarnym)
 - `ocnano.global.dat` i `ocnano.workspace.*.dat` (stan interfejsu użytkownika, taki jak najnowsze serwery/projekty)
@@ -171,7 +171,7 @@ Aby szybko znaleźć katalog:
 
 ## Uzyskiwanie pomocy
 
-Jeśli masz problemy z OC Nano:
+Jeśli masz problemy z ocnano:
 
 1. **Zgłoś problem na GitHub**
 
@@ -195,7 +195,7 @@ Oto kilka typowych problemów i sposobów ich rozwiązania.
 
 ---
 
-### OC Nano nie uruchamia się
+### ocnano nie uruchamia się
 
 1. Sprawdź dzienniki pod kątem komunikatów o błędach
 2. Spróbuj uruchomić z `--print-logs`, aby zobaczyć dane wyjściowe w terminalu
@@ -244,7 +244,7 @@ Aby rozwiązać ten problem:
    rm -rf ~/.local/share/ocnano
    ```
 
-   W systemie Windows naciśnij `WIN+R` i usuń: `%USERPROFILE%\.local\share\OC Nano`
+   W systemie Windows naciśnij `WIN+R` i usuń: `%USERPROFILE%\.local\share\ocnano`
 
 3. Ponownie uwierzytelnij się u swojego dostawcy za pomocą polecenia `/connect` w TUI.
 
@@ -252,7 +252,7 @@ Aby rozwiązać ten problem:
 
 ### Błędy AI_APICallError i problemy z pakietami dostawców
 
-Jeśli napotkasz błędy wywołań API, może to wynikać z nieaktualnych pakietów dostawców. OC Nano dynamicznie instaluje pakiety dostawców (OpenAI, Anthropic, Google itp.) w razie potrzeby i przechowuje je lokalnie w pamięci podręcznej.
+Jeśli napotkasz błędy wywołań API, może to wynikać z nieaktualnych pakietów dostawców. ocnano dynamicznie instaluje pakiety dostawców (OpenAI, Anthropic, Google itp.) w razie potrzeby i przechowuje je lokalnie w pamięci podręcznej.
 
 Aby rozwiązać problemy z pakietem dostawcy:
 
@@ -262,11 +262,11 @@ Aby rozwiązać problemy z pakietem dostawcy:
    rm -rf ~/.cache/ocnano
    ```
 
-   W systemie Windows naciśnij `WIN+R` i usuń: `%USERPROFILE%\.cache\OC Nano`
+   W systemie Windows naciśnij `WIN+R` i usuń: `%USERPROFILE%\.cache\ocnano`
 
-2. Uruchom ponownie kod OC Nano, aby ponownie zainstalować najnowsze pakiety dostawców
+2. Uruchom ponownie kod ocnano, aby ponownie zainstalować najnowsze pakiety dostawców
 
-Zmusi to OC Nano do pobrania najnowszych wersji pakietów dostawców, co często rozwiązuje problemy ze zgodnością z parametrami modelu i zmianami API.
+Zmusi to ocnano do pobrania najnowszych wersji pakietów dostawców, co często rozwiązuje problemy ze zgodnością z parametrami modelu i zmianami API.
 
 ---
 
@@ -297,4 +297,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-OC Nano wykryje, czy używasz Waylanda i wolisz `wl-clipboard`, w przeciwnym razie spróbuje znaleźć narzędzia schowka w kolejności: `xclip` i `xsel`.
+ocnano wykryje, czy używasz Waylanda i wolisz `wl-clipboard`, w przeciwnym razie spróbuje znaleźć narzędzia schowka w kolejności: `xclip` i `xsel`.

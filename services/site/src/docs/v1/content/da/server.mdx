@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Godkendelse
 
-Indstil `OCNANO_SERVER_PASSWORD` for at beskytte serveren med HTTP grundlæggende godkendelse. Brugernavnet er som standard `OC Nano`, eller indstil `OCNANO_SERVER_USERNAME` for at tilsidesætte det. Dette gælder både `ocnano serve` og `ocnano web`.
+Indstil `OCNANO_SERVER_PASSWORD` for at beskytte serveren med HTTP grundlæggende godkendelse. Brugernavnet er som standard `ocnano`, eller indstil `OCNANO_SERVER_USERNAME` for at tilsidesætte det. Dette gælder både `ocnano serve` og `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,18 +46,18 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### Sådan fungerer det
 
-Når du kører `OC Nano` starter den en TUI og en server. Hvor TUI er
+Når du kører `ocnano` starter den en TUI og en server. Hvor TUI er
 klient som taler med serveren. Serveren viser en OpenAPI 3.1-specifikation
 endpoint. Dette endpoint bruges også til at generere en [SDK](/docs/sdk).
 
 :::tip
-Brug ocnano-serveren til at interagere med OC Nano programmatisk.
+Brug ocnano-serveren til at interagere med ocnano programmatisk.
 :::
 
-Denne arkitektur lader OC Nano understøtte flere klienter og lader dig interagere med OC Nano programmatisk.
+Denne arkitektur lader ocnano understøtte flere klienter og lader dig interagere med ocnano programmatisk.
 
 Du kan køre `ocnano serve` for at starte en selvstændig server. Hvis du har
-OC Nano TUI kørende, vil `ocnano serve` starte en ny server.
+ocnano TUI kørende, vil `ocnano serve` starte en ny server.
 
 ---
 

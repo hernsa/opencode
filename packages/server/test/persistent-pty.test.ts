@@ -622,7 +622,7 @@ function testDirectory() {
   return Effect.acquireRelease(
     Effect.promise(async () => {
       const environment = { binary: process.env.OCNANO_PTY_BIN, shell: process.env.SHELL }
-      const root = await fs.mkdtemp(path.join(os.tmpdir(), "ocnano-pty-server-test-"))
+      const root = await fs.mkdtemp(path.join(os.tmpdir(), "opencode-pty-server-test-"))
       process.env.OCNANO_PTY_BIN = binary
       process.env.SHELL = "/bin/sh"
       return {
@@ -792,7 +792,7 @@ async function verifySharedControl(base: string, ptyID: string) {
     second.socket.send(inputFrame(70, 20, "from-second\n"))
     await waitForSocketOutput([first, second], "from-second")
 
-    // ocnano-pty reads the foreground process from /proc on Linux and reports none elsewhere
+    // opencode-pty reads the foreground process from /proc on Linux and reports none elsewhere
     // (foreground_process in packages/process-daemon/src/service.rs).
     if (process.platform === "linux") await waitForForegroundProcess([first, second], "cat")
     if (process.platform !== "linux") {

@@ -5,18 +5,18 @@ description: Использование TUI ocnano.
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-OC Nano предоставляет интерактивный terminal интерфейс или TUI для работы над вашими проектами с помощью LLM.
+ocnano предоставляет интерактивный terminal интерфейс или TUI для работы над вашими проектами с помощью LLM.
 
-Запуск OC Nano запускает TUI для текущего каталога.
+Запуск ocnano запускает TUI для текущего каталога.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Или вы можете запустить его для определенного рабочего каталога.
 
 ```bash
-OC Nano /path/to/project
+ocnano /path/to/project
 ```
 
 Как только вы окажетесь в TUI, вы можете запросить его с помощью сообщения.
@@ -57,7 +57,7 @@ How is auth handled in @packages/functions/src/api/index.ts?
 
 ## Команды
 
-При использовании OC Nano TUI вы можете ввести `/`, а затем имя команды, чтобы быстро выполнить действия. Например:
+При использовании ocnano TUI вы можете ввести `/`, а затем имя команды, чтобы быстро выполнить действия. Например:
 
 ```bash frame="none"
 /help
@@ -326,7 +326,7 @@ How is auth handled in @packages/functions/src/api/index.ts?
 ```json title="tui.json"
 {
   "$schema": "https://opencode.ai/tui.json",
-  "theme": "OC Nano",
+  "theme": "ocnano",
   "leader_timeout": 2000,
   "keybinds": {
     "leader": "ctrl+x",

@@ -17,7 +17,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "ocnano-pty": "./bin/ocnano-pty.js"
+    "opencode-pty": "./bin/opencode-pty.js"
   },
   "files": [
     "bin",

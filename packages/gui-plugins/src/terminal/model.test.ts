@@ -305,8 +305,8 @@ describe("terminal model", () => {
   test("treats a server whose terminal daemon is unavailable like one without terminal support", async () => {
     const server = fakeServer()
     server.state.listError = new ServiceUnavailableError({
-      message: "ocnano-pty is not available",
-      service: "ocnano-pty",
+      message: "opencode-pty is not available",
+      service: "opencode-pty",
     })
     const { model, session } = setup(server)
 
@@ -373,8 +373,8 @@ describe("terminal model", () => {
     expect(terminal.all().map((item) => item.id)).toEqual(["pty_1", "pty_2"])
 
     server.state.listError = new ServiceUnavailableError({
-      message: "ocnano-pty is not available",
-      service: "ocnano-pty",
+      message: "opencode-pty is not available",
+      service: "opencode-pty",
     })
     slow.resolve()
     await flush()

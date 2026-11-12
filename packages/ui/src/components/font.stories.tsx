@@ -42,7 +42,7 @@ export const Basic = {
     <div style={{ display: "grid", gap: "8px" }}>
       <mod.Font />
       <div style={{ "font-family": "var(--font-family-sans)" }}>OC Nano Sans Sample</div>
-      <div style={{ "font-family": "var(--font-family-mono)" }}>OcNano Mono Sample</div>
+      <div style={{ "font-family": "var(--font-family-mono)" }}>OC Nano Mono Sample</div>
     </div>
   ),
 }

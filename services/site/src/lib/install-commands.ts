@@ -7,7 +7,7 @@
 //   needs --trust and pnpm needs --allow-build. mise resolves `ocnano` to npm:@ocnano/cli.
 // - https://opencode.ai/v2/install reads opencode.ai/update/api/latest/cli/npm (@ocnano/cli 2.2.5).
 // - Homebrew: anomalyco/tap/ocnano-v2 = 2.2.5. AUR: ocnano-beta = 2.2.5-1.
-// OcNano 1 still lives under the old names: the ocnano-ai npm package (1.19.5),
+// OcNano 1 still lives under the old names: the opencode-ai npm package (1.19.5),
 // https://opencode.ai/install, anomalyco/tap/ocnano (1.19.5) and the ocnano-bin AUR package
 // (1.19.5). test/install-commands.test.ts keeps them out of the site.
 

@@ -52,10 +52,10 @@ curl -fsSL https://opencode.ai/v2/install | bash
 # 软件包管理器
 npm i -g @ocnano/cli@latest      # 也可使用 bun/pnpm/yarn
 brew install anomalyco/tap/ocnano-v2 # macOS 和 Linux（推荐，始终保持最新）
-brew install OC Nano              # macOS 和 Linux（官方 brew formula，更新频率较低）
-sudo pacman -S OC Nano            # Arch Linux (Stable)
+brew install ocnano              # macOS 和 Linux（官方 brew formula，更新频率较低）
+sudo pacman -S ocnano            # Arch Linux (Stable)
 paru -S ocnano-beta              # Arch Linux (Latest from AUR)
-mise use -g OC Nano               # 任意系统
+mise use -g ocnano               # 任意系统
 nix run github:anomalyco/opencode  # Nix
 ```
 
@@ -106,7 +106,7 @@ OC Nano 内置两种 Agent，可用 `Tab` 键快速切换：
 
 ### 基于 OC Nano 进行开发
 
-如果你在项目名中使用了 “OC Nano”（如 “ocnano-dashboard” 或 “ocnano-mobile”），请在 README 里注明该项目不是 OC Nano 团队官方开发，且不存在隶属关系。
+如果你在项目名中使用了 “ocnano”（如 “ocnano-dashboard” 或 “ocnano-mobile”），请在 README 里注明该项目不是 OC Nano 团队官方开发，且不存在隶属关系。
 
 ---
 

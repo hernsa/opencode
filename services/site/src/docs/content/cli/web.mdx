@@ -42,14 +42,14 @@ platform:
 
 Windows reserves ports from 49152 up, and WSL mirrored networking reserves
 another block below that. Print the current address with
-`OC Nano service status`:
+`ocnano service status`:
 
 ```bash
-$ OC Nano service status
+$ ocnano service status
 http://127.0.0.1:49374
 ```
 
-You can change this config with the `OC Nano service` command.
+You can change this config with the `ocnano service` command.
 
 ### Remote access
 
@@ -73,33 +73,33 @@ The first time it turns remote access on, it asks before going ahead:
 
 Without an interactive terminal, the command fails unless you pass `--yes` to
 accept. Once accepted, later runs skip the prompt, even after remote access has
-been turned off with `OC Nano service set remote false`.
+been turned off with `ocnano service set remote false`.
 
 ## Configure
 
-Set any option with `OC Nano service set`:
+Set any option with `ocnano service set`:
 
 ```bash
 # Listen on every network interface
-$ OC Nano service set hostname 0.0.0.0
+$ ocnano service set hostname 0.0.0.0
 
 # Use a fixed port instead of the channel default
-$ OC Nano service set port 49374
+$ ocnano service set port 49374
 
 # Replace the generated password
-$ OC Nano service set password "a-long-secret"
+$ ocnano service set password "a-long-secret"
 
 # Allow a web client served from another origin
-$ OC Nano service set cors https://app.example.com,https://other.example.com
+$ ocnano service set cors https://app.example.com,https://other.example.com
 
 # Pass an environment variable to the server process
-$ OC Nano service set env OCNANO_LOG_LEVEL DEBUG
+$ ocnano service set env OCNANO_LOG_LEVEL DEBUG
 ```
 
 Changing a setting stops the background server. Start it again to apply the new config:
 
 ```bash
-$ OC Nano service start
+$ ocnano service start
 ```
 
 ## Standalone
@@ -116,7 +116,7 @@ server password <password>
 Use it when you want to:
 
 - Run OC Nano on a shared, always-on, or remote host, then connect clients with
-  `OC Nano --server <url>`.
+  `ocnano --server <url>`.
 - Control the hostname, port, and CORS origins for a single process.
 - Run under a supervisor like systemd, Docker, or another environment that expects
   a foreground process.
@@ -125,22 +125,22 @@ Use it when you want to:
 Connect a client to it with `--server`:
 
 ```bash
-$ OC Nano --server http://127.0.0.1:4096
+$ ocnano --server http://127.0.0.1:4096
 ```
 
 ### Authentication
 
 Set `OCNANO_PASSWORD` to use a fixed password instead of a generated one. The
-same variable gives the password to `OC Nano --server`.
+same variable gives the password to `ocnano --server`.
 
 ```bash
 $ OCNANO_PASSWORD="a-long-secret" ocnano serve --port 4096
-$ OCNANO_PASSWORD="a-long-secret" OC Nano --server http://127.0.0.1:4096
+$ OCNANO_PASSWORD="a-long-secret" ocnano --server http://127.0.0.1:4096
 ```
 
-Other HTTP clients use Basic auth. The username is always `OC Nano`, and only
+Other HTTP clients use Basic auth. The username is always `ocnano`, and only
 the password can be changed.
 
 ```bash
-$ curl -u OC Nano:a-long-secret http://127.0.0.1:4096/api/info
+$ curl -u ocnano:a-long-secret http://127.0.0.1:4096/api/info
 ```

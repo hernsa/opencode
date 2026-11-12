@@ -236,7 +236,7 @@ const makeLayer = (options: Options = {}) =>
         input: Parameters<Interface["create"]>[1],
       ) {
         const cwd = path.resolve(input.cwd ?? "/")
-        // ocnano-pty's PTY library silently falls back to $HOME when the cwd is not a directory.
+        // opencode-pty's PTY library silently falls back to $HOME when the cwd is not a directory.
         const directory = yield* Effect.promise(() =>
           stat(cwd).then(
             (info) => info.isDirectory(),
@@ -550,13 +550,13 @@ const lookup = (daemon: DaemonTransport, id: number) =>
     Effect.flatMap((response) => {
       if (!response) return Effect.succeed(undefined)
       if (response.type !== "process")
-        return Effect.fail(new Error(`unexpected ocnano-pty response: ${response.type}`))
+        return Effect.fail(new Error(`unexpected opencode-pty response: ${response.type}`))
       return Effect.succeed(response.process)
     }),
   )
 
 const unexpected = (response: WireResponse) =>
-  Effect.fail(new UnavailableError({ message: `unexpected ocnano-pty response: ${response.type}` }))
+  Effect.fail(new UnavailableError({ message: `unexpected opencode-pty response: ${response.type}` }))
 
 const unavailable = (error: unknown) =>
   new UnavailableError({ message: error instanceof Error ? error.message : String(error) })
@@ -568,10 +568,10 @@ const pipeError = (error: DaemonError) =>
     : new UnavailableError({ message: error.message })
 
 const unexpectedPipe = (response: WireResponse) =>
-  Effect.fail(new RequestError({ message: `unexpected ocnano-pty response: ${response.type}` }))
+  Effect.fail(new RequestError({ message: `unexpected opencode-pty response: ${response.type}` }))
 
 function toInfo(value: ProcessInfo): Info {
-  if (!value.pty) throw new Error(`ocnano-pty process ${value.id} is not a terminal`)
+  if (!value.pty) throw new Error(`opencode-pty process ${value.id} is not a terminal`)
   const status = value.lifecycle.status
   return {
     ...Pty.Info.make({
@@ -594,7 +594,7 @@ function toInfo(value: ProcessInfo): Info {
 }
 
 function toPipeInfo(value: ProcessInfo): PipeInfo {
-  if (!value.pipe) throw new Error(`ocnano-pty process ${value.id} is not a pipe process`)
+  if (!value.pipe) throw new Error(`opencode-pty process ${value.id} is not a pipe process`)
   return {
     id: value.id,
     pid: value.pid ?? undefined,

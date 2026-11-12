@@ -20,7 +20,7 @@ OC Nano 可以與您的 GitHub 工作流程整合。在評論中提及 `/ocnano`
 在一個位於 GitHub 儲存庫中的專案裡執行以下指令：
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 該指令會引導您完成 GitHub App 的安裝、工作流程的建立以及密鑰的設定。
@@ -40,7 +40,7 @@ OC Nano github install
    將以下工作流程檔案新增到儲存庫的 `.github/workflows/ocnano.yml` 中。請確保在 `env` 中設定合適的 `model` 及所需的 API 金鑰。
 
    ```yml title=".github/workflows/ocnano.yml" {24,26}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ OC Nano github install
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

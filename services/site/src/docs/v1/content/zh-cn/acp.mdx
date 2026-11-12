@@ -15,7 +15,7 @@ ACP 是一个开放协议，用于标准化代码编辑器与 AI 编码代理之
 
 ## 配置
 
-要通过 ACP 使用 OC Nano，请在编辑器中配置运行 `OC Nano acp` 命令。
+要通过 ACP 使用 OC Nano，请在编辑器中配置运行 `ocnano acp` 命令。
 
 该命令会将 OC Nano 作为兼容 ACP 的子进程启动，通过 stdio 上的 JSON-RPC 与编辑器进行通信。
 
@@ -34,7 +34,7 @@ ACP 是一个开放协议，用于标准化代码编辑器与 AI 编码代理之
   "agent_servers": {
     "OC Nano": {
       "type": "custom",
-      "command": "OC Nano",
+      "command": "ocnano",
       "args": ["acp"]
     }
   }
@@ -56,7 +56,7 @@ ACP 是一个开放协议，用于标准化代码编辑器与 AI 编码代理之
             "custom": {
               "name": "OC Nano",
               "command": {
-                "command": "OC Nano",
+                "command": "ocnano",
                 "args": ["acp"]
               }
             }
@@ -96,8 +96,8 @@ ACP 是一个开放协议，用于标准化代码编辑器与 AI 编码代理之
 ```lua
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" }
     }
   }
@@ -109,8 +109,8 @@ ACP 是一个开放协议，用于标准化代码编辑器与 AI 编码代理之
 ```lua {6-8}
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" },
       env = {
         OCNANO_API_KEY = os.getenv("OCNANO_API_KEY")
@@ -131,7 +131,7 @@ require("codecompanion").setup({
   interactions = {
     chat = {
       adapter = {
-        name = "OC Nano",
+        name = "ocnano",
         model = "claude-sonnet-5-5",
       },
     },

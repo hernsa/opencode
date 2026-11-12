@@ -260,4 +260,4 @@ const notFound = (error: PersistentPty.NotFoundError) =>
   new PtyNotFoundError({ ptyID: error.ptyID, message: `PTY session not found: ${error.ptyID}` })
 
 const unavailable = (error: PersistentPty.UnavailableError) =>
-  new ServiceUnavailableError({ message: error.message, service: "ocnano-pty" })
+  new ServiceUnavailableError({ message: error.message, service: "opencode-pty" })

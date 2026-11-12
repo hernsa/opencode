@@ -13,9 +13,9 @@ type RequestDetails = Parameters<RequestHandler>[3]
 
 type CheckDetails = Parameters<CheckHandler>[3]
 
-const url = "oc://renderer/index.html"
+const url = "ocnano://renderer/index.html"
 
-const origin = "oc://renderer"
+const origin = "ocnano://renderer"
 
 function createSession() {
   let request: RequestHandler | null = null

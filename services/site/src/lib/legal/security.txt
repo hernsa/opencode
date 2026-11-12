@@ -8,7 +8,7 @@
 #
 # OCNANO.AI · SECURITY CONTACTS · RFC 9116
 # ------------------------------------------------------------------------------
-# OcNano security contacts. Please report vulnerabilities privately.
+# OC Nano security contacts. Please report vulnerabilities privately.
 # We do not accept AI-generated reports. Submitting one means an automatic ban.
 #
 # REPORTING CHANNELS

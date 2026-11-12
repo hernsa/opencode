@@ -25,7 +25,7 @@ export const dict = {
   "header.githubAria": "GitHubでOC Nanoにスターを付ける",
   "header.github": "GitHub",
   "header.tryOC Nano": "OC Nanoを試す",
-  "header.tryOC NanoShort": "今すぐ試す",
+  "header.tryOcNanoShort": "今すぐ試す",
   "header.openNav": "ナビゲーションを開く",
   "header.closeNav": "ナビゲーションを閉じる",
   "theme.groupLabel": "テーマ",

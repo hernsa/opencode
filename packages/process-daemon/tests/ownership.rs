@@ -25,11 +25,11 @@ struct Daemon {
 impl Daemon {
     fn start() -> Self {
         let root = std::env::temp_dir().join(format!(
-            "ocnano-pty-ownership-{:032x}",
+            "opencode-pty-ownership-{:032x}",
             rand::random::<u128>()
         ));
         let directory = root.join("test");
-        let mut child = Command::new(env!("CARGO_BIN_EXE_ocnano-pty"))
+        let mut child = Command::new(env!("CARGO_BIN_EXE_opencode-pty"))
             .args(["daemon", "--name", "test", "--runtime-dir"])
             .arg(&root)
             .stdin(Stdio::null())

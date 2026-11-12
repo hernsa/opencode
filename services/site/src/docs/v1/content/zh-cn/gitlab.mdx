@@ -81,8 +81,8 @@ OC Nano 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步�
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing OC Nano"
-      - npm install --global ocnano-ai
+      - echo "Installing ocnano"
+      - npm install --global opencode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OCNANO
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
@@ -90,7 +90,7 @@ OC Nano 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步�
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating ocnano auth configuration"
+      - echo "Creating OC Nano auth configuration"
       - mkdir --parents ~/.local/share/ocnano
       - |
         cat > ~/.local/share/ocnano/auth.json << EOF
@@ -102,7 +102,7 @@ OC Nano 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步�
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "OC Nano@gitlab.com"
+      - git config --global user.email "ocnano@gitlab.com"
       - git config --global user.name "OC Nano"
       - echo "Testing glab"
       - glab issue list

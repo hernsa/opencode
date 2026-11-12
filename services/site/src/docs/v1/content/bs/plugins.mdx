@@ -111,7 +111,7 @@ Funkcija dodatka prima:
 - `project`: Trenutne informacije o projektu.
 - `directory`: Trenutni radni direktorij.
 - `worktree`: Putanja git radnog stabla.
-- `client`: OC Nano SDK klijent za interakciju sa AI.
+- `client`: Opencode SDK klijent za interakciju sa AI.
 - `$`: Bun's [shell API](https://bun.com/docs/runtime/shell) za izvršavanje naredbi.
 
 ---
@@ -121,7 +121,7 @@ Funkcija dodatka prima:
 Za TypeScript dodatke, možete uvesti tipove iz paketa dodataka:
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -212,7 +212,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
     event: async ({ event }) => {
       // Send notification on session completion
       if (event.type === "session.idle") {
-        await $`osascript -e 'display notification "Session completed!" with title "OC Nano"'`
+        await $`osascript -e 'display notification "Session completed!" with title "ocnano"'`
       }
     },
   }
@@ -228,7 +228,7 @@ Ako alat dodatka koristi isto ime kao ugrađeni alat, alat dodatka ima prednost.
 
 ### .env zaštita
 
-Spriječite OC Nano da čita `.env` fajlove:
+Spriječite ocnano da čita `.env` fajlove:
 
 ```javascript title=".ocnano/plugins/env-protection.js"
 export const EnvProtection = async ({ project, client, $, directory, worktree }) => {
@@ -263,10 +263,10 @@ export const InjectEnvPlugin = async () => {
 
 ### Prilagođeni alati
 
-Dodaci također mogu dodati prilagođene alate u OC Nano:
+Dodaci također mogu dodati prilagođene alate u ocnano:
 
 ```ts title=".ocnano/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@ocnano-ai/plugin"
+import { type Plugin, tool } from "@opencode-ai/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -286,12 +286,12 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 }
 ```
 
-Pomoćnik `tool` kreira prilagođeni alat koji OC Nano može pozvati. Uzima funkciju Zod sheme i vraća definiciju alata sa:
+Pomoćnik `tool` kreira prilagođeni alat koji ocnano može pozvati. Uzima funkciju Zod sheme i vraća definiciju alata sa:
 
 - `description`: Šta alat radi
 - `args`: Zod šema za argumente alata
 - `execute`: Funkcija koja se pokreće kada se pozove alat
-  Vaši prilagođeni alati će biti dostupni za OC Nano zajedno sa ugrađenim alatima.
+  Vaši prilagođeni alati će biti dostupni za ocnano zajedno sa ugrađenim alatima.
 
 ---
 
@@ -319,7 +319,7 @@ Nivoi su: `debug`, `info`, `warn`, `error`. Pogledajte [SDK dokumentaciju](/docs
 Prilagodite kontekst uključen kada se sesija zbije:
 
 ```ts title=".ocnano/plugins/compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -342,7 +342,7 @@ Include any state that should persist across compaction:
 Također možete u potpunosti zamijeniti prompt za sabijanje postavljanjem `output.prompt`:
 
 ```ts title=".ocnano/plugins/custom-compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

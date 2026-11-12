@@ -20,7 +20,7 @@ OC Nano integrates with your GitHub workflow. Mention `/ocnano` or `/oc` in your
 Run the following command in a project that is in a GitHub repo:
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 This will walk you through installing the GitHub app, creating the workflow, and setting up secrets.
@@ -40,7 +40,7 @@ Or you can set it up manually.
    Add the following workflow file to `.github/workflows/ocnano.yml` in your repo. Make sure to set the appropriate `model` and required API keys in `env`.
 
    ```yml title=".github/workflows/ocnano.yml" {28,30}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ Or you can set it up manually.
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -143,7 +143,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

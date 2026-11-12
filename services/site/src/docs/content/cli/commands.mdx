@@ -91,31 +91,31 @@ $ ocnano run --help
 Starts the minimal interactive interface instead of the full-screen TUI.
 
 ```bash
-$ OC Nano mini
+$ ocnano mini
 ```
 
 Continue the last session.
 
 ```bash
-$ OC Nano mini --continue
+$ ocnano mini --continue
 ```
 
 Start with a model and an initial prompt.
 
 ```bash
-$ OC Nano mini --model anthropic/claude-sonnet-5-5 --prompt "Summarize this repository"
+$ ocnano mini --model anthropic/claude-sonnet-5-5 --prompt "Summarize this repository"
 ```
 
 Continue a specific session.
 
 ```bash
-$ OC Nano mini --session ses_4f2a1c
+$ ocnano mini --session ses_4f2a1c
 ```
 
 View all subcommands and flags.
 
 ```bash
-$ OC Nano mini --help
+$ ocnano mini --help
 ```
 
 ## session
@@ -437,61 +437,61 @@ $ ocnano pair --help
 Manages the background server. See [Web](/cli/web).
 
 ```bash
-$ OC Nano service start
+$ ocnano service start
 ```
 
 Restart it.
 
 ```bash
-$ OC Nano service restart
+$ ocnano service restart
 ```
 
 Show its status.
 
 ```bash
-$ OC Nano service status
+$ ocnano service status
 ```
 
 Stop it.
 
 ```bash
-$ OC Nano service stop
+$ ocnano service stop
 ```
 
 Read a setting.
 
 ```bash
-$ OC Nano service get hostname
+$ ocnano service get hostname
 ```
 
 Set a setting.
 
 ```bash
-$ OC Nano service set hostname 0.0.0.0
+$ ocnano service set hostname 0.0.0.0
 ```
 
 Allow an extra CORS origin.
 
 ```bash
-$ OC Nano service set cors https://app.example.com
+$ ocnano service set cors https://app.example.com
 ```
 
 Pass an environment variable to the server process.
 
 ```bash
-$ OC Nano service set env OCNANO_LOG_LEVEL DEBUG
+$ ocnano service set env OCNANO_LOG_LEVEL DEBUG
 ```
 
 Reset a setting to its default.
 
 ```bash
-$ OC Nano service unset hostname
+$ ocnano service unset hostname
 ```
 
 View all subcommands and flags.
 
 ```bash
-$ OC Nano service --help
+$ ocnano service --help
 ```
 
 ## reload
@@ -499,7 +499,7 @@ $ OC Nano service --help
 Reloads configuration without restarting the server. Running sessions continue with fresh services at the next step boundary.
 
 ```bash
-$ OC Nano reload
+$ ocnano reload
 ```
 
 ## api
@@ -507,31 +507,31 @@ $ OC Nano reload
 Makes a request to the running server.
 
 ```bash
-$ OC Nano api GET /api/session
+$ ocnano api GET /api/session
 ```
 
 Call an operation ID with a query parameter.
 
 ```bash
-$ OC Nano api session.list --param limit=10
+$ ocnano api session.list --param limit=10
 ```
 
 Send a JSON body.
 
 ```bash
-$ OC Nano api session.create --data '{"title": "New session"}'
+$ ocnano api session.create --data '{"title": "New session"}'
 ```
 
 Add a request header.
 
 ```bash
-$ OC Nano api GET /api/session -H "accept: application/json"
+$ ocnano api GET /api/session -H "accept: application/json"
 ```
 
 View all subcommands and flags.
 
 ```bash
-$ OC Nano api --help
+$ ocnano api --help
 ```
 
 ## acp
@@ -539,13 +539,13 @@ $ OC Nano api --help
 Starts an Agent Client Protocol server over stdin and stdout for editor integrations. It runs until the client closes the connection.
 
 ```bash
-$ OC Nano acp
+$ ocnano acp
 ```
 
 View all subcommands and flags.
 
 ```bash
-$ OC Nano acp --help
+$ ocnano acp --help
 ```
 
 ## debug

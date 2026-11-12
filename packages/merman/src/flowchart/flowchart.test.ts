@@ -1002,7 +1002,7 @@ describe("FlowchartDiagram", () => {
       `flowchart LR
   C[Commands] --> A[AgentThread activation]
   A -->|persist facts| J[(AgentThread journal)]
-  A -->|resume / steer / abort| O[ocnano session]
+  A -->|resume / steer / abort| O[OC Nano session]
   O -->|observed output| A
   J -->|visible output requested| R[Reactor]
   R --> D[Discord]`,
@@ -1026,7 +1026,7 @@ describe("FlowchartDiagram", () => {
                  ▼                                                       │           │
       ╭─────────────────────╮                                            ▼           │
       ├─────────────────────┤                                  ╭──────────────────╮  │
-      │ AgentThread journal │                                  │ ocnano session ├──╯
+      │ AgentThread journal │                                  │ OC Nano session ├──╯
       ├─────────────────────┤                                  ╰──────────────────╯
       ╰──────────┬──────────╯
                  │

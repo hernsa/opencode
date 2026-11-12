@@ -21,18 +21,25 @@ await packDistribution({
   command: "ocnano",
   legacyCommand: "ocnano2",
   binary: "ocnano",
-  packagePrefix: "@ocnano/cli-",
+  packagePrefix: "@opencode/cli-",
   archive: (target) => target.startsWith("linux-"),
 })
 if (existsSync(path.join(root, "node"))) {
   await packDistribution({
     root: path.join(root, "node"),
-    name: "@ocnano/cli-node",
+    name: "@opencode/cli-node",
     command: "ocnano2-node",
     binary: "ocnano2-node",
-    packagePrefix: "@ocnano/cli-node-",
+    packagePrefix: "@opencode/cli-node-",
     archive: () => true,
   })
+}
+
+// A published package name carries its scope, but the directory it is packed into does not.
+// The scope differs between the packages we publish and the ones we consume, so drop whatever
+// scope the name carries rather than assuming one.
+function stripScope(name: string) {
+  return name.replace(/^@[^/]+\//, "")
 }
 
 async function packDistribution(input: {
@@ -91,7 +98,9 @@ async function packDistribution(input: {
     ),
   )
 
-  await Promise.all(Object.keys(binaries).map((name) => pack(`${input.root}/${name.replace("@ocnano/", "")}`)))
+  await Promise.all(
+    Object.keys(binaries).map((name) => pack(`${input.root}/${stripScope(name)}`)),
+  )
   await pack(`${input.root}/${input.name}`)
   await Promise.all(
     Object.keys(binaries)
@@ -99,7 +108,7 @@ async function packDistribution(input: {
       .filter(input.archive)
       .map((target) =>
         archive(
-          path.join(input.root, `${input.packagePrefix.replace("@ocnano/", "")}${target}`, "bin"),
+          path.join(input.root, `${stripScope(input.packagePrefix)}${target}`, "bin"),
           target,
           input.binary,
         ),

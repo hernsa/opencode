@@ -159,7 +159,7 @@ export function mount(input: {
 
     const wsl = {
       // Like main: stops the distro's server, updates OcNano, then starts the server again on a new endpoint.
-      installOcNano(value) {
+      installOpencode(value) {
         const name = value.name ?? ""
         const id = store.state.servers.find((server) => server.config.distro === name)?.config.id
         setStore("calls", (calls) => [...calls, `update:${value.name}`])

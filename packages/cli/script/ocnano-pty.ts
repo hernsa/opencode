@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises"
 import { createRequire } from "node:module"
 import path from "node:path"
 
-export type OcNanoPtyAsset = {
+export type OpencodePtyAsset = {
   readonly source: string
   readonly version: string
   readonly sha256: string
@@ -18,7 +18,7 @@ type Target = {
 const core = createRequire(path.resolve(import.meta.dirname, "../../core/package.json"))
 const pty = createRequire(core.resolve("@ocnano/pty/package.json"))
 
-export async function resolveOcNanoPty(target: Target): Promise<OcNanoPtyAsset | undefined> {
+export async function resolveOpencodePty(target: Target): Promise<OpencodePtyAsset | undefined> {
   if (target.platform !== "darwin" && target.platform !== "linux" && target.platform !== "win32") return undefined
   if (target.arch !== "arm64" && target.arch !== "x64") return undefined
 

@@ -1,14 +1,14 @@
 ---
 title: Windows (WSL)
-description: Execute o OC Nano no Windows com WSL para melhor experiência.
+description: Execute o ocnano no Windows com WSL para melhor experiência.
 ---
 
 import { Steps } from "@astrojs/starlight/components"
 
-Embora o OC Nano possa rodar direto no Windows, recomendamos usar [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) para a melhor experiência. O WSL oferece um ambiente Linux que funciona de forma integrada com os recursos do ocnano.
+Embora o ocnano possa rodar direto no Windows, recomendamos usar [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) para a melhor experiência. O WSL oferece um ambiente Linux que funciona de forma integrada com os recursos do ocnano.
 
 :::tip[Por que WSL?]
-O WSL oferece melhor desempenho de sistema de arquivos, suporte completo a terminal e compatibilidade com as ferramentas de desenvolvimento das quais o OC Nano depende.
+O WSL oferece melhor desempenho de sistema de arquivos, suporte completo a terminal e compatibilidade com as ferramentas de desenvolvimento das quais o ocnano depende.
 :::
 
 ---
@@ -21,21 +21,21 @@ O WSL oferece melhor desempenho de sistema de arquivos, suporte completo a termi
 
    Se ainda não instalou, [instale o WSL](https://learn.microsoft.com/en-us/windows/wsl/install) usando o guia oficial da Microsoft.
 
-2. **Instale o OC Nano no WSL**
+2. **Instale o ocnano no WSL**
 
-   Depois de configurar o WSL, abra o terminal do WSL e instale o OC Nano usando um dos [métodos de instalação](/docs/).
+   Depois de configurar o WSL, abra o terminal do WSL e instale o ocnano usando um dos [métodos de instalação](/docs/).
 
    ```bash
    curl -fsSL https://opencode.ai/install | bash
    ```
 
-3. **Use o OC Nano pelo WSL**
+3. **Use o ocnano pelo WSL**
 
    Vá para o diretório do seu projeto (acesse arquivos do Windows via `/mnt/c/`, `/mnt/d/` etc.) e execute o ocnano.
 
    ```bash
    cd /mnt/c/Users/YourName/project
-   OC Nano
+   ocnano
    ```
 
 </Steps>
@@ -44,7 +44,7 @@ O WSL oferece melhor desempenho de sistema de arquivos, suporte completo a termi
 
 ## App desktop + servidor WSL
 
-Se você prefere usar o app desktop do OC Nano, mas quer rodar o servidor no WSL:
+Se você prefere usar o app desktop do ocnano, mas quer rodar o servidor no WSL:
 
 1. **Inicie o servidor no WSL** com `--hostname 0.0.0.0` para permitir conexões externas:
 
@@ -79,7 +79,7 @@ Para a melhor experiência web no Windows:
    ocnano web --hostname 0.0.0.0
    ```
 
-2. **Acesse pelo navegador do Windows** em `http://localhost:<port>` (o OC Nano mostra a URL)
+2. **Acesse pelo navegador do Windows** em `http://localhost:<port>` (o ocnano mostra a URL)
 
 Executar `ocnano web` a partir do WSL garante acesso correto ao sistema de arquivos e integração com o terminal, continuando acessível no navegador do Windows.
 
@@ -97,17 +97,17 @@ Exemplo:
 
 ```bash
 cd /mnt/c/Users/YourName/Documents/project
-OC Nano
+ocnano
 ```
 
 :::tip
-Para uma experiência mais fluida, considere clonar/copiar seu repositório para o sistema de arquivos do WSL (por exemplo em `~/code/`) e executar o OC Nano por lá.
+Para uma experiência mais fluida, considere clonar/copiar seu repositório para o sistema de arquivos do WSL (por exemplo em `~/code/`) e executar o ocnano por lá.
 :::
 
 ---
 
 ## Dicas
 
-- Mantenha o OC Nano rodando no WSL para projetos armazenados em unidades do Windows - o acesso aos arquivos fica fluido
-- Use a [extensão WSL do VS Code](https://code.visualstudio.com/docs/remote/wsl) junto com o OC Nano para um fluxo de desenvolvimento integrado
-- Sua configuração e suas sessões do OC Nano ficam armazenadas no ambiente WSL em `~/.local/share/ocnano/`
+- Mantenha o ocnano rodando no WSL para projetos armazenados em unidades do Windows - o acesso aos arquivos fica fluido
+- Use a [extensão WSL do VS Code](https://code.visualstudio.com/docs/remote/wsl) junto com o ocnano para um fluxo de desenvolvimento integrado
+- Sua configuração e suas sessões do ocnano ficam armazenadas no ambiente WSL em `~/.local/share/ocnano/`

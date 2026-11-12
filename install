@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 
 usage() {
     cat <<EOF
-OcNano Installer
+OC Nano Installer
 
 Usage: install.sh [options]
 
@@ -195,8 +195,8 @@ else
     http_status=$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/$package_scope%2fcli-$target/$specific_version" || true)
     # Older clients install the minimum release before they can migrate package names.
     if [ "$http_status" = "404" ] && [ -n "$requested_version" ]; then
-        package_name="@ocnano-ai/cli-$target"
-        http_status=$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/@ocnano-ai%2fcli-$target/$specific_version" || true)
+        package_name="@opencode-ai/cli-$target"
+        http_status=$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/@opencode-ai%2fcli-$target/$specific_version" || true)
     fi
     if [ "$http_status" = "404" ]; then
         echo -e "${RED}Error: Version ${specific_version} is not available for $target${NC}"
@@ -479,7 +479,7 @@ echo -e "${MUTED}█░░█ █░░█ █▀▀▀ █░░█ ${NC}█░
 echo -e "${MUTED}▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀  ▀ ${NC}▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀"
 echo -e ""
 echo -e ""
-echo -e "${MUTED}OcNano includes free models, to start:${NC}"
+echo -e "${MUTED}OC Nano includes free models, to start:${NC}"
 echo -e ""
 if [[ $path_added == "true" ]]; then
     echo -e "exec \$SHELL   ${MUTED}# Reload PATH (or open a new terminal)${NC}"

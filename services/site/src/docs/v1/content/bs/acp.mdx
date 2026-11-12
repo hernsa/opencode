@@ -15,7 +15,7 @@ ACP je otvoreni protokol koji standardizira komunikaciju između uređivača kod
 
 ## Konfiguracija
 
-Da biste koristili OC Nano putem ACP-a, konfigurirajte svoj uređivač da pokrene naredbu `OC Nano acp`.
+Da biste koristili OC Nano putem ACP-a, konfigurirajte svoj uređivač da pokrene naredbu `ocnano acp`.
 
 Naredba pokreće OC Nano kao ACP-kompatibilan podproces koji komunicira sa vašim uređivačem preko JSON-RPC-a kroz stdio.
 
@@ -34,7 +34,7 @@ Ako umjesto toga želite koristiti prilagođenu OC Nano izvršnu datoteku, dodaj
   "agent_servers": {
     "OC Nano": {
       "type": "custom",
-      "command": "OC Nano",
+      "command": "ocnano",
       "args": ["acp"]
     }
   }
@@ -56,7 +56,7 @@ Također možete vezati prečicu na tastaturi uređivanjem vašeg `keymap.json`:
             "custom": {
               "name": "OC Nano",
               "command": {
-                "command": "OC Nano",
+                "command": "ocnano",
                 "args": ["acp"]
               }
             }
@@ -96,8 +96,8 @@ Dodajte u svoju [Avante.nvim](https://github.com/yetone/avante.nvim) konfiguraci
 ```lua
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" }
     }
   }
@@ -109,8 +109,8 @@ Ako trebate proslijediti varijable okruženja:
 ```lua {6-8}
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" },
       env = {
         OCNANO_API_KEY = os.getenv("OCNANO_API_KEY")
@@ -131,7 +131,7 @@ require("codecompanion").setup({
   interactions = {
     chat = {
       adapter = {
-        name = "OC Nano",
+        name = "ocnano",
         model = "claude-sonnet-5-5",
       },
     },

@@ -5,9 +5,9 @@
 
 ## Live TUI Testing
 
-- Run `bun run dev:live` from a development worktree to test its TUI against the currently elected `OC Nano` background server and live sessions.
+- Run `bun run dev:live` from a development worktree to test its TUI against the currently elected `ocnano` background server and live sessions.
 - Pass a directory after the script when needed, for example `bun run dev:live /path/to/project`.
-- The script discovers the server with `OC Nano service status`, injects its private local credential from `OC Nano service get password`, and uses the `dev` TUI storage channel so tabs and other client-local state match the installed client.
+- The script discovers the server with `ocnano service status`, injects its private local credential from `ocnano service get password`, and uses the `dev` TUI storage channel so tabs and other client-local state match the installed client.
 - Prefer `dev:live` over plain `bun run dev` for this workflow. An implicit managed-service connection may replace the live server when the worktree client version differs; explicit `--server` warns and continues without replacing it.
 
 ## Live Desktop Diagnostics
@@ -40,7 +40,7 @@ Examples: `session-recovery`, `fix-scroll-state`, `regenerate-sdk`.
 
 Use conventional commit-style messages and PR titles: `type(scope): summary`.
 
-Valid types are `feat`, `fix`, `docs`, `chore`, `refactor`, and `test`. Scopes are optional; use the affected package or area when helpful, e.g. `core`, `OC Nano`, `tui`, `app`, `desktop`, `sdk`, or `plugin`.
+Valid types are `feat`, `fix`, `docs`, `chore`, `refactor`, and `test`. Scopes are optional; use the affected package or area when helpful, e.g. `core`, `ocnano`, `tui`, `app`, `desktop`, `sdk`, or `plugin`.
 
 Examples: `fix(tui): simplify thinking toggle styling`, `docs: update contributing guide`, `chore(sdk): regenerate types`.
 

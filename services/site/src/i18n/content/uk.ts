@@ -324,7 +324,7 @@ export const content = {
     hero: { copy: { text: "Правила для агента", copied: "Скопійовано" } },
     naming: {
       title: "Написання",
-      body: "Пишіть OC Nano одним словом, з великими O і C. Не пишіть OC Nano, Open Code, OC Nano AI чи Open-Code.",
+      body: "Пишіть OC Nano одним словом, з великими O і C. Не пишіть Opencode, Open Code, OC Nano AI чи Open-Code.",
       code: "Мале `ocnano` використовуйте лише в коді й назвах пакетів, наприклад `ocnano-figma` або `@acme/ocnano-plugin`.",
     },
     families: {

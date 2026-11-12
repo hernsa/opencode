@@ -493,7 +493,7 @@ export const content = {
     },
     naming: {
       title: "Nazwa",
-      body: "Pisz OC Nano jako jedno słowo, z wielkim O i wielkim C. Nie pisz OC Nano, Open Code, OC Nano AI ani Open-Code.",
+      body: "Pisz OC Nano jako jedno słowo, z wielkim O i wielkim C. Nie pisz Opencode, Open Code, OC Nano AI ani Open-Code.",
       code: "Małych liter `ocnano` używaj tylko w kodzie i nazwach pakietów, takich jak `ocnano-figma` czy `@acme/ocnano-plugin`.",
     },
     families: {

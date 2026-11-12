@@ -322,7 +322,7 @@ to the displayed repository or worktree instead of adding a second menu item.
 | `ctx.serverEndpoints` (main) | `ServerEndpoints`                                                                  | URL and credentials of a server the windows use                  |
 | `ctx.windows` (main)         | `Windows`                                                                          | The app's main windows                                           |
 | `ctx.embeds` (main)          | `Embeds`                                                                           | `create(view, window)` places a web page                         |
-| `ctx.cli` (main)             | `Cli`                                                                              | The OC Nano CLI the app runs                                    |
+| `ctx.cli` (main)             | `Cli`                                                                              | The ocnano CLI the app runs                                    |
 
 ### Built-in only
 
@@ -536,7 +536,7 @@ import en from "./i18n/en"
 export default Plugin.define({ i18n: { en } })
 ```
 
-3. **Provide it from main.** Whether main keeps the display awake is a main store, read synchronously and imported once from the key the desktop kept it under before; a built-in names that older home through `builtinMainContext`. Remote access runs `OC Nano service` through `ctx.cli`, one command at a time through the machine in `main-machine.ts`, with the same `createDispatch` loop as the settings page: a read stops when its caller goes away, a change goes on when the window closes, and every command has a timeout, so a hung one never holds the queue. `ctx.onCleanup` disposes the machine, which releases the blocker.
+3. **Provide it from main.** Whether main keeps the display awake is a main store, read synchronously and imported once from the key the desktop kept it under before; a built-in names that older home through `builtinMainContext`. Remote access runs `ocnano service` through `ctx.cli`, one command at a time through the machine in `main-machine.ts`, with the same `createDispatch` loop as the settings page: a read stops when its caller goes away, a change goes on when the window closes, and every command has a timeout, so a hung one never holds the queue. `ctx.onCleanup` disposes the machine, which releases the blocker.
 
 <!-- source: src/pairing/main.ts -->
 
@@ -627,7 +627,7 @@ const setup: Plugin.MainSetup = (ctx) => {
 
     commands.set(attempt, controller)
     execFile(
-      cli.command[0] ?? "OC Nano",
+      cli.command[0] ?? "ocnano",
       [...cli.command.slice(1), "service", ...effect.args],
       { signal: AbortSignal.any([ctx.signal, controller.signal]), timeout: effect.timeoutMs, windowsHide: true },
       (error, stdout, stderr) => {

@@ -18,6 +18,6 @@ if [ "$OCNANO_CHANNEL" != latest ]; then
   for target in linux-arm64 linux-x64; do node+=("$archives/ocnano2-node-$target.tar.gz"); done
   for target in darwin-arm64 windows-arm64 windows-x64; do node+=("$archives/ocnano2-node-$target.zip"); done
   files=$(upload_files "${node[@]}")
-  publish_update cli-node npm '{"package": "@ocnano/cli-node"}'
+  publish_update cli-node npm '{"package": "@opencode/cli-node"}'
   publish_update cli-node ocnano "$(jq -n --argjson files "$files" '{files: $files}')"
 fi

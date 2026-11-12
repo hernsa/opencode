@@ -559,7 +559,7 @@ describe("Provider and Model", () => {
     }),
   )
 
-  it.effect("defaults to big-pickle when only free ocnano models are available", () =>
+  it.effect("defaults to big-pickle when only free OC Nano models are available", () =>
     Effect.gen(function* () {
       const providers = yield* Provider.Service
       const models = yield* Model.Service

@@ -18,7 +18,7 @@ OC Nano JS/TS SDK は、サーバーと対話するための型安全なクラ�
 npm から SDK をインストールします。
 
 ```bash
-npm install @ocnano-ai/sdk
+npm install @opencode-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @ocnano-ai/sdk
 OC Nano のインスタンスを作成します。
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const { client } = await createOC Nano()
+const { client } = await createOpencode()
 ```
 
 これにより、サーバーとクライアントの両方が起動します
@@ -52,9 +52,9 @@ const { client } = await createOC Nano()
 設定オブジェクトを渡して動作をカスタマイズできます。インスタンスは引き続き `ocnano.json` を取得しますが、設定をインラインでオーバーライドまたは追加することができます。
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const OC Nano = await createOC Nano({
+const ocnano = await createOpencode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -72,9 +72,9 @@ ocnano.server.close()
 すでに実行中の OC Nano のインスタンスがある場合は、それに接続するためのクライアントインスタンスを作成できます。
 
 ```javascript
-import { createOC NanoClient } from "@ocnano-ai/sdk"
+import { createOpencodeClient } from "@opencode-ai/sdk"
 
-const client = createOC NanoClient({
+const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOC NanoClient({
 SDK には、すべての API タイプの TypeScript 定義が含まれています。それらを直接インポートします。
 
 ```typescript
-import type { Session, Message, Part } from "@ocnano-ai/sdk"
+import type { Session, Message, Part } from "@opencode-ai/sdk"
 ```
 
 すべてのタイプはサーバーの OpenAPI 仕様から生成され、<a href={typesUrl}>タイプファイル</a> で使用できます。
@@ -373,7 +373,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*OC Nano" },
+  query: { pattern: "function.*ocnano" },
 })
 
 const files = await client.find.files({

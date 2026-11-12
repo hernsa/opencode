@@ -176,13 +176,13 @@ Slik bruker du Amazon Bedrock med OC Nano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    Eller legg dem til bash-profilen din:
@@ -314,7 +314,7 @@ For egendefinerte slutningsprofiler, bruk modellen og leverandørnavnet i nøkke
    ```
 
 :::info
-Å bruke Claude Pro/Max-abonnementet ditt i OC Nano støttes ikke offisielt av [Anthropic](https://anthropic.com).
+Å bruke Claude Pro/Max-abonnementet ditt i ocnano støttes ikke offisielt av [Anthropic](https://anthropic.com).
 :::
 
 ##### Bruke API-nøkler
@@ -327,7 +327,7 @@ Eller hvis du allerede har en API-nøkkel, kan du velge **Angi API-nøkkel manue
 
 ### Atomic Chat
 
-Du kan konfigurere OC Nano til å bruke lokale modeller via [Atomic Chat](https://atomic.chat) — et skrivebordsprogram som kjører lokale LLM-er bak en OpenAI-kompatibel API-server (standard endepunkt `http://127.0.0.1:1337/v1`).
+Du kan konfigurere ocnano til å bruke lokale modeller via [Atomic Chat](https://atomic.chat) — et skrivebordsprogram som kjører lokale LLM-er bak en OpenAI-kompatibel API-server (standard endepunkt `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -397,7 +397,7 @@ Hvis du støter på «Beklager, men jeg kan ikke hjelpe med den forespørselen»
 5. Angi ressursnavnet ditt som en miljøvariabel:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    Eller legg den til bash-profilen din:
@@ -444,7 +444,7 @@ Hvis du støter på «Beklager, men jeg kan ikke hjelpe med den forespørselen»
 5. Angi ressursnavnet ditt som en miljøvariabel:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    Eller legg den til bash-profilen din:
@@ -910,7 +910,7 @@ Slik bruker du Google Vertex AI med OC Nano:
    Sett dem mens du kjører OC Nano.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    Eller legg dem til på bash-profilen din.
@@ -1063,7 +1063,7 @@ Helicone støtter tilpassede headere for funksjoner som bufring, brukersporing o
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1523,7 +1523,7 @@ SAP AI Core gir tilgang til 40+ modeller fra OpenAI, Anthropic, Google, Amazon, 
    Eller angi miljøvariabelen `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    Eller legg den til bash-profilen din:
@@ -1535,7 +1535,7 @@ SAP AI Core gir tilgang til 40+ modeller fra OpenAI, Anthropic, Google, Amazon, 
 4. Angi eventuelt distribusjon ID og ressursgruppe:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note

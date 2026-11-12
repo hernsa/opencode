@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto"
 import type { MainContext } from "@ocnano/plugin/gui/main"
-import type { WslOcNanoCheck, WslServerConfig } from "./contract"
+import type { WslOpencodeCheck, WslServerConfig } from "./contract"
 import {
   createWslMachineState,
   toServersState,
@@ -260,7 +260,7 @@ export function createWslServersController(options: WslServersControllerOptions)
       )
     },
 
-    installOcNano(distro: string) {
+    installOpencode(distro: string) {
       return request((attempt) => ({ type: "update", distro, attempt }))
     },
 
@@ -292,7 +292,7 @@ function cliCheck(
   resolvedPath: string | null,
   version: string | null,
   expectedVersion: string,
-): WslOcNanoCheck {
+): WslOpencodeCheck {
   if (!resolvedPath) {
     return {
       distro,

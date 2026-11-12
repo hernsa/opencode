@@ -20,7 +20,7 @@ OC Nano は GitHub ワークフローと統合します。コメントで `/ocna
 GitHub リポジトリにあるプロジェクトで次のコマンドを実行します。
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 ここでは、GitHub アプリのインストール、ワークフローの作成、シークレットの設定について説明します。
@@ -40,7 +40,7 @@ OC Nano github install
 次のワークフローファイルをリポジトリの `.github/workflows/ocnano.yml` に追加します。適切な `model` と必要な API キーを `env` に設定してください。
 
 ```yml title=".github/workflows/ocnano.yml" {24,26}
-name: OC Nano
+name: ocnano
 
 on:
   issue_comment:
@@ -49,7 +49,7 @@ on:
     types: [created]
 
 jobs:
-  OC Nano:
+  ocnano:
     if: |
       contains(github.event.comment.body, '/oc') ||
       contains(github.event.comment.body, '/ocnano')
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

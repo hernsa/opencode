@@ -59,7 +59,7 @@ probado y verificado para funcionar bien con OC Nano. [Más información](https:
 Si eres nuevo, te recomendamos comenzar con OC Nano Models.
 :::
 
-1. Ejecute el comando `/connect` en TUI, seleccione OC Nano y diríjase a [opencode.ai/auth](https://opencode.ai/auth).
+1. Ejecute el comando `/connect` en TUI, seleccione ocnano y diríjase a [opencode.ai/auth](https://opencode.ai/auth).
 
    ```txt
    /connect
@@ -171,17 +171,17 @@ Para usar Amazon Bedrock con OC Nano:
 
    #### Variables de entorno (Inicio rápido)
 
-   Establezca una de estas variables de entorno mientras ejecuta OC Nano:
+   Establezca una de estas variables de entorno mientras ejecuta ocnano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    O agrégalos a tu perfil de bash:
@@ -326,7 +326,7 @@ O si ya tienes una clave API, puedes seleccionar **Ingresar manualmente la clave
 
 ### Atomic Chat
 
-Puedes configurar OC Nano para usar modelos locales mediante [Atomic Chat](https://atomic.chat), una aplicación de escritorio que ejecuta LLMs locales detrás de un servidor API compatible con OpenAI (endpoint por defecto `http://127.0.0.1:1337/v1`).
+Puedes configurar ocnano para usar modelos locales mediante [Atomic Chat](https://atomic.chat), una aplicación de escritorio que ejecuta LLMs locales detrás de un servidor API compatible con OpenAI (endpoint por defecto `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -375,7 +375,7 @@ Si encuentra errores del tipo "Lo siento, pero no puedo ayudar con esa solicitud
 2. Vaya a [Azure AI Foundry](https://ai.azure.com/) e implemente un modelo.
 
    :::nota
-   El nombre de la implementación debe coincidir con el nombre del modelo para que OC Nano funcione correctamente.
+   El nombre de la implementación debe coincidir con el nombre del modelo para que ocnano funcione correctamente.
    :::
 
 3. Ejecute el comando `/connect` y busque **Azure**.
@@ -396,7 +396,7 @@ Si encuentra errores del tipo "Lo siento, pero no puedo ayudar con esa solicitud
 5. Configure el nombre de su recurso como una variable de entorno:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    O agrégalo a tu perfil de bash:
@@ -422,7 +422,7 @@ Si encuentra errores del tipo "Lo siento, pero no puedo ayudar con esa solicitud
 2. Vaya a [Azure AI Foundry](https://ai.azure.com/) e implemente un modelo.
 
    :::nota
-   El nombre de la implementación debe coincidir con el nombre del modelo para que OC Nano funcione correctamente.
+   El nombre de la implementación debe coincidir con el nombre del modelo para que ocnano funcione correctamente.
    :::
 
 3. Ejecute el comando `/connect` y busque **Azure Cognitive Services**.
@@ -443,7 +443,7 @@ Si encuentra errores del tipo "Lo siento, pero no puedo ayudar con esa solicitud
 5. Configure el nombre de su recurso como una variable de entorno:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    O agrégalo a tu perfil de bash:
@@ -854,7 +854,7 @@ Este complemento proporciona capacidades integrales de administración del repos
 
 ### GitHub Copilot
 
-Para utilizar su suscripción GitHub Copilot con OC Nano:
+Para utilizar su suscripción GitHub Copilot con ocnano:
 
 :::note
 Algunos modelos pueden necesitar un [Pro+
@@ -909,7 +909,7 @@ Para utilizar Google Vertex AI con OC Nano:
    Configúrelos mientras ejecuta ocnano.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    O agréguelos a su perfil de bash.
@@ -1019,7 +1019,7 @@ Para obtener más proveedores y funciones avanzadas como almacenamiento en cach�
 
 #### Configuraciones opcionales
 
-En caso de que vea una característica o modelo de Helicone que no esté configurado automáticamente a través de OC Nano, siempre podrá configurarlo usted mismo.
+En caso de que vea una característica o modelo de Helicone que no esté configurado automáticamente a través de ocnano, siempre podrá configurarlo usted mismo.
 
 Aquí está el [Directorio de modelos de Helicone](https://helicone.ai/models), lo necesitará para obtener las ID de los modelos que desea agregar.
 
@@ -1062,7 +1062,7 @@ Helicone admite encabezados personalizados para funciones como almacenamiento en
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1103,7 +1103,7 @@ Consulte el [Directorio de encabezados de Helicone](https://docs.helicone.ai/hel
 
 ### llama.cpp
 
-Puede configurar OC Nano para usar modelos locales a través de la utilidad llama-server de [llama.cpp](https://github.com/ggml-org/llama.cpp)
+Puede configurar ocnano para usar modelos locales a través de la utilidad llama-server de [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1170,7 +1170,7 @@ IO.NET ofrece 17 modelos optimizados para varios casos de uso:
 
 ### LM Studio
 
-Puede configurar OC Nano para usar modelos locales a través de LM Studio.
+Puede configurar ocnano para usar modelos locales a través de LM Studio.
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1287,7 +1287,7 @@ Para usar Kimi K2 de Moonshot AI:
 
 ### Ollama
 
-Puedes configurar OC Nano para usar modelos locales a través de Ollama.
+Puedes configurar ocnano para usar modelos locales a través de Ollama.
 
 :::tip
 Ollama puede configurarse automáticamente para OC Nano. Consulte los [documentos de integración de Ollama](https://docs.ollama.com/integrations/ocnano) para obtener más detalles.
@@ -1523,7 +1523,7 @@ SAP AI Core brinda acceso a más de 40 modelos de OpenAI, Anthropic, Google, Ama
    O configure la variable de entorno `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    O agrégalo a tu perfil de bash:
@@ -1535,7 +1535,7 @@ SAP AI Core brinda acceso a más de 40 modelos de OpenAI, Anthropic, Google, Ama
 4. Opcionalmente, configure el ID de implementación y el grupo de recursos:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note
@@ -1986,7 +1986,7 @@ Si tiene problemas para configurar un proveedor, verifique lo siguiente:
 
    Esto no se aplica a proveedores como Amazon Bedrock, que dependen de variables de entorno para su autenticación.
 
-2. Para proveedores personalizados, verifique la configuración OC Nano y:
+2. Para proveedores personalizados, verifique la configuración ocnano y:
    - Asegúrese de que el ID del proveedor utilizado en el comando `/connect` coincida con el ID en su configuración ocnano.
    - Se utiliza el paquete npm correcto para el proveedor. Por ejemplo, utilice `@ai-sdk/cerebras` para Cerebras. Y para todos los demás proveedores compatibles con OpenAI, utilice `@ai-sdk/openai-compatible`.
    - Verifique que se utilice el punto final API correcto en el campo `options.baseURL`.

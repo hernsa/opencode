@@ -53,7 +53,7 @@ export const WslDistroProbe = Schema.Struct({
 
 export type WslDistroProbe = typeof WslDistroProbe.Type
 
-export const WslOcNanoCheck = Schema.Struct({
+export const WslOpencodeCheck = Schema.Struct({
   distro: Schema.String,
   resolvedPath: Schema.NullOr(Schema.String),
   version: Schema.NullOr(Schema.String),
@@ -62,7 +62,7 @@ export const WslOcNanoCheck = Schema.Struct({
   error: Schema.NullOr(Schema.String),
 })
 
-export type WslOcNanoCheck = typeof WslOcNanoCheck.Type
+export type WslOpencodeCheck = typeof WslOpencodeCheck.Type
 
 export const WslServerItem = Schema.Struct({ config: WslServerConfig, runtime: WslServerRuntime })
 
@@ -73,7 +73,7 @@ export const WslServersState = Schema.Struct({
   installed: Schema.Array(WslInstalledDistro),
   online: Schema.Array(WslOnlineDistro),
   distroProbes: Schema.Record(Schema.String, WslDistroProbe),
-  ocnanoChecks: Schema.Record(Schema.String, WslOcNanoCheck),
+  ocnanoChecks: Schema.Record(Schema.String, WslOpencodeCheck),
   pendingRestart: Schema.Boolean,
   servers: Schema.Array(WslServerItem),
   hostJob: Schema.Literals(["idle", "busy"]),
@@ -96,7 +96,7 @@ export const Wsl = Ipc.define({
     installWsl: {},
     installDistro: { input: Name },
     probeAddable: { input: Schema.Struct({ distros: Schema.Array(Schema.NonEmptyString) }) },
-    installOcNano: { input: Name },
+    installOpencode: { input: Name },
     addServer: { input: Schema.Struct({ distro: Schema.NonEmptyString }), output: WslServerConfig },
     removeServer: { input: Id },
     startServer: { input: Id },

@@ -2,7 +2,7 @@ import type {
   WslDistroProbe,
   WslInstalledDistro,
   WslOnlineDistro,
-  WslOcNanoCheck,
+  WslOpencodeCheck,
   WslRuntimeCheck,
   WslServerConfig,
   WslServerRuntime,
@@ -37,7 +37,7 @@ type Data = {
   readonly installed: readonly WslInstalledDistro[]
   readonly online: readonly WslOnlineDistro[]
   readonly distroProbes: Readonly<Record<string, WslDistroProbe>>
-  readonly ocnanoChecks: Readonly<Record<string, WslOcNanoCheck>>
+  readonly ocnanoChecks: Readonly<Record<string, WslOpencodeCheck>>
   readonly pendingRestart: boolean
   readonly configured: readonly WslServerConfig[]
 }
@@ -82,7 +82,7 @@ export type WslMachineEvent =
       readonly type: "cli.inspected"
       readonly distro: string
       readonly attempt: string
-      readonly check: WslOcNanoCheck
+      readonly check: WslOpencodeCheck
     }
   | {
       readonly type: "distro.installed"
@@ -96,14 +96,14 @@ export type WslMachineEvent =
       readonly type: "cli.installed"
       readonly distro: string
       readonly attempt: string
-      readonly check: WslOcNanoCheck
+      readonly check: WslOpencodeCheck
     }
   | {
       readonly type: "job.failed"
       readonly distro: string
       readonly attempt: string
       readonly message: string
-      readonly check?: WslOcNanoCheck
+      readonly check?: WslOpencodeCheck
     }
   | { readonly type: "server.stopped"; readonly distro: string; readonly attempt: string }
   | {
@@ -122,7 +122,7 @@ export type WslMachineEvent =
       readonly signal: string | null
       readonly message: string
     }
-  | { readonly type: "cli.checked"; readonly distro: string; readonly check: WslOcNanoCheck }
+  | { readonly type: "cli.checked"; readonly distro: string; readonly check: WslOpencodeCheck }
 
 export type WslFailure =
   | { readonly kind: "busy"; readonly distro: string }
@@ -347,7 +347,7 @@ function distroProbed(state: OpenState, event: { distro: string; attempt: string
   return next(put(probed, event.distro, { status: "idle", server: current.server }), [resolve(event.attempt)])
 }
 
-function cliInspected(state: OpenState, event: { distro: string; attempt: string; check: WslOcNanoCheck }) {
+function cliInspected(state: OpenState, event: { distro: string; attempt: string; check: WslOpencodeCheck }) {
   const current = distroOf(state, event.distro)
 
   if (current.status !== "probing" || current.attempt !== event.attempt) return next(state)
@@ -416,7 +416,7 @@ function update(state: OpenState, distro: string, attempt: string) {
 }
 
 // The update's caller hears once the restarted server is up or failed, as when main awaited the restart.
-function cliInstalled(state: OpenState, event: { distro: string; attempt: string; check: WslOcNanoCheck }) {
+function cliInstalled(state: OpenState, event: { distro: string; attempt: string; check: WslOpencodeCheck }) {
   const current = distroOf(state, event.distro)
 
   if (current.status !== "updating" || current.attempt !== event.attempt) return next(state)
@@ -433,7 +433,7 @@ function cliInstalled(state: OpenState, event: { distro: string; attempt: string
 // A failed update leaves the server stopped, so the row offers to start it again.
 function jobFailed(
   state: OpenState,
-  event: { distro: string; attempt: string; message: string; check?: WslOcNanoCheck },
+  event: { distro: string; attempt: string; message: string; check?: WslOpencodeCheck },
 ) {
   const current = distroOf(state, event.distro)
 
@@ -586,7 +586,7 @@ function serverExited(
 }
 
 // Background checks never overwrite what an update or removal decides for the distro.
-function cliChecked(state: OpenState, distro: string, check: WslOcNanoCheck) {
+function cliChecked(state: OpenState, distro: string, check: WslOpencodeCheck) {
   const status = distroOf(state, distro).status
 
   if (!configuredDistro(state, distro) || status === "updating" || status === "removing") return next(state)
@@ -625,7 +625,7 @@ function put(state: OpenState, distro: string, job: WslDistro): OpenState {
   return { ...state, distros: { ...state.distros, [distro]: job } }
 }
 
-function withCheck(state: OpenState, distro: string, check: WslOcNanoCheck): OpenState {
+function withCheck(state: OpenState, distro: string, check: WslOpencodeCheck): OpenState {
   return { ...state, ocnanoChecks: { ...state.ocnanoChecks, [distro]: check } }
 }
 

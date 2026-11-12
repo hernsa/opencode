@@ -23,7 +23,7 @@ release its router, Location services, fibers, and scoped plugin registrations:
 ```ts
 import { OC Nano } from "@ocnano/sdk"
 
-await using OC Nano = await OC Nano.create()
+await using ocnano = await OC Nano.create()
 const session = await ocnano.sessions.create({
   location: { directory: "/workspace" },
 })
@@ -90,7 +90,7 @@ const plugin = Plugin.define({
   },
 })
 
-await using OC Nano = await OC Nano.create({ plugins: [plugin] })
+await using ocnano = await OC Nano.create({ plugins: [plugin] })
 ```
 
 Call `await ocnano.plugin(plugin)` to register another plugin after startup.

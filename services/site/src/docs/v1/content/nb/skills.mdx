@@ -11,7 +11,7 @@ Ferdigheter lastes inn på forespørsel via det innebygde `skill`-verktøyet –
 ## Plasser filer
 
 Opprett én mappe per ferdighetsnavn og legg inn en `SKILL.md` i den.
-OC Nano søker etter disse stedene:
+ocnano søker etter disse stedene:
 
 - Prosjektkonfigurasjon: `.ocnano/skills/<name>/SKILL.md`
 - Global konfigurasjon: `~/.config/ocnano/skills/<name>/SKILL.md`
@@ -24,7 +24,7 @@ OC Nano søker etter disse stedene:
 
 ## Forstå oppdagelsen
 
-For prosjektlokale stier går OC Nano opp fra din nåværende arbeidskatalog til den når git-arbeidstreet.
+For prosjektlokale stier går ocnano opp fra din nåværende arbeidskatalog til den når git-arbeidstreet.
 Den laster alle matchende `skills/*/SKILL.md` i `.ocnano/` og alle matchende `.claude/skills/*/SKILL.md` eller `.agents/skills/*/SKILL.md` underveis.
 
 Globale definisjoner lastes også inn fra `~/.config/ocnano/skills/*/SKILL.md`, `~/.claude/skills/*/SKILL.md` og `~/.agents/skills/*/SKILL.md`.
@@ -80,7 +80,7 @@ Lag `.ocnano/skills/git-release/SKILL.md` slik:
 name: git-release
 description: Create consistent releases and changelogs
 license: MIT
-compatibility: OC Nano
+compatibility: ocnano
 metadata:
   audience: maintainers
   workflow: github
@@ -102,7 +102,7 @@ Ask clarifying questions if the target versioning scheme is unclear.
 
 ## Forstå verktøybeskrivelsen
 
-OC Nano viser tilgjengelige ferdigheter i `skill`-verktøybeskrivelsen.
+ocnano viser tilgjengelige ferdigheter i `skill`-verktøybeskrivelsen.
 Hver oppføring inneholder ferdighetsnavnet og beskrivelsen:
 
 ```xml

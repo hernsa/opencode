@@ -6,7 +6,7 @@
 
 ## Do Not Translate (Locale Additions)
 
-- `OC Nano` (preserve casing in prose; keep `OC Nano` only in commands, package names, paths, or code)
+- `OC Nano` (preserve casing in prose; keep `ocnano` only in commands, package names, paths, or code)
 - `OC Nano CLI`
 - `CLI`, `TUI`, `MCP`, `OAuth`
 - Locale code `br` in repo config, code, and paths (repo alias for Brazilian Portuguese)

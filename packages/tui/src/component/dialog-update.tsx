@@ -124,7 +124,7 @@ export function DialogUpdate(props: {
               </text>
             </Match>
             <Match when={current.type === "current"}>
-              <text fg={theme.text.muted}>OcNano is already up to date.</text>
+              <text fg={theme.text.muted}>OC Nano is already up to date.</text>
             </Match>
             <Match when={current.type === "unavailable"}>
               <text fg={theme.text.muted} wrapMode="word">

@@ -1,12 +1,12 @@
 ---
 title: Server
-description: Interact with OC Nano server over HTTP.
+description: Interact with ocnano server over HTTP.
 ---
 
 import config from "../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-The `ocnano serve` command runs a headless HTTP server that exposes an OpenAPI endpoint that an OC Nano client can use.
+The `ocnano serve` command runs a headless HTTP server that exposes an OpenAPI endpoint that an ocnano client can use.
 
 ---
 
@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Authentication
 
-Set `OCNANO_SERVER_PASSWORD` to protect the server with HTTP basic auth. The username defaults to `OC Nano`, or set `OCNANO_SERVER_USERNAME` to override it. This applies to both `ocnano serve` and `ocnano web`.
+Set `OCNANO_SERVER_PASSWORD` to protect the server with HTTP basic auth. The username defaults to `ocnano`, or set `OCNANO_SERVER_USERNAME` to override it. This applies to both `ocnano serve` and `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,18 +46,18 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### How it works
 
-When you run `OC Nano` it starts a TUI and a server. Where the TUI is the
+When you run `ocnano` it starts a TUI and a server. Where the TUI is the
 client that talks to the server. The server exposes an OpenAPI 3.1 spec
 endpoint. This endpoint is also used to generate an [SDK](/docs/sdk).
 
 :::tip
-Use the OC Nano server to interact with OC Nano programmatically.
+Use the ocnano server to interact with ocnano programmatically.
 :::
 
-This architecture lets OC Nano support multiple clients and allows you to interact with OC Nano programmatically.
+This architecture lets ocnano support multiple clients and allows you to interact with ocnano programmatically.
 
 You can run `ocnano serve` to start a standalone server. If you have the
-OC Nano TUI running, `ocnano serve` will start a new server.
+ocnano TUI running, `ocnano serve` will start a new server.
 
 ---
 
@@ -83,7 +83,7 @@ For example, `http://localhost:4096/doc`. Use the spec to generate clients or in
 
 ## APIs
 
-The OC Nano server exposes the following APIs.
+The ocnano server exposes the following APIs.
 
 ---
 

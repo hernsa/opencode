@@ -30,10 +30,10 @@ export default {
   timedOut: "The server took too long to respond",
   "setup.mcp": "Add a server with OC Nano",
   "setup.mcp.prompt":
-    "Help me add an MCP server to my global ocnano config. Ask me which service I want to connect, then set it up and check that it connects.",
+    "Help me add an MCP server to my global OC Nano config. Ask me which service I want to connect, then set it up and check that it connects.",
   "setup.plugins": "Add a plugin with OC Nano",
   "setup.plugins.prompt":
-    "Help me add a plugin to my global ocnano config. Ask me what I want it to do, suggest a plugin, then add it.",
+    "Help me add a plugin to my global OC Nano config. Ask me what I want it to do, suggest a plugin, then add it.",
   "setup.skills": "New skill with OC Nano",
   "setup.skills.prompt":
     "Help me write a new OC Nano skill in my global config. Ask me what it should teach you, then write its SKILL.md.",

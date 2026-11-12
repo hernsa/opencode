@@ -118,7 +118,7 @@ The plugin function receives:
 - `project`: The current project information.
 - `directory`: The current working directory.
 - `worktree`: The git worktree path.
-- `client`: An OC Nano SDK client for interacting with the AI.
+- `client`: An ocnano SDK client for interacting with the AI.
 - `$`: Bun's [shell API](https://bun.com/docs/runtime/shell) for executing commands.
 
 ---
@@ -128,7 +128,7 @@ The plugin function receives:
 For TypeScript plugins, you can import types from the plugin package:
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -225,7 +225,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
     event: async ({ event }) => {
       // Send notification on session completion
       if (event.type === "session.idle") {
-        await $`osascript -e 'display notification "Session completed!" with title "OC Nano"'`
+        await $`osascript -e 'display notification "Session completed!" with title "ocnano"'`
       }
     },
   }
@@ -242,7 +242,7 @@ If you’re using the OC Nano desktop app, it can send system notifications auto
 
 ### .env protection
 
-Prevent OC Nano from reading `.env` files:
+Prevent ocnano from reading `.env` files:
 
 ```javascript title=".ocnano/plugins/env-protection.js"
 export const EnvProtection = async ({ project, client, $, directory, worktree }) => {
@@ -277,10 +277,10 @@ export const InjectEnvPlugin = async () => {
 
 ### Custom tools
 
-Plugins can also add custom tools to OC Nano:
+Plugins can also add custom tools to ocnano:
 
 ```ts title=".ocnano/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@ocnano-ai/plugin"
+import { type Plugin, tool } from "@opencode-ai/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -300,13 +300,13 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 }
 ```
 
-The `tool` helper creates a custom tool that OC Nano can call. It takes a Zod schema function and returns a tool definition with:
+The `tool` helper creates a custom tool that ocnano can call. It takes a Zod schema function and returns a tool definition with:
 
 - `description`: What the tool does
 - `args`: Zod schema for the tool's arguments
 - `execute`: Function that runs when the tool is called
 
-Your custom tools will be available to OC Nano alongside built-in tools.
+Your custom tools will be available to ocnano alongside built-in tools.
 
 :::note
 If a plugin tool uses the same name as a built-in tool, the plugin tool takes precedence.
@@ -340,7 +340,7 @@ Levels: `debug`, `info`, `warn`, `error`. See [SDK documentation](/docs/sdk) for
 Customize the context included when a session is compacted:
 
 ```ts title=".ocnano/plugins/compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -364,7 +364,7 @@ The `experimental.session.compacting` hook fires before the LLM generates a cont
 You can also replace the compaction prompt entirely by setting `output.prompt`:
 
 ```ts title=".ocnano/plugins/custom-compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

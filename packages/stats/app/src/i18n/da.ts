@@ -23,7 +23,7 @@ export const dict = {
   "header.githubAria": "Giv OC Nano en stjerne på GitHub",
   "header.github": "GitHub",
   "header.tryOC Nano": "Prøv OC Nano",
-  "header.tryOC NanoShort": "Prøv nu",
+  "header.tryOcNanoShort": "Prøv nu",
   "header.openNav": "Åbn navigation",
   "header.closeNav": "Luk navigation",
   "theme.groupLabel": "Tema",

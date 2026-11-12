@@ -21,7 +21,7 @@ describe("highlights", () => {
         "isolated worktrees, move sessions into them, and remove them with normal edit approval.",
     )
     expect(result.items[2].body).toBe(
-      "Use Chrome or Edge’s Install button to install the ocnano web app, including when it runs behind an " +
+      "Use Chrome or Edge’s Install button to install the OC Nano web app, including when it runs behind an " +
         "authenticating proxy.",
     )
     expect(result.items.some((item) => item.body.includes("github.com") || item.body.includes("(["))).toBe(false)

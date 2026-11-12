@@ -30,7 +30,7 @@ import { SharedCache } from "../../shared-cache.js"
 import { Skill } from "../../skill.js"
 import { SkillDiscovery } from "../../skill/discovery.js"
 import { WebSearch } from "../../websearch.js"
-import { OcNanoWatches } from "./ocnano-watches.js"
+import { OpencodeWatches } from "./ocnano-watches.js"
 import { ProviderRefresh } from "./refresh.js"
 
 const clientID = "ocnano-cli"
@@ -81,7 +81,7 @@ const signedOutMessage = "Reconnect OC Nano Console to continue"
 const ssoMessage = (organization: string | undefined) =>
   `Sign in with SSO again to use ${organization ?? "your OC Nano Console organization"}`
 
-class SsoRequiredError extends Schema.TaggedError<SsoRequiredError>()("OC NanoConsole.SsoRequired", {
+class SsoRequiredError extends Schema.TaggedError<SsoRequiredError>()("OpencodeConsole.SsoRequired", {
   organization: Schema.optional(Schema.String),
   url: Schema.String,
 }) {
@@ -91,7 +91,7 @@ class SsoRequiredError extends Schema.TaggedError<SsoRequiredError>()("OC NanoCo
 }
 
 // The Console session or refresh token was revoked or expired; only a new device login recovers.
-class SignedOutError extends Schema.TaggedError<SignedOutError>()("OC NanoConsole.SignedOut", {}) {
+class SignedOutError extends Schema.TaggedError<SignedOutError>()("OpencodeConsole.SignedOut", {}) {
   override get message() {
     return `${signedOutMessage}.`
   }
@@ -176,7 +176,7 @@ function oauth(http: HttpClient.HttpClient) {
   } satisfies IntegrationOAuthMethodRegistration
 }
 
-export const OcNanoPlugin = define<
+export const OpencodePlugin = define<
   | HttpClient.HttpClient
   | Bus.Service
   | Config.Service
@@ -217,10 +217,10 @@ export const OcNanoPlugin = define<
     // Status last reported for the active connection, so inference failures can name the fix.
     let reported: IntegrationConnection.Status | undefined
     let explainers: Effect.Success<ReturnType<typeof ctx.session.hook>>[] = []
-    const watches = yield* OcNanoWatches.make(ctx, http)
+    const watches = yield* OpencodeWatches.make(ctx, http)
 
     // Every project signed in to the same workspace shares one fetch, reused while it is younger than `maxAge`.
-    const load = Effect.fn("OC NanoPlugin.load")(function* (maxAge: Duration.Input = Duration.minutes(1)) {
+    const load = Effect.fn("OpencodePlugin.load")(function* (maxAge: Duration.Input = Duration.minutes(1)) {
       const connection = yield* ctx.integration.connection.active("ocnano")
       if (!connection) {
         reported = undefined
@@ -363,7 +363,7 @@ export const OcNanoPlugin = define<
       const remote = allowed ? next.remote : undefined
       instructions = (remote?.instructions ?? []).map(
         (item) =>
-          new InstructionDiscovery.File({ path: `OcNano Console instruction ${item.id}`, content: item.content }),
+          new InstructionDiscovery.File({ path: `OC Nano Console instruction ${item.id}`, content: item.content }),
       )
       if (!allowed) consoleSkills = { owner: "", items: [] }
       // Skills download in the background, so startup and config changes never wait on them. The current ones stay
@@ -448,12 +448,12 @@ export const OcNanoPlugin = define<
             Effect.scoped,
             Effect.timeoutOrElse({
               duration: Duration.seconds(25),
-              orElse: () => Effect.fail(new Error("ocnano web search request timed out")),
+              orElse: () => Effect.fail(new Error("OC Nano web search request timed out")),
             }),
           )
           if (response.providerID !== providerID) {
             return yield* Effect.fail(
-              new Error(`OcNano web search returned provider ${response.providerID} instead of ${providerID}`),
+              new Error(`OC Nano web search returned provider ${response.providerID} instead of ${providerID}`),
             )
           }
           return response.results
@@ -514,7 +514,7 @@ export const OcNanoPlugin = define<
       consoleSkills.items.forEach((item) => editor.add(item.skill, item.files))
     })
 
-    const apply = Effect.fn("OC NanoPlugin.apply")(function* (next: typeof snapshot) {
+    const apply = Effect.fn("OpencodePlugin.apply")(function* (next: typeof snapshot) {
       snapshot = next
       yield* publish(next)
       yield* guard(next)
@@ -554,7 +554,7 @@ export const OcNanoPlugin = define<
         )
       })
     // Hooks are scoped per provider so requests to unrelated providers skip the HTTP hook path.
-    const guard = Effect.fn("OC NanoPlugin.guard")(function* (next: typeof snapshot) {
+    const guard = Effect.fn("OpencodePlugin.guard")(function* (next: typeof snapshot) {
       yield* Effect.forEach(explainers, (registration) => registration.dispose, { discard: true })
       explainers = yield* Effect.forEach(
         next.connection ? new Set([Provider.ID.ocnano, ...Object.keys(next.remote?.providers ?? {})]) : [],
@@ -603,7 +603,7 @@ function fetchConfig(http: HttpClient.HttpClient, value: Credential.Key | Creden
                 url: yield* ssoUrl(ConsoleAccess.server(value), body.value.connectionId),
               })
           }
-          const watches = response.headers[OcNanoWatches.header] !== undefined
+          const watches = response.headers[OpencodeWatches.header] !== undefined
           const body = yield* HttpClientResponse.filterStatusOk(response).pipe(Effect.flatMap((ok) => ok.json))
           return { ...(yield* Schema.decodeUnknownEffect(ConfigIntegration.Remote)(body)), watches }
         }),
@@ -829,7 +829,7 @@ function credential(http: HttpClient.HttpClient, server: string, token: typeof T
         ? orgs.toSorted((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id))[0]
         : orgs.find((org) => org.id === token.org_id)
     if (token.org_id != null && !org) {
-      return yield* Effect.fail(new Error(`OcNano organization not found: ${token.org_id}`))
+      return yield* Effect.fail(new Error(`OC Nano organization not found: ${token.org_id}`))
     }
     return Credential.OAuth.make({
       type: "oauth" as const,

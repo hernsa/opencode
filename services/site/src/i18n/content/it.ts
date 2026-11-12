@@ -53,7 +53,7 @@ export const content = {
         },
         "extend-it": {
           title: "Estendilo",
-          body: "Collega i tuoi strumenti e servizi così l'agente può lavorare con qualsiasi cosa. Oppure fai creare a ocnano plugin per sé stesso, con la loro interfaccia nella barra laterale.",
+          body: "Collega i tuoi strumenti e servizi così l'agente può lavorare con qualsiasi cosa. Oppure fai creare a OC Nano plugin per sé stesso, con la loro interfaccia nella barra laterale.",
         },
       },
     },
@@ -451,7 +451,7 @@ export const content = {
     },
     naming: {
       title: "Nome",
-      body: "Scrivi OC Nano come una sola parola, con la O e la C maiuscole. Non scrivere OC Nano, Open Code, OC Nano AI o Open-Code.",
+      body: "Scrivi OC Nano come una sola parola, con la O e la C maiuscole. Non scrivere Opencode, Open Code, OC Nano AI o Open-Code.",
       code: "Usa `ocnano` in minuscolo solo nel codice e nei nomi dei pacchetti, come `ocnano-figma` o `@acme/ocnano-plugin`.",
     },
     families: {

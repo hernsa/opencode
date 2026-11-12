@@ -11,7 +11,7 @@ OC Nano uses the [AI SDK](https://ai-sdk.dev/) and [Models.dev](https://models.d
 To add a provider you need to:
 
 1. Add the API keys for the provider using the `/connect` command.
-2. Configure the provider in your ocnano config.
+2. Configure the provider in your OC Nano config.
 
 ---
 
@@ -209,17 +209,17 @@ To use Amazon Bedrock with OC Nano:
 
    #### Environment Variables (Quick Start)
 
-   Set one of these environment variables while running OC Nano:
+   Set one of these environment variables while running ocnano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    Or add them to your bash profile:
@@ -373,7 +373,7 @@ the following subscriptions in OC Nano with zero setup:
 
 ### Atomic Chat
 
-You can configure OC Nano to use local models through [Atomic Chat](https://atomic.chat), a desktop application that runs local LLMs behind an OpenAI-compatible API server (default endpoint `http://127.0.0.1:1337/v1`).
+You can configure ocnano to use local models through [Atomic Chat](https://atomic.chat), a desktop application that runs local LLMs behind an OpenAI-compatible API server (default endpoint `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -422,7 +422,7 @@ If you encounter "I'm sorry, but I cannot assist with that request" errors, try 
 2. Go to [Azure AI Foundry](https://ai.azure.com/) and deploy a model.
 
    :::note
-   The deployment name must match the model name for OC Nano to work properly.
+   The deployment name must match the model name for ocnano to work properly.
    :::
 
 3. Run the `/connect` command and search for **Azure**.
@@ -443,7 +443,7 @@ If you encounter "I'm sorry, but I cannot assist with that request" errors, try 
 5. Set your resource name as an environment variable:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    Or add it to your bash profile:
@@ -500,7 +500,7 @@ Assign your identity the inference role required by the deployment: **Cognitive 
 2. Go to [Azure AI Foundry](https://ai.azure.com/) and deploy a model.
 
    :::note
-   The deployment name must match the model name for OC Nano to work properly.
+   The deployment name must match the model name for ocnano to work properly.
    :::
 
 3. Run the `/connect` command and search for **Azure Cognitive Services**.
@@ -521,7 +521,7 @@ Assign your identity the inference role required by the deployment: **Cognitive 
 5. Set your resource name as an environment variable:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    Or add it to your bash profile:
@@ -1153,7 +1153,7 @@ This plugin provides comprehensive GitLab repository management capabilities inc
 
 ### GitHub Copilot
 
-To use your GitHub Copilot subscription with OC Nano:
+To use your GitHub Copilot subscription with ocnano:
 
 :::note
 Some models might need a [Pro+
@@ -1236,7 +1236,7 @@ To use Google Vertex AI with OC Nano:
    Set them while running ocnano.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    Or add them to your bash profile.
@@ -1346,7 +1346,7 @@ For more providers and advanced features like caching and rate limiting, check t
 
 #### Optional Configs
 
-In the event you see a feature or model from Helicone that isn't configured automatically through OC Nano, you can always configure it yourself.
+In the event you see a feature or model from Helicone that isn't configured automatically through ocnano, you can always configure it yourself.
 
 Here's [Helicone's Model Directory](https://helicone.ai/models), you'll need this to grab the IDs of the models you want to add.
 
@@ -1389,7 +1389,7 @@ Helicone supports custom headers for features like caching, user tracking, and s
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1430,7 +1430,7 @@ See the [Helicone Header Directory](https://docs.helicone.ai/helicone-headers/he
 
 ### llama.cpp
 
-You can configure OC Nano to use local models through [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server utility
+You can configure ocnano to use local models through [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server utility
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1497,7 +1497,7 @@ IO.NET offers 17 models optimized for various use cases:
 
 ### LM Studio
 
-You can configure OC Nano to use local models through LM Studio.
+You can configure ocnano to use local models through LM Studio.
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1692,7 +1692,7 @@ export NVIDIA_API_KEY=nvapi-your-key-here
 
 ### Ollama
 
-You can configure OC Nano to use local models through Ollama.
+You can configure ocnano to use local models through Ollama.
 
 :::tip
 Ollama can automatically configure itself for OC Nano. See the [Ollama integration docs](https://docs.ollama.com/integrations/ocnano) for details.
@@ -2063,7 +2063,7 @@ SAP AI Core provides access to 40+ models from OpenAI, Anthropic, Google, Amazon
    Or set the `AICORE_SERVICE_KEY` environment variable:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    Or add it to your bash profile:
@@ -2075,7 +2075,7 @@ SAP AI Core provides access to 40+ models from OpenAI, Anthropic, Google, Amazon
 4. Optionally set deployment ID and resource group:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note
@@ -2152,7 +2152,7 @@ STACKIT AI Model Serving provides fully managed sovereign hosting environment fo
 
 ### Scaleway
 
-To use [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) with OC Nano:
+To use [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) with Opencode:
 
 1. Head over to the [Scaleway Console IAM settings](https://console.scaleway.com/iam/api-keys) to generate a new API key.
 
@@ -2212,9 +2212,9 @@ To use [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-ap
 
 [Snowflake Cortex](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api) gives you access to frontier models (Claude, OpenAI GPT-5, and more) via an OpenAI-compatible API. All inference runs within the Snowflake perimeter and is billed in Snowflake credits. For per-model rates, see the [Snowflake Service Consumption Table](https://www.snowflake.com/legal-files/CreditConsumptionTable.pdf).
 
-Don't have a Snowflake account? [Sign up for a free trial](https://signup.snowflake.com/?utm_source=OC Nano&utm_medium=docs&utm_campaign=cortex-provider).
+Don't have a Snowflake account? [Sign up for a free trial](https://signup.snowflake.com/?utm_source=ocnano&utm_medium=docs&utm_campaign=cortex-provider).
 
-OC Nano's core workflow for coding, editing files, and running commands relies on tool calling. Only the Claude and OpenAI families within Snowflake Cortex support this. The provider is limited to those families to support the core workflow.
+ocnano's core workflow for coding, editing files, and running commands relies on tool calling. Only the Claude and OpenAI families within Snowflake Cortex support this. The provider is limited to those families to support the core workflow.
 
 OC Nano supports two authentication methods:
 
@@ -2288,7 +2288,7 @@ If you prefer to paste a token directly, or if `SNOWFLAKE$LOCAL_APPLICATION` is 
 
 #### Environment variable
 
-For CI or headless environments, set a PAT or JWT before starting OC Nano:
+For CI or headless environments, set a PAT or JWT before starting ocnano:
 
 ```bash
 export SNOWFLAKE_ACCOUNT=myorg-myaccount

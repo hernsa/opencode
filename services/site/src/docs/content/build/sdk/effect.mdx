@@ -19,7 +19,7 @@ import { Effect } from "effect"
 
 const program = Effect.scoped(
   Effect.gen(function* () {
-    const OC Nano = yield* OC Nano.create()
+    const ocnano = yield* OC Nano.create()
     const session = yield* ocnano.sessions.create({
       location: Location.Ref.make({ directory: AbsolutePath.make("/workspace") }),
     })
@@ -93,7 +93,7 @@ import { OC Nano } from "@ocnano/sdk/effect"
 import { Effect } from "effect"
 
 const program = Effect.gen(function* () {
-  const OC Nano = yield* OC Nano.Service
+  const ocnano = yield* OC Nano.Service
   return yield* ocnano.server.info()
 })
 

@@ -48,7 +48,7 @@ Change the package import, replace the exported plugin function with `Plugin.def
 `setup`.
 
 ```ts title="V1"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const ExamplePlugin: Plugin = async ({ directory, project, client }) => {
   await client.app.log({
@@ -105,7 +105,7 @@ V1 returns hooks by string key. V2 registers each hook on the domain that owns t
 mutable event instead of separate `input` and `output` objects.
 
 ```ts title="V1"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const GuardPlugin: Plugin = async () => ({
   "tool.execute.before": async (input, output) => {
@@ -183,7 +183,7 @@ V2 separates prompt admission, model-visible context, semantic model options, an
 layer your plugin needs.
 
 ```ts title="V1"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const RequestPlugin: Plugin = async () => ({
   "chat.params": async (_input, output) => {
@@ -228,7 +228,7 @@ V1 returns a `tool` map built with the old `tool()` helper. V2 registers tool de
 `ctx.tool.transform` editor. Tool schemas use JSON Schema, and execution returns structured content.
 
 ```ts title="V1"
-import { tool } from "@ocnano-ai/plugin"
+import { tool } from "@opencode-ai/plugin"
 
 export const ToolsPlugin = async () => ({
   tool: {

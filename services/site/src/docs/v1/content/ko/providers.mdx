@@ -172,13 +172,13 @@ OC Nano로 Amazon Bedrock을 사용하려면:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    또는 bash 프로필에 추가합니다:
@@ -329,7 +329,7 @@ Pro/Max 구독이 없는 경우 **Create an API Key**를 선택할 수 있습니
 
 ### Atomic Chat
 
-OpenAI 호환 API 서버 뒤에서 로컬 LLM을 실행하는 데스크톱 애플리케이션인 [Atomic Chat](https://atomic.chat)을 통해 로컬 모델을 사용하도록 OC Nano를 구성할 수 있습니다(기본 엔드포인트 `http://127.0.0.1:1337/v1`).
+OpenAI 호환 API 서버 뒤에서 로컬 LLM을 실행하는 데스크톱 애플리케이션인 [Atomic Chat](https://atomic.chat)을 통해 로컬 모델을 사용하도록 ocnano를 구성할 수 있습니다(기본 엔드포인트 `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -399,7 +399,7 @@ OpenAI 호환 API 서버 뒤에서 로컬 LLM을 실행하는 데스크톱 애�
 5. 리소스 이름을 환경 변수로 설정:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    또는 bash 프로필에 추가:
@@ -446,7 +446,7 @@ OpenAI 호환 API 서버 뒤에서 로컬 LLM을 실행하는 데스크톱 애�
 5. 리소스 이름을 환경 변수로 설정:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    또는 bash 프로필에 추가:
@@ -906,7 +906,7 @@ OC Nano로 Google Vertex AI를 사용하려면:
    OC Nano를 실행할 때 설정:
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    또는 bash 프로필에 추가:
@@ -1059,7 +1059,7 @@ Helicone는 캐싱, 사용자 추적 및 세션 관리와 같은 기능을 위�
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1518,7 +1518,7 @@ SAP AI Core는 OpenAI, Anthropic, Google, Amazon, Meta, Mistral 및 AI21의 40�
    또는 `AICORE_SERVICE_KEY` 환경 변수를 설정합니다:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    또는 bash 프로필에 추가합니다:
@@ -1530,7 +1530,7 @@ SAP AI Core는 OpenAI, Anthropic, Google, Amazon, Meta, Mistral 및 AI21의 40�
 4. 선택적으로 배포 ID 및 리소스 그룹을 설정합니다:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note

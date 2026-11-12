@@ -1,12 +1,12 @@
 ---
 title: الخادم
-description: تفاعل مع خادم OC Nano عبر HTTP.
+description: تفاعل مع خادم ocnano عبر HTTP.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-يشغّل الأمر `ocnano serve` خادما HTTP دون واجهة ويعرض نقطة نهاية OpenAPI يمكن لعميل OC Nano استخدامها.
+يشغّل الأمر `ocnano serve` خادما HTTP دون واجهة ويعرض نقطة نهاية OpenAPI يمكن لعميل ocnano استخدامها.
 
 ---
 
@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### المصادقة
 
-عيّن `OCNANO_SERVER_PASSWORD` لحماية الخادم باستخدام مصادقة HTTP الأساسية. اسم المستخدم افتراضيا هو `OC Nano`، أو عيّن `OCNANO_SERVER_USERNAME` لتغييره. ينطبق ذلك على كل من `ocnano serve` و `ocnano web`.
+عيّن `OCNANO_SERVER_PASSWORD` لحماية الخادم باستخدام مصادقة HTTP الأساسية. اسم المستخدم افتراضيا هو `ocnano`، أو عيّن `OCNANO_SERVER_USERNAME` لتغييره. ينطبق ذلك على كل من `ocnano serve` و `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,17 +46,17 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### كيف يعمل
 
-عند تشغيل `OC Nano` يبدأ تشغيل واجهة terminal تفاعلية (TUI) وخادما. تكون الـ TUI هي
+عند تشغيل `ocnano` يبدأ تشغيل واجهة terminal تفاعلية (TUI) وخادما. تكون الـ TUI هي
 العميل الذي يتحدث إلى الخادم. يوفّر الخادم نقطة نهاية لمواصفة OpenAPI 3.1.
 وتُستخدم هذه النقطة أيضا لتوليد [SDK](/docs/sdk).
 
 :::tip
-استخدم خادم OC Nano للتفاعل مع OC Nano برمجيا.
+استخدم خادم ocnano للتفاعل مع ocnano برمجيا.
 :::
 
-تتيح هذه البنية لـ OC Nano دعم عدة عملاء وتمكّنك من التفاعل مع OC Nano برمجيا.
+تتيح هذه البنية لـ ocnano دعم عدة عملاء وتمكّنك من التفاعل مع ocnano برمجيا.
 
-يمكنك تشغيل `ocnano serve` لبدء خادم مستقل. إذا كانت واجهة OC Nano في terminal (TUI)
+يمكنك تشغيل `ocnano serve` لبدء خادم مستقل. إذا كانت واجهة ocnano في terminal (TUI)
 قيد التشغيل، فسيبدأ `ocnano serve` خادما جديدا.
 
 ---
@@ -83,7 +83,7 @@ http://<hostname>:<port>/doc
 
 ## واجهات API
 
-يعرض خادم OC Nano واجهات API التالية.
+يعرض خادم ocnano واجهات API التالية.
 
 ---
 

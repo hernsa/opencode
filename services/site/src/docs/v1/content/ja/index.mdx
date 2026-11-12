@@ -9,7 +9,7 @@ export const console = config.console
 
 [**OC Nano**](/) は、オープンソースの AI コーディングエージェントです。これは、ターミナルベースのインターフェイス、デスクトップアプリ、または IDE 拡張機能として利用できます。
 
-![OC Nanoテーマ](../../../assets/lander/screenshot.png)を使用したOC Nano TUI
+![ocnanoテーマ](../../../assets/lander/screenshot.png)を使用したOC Nano TUI
 
 始めましょう。
 
@@ -45,28 +45,28 @@ curl -fsSL https://opencode.ai/install | bash
 
       <TabItem label="npm">
       ```bash
-      npm install -g ocnano-ai
+      npm install -g opencode-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g ocnano-ai
+        bun install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g ocnano-ai
+        pnpm install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add ocnano-ai
+        yarn global add opencode-ai
         ```
 
       </TabItem>
@@ -79,12 +79,12 @@ curl -fsSL https://opencode.ai/install | bash
   brew install anomalyco/tap/ocnano
   ```
 
-  > 最新のリリースには OC Nano タップを使用することをお勧めします。公式の `brew install OC Nano` 式は Homebrew チームによって維持されており、更新頻度は低くなります。
+  > 最新のリリースには OC Nano タップを使用することをお勧めします。公式の `brew install ocnano` 式は Homebrew チームによって維持されており、更新頻度は低くなります。
 
 - **Arch Linux での Paru の使用**
 
   ```bash
-  sudo pacman -S OC Nano           # Arch Linux (Stable)
+  sudo pacman -S ocnano           # Arch Linux (Stable)
   paru -S ocnano-bin              # Arch Linux (Latest from AUR)
   ```
 
@@ -97,19 +97,19 @@ Windows で最高のエクスペリエンスを得るには、[Windows Subsystem
 - **Chocolatey の使用**
 
   ```bash
-  choco install OC Nano
+  choco install ocnano
   ```
 
 - **Scoop の使用**
 
   ```bash
-  scoop install OC Nano
+  scoop install ocnano
   ```
 
 - **npm の使用**
 
   ```bash
-  npm install -g ocnano-ai
+  npm install -g opencode-ai
   ```
 
 - **Mise の使用**
@@ -137,7 +137,7 @@ OC Nano を使用すると、API キーを構成することで任意の LLM プ
 LLM プロバイダーを初めて使用する場合は、[OC Nano Models](https://opencode.ai/docs/console/) をお勧めします。
 これは、OC Nano チームによってテストおよび検証されたモデルの厳選されたリストです。
 
-1. TUI で `/connect` コマンドを実行し、OC Nano を選択して、[opencode.ai/auth](https://opencode.ai/auth) で認証します。
+1. TUI で `/connect` コマンドを実行し、ocnano を選択して、[opencode.ai/auth](https://opencode.ai/auth) で認証します。
 
    ```txt
    /connect
@@ -169,7 +169,7 @@ cd /path/to/project
 そしてOC Nanoを実行します。
 
 ```bash
-OC Nano
+ocnano
 ```
 
 次に、次のコマンドを実行して、プロジェクトの OC Nano を初期化します。

@@ -52,10 +52,10 @@ curl -fsSL https://opencode.ai/v2/install | bash
 # Package managers
 npm i -g @ocnano/cli@latest      # or bun/pnpm/yarn
 brew install anomalyco/tap/ocnano-v2 # macOS and Linux (recommended, always up to date)
-brew install OC Nano              # macOS and Linux (official brew formula, updated less)
-sudo pacman -S OC Nano            # Arch Linux (Stable)
+brew install ocnano              # macOS and Linux (official brew formula, updated less)
+sudo pacman -S ocnano            # Arch Linux (Stable)
 paru -S ocnano-beta              # Arch Linux (Latest from AUR)
-mise use -g OC Nano               # Any OS
+mise use -g ocnano               # Any OS
 nix run github:anomalyco/opencode  # Nix
 ```
 
@@ -107,7 +107,7 @@ OC Nano এ দুটি বিল্ট-ইন এজেন্ট রয়ে�
 
 ### OC Nano এর উপর বিল্ডিং (Building on OC Nano)
 
-আপনি যদি এমন প্রজেক্টে কাজ করেন যা OC Nano এর সাথে সম্পর্কিত এবং প্রজেক্টের নামের অংশ হিসেবে "OC Nano" ব্যবহার করেন, উদাহরণস্বরূপ "ocnano-dashboard" বা "ocnano-mobile", তবে দয়া করে আপনার README তে একটি নোট যোগ করে স্পষ্ট করুন যে এই প্রজেক্টটি OC Nano দল দ্বারা তৈরি হয়নি এবং আমাদের সাথে এর কোনো সরাসরি সম্পর্ক নেই।
+আপনি যদি এমন প্রজেক্টে কাজ করেন যা OC Nano এর সাথে সম্পর্কিত এবং প্রজেক্টের নামের অংশ হিসেবে "ocnano" ব্যবহার করেন, উদাহরণস্বরূপ "ocnano-dashboard" বা "ocnano-mobile", তবে দয়া করে আপনার README তে একটি নোট যোগ করে স্পষ্ট করুন যে এই প্রজেক্টটি OC Nano দল দ্বারা তৈরি হয়নি এবং আমাদের সাথে এর কোনো সরাসরি সম্পর্ক নেই।
 
 ---
 

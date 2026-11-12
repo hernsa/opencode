@@ -6,7 +6,7 @@
 
 ## Do Not Translate (Locale Additions)
 
-- `OC Nano` (preserve casing in prose; keep `OC Nano` only when it is part of commands, package names, paths, or code)
+- `OC Nano` (preserve casing in prose; keep `ocnano` only when it is part of commands, package names, paths, or code)
 - `OC Nano Zen`
 - `OC Nano CLI`
 - `CLI`, `TUI`, `MCP`, `OAuth`
@@ -38,5 +38,5 @@ These are preferred terms for docs/UI prose and may evolve.
 
 ## Avoid
 
-- Avoid `OC Nano` in prose when referring to the product name; use `OC Nano`
+- Avoid `ocnano` in prose when referring to the product name; use `OC Nano`
 - Avoid mixing alternative terms for the same concept across docs when a preferred term is already established

@@ -1,17 +1,17 @@
 ---
 title: Sağlayıcılar
-description: OC Nano'da herhangi bir LLM sağlayıcısını kullanma.
+description: ocnano'da herhangi bir LLM sağlayıcısını kullanma.
 ---
 
 import config from "../../../../config.mjs"
 export const console = config.console
 
-OC Nano, **75'ten fazla LLM sağlayıcısını** desteklemek için [AI SDK](https://ai-sdk.dev/) ve [Models.dev](https://models.dev) kullanır ve yerel modellerin çalıştırılmasını destekler.
+ocnano, **75'ten fazla LLM sağlayıcısını** desteklemek için [AI SDK](https://ai-sdk.dev/) ve [Models.dev](https://models.dev) kullanır ve yerel modellerin çalıştırılmasını destekler.
 
 Bir sağlayıcı eklemek için şunları yapmanız gerekir:
 
 1. `/connect` komutunu kullanarak sağlayıcı için API anahtarlarını ekleyin.
-2. Sağlayıcıyı OC Nano yapılandırmanızda yapılandırın.
+2. Sağlayıcıyı ocnano yapılandırmanızda yapılandırın.
 
 ---
 
@@ -24,7 +24,7 @@ Bir sağlayıcının API anahtarlarını `/connect` komutuyla eklediğinizde, bu
 
 ### Yapılandırma
 
-Sağlayıcıları OC Nano'unuzdaki `provider` bölümü aracılığıyla özelleştirebilirsiniz.
+Sağlayıcıları ocnano'unuzdaki `provider` bölümü aracılığıyla özelleştirebilirsiniz.
 config.
 
 ---
@@ -52,14 +52,14 @@ config.
 
 ## OC Nano Models
 
-OC Nano Models, OC Nano ekibi tarafından sağlanan modellerin bir listesidir.
-OC Nano ile iyi çalıştığı test edilip doğrulandı. [Daha fazla bilgi](https://opencode.ai/docs/console/).
+OC Nano Models, ocnano ekibi tarafından sağlanan modellerin bir listesidir.
+ocnano ile iyi çalıştığı test edilip doğrulandı. [Daha fazla bilgi](https://opencode.ai/docs/console/).
 
 :::tip
 Yeniyseniz OC Nano Models ile başlamanızı öneririz.
 :::
 
-1. TUI'de `/connect` komutunu çalıştırın, OC Nano'u seçin ve [opencode.ai/auth](https://opencode.ai/auth)'ye gidin.
+1. TUI'de `/connect` komutunu çalıştırın, ocnano'u seçin ve [opencode.ai/auth](https://opencode.ai/auth)'ye gidin.
 
    ```txt
    /connect
@@ -82,13 +82,13 @@ Yeniyseniz OC Nano Models ile başlamanızı öneririz.
    /models
    ```
 
-OC Nano'daki diğer sağlayıcılar gibi çalışır ve kullanımı tamamen isteğe bağlıdır.
+ocnano'daki diğer sağlayıcılar gibi çalışır ve kullanımı tamamen isteğe bağlıdır.
 
 ---
 
 ## OC Nano Go
 
-OC Nano Go, OC Nano ile iyi çalıştığı test edilmiş ve doğrulanmış, OC Nano ekibi tarafından sağlanan popüler açık kodlama modellerine güvenilir erişim sağlayan düşük maliyetli bir abonelik planıdır.
+OC Nano Go, ocnano ile iyi çalıştığı test edilmiş ve doğrulanmış, ocnano ekibi tarafından sağlanan popüler açık kodlama modellerine güvenilir erişim sağlayan düşük maliyetli bir abonelik planıdır.
 
 1. TUI'de `/connect` komutunu çalıştırın, `OC Nano Go`'yu seçin ve [opencode.ai/auth](https://opencode.ai/auth) adresine gidin.
 
@@ -113,7 +113,7 @@ OC Nano Go, OC Nano ile iyi çalıştığı test edilmiş ve doğrulanmış, OC 
    /models
    ```
 
-OC Nano'daki diğer sağlayıcılar gibi çalışır ve kullanımı tamamen isteğe bağlıdır.
+ocnano'daki diğer sağlayıcılar gibi çalışır ve kullanımı tamamen isteğe bağlıdır.
 
 ---
 
@@ -157,7 +157,7 @@ Burada bir sağlayıcı göremiyor musunuz? Bir PR gönderin.
 
 ### Amazon Bedrock
 
-Amazon Bedrock'u OC Nano ile kullanmak için:
+Amazon Bedrock'u ocnano ile kullanmak için:
 
 1. Amazon Bedrock konsolundaki **Model kataloğuna** gidin ve istekte bulunun
    Dilediğiniz modellere ulaşabilirsiniz.
@@ -170,17 +170,17 @@ Amazon Bedrock'u OC Nano ile kullanmak için:
 
    #### Ortam Değişkenleri (Hızlı Başlangıç)
 
-   OC Nano'u çalıştırırken bu ortam değişkenlerinden birini ayarlayın:
+   ocnano'u çalıştırırken bu ortam değişkenlerinden birini ayarlayın:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    Veya bunları bash profilinize ekleyin:
@@ -314,7 +314,7 @@ Bir taşıyıcı belirteç ayarlandığında (`/connect` veya `AWS_BEARER_TOKEN_
    ```
 
 :::info
-Claude Pro/Max aboneliğinizi OC Nano'da kullanmak [Anthropic](https://anthropic.com) tarafından resmi olarak desteklenmemektedir.
+Claude Pro/Max aboneliğinizi ocnano'da kullanmak [Anthropic](https://anthropic.com) tarafından resmi olarak desteklenmemektedir.
 :::
 
 ##### API anahtarlarını kullanma
@@ -327,7 +327,7 @@ Veya zaten bir API anahtarınız varsa **API Anahtarını Manuel Olarak Girin** 
 
 ### Atomic Chat
 
-OC Nano'u, yerel LLM'leri OpenAI uyumlu bir API sunucusunun arkasında çalıştıran bir masaüstü uygulaması olan [Atomic Chat](https://atomic.chat) aracılığıyla yerel modelleri kullanacak şekilde yapılandırabilirsiniz (varsayılan uç nokta `http://127.0.0.1:1337/v1`).
+ocnano'u, yerel LLM'leri OpenAI uyumlu bir API sunucusunun arkasında çalıştıran bir masaüstü uygulaması olan [Atomic Chat](https://atomic.chat) aracılığıyla yerel modelleri kullanacak şekilde yapılandırabilirsiniz (varsayılan uç nokta `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -376,7 +376,7 @@ Araç çağrıları iyi çalışmıyorsa, tool calling desteği güçlü olan y�
 2. [Azure AI Foundry](https://ai.azure.com/)'a gidin ve bir model dağıtın.
 
    :::note
-   OC Nano'un düzgün çalışması için dağıtım adının model adıyla eşleşmesi gerekir.
+   ocnano'un düzgün çalışması için dağıtım adının model adıyla eşleşmesi gerekir.
    :::
 
 3. `/connect` komutunu çalıştırın ve **Azure**'u arayın.
@@ -397,7 +397,7 @@ Araç çağrıları iyi çalışmıyorsa, tool calling desteği güçlü olan y�
 5. Kaynak adınızı ortam değişkeni olarak ayarlayın:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    Veya bash profilinize ekleyin:
@@ -423,7 +423,7 @@ Araç çağrıları iyi çalışmıyorsa, tool calling desteği güçlü olan y�
 2. [Azure AI Foundry](https://ai.azure.com/)'a gidin ve bir model dağıtın.
 
    :::note
-   OC Nano'un düzgün çalışması için dağıtım adının model adıyla eşleşmesi gerekir.
+   ocnano'un düzgün çalışması için dağıtım adının model adıyla eşleşmesi gerekir.
    :::
 
 3. `/connect` komutunu çalıştırın ve **Azure Cognitive Services**'i arayın.
@@ -444,7 +444,7 @@ Araç çağrıları iyi çalışmıyorsa, tool calling desteği güçlü olan y�
 5. Kaynak adınızı ortam değişkeni olarak ayarlayın:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    Veya bash profilinize ekleyin:
@@ -555,7 +555,7 @@ Cloudflare AI Gateway, OpenAI, Anthropic, Workers AI ve daha fazlasındaki model
    /models
    ```
 
-   OC Nano yapılandırmanız aracılığıyla da modeller ekleyebilirsiniz.
+   Opencode yapılandırmanız aracılığıyla da modeller ekleyebilirsiniz.
 
    ```json title="ocnano.json"
    {
@@ -758,8 +758,8 @@ to store token in ocnano auth storage.
 ##### Kendi Kendine Barındırılan GitLab
 
 :::note[uyumluluk notu]
-OC Nano, oturum başlığını oluşturmak gibi bazı AI görevleri için küçük bir model kullanır.
-Varsayılan olarak OC Nano tarafından barındırılan gpt-5-nano'yu kullanacak şekilde yapılandırılmıştır. OC Nano'u kilitlemek için
+ocnano, oturum başlığını oluşturmak gibi bazı AI görevleri için küçük bir model kullanır.
+Varsayılan olarak OC Nano tarafından barındırılan gpt-5-nano'yu kullanacak şekilde yapılandırılmıştır. ocnano'u kilitlemek için
 yalnızca kendi GitLab tarafından barındırılan örneğinizi kullanmak için aşağıdakileri ekleyin:
 `ocnano.json` dosyası.
 
@@ -854,7 +854,7 @@ Bu eklenti, MR incelemeleri, sorun izleme, işlem hattı izleme ve daha fazlası
 
 ### GitHub Copilot
 
-GitHub Copilot aboneliğinizi OC Nano'la kullanmak için:
+GitHub Copilot aboneliğinizi ocnano'la kullanmak için:
 
 :::note
 Bazı modelleri kullanmak için [Pro+ aboneliği](https://github.com/features/copilot/plans) gerekebilir.
@@ -890,7 +890,7 @@ Bazı modellerin [GitHub Copilot settings](https://docs.github.com/en/copilot/ho
 
 ### Google Vertex AI
 
-Google Vertex AI'yi OC Nano ile kullanmak için:
+Google Vertex AI'yi ocnano ile kullanmak için:
 
 1. Google Cloud Console'daki **Model Bahçesi**'ne gidin ve şunları kontrol edin:
    Bölgenizde mevcut modeller.
@@ -906,10 +906,10 @@ Google Vertex AI'yi OC Nano ile kullanmak için:
      - `GOOGLE_APPLICATION_CREDENTIALS`: Hizmet hesabınızın yolu JSON anahtar dosyası
      - gcloud kullanarak kimlik doğrulaması yapın CLI: `gcloud auth application-default login`
 
-   Bunları OC Nano çalıştırılırken ayarlayın.
+   Bunları ocnano çalıştırılırken ayarlayın.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    Veya bunları bash profilinize ekleyin.
@@ -1019,7 +1019,7 @@ Daha fazla sağlayıcı ve önbelleğe alma ve hız sınırlama gibi gelişmiş 
 
 #### İsteğe Bağlı Yapılandırmalar
 
-Helicone'un OC Nano aracılığıyla otomatik olarak yapılandırılmayan bir özelliği veya modelini görmeniz durumunda bunu her zaman kendiniz yapılandırabilirsiniz.
+Helicone'un ocnano aracılığıyla otomatik olarak yapılandırılmayan bir özelliği veya modelini görmeniz durumunda bunu her zaman kendiniz yapılandırabilirsiniz.
 
 İşte [Helicone's Model Directory](https://helicone.ai/models), eklemek istediğiniz modellerin kimliklerini almak için buna ihtiyacınız olacak.
 
@@ -1062,7 +1062,7 @@ Helicone, önbelleğe alma, kullanıcı izleme ve oturum yönetimi gibi özellik
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1072,7 +1072,7 @@ Helicone, önbelleğe alma, kullanıcı izleme ve oturum yönetimi gibi özellik
 
 ##### Oturum izleme
 
-Helicone'un [Sessions](https://docs.helicone.ai/features/sessions) özelliği, ilgili LLM isteklerini birlikte gruplandırmanıza olanak tanır. Her OC Nano görüşmesini Helicone'da bir oturum olarak otomatik olarak kaydetmek için [ocnano-helicone-session](https://github.com/H2Shami/ocnano-helicone-session) eklentisini kullanın.
+Helicone'un [Sessions](https://docs.helicone.ai/features/sessions) özelliği, ilgili LLM isteklerini birlikte gruplandırmanıza olanak tanır. Her ocnano görüşmesini Helicone'da bir oturum olarak otomatik olarak kaydetmek için [ocnano-helicone-session](https://github.com/H2Shami/ocnano-helicone-session) eklentisini kullanın.
 
 ```bash
 npm install -g ocnano-helicone-session
@@ -1086,7 +1086,7 @@ Yapılandırmanıza ekleyin.
 }
 ```
 
-Eklenti isteklerinize `Helicone-Session-Id` ve `Helicone-Session-Name` başlıklarını enjekte eder. Helicone'un Oturumlar sayfasında her OC Nano görüşmesinin ayrı bir oturum olarak listelendiğini göreceksiniz.
+Eklenti isteklerinize `Helicone-Session-Id` ve `Helicone-Session-Name` başlıklarını enjekte eder. Helicone'un Oturumlar sayfasında her ocnano görüşmesinin ayrı bir oturum olarak listelendiğini göreceksiniz.
 
 ##### Yaygın Helicone başlıkları
 
@@ -1103,7 +1103,7 @@ Mevcut tüm başlıklar için [Helicone Header Directory](https://docs.helicone.
 
 ### llama.cpp
 
-OC Nano'u yerel modelleri kullanacak şekilde [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server yardımcı programını kullanarak yapılandırabilirsiniz.
+ocnano'u yerel modelleri kullanacak şekilde [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server yardımcı programını kullanarak yapılandırabilirsiniz.
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1170,7 +1170,7 @@ IO.NET, çeşitli kullanım durumları için optimize edilmiş 17 model sunar:
 
 ### LM Studio
 
-LM Studio aracılığıyla OC Nano'u yerel modelleri kullanacak şekilde yapılandırabilirsiniz.
+LM Studio aracılığıyla ocnano'u yerel modelleri kullanacak şekilde yapılandırabilirsiniz.
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1287,10 +1287,10 @@ Moonshot AI'dan Kimi K2'yi kullanmak için:
 
 ### Ollama
 
-Ollama aracılığıyla OC Nano'u yerel modelleri kullanacak şekilde yapılandırabilirsiniz.
+Ollama aracılığıyla ocnano'u yerel modelleri kullanacak şekilde yapılandırabilirsiniz.
 
 :::tip
-Ollama kendisini OC Nano için otomatik olarak yapılandırabilir. Ayrıntılar için [Ollama integration docs](https://docs.ollama.com/integrations/ocnano)'a bakın.
+Ollama kendisini ocnano için otomatik olarak yapılandırabilir. Ayrıntılar için [Ollama integration docs](https://docs.ollama.com/integrations/ocnano)'a bakın.
 :::
 
 ```json title="ocnano.json" "ollama" {5, 6, 8, 10-14}
@@ -1329,13 +1329,13 @@ Araç çağrıları çalışmıyorsa Ollama'da `num_ctx` değerini artırmayı d
 
 ### Ollama Cloud
 
-Ollama Cloud'u OC Nano ile kullanmak için:
+Ollama Cloud'u ocnano ile kullanmak için:
 
 1. [https://ollama.com/](https://ollama.com/) adresine gidin ve oturum açın veya bir hesap oluşturun.
 
 2. **Ayarlar** > **Anahtarlar**'a gidin ve yeni bir API anahtarı oluşturmak için **API Anahtarı Ekle**'yi tıklayın.
 
-3. OC Nano'da kullanmak için API anahtarını kopyalayın.
+3. ocnano'da kullanmak için API anahtarını kopyalayın.
 
 4. `/connect` komutunu çalıştırın ve **Ollama Cloud**'u arayın.
 
@@ -1352,7 +1352,7 @@ Ollama Cloud'u OC Nano ile kullanmak için:
    └ enter
    ```
 
-6. **Önemli**: OC Nano'da bulut modellerini kullanmadan önce model bilgilerini yerel olarak almanız gerekir:
+6. **Önemli**: ocnano'da bulut modellerini kullanmadan önce model bilgilerini yerel olarak almanız gerekir:
 
    ```bash
    ollama pull gpt-oss:20b-cloud
@@ -1403,7 +1403,7 @@ Zaten bir API anahtarınız varsa, **API Anahtarını Manuel Olarak Girin** seç
 
 ### OC Nano Models
 
-OC Nano Models, OC Nano ekibinin test edip doğruladığı modellerin bir listesidir. [Daha fazla bilgi](https://opencode.ai/docs/console/).
+OC Nano Models, ocnano ekibinin test edip doğruladığı modellerin bir listesidir. [Daha fazla bilgi](https://opencode.ai/docs/console/).
 
 1. **<a href={console}>OC Nano Console</a>**'de oturum açın ve **API Anahtarı Oluştur**'u tıklayın.
 
@@ -1413,7 +1413,7 @@ OC Nano Models, OC Nano ekibinin test edip doğruladığı modellerin bir listes
    /connect
    ```
 
-3. OC Nano API anahtarınızı girin.
+3. ocnano API anahtarınızı girin.
 
    ```txt
    ┌ API key
@@ -1455,7 +1455,7 @@ OC Nano Models, OC Nano ekibinin test edip doğruladığı modellerin bir listes
    /models
    ```
 
-   OC Nano yapılandırmanız aracılığıyla ek modeller de ekleyebilirsiniz.
+   ocnano yapılandırmanız aracılığıyla ek modeller de ekleyebilirsiniz.
 
    ```json title="ocnano.json" {6}
    {
@@ -1470,7 +1470,7 @@ OC Nano Models, OC Nano ekibinin test edip doğruladığı modellerin bir listes
    }
    ```
 
-5. Bunları ayrıca OC Nano yapılandırmanız aracılığıyla da özelleştirebilirsiniz. Burada bir sağlayıcı belirtmeye ilişkin bir örnek verilmiştir
+5. Bunları ayrıca ocnano yapılandırmanız aracılığıyla da özelleştirebilirsiniz. Burada bir sağlayıcı belirtmeye ilişkin bir örnek verilmiştir
 
    ```json title="ocnano.json"
    {
@@ -1522,7 +1522,7 @@ SAP AI Core, birleşik bir platform aracılığıyla OpenAI, Anthropic, Google, 
    Veya `AICORE_SERVICE_KEY` ortam değişkenini ayarlayın:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    Veya bash profilinize ekleyin:
@@ -1534,7 +1534,7 @@ SAP AI Core, birleşik bir platform aracılığıyla OpenAI, Anthropic, Google, 
 4. İsteğe bağlı olarak dağıtım kimliğini ve kaynak grubunu ayarlayın:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note
@@ -1611,7 +1611,7 @@ STACKIT AI Model Serving, Llama, Mistral ve Qwen gibi LLM'lere odaklanarak, Avru
 
 ### Scaleway
 
-[Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/)'yi OC Nano ile kullanmak için:
+[Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/)'yi Opencode ile kullanmak için:
 
 1. Yeni bir API anahtarı oluşturmak için [Scaleway Console IAM settings](https://console.scaleway.com/iam/api-keys)'a gidin.
 
@@ -1719,7 +1719,7 @@ Vercel AI Gateway, OpenAI, Anthropic, Google, xAI ve daha fazlasındaki modeller
    /models
    ```
 
-Modelleri OC Nano yapılandırmanız aracılığıyla da özelleştirebilirsiniz. Sağlayıcı yönlendirme sırasını belirtmeye ilişkin bir örneği burada bulabilirsiniz.
+Modelleri ocnano yapılandırmanız aracılığıyla da özelleştirebilirsiniz. Sağlayıcı yönlendirme sırasını belirtmeye ilişkin bir örneği burada bulabilirsiniz.
 
 ```json title="ocnano.json"
 {
@@ -1829,7 +1829,7 @@ Bazı yararlı yönlendirme seçenekleri:
    /models
    ```
 
-   OC Nano yapılandırmanız aracılığıyla ek modeller de ekleyebilirsiniz.
+   ocnano yapılandırmanız aracılığıyla ek modeller de ekleyebilirsiniz.
 
    ```json title="ocnano.json" {6}
    {
@@ -1851,7 +1851,7 @@ Bazı yararlı yönlendirme seçenekleri:
 `/connect` komutunda listelenmeyen herhangi bir **OpenAI uyumlu** sağlayıcıyı eklemek için:
 
 :::tip
-OpenAI uyumlu herhangi bir sağlayıcıyı OC Nano ile kullanabilirsiniz. Çoğu modern yapay zeka sağlayıcısı OpenAI uyumlu API'ler sunar.
+OpenAI uyumlu herhangi bir sağlayıcıyı ocnano ile kullanabilirsiniz. Çoğu modern yapay zeka sağlayıcısı OpenAI uyumlu API'ler sunar.
 :::
 
 1. `/connect` komutunu çalıştırın ve **Diğer** seçeneğine ilerleyin.
@@ -1972,7 +1972,7 @@ Yapılandırma ayrıntıları:
 - **limit.context**: Modelin kabul ettiği maksimum giriş tokenları.
 - **limit.output**: Modelin üretebileceği maksimum token sayısı.
 
-`limit` alanları OC Nano'un ne kadar bağlamınız kaldığını anlamasını sağlar. Standart sağlayıcılar bunları models.dev'den otomatik olarak alır.
+`limit` alanları ocnano'un ne kadar bağlamınız kaldığını anlamasını sağlar. Standart sağlayıcılar bunları models.dev'den otomatik olarak alır.
 
 ---
 
@@ -1985,7 +1985,7 @@ Sağlayıcıyı yapılandırma konusunda sorun yaşıyorsanız aşağıdakileri 
 
    Bu, kimlik doğrulaması için ortam değişkenlerine güvenen Amazon Bedrock gibi sağlayıcılar için geçerli değildir.
 
-2. Özel sağlayıcılar için OC Nano yapılandırmasını kontrol edin ve:
-   - `/connect` komutunda kullanılan sağlayıcı kimliğinin, OC Nano yapılandırmanızdaki kimlikle eşleştiğinden emin olun.
+2. Özel sağlayıcılar için ocnano yapılandırmasını kontrol edin ve:
+   - `/connect` komutunda kullanılan sağlayıcı kimliğinin, ocnano yapılandırmanızdaki kimlikle eşleştiğinden emin olun.
    - Sağlayıcı için doğru npm paketi kullanılıyor. Örneğin Cerebras için `@ai-sdk/cerebras` kullanın. Diğer tüm OpenAI uyumlu sağlayıcılar için `@ai-sdk/openai-compatible` kullanın.
    - `options.baseURL` alanında doğru API bitiş noktasının kullanıldığını kontrol edin.

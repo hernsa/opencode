@@ -118,7 +118,7 @@ Plugin-funktionen modtager:
 - `project`: Den aktuelle projektinformation.
 - `directory`: Den aktuelle arbejdsmappe.
 - `worktree`: Git worktree-stien.
-- `client`: En OC Nano SDK klient til interaktion med AI.
+- `client`: En ocnano SDK klient til interaktion med AI.
 - `$`: Buns [shell API](https://bun.com/docs/runtime/shell) til udførelse af kommandoer.
 
 ---
@@ -128,7 +128,7 @@ Plugin-funktionen modtager:
 For TypeScript-plugins kan du importere typer fra plugin-pakken:
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -221,7 +221,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
     event: async ({ event }) => {
       // Send notification on session completion
       if (event.type === "session.idle") {
-        await $`osascript -e 'display notification "Session completed!" with title "OC Nano"'`
+        await $`osascript -e 'display notification "Session completed!" with title "ocnano"'`
       }
     },
   }
@@ -238,7 +238,7 @@ Hvis du bruger OC Nano desktop-appen, kan den sende systemmeddelelser automatisk
 
 ### .env-beskyttelse
 
-Undgå OC Nano i at læse `.env` filer:
+Undgå ocnano i at læse `.env` filer:
 
 ```javascript title=".ocnano/plugins/env-protection.js"
 export const EnvProtection = async ({ project, client, $, directory, worktree }) => {
@@ -273,10 +273,10 @@ export const InjectEnvPlugin = async () => {
 
 ### Brugerdefinerede værktøjer
 
-Plugins kan også tilføje brugerdefinerede værktøjer til OC Nano:
+Plugins kan også tilføje brugerdefinerede værktøjer til ocnano:
 
 ```ts title=".ocnano/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@ocnano-ai/plugin"
+import { type Plugin, tool } from "@opencode-ai/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -296,13 +296,13 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 }
 ```
 
-`tool`-hjælperen opretter et brugerdefineret værktøj, som OC Nano kan kalde. Det tager en Zod-skemafunktion og returnerer en værktøjsdefinition med:
+`tool`-hjælperen opretter et brugerdefineret værktøj, som ocnano kan kalde. Det tager en Zod-skemafunktion og returnerer en værktøjsdefinition med:
 
 - `description`: Hvad værktøjet gør
 - `args`: Zod-skema for værktøjets argumenter
 - `execute`: Funktion, der kører, når værktøjet kaldes
 
-Dine tilpassede værktøjer vil være tilgængelige for OC Nano sammen med indbyggede værktøjer.
+Dine tilpassede værktøjer vil være tilgængelige for ocnano sammen med indbyggede værktøjer.
 
 :::note
 Hvis et plugin-værktøj bruger samme navn som et indbygget værktøj, har plugin-værktøjet forrang.
@@ -336,7 +336,7 @@ Niveauer: `debug`, `info`, `warn`, `error`. Se [SDK documentation](/docs/sdk) fo
 Tilpas konteksten inkluderet, når en session komprimeres:
 
 ```ts title=".ocnano/plugins/compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ Include any state that should persist across compaction:
 Du kan også erstatte komprimeringsprompten helt ved at indstille `output.prompt`:
 
 ```ts title=".ocnano/plugins/custom-compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

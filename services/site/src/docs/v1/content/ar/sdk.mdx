@@ -6,8 +6,8 @@ description: عميل JavaScript آمن الأنواع لخادم ocnano.
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-توفر SDK الخاصة بـ OC Nano لـ JS/TS عميلا آمنا للأنواع للتفاعل مع الخادم.
-استخدمها لبناء التكاملات والتحكم في OC Nano برمجيا.
+توفر SDK الخاصة بـ ocnano لـ JS/TS عميلا آمنا للأنواع للتفاعل مع الخادم.
+استخدمها لبناء التكاملات والتحكم في ocnano برمجيا.
 
 [اعرف المزيد](/docs/server) حول كيفية عمل الخادم. للاطلاع على أمثلة، تفقد [المشاريع](/docs/ecosystem#projects) التي أنشأها المجتمع.
 
@@ -18,19 +18,19 @@ export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types
 ثبّت SDK من npm:
 
 ```bash
-npm install @ocnano-ai/sdk
+npm install @opencode-ai/sdk
 ```
 
 ---
 
 ## إنشاء عميل
 
-أنشئ مثيلا من OC Nano:
+أنشئ مثيلا من ocnano:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const { client } = await createOC Nano()
+const { client } = await createOpencode()
 ```
 
 هذا يشغّل خادما وعميلا معا.
@@ -52,9 +52,9 @@ const { client } = await createOC Nano()
 يمكنك تمرير كائن إعدادات لتخصيص السلوك. سيستمر المثيل في التقاط `ocnano.json` لديك، لكن يمكنك تجاوز الإعدادات أو إضافة إعدادات مباشرة:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const OC Nano = await createOC Nano({
+const ocnano = await createOpencode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -69,12 +69,12 @@ ocnano.server.close()
 
 ## العميل فقط
 
-إذا كان لديك مثيل OC Nano يعمل بالفعل، يمكنك إنشاء مثيل عميل للاتصال به:
+إذا كان لديك مثيل ocnano يعمل بالفعل، يمكنك إنشاء مثيل عميل للاتصال به:
 
 ```javascript
-import { createOC NanoClient } from "@ocnano-ai/sdk"
+import { createOpencodeClient } from "@opencode-ai/sdk"
 
-const client = createOC NanoClient({
+const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOC NanoClient({
 تتضمن SDK تعريفات TypeScript لجميع أنواع API. استوردها مباشرة:
 
 ```typescript
-import type { Session, Message, Part } from "@ocnano-ai/sdk"
+import type { Session, Message, Part } from "@opencode-ai/sdk"
 ```
 
 جميع الأنواع مولّدة من مواصفات OpenAPI الخاصة بالخادم ومتاحة في <a href={typesUrl}>ملف الأنواع</a>.
@@ -373,7 +373,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*OC Nano" },
+  query: { pattern: "function.*ocnano" },
 })
 
 const files = await client.find.files({

@@ -20,7 +20,7 @@ export async function pick(input: Input) {
     const root = renderToConsole(<Picker {...input} onDone={done} />, {
       width: 76,
       height: Math.min(input.options.length, 12) + 6,
-      theme: input.dark ? "ocnanoDark" : "geistLight",
+      theme: input.dark ? "opencodeDark" : "geistLight",
     })
   })
 }

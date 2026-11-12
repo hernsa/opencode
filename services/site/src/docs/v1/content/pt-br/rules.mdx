@@ -3,7 +3,7 @@ title: Regras
 description: Defina instruções personalizadas para ocnano.
 ---
 
-Você pode fornecer instruções personalizadas para OC Nano criando um arquivo `AGENTS.md`. Isso é semelhante às regras do Cursor. Ele contém instruções que serão incluídas no contexto do LLM para personalizar seu comportamento para o seu projeto específico.
+Você pode fornecer instruções personalizadas para ocnano criando um arquivo `AGENTS.md`. Isso é semelhante às regras do Cursor. Ele contém instruções que serão incluídas no contexto do LLM para personalizar seu comportamento para o seu projeto específico.
 
 ---
 
@@ -15,7 +15,7 @@ Para criar um novo arquivo `AGENTS.md`, você pode executar o comando `/init` no
 Você deve commitar o arquivo `AGENTS.md` do seu projeto no Git.
 :::
 
-Isso irá escanear seu projeto e todo o seu conteúdo para entender do que se trata o projeto e gerar um arquivo `AGENTS.md` com isso. Isso ajuda o OC Nano a navegar melhor pelo projeto.
+Isso irá escanear seu projeto e todo o seu conteúdo para entender do que se trata o projeto e gerar um arquivo `AGENTS.md` com isso. Isso ajuda o ocnano a navegar melhor pelo projeto.
 
 Se você já tiver um arquivo `AGENTS.md` existente, isso tentará adicionar a ele.
 
@@ -54,7 +54,7 @@ Estamos adicionando instruções específicas do projeto aqui e isso será compa
 
 ## Tipos
 
-O OC Nano também suporta a leitura do arquivo `AGENTS.md` de múltiplos locais. E isso serve a diferentes propósitos.
+O ocnano também suporta a leitura do arquivo `AGENTS.md` de múltiplos locais. E isso serve a diferentes propósitos.
 
 ### Projeto
 
@@ -68,7 +68,7 @@ Como isso não é commitado no Git ou compartilhado com sua equipe, recomendamos
 
 ### Compatibilidade com Claude Code
 
-Para usuários migrando do Claude Code, o OC Nano suporta as convenções de arquivo do Claude Code como alternativas:
+Para usuários migrando do Claude Code, o ocnano suporta as convenções de arquivo do Claude Code como alternativas:
 
 - **Regras do projeto**: `CLAUDE.md` no diretório do seu projeto (usado se não existir `AGENTS.md`)
 - **Regras globais**: `~/.claude/CLAUDE.md` (usado se não existir `~/.config/ocnano/AGENTS.md`)
@@ -86,7 +86,7 @@ export OCNANO_DISABLE_CLAUDE_CODE_SKILLS=1 # Disable only .claude/skills
 
 ## Precedência
 
-Quando o OC Nano inicia, ele procura arquivos de regras nesta ordem:
+Quando o ocnano inicia, ele procura arquivos de regras nesta ordem:
 
 1. **Arquivos locais** percorrendo a partir do diretório atual (`AGENTS.md`, `CLAUDE.md`)
 2. **Arquivo global** em `~/.config/ocnano/AGENTS.md`
@@ -126,7 +126,7 @@ Todos os arquivos de instrução são combinados com seus arquivos `AGENTS.md`.
 
 ## Referenciando Arquivos Externos
 
-Embora o OC Nano não analise automaticamente referências de arquivos em `AGENTS.md`, você pode alcançar funcionalidade semelhante de duas maneiras:
+Embora o ocnano não analise automaticamente referências de arquivos em `AGENTS.md`, você pode alcançar funcionalidade semelhante de duas maneiras:
 
 ### Usando ocnano.json
 
@@ -141,7 +141,7 @@ A abordagem recomendada é usar o campo `instructions` em `ocnano.json`:
 
 ### Instruções Manuais em AGENTS.md
 
-Você pode ensinar o OC Nano a ler arquivos externos fornecendo instruções explícitas em seu `AGENTS.md`. Aqui está um exemplo prático:
+Você pode ensinar o ocnano a ler arquivos externos fornecendo instruções explícitas em seu `AGENTS.md`. Aqui está um exemplo prático:
 
 ```markdown title="AGENTS.md"
 # TypeScript Project Rules
@@ -173,7 +173,7 @@ Essa abordagem permite que você:
 - Crie arquivos de regras modulares e reutilizáveis
 - Compartilhe regras entre projetos via symlinks ou submódulos do git
 - Mantenha o AGENTS.md conciso enquanto referencia diretrizes detalhadas
-- Garanta que o OC Nano carregue arquivos apenas quando necessário para a tarefa específica
+- Garanta que o ocnano carregue arquivos apenas quando necessário para a tarefa específica
 
 :::tip
 Para monorepos ou projetos com padrões compartilhados, usar `ocnano.json` com padrões glob (como `packages/*/AGENTS.md`) é mais sustentável do que instruções manuais.

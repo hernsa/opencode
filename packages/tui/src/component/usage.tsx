@@ -266,7 +266,7 @@ export function useLimitNotice(message: () => SessionMessageAssistant) {
       value.model.id
     if (error.type === "provider.go-limit")
       return {
-        title: `OcNano Go ${[goLimitName(error), "usage limit reached"].filter(Boolean).join(" ")}`,
+        title: `OC Nano Go ${[goLimitName(error), "usage limit reached"].filter(Boolean).join(" ")}`,
         body: `${resets}Switch to a free model with`,
         key: shortcut() ?? "/models",
         link: { label: "Or turn on Extra Usage on your Go page to keep going now:", href: goLimitLink(error) },

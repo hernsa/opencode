@@ -59,7 +59,7 @@ See [Config](/config) for configuration locations and precedence.
 
 ## Free models
 
-Set `OCNANO_DISABLE_FREE_MODELS=1` (or `true`) on the server process to hide [free ocnano models](/console/models#free-models):
+Set `OCNANO_DISABLE_FREE_MODELS=1` (or `true`) on the server process to hide [free OC Nano models](/console/models#free-models):
 
 ```bash
 OCNANO_DISABLE_FREE_MODELS=1 ocnano serve
@@ -68,11 +68,11 @@ OCNANO_DISABLE_FREE_MODELS=1 ocnano serve
 For the shared background server:
 
 ```bash
-OC Nano service set env OCNANO_DISABLE_FREE_MODELS 1
+ocnano service set env OCNANO_DISABLE_FREE_MODELS 1
 ```
 
-Free means an `OC Nano` or `opencode-go` model with no input price. These models disappear from the catalog and defaults;
-explicitly selecting one fails with `Model unavailable`. Signed out, the `OC Nano` provider is absent until you connect
+Free means an `ocnano` or `opencode-go` model with no input price. These models disappear from the catalog and defaults;
+explicitly selecting one fails with `Model unavailable`. Signed out, the `ocnano` provider is absent until you connect
 an OC Nano Console account or set `OCNANO_API_KEY`, which restores its paid models.
 
 ## Variants

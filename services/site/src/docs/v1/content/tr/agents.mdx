@@ -15,7 +15,7 @@ Bir oturum sırasında agent'lar arasında geçiş yapabilir veya onları `@` if
 
 ## Türler
 
-OC Nano'da iki tür agent vardır; birincil agent'lar ve alt agent'lar.
+ocnano'da iki tür agent vardır; birincil agent'lar ve alt agent'lar.
 
 ---
 
@@ -27,7 +27,7 @@ Birincil agent'lar, doğrudan etkileşim kurduğunuz ana yardımcılardır. **Se
 Bir oturum sırasında birincil agent'lar arasında geçiş yapmak için **Sekme** tuşunu kullanabilirsiniz.
 :::
 
-OC Nano, **Build** ve **Plan** olmak üzere iki yerleşik birincil agent ile birlikte gelir. Bunlara aşağıda bakacağız.
+ocnano, **Build** ve **Plan** olmak üzere iki yerleşik birincil agent ile birlikte gelir. Bunlara aşağıda bakacağız.
 
 ---
 
@@ -284,7 +284,7 @@ Sıcaklık değerleri tipik olarak 0,0 ila 1,0 arasındadır:
 }
 ```
 
-Sıcaklık belirtilmezse OC Nano modeline özgü varsayılanları kullanır; çoğu model için genellikle 0, Qwen modelleri için 0,55.
+Sıcaklık belirtilmezse ocnano modeline özgü varsayılanları kullanır; çoğu model için genellikle 0, Qwen modelleri için 0,55.
 
 ---
 
@@ -344,7 +344,7 @@ Bu agent için `prompt` yapılandırmasıyla özel bir sistem prompt dosyası be
 }
 ```
 
-Bu yol, yapılandırma dosyasının bulunduğu yere göredir. Yani bu hem global OC Nano yapılandırması hem de projeye özel yapılandırma için işe yarar.
+Bu yol, yapılandırma dosyasının bulunduğu yere göredir. Yani bu hem global ocnano yapılandırması hem de projeye özel yapılandırma için işe yarar.
 
 ---
 
@@ -366,7 +366,7 @@ Bir model belirtmezseniz, birincil agent'lar [küresel olarak yapılandırılmı
 }
 ```
 
-OC Nano yapılandırmanızdaki model kimliği `provider/model-id` biçimini kullanır. Örneğin, [OC Nano Models](https://opencode.ai/docs/console/) kullanıyorsanız, GPT-6.1 Sol için `ocnano/gpt-6.1-sol` kullanırsınız.
+ocnano yapılandırmanızdaki model kimliği `provider/model-id` biçimini kullanır. Örneğin, [OC Nano Models](https://opencode.ai/docs/console/) kullanıyorsanız, GPT-6.1 Sol için `ocnano/gpt-6.1-sol` kullanırsınız.
 
 ---
 
@@ -673,7 +673,7 @@ Mevcut modellerin listesini görmek için `ocnano models` komutunu çalıştır�
 
 Yeni bir agent oluşturmak için proje düzeyinde `.ocnano/agents/` dizinine veya global olarak `~/.config/ocnano/agents/` dizinine bir Markdown dosyası ekleyin. Dosya adı agent'ın adı olur; frontmatter ise açıklamasını, modunu, modelini ve izinlerini yapılandırır. Dosya biçimi için yukarıdaki [Markdown](#markdown) bölümüne bakın.
 
-OC Nano'un yüklediği agent'ları listelemek için `OC Nano agent list` komutunu çalıştırın.
+OC Nano'un yüklediği agent'ları listelemek için `ocnano agent list` komutunu çalıştırın.
 
 ---
 

@@ -20,7 +20,7 @@ OC Nano는 일반 GitLab 파이프라인에서 작동합니다. [CI component](h
 ### 기능
 
 - **job별 custom config 사용**: custom config 디렉터리(예: `./config/#custom-directory`)를 사용해 OC Nano를 각 실행 단위로 설정하고 기능을 켜거나 끌 수 있습니다.
-- **최소 설정**: CI component가 백그라운드에서 OC Nano를 설정하므로 ocnano config와 초기 prompt만 만들면 됩니다.
+- **최소 설정**: CI component가 백그라운드에서 OC Nano를 설정하므로 OC Nano config와 초기 prompt만 만들면 됩니다.
 - **유연함**: CI component는 동작을 사용자화할 수 있도록 여러 입력값을 지원합니다.
 
 ---
@@ -82,8 +82,8 @@ OC Nano는 GitLab CI/CD 파이프라인에서 실행되며, 설정에 필요한 
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing OC Nano"
-      - npm install --global ocnano-ai
+      - echo "Installing ocnano"
+      - npm install --global opencode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OCNANO
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
@@ -91,7 +91,7 @@ OC Nano는 GitLab CI/CD 파이프라인에서 실행되며, 설정에 필요한 
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating ocnano auth configuration"
+      - echo "Creating OC Nano auth configuration"
       - mkdir --parents ~/.local/share/ocnano
       - |
         cat > ~/.local/share/ocnano/auth.json << EOF
@@ -103,7 +103,7 @@ OC Nano는 GitLab CI/CD 파이프라인에서 실행되며, 설정에 필요한 
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "OC Nano@gitlab.com"
+      - git config --global user.email "ocnano@gitlab.com"
       - git config --global user.name "OC Nano"
       - echo "Testing glab"
       - glab issue list

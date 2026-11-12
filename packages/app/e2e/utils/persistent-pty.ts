@@ -4,7 +4,7 @@ import type { PersistentPty } from "@ocnano/schema/persistent-pty"
 import { Predicate } from "effect"
 
 // Serves the session-scoped persistent PTY routes (`/api/experimental/.../terminal`, `/api/experimental/persistent-pty`)
-// and their connect WebSockets, like a server backed by the ocnano-pty daemon.
+// and their connect WebSockets, like a server backed by the opencode-pty daemon.
 export type MockPersistentPtyConfig = {
   // `server.info().capabilities.persistentPty`; omitted by default, like a server that predates the field. `false`
   // also makes the routes answer 503 like a server without the daemon.

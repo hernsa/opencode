@@ -81,7 +81,7 @@ describe("sortModelOptions", () => {
     expect(sorted.map((model) => model.title)).toEqual(["Claude Sonnet 4", "Claude Opus 4"])
   })
 
-  test("preserves the server's order for free ocnano models", () => {
+  test("preserves the server's order for free OC Nano models", () => {
     // `Model.available()` puts the preferred free models first, then the rest newest-first.
     const serverOrder = [
       "Big Pickle",

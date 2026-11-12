@@ -12,7 +12,6 @@ export const binaryPath =
     ? path.join(
         path.dirname(require.resolve(`@opencode/pty-${suffix}/package.json`)),
         "bin",
-        // The platform packages are published upstream and carry the upstream binary name.
         process.platform === "win32" ? "opencode-pty.exe" : "opencode-pty",
       )
     : undefined

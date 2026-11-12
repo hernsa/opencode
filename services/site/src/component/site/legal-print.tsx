@@ -669,7 +669,7 @@ function pageRules(style: LegalPrintStyle, info: Facts) {
     letterhead: {
       margin: "26mm 20mm 26mm",
       boxes: `
-        @top-left { content: ${text(`OcNano — ${info.title}`)}; ${sans} }
+        @top-left { content: ${text(`OC Nano — ${info.title}`)}; ${sans} }
         @top-right { content: ${text(info.effective)}; ${sans} }
         @bottom-left { content: ${text(entity)}; ${sans} border-top: 0.5pt solid #000; vertical-align: top; padding-top: 2mm; }
         @bottom-center { content: ${text(info.host)}; ${sans} border-top: 0.5pt solid #000; vertical-align: top; padding-top: 2mm; }

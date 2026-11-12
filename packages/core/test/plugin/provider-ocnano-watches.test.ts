@@ -8,8 +8,8 @@ import { Integration } from "@ocnano/core/integration"
 import { Plugin } from "@ocnano/core/plugin"
 import { PluginHooks } from "@ocnano/core/plugin/hooks"
 import { PluginHost } from "@ocnano/core/plugin/host"
-import { OcNanoPlugin } from "@ocnano/core/plugin/provider/ocnano"
-import { OcNanoWatches } from "@ocnano/core/plugin/provider/ocnano-watches"
+import { OpencodePlugin } from "@ocnano/core/plugin/provider/ocnano"
+import { OpencodeWatches } from "@ocnano/core/plugin/provider/ocnano-watches"
 import { Session } from "@ocnano/core/session"
 import { SyntheticConflictError } from "@ocnano/core/session/error"
 import { SessionMessage } from "@ocnano/core/session/message"
@@ -86,7 +86,7 @@ function fakeConsole(options: { readonly upgrade?: boolean } = {}) {
       const body = request.method === "POST" ? await request.json() : undefined
       state.requests.push({ method: request.method, path: `${url.pathname}${url.search}`, body })
       if (url.pathname === "/api/v2/config")
-        return Response.json({}, { headers: state.watches ? { [OcNanoWatches.header]: "1" } : {} })
+        return Response.json({}, { headers: state.watches ? { [OpencodeWatches.header]: "1" } : {} })
       if (!state.watches && url.pathname.startsWith("/api/event-watches")) return new Response(null, { status: 404 })
       if (url.pathname === "/api/event-watches/stream") {
         if (state.upgrade && server.upgrade(request, { data: undefined })) return undefined
@@ -222,7 +222,7 @@ const location = Effect.fnUntraced(function* () {
       },
     },
   }
-  yield* OcNanoPlugin.effect(host)
+  yield* OpencodePlugin.effect(host)
   return { host, wakes, replays }
 })
 
@@ -255,7 +255,7 @@ const context = (sessionID: Session.ID): Tool.Context => ({
   progress: () => Effect.void,
 })
 
-describe("OC NanoPlugin event watches", () => {
+describe("OpencodePlugin event watches", () => {
   it.effect("stays dormant while the Console config doesn't advertise event watches", () =>
     withConsole({}, (console) =>
       Effect.gen(function* () {
@@ -471,7 +471,7 @@ describe("OC NanoPlugin event watches", () => {
         console.push(watchEvent(session.id, "evt_lost"))
         yield* waitUntil(Effect.sync(() => wakes.length === 1 && console.state.lose === 0))
         // The next connection's snapshot sends the unacknowledged event again.
-        console.state.sockets.forEach((socket) => socket.close(OcNanoWatches.LEASE_CLOSE_CODE, "lease"))
+        console.state.sockets.forEach((socket) => socket.close(OpencodeWatches.LEASE_CLOSE_CODE, "lease"))
         yield* waitUntil(Effect.sync(() => console.state.acks.flat().includes("evt_lost")))
         expect(replays).toHaveLength(1)
         expect(wakes).toHaveLength(1)
@@ -508,7 +508,7 @@ describe("OC NanoPlugin event watches", () => {
         const { host, wakes } = yield* start(console)
         const session = yield* host.session.create({})
         yield* waitUntil(Effect.sync(() => console.state.opens === 1))
-        console.state.sockets.forEach((socket) => socket.close(OcNanoWatches.LEASE_CLOSE_CODE, "lease"))
+        console.state.sockets.forEach((socket) => socket.close(OpencodeWatches.LEASE_CLOSE_CODE, "lease"))
         yield* waitUntil(Effect.sync(() => console.state.sockets.size === 0))
         // Arrives while no socket is open; the next connection's snapshot carries it. The test clock never moves, so
         // a backoff would leave the client disconnected.
@@ -525,7 +525,7 @@ describe("OC NanoPlugin event watches", () => {
     ),
   )
 
-  for (const code of [1011, OcNanoWatches.OVERSIZED_CLOSE_CODE])
+  for (const code of [1011, OpencodeWatches.OVERSIZED_CLOSE_CODE])
     it.effect(`reconnects after a backoff when Console closes the socket with ${code}`, () =>
       withConsole({}, (console) =>
         Effect.gen(function* () {
@@ -723,12 +723,12 @@ describe("OC NanoPlugin event watches", () => {
         const session = yield* host.session.create({})
         yield* waitUntil(Effect.sync(() => console.state.opens === 1))
         console.push(
-          ...Array.from({ length: OcNanoWatches.ACK_LIMIT + 1 }, (_, index) =>
+          ...Array.from({ length: OpencodeWatches.ACK_LIMIT + 1 }, (_, index) =>
             watchEvent(session.id, `evt_${index}`, { body: "" }),
           ),
         )
-        yield* waitUntil(Effect.sync(() => console.state.acks.flat().length === OcNanoWatches.ACK_LIMIT + 1))
-        expect(console.state.acks.map((ids) => ids.length)).toEqual([OcNanoWatches.ACK_LIMIT, 1])
+        yield* waitUntil(Effect.sync(() => console.state.acks.flat().length === OpencodeWatches.ACK_LIMIT + 1))
+        expect(console.state.acks.map((ids) => ids.length)).toEqual([OpencodeWatches.ACK_LIMIT, 1])
       }),
     ),
   )
@@ -956,27 +956,27 @@ describe("OC NanoPlugin event watches", () => {
   )
 })
 
-describe("OC NanoWatches.shellTarget", () => {
+describe("OpencodeWatches.shellTarget", () => {
   it.effect("skips failed, ambiguous and non-GitHub commands", () =>
     Effect.sync(() => {
       const push = "To github.com:acme/app.git\n   1111111..2222222  main -> main\n"
-      expect(OcNanoWatches.shellTarget("git push", { exit: 0, output: push })).toEqual({
+      expect(OpencodeWatches.shellTarget("git push", { exit: 0, output: push })).toEqual({
         _tag: "GitHubBranch",
         repo: "acme/app",
         branch: "main",
       })
-      expect(OcNanoWatches.shellTarget("git push", { exit: 1, output: push })).toBeUndefined()
+      expect(OpencodeWatches.shellTarget("git push", { exit: 1, output: push })).toBeUndefined()
       expect(
-        OcNanoWatches.shellTarget("git push --all", { exit: 0, output: `${push}   3333333..4444444  dev -> dev\n` }),
+        OpencodeWatches.shellTarget("git push --all", { exit: 0, output: `${push}   3333333..4444444  dev -> dev\n` }),
       ).toBeUndefined()
       expect(
-        OcNanoWatches.shellTarget("git push", {
+        OpencodeWatches.shellTarget("git push", {
           exit: 0,
           output: "To gitlab.com:acme/app.git\n   1111111..2222222  main -> main\n",
         }),
       ).toBeUndefined()
-      expect(OcNanoWatches.shellTarget("git push", { exit: 0, output: "Everything up-to-date\n" })).toBeUndefined()
-      expect(OcNanoWatches.shellTarget("echo git status", { exit: 0, output: push })).toBeUndefined()
+      expect(OpencodeWatches.shellTarget("git push", { exit: 0, output: "Everything up-to-date\n" })).toBeUndefined()
+      expect(OpencodeWatches.shellTarget("echo git status", { exit: 0, output: push })).toBeUndefined()
     }),
   )
 })

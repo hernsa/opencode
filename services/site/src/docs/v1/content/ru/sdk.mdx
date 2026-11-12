@@ -18,19 +18,19 @@ SDK JS/TS с открытым кодом предоставляет типобе
 Установите SDK из npm:
 
 ```bash
-npm install @ocnano-ai/sdk
+npm install @opencode-ai/sdk
 ```
 
 ---
 
 ## Создать клиента
 
-Создайте экземпляр OC Nano:
+Создайте экземпляр ocnano:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const { client } = await createOC Nano()
+const { client } = await createOpencode()
 ```
 
 Это запускает и сервер, и клиент.
@@ -52,9 +52,9 @@ const { client } = await createOC Nano()
 Вы можете передать объект конфигурации для настройки поведения. Экземпляр по-прежнему получает ваш `ocnano.json`, но вы можете переопределить или добавить встроенную конфигурацию:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const OC Nano = await createOC Nano({
+const ocnano = await createOpencode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -69,12 +69,12 @@ ocnano.server.close()
 
 ## Только клиент
 
-Если у вас уже есть работающий экземпляр OC Nano, вы можете создать экземпляр клиента для подключения к нему:
+Если у вас уже есть работающий экземпляр ocnano, вы можете создать экземпляр клиента для подключения к нему:
 
 ```javascript
-import { createOC NanoClient } from "@ocnano-ai/sdk"
+import { createOpencodeClient } from "@opencode-ai/sdk"
 
-const client = createOC NanoClient({
+const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOC NanoClient({
 SDK включает определения TypeScript для всех типов API. Импортируйте их напрямую:
 
 ```typescript
-import type { Session, Message, Part } from "@ocnano-ai/sdk"
+import type { Session, Message, Part } from "@opencode-ai/sdk"
 ```
 
 Все типы генерируются на основе спецификации OpenAPI сервера и доступны в файле <a href={typesUrl}>types</a>.
@@ -373,7 +373,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*OC Nano" },
+  query: { pattern: "function.*ocnano" },
 })
 
 const files = await client.find.files({

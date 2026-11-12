@@ -130,7 +130,7 @@ Use `headers` for additional HTTP headers and `body` for JSON fields that should
       },
       "body": {
         "metadata": {
-          "application": "OC Nano",
+          "application": "ocnano",
         },
       },
     },
@@ -382,7 +382,7 @@ resource. If that fails, and always with an API key, it uses the resource's lega
 every page before publishing the list. A custom `settings.baseURL` keeps the catalog.
 
 Configure a deployment explicitly when its model is not in the catalog, such as a fine-tuned model, or to map a model ID
-to a deployment yourself. ocnano logs a warning naming such deployments. Explicitly configured models are always
+to a deployment yourself. OC Nano logs a warning naming such deployments. Explicitly configured models are always
 kept.
 
 ```jsonc title="ocnano.jsonc"
@@ -487,7 +487,7 @@ OC Nano also resolves the project from `GOOGLE_VERTEX_PROJECT`, `GOOGLE_CLOUD_PR
 `VERTEX_LOCATION`, and defaults to `us-central1`.
 
 ```bash
-GOOGLE_CLOUD_PROJECT=my-project GOOGLE_VERTEX_LOCATION=europe-west4 OC Nano --standalone
+GOOGLE_CLOUD_PROJECT=my-project GOOGLE_VERTEX_LOCATION=europe-west4 ocnano --standalone
 ```
 
 Service accounts work through the same ADC path. Point `GOOGLE_APPLICATION_CREDENTIALS` at the service-account JSON
@@ -496,7 +496,7 @@ file and still provide a project through settings or one of the project variable
 ```bash
 GOOGLE_APPLICATION_CREDENTIALS=/secure/vertex.json \
 GOOGLE_CLOUD_PROJECT=my-project \
-OC Nano --standalone
+ocnano --standalone
 ```
 
 Use the single `google-vertex` provider ID for Gemini, Anthropic, and OpenAI-compatible Vertex catalog models. The old

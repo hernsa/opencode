@@ -1198,7 +1198,7 @@ export default function Brand() {
                           <PartnerLockup partner={partner.name} />
                         </div>
                         <span data-slot="name">
-                          OcNano × {partner.name}, {themeName(tone)}
+                          OC Nano × {partner.name}, {themeName(tone)}
                         </span>
                       </li>
                     )}

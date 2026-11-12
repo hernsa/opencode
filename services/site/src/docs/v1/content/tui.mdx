@@ -10,13 +10,13 @@ OC Nano provides an interactive terminal interface or TUI for working on your pr
 Running OC Nano starts the TUI for the current directory.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Or you can start it for a specific working directory.
 
 ```bash
-OC Nano /path/to/project
+ocnano /path/to/project
 ```
 
 Once you're in the TUI, you can prompt it with a message.
@@ -338,7 +338,7 @@ You can customize TUI behavior through `tui.json` (or `tui.jsonc`).
 ```json title="tui.json"
 {
   "$schema": "https://opencode.ai/tui.json",
-  "theme": "OC Nano",
+  "theme": "ocnano",
   "leader_timeout": 2000,
   "keybinds": {
     "leader": "ctrl+x",

@@ -1,11 +1,11 @@
 ---
 title: Windows (WSL)
-description: Запускайте OC Nano в Windows через WSL.
+description: Запускайте ocnano в Windows через WSL.
 ---
 
 import { Steps } from "@astrojs/starlight/components"
 
-OC Nano можно запускать напрямую в Windows, но для лучшего опыта мы рекомендуем [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install). WSL дает Linux-среду, которая отлично работает с возможностями ocnano.
+ocnano можно запускать напрямую в Windows, но для лучшего опыта мы рекомендуем [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install). WSL дает Linux-среду, которая отлично работает с возможностями ocnano.
 
 :::tip[Почему WSL?]
 WSL дает более высокую производительность файловой системы, полноценную поддержку терминала и совместимость с инструментами разработки, на которые опирается ocnano.
@@ -21,21 +21,21 @@ WSL дает более высокую производительность фа
 
    Если вы еще не сделали этого, установите WSL по [официальному руководству Microsoft](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-2. **Установите OC Nano в WSL**
+2. **Установите ocnano в WSL**
 
-   После настройки WSL откройте терминал WSL и установите OC Nano одним из [способов установки](/docs/).
+   После настройки WSL откройте терминал WSL и установите ocnano одним из [способов установки](/docs/).
 
    ```bash
    curl -fsSL https://opencode.ai/install | bash
    ```
 
-3. **Запускайте OC Nano из WSL**
+3. **Запускайте ocnano из WSL**
 
    Перейдите в каталог проекта (к файлам Windows можно обращаться через `/mnt/c/`, `/mnt/d/` и т.д.) и запустите ocnano.
 
    ```bash
    cd /mnt/c/Users/YourName/project
-   OC Nano
+   ocnano
    ```
 
 </Steps>
@@ -44,7 +44,7 @@ WSL дает более высокую производительность фа
 
 ## Десктопное приложение + сервер в WSL
 
-Если вы предпочитаете OC Nano Desktop, но хотите запускать сервер в WSL:
+Если вы предпочитаете ocnano Desktop, но хотите запускать сервер в WSL:
 
 1. **Запустите сервер в WSL** с параметром `--hostname 0.0.0.0`, чтобы разрешить внешние подключения:
 
@@ -79,7 +79,7 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve --hostname 0.0.0.0
    ocnano web --hostname 0.0.0.0
    ```
 
-2. **Открывайте в браузере Windows** адрес `http://localhost:<port>` (OC Nano выведет URL)
+2. **Открывайте в браузере Windows** адрес `http://localhost:<port>` (ocnano выведет URL)
 
 Запуск `ocnano web` из WSL обеспечивает корректный доступ к файловой системе и интеграцию с терминалом, при этом интерфейс остается доступным из браузера Windows.
 
@@ -97,17 +97,17 @@ WSL может получать доступ ко всем вашим файла
 
 ```bash
 cd /mnt/c/Users/YourName/Documents/project
-OC Nano
+ocnano
 ```
 
 :::tip
-Для максимально плавной работы стоит клонировать или скопировать репозиторий в файловую систему WSL (например, в `~/code/`) и запускать OC Nano оттуда.
+Для максимально плавной работы стоит клонировать или скопировать репозиторий в файловую систему WSL (например, в `~/code/`) и запускать ocnano оттуда.
 :::
 
 ---
 
 ## Советы
 
-- Даже для проектов на дисках Windows запускайте OC Nano в WSL, чтобы получить более плавный доступ к файлам
-- Используйте OC Nano вместе с [расширением WSL для VS Code](https://code.visualstudio.com/docs/remote/wsl) для единого рабочего процесса
-- Конфигурация и сессии OC Nano хранятся в среде WSL по пути `~/.local/share/ocnano/`
+- Даже для проектов на дисках Windows запускайте ocnano в WSL, чтобы получить более плавный доступ к файлам
+- Используйте ocnano вместе с [расширением WSL для VS Code](https://code.visualstudio.com/docs/remote/wsl) для единого рабочего процесса
+- Конфигурация и сессии ocnano хранятся в среде WSL по пути `~/.local/share/ocnano/`

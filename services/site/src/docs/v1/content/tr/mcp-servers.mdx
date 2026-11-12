@@ -3,7 +3,7 @@ title: MCP sunucuları
 description: Yerel ve uzak MCP araçlarını ekleyin.
 ---
 
-_Model Bağlam Protokolü_ veya MCP kullanarak OC Nano'a harici araçlar ekleyebilirsiniz. OC Nano hem yerel hem de uzak sunucuları destekler.
+_Model Bağlam Protokolü_ veya MCP kullanarak ocnano'a harici araçlar ekleyebilirsiniz. ocnano hem yerel hem de uzak sunucuları destekler.
 
 MCP araçları eklendikten sonra yerleşik araçların yanı sıra LLM tarafından otomatik olarak kullanılabilir.
 
@@ -23,7 +23,7 @@ GitHub MCP sunucusu gibi belirli MCP sunucuları çok sayıda belirteç ekleme e
 
 ## Etkinleştirme
 
-MCP sunucularını [OC Nano Config](/docs/config/)'nizde `mcp` altında tanımlayabilirsiniz. Her MCP'ü benzersiz bir adla ekleyin. LLM isteminde bulunurken bu MCP adına başvurabilirsiniz.
+MCP sunucularını [ocnano Config](/docs/config/)'nizde `mcp` altında tanımlayabilirsiniz. Her MCP'ü benzersiz bir adla ekleyin. LLM isteminde bulunurken bu MCP adına başvurabilirsiniz.
 
 ```jsonc title="ocnano.jsonc" {6}
 {
@@ -165,7 +165,7 @@ Yerel bir MCP sunucusunu yapılandırmak için tüm seçenekler burada verilmiş
 
 ## OAuth
 
-OC Nano, uzak MCP sunucuları için OAuth kimlik doğrulamasını otomatik olarak yönetir. Bir sunucu kimlik doğrulaması gerektirdiğinde OC Nano şunları yapar:
+ocnano, uzak MCP sunucuları için OAuth kimlik doğrulamasını otomatik olarak yönetir. Bir sunucu kimlik doğrulaması gerektirdiğinde ocnano şunları yapar:
 
 1. 401 yanıtını tespit edin ve OAuth akışını başlatın
 2. Sunucu tarafından destekleniyorsa **Dinamik İstemci Kaydı (RFC 7591)** kullanın
@@ -189,7 +189,7 @@ OAuth'un etkin olduğu çoğu MCP sunucusu için özel bir yapılandırmaya gere
 }
 ```
 
-Sunucu kimlik doğrulama gerektiriyorsa OC Nano, onu ilk kez kullanmaya çalıştığınızda kimlik doğrulamanızı isteyecektir. Değilse, `ocnano mcp auth <server-name>` ile [manually trigger the flow](#authenticating) yapabilirsiniz.
+Sunucu kimlik doğrulama gerektiriyorsa ocnano, onu ilk kez kullanmaya çalıştığınızda kimlik doğrulamanızı isteyecektir. Değilse, `ocnano mcp auth <server-name>` ile [manually trigger the flow](#authenticating) yapabilirsiniz.
 
 ---
 
@@ -238,7 +238,7 @@ Remove stored credentials:
 ocnano mcp logout my-oauth-server
 ```
 
-`mcp auth` komutu tarayıcınızı yetkilendirme için açacaktır. Yetkilendirmenizin ardından OC Nano, belirteçleri `~/.local/share/ocnano/mcp-auth.json`'de güvenli bir şekilde saklar.
+`mcp auth` komutu tarayıcınızı yetkilendirme için açacaktır. Yetkilendirmenizin ardından ocnano, belirteçleri `~/.local/share/ocnano/mcp-auth.json`'de güvenli bir şekilde saklar.
 
 ---
 
@@ -291,7 +291,7 @@ ocnano mcp debug my-oauth-server
 
 ## Yönetim
 
-MCP'leriniz yerleşik araçların yanı sıra OC Nano'da araç olarak mevcuttur. Böylece bunları diğer araçlar gibi OC Nano yapılandırması aracılığıyla yönetebilirsiniz.
+MCP'leriniz yerleşik araçların yanı sıra ocnano'da araç olarak mevcuttur. Böylece bunları diğer araçlar gibi ocnano yapılandırması aracılığıyla yönetebilirsiniz.
 
 ---
 
@@ -423,7 +423,7 @@ Yapılandırmayı ekledikten sonra Sentry ile kimlik doğrulaması yapın:
 ocnano mcp auth sentry
 ```
 
-Bu, OAuth akışını tamamlamak ve OC Nano'u Sentry hesabınıza bağlamak için bir tarayıcı penceresi açacaktır.
+Bu, OAuth akışını tamamlamak ve ocnano'u Sentry hesabınıza bağlamak için bir tarayıcı penceresi açacaktır.
 
 Kimlik doğrulaması yapıldıktan sonra sorunları, projeleri ve hata verilerini sorgulamak için istemlerinizde Sentry araçlarını kullanabilirsiniz.
 

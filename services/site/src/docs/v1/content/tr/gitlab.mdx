@@ -1,33 +1,33 @@
 ---
 title: GitLab
-description: GitLab sorunlarında ve birleştirme isteklerinde OC Nano'u kullanın.
+description: GitLab sorunlarında ve birleştirme isteklerinde ocnano'u kullanın.
 ---
 
-OC Nano, GitLab CI/CD işlem hattınız veya GitLab Duo aracılığıyla GitLab iş akışınızla bütünleşir.
+ocnano, GitLab CI/CD işlem hattınız veya GitLab Duo aracılığıyla GitLab iş akışınızla bütünleşir.
 
-Her iki durumda da OC Nano, GitLab çalıştırıcılarınızda çalışacaktır.
+Her iki durumda da ocnano, GitLab çalıştırıcılarınızda çalışacaktır.
 
 ---
 
 ## GitLab CI
 
-OC Nano normal bir GitLab işlem hattında çalışır. Bunu bir [CI component](https://docs.gitlab.com/ee/ci/components/) olarak bir işlem hattına oluşturabilirsiniz.
+ocnano normal bir GitLab işlem hattında çalışır. Bunu bir [CI component](https://docs.gitlab.com/ee/ci/components/) olarak bir işlem hattına oluşturabilirsiniz.
 
-Burada OC Nano için topluluk tarafından oluşturulan bir CI/CD bileşeni kullanıyoruz — [nagyv/gitlab-ocnano](https://gitlab.com/nagyv/gitlab-ocnano).
+Burada ocnano için topluluk tarafından oluşturulan bir CI/CD bileşeni kullanıyoruz — [nagyv/gitlab-ocnano](https://gitlab.com/nagyv/gitlab-ocnano).
 
 ---
 
 ### Özellikler
 
-- **İş başına özel işlemleri kullanın**: OC Nano parçalarının kullanıma veya devre dışı bırakmak için OC Nano'u özel bir yapılandırma dizini ile yapılandırın; örneğin `./config/#custom-directory`.
-- **Minimum kurulum**: CI bileşeni OC Nano'u arka planda kurar; yalnızca OC Nano yapılandırmasını ve ilk istemi oluşturmanız gerekir.
+- **İş başına özel işlemleri kullanın**: ocnano parçalarının kullanıma veya devre dışı bırakmak için ocnano'u özel bir yapılandırma dizini ile yapılandırın; örneğin `./config/#custom-directory`.
+- **Minimum kurulum**: CI bileşeni ocnano'u arka planda kurar; yalnızca ocnano yapılandırmasını ve ilk istemi oluşturmanız gerekir.
 - **Esnek**: CI bileşeni, davranışını özelleştirmek için çeşitli girişleri destekler
 
 ---
 
 ### Kurulum
 
-1. OC Nano kimlik doğrulamanızı JSON **Ayarlar** > **CI/CD** > **Değişkenler** altında Dosya türü CI ortam değişkenleri olarak saklayın. Bunları "Maskeli ve gizli" olarak işaretlediğinizden emin olun.
+1. ocnano kimlik doğrulamanızı JSON **Ayarlar** > **CI/CD** > **Değişkenler** altında Dosya türü CI ortam değişkenleri olarak saklayın. Bunları "Maskeli ve gizli" olarak işaretlediğinizden emin olun.
 2. Aşağıdakileri `.gitlab-ci.yml` dosyanıza ekleyin.
 
    ```yaml title=".gitlab-ci.yml"
@@ -46,23 +46,23 @@ Daha fazla girdi ve bu bileşene yönelik kullanım durumları için [check out 
 
 ## GitLab Duo
 
-OC Nano, GitLab iş akışınızla bütünleşir.
-Bir yorumda `@ocnano`'dan bahsedin; OC Nano, GitLab CI işlem hattınızdaki görevleri yürütecektir.
+ocnano, GitLab iş akışınızla bütünleşir.
+Bir yorumda `@ocnano`'dan bahsedin; ocnano, GitLab CI işlem hattınızdaki görevleri yürütecektir.
 
 ---
 
 ### Özellikler
 
-- **Sorunları önceliklendirin**: OC Nano'dan bir sorunu araştırıp size açıklamasını isteyin.
-- **Düzelt ve uygula**: OC Nano'dan bir sorunu düzeltmesini veya bir özelliği uygulamasını isteyin.
+- **Sorunları önceliklendirin**: ocnano'dan bir sorunu araştırıp size açıklamasını isteyin.
+- **Düzelt ve uygula**: ocnano'dan bir sorunu düzeltmesini veya bir özelliği uygulamasını isteyin.
   Yeni bir dal oluşturacak ve değişikliklerle birlikte bir birleştirme isteği oluşturacaktır.
-- **Güvenli**: OC Nano, GitLab çalıştırıcılarınızda çalışır.
+- **Güvenli**: ocnano, GitLab çalıştırıcılarınızda çalışır.
 
 ---
 
 ### Yapılandırma
 
-OC Nano, GitLab CI/CD işlem hattınızda çalışır; bunu ayarlamak için ihtiyacınız olacaklar:
+ocnano, GitLab CI/CD işlem hattınızda çalışır; bunu ayarlamak için ihtiyacınız olacaklar:
 
 :::tip
 Güncel talimatlar için [**GitLab docs**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/)'a göz atın.
@@ -82,8 +82,8 @@ Güncel talimatlar için [**GitLab docs**](https://docs.gitlab.com/user/duo_agen
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing OC Nano"
-      - npm install --global ocnano-ai
+      - echo "Installing ocnano"
+      - npm install --global opencode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OCNANO
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
@@ -91,7 +91,7 @@ Güncel talimatlar için [**GitLab docs**](https://docs.gitlab.com/user/duo_agen
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating ocnano auth configuration"
+      - echo "Creating OC Nano auth configuration"
       - mkdir --parents ~/.local/share/ocnano
       - |
         cat > ~/.local/share/ocnano/auth.json << EOF
@@ -103,7 +103,7 @@ Güncel talimatlar için [**GitLab docs**](https://docs.gitlab.com/user/duo_agen
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "OC Nano@gitlab.com"
+      - git config --global user.email "ocnano@gitlab.com"
       - git config --global user.name "OC Nano"
       - echo "Testing glab"
       - glab issue list
@@ -158,7 +158,7 @@ Ayrıntılı talimatlar için [GitLab CLI agents docs](https://docs.gitlab.com/u
 
 ### Örnekler
 
-GitLab'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bulabilirsiniz.
+GitLab'da ocnano'u nasıl kullanabileceğinize dair bazı örnekleri burada bulabilirsiniz.
 
 :::tip
 `@ocnano`'dan farklı bir tetikleyici ifade kullanacak şekilde yapılandırabilirsiniz.
@@ -172,7 +172,7 @@ GitLab'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bul
   @ocnano explain this issue
   ```
 
-  OC Nano konuyu okuyacak ve net bir açıklama ile yanıt verecektir.
+  ocnano konuyu okuyacak ve net bir açıklama ile yanıt verecektir.
 
 - **Bir sorunu düzeltme**
 
@@ -182,7 +182,7 @@ GitLab'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bul
   @ocnano fix this
   ```
 
-  OC Nano yeni bir dal oluşturacak, değişiklikleri uygulayacak ve değişiklikleri içeren bir birleştirme isteği açacaktır.
+  ocnano yeni bir dal oluşturacak, değişiklikleri uygulayacak ve değişiklikleri içeren bir birleştirme isteği açacaktır.
 
 - **Birleştirme isteklerini inceleme**
 
@@ -192,4 +192,4 @@ GitLab'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bul
   @ocnano review this merge request
   ```
 
-  OC Nano, birleştirme isteğini inceleyecek ve geri bildirim sağlayacaktır.
+  ocnano, birleştirme isteğini inceleyecek ve geri bildirim sağlayacaktır.

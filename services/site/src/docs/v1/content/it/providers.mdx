@@ -59,7 +59,7 @@ verificati per funzionare bene con OC Nano. [Scopri di piu](https://opencode.ai/
 Se sei all'inizio, ti consigliamo di partire da OC Nano Models.
 :::
 
-1. Esegui `/connect` nella TUI, seleziona OC Nano e vai su [opencode.ai/auth](https://opencode.ai/auth).
+1. Esegui `/connect` nella TUI, seleziona ocnano e vai su [opencode.ai/auth](https://opencode.ai/auth).
 
    ```txt
    /connect
@@ -141,17 +141,17 @@ Per usare Amazon Bedrock con OC Nano:
 
    #### Variabili d'ambiente (Avvio rapido)
 
-   Imposta una di queste variabili d'ambiente mentre esegui OC Nano:
+   Imposta una di queste variabili d'ambiente mentre esegui ocnano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    Oppure aggiungile al tuo profilo bash:
@@ -303,7 +303,7 @@ Oppure se hai già una chiave API, puoi selezionare **Manually enter API Key** e
 
 ### Atomic Chat
 
-Puoi configurare OC Nano per utilizzare modelli locali tramite [Atomic Chat](https://atomic.chat), un'applicazione desktop che esegue LLM locali dietro un server API compatibile OpenAI (endpoint predefinito `http://127.0.0.1:1337/v1`).
+Puoi configurare ocnano per utilizzare modelli locali tramite [Atomic Chat](https://atomic.chat), un'applicazione desktop che esegue LLM locali dietro un server API compatibile OpenAI (endpoint predefinito `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -352,7 +352,7 @@ Se incontri errori "I'm sorry, but I cannot assist with that request", prova a c
 2. Vai su [Azure AI Foundry](https://ai.azure.com/) e fai il deploy di un modello.
 
    :::note
-   Il nome del deployment deve corrispondere al nome del modello affinché OC Nano funzioni correttamente.
+   Il nome del deployment deve corrispondere al nome del modello affinché ocnano funzioni correttamente.
    :::
 
 3. Esegui il comando `/connect` e cerca **Azure**.
@@ -373,7 +373,7 @@ Se incontri errori "I'm sorry, but I cannot assist with that request", prova a c
 5. Imposta il nome della risorsa come variabile d'ambiente:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    Oppure aggiungilo al tuo profilo bash:
@@ -399,7 +399,7 @@ Se incontri errori "I'm sorry, but I cannot assist with that request", prova a c
 2. Vai su [Azure AI Foundry](https://ai.azure.com/) e fai il deploy di un modello.
 
    :::note
-   Il nome del deployment deve corrispondere al nome del modello affinché OC Nano funzioni correttamente.
+   Il nome del deployment deve corrispondere al nome del modello affinché ocnano funzioni correttamente.
    :::
 
 3. Esegui il comando `/connect` e cerca **Azure Cognitive Services**.
@@ -420,7 +420,7 @@ Se incontri errori "I'm sorry, but I cannot assist with that request", prova a c
 5. Imposta il nome della risorsa come variabile d'ambiente:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    Oppure aggiungilo al tuo profilo bash:
@@ -830,7 +830,7 @@ Questo plugin offre funzionalita complete per la gestione dei repository GitLab,
 
 ### GitHub Copilot
 
-Per usare il tuo abbonamento GitHub Copilot con OC Nano:
+Per usare il tuo abbonamento GitHub Copilot con ocnano:
 
 :::note
 Alcuni modelli potrebbero richiedere un [abbonamento Pro+](https://github.com/features/copilot/plans) per essere utilizzati.
@@ -885,7 +885,7 @@ Per usare Google Vertex AI con OC Nano:
    Impostale mentre esegui ocnano.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    Oppure aggiungile al tuo profilo bash.
@@ -995,7 +995,7 @@ Per altri provider e funzionalità avanzate come caching e rate limiting, contro
 
 #### Config opzionali
 
-Nel caso vedessi una funzionalità o un modello di Helicone che non viene configurato automaticamente da OC Nano, puoi sempre configurarlo tu stesso.
+Nel caso vedessi una funzionalità o un modello di Helicone che non viene configurato automaticamente da ocnano, puoi sempre configurarlo tu stesso.
 
 Ecco la [Model Directory di Helicone](https://helicone.ai/models), ti servirà per recuperare gli ID dei modelli che vuoi aggiungere.
 
@@ -1038,7 +1038,7 @@ Helicone supporta header personalizzati per funzionalità come caching, user tra
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1079,7 +1079,7 @@ Vedi la [Helicone Header Directory](https://docs.helicone.ai/helicone-headers/he
 
 ### llama.cpp
 
-Puoi configurare OC Nano per usare modelli locali tramite l'utility llama-server di [llama.cpp](https://github.com/ggml-org/llama.cpp)
+Puoi configurare ocnano per usare modelli locali tramite l'utility llama-server di [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1146,7 +1146,7 @@ IO.NET offre 17 modelli ottimizzati per vari casi d'uso:
 
 ### LM Studio
 
-Puoi configurare OC Nano per usare modelli locali tramite LM Studio.
+Puoi configurare ocnano per usare modelli locali tramite LM Studio.
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1263,7 +1263,7 @@ Per usare Kimi K2 di Moonshot AI:
 
 ### Ollama
 
-Puoi configurare OC Nano per usare modelli locali tramite Ollama.
+Puoi configurare ocnano per usare modelli locali tramite Ollama.
 
 :::tip
 Ollama può auto-configurarsi per OC Nano. Vedi la [documentazione di integrazione Ollama](https://docs.ollama.com/integrations/ocnano) per dettagli.
@@ -1498,7 +1498,7 @@ SAP AI Core fornisce accesso a oltre 40 modelli di OpenAI, Anthropic, Google, Am
    Oppure imposta la variabile d'ambiente `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    Oppure aggiungila al tuo profilo bash:
@@ -1510,7 +1510,7 @@ SAP AI Core fornisce accesso a oltre 40 modelli di OpenAI, Anthropic, Google, Am
 4. Facoltativamente imposta deployment ID e resource group:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note
@@ -1587,7 +1587,7 @@ STACKIT AI Model Serving fornisce un ambiente di hosting completamente gestito e
 
 ### Scaleway
 
-Per usare le [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) con OC Nano:
+Per usare le [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) con Opencode:
 
 1. Vai alle [impostazioni IAM della Console Scaleway](https://console.scaleway.com/iam/api-keys) per generare una nuova chiave API.
 
@@ -1961,7 +1961,7 @@ Se hai problemi con la configurazione di un provider, controlla quanto segue:
 
    Questo non si applica a provider come Amazon Bedrock, che si basano su variabili d'ambiente per l'autenticazione.
 
-2. Per provider personalizzati, controlla la config di OC Nano e:
+2. Per provider personalizzati, controlla la config di ocnano e:
    - Assicurati che l'ID provider usato nel comando `/connect` corrisponda all'ID nella tua config ocnano.
    - Che sia usato il pacchetto npm corretto per il provider. Per esempio, usa `@ai-sdk/cerebras` per Cerebras. E per tutti gli altri provider OpenAI-compatible, usa `@ai-sdk/openai-compatible`.
    - Controlla che sia usato l'endpoint API corretto nel campo `options.baseURL`.

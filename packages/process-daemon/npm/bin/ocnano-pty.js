@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process"
 import { binaryPath } from "../index.js"
 
 if (!binaryPath) {
-  console.error(`ocnano-pty is unavailable for ${process.platform}-${process.arch}`)
+  console.error(`opencode-pty is unavailable for ${process.platform}-${process.arch}`)
   process.exit(1)
 }
 

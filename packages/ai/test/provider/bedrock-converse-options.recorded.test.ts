@@ -35,7 +35,7 @@ describe("Bedrock Converse options recorded", () => {
               effort: "high",
               thinking: { type: "adaptive", display: "summarized" },
               serviceTier: "default",
-              requestMetadata: { suite: "ocnano-ai" },
+              requestMetadata: { suite: "opencode-ai" },
             }),
             prompt: "How many primes are below 60? Reply with the number only.",
             cache: "none",
@@ -57,7 +57,7 @@ describe("Bedrock Converse options recorded", () => {
           model: bedrock("openai.gpt-oss-120b-1:0", {
             effort: "low",
             serviceTier: "priority",
-            requestMetadata: { suite: "ocnano-ai" },
+            requestMetadata: { suite: "opencode-ai" },
           }),
           prompt: "What is 17*23? Reply with the number only.",
           cache: "none",

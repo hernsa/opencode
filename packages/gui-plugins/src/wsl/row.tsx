@@ -41,7 +41,7 @@ export default function WslRow(props: {
                 <Button
                   size="small"
                   disabled={button().disabled}
-                  onClick={() => props.run(() => api().installOcNano({ name: props.distro }))}
+                  onClick={() => props.run(() => api().installOpencode({ name: props.distro }))}
                 >
                   {plugin.t(button().label)}
                 </Button>

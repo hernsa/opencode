@@ -2,7 +2,7 @@
 export const WSL_ACTION_TIMEOUT_MS = 60_000
 
 /**
- * Ceiling for the install calls (`installWsl`, `installDistro`, `installOcNano`), in case the bridge hangs. Main
+ * Ceiling for the install calls (`installWsl`, `installDistro`, `installOpencode`), in case the bridge hangs. Main
  * stops an install after 15 minutes, and a distro install then lists and probes for up to another minute, so this
  * waits a minute beyond that before the dialog gives up on the answer.
  */
@@ -315,7 +315,7 @@ export function selectWslDialogInstallingCatalog(state: WslDialogState) {
   return state.status === "catalog-installing"
 }
 
-export function selectWslDialogInstallingOcNano(state: WslDialogState, distro: string | null) {
+export function selectWslDialogInstallingOpencode(state: WslDialogState, distro: string | null) {
   return (
     !!distro && state.status === "main-running" && state.op.kind === "install-ocnano" && state.op.distro === distro
   )

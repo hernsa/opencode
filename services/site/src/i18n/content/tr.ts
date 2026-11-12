@@ -493,7 +493,7 @@ export const content = {
     },
     naming: {
       title: "Ad",
-      body: "OC Nano'u büyük O ve büyük C ile tek kelime olarak yazın. OC Nano, Open Code, OC Nano AI ya da Open-Code yazmayın.",
+      body: "OC Nano'u büyük O ve büyük C ile tek kelime olarak yazın. Opencode, Open Code, OC Nano AI ya da Open-Code yazmayın.",
       code: "Küçük harfli `ocnano` adını yalnızca kodda ve `ocnano-figma` ya da `@acme/ocnano-plugin` gibi paket adlarında kullanın.",
     },
     families: {

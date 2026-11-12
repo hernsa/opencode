@@ -19,11 +19,11 @@ OC Nano is an open source coding agent. It’s available as a terminal-based int
     { label: "yarn", code: "yarn global add @ocnano/cli" },
     { label: "vite+", code: "vp install -g @ocnano/cli" },
     { label: "aur", code: "paru -S ocnano-beta" },
-    { label: "mise", code: "mise use -g OC Nano" },
+    { label: "mise", code: "mise use -g ocnano" },
   ]}
 />
 
-The npm package uses a postinstall script to select the native `OC Nano` binary for your platform. The Bun and pnpm commands
+The npm package uses a postinstall script to select the native `ocnano` binary for your platform. The Bun and pnpm commands
 explicitly allow the required script; Vite+ requires no additional flag. The mise command requires mise 2026.10.9 or later;
 older versions install OC Nano 1.
 
@@ -50,7 +50,7 @@ Download the latest OC Nano Desktop build for your platform.
 
 ## Web
 
-Access the ocnano web interface with the `ocnano pair` command.
+Access the OC Nano web interface with the `ocnano pair` command.
 
 ```bash
 $ ocnano pair
@@ -83,7 +83,7 @@ plan that grants you access to the best coding models.
 
 ## Customize
 
-Make OC Nano your own by editing the [ocnano config](/config), [loading plugins](/plugins), [connecting MCP
+Make OC Nano your own by editing the [OC Nano config](/config), [loading plugins](/plugins), [connecting MCP
 servers](/mcp-servers), or [creating commands](/commands). For terminal interface themes and keybindings, see [CLI
 settings](/cli/config).
 

@@ -300,7 +300,7 @@ create namespaces:
 
 ```ts
 const api = OpenAPI.fromSpec({ spec, auth: { resolve } })
-const runtime = CodeMode.make({ tools: { OC Nano: api.tools } })
+const runtime = CodeMode.make({ tools: { ocnano: api.tools } })
 ```
 
 The synchronous result is `{ tools, skipped }`. Operations with unsupported parameter encodings, request bodies

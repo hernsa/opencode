@@ -8,7 +8,7 @@ import config from "../../../config.mjs"
 export const console = config.console
 
 :::note
-OC Nano 1 and OC Nano 2 both use the `OC Nano` command and cannot be installed side by side under their default command.
+OC Nano 1 and OC Nano 2 both use the `ocnano` command and cannot be installed side by side under their default command.
 See the [OC Nano 2 docs](https://opencode.ai/docs/) to migrate to V2.
 :::
 
@@ -36,7 +36,7 @@ To use OC Nano in your terminal, you'll need:
 
 ## Install
 
-The easiest way to install OC Nano 1 is through the install script. These installation methods provide the `OC Nano`
+The easiest way to install OC Nano 1 is through the install script. These installation methods provide the `ocnano`
 binary and can conflict with or replace an OC Nano 2 installation.
 
 ```bash
@@ -51,28 +51,28 @@ You can also install it with the following commands:
 
       <TabItem label="npm">
       ```bash
-      npm install -g ocnano-ai
+      npm install -g opencode-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g ocnano-ai
+        bun install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g ocnano-ai
+        pnpm install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add ocnano-ai
+        yarn global add opencode-ai
         ```
 
       </TabItem>
@@ -85,12 +85,12 @@ You can also install it with the following commands:
   brew install anomalyco/tap/ocnano
   ```
 
-  > Use the OC Nano tap above for V1. Homebrew's `brew install OC Nano` formula currently installs V2. See the [V2 docs](https://opencode.ai/docs/).
+  > Use the OC Nano tap above for V1. Homebrew's `brew install ocnano` formula currently installs V2. See the [V2 docs](https://opencode.ai/docs/).
 
 - **Installing on Arch Linux**
 
   ```bash
-  sudo pacman -S OC Nano           # Arch Linux (OC Nano 2)
+  sudo pacman -S ocnano           # Arch Linux (OC Nano 2)
   paru -S ocnano-bin              # Arch Linux (OC Nano 1, from AUR)
   ```
 
@@ -105,19 +105,19 @@ For the best experience on Windows, we recommend using [Windows Subsystem for Li
 - **Using Chocolatey**
 
   ```bash
-  choco install OC Nano
+  choco install ocnano
   ```
 
 - **Using Scoop**
 
   ```bash
-  scoop install OC Nano
+  scoop install ocnano
   ```
 
 - **Using NPM**
 
   ```bash
-  npm install -g ocnano-ai
+  npm install -g opencode-ai
   ```
 
 - **Using Mise**
@@ -146,7 +146,7 @@ If you are new to using LLM providers, we recommend using [OC Nano Models](https
 It's a curated list of models that have been tested and verified by the OC Nano
 team.
 
-1. Run the `/connect` command in the TUI, select OC Nano, and head to [opencode.ai/auth](https://opencode.ai/auth).
+1. Run the `/connect` command in the TUI, select ocnano, and head to [opencode.ai/auth](https://opencode.ai/auth).
 
    ```txt
    /connect
@@ -179,7 +179,7 @@ cd /path/to/project
 And run OC Nano.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Next, initialize OC Nano for the project by running the following command.
@@ -346,4 +346,4 @@ Or you **can redo** the changes using the `/redo` command.
 
 And that's it! You are now a pro at using OC Nano.
 
-To make it your own, we recommend [picking a theme](/docs/themes), [customizing the keybinds](/docs/keybinds), [configuring code formatters](/docs/formatters), [creating custom commands](/docs/commands), or playing around with the [ocnano config](/docs/config).
+To make it your own, we recommend [picking a theme](/docs/themes), [customizing the keybinds](/docs/keybinds), [configuring code formatters](/docs/formatters), [creating custom commands](/docs/commands), or playing around with the [OC Nano config](/docs/config).

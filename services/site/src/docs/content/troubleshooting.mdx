@@ -15,26 +15,26 @@ state. Start by determining whether an issue is in a client, the shared server, 
 Show the current server information:
 
 ```bash
-OC Nano service status
+ocnano service status
 ```
 
 Verify that its API is healthy:
 
 ```bash
-OC Nano api get /api/info
+ocnano api get /api/info
 ```
 
 If the service is stuck or unhealthy, restart it:
 
 ```bash
-OC Nano service restart
+ocnano service restart
 ```
 
 You can also stop and start it explicitly:
 
 ```bash
-OC Nano service stop
-OC Nano service start
+ocnano service stop
+ocnano service start
 ```
 
 <Callout type="note">
@@ -47,25 +47,25 @@ OC Nano service start
 If a browser client on another origin cannot connect because of CORS, add the client's origin to the service configuration:
 
 ```bash
-OC Nano service set cors http://192.168.1.10:3001
-OC Nano service get cors
+ocnano service set cors http://192.168.1.10:3001
+ocnano service get cors
 ```
 
 Use an exact HTTP or HTTPS origin, including the port when needed, without a path or trailing slash. To allow multiple
 origins, pass a comma-separated list as one argument; whitespace around each origin is trimmed:
 
 ```bash
-OC Nano service set cors "http://192.168.1.10:3001, https://app.example.com"
+ocnano service set cors "http://192.168.1.10:3001, https://app.example.com"
 ```
 
 `service get cors` prints a JSON array. Remove the configured list with:
 
 ```bash
-OC Nano service unset cors
+ocnano service unset cors
 ```
 
 Setting or unsetting service configuration stops the background service. Its next start picks up the new configuration;
-use `OC Nano service start` to start it explicitly.
+use `ocnano service start` to start it explicitly.
 
 For a foreground server, repeat `--cors` for each additional allowed origin:
 
@@ -86,7 +86,7 @@ See the [API reference](/api) for all endpoints and operation IDs.
 Pass a JSON request body with `--data` or `-d`, and add headers with `--header` or `-H`.
 
 <Callout type="warning">
-  Running `OC Nano api` may start the background service when no compatible healthy service is available.
+  Running `ocnano api` may start the background service when no compatible healthy service is available.
 </Callout>
 
 ## Read logs
@@ -169,7 +169,7 @@ On macOS and Linux, you can signal a running OC Nano process to capture diagnost
 from the health endpoint:
 
 ```bash
-OC Nano api get /api/info
+ocnano api get /api/info
 ```
 
 Use the `pid` from the response with one of these signals:
@@ -229,8 +229,8 @@ The database normally lives at:
 
 Include the following when reporting a reproducible problem:
 
-- Output from `OC Nano --version`
-- Output from `OC Nano service status`
+- Output from `ocnano --version`
+- Output from `ocnano service status`
 - The smallest sequence of steps that reproduces the issue
 - Whether the issue affects the shared service, a specific client, or one project
 - Relevant log lines, including their `run` and `role` fields

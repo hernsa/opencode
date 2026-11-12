@@ -12,10 +12,10 @@ import os from "os"
 import ocnanoContent from "./skill/ocnano.md" with { type: "text" }
 import reportContent from "./skill/report.md" with { type: "text" }
 
-export const OcNanoContent = ocnanoContent
+export const OpencodeContent = ocnanoContent
 export const ReportContent = reportContent
 
-export const OcNanoDescription =
+export const OpencodeDescription =
   "Use this skill for any question about OC Nano itself, including how OC Nano works, using or configuring it, migrating from V1 to V2, troubleshooting it, developing plugins or integrations, using the OC Nano SDK, clients, server, or API, and contributing to the OC Nano codebase. Also use it for OC Nano agents, commands, skills, tools, permissions, MCP servers, providers, models, themes, keybinds, formatters, the CLI, TUI, desktop app, and web app."
 const REPORT_DESCRIPTION =
   "Use when the user wants to report an ocnano issue or bug. Collect standard diagnostics, add user-specific reproduction context, and publish the issue with GitHub CLI."
@@ -29,9 +29,9 @@ export const Plugin = define({
         Skill.Info.make({
           id: Skill.ID.make("ocnano"),
           name: Skill.Name.make("OC Nano"),
-          description: OcNanoDescription,
+          description: OpencodeDescription,
           path: AbsolutePath.make("skill://ocnano/SKILL.md"),
-          content: OcNanoContent,
+          content: OpencodeContent,
         }),
       )
       editor.add(

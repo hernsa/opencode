@@ -16,7 +16,7 @@ struct TempPath(PathBuf);
 impl TempPath {
     fn new(name: &str) -> Self {
         Self(env::temp_dir().join(format!(
-            "ocnano-pty-pipe-{name}-{:032x}",
+            "opencode-pty-pipe-{name}-{:032x}",
             rand::random::<u128>()
         )))
     }

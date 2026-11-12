@@ -15,7 +15,7 @@ ACP est un protocole ouvert qui standardise la communication entre les éditeurs
 
 ## Configuration
 
-Pour utiliser OC Nano via ACP, configurez votre éditeur pour exécuter la commande `OC Nano acp`.
+Pour utiliser OC Nano via ACP, configurez votre éditeur pour exécuter la commande `ocnano acp`.
 
 La commande démarre OC Nano en tant que sous-processus compatible ACP qui communique avec votre éditeur via JSON-RPC sur stdio.
 
@@ -34,7 +34,7 @@ Pour utiliser plutôt un exécutable OC Nano personnalisé, ajoutez-le à votre 
   "agent_servers": {
     "OC Nano": {
       "type": "custom",
-      "command": "OC Nano",
+      "command": "ocnano",
       "args": ["acp"]
     }
   }
@@ -56,7 +56,7 @@ Vous pouvez également associer un raccourci clavier en modifiant votre `keymap.
             "custom": {
               "name": "OC Nano",
               "command": {
-                "command": "OC Nano",
+                "command": "ocnano",
                 "args": ["acp"]
               }
             }
@@ -96,8 +96,8 @@ Ajoutez à votre configuration [Avante.nvim](https://github.com/yetone/avante.nv
 ```lua
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" }
     }
   }
@@ -109,8 +109,8 @@ Si vous devez transmettre des variables d'environnement :
 ```lua {6-8}
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" },
       env = {
         OCNANO_API_KEY = os.getenv("OCNANO_API_KEY")
@@ -131,7 +131,7 @@ require("codecompanion").setup({
   interactions = {
     chat = {
       adapter = {
-        name = "OC Nano",
+        name = "ocnano",
         model = "claude-sonnet-5-5",
       },
     },

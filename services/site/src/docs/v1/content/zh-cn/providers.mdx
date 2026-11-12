@@ -57,7 +57,7 @@ OC Nano Models 是由 OC Nano 团队提供的模型列表，这些模型已经�
 如果你是新用户，我们建议从 OC Nano Models 开始。
 :::
 
-1. 在 TUI 中执行 `/connect` 命令，选择 OC Nano，然后前往 [opencode.ai/auth](https://opencode.ai/auth)。
+1. 在 TUI 中执行 `/connect` 命令，选择 ocnano，然后前往 [opencode.ai/auth](https://opencode.ai/auth)。
 
    ```txt
    /connect
@@ -137,17 +137,17 @@ OC Nano Models 是由 OC Nano 团队提供的模型列表，这些模型已经�
 
    #### 环境变量（快速上手）
 
-   运行 OC Nano 时设置以下环境变量之一：
+   运行 ocnano 时设置以下环境变量之一：
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    或者将它们添加到你的 bash 配置文件中：
@@ -299,7 +299,7 @@ OC Nano Models 是由 OC Nano 团队提供的模型列表，这些模型已经�
 
 ### Atomic Chat
 
-你可以通过 [Atomic Chat](https://atomic.chat) 配置 OC Nano 以使用本地模型。Atomic Chat 是一款桌面应用程序，它在 OpenAI 兼容的 API 服务器后面运行本地 LLM（默认端点 `http://127.0.0.1:1337/v1`）。
+你可以通过 [Atomic Chat](https://atomic.chat) 配置 ocnano 以使用本地模型。Atomic Chat 是一款桌面应用程序，它在 OpenAI 兼容的 API 服务器后面运行本地 LLM（默认端点 `http://127.0.0.1:1337/v1`）。
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -369,7 +369,7 @@ OC Nano Models 是由 OC Nano 团队提供的模型列表，这些模型已经�
 5. 将资源名称设置为环境变量：
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    或者添加到你的 bash 配置文件中：
@@ -416,7 +416,7 @@ OC Nano Models 是由 OC Nano 团队提供的模型列表，这些模型已经�
 5. 将资源名称设置为环境变量：
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    或者添加到你的 bash 配置文件中：
@@ -869,10 +869,10 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
      - `GOOGLE_APPLICATION_CREDENTIALS`：服务账户 JSON 密钥文件的路径
      - 使用 gcloud CLI 进行身份验证：`gcloud auth application-default login`
 
-   在运行 OC Nano 时设置：
+   在运行 ocnano 时设置：
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    或者添加到你的 bash 配置文件中：
@@ -1025,7 +1025,7 @@ Helicone 支持用于缓存、用户跟踪和会话管理等功能的自定义�
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1484,7 +1484,7 @@ SAP AI Core 通过统一平台提供对来自 OpenAI、Anthropic、Google、Amaz
    或者设置 `AICORE_SERVICE_KEY` 环境变量：
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    或者添加到你的 bash 配置文件中：
@@ -1496,7 +1496,7 @@ SAP AI Core 通过统一平台提供对来自 OpenAI、Anthropic、Google、Amaz
 4. 可选：设置部署 ID 和资源组：
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note

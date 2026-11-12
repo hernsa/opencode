@@ -87,8 +87,8 @@ Neovim
 Node.js
 npm
 Obsidian
-OC Nano
-ocnano-ai
+ocnano
+opencode-ai
 Paru
 pnpm
 ripgrep
@@ -172,7 +172,7 @@ Ollama integration docs
 OpenAI's Data Policies
 OpenChamber
 OC Nano
-ocnano config
+OC Nano config
 OC Nano Config
 OC Nano TUI with the ocnano theme
 OC Nano Web - Active Session
@@ -347,13 +347,13 @@ ZenMux
 ## OC Nano CLI commands (as shown in docs)
 
 ```text
-OC Nano
-OC Nano [project]
-OC Nano /path/to/project
-OC Nano acp
-OC Nano agent [command]
-OC Nano agent create
-OC Nano agent list
+ocnano
+ocnano [project]
+ocnano /path/to/project
+ocnano acp
+ocnano agent [command]
+ocnano agent create
+ocnano agent list
 ocnano attach [url]
 ocnano attach http://10.20.30.40:4096
 ocnano attach http://localhost:4096
@@ -363,9 +363,9 @@ ocnano auth login
 ocnano auth logout
 ocnano auth ls
 ocnano export [sessionID]
-OC Nano github [command]
-OC Nano github install
-OC Nano github run
+ocnano github [command]
+ocnano github install
+ocnano github run
 ocnano import <file>
 ocnano import https://opncd.ai/s/abc123
 ocnano import session.json
@@ -654,8 +654,8 @@ XDG_CONFIG_HOME
 ```text
 ../../../config.mjs
 @astrojs/starlight/components
-@ocnano-ai/plugin
-@ocnano-ai/sdk
+@opencode-ai/plugin
+@opencode-ai/sdk
 path
 shescape
 zod
@@ -721,7 +721,7 @@ rebelot/kanagawa.nvim
 remorses/kimaki
 sainnhe/everforest
 shekohex/opencode-google-antigravity-auth
-shekohex/ocnano-pty.git
+shekohex/opencode-pty.git
 spoons-and-mirrors/subtask2
 sudo-tee/ocnano.nvim
 supermemoryai/ocnano-supermemory
@@ -773,11 +773,11 @@ zenobi-us/ocnano-skillful
 {file:path/to/file}
 **/*.js
 %USERPROFILE%/intelephense/license.txt
-%USERPROFILE%\.cache\OC Nano
-%USERPROFILE%\.config\OC Nano\ocnano.jsonc
-%USERPROFILE%\.config\OC Nano\plugins
-%USERPROFILE%\.local\share\OC Nano
-%USERPROFILE%\.local\share\OC Nano\log
+%USERPROFILE%\.cache\ocnano
+%USERPROFILE%\.config\ocnano\ocnano.jsonc
+%USERPROFILE%\.config\ocnano\plugins
+%USERPROFILE%\.local\share\ocnano
+%USERPROFILE%\.local\share\ocnano\log
 <project-root>/.ocnano/themes/*.json
 <providerId>/<modelId>
 <your-project>/.ocnano/plugins/

@@ -24,7 +24,7 @@ import { Plugin } from "@ocnano/core/plugin"
 import { PluginHooks } from "@ocnano/core/plugin/hooks"
 import { PluginHost } from "@ocnano/core/plugin/host"
 import { OpenAIPlugin } from "@ocnano/core/plugin/provider/openai"
-import { OcNanoPlugin } from "@ocnano/core/plugin/provider/ocnano"
+import { OpencodePlugin } from "@ocnano/core/plugin/provider/ocnano"
 import { Provider } from "@ocnano/core/provider"
 import { Session } from "@ocnano/core/session"
 import { Skill } from "@ocnano/core/skill"
@@ -40,7 +40,7 @@ const it = testEffect(PluginTestLayer)
 const addPlugin = Effect.fn(function* () {
   const plugin = yield* Plugin.Service
   const host = yield* PluginHost.make(plugin, "test")
-  yield* OcNanoPlugin.effect(host)
+  yield* OpencodePlugin.effect(host)
 })
 
 // The Console's config merges as an integration document; its policies are what organization policy the member gets.
@@ -139,7 +139,7 @@ const cost = (input: number, output = 0) => [
   },
 ]
 
-describe("OC NanoPlugin", () => {
+describe("OpencodePlugin", () => {
   it.effect("registers account and service account methods", () =>
     Effect.gen(function* () {
       yield* addPlugin()
@@ -2143,7 +2143,7 @@ describe("OC NanoPlugin", () => {
   )
 })
 
-describe("OC NanoPlugin with a Console config", () => {
+describe("OpencodePlugin with a Console config", () => {
   const $schema = "https://opencode.ai/config.json"
   const deny: ConfigPolicy.Info = { action: "tool.use", resource: "shell:*", effect: "deny" }
 
@@ -2169,7 +2169,7 @@ describe("OC NanoPlugin with a Console config", () => {
             }),
           })
           const host = yield* PluginHost.make(yield* Plugin.Service, "test")
-          yield* OcNanoPlugin.effect(host).pipe(inProcess(server))
+          yield* OpencodePlugin.effect(host).pipe(inProcess(server))
           yield* ConfigPolicyPlugin.Plugin.effect(host)
 
           const document = required(yield* consoleDocument(config))
@@ -2338,7 +2338,7 @@ describe("OC NanoPlugin with a Console config", () => {
             value: Credential.Key.make({ type: "key", key: "secret", metadata: { server: server.url.origin } }),
           })
           const host = yield* PluginHost.make(yield* Plugin.Service, "test")
-          yield* OcNanoPlugin.effect(host)
+          yield* OpencodePlugin.effect(host)
           yield* ConfigProviderPlugin.Plugin.effect(host)
 
           const provider = required(yield* providers.get(Provider.ID.make("remote")))
@@ -2389,7 +2389,7 @@ describe("OC NanoPlugin with a Console config", () => {
           })
           const host = yield* PluginHost.make(yield* Plugin.Service, "test")
           // Registered in production order: the OcNano and OpenAI provider plugins, then config in `post`.
-          yield* OcNanoPlugin.effect(host).pipe(inProcess(server))
+          yield* OpencodePlugin.effect(host).pipe(inProcess(server))
           yield* OpenAIPlugin.effect(host)
           yield* ConfigProviderPlugin.Plugin.effect(host)
 
@@ -2437,7 +2437,7 @@ describe("OC NanoPlugin with a Console config", () => {
             value: Credential.Key.make({ type: "key", key: "secret", metadata: { server: server.url.origin } }),
           })
           const host = yield* PluginHost.make(yield* Plugin.Service, "test")
-          yield* OcNanoPlugin.effect(host).pipe(inProcess(server))
+          yield* OpencodePlugin.effect(host).pipe(inProcess(server))
           yield* ConfigWebSearchPlugin.Plugin.effect(host)
           // A workspace without hosted search, or a member its policy denies, would get only failed searches.
           expect(yield* websearch.providers()).not.toContainEqual(ocnano)

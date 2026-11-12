@@ -1,12 +1,12 @@
 ---
 title: Servidor
-description: Interaja com o servidor OC Nano via HTTP.
+description: Interaja com o servidor ocnano via HTTP.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-O comando `ocnano serve` executa um servidor HTTP sem cabeça que expõe um endpoint OpenAPI que um cliente OC Nano pode usar.
+O comando `ocnano serve` executa um servidor HTTP sem cabeça que expõe um endpoint OpenAPI que um cliente ocnano pode usar.
 
 ---
 
@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Autenticação
 
-Defina `OCNANO_SERVER_PASSWORD` para proteger o servidor com autenticação básica HTTP. O nome de usuário padrão é `OC Nano`, ou defina `OCNANO_SERVER_USERNAME` para substituí-lo. Isso se aplica tanto ao `ocnano serve` quanto ao `ocnano web`.
+Defina `OCNANO_SERVER_PASSWORD` para proteger o servidor com autenticação básica HTTP. O nome de usuário padrão é `ocnano`, ou defina `OCNANO_SERVER_USERNAME` para substituí-lo. Isso se aplica tanto ao `ocnano serve` quanto ao `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,15 +46,15 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### Como funciona
 
-Quando você executa `OC Nano`, ele inicia um TUI e um servidor. Onde o TUI é o cliente que se comunica com o servidor. O servidor expõe um endpoint de especificação OpenAPI 3.1. Este endpoint também é usado para gerar um [SDK](/docs/sdk).
+Quando você executa `ocnano`, ele inicia um TUI e um servidor. Onde o TUI é o cliente que se comunica com o servidor. O servidor expõe um endpoint de especificação OpenAPI 3.1. Este endpoint também é usado para gerar um [SDK](/docs/sdk).
 
 :::tip
-Use o servidor OC Nano para interagir com o OC Nano programaticamente.
+Use o servidor ocnano para interagir com o ocnano programaticamente.
 :::
 
-Essa arquitetura permite que o OC Nano suporte múltiplos clientes e permite que você interaja com o OC Nano programaticamente.
+Essa arquitetura permite que o ocnano suporte múltiplos clientes e permite que você interaja com o ocnano programaticamente.
 
-Você pode executar `ocnano serve` para iniciar um servidor autônomo. Se você tiver o TUI do OC Nano em execução, `ocnano serve` iniciará um novo servidor.
+Você pode executar `ocnano serve` para iniciar um servidor autônomo. Se você tiver o TUI do ocnano em execução, `ocnano serve` iniciará um novo servidor.
 
 ---
 
@@ -62,7 +62,7 @@ Você pode executar `ocnano serve` para iniciar um servidor autônomo. Se você 
 
 Quando você inicia o TUI, ele atribui aleatoriamente uma porta e um nome de host. Você pode passar os [flags](/docs/cli) `--hostname` e `--port`. Em seguida, use isso para se conectar ao seu servidor.
 
-O endpoint [`/tui`](#tui) pode ser usado para controlar o TUI através do servidor. Por exemplo, você pode preencher ou executar um prompt. Essa configuração é usada pelos plugins do OC Nano [IDE](/docs/ide).
+O endpoint [`/tui`](#tui) pode ser usado para controlar o TUI através do servidor. Por exemplo, você pode preencher ou executar um prompt. Essa configuração é usada pelos plugins do ocnano [IDE](/docs/ide).
 
 ---
 
@@ -80,7 +80,7 @@ Por exemplo, `http://localhost:4096/doc`. Use a especificação para gerar clien
 
 ## APIs
 
-O servidor OC Nano expõe as seguintes APIs.
+O servidor ocnano expõe as seguintes APIs.
 
 ---
 

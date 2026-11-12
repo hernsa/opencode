@@ -18,7 +18,7 @@ Bruk den til å bygge integrasjoner og kontrollere OC Nano programmatisk.
 Installer SDK fra npm:
 
 ```bash
-npm install @ocnano-ai/sdk
+npm install @opencode-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @ocnano-ai/sdk
 Opprett en forekomst av OC Nano:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const { client } = await createOC Nano()
+const { client } = await createOpencode()
 ```
 
 Dette starter både en server og en klient
@@ -52,9 +52,9 @@ Dette starter både en server og en klient
 Du kan sende et konfigurasjonsobjekt for å tilpasse virkemåten. Forekomsten henter fortsatt din `ocnano.json`, men du kan overstyre eller legge til konfigurasjon inline:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const OC Nano = await createOC Nano({
+const ocnano = await createOpencode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -72,9 +72,9 @@ ocnano.server.close()
 Hvis du allerede har en kjørende forekomst av OC Nano, kan du opprette en klientforekomst for å koble til den:
 
 ```javascript
-import { createOC NanoClient } from "@ocnano-ai/sdk"
+import { createOpencodeClient } from "@opencode-ai/sdk"
 
-const client = createOC NanoClient({
+const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOC NanoClient({
 SDK inkluderer TypeScript-definisjoner for alle API-typer. Importer dem direkte:
 
 ```typescript
-import type { Session, Message, Part } from "@ocnano-ai/sdk"
+import type { Session, Message, Part } from "@opencode-ai/sdk"
 ```
 
 Alle typer er generert fra serverens OpenAPI-spesifikasjon og tilgjengelig i <a href={typesUrl}>type-filen</a>.
@@ -373,7 +373,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*OC Nano" },
+  query: { pattern: "function.*ocnano" },
 })
 
 const files = await client.find.files({

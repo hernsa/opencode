@@ -357,7 +357,7 @@ Specify a custom system prompt file for this agent with the `prompt` config. The
 }
 ```
 
-This path is relative to where the config file is located. So this works for both the global ocnano config and the project specific config.
+This path is relative to where the config file is located. So this works for both the global OC Nano config and the project specific config.
 
 ---
 
@@ -379,7 +379,7 @@ If you don’t specify a model, primary agents use the [model globally configure
 }
 ```
 
-The model ID in your ocnano config uses the format `provider/model-id`. For example, if you're using [OC Nano Models](https://opencode.ai/docs/console/), you would use `ocnano/gpt-6.1-sol` for GPT-6.1 Sol.
+The model ID in your OC Nano config uses the format `provider/model-id`. For example, if you're using [OC Nano Models](https://opencode.ai/docs/console/), you would use `ocnano/gpt-6.1-sol` for GPT-6.1 Sol.
 
 ---
 
@@ -714,7 +714,7 @@ Run `ocnano models` to see a list of the available models.
 
 Create a new agent by adding a markdown file to `.ocnano/agents/` for the project or `~/.config/ocnano/agents/` globally. The file name becomes the agent name, and the frontmatter configures its description, mode, model, and permissions. See [Markdown](#markdown) above for the file format.
 
-You can also run `OC Nano agent create` to create an agent interactively. Run `OC Nano agent list` to list the agents that OC Nano has loaded.
+You can also run `ocnano agent create` to create an agent interactively. Run `ocnano agent list` to list the agents that OC Nano has loaded.
 
 ---
 

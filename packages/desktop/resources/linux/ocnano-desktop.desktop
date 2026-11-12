@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=OcNano
-Exec=/opt/OcNano/ai.ocnano %U
+Name=OC Nano
+Exec=/opt/OC Nano/ai.ocnano %U
 Terminal=false
 Type=Application
 Icon=ai.ocnano

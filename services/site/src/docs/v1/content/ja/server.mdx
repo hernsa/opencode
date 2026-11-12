@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### 認証
 
-HTTP 基本認証でサーバーを保護するには、`OCNANO_SERVER_PASSWORD` を設定します。ユーザー名はデフォルトで `OC Nano` になるか、`OCNANO_SERVER_USERNAME` を設定してオーバーライドします。これは、`ocnano serve` と `ocnano web` の両方に当てはまります。
+HTTP 基本認証でサーバーを保護するには、`OCNANO_SERVER_PASSWORD` を設定します。ユーザー名はデフォルトで `ocnano` になるか、`OCNANO_SERVER_USERNAME` を設定してオーバーライドします。これは、`ocnano serve` と `ocnano web` の両方に当てはまります。
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,7 +46,7 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### 仕組み
 
-`OC Nano` を実行すると、TUI とサーバーが起動します。 TUI はサーバーと通信するクライアントです。サーバーは OpenAPI 3.1 仕様のエンドポイントを公開します。このエンドポイントは、[SDK](/docs/sdk) を使用してアクセスできます。
+`ocnano` を実行すると、TUI とサーバーが起動します。 TUI はサーバーと通信するクライアントです。サーバーは OpenAPI 3.1 仕様のエンドポイントを公開します。このエンドポイントは、[SDK](/docs/sdk) を使用してアクセスできます。
 
 :::tip
 OC Nano サーバーを使用して、プログラムで OC Nano と対話します。

@@ -17,7 +17,7 @@ pub struct Registration {
     pub features: Vec<String>,
 }
 
-/// Shared parent of runtime directories, inside OcNano's state directory.
+/// Shared parent of runtime directories, inside OC Nano's state directory.
 /// Registration files must not live in temporary directories, which macOS purges
 /// while daemons run.
 pub fn default_runtime_root() -> PathBuf {
@@ -65,8 +65,8 @@ pub fn read_registration(directory: &Path) -> Result<Registration> {
     {
         use anyhow::Context;
         let data = std::fs::read(registration_path(directory))
-            .context("ocnano-pty registration is unavailable")?;
-        serde_json::from_slice(&data).context("invalid ocnano-pty registration")
+            .context("opencode-pty registration is unavailable")?;
+        serde_json::from_slice(&data).context("invalid opencode-pty registration")
     }
 }
 
@@ -93,7 +93,7 @@ pub use crate::transport::windows::Connection as PipeConnection;
 
 #[cfg(not(any(unix, windows)))]
 pub fn run(_directory: &Path) -> Result<()> {
-    anyhow::bail!("persistent ocnano-pty transport is not implemented on this platform")
+    anyhow::bail!("persistent opencode-pty transport is not implemented on this platform")
 }
 
 #[cfg(test)]

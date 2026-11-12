@@ -47,7 +47,7 @@ const crashed: RecoveryEvent = { type: "process.gone", reason: "crashed", exitCo
 
 const loadFailed: RecoveryEvent = {
   type: "load.failed",
-  url: "oc://renderer/index.html",
+  url: "ocnano://renderer/index.html",
   code: -105,
   description: "ERR_NAME_NOT_RESOLVED",
   isMainFrame: true,
@@ -292,7 +292,7 @@ describe("window recovery", () => {
     expect(
       formatUnresponsiveSamples(
         "main",
-        "oc://renderer/",
+        "ocnano://renderer/",
         new Map([
           ["b", 1],
           ["a", 2],
@@ -302,7 +302,7 @@ describe("window recovery", () => {
       [
         "renderer unresponsive samples",
         "Window: main",
-        "URL: oc://renderer/",
+        "URL: ocnano://renderer/",
         "<2> a",
         "<1> b",
         "Total Samples: 3",

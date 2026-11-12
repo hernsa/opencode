@@ -47,7 +47,7 @@ const PermissionParams = {
 }
 
 const Root = Spec.make(typeof OCNANO_CLI_NAME === "string" ? OCNANO_CLI_NAME : "ocnano", {
-  description: "ocnano command line interface",
+  description: "OC Nano command line interface",
   params: {
     ...ServerParams,
     ...PermissionParams,

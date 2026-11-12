@@ -16,7 +16,7 @@ action:   tool.use
 resource: <permission action>:<resource>, such as shell:sudo * or edit:*.env
 
 action:   integration.connect
-resource: integration ID, such as OC Nano, anthropic, or https://ai.acme.com
+resource: integration ID, such as ocnano, anthropic, or https://ai.acme.com
 
 action:   integration.use
 resource: <integration ID>#<account>, or the bare integration ID without an account
@@ -25,7 +25,7 @@ action:   mcp.use | skill.use | plugin.use
 resource: MCP server name, skill ID, or unversioned package / absolute local path
 
 action:   websearch.use
-resource: web search provider ID, such as OC Nano, exa, or tinyfish
+resource: web search provider ID, such as ocnano, exa, or tinyfish
 
 Legacy integration.use statements with an mcp:, skill:, or plugin: prefix are
 converted to the matching *.use action when ConfigPolicy.Info decodes them.
@@ -90,7 +90,7 @@ interface PolicyInfo {
 
 ## Matching
 
-Both `action` and `resource` use OC Nano's existing wildcard matching behavior.
+Both `action` and `resource` use ocnano's existing wildcard matching behavior.
 
 Examples:
 
@@ -232,11 +232,11 @@ The OC Nano Console compiles a workspace's Providers and Tools policies into sta
 
 ```jsonc
 {
-  "providers": { "OC Nano": {} },
+  "providers": { "ocnano": {} },
   "experimental": {
     "policies": [
       { "action": "provider.use", "resource": "*", "effect": "deny" },
-      { "action": "provider.use", "resource": "OC Nano", "effect": "allow" },
+      { "action": "provider.use", "resource": "ocnano", "effect": "allow" },
       { "action": "tool.use", "resource": "shell:sudo *", "effect": "deny" },
     ],
   },
@@ -260,7 +260,7 @@ When the deciding `tool.use` statement is organization-managed, the denial reads
 
 ### Protection
 
-Plugins must not be allowed to add, remove, or override policy statements. Plugins can contribute functionality or configured providers; policy determines whether OC Nano permits an operation through its managed execution paths.
+Plugins must not be allowed to add, remove, or override policy statements. Plugins can contribute functionality or configured providers; policy determines whether ocnano permits an operation through its managed execution paths.
 
 Plugin `remove` operations in config ignore `ocnano.config.policy` and `ocnano.provider.ocnano`, whatever the selector (`-*`, `-ocnano.*`, or the exact ID). Otherwise a repository could switch off enforcement or the fetch that delivers organization statements.
 

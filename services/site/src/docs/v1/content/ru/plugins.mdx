@@ -3,7 +3,7 @@ title: Плагины
 description: Напишите свои собственные плагины для расширения ocnano.
 ---
 
-Плагины позволяют расширять OC Nano, подключаясь к различным событиям и настраивая поведение. Вы можете создавать плагины для добавления новых функций, интеграции с внешними сервисами или изменения поведения OC Nano по умолчанию.
+Плагины позволяют расширять ocnano, подключаясь к различным событиям и настраивая поведение. Вы можете создавать плагины для добавления новых функций, интеграции с внешними сервисами или изменения поведения ocnano по умолчанию.
 
 Для примера ознакомьтесь с [plugins](/docs/ecosystem#plugins), созданными сообществом.
 
@@ -83,7 +83,7 @@ description: Напишите свои собственные плагины д�
 }
 ```
 
-OC Nano запускает `bun install` при запуске для их установки. Затем ваши плагины и инструменты смогут импортировать их.
+ocnano запускает `bun install` при запуске для их установки. Затем ваши плагины и инструменты смогут импортировать их.
 
 ```ts title=".ocnano/plugins/my-plugin.ts"
 import { escape } from "shescape"
@@ -128,7 +128,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 Для плагинов TypeScript вы можете импортировать типы из пакета плагина:
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -221,7 +221,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
     event: async ({ event }) => {
       // Send notification on session completion
       if (event.type === "session.idle") {
-        await $`osascript -e 'display notification "Session completed!" with title "OC Nano"'`
+        await $`osascript -e 'display notification "Session completed!" with title "ocnano"'`
       }
     },
   }
@@ -231,7 +231,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
 Мы используем `osascript` для запуска AppleScript на macOS. Здесь мы используем его для отправки уведомлений.
 
 :::note
-Если вы используете настольное приложение OC Nano, оно может автоматически отправлять системные уведомления, когда ответ готов или когда возникает ошибка сеанса.
+Если вы используете настольное приложение ocnano, оно может автоматически отправлять системные уведомления, когда ответ готов или когда возникает ошибка сеанса.
 :::
 
 ---
@@ -273,10 +273,10 @@ export const InjectEnvPlugin = async () => {
 
 ### Пользовательские инструменты
 
-Плагины также могут добавлять в OC Nano собственные инструменты:
+Плагины также могут добавлять в ocnano собственные инструменты:
 
 ```ts title=".ocnano/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@ocnano-ai/plugin"
+import { type Plugin, tool } from "@opencode-ai/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -332,7 +332,7 @@ export const MyPlugin = async ({ client }) => {
 Настройте контекст, включаемый при сжатии сеанса:
 
 ```ts title=".ocnano/plugins/compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -356,7 +356,7 @@ Include any state that should persist across compaction:
 Вы также можете полностью заменить запрос на уплотнение, установив `output.prompt`:
 
 ```ts title=".ocnano/plugins/custom-compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 La CLI OC Nano démarre par défaut le [TUI](/docs/tui) lorsqu'il est exécuté sans aucun argument.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Mais elle accepte également les commandes documentées sur cette page. Cela vous permet d'interagir avec OC Nano par programme.
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 Démarrez l’interface utilisateur du terminal OC Nano.
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### Options
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s`  | ID de session pour continuer                                                                       |
 | <nobr><code>{"--fork"}</code></nobr>     |       | Dupliquer la session lors de la reprise (à utiliser avec `--continue` ou `--session`)              |
 | <nobr><code>{"--password"}</code></nobr> | `-p`  | Mot de passe d'authentification de base (par défaut `OCNANO_SERVER_PASSWORD`)                    |
-| <nobr><code>{"--username"}</code></nobr> | `-u`  | Nom d'utilisateur d'authentification de base (par défaut `OCNANO_SERVER_USERNAME` ou `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u`  | Nom d'utilisateur d'authentification de base (par défaut `OCNANO_SERVER_USERNAME` ou `ocnano`) |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 Gérez l'agent GitHub pour l'automatisation du dépôt.
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 Installez l'agent GitHub dans votre dépôt.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Cela configure le flux de travail GitHub Actions nécessaire et vous guide tout au long du processus de configuration. [En savoir plus](/docs/github).
@@ -154,7 +154,7 @@ Cela configure le flux de travail GitHub Actions nécessaire et vous guide tout 
 Exécutez l'agent GitHub. Ceci est généralement utilisé dans les GitHub Actions.
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### Options
@@ -283,7 +283,7 @@ ocnano models --refresh
 
 ### run
 
-Exécutez OC Nano en mode non interactif en transmettant directement un prompt.
+Exécutez ocnano en mode non interactif en transmettant directement un prompt.
 
 ```bash
 ocnano run [message..]
@@ -318,9 +318,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`  | Fichier(s) à joindre au message                                                                    |
 | <nobr><code>{"--format"}</code></nobr>   |       | Format : par défaut (formaté) ou json (événements JSON bruts)                                      |
 | <nobr><code>{"--title"}</code></nobr>    |       | Titre de la session (utilise un prompt tronqué si aucune valeur n'est fournie)                     |
-| <nobr><code>{"--attach"}</code></nobr>   |       | Connectez-vous à un serveur OC Nano en cours d'exécution (par exemple, http://localhost:4096)     |
+| <nobr><code>{"--attach"}</code></nobr>   |       | Connectez-vous à un serveur ocnano en cours d'exécution (par exemple, http://localhost:4096)     |
 | <nobr><code>{"--password"}</code></nobr> | `-p`  | Mot de passe d'authentification de base (par défaut `OCNANO_SERVER_PASSWORD`)                    |
-| <nobr><code>{"--username"}</code></nobr> | `-u`  | Nom d'utilisateur d'authentification de base (par défaut `OCNANO_SERVER_USERNAME` ou `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u`  | Nom d'utilisateur d'authentification de base (par défaut `OCNANO_SERVER_USERNAME` ou `ocnano`) |
 | <nobr><code>{"--dir"}</code></nobr>      |       | Répertoire d'exécution, ou chemin sur le serveur distant lors de l'attachement                     |
 | <nobr><code>{"--variant"}</code></nobr>  |       | Variante du modèle (effort de raisonnement spécifique au fournisseur)                              |
 | <nobr><code>{"--thinking"}</code></nobr> |       | Afficher les blocs de réflexion                                                                    |
@@ -336,7 +336,7 @@ Démarrez un serveur OC Nano sans interface graphique pour un accès API. Consul
 ocnano serve
 ```
 
-Cela démarre un serveur HTTP qui fournit un accès API aux fonctionnalités d'OC Nano sans l'interface TUI. Définissez `OCNANO_SERVER_PASSWORD` pour activer l'authentification de base HTTP (le nom d'utilisateur par défaut est `OC Nano`).
+Cela démarre un serveur HTTP qui fournit un accès API aux fonctionnalités d'OC Nano sans l'interface TUI. Définissez `OCNANO_SERVER_PASSWORD` pour activer l'authentification de base HTTP (le nom d'utilisateur par défaut est `ocnano`).
 
 #### Options
 
@@ -429,7 +429,7 @@ Démarrez un serveur OC Nano sans interface graphique avec une interface Web.
 ocnano web
 ```
 
-Cela démarre un serveur HTTP et ouvre un navigateur Web pour accéder à OC Nano via une interface Web. Définissez `OCNANO_SERVER_PASSWORD` pour activer l'authentification de base HTTP (le nom d'utilisateur par défaut est `OC Nano`).
+Cela démarre un serveur HTTP et ouvre un navigateur Web pour accéder à OC Nano via une interface Web. Définissez `OCNANO_SERVER_PASSWORD` pour activer l'authentification de base HTTP (le nom d'utilisateur par défaut est `ocnano`).
 
 #### Options
 
@@ -447,7 +447,7 @@ Cela démarre un serveur HTTP et ouvre un navigateur Web pour accéder à OC Nan
 Démarrez un serveur ACP (Agent Client Protocol).
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 Cette commande démarre un serveur ACP qui communique via stdin/stdout en utilisant nd-JSON.
@@ -483,7 +483,7 @@ ocnano uninstall
 
 ### upgrade
 
-Met à jour OC Nano vers la dernière version ou une version spécifique.
+Met à jour ocnano vers la dernière version ou une version spécifique.
 
 ```bash
 ocnano upgrade [target]
@@ -511,7 +511,7 @@ ocnano upgrade v0.1.48
 
 ## Options globales
 
-La CLI OC Nano prend les flags globaux suivants.
+La CLI ocnano prend les flags globaux suivants.
 
 | Option                                     | Court | Description                              |
 | ------------------------------------------ | ----- | ---------------------------------------- |
@@ -549,7 +549,7 @@ OC Nano peut être configuré à l'aide de variables d'environnement.
 | `OCNANO_CLIENT`                     | chaîne  | Identifiant du client (par défaut `cli`)                                          |
 | `OCNANO_ENABLE_EXA`                 | booléen | Activer les outils de recherche Web Exa                                           |
 | `OCNANO_SERVER_PASSWORD`            | chaîne  | Activer l'authentification de base pour `serve`/`web`                             |
-| `OCNANO_SERVER_USERNAME`            | chaîne  | Remplacer le nom d'utilisateur d'authentification de base (par défaut `OC Nano`) |
+| `OCNANO_SERVER_USERNAME`            | chaîne  | Remplacer le nom d'utilisateur d'authentification de base (par défaut `ocnano`) |
 | `OCNANO_MODELS_URL`                 | chaîne  | URL personnalisé pour récupérer la configuration des modèles                      |
 
 ---

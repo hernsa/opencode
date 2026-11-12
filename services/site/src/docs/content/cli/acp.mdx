@@ -3,14 +3,14 @@ title: "ACP"
 description: "Use OC Nano with an Agent Client Protocol client."
 ---
 
-`OC Nano acp` runs OC Nano as an [Agent Client Protocol](https://agentclientprotocol.com) agent, so you can use it
+`ocnano acp` runs OC Nano as an [Agent Client Protocol](https://agentclientprotocol.com) agent, so you can use it
 from an ACP client such as Zed. This example adds OC Nano to Zed:
 
 ```json title="~/.config/zed/settings.json"
 {
   "agent_servers": {
     "OC Nano": {
-      "command": "OC Nano",
+      "command": "ocnano",
       "args": ["acp"]
     }
   }
@@ -18,7 +18,7 @@ from an ACP client such as Zed. This example adds OC Nano to Zed:
 ```
 
 Other ACP clients use the same command and `acp` argument, but their configuration file and field names may differ. If
-a graphical client can't find `OC Nano`, set `command` to the absolute path that `which OC Nano` prints.
+a graphical client can't find `ocnano`, set `command` to the absolute path that `which ocnano` prints.
 
 ## Authentication
 
@@ -37,7 +37,7 @@ If the client sets `clientCapabilities.auth.terminal` to `true`, the auth method
 ```json
 {
   "id": "ocnano-login",
-  "name": "Login with OC Nano",
+  "name": "Login with ocnano",
   "description": "Run `ocnano auth login` in the terminal",
   "type": "terminal",
   "args": ["--login"]
@@ -45,7 +45,7 @@ If the client sets `clientCapabilities.auth.terminal` to `true`, the auth method
 ```
 
 The client must not send this method to `authenticate`. Instead, it adds `--login` to the command that starts OC Nano,
-for example `OC Nano acp --login`, and runs it in a terminal. OC Nano runs the `ocnano auth login` flow and exits.
+for example `ocnano acp --login`, and runs it in a terminal. OC Nano runs the `ocnano auth login` flow and exits.
 Exit status 0 means the login succeeded. The client then reconnects and sends `initialize` again.
 
 If the client sets `clientCapabilities._meta["terminal-auth"]` to `true`, the auth method includes the login command:
@@ -53,22 +53,22 @@ If the client sets `clientCapabilities._meta["terminal-auth"]` to `true`, the au
 ```json
 {
   "id": "ocnano-login",
-  "name": "Login with OC Nano",
+  "name": "Login with ocnano",
   "description": "Run `ocnano auth login` in the terminal",
-  "_meta": { "terminal-auth": { "command": "OC Nano", "args": ["auth", "login"], "label": "OC Nano Login" } }
+  "_meta": { "terminal-auth": { "command": "ocnano", "args": ["auth", "login"], "label": "OC Nano Login" } }
 }
 ```
 
 ## Troubleshooting
 
-`OC Nano acp` waits for ACP messages on stdin, so it looks stuck when you run it directly in a terminal. Start it from
+`ocnano acp` waits for ACP messages on stdin, so it looks stuck when you run it directly in a terminal. Start it from
 an ACP client instead.
 
 If the client reports that the process exited or wrote invalid protocol output, add `--print-logs` before `acp` in the
 client's arguments. OC Nano then writes its ACP and private server logs to stderr. Stdout carries only ACP messages.
 
 ```bash
-OC Nano --print-logs acp
+ocnano --print-logs acp
 ```
 
 ## Protocol reference
@@ -79,10 +79,10 @@ OC Nano adds. Clients that don't recognize these keys can ignore them. The
 
 ### Transport
 
-The client starts `OC Nano acp` as a child process. The two exchange newline-delimited JSON-RPC messages over stdin and
+The client starts `ocnano acp` as a child process. The two exchange newline-delimited JSON-RPC messages over stdin and
 stdout, using ACP protocol version 1.
 
-`OC Nano acp` starts a private OC Nano server for its own use. It doesn't connect to the shared background service,
+`ocnano acp` starts a private OC Nano server for its own use. It doesn't connect to the shared background service,
 and it doesn't open a network port for ACP. One process can serve many ACP sessions. It exits when the client closes
 stdin.
 
@@ -219,7 +219,7 @@ as arguments. OC Nano sends other text that starts with `/` as a normal prompt. 
 ### MCP servers
 
 The client can pass stdio and HTTP MCP servers on `session/new`, `session/load`, `session/resume`, and `session/fork`.
-OC Nano adds them to the session's directory for the life of the `OC Nano acp` process, so other sessions in that
+OC Nano adds them to the session's directory for the life of the `ocnano acp` process, so other sessions in that
 directory can use them. OC Nano passes HTTP headers through and doesn't use OAuth for these servers. It doesn't
 advertise MCP over SSE, and it doesn't support MCP over ACP.
 

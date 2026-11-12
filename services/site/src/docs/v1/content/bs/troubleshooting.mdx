@@ -12,11 +12,11 @@ Da biste otklonili probleme s OC Nano, počnite provjeravanjem dnevnika i lokaln
 Log fajlovi se pišu na:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.local\share\ocnano\log`
 
 Datoteke evidencije se imenuju vremenskim oznakama (npr. `2025-01-09T123456.log`) i čuvaju se najnovijih 10 datoteka dnevnika.
 
-Možete postaviti nivo dnevnika pomoću opcije komandne linije `--log-level` da biste dobili detaljnije informacije o otklanjanju grešaka. Na primjer, `OC Nano --log-level DEBUG`.
+Možete postaviti nivo dnevnika pomoću opcije komandne linije `--log-level` da biste dobili detaljnije informacije o otklanjanju grešaka. Na primjer, `ocnano --log-level DEBUG`.
 
 ---
 
@@ -25,7 +25,7 @@ Možete postaviti nivo dnevnika pomoću opcije komandne linije `--log-level` da 
 OC Nano pohranjuje podatke o sesiji i druge podatke aplikacije na disku na:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.local\share\ocnano`
 
 Ovaj direktorij sadrži:
 
@@ -59,7 +59,7 @@ Otvorite svoju globalnu konfiguracijsku datoteku i potražite ključ `plugin`.
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (ili `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (starije instalacije): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 Ako imate konfigurirane dodatke, privremeno ih onemogućite uklanjanjem ključa ili postavljanjem na prazan niz:
 
@@ -76,7 +76,7 @@ OC Nano također može učitati lokalne dodatke s diska. Privremeno ih maknite s
 
 - **Globalni dodaci**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.config\ocnano\plugins`
 - **Projektni dodaci** (samo ako koristite konfiguraciju po projektu)
   - `<your-project>/.ocnano/plugins/`
 
@@ -93,7 +93,7 @@ Ako onemogućavanje dodataka ne pomogne (ili se instalacija dodatka zaglavila), 
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> zalijepi `~/.cache/ocnano`
 - **Linux**: obrišite `~/.cache/ocnano` (ili pokrenite `rm -rf ~/.cache/ocnano`)
-- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: Pritisnite `WIN+R` i zalijepite `%USERPROFILE%\.cache\ocnano`
 
 3. Ponovo pokrenite OC Nano Desktop.
 
@@ -244,7 +244,7 @@ Da biste ovo riješili:
    rm -rf ~/.local/share/ocnano
 ```
 
-Na Windows-u pritisnite `WIN+R` i izbrišite: `%USERPROFILE%\.local\share\OC Nano`
+Na Windows-u pritisnite `WIN+R` i izbrišite: `%USERPROFILE%\.local\share\ocnano`
 
 3. Ponovo izvršite autentifikaciju kod svog provajdera koristeći naredbu `/connect` u TUI.
 
@@ -262,7 +262,7 @@ Da biste riješili probleme s paketom dobavljača:
    rm -rf ~/.cache/ocnano
 ```
 
-Na Windows-u pritisnite `WIN+R` i izbrišite: `%USERPROFILE%\.cache\OC Nano`
+Na Windows-u pritisnite `WIN+R` i izbrišite: `%USERPROFILE%\.cache\ocnano`
 
 2. Ponovo pokrenite OC Nano da ponovo instalirate najnovije pakete dobavljača
 

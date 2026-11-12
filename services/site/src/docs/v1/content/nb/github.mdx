@@ -1,6 +1,6 @@
 ---
 title: GitHub
-description: Bruk OC Nano i GitHub-problemer og pull-forespørsler.
+description: Bruk ocnano i GitHub-problemer og pull-forespørsler.
 ---
 
 OC Nano integreres med GitHub-arbeidsflyten din. Nevn `/ocnano` eller `/oc` i kommentaren din, og OC Nano vil utføre oppgaver i din GitHub Actions-løper.
@@ -20,7 +20,7 @@ OC Nano integreres med GitHub-arbeidsflyten din. Nevn `/ocnano` eller `/oc` i ko
 Kjør følgende kommando i et prosjekt som er et GitHub-repo:
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Dette vil lede deg gjennom å installere GitHub-appen, lage arbeidsflyten og sette opp secrets (hemmeligheter).
@@ -40,7 +40,7 @@ Eller du kan sette den opp manuelt.
    Legg til følgende arbeidsflytfil til `.github/workflows/ocnano.yml` i repoen. Sørg for å sette riktig `model` og nødvendige API-nøkler i `env`.
 
    ```yml title=".github/workflows/ocnano.yml" {24,26}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ Eller du kan sette den opp manuelt.
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

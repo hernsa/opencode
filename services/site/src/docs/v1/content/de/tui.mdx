@@ -10,13 +10,13 @@ OC Nano bietet eine interaktive Terminaloberflaeche (TUI), um mit einem LLM an d
 Ohne weitere Argumente startet OC Nano die TUI im aktuellen Verzeichnis.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Oder du startest sie fuer ein bestimmtes Arbeitsverzeichnis.
 
 ```bash
-OC Nano /path/to/project
+ocnano /path/to/project
 ```
 
 In der TUI kannst du direkt mit einer Nachricht prompten.
@@ -326,7 +326,7 @@ Du kannst das Verhalten der TUI ueber die Datei `tui.json` (oder `tui.jsonc`) an
 ```json title="tui.json"
 {
   "$schema": "https://opencode.ai/tui.json",
-  "theme": "OC Nano",
+  "theme": "ocnano",
   "leader_timeout": 2000,
   "keybinds": {
     "leader": "ctrl+x",

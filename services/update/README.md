@@ -21,7 +21,7 @@ curl 'https://opencode.ai/update/api/beta/desktop/ocnano/latest-mac.yml'
 
 Use `latest.yml` for Windows, `latest-mac.yml` for macOS, `latest-linux.yml` for Linux x64,
 and `latest-linux-arm64.yml` for Linux ARM64. The distribution selects the stored download
-URLs (`OC Nano` or `github`). Each manifest includes the selected artifact's version,
+URLs (`ocnano` or `github`). Each manifest includes the selected artifact's version,
 file URLs, SHA-512 checksums, sizes, and release date. Existing minimum-version selection
 and `current`/User-Agent handling also apply to these feeds.
 
@@ -78,7 +78,7 @@ channel transparently resolves to `beta` for older clients.
 
 Choose a minimum that older clients can install and that can itself consume the active
 release. For the CLI package migration, retain a package-aware release published as
-`@ocnano-ai/cli` as the minimum before activating releases under `@ocnano/cli`.
+`@opencode-ai/cli` as the minimum before activating releases under `@ocnano/cli`.
 
 Both admin mounts must be protected by the same Cloudflare Access self-hosted application:
 
@@ -111,7 +111,7 @@ has a single public deployment.
 ## Publishing
 
 The release workflow also registers direct binary downloads with distribution
-`OC Nano`, after uploading every file to the public files bucket:
+`ocnano`, after uploading every file to the public files bucket:
 
 ```sh
 curl 'https://opencode.ai/update/api/dev/cli/ocnano'

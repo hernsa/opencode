@@ -3,13 +3,13 @@ title: Configuração
 description: Usando a configuração JSON do ocnano.
 ---
 
-Você pode configurar o OC Nano usando um arquivo de configuração JSON.
+Você pode configurar o ocnano usando um arquivo de configuração JSON.
 
 ---
 
 ## Formato
 
-O OC Nano suporta os formatos **JSON** e **JSONC** (JSON com Comentários).
+O ocnano suporta os formatos **JSON** e **JSONC** (JSON com Comentários).
 
 ```jsonc title="ocnano.jsonc"
 {
@@ -96,7 +96,7 @@ Você pode habilitar servidores específicos em sua configuração local:
 
 ### Global
 
-Coloque sua configuração global do OC Nano em `~/.config/ocnano/ocnano.json`. Use a configuração global para preferências de todo o usuário, como provedores, modelos e permissões.
+Coloque sua configuração global do ocnano em `~/.config/ocnano/ocnano.json`. Use a configuração global para preferências de todo o usuário, como provedores, modelos e permissões.
 
 Para configurações específicas do TUI, use `~/.config/ocnano/tui.json`.
 
@@ -114,7 +114,7 @@ Para configurações específicas do TUI do projeto, adicione `tui.json` junto a
 Coloque a configuração específica do projeto na raiz do seu projeto.
 :::
 
-Quando o OC Nano é iniciado, ele procura um arquivo de configuração no diretório atual ou sobe até o diretório Git mais próximo.
+Quando o ocnano é iniciado, ele procura um arquivo de configuração no diretório atual ou sobe até o diretório Git mais próximo.
 
 Isso também é seguro para ser verificado no Git e usa o mesmo esquema que o global.
 
@@ -228,7 +228,7 @@ Você pode gerenciar as ferramentas que um LLM pode usar através da opção `to
 
 ### Modelos
 
-Você pode configurar os provedores e modelos que deseja usar em sua configuração do OC Nano através das opções `provider`, `model` e `small_model`.
+Você pode configurar os provedores e modelos que deseja usar em sua configuração do ocnano através das opções `provider`, `model` e `small_model`.
 
 ```json title="ocnano.json"
 {
@@ -239,7 +239,7 @@ Você pode configurar os provedores e modelos que deseja usar em sua configuraç
 }
 ```
 
-A opção `small_model` configura um modelo separado para tarefas leves, como geração de títulos. Por padrão, o OC Nano tenta usar um modelo mais barato se um estiver disponível do seu provedor, caso contrário, ele recua para seu modelo principal.
+A opção `small_model` configura um modelo separado para tarefas leves, como geração de títulos. Por padrão, o ocnano tenta usar um modelo mais barato se um estiver disponível do seu provedor, caso contrário, ele recua para seu modelo principal.
 
 As opções do provedor podem incluir `timeout` e `setCacheKey`:
 
@@ -351,7 +351,7 @@ Você pode definir o agente padrão usando a opção `default_agent`. Isso deter
 }
 ```
 
-O agente padrão deve ser um agente primário (não um subagente). Isso pode ser um agente embutido como `"build"` ou `"plan"`, ou um [agente personalizado](/docs/agents) que você definiu. Se o agente especificado não existir ou for um subagente, o OC Nano recuará para `"build"` com um aviso.
+O agente padrão deve ser um agente primário (não um subagente). Isso pode ser um agente embutido como `"build"` ou `"plan"`, ou um [agente personalizado](/docs/agents) que você definiu. Se o agente especificado não existir ou for um subagente, o ocnano recuará para `"build"` com um aviso.
 
 Essa configuração se aplica a todas as interfaces: TUI, CLI (`ocnano run`), aplicativo desktop e GitHub Action.
 
@@ -400,7 +400,7 @@ Personalize atalhos de teclado em `tui.json`.
 
 ### Atualização automática
 
-O OC Nano fará o download automaticamente de quaisquer novas atualizações quando for iniciado. Você pode desabilitar isso com a opção `autoupdate`.
+O ocnano fará o download automaticamente de quaisquer novas atualizações quando for iniciado. Você pode desabilitar isso com a opção `autoupdate`.
 
 ```json title="ocnano.json"
 {
@@ -442,7 +442,7 @@ Você pode configurar formatadores de código através da opção `formatter`.
 
 ### Permissões
 
-Por padrão, o OC Nano **permite todas as operações** sem exigir aprovação explícita. Você pode mudar isso usando a opção `permission`.
+Por padrão, o ocnano **permite todas as operações** sem exigir aprovação explícita. Você pode mudar isso usando a opção `permission`.
 
 Por exemplo, para garantir que as ferramentas `edit` e `bash` exijam aprovação do usuário:
 
@@ -515,7 +515,7 @@ Você pode configurar servidores MCP que deseja usar através da opção `mcp`.
 
 ### Plugins
 
-[Plugins](/docs/plugins) estendem o OC Nano com ferramentas, hooks e integrações personalizadas.
+[Plugins](/docs/plugins) estendem o ocnano com ferramentas, hooks e integrações personalizadas.
 
 Coloque arquivos de plugin em `.ocnano/plugins/` ou `~/.config/ocnano/plugins/`. Você também pode carregar plugins do npm através da opção `plugin`.
 
@@ -579,7 +579,7 @@ Você pode especificar uma lista de permissão de provedores através da opção
 }
 ```
 
-Isso é útil quando você deseja restringir o OC Nano para usar apenas provedores específicos, em vez de desabilitá-los um a um.
+Isso é útil quando você deseja restringir o ocnano para usar apenas provedores específicos, em vez de desabilitá-los um a um.
 
 :::note
 A opção `disabled_providers` tem prioridade sobre `enabled_providers`.

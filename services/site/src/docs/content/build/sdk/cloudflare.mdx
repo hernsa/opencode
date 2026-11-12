@@ -16,7 +16,7 @@ import { OC NanoWorkerd } from "@ocnano/sdk/workerd"
 import myPlugin from "./my-plugin"
 
 export class OC NanoDO {
-  private readonly OC Nano: Promise<OC NanoWorkerd.Interface>
+  private readonly ocnano: Promise<OC NanoWorkerd.Interface>
 
   constructor(state: DurableObjectState) {
     this.ocnano = state.blockConcurrencyWhile(() =>
@@ -29,7 +29,7 @@ export class OC NanoDO {
   }
 
   async fetch() {
-    const OC Nano = await this.ocnano
+    const ocnano = await this.ocnano
     return Response.json(await ocnano.server.info())
   }
 }

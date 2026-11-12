@@ -236,7 +236,7 @@ export const content = {
     hero: { copy: { text: "给代理的规范", copied: "规范已复制" } },
     naming: {
       title: "命名",
-      body: "OC Nano 写作一个词，O 和 C 大写。不要写成 OC Nano、Open Code、OC Nano AI 或 Open-Code。",
+      body: "OC Nano 写作一个词，O 和 C 大写。不要写成 Opencode、Open Code、OC Nano AI 或 Open-Code。",
       code: "小写的 `ocnano` 仅用于代码和包名，例如 `ocnano-figma` 或 `@acme/ocnano-plugin`。",
     },
     families: {

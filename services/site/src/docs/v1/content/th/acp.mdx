@@ -15,7 +15,7 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 
 ## การกำหนดค่า
 
-ในการใช้ OC Nano ผ่าน ACP ให้กำหนดค่าโปรแกรมแก้ไขของคุณให้รันคำสั่ง `OC Nano acp`
+ในการใช้ OC Nano ผ่าน ACP ให้กำหนดค่าโปรแกรมแก้ไขของคุณให้รันคำสั่ง `ocnano acp`
 
 คำสั่งนี้จะเริ่ม OC Nano เป็น process ย่อยที่รองรับ ACP ซึ่งสื่อสารกับโปรแกรมแก้ไขของคุณผ่าน JSON-RPC ทาง stdio
 
@@ -34,7 +34,7 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
   "agent_servers": {
     "OC Nano": {
       "type": "custom",
-      "command": "OC Nano",
+      "command": "ocnano",
       "args": ["acp"]
     }
   }
@@ -56,7 +56,7 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
             "custom": {
               "name": "OC Nano",
               "command": {
-                "command": "OC Nano",
+                "command": "ocnano",
                 "args": ["acp"]
               }
             }
@@ -96,8 +96,8 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 ```lua
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" }
     }
   }
@@ -109,8 +109,8 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 ```lua {6-8}
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" },
       env = {
         OCNANO_API_KEY = os.getenv("OCNANO_API_KEY")
@@ -131,7 +131,7 @@ require("codecompanion").setup({
   interactions = {
     chat = {
       adapter = {
-        name = "OC Nano",
+        name = "ocnano",
         model = "claude-sonnet-5-5",
       },
     },
@@ -139,13 +139,13 @@ require("codecompanion").setup({
 })
 ```
 
-คุณสามารถใช้ CodeCompanion เพื่อใช้ OC Nano เป็น ACP agent สำหรับแชท
+คุณสามารถใช้ CodeCompanion เพื่อใช้ ocnano เป็น ACP agent สำหรับแชท
 
 หากคุณต้องส่ง environment variables (เช่น `OCNANO_API_KEY`) โปรดดู [Configuring Adapters: Environment Variables](https://codecompanion.olimorris.dev/getting-started#setting-an-api-key) ในเอกสารของ CodeCompanion.nvim สำหรับรายละเอียดทั้งหมด
 
 ## การรองรับ
 
-OC Nano ทำงานผ่าน ACP เหมือนกับใน terminal และรองรับฟีเจอร์ทั้งหมด:
+ocnano ทำงานผ่าน ACP เหมือนกับใน terminal และรองรับฟีเจอร์ทั้งหมด:
 
 :::note
 คำสั่ง slash ในตัวบางคำสั่งเช่น `/undo` และ `/redo` ยังไม่รองรับในขณะนี้

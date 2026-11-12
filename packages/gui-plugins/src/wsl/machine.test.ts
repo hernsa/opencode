@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { WslOcNanoCheck, WslServerConfig } from "./contract"
+import type { WslOpencodeCheck, WslServerConfig } from "./contract"
 import {
   createWslMachineState,
   toServersState,
@@ -14,7 +14,7 @@ const ubuntu: WslServerConfig = { id: "wsl:Ubuntu", distro: "Ubuntu" }
 
 const readyProbe = { name: "Debian", canExecute: true, hasBash: true, hasCurl: true, error: null }
 
-function check(distro: string, version: string): WslOcNanoCheck {
+function check(distro: string, version: string): WslOpencodeCheck {
   return {
     distro,
     resolvedPath: "/usr/bin/ocnano",
@@ -240,7 +240,7 @@ describe("updates", () => {
     })
     expect(toServersState(failed.state).servers[0]?.runtime).toEqual({ kind: "stopped" })
     expect(wslRowView(toServersState(failed.state), "Ubuntu")).toMatchObject({
-      button: { label: "onboarding.updateOC Nano", disabled: false },
+      button: { label: "onboarding.updateOpencode", disabled: false },
       retry: true,
     })
   })

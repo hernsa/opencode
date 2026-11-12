@@ -71,14 +71,14 @@ Set a provider's supported environment variable on the server process that runs 
 server, pass it when starting standalone mode.
 
 ```bash
-ANTHROPIC_API_KEY=sk-ant-... OC Nano --standalone
+ANTHROPIC_API_KEY=sk-ant-... ocnano --standalone
 ```
 
 For the shared background server, add the variable to its managed environment. This stops a running service; the next
-ocnano command starts it with the new value.
+OC Nano command starts it with the new value.
 
 ```bash
-OC Nano service set env ANTHROPIC_API_KEY sk-ant-...
+ocnano service set env ANTHROPIC_API_KEY sk-ant-...
 ocnano auth list
 ```
 
@@ -88,7 +88,7 @@ the same integration.
 
 ```bash
 ocnano auth list
-OC Nano service unset env ANTHROPIC_API_KEY
+ocnano service unset env ANTHROPIC_API_KEY
 ```
 
 Some providers also use their native ambient credential chain instead of an API-key variable:
@@ -102,7 +102,7 @@ Some providers also use their native ambient credential chain instead of an API-
 
 ```bash
 gcloud auth application-default login
-GOOGLE_CLOUD_PROJECT=my-project OC Nano
+GOOGLE_CLOUD_PROJECT=my-project ocnano
 ```
 
 See [Providers](/providers) for provider-specific and server-side setup.

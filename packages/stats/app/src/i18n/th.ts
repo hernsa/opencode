@@ -25,7 +25,7 @@ export const dict = {
   "header.githubAria": "กดดาว OC Nano บน GitHub",
   "header.github": "GitHub",
   "header.tryOC Nano": "ลองใช้ OC Nano",
-  "header.tryOC NanoShort": "ลองเลย",
+  "header.tryOcNanoShort": "ลองเลย",
   "header.openNav": "เปิดการนำทาง",
   "header.closeNav": "ปิดการนำทาง",
   "theme.groupLabel": "ธีม",

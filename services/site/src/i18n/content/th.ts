@@ -281,7 +281,7 @@ export const content = {
     hero: { copy: { text: "กฎสำหรับเอเจนต์", copied: "คัดลอกกฎแล้ว" } },
     naming: {
       title: "ชื่อเรียก",
-      body: "เขียน OC Nano เป็นคำเดียว โดยใช้ O และ C ตัวพิมพ์ใหญ่ อย่าเขียนเป็น OC Nano, Open Code, OC Nano AI หรือ Open-Code",
+      body: "เขียน OC Nano เป็นคำเดียว โดยใช้ O และ C ตัวพิมพ์ใหญ่ อย่าเขียนเป็น Opencode, Open Code, OC Nano AI หรือ Open-Code",
       code: "ใช้ `ocnano` ตัวพิมพ์เล็กเฉพาะในโค้ดและชื่อแพ็กเกจ เช่น `ocnano-figma` หรือ `@acme/ocnano-plugin`",
     },
     families: {

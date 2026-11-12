@@ -2,7 +2,7 @@ export const documentPolicyHeader = "Document-Policy"
 
 export const jsCallStacksDocumentPolicy = "include-js-call-stacks-in-crash-reports"
 
-// The renderer lives at oc://renderer, so every server it talks to is cross-origin. Servers that
+// The renderer lives at ocnano://renderer, so every server it talks to is cross-origin. Servers that
 // send no CORS headers get permissive ones here so the renderer can still reach them.
 //
 // A server's own `Access-Control-Allow-Headers` is kept as-is. Chromium reuses a cached preflight

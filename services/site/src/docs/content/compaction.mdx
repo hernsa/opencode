@@ -44,7 +44,7 @@ or request compaction yourself before the automatic one.
 Request compaction at any time, even for a short history:
 
 ```sh
-OC Nano api post /api/session/ses_example/compact --data '{}'
+ocnano api post /api/session/ses_example/compact --data '{}'
 ```
 
 The `api` command discovers and authenticates with the background service. Its
@@ -62,7 +62,7 @@ Pass an `id` to make an exact retry idempotent. Reusing that ID for a different
 request returns a conflict.
 
 ```sh
-OC Nano api post /api/session/ses_example/compact --data '{"id":"msg_compact_once"}'
+ocnano api post /api/session/ses_example/compact --data '{"id":"msg_compact_once"}'
 ```
 
 ## Settings

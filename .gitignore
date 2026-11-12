@@ -39,3 +39,11 @@ tsconfig.tsbuildinfo
 
 # Legal drafts pending review are kept outside the repository; never copy them in.
 legal-drafts-private/
+
+# Desktop build artifacts: the bundled CLI is produced by the build and must never be tracked.
+packages/desktop/resources/ocnano-cli
+packages/desktop/resources/ocnano-cli.exe
+packages/desktop/resources/ocnano-cli.version
+packages/desktop/resources/opencode-cli
+packages/desktop/resources/opencode-cli.exe
+packages/desktop/resources/opencode-cli.version

@@ -20,7 +20,7 @@ description: استخدم OC Nano في GitHub Issues وPull Requests.
 شغّل الأمر التالي داخل مشروع موجود في مستودع GitHub:
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 سيأخذك هذا خلال تثبيت GitHub app، وإنشاء workflow، وإعداد secrets.
@@ -40,7 +40,7 @@ OC Nano github install
    أضف ملف الـworkflow التالي إلى `.github/workflows/ocnano.yml` في مستودعك. تأكد من ضبط `model` المناسب ومفاتيح API المطلوبة ضمن `env`.
 
    ```yml title=".github/workflows/ocnano.yml" {24,26}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ OC Nano github install
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

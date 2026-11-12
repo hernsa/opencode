@@ -91,7 +91,7 @@ html:has([data-site][data-theme="dark"]) {
   --text-inverted: light-dark(hsl(0, 0%, 100%), #0c0c0c);
   --border: light-dark(hsl(0, 0%, 88%), hsl(0, 0%, 18%));
   --border-strong: light-dark(hsl(0, 0%, 78%), hsl(0, 0%, 28%));
-  /* The OcNano Console accent blue; dark mode uses a lighter blue from Settings › Dark blue. */
+  /* The OC Nano Console accent blue; dark mode uses a lighter blue from Settings › Dark blue. */
   --link-dark: #4f8bff;
   --link: light-dark(#3b5cf6, var(--link-dark));
   --status-ok: light-dark(hsl(142, 64%, 38%), hsl(142, 60%, 58%));

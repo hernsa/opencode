@@ -701,7 +701,7 @@ export function createData(config: CreateDataInput) {
     )
   }
 
-  function handleEvent(event: OcNanoEvent) {
+  function handleEvent(event: OC NanoEvent) {
     switch (event.type) {
       case "server.connected": {
         const updates = new Map<string, DataSessionStatus | undefined>()
@@ -1451,7 +1451,7 @@ export function createData(config: CreateDataInput) {
   // A cached per-location catalog. `sync` loads once per invalidation, keyed by the
   // effective location, and publishes under the server's canonical location; `alias`
   // also publishes under the requested key when the two differ.
-  // Reloads usage limits only where something has read them, since each load asks OcNano Console.
+  // Reloads usage limits only where something has read them, since each load asks OC Nano Console.
   function refreshUsageLimits(location: LocationRef) {
     const loaded =
       store.location[locationKey(location)]?.usageLimits !== undefined ||

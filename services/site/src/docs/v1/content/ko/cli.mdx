@@ -1,17 +1,17 @@
 ---
 title: CLI
-description: OC Nano CLI 옵션과 명령어.
+description: ocnano CLI 옵션과 명령어.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-OC Nano CLI는 인수 없이 실행하면 기본적으로 [TUI](/docs/tui)를 시작합니다.
+ocnano CLI는 인수 없이 실행하면 기본적으로 [TUI](/docs/tui)를 시작합니다.
 
 ```bash
-OC Nano
+ocnano
 ```
 
-이 페이지에 나온 것처럼 명령을 함께 전달할 수도 있습니다. 이를 통해 OC Nano를 프로그래밍 방식으로 사용할 수 있습니다.
+이 페이지에 나온 것처럼 명령을 함께 전달할 수도 있습니다. 이를 통해 ocnano를 프로그래밍 방식으로 사용할 수 있습니다.
 
 ```bash
 ocnano run "Explain how closures work in JavaScript"
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 OC Nano 터미널 사용자 인터페이스를 시작합니다.
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### 플래그
@@ -44,19 +44,19 @@ OC Nano [project]
 
 ## 명령어
 
-OC Nano CLI는 아래 명령들도 제공합니다.
+ocnano CLI는 아래 명령들도 제공합니다.
 
 ---
 
 ### attach
 
-`serve` 또는 `web` 명령으로 이미 실행 중인 OC Nano 백엔드 서버에 터미널을 연결합니다.
+`serve` 또는 `web` 명령으로 이미 실행 중인 ocnano 백엔드 서버에 터미널을 연결합니다.
 
 ```bash
 ocnano attach [url]
 ```
 
-원격 OC Nano 백엔드와 TUI를 연결해 사용할 수 있습니다. 예:
+원격 ocnano 백엔드와 TUI를 연결해 사용할 수 있습니다. 예:
 
 ```bash
 # Start the backend server for web/mobile access
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | 이어서 실행할 세션 ID                                                      |
 | <nobr><code>{"--fork"}</code></nobr>     |      | 이어서 실행할 때 세션 포크 (`--continue` 또는 `--session`과 함께 사용)     |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | 기본 인증 비밀번호 (기본값: `OCNANO_SERVER_PASSWORD`)                    |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 기본 인증 사용자 이름 (기본값: `OCNANO_SERVER_USERNAME` 또는 `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 기본 인증 사용자 이름 (기본값: `OCNANO_SERVER_USERNAME` 또는 `ocnano`) |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 저장소 자동화를 위한 GitHub 에이전트를 관리합니다.
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 저장소에 GitHub 에이전트를 설치합니다.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 필요한 GitHub Actions 워크플로를 설정하고 구성 과정을 안내합니다. [더 알아보기](/docs/github).
@@ -154,7 +154,7 @@ OC Nano github install
 GitHub 에이전트를 실행합니다. 보통 GitHub Actions에서 사용합니다.
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### 플래그
@@ -283,7 +283,7 @@ ocnano models --refresh
 
 ### run
 
-프롬프트를 직접 전달해 비대화형 모드로 OC Nano를 실행합니다.
+프롬프트를 직접 전달해 비대화형 모드로 ocnano를 실행합니다.
 
 ```bash
 ocnano run [message..]
@@ -318,9 +318,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f` | 메시지에 첨부할 파일                                                       |
 | <nobr><code>{"--format"}</code></nobr>   |      | 출력 형식: default(포맷됨) 또는 json(원시 JSON 이벤트)                     |
 | <nobr><code>{"--title"}</code></nobr>    |      | 세션 제목(값이 없으면 프롬프트를 잘라 자동 생성)                           |
-| <nobr><code>{"--attach"}</code></nobr>   |      | 실행 중인 OC Nano 서버에 연결(예: http://localhost:4096)                  |
+| <nobr><code>{"--attach"}</code></nobr>   |      | 실행 중인 ocnano 서버에 연결(예: http://localhost:4096)                  |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | 기본 인증 비밀번호 (기본값: `OCNANO_SERVER_PASSWORD`)                    |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 기본 인증 사용자 이름 (기본값: `OCNANO_SERVER_USERNAME` 또는 `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 기본 인증 사용자 이름 (기본값: `OCNANO_SERVER_USERNAME` 또는 `ocnano`) |
 | <nobr><code>{"--dir"}</code></nobr>      |      | 실행할 디렉터리, 또는 연결 시 원격 서버 경로                               |
 | <nobr><code>{"--variant"}</code></nobr>  |      | 모델 변형 (제공자별 추론 수준)                                             |
 | <nobr><code>{"--thinking"}</code></nobr> |      | 사고 블록 표시                                                             |
@@ -336,7 +336,7 @@ API 접근용 headless OC Nano 서버를 시작합니다. 전체 HTTP 인터페�
 ocnano serve
 ```
 
-이 명령은 TUI 없이 OC Nano 기능에 접근할 수 있는 HTTP 서버를 시작합니다. `OCNANO_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `OC Nano`).
+이 명령은 TUI 없이 ocnano 기능에 접근할 수 있는 HTTP 서버를 시작합니다. `OCNANO_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `ocnano`).
 
 #### 플래그
 
@@ -429,7 +429,7 @@ ocnano import session.json
 ocnano web
 ```
 
-이 명령은 HTTP 서버를 시작하고 웹 브라우저를 열어 웹 인터페이스로 OC Nano에 접속합니다. `OCNANO_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `OC Nano`).
+이 명령은 HTTP 서버를 시작하고 웹 브라우저를 열어 웹 인터페이스로 OC Nano에 접속합니다. `OCNANO_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `ocnano`).
 
 #### 플래그
 
@@ -447,7 +447,7 @@ ocnano web
 ACP(Agent Client Protocol) 서버를 시작합니다.
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 이 명령은 nd-JSON 형식으로 stdin/stdout을 통해 통신하는 ACP 서버를 시작합니다.
@@ -483,7 +483,7 @@ ocnano uninstall
 
 ### upgrade
 
-OC Nano를 최신 버전 또는 특정 버전으로 업데이트합니다.
+ocnano를 최신 버전 또는 특정 버전으로 업데이트합니다.
 
 ```bash
 ocnano upgrade [target]
@@ -511,7 +511,7 @@ ocnano upgrade v0.1.48
 
 ## 전역 플래그
 
-OC Nano CLI는 아래 전역 플래그를 지원합니다.
+ocnano CLI는 아래 전역 플래그를 지원합니다.
 
 | 플래그                                     | 축약 | 설명                                |
 | ------------------------------------------ | ---- | ----------------------------------- |
@@ -548,7 +548,7 @@ OC Nano는 환경 변수로도 구성할 수 있습니다.
 | `OCNANO_CLIENT`                     | string  | 클라이언트 식별자(기본값: `cli`)               |
 | `OCNANO_ENABLE_EXA`                 | boolean | Exa 웹 검색 도구 활성화                        |
 | `OCNANO_SERVER_PASSWORD`            | string  | `serve`/`web` 기본 인증 활성화                 |
-| `OCNANO_SERVER_USERNAME`            | string  | 기본 인증 사용자명 오버라이드(기본 `OC Nano`) |
+| `OCNANO_SERVER_USERNAME`            | string  | 기본 인증 사용자명 오버라이드(기본 `ocnano`) |
 | `OCNANO_MODELS_URL`                 | string  | 모델 설정을 가져올 사용자 지정 URL             |
 
 ---

@@ -15,7 +15,7 @@ live(
   () =>
     Effect.gen(function* () {
       const directory = yield* Effect.acquireRelease(
-        Effect.promise(() => fs.mkdtemp(path.join(os.tmpdir(), "ocnano-pty-transport-"))),
+        Effect.promise(() => fs.mkdtemp(path.join(os.tmpdir(), "opencode-pty-transport-"))),
         (directory) => Effect.promise(() => fs.rm(directory, { recursive: true, force: true })),
       )
       const server = yield* ServerProcess.start<never, never>({
@@ -133,7 +133,7 @@ live(
   () =>
     Effect.gen(function* () {
       const directory = yield* Effect.acquireRelease(
-        Effect.promise(() => fs.mkdtemp(path.join(os.tmpdir(), "ocnano-pty-reload-"))),
+        Effect.promise(() => fs.mkdtemp(path.join(os.tmpdir(), "opencode-pty-reload-"))),
         (directory) => Effect.promise(() => fs.rm(directory, { recursive: true, force: true })),
       )
       const server = yield* ServerProcess.start<never, never>({

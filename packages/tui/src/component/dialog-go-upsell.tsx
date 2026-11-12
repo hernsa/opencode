@@ -180,7 +180,7 @@ export function DialogGoUpsell(props: {
               You've used today's free messages.{props.reset ? ` Resets at ${props.reset}.` : ""}
             </text>
             <text fg={theme.text.muted} bg={textBg()} wrapMode="word">
-              OcNano Go gives you reliable access to the best open-source models for $10/month.
+              OC Nano Go gives you reliable access to the best open-source models for $10/month.
             </text>
           </box>
           <box ref={setAnchor} height={7} paddingBottom={1} alignItems="center" justifyContent="flex-end">

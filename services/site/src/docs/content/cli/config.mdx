@@ -41,7 +41,7 @@ Unknown settings are ignored. Keep `$schema` so your editor flags invalid values
 Set `OCNANO_CLI_CONFIG_CONTENT` to apply CLI settings from inline JSON:
 
 ```sh
-OCNANO_CLI_CONFIG_CONTENT='{"tabs":{"mode":"off"}}' OC Nano
+OCNANO_CLI_CONFIG_CONTENT='{"tabs":{"mode":"off"}}' ocnano
 ```
 
 OC Nano merges the inline settings over the global `cli.json`. Nested objects are merged, while arrays and scalar
@@ -279,7 +279,7 @@ Configure terminal integration:
 
 ## Mini
 
-The `mini` group controls [`OC Nano mini`](/cli#mini), the minimal interactive interface:
+The `mini` group controls [`ocnano mini`](/cli#mini), the minimal interactive interface:
 
 ```json title="cli.json"
 {

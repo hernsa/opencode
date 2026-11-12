@@ -58,7 +58,7 @@ OC Nano Models هي قائمة نماذج يوفّرها فريق OC Nano وقد
 إذا كنت جديدا، فننصح بالبدء مع OC Nano Models.
 :::
 
-1. شغّل الأمر `/connect` في TUI، واختر OC Nano، ثم انتقل إلى [opencode.ai/auth](https://opencode.ai/auth).
+1. شغّل الأمر `/connect` في TUI، واختر ocnano، ثم انتقل إلى [opencode.ai/auth](https://opencode.ai/auth).
 
    ```txt
    /connect
@@ -169,17 +169,17 @@ OC Nano Go هي خطة اشتراك منخفضة التكلفة توفّر وص�
 
    #### متغيرات البيئة (بدء سريع)
 
-   عيّن أحد متغيرات البيئة التالية أثناء تشغيل OC Nano:
+   عيّن أحد متغيرات البيئة التالية أثناء تشغيل ocnano:
 
    ```bash
    # الخيار 1: استخدام مفاتيح وصول AWS
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # الخيار 2: استخدام ملف تعريف AWS مسمّى
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # الخيار 3: استخدام رمز Bedrock المميز (bearer token)
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    أو أضفها إلى bash profile:
@@ -323,7 +323,7 @@ OC Nano Go هي خطة اشتراك منخفضة التكلفة توفّر وص�
 
 ### Atomic Chat
 
-يمكنك تكوين OC Nano لاستخدام النماذج المحلية عبر [Atomic Chat](https://atomic.chat)، وهو تطبيق سطح مكتب يقوم بتشغيل LLMs المحلية خلف خادم API متوافق مع OpenAI (نقطة النهاية الافتراضية `http://127.0.0.1:1337/v1`).
+يمكنك تكوين ocnano لاستخدام النماذج المحلية عبر [Atomic Chat](https://atomic.chat)، وهو تطبيق سطح مكتب يقوم بتشغيل LLMs المحلية خلف خادم API متوافق مع OpenAI (نقطة النهاية الافتراضية `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -372,7 +372,7 @@ OC Nano Go هي خطة اشتراك منخفضة التكلفة توفّر وص�
 2. اذهب إلى [Azure AI Foundry](https://ai.azure.com/) وانشر نموذجا.
 
    :::note
-   يجب أن يطابق اسم النشر اسم النموذج كي يعمل OC Nano بشكل صحيح.
+   يجب أن يطابق اسم النشر اسم النموذج كي يعمل ocnano بشكل صحيح.
    :::
 
 3. شغّل الأمر `/connect` وابحث عن **Azure**.
@@ -393,7 +393,7 @@ OC Nano Go هي خطة اشتراك منخفضة التكلفة توفّر وص�
 5. عيّن اسم المورد كمتغير بيئة:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    أو أضفه إلى bash profile:
@@ -419,7 +419,7 @@ OC Nano Go هي خطة اشتراك منخفضة التكلفة توفّر وص�
 2. اذهب إلى [Azure AI Foundry](https://ai.azure.com/) وانشر نموذجا.
 
    :::note
-   يجب أن يطابق اسم النشر اسم النموذج كي يعمل OC Nano بشكل صحيح.
+   يجب أن يطابق اسم النشر اسم النموذج كي يعمل ocnano بشكل صحيح.
    :::
 
 3. شغّل الأمر `/connect` وابحث عن **Azure Cognitive Services**.
@@ -440,7 +440,7 @@ OC Nano Go هي خطة اشتراك منخفضة التكلفة توفّر وص�
 5. عيّن اسم المورد كمتغير بيئة:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    أو أضفه إلى bash profile:
@@ -849,7 +849,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 ### GitHub Copilot
 
-لاستخدام اشتراك GitHub Copilot مع OC Nano:
+لاستخدام اشتراك GitHub Copilot مع ocnano:
 
 :::note
 قد تتطلب بعض النماذج اشتراك [Pro+](https://github.com/features/copilot/plans) للاستخدام.
@@ -904,7 +904,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
    عيّنها أثناء تشغيل ocnano.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    أو أضفها إلى bash profile.
@@ -1014,7 +1014,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 #### إعدادات اختيارية
 
-إذا رأيت ميزة أو نموذجا في Helicone لم يتم ضبطه تلقائيا عبر OC Nano، فيمكنك دائما ضبطه بنفسك.
+إذا رأيت ميزة أو نموذجا في Helicone لم يتم ضبطه تلقائيا عبر ocnano، فيمكنك دائما ضبطه بنفسك.
 
 هذه هي [Helicone's Model Directory](https://helicone.ai/models)، وستحتاجها للحصول على IDs الخاصة بالنماذج التي تريد إضافتها.
 
@@ -1057,7 +1057,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1098,7 +1098,7 @@ npm install -g ocnano-helicone-session
 
 ### llama.cpp
 
-يمكنك ضبط OC Nano لاستخدام نماذج محلية عبر أداة llama-server ضمن [llama.cpp](https://github.com/ggml-org/llama.cpp)
+يمكنك ضبط ocnano لاستخدام نماذج محلية عبر أداة llama-server ضمن [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1165,7 +1165,7 @@ npm install -g ocnano-helicone-session
 
 ### LM Studio
 
-يمكنك ضبط OC Nano لاستخدام نماذج محلية عبر LM Studio.
+يمكنك ضبط ocnano لاستخدام نماذج محلية عبر LM Studio.
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1282,7 +1282,7 @@ npm install -g ocnano-helicone-session
 
 ### Ollama
 
-يمكنك ضبط OC Nano لاستخدام نماذج محلية عبر Ollama.
+يمكنك ضبط ocnano لاستخدام نماذج محلية عبر Ollama.
 
 :::tip
 يمكن لـ Ollama ضبط نفسه تلقائيا للعمل مع OC Nano. راجع [توثيق تكامل Ollama](https://docs.ollama.com/integrations/ocnano) للتفاصيل.
@@ -1517,7 +1517,7 @@ OC Nano Models هي قائمة من النماذج التي تم اختباره�
    أو عيّن متغير البيئة `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    أو أضفه إلى bash profile:
@@ -1529,7 +1529,7 @@ OC Nano Models هي قائمة من النماذج التي تم اختباره�
 4. اختياريا، عيّن deployment ID وresource group:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note
@@ -1606,7 +1606,7 @@ OC Nano Models هي قائمة من النماذج التي تم اختباره�
 
 ### Scaleway
 
-لاستخدام [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) مع OC Nano:
+لاستخدام [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) مع Opencode:
 
 1. توجّه إلى [Scaleway Console IAM settings](https://console.scaleway.com/iam/api-keys) لإنشاء مفتاح API جديد.
 
@@ -1980,7 +1980,7 @@ OC Nano Models هي قائمة من النماذج التي تم اختباره�
 
    لا ينطبق هذا على مزوّدات مثل Amazon Bedrock التي تعتمد على متغيرات البيئة لـ auth.
 
-2. للمزوّدات المخصّصة، راجع إعدادات OC Nano وتأكد من:
+2. للمزوّدات المخصّصة، راجع إعدادات ocnano وتأكد من:
    - أن provider ID المستخدم في الأمر `/connect` يطابق الـ ID في إعدادات ocnano.
    - استخدام حزمة npm الصحيحة للمزوّد. على سبيل المثال استخدم `@ai-sdk/cerebras` لـ Cerebras. ولكل المزوّدات الأخرى المتوافقة مع OpenAI استخدم `@ai-sdk/openai-compatible`.
    - استخدام نقطة نهاية API الصحيحة في الحقل `options.baseURL`.

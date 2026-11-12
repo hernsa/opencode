@@ -3,7 +3,7 @@ title: Servidores MCP
 description: Adicione ferramentas MCP locais e remotas.
 ---
 
-Você pode adicionar ferramentas externas ao OC Nano usando o _Model Context Protocol_, ou MCP. O OC Nano suporta servidores locais e remotos.
+Você pode adicionar ferramentas externas ao ocnano usando o _Model Context Protocol_, ou MCP. O ocnano suporta servidores locais e remotos.
 
 Uma vez adicionadas, as ferramentas MCP estão automaticamente disponíveis para o LLM juntamente com as ferramentas integradas.
 
@@ -23,7 +23,7 @@ Certos servidores MCP, como o servidor MCP do GitHub, tendem a adicionar muitos 
 
 ## Habilitando
 
-Você pode definir servidores MCP em sua [Configuração do OC Nano](/docs/config/) sob `mcp`. Adicione cada MCP com um nome único. Você pode se referir a esse MCP pelo nome ao solicitar ao LLM.
+Você pode definir servidores MCP em sua [Configuração do ocnano](/docs/config/) sob `mcp`. Adicione cada MCP com um nome único. Você pode se referir a esse MCP pelo nome ao solicitar ao LLM.
 
 ```jsonc title="ocnano.jsonc" {6}
 {
@@ -165,7 +165,7 @@ O `url` é a URL do servidor MCP remoto e com a opção `headers` você pode pas
 
 ## OAuth
 
-O OC Nano lida automaticamente com a autenticação OAuth para servidores MCP remotos. Quando um servidor requer autenticação, o OC Nano irá:
+O ocnano lida automaticamente com a autenticação OAuth para servidores MCP remotos. Quando um servidor requer autenticação, o ocnano irá:
 
 1. Detectar a resposta 401 e iniciar o fluxo OAuth
 2. Usar **Registro Dinâmico de Cliente (RFC 7591)** se suportado pelo servidor
@@ -189,7 +189,7 @@ Para a maioria dos servidores MCP habilitados para OAuth, nenhuma configuração
 }
 ```
 
-Se o servidor requer autenticação, o OC Nano solicitará que você se autentique quando tentar usá-lo pela primeira vez. Se não, você pode [iniciar manualmente o fluxo](#authenticating) com `ocnano mcp auth <server-name>`.
+Se o servidor requer autenticação, o ocnano solicitará que você se autentique quando tentar usá-lo pela primeira vez. Se não, você pode [iniciar manualmente o fluxo](#authenticating) com `ocnano mcp auth <server-name>`.
 
 ---
 
@@ -238,7 +238,7 @@ Remova credenciais armazenadas:
 ocnano mcp logout my-oauth-server
 ```
 
-O comando `mcp auth` abrirá seu navegador para autorização. Após você autorizar, o OC Nano armazenará os tokens de forma segura em `~/.local/share/ocnano/mcp-auth.json`.
+O comando `mcp auth` abrirá seu navegador para autorização. Após você autorizar, o ocnano armazenará os tokens de forma segura em `~/.local/share/ocnano/mcp-auth.json`.
 
 ---
 
@@ -291,7 +291,7 @@ O comando `mcp debug` mostra o status de autenticação atual, testa a conectivi
 
 ## Gerenciamento
 
-Seus MCPs estão disponíveis como ferramentas no OC Nano, juntamente com ferramentas integradas. Portanto, você pode gerenciá-los através da configuração do OC Nano como qualquer outra ferramenta.
+Seus MCPs estão disponíveis como ferramentas no ocnano, juntamente com ferramentas integradas. Portanto, você pode gerenciá-los através da configuração do ocnano como qualquer outra ferramenta.
 
 ---
 
@@ -423,7 +423,7 @@ Após adicionar a configuração, autentique-se com o Sentry:
 ocnano mcp auth sentry
 ```
 
-Isso abrirá uma janela do navegador para completar o fluxo OAuth e conectar o OC Nano à sua conta do Sentry.
+Isso abrirá uma janela do navegador para completar o fluxo OAuth e conectar o ocnano à sua conta do Sentry.
 
 Uma vez autenticado, você pode usar ferramentas do Sentry em seus prompts para consultar problemas, projetos e dados de erro.
 

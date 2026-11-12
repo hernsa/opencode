@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 Der OC Nano CLI startet standardmäßig das [TUI](/docs/tui), wenn er ohne Argumente ausgeführt wird.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Es akzeptiert aber auch Befehle, wie auf dieser Seite dokumentiert. Dadurch können Sie programmgesteuert mit OC Nano interagieren.
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 Starten Sie die Terminalbenutzeroberfläche OC Nano.
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### Optionen
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | Session-ID zum Fortfahren                                                          |
 | <nobr><code>{"--fork"}</code></nobr>     |      | Sitzung beim Fortsetzen abzweigen (mit `--continue` oder `--session` verwenden)    |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | Basic-Auth-Passwort (standardmäßig `OCNANO_SERVER_PASSWORD`)                     |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Basic-Auth-Benutzername (standardmäßig `OCNANO_SERVER_USERNAME` oder `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Basic-Auth-Benutzername (standardmäßig `OCNANO_SERVER_USERNAME` oder `ocnano`) |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 Verwalten Sie den GitHub-Agenten für die Repository-Automatisierung.
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 Installieren Sie den GitHub-Agenten in Ihrem Repository.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Dadurch wird der erforderliche GitHub-Aktionsworkflow eingerichtet und Sie durch den Konfigurationsprozess geführt. [Learn more](/docs/github).
@@ -154,7 +154,7 @@ Dadurch wird der erforderliche GitHub-Aktionsworkflow eingerichtet und Sie durch
 Führen Sie den GitHub-Agenten aus. Dies wird normalerweise in GitHub-Aktionen verwendet.
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### Optionen
@@ -320,7 +320,7 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--title"}</code></nobr>    |      | Titel für die Sitzung (verwendet eine verkürzte Eingabeaufforderung, wenn kein Wert angegeben wird) |
 | <nobr><code>{"--attach"}</code></nobr>   |      | An einen laufenden OC Nano-Server anschließen (z.B. http://localhost:4096)                         |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | Basic-Auth-Passwort (standardmäßig `OCNANO_SERVER_PASSWORD`)                                      |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Basic-Auth-Benutzername (standardmäßig `OCNANO_SERVER_USERNAME` oder `OC Nano`)                  |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Basic-Auth-Benutzername (standardmäßig `OCNANO_SERVER_USERNAME` oder `ocnano`)                  |
 | <nobr><code>{"--dir"}</code></nobr>      |      | Verzeichnis für die Ausführung, oder Pfad auf dem Remote-Server beim Anhängen                       |
 | <nobr><code>{"--variant"}</code></nobr>  |      | Modellvariante (anbieterspezifischer Reasoning-Aufwand)                                             |
 | <nobr><code>{"--thinking"}</code></nobr> |      | Denkblöcke anzeigen                                                                                 |
@@ -336,7 +336,7 @@ Starten Sie einen Headless-OC Nano-Server für den API-Zugriff. Sehen Sie sich d
 ocnano serve
 ```
 
-Dadurch wird ein HTTP-Server gestartet, der API-Zugriff auf OC Nano-Funktionalität ohne die TUI-Schnittstelle bietet. Legen Sie `OCNANO_SERVER_PASSWORD` fest, um die HTTP-Basisauthentifizierung zu aktivieren (Benutzername ist standardmäßig `OC Nano`).
+Dadurch wird ein HTTP-Server gestartet, der API-Zugriff auf OC Nano-Funktionalität ohne die TUI-Schnittstelle bietet. Legen Sie `OCNANO_SERVER_PASSWORD` fest, um die HTTP-Basisauthentifizierung zu aktivieren (Benutzername ist standardmäßig `ocnano`).
 
 #### Optionen
 
@@ -429,7 +429,7 @@ Starten Sie einen Headless-OC Nano-Server mit einer Weboberfläche.
 ocnano web
 ```
 
-Dadurch wird ein HTTP-Server gestartet und ein Webbrowser geöffnet, um über eine Webschnittstelle auf OC Nano zuzugreifen. Legen Sie `OCNANO_SERVER_PASSWORD` fest, um die HTTP-Basisauthentifizierung zu aktivieren (Benutzername ist standardmäßig `OC Nano`).
+Dadurch wird ein HTTP-Server gestartet und ein Webbrowser geöffnet, um über eine Webschnittstelle auf OC Nano zuzugreifen. Legen Sie `OCNANO_SERVER_PASSWORD` fest, um die HTTP-Basisauthentifizierung zu aktivieren (Benutzername ist standardmäßig `ocnano`).
 
 #### Optionen
 
@@ -447,7 +447,7 @@ Dadurch wird ein HTTP-Server gestartet und ein Webbrowser geöffnet, um über ei
 Starten Sie einen ACP (Agent Client Protocol) Server.
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 Dieser Befehl startet einen ACP-Server, der über stdin/stdout unter Verwendung von nd-JSON kommuniziert.
@@ -548,7 +548,7 @@ OC Nano kann mithilfe von Umgebungsvariablen konfiguriert werden.
 | `OCNANO_CLIENT`                     | Zeichenfolge    | Client-ID (standardmäßig `cli`)                                                  |
 | `OCNANO_ENABLE_EXA`                 | boolescher Wert | Exa-Websuchtools aktivieren                                                      |
 | `OCNANO_SERVER_PASSWORD`            | Zeichenfolge    | Aktivieren Sie die Basisauthentifizierung für `serve`/`web`                      |
-| `OCNANO_SERVER_USERNAME`            | Zeichenfolge    | Benutzernamen für die Basisauthentifizierung überschreiben (Standard `OC Nano`) |
+| `OCNANO_SERVER_USERNAME`            | Zeichenfolge    | Benutzernamen für die Basisauthentifizierung überschreiben (Standard `ocnano`) |
 | `OCNANO_MODELS_URL`                 | Zeichenfolge    | Benutzerdefinierte URL zum Abrufen der Modellkonfiguration                       |
 
 ---

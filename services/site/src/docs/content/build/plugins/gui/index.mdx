@@ -1,6 +1,6 @@
 ---
 title: "GUI"
-description: "Build the GUI part of an ocnano plugin for OC Nano Desktop with @ocnano/plugin/gui."
+description: "Build the GUI part of an OC Nano plugin for OC Nano Desktop with @ocnano/plugin/gui."
 ---
 
 A GUI plugin adds panels, commands, settings pages, and native integrations to OC Nano Desktop with the GUI plugin SDK,
@@ -231,7 +231,7 @@ vite build --watch
 
 <Callout type="note">
   The app's own plugins reserve their ids. If your plugin's id is one of them, nests under one with a `.`, has one
-  nested under it, or is in the `OC Nano` namespace, its GUI does not load, and **Settings > Extensions > Plugins**
+  nested under it, or is in the `ocnano` namespace, its GUI does not load, and **Settings > Extensions > Plugins**
   lists it as not loaded.
 </Callout>
 
@@ -409,7 +409,7 @@ ctx.add(Command, () => ({
 if (!ctx.app.packaged) console.log(`Acme on ${ctx.app.name} ${ctx.app.version} (${ctx.app.channel})`)
 ```
 
-- `name` is `"OC Nano"`, as in a server plugin's `ctx.app.name`.
+- `name` is `"ocnano"`, as in a server plugin's `ctx.app.name`.
 - `platform` is `"desktop"` in the Electron app and in `main`, and `"web"` in a browser tab.
 - `packaged` is `true` when the desktop app runs packaged. It is always `false` on the web.
 - Server plugins get `name`, `version`, and `channel`; TUI plugins get `version` and `channel`.
@@ -2599,7 +2599,7 @@ interface NotifyResult {
 ### Usage data
 
 A session's token, cost and plan figures are in its server's data, the same reactive store the app reads for the
-header's "28k · $0.28". Read them there rather than from OC Nano's database.
+header's "28k · $0.28". Read them there rather than from ocnano's database.
 
 ```ts
 import { lastAssistantWithUsage } from "@ocnano/client/solid"

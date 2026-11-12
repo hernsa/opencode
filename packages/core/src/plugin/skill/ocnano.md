@@ -177,13 +177,13 @@ automatically. Restart it only if it is stuck or unhealthy, not to apply
 configuration changes:
 
 ```sh
-OC Nano service restart
+ocnano service restart
 ```
 
 Check its status after restarting:
 
 ```sh
-OC Nano service status
+ocnano service status
 ```
 
 ## [API](https://opencode.ai/docs/api)
@@ -191,11 +191,11 @@ OC Nano service status
 OC Nano exposes an HTTP API from its server. The API is described by an
 OpenAPI document available from the running server at `/openapi.json`.
 
-In Code Mode, use the built-in `OC Nano` tool namespace first, called inside
+In Code Mode, use the built-in `ocnano` tool namespace first, called inside
 `execute` as `tools.ocnano.*`. These tools skip the shell round-trip and
 handle discovery and authentication; find its tools with Code Mode's `search`,
-for example `search({ namespace: "OC Nano" })`. For anything they do not cover,
-use the `OC Nano api` command. It uses the same discovery and authentication
+for example `search({ namespace: "ocnano" })`. For anything they do not cover,
+use the `ocnano api` command. It uses the same discovery and authentication
 flow as the TUI and may start the background service when no compatible healthy
 service is available. It accepts either an HTTP method and path or an OpenAPI
 operation ID.
@@ -203,15 +203,15 @@ operation ID.
 Call an endpoint with an HTTP method and path:
 
 ```sh
-OC Nano api get /api/info
+ocnano api get /api/info
 ```
 
 Pass a request body with `--data` or `-d`, and additional headers with
 `--header` or `-H`:
 
 ```sh
-OC Nano api post /api/example --data '{"key":"value"}'
-OC Nano api get /api/example --header 'X-Example:value'
+ocnano api post /api/example --data '{"key":"value"}'
+ocnano api get /api/example --header 'X-Example:value'
 ```
 
 Request bodies default to `Content-Type: application/json`. When OC Nano is
@@ -253,9 +253,9 @@ Effect applications. For Cloudflare Durable Objects, use the
 OC Nano runs a client and a background server. Start by determining whether a
 problem belongs to the client, the shared server, or one project.
 
-- Check the service with `OC Nano service status` and verify the API with
-  `OC Nano api get /api/info`.
-- Compare with `OC Nano --standalone`, which runs the TUI with a private
+- Check the service with `ocnano service status` and verify the API with
+  `ocnano api get /api/info`.
+- Compare with `ocnano --standalone`, which runs the TUI with a private
   server, to isolate shared-service issues.
 - Inspect `~/.local/share/ocnano/log/ocnano.log`. Filter `role=cli` for
   client startup and `role=server` for sessions, providers, plugins,

@@ -24,7 +24,7 @@ cat > "$aur/PKGBUILD" <<PKGBUILD
 pkgname=$name
 pkgver=$pkgver
 pkgrel=1
-pkgdesc='OcNano beta - the AI coding agent for the terminal'
+pkgdesc='OC Nano beta - the AI coding agent for the terminal'
 url='https://github.com/anomalyco/opencode'
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -50,7 +50,7 @@ PKGBUILD
 t=$'\t'
 cat > "$aur/.SRCINFO" <<SRCINFO
 pkgbase = $name
-${t}pkgdesc = OcNano beta - the AI coding agent for the terminal
+${t}pkgdesc = OC Nano beta - the AI coding agent for the terminal
 ${t}pkgver = $pkgver
 ${t}pkgrel = 1
 ${t}url = https://github.com/anomalyco/opencode

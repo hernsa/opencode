@@ -20,7 +20,7 @@ OC Nano integreres med din GitHub arbejdsgang. Nævn `/ocnano` eller `/oc` i din
 Kør følgende kommando i et projekt, der er i en GitHub repo:
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Dette vil lede dig gennem installation af GitHub-appen, oprettelse af arbejdsgangen og opsætning af hemmeligheder.
@@ -40,7 +40,7 @@ Eller du kan indstille det manuelt.
    Tilføj følgende workflow-fil til `.github/workflows/ocnano.yml` i din repo. Sørg for at indstille de relevante `model` og nødvendige API-nøgler i `env`.
 
    ```yml title=".github/workflows/ocnano.yml" {24,26}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ Eller du kan indstille det manuelt.
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

@@ -3,13 +3,13 @@ title: Modeller
 description: LLM sağlayıcılarını ve model seçimlerini yapılandırın.
 ---
 
-OC Nano, **75+ LLM sağlayıcısını** desteklemek için [AI SDK](https://ai-sdk.dev/) ve [Models.dev](https://models.dev) kullanır ve yerel modellerin çalıştırılmasını destekler.
+ocnano, **75+ LLM sağlayıcısını** desteklemek için [AI SDK](https://ai-sdk.dev/) ve [Models.dev](https://models.dev) kullanır ve yerel modellerin çalıştırılmasını destekler.
 
 ---
 
 ## Sağlayıcılar
 
-Çoğu popüler sağlayıcı varsayılan olarak önceden yüklenmiştir. Bir sağlayıcının kimlik bilgilerini `/connect` komutu aracılığıyla eklediyseniz, bunlar OC Nano'u başlattığınızda kullanılabilir olacaktır.
+Çoğu popüler sağlayıcı varsayılan olarak önceden yüklenmiştir. Bir sağlayıcının kimlik bilgilerini `/connect` komutu aracılığıyla eklediyseniz, bunlar ocnano'u başlattığınızda kullanılabilir olacaktır.
 
 [Sağlayıcılar](/docs/providers) hakkında daha fazla bilgi edinin.
 
@@ -35,7 +35,7 @@ Piyasada pek çok model var ve her hafta yeni modeller çıkıyor.
 
 Ancak, hem kod oluşturmada hem de araç çağırmada iyi olan yalnızca birkaçı var.
 
-Burada, OC Nano ile belirli bir sıraya göre iyi çalışan birkaç model yer almaktadır. (Bu kapsamlı bir liste değildir ve mutlaka güncel olması da gerekmez):
+Burada, ocnano ile belirli bir sıraya göre iyi çalışan birkaç model yer almaktadır. (Bu kapsamlı bir liste değildir ve mutlaka güncel olması da gerekmez):
 
 - GPT 5.2
 - GPT 5.1 Codex
@@ -49,7 +49,7 @@ Burada, OC Nano ile belirli bir sıraya göre iyi çalışan birkaç model yer a
 ## Varsayılan ayarlama
 
 Bunlardan birini varsayılan model olarak ayarlamak için `model` anahtarınızı telefonunuzudan ayarlayabilirsiniz.
-OC Nano yapılandırması
+ocnano yapılandırması
 
 ```json title="ocnano.json" {3}
 {
@@ -111,7 +111,7 @@ Ayrıca yerleşik çeşitleri genişleten özel varyantlar da tanımlayabilirsin
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "OC Nano": {
+    "ocnano": {
       "models": {
         "gpt-6.1-sol": {
           "variants": {
@@ -137,11 +137,11 @@ Ayrıca yerleşik çeşitleri genişleten özel varyantlar da tanımlayabilirsin
 
 ## Varyantlar
 
-Birçok model, farklı konfigürasyonlara sahip birden fazla kapasiteye sahip. OC Nano, popüler sağlayıcılar için sunulan değişkenlerle birlikte gelir.
+Birçok model, farklı konfigürasyonlara sahip birden fazla kapasiteye sahip. ocnano, popüler sağlayıcılar için sunulan değişkenlerle birlikte gelir.
 
 ### Yerleşik çeşitler
 
-OC Nano birçok sağlayıcı için varsayılan değişkenlerle birlikte gelir:
+ocnano birçok sağlayıcı için varsayılan değişkenlerle birlikte gelir:
 
 **Antropik**:
 
@@ -203,11 +203,11 @@ Mevcut varyantları geçersiz kılabilir veya kendinizinkini ekleyebilirsiniz:
 
 ## Modelleri yükleme
 
-OC Nano başlatıldığında modelleri aşağıdaki öncelik sırasına göre kontrol eder:
+ocnano başlatıldığında modelleri aşağıdaki öncelik sırasına göre kontrol eder:
 
 1. `--model` veya `-m` komut satırı bayrağı. Biçim, yapılandırma dosyasındakiyle aynıdır: `provider_id/model_id`.
 
-2. OC Nano yapılandırmasındaki model listesi.
+2. ocnano yapılandırmasındaki model listesi.
 
    ```json title="ocnano.json"
    {

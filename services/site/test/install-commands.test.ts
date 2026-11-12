@@ -4,10 +4,10 @@ import { Glob } from "bun"
 import { desktopInstall, docsInstalls, installs, sdkInstalls } from "../src/lib/install-commands"
 
 // The site shows OcNano 2. These names install OcNano 1 (see src/lib/install-commands.ts):
-// the ocnano-ai npm package, the unversioned install script, the tap's ocnano formula and the
-// ocnano-bin AUR package. Scoped @ocnano-ai/... packages are code samples, not installs.
+// the opencode-ai npm package, the unversioned install script, the tap's ocnano formula and the
+// ocnano-bin AUR package. Scoped @opencode-ai/... packages are code samples, not installs.
 const v1 = [
-  { name: "the ocnano-ai npm package", pattern: /(?<![@\w/-])ocnano-ai(?![\w/-])/ },
+  { name: "the opencode-ai npm package", pattern: /(?<![@\w/-])opencode-ai(?![\w/-])/ },
   { name: "the OC Nano 1 install script", pattern: /ocnano\.ai\/install\b/ },
   { name: "the tap's OC Nano 1 formula", pattern: /anomalyco\/tap\/ocnano(?![\w-])/ },
   { name: "the ocnano-bin AUR package", pattern: /\bocnano-bin\b/ },

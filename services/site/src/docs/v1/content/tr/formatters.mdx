@@ -1,15 +1,15 @@
 ---
 title: Biçimlendiriciler
-description: OC Nano dile özgü biçimlendiriciler kullanır.
+description: ocnano dile özgü biçimlendiriciler kullanır.
 ---
 
-OC Nano, dosyaları dile özgü formatlayıcılar kullanılarak yazıldıktan veya düzenlendikten sonra otomatik olarak formatlar. Bu, oluşturulan kodun projenizin kod stillerine uymasını sağlar.
+ocnano, dosyaları dile özgü formatlayıcılar kullanılarak yazıldıktan veya düzenlendikten sonra otomatik olarak formatlar. Bu, oluşturulan kodun projenizin kod stillerine uymasını sağlar.
 
 ---
 
 ## Yerleşik
 
-OC Nano, popüler diller ve çerçeveler için çeşitli yerleşik biçimlendiricilerle birlikte gelir. Aşağıda ihtiyaç duyduğu biçimlendiricilerin, desteklenen dosya uzantılarının ve komutların veya yapılandırma seçeneklerinin bir listesi bulunmaktadır.
+ocnano, popüler diller ve çerçeveler için çeşitli yerleşik biçimlendiricilerle birlikte gelir. Aşağıda ihtiyaç duyduğu biçimlendiricilerin, desteklenen dosya uzantılarının ve komutların veya yapılandırma seçeneklerinin bir listesi bulunmaktadır.
 
 | Biçimlendirici   | Uzantılar                                                                                                    | Gereksinimler                                                                                          |
 | ---------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -39,13 +39,13 @@ OC Nano, popüler diller ve çerçeveler için çeşitli yerleşik biçimlendiri
 | oxfmt (Deneysel) | .js, .jsx, .ts, .tsx                                                                                         | `package.json` içinde `oxfmt` bağımlılığı ve [experimental env variable flag](/docs/cli/#experimental) |
 | ormolu           | .hs                                                                                                          | `ormolu` komutu mevcut                                                                                 |
 
-Yani eğer projenizin `package.json` dosyasında `prettier` varsa, OC Nano bunu otomatik olarak kullanacaktır.
+Yani eğer projenizin `package.json` dosyasında `prettier` varsa, ocnano bunu otomatik olarak kullanacaktır.
 
 ---
 
 ## Nasıl çalışır?
 
-OC Nano bir dosyayı yazdığında veya düzenlediğinde:
+ocnano bir dosyayı yazdığında veya düzenlediğinde:
 
 1. Dosya uzantısını tüm etkin formatlayıcılara göre kontrol eder.
 2. Dosyada uygun biçimlendirici komutunu çalıştırır.
@@ -57,7 +57,7 @@ Bu işlem arka planda gerçekleşir ve kod stillerinizin herhangi bir manuel ad�
 
 ## Yapılandırma
 
-Biçimlendiricileri OC Nano yapılandırmanızdaki `formatter` bölümü aracılığıyla özelleştirebilirsiniz.
+Biçimlendiricileri ocnano yapılandırmanızdaki `formatter` bölümü aracılığıyla özelleştirebilirsiniz.
 
 ```json title="ocnano.json"
 {

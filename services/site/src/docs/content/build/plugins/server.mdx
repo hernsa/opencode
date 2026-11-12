@@ -1,6 +1,6 @@
 ---
 title: "Server"
-description: "Build the server part of an ocnano plugin: tools, hooks, integrations, commands, and agents."
+description: "Build the server part of an OC Nano plugin: tools, hooks, integrations, commands, and agents."
 ---
 
 The server part of a plugin runs in the OC Nano server. It modifies OC Nano's behavior and adds features: tools,
@@ -716,7 +716,7 @@ const { images } = await ctx.experimental.generate.image({
 })
 
 const { answers } = await ctx.experimental.generate.decisions({
-  model: { providerID: "OC Nano", id: "jev-1.13" },
+  model: { providerID: "ocnano", id: "jev-1.13" },
   input: [{ type: "text", text: "I was charged twice, please refund one." }],
   questions: [{ type: "predicate", name: "refund", instructions: "Is this a refund request?" }],
 })

@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 The OC Nano CLI by default starts the [TUI](/docs/tui) when run without any arguments.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 But it also accepts commands as documented on this page. This allows you to interact with OC Nano programmatically.
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 Start the OC Nano terminal user interface.
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### Flags
@@ -57,7 +57,7 @@ The OC Nano CLI also has the following commands.
 Manage agents for OC Nano.
 
 ```bash
-OC Nano agent [command]
+ocnano agent [command]
 ```
 
 ---
@@ -67,7 +67,7 @@ OC Nano agent [command]
 Create a new agent with custom configuration.
 
 ```bash
-OC Nano agent create
+ocnano agent create
 ```
 
 This command will guide you through creating a new agent with a custom system prompt and permission configuration. Anything you don't allow is denied in the generated agent's frontmatter.
@@ -91,7 +91,7 @@ Passing all of `--path`, `--description`, `--mode`, and `--permissions` runs the
 List all available agents.
 
 ```bash
-OC Nano agent list
+ocnano agent list
 ```
 
 ---
@@ -123,7 +123,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s`  | Session ID to continue                                                     |
 | <nobr><code>{"--fork"}</code></nobr>     |       | Fork the session when continuing (use with `--continue` or `--session`)    |
 | <nobr><code>{"--password"}</code></nobr> | `-p`  | Basic auth password (defaults to `OCNANO_SERVER_PASSWORD`)               |
-| <nobr><code>{"--username"}</code></nobr> | `-u`  | Basic auth username (defaults to `OCNANO_SERVER_USERNAME` or `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u`  | Basic auth username (defaults to `OCNANO_SERVER_USERNAME` or `ocnano`) |
 
 ---
 
@@ -187,7 +187,7 @@ ocnano auth logout
 Generate a shell completion script.
 
 ```bash
-OC Nano completion
+ocnano completion
 ```
 
 ---
@@ -197,7 +197,7 @@ OC Nano completion
 Manage the GitHub agent for repository automation.
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -207,7 +207,7 @@ OC Nano github [command]
 Install the GitHub agent in your repository.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 This sets up the necessary GitHub Actions workflow and guides you through the configuration process. [Learn more](/docs/github).
@@ -219,7 +219,7 @@ This sets up the necessary GitHub Actions workflow and guides you through the co
 Run the GitHub agent. This is typically used in GitHub Actions.
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### Flags
@@ -348,7 +348,7 @@ ocnano models --refresh
 
 ### run
 
-Run OC Nano in non-interactive mode by passing a prompt directly.
+Run ocnano in non-interactive mode by passing a prompt directly.
 
 ```bash
 ocnano run [message..]
@@ -383,9 +383,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`  | File(s) to attach to message                                               |
 | <nobr><code>{"--format"}</code></nobr>   |       | Format: default (formatted) or json (raw JSON events)                      |
 | <nobr><code>{"--title"}</code></nobr>    |       | Title for the session (uses truncated prompt if no value provided)         |
-| <nobr><code>{"--attach"}</code></nobr>   |       | Attach to a running OC Nano server (e.g., http://localhost:4096)          |
+| <nobr><code>{"--attach"}</code></nobr>   |       | Attach to a running ocnano server (e.g., http://localhost:4096)          |
 | <nobr><code>{"--password"}</code></nobr> | `-p`  | Basic auth password (defaults to `OCNANO_SERVER_PASSWORD`)               |
-| <nobr><code>{"--username"}</code></nobr> | `-u`  | Basic auth username (defaults to `OCNANO_SERVER_USERNAME` or `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u`  | Basic auth username (defaults to `OCNANO_SERVER_USERNAME` or `ocnano`) |
 | <nobr><code>{"--dir"}</code></nobr>      |       | Directory to run in, or path on the remote server when attaching           |
 | <nobr><code>{"--port"}</code></nobr>     |       | Port for the local server (defaults to random port)                        |
 | <nobr><code>{"--variant"}</code></nobr>  |       | Model variant (provider-specific reasoning effort)                         |
@@ -402,7 +402,7 @@ Start a headless OC Nano server for API access. Check out the [server docs](/doc
 ocnano serve
 ```
 
-This starts an HTTP server that provides API access to OC Nano functionality without the TUI interface. Set `OCNANO_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `OC Nano`).
+This starts an HTTP server that provides API access to ocnano functionality without the TUI interface. Set `OCNANO_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `ocnano`).
 
 #### Flags
 
@@ -445,7 +445,7 @@ ocnano session list
 
 #### delete
 
-Delete an ocnano session.
+Delete an OC Nano session.
 
 ```bash
 ocnano session delete <sessionID>
@@ -512,7 +512,7 @@ Start a headless OC Nano server with a web interface.
 ocnano web
 ```
 
-This starts an HTTP server and opens a web browser to access OC Nano through a web interface. Set `OCNANO_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `OC Nano`).
+This starts an HTTP server and opens a web browser to access OC Nano through a web interface. Set `OCNANO_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `ocnano`).
 
 #### Flags
 
@@ -531,7 +531,7 @@ This starts an HTTP server and opens a web browser to access OC Nano through a w
 Start an ACP (Agent Client Protocol) server.
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 This command starts an ACP server that communicates via stdin/stdout using nd-JSON.
@@ -560,7 +560,7 @@ ocnano plugin <module>
 Or use the alias.
 
 ```bash
-OC Nano plug <module>
+ocnano plug <module>
 ```
 
 #### Flags
@@ -577,7 +577,7 @@ OC Nano plug <module>
 Fetch and checkout a GitHub PR branch, then run OC Nano.
 
 ```bash
-OC Nano pr <number>
+ocnano pr <number>
 ```
 
 ---
@@ -587,7 +587,7 @@ OC Nano pr <number>
 Database tools.
 
 ```bash
-OC Nano db [query]
+ocnano db [query]
 ```
 
 #### Flags
@@ -603,7 +603,7 @@ OC Nano db [query]
 Print the database path.
 
 ```bash
-OC Nano db path
+ocnano db path
 ```
 
 ---
@@ -620,7 +620,7 @@ ocnano debug [command]
 
 #### agent
 
-Show a loaded agent's configuration. Use `OC Nano agent list` to list all agents.
+Show a loaded agent's configuration. Use `ocnano agent list` to list all agents.
 
 ```bash
 ocnano debug agent build
@@ -649,7 +649,7 @@ ocnano debug paths
 This prints all global paths. To print the database path, use:
 
 ```bash
-OC Nano db path
+ocnano db path
 ```
 
 ---
@@ -697,7 +697,7 @@ ocnano uninstall
 
 ### upgrade
 
-Updates OC Nano to the latest version or a specific version.
+Updates ocnano to the latest version or a specific version.
 
 ```bash
 ocnano upgrade [target]
@@ -732,7 +732,7 @@ ocnano upgrade --major
 
 ## Global Flags
 
-The OC Nano CLI takes the following global flags.
+The ocnano CLI takes the following global flags.
 
 | Flag                                       | Short | Description                          |
 | ------------------------------------------ | ----- | ------------------------------------ |
@@ -773,7 +773,7 @@ OC Nano can be configured using environment variables.
 | `OCNANO_ENABLE_EXA`                 | boolean | Enable Exa web search tools                                                  |
 | `OCNANO_ENABLE_PARALLEL`            | boolean | Enable Parallel web search tools                                             |
 | `OCNANO_SERVER_PASSWORD`            | string  | Enable basic auth for `serve`/`web`                                          |
-| `OCNANO_SERVER_USERNAME`            | string  | Override basic auth username (default `OC Nano`)                            |
+| `OCNANO_SERVER_USERNAME`            | string  | Override basic auth username (default `ocnano`)                            |
 | `OCNANO_MODELS_URL`                 | string  | Custom URL for fetching models configuration                                 |
 | `OCNANO_MODELS_PATH`                | string  | Load the model catalog from a local JSON file                                |
 | `OCNANO_DB`                         | string  | Database path; relative paths resolve under the data directory               |

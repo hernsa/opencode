@@ -59,7 +59,7 @@ OC Nano Models คือรายชื่อโมเดลที่จัด�
 หากคุณยังใหม่ เราขอแนะนำให้เริ่มต้นด้วย OC Nano Models
 :::
 
-1. เรียกใช้คำสั่ง `/connect` ใน TUI เลือก OC Nano และไปที่ [opencode.ai/auth](https://opencode.ai/auth)
+1. เรียกใช้คำสั่ง `/connect` ใน TUI เลือก ocnano และไปที่ [opencode.ai/auth](https://opencode.ai/auth)
 
    ```txt
    /connect
@@ -170,17 +170,17 @@ OC Nano Go คือแผนการสมัครสมาชิกราค
 
    #### ตัวแปรสภาพแวดล้อม (เริ่มต้นอย่างรวดเร็ว)
 
-   ตั้งค่าหนึ่งในตัวแปรสภาพแวดล้อมเหล่านี้ขณะเรียกใช้ OC Nano:
+   ตั้งค่าหนึ่งในตัวแปรสภาพแวดล้อมเหล่านี้ขณะเรียกใช้ ocnano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -325,7 +325,7 @@ OC Nano Go คือแผนการสมัครสมาชิกราค
 
 ### Atomic Chat
 
-คุณสามารถกำหนดค่า OC Nano ให้ใช้โมเดลท้องถิ่นผ่าน [Atomic Chat](https://atomic.chat) ซึ่งเป็นแอปพลิเคชันเดสก์ท็อปที่เรียกใช้ LLM ในเครื่องภายใต้เซิร์ฟเวอร์ API ที่เข้ากันได้กับ OpenAI (ปลายทางเริ่มต้น `http://127.0.0.1:1337/v1`)
+คุณสามารถกำหนดค่า ocnano ให้ใช้โมเดลท้องถิ่นผ่าน [Atomic Chat](https://atomic.chat) ซึ่งเป็นแอปพลิเคชันเดสก์ท็อปที่เรียกใช้ LLM ในเครื่องภายใต้เซิร์ฟเวอร์ API ที่เข้ากันได้กับ OpenAI (ปลายทางเริ่มต้น `http://127.0.0.1:1337/v1`)
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -374,7 +374,7 @@ OC Nano Go คือแผนการสมัครสมาชิกราค
 2. ไปที่ [Azure AI Foundry](https://ai.azure.com/) และปรับใช้โมเดล
 
    :::note
-   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ OC Nano ทำงานได้อย่างถูกต้อง
+   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ ocnano ทำงานได้อย่างถูกต้อง
    :::
 
 3. เรียกใช้คำสั่ง `/connect` และค้นหา **Azure**
@@ -395,7 +395,7 @@ OC Nano Go คือแผนการสมัครสมาชิกราค
 5. ตั้งชื่อทรัพยากรของคุณเป็นตัวแปรสภาพแวดล้อม:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -421,7 +421,7 @@ OC Nano Go คือแผนการสมัครสมาชิกราค
 2. ไปที่ [Azure AI Foundry](https://ai.azure.com/) และปรับใช้โมเดล
 
    :::note
-   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ OC Nano ทำงานได้อย่างถูกต้อง
+   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ ocnano ทำงานได้อย่างถูกต้อง
    :::
 
 3. เรียกใช้คำสั่ง `/connect` และค้นหา **Azure Cognitive Services**
@@ -442,7 +442,7 @@ OC Nano Go คือแผนการสมัครสมาชิกราค
 5. ตั้งชื่อทรัพยากรของคุณเป็นตัวแปรสภาพแวดล้อม:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -553,7 +553,7 @@ Cloudflare AI Gateway ช่วยให้คุณเข้าถึงโม�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลผ่านการกำหนดค่า OC Nano ของคุณได้
+   คุณยังสามารถเพิ่มโมเดลผ่านการกำหนดค่า ocnano ของคุณได้
 
    ```json title="ocnano.json"
    {
@@ -751,7 +751,7 @@ GitLab Duo ให้การแชทแบบเอเจนต์ที่ข
 
 :::note
 คุณยังสามารถระบุตัวแปรสภาพแวดล้อม 'GITLAB_TOKEN' ได้หากคุณไม่ต้องการ
-เพื่อจัดเก็บโทเค็นในที่เก็บข้อมูลการรับรองความถูกต้องของ OC Nano
+เพื่อจัดเก็บโทเค็นในที่เก็บข้อมูลการรับรองความถูกต้องของ ocnano
 :::
 
 ##### GitLab ที่โฮสต์เอง
@@ -853,7 +853,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 ### GitHub Copilot
 
-วิธีใช้การสมัครสมาชิก GitHub Copilot ด้วย OC Nano:
+วิธีใช้การสมัครสมาชิก GitHub Copilot ด้วย ocnano:
 
 :::note
 บางรุ่นอาจต้องมี [Pro+
@@ -906,10 +906,10 @@ subscription](https://github.com/features/copilot/plans) เพื่อใช�
      - `GOOGLE_APPLICATION_CREDENTIALS`: เส้นทางไปยังบัญชีบริการของคุณ JSON ไฟล์คีย์
      - ตรวจสอบสิทธิ์โดยใช้ gcloud CLI: `gcloud auth application-default login`
 
-   ตั้งค่าในขณะที่เรียกใช้ OC Nano
+   ตั้งค่าในขณะที่เรียกใช้ ocnano
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ
@@ -1019,7 +1019,7 @@ subscription](https://github.com/features/copilot/plans) เพื่อใช�
 
 #### การกำหนดค่าเพิ่มเติม
 
-ในกรณีที่คุณเห็นคุณสมบัติหรือรุ่นจาก Helicone ที่ไม่ได้กำหนดค่าโดยอัตโนมัติผ่าน OC Nano คุณสามารถกำหนดค่าด้วยตนเองได้ตลอดเวลา
+ในกรณีที่คุณเห็นคุณสมบัติหรือรุ่นจาก Helicone ที่ไม่ได้กำหนดค่าโดยอัตโนมัติผ่าน ocnano คุณสามารถกำหนดค่าด้วยตนเองได้ตลอดเวลา
 
 นี่คือ [Helicone's Model Directory](https://helicone.ai/models) คุณจะต้องใช้สิ่งนี้เพื่อรับ ID ของโมเดลที่คุณต้องการเพิ่ม
 
@@ -1062,7 +1062,7 @@ Helicone รองรับส่วนหัวแบบกำหนดเอ�
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1103,7 +1103,7 @@ npm install -g ocnano-helicone-session
 
 ### llama.cpp
 
-คุณสามารถกำหนดค่า OC Nano เพื่อใช้โมเดลท้องถิ่นผ่านยูทิลิตี้ [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server
+คุณสามารถกำหนดค่า ocnano เพื่อใช้โมเดลท้องถิ่นผ่านยูทิลิตี้ [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1170,7 +1170,7 @@ IO.NET มี 17 โมเดลที่ได้รับการปรับ
 
 ### LM Studio
 
-คุณสามารถกำหนดค่า OC Nano เพื่อใช้โมเดลท้องถิ่นผ่าน LM Studio
+คุณสามารถกำหนดค่า ocnano เพื่อใช้โมเดลท้องถิ่นผ่าน LM Studio
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1287,7 +1287,7 @@ IO.NET มี 17 โมเดลที่ได้รับการปรับ
 
 ### Ollama
 
-คุณสามารถกำหนดค่า OC Nano เพื่อใช้โมเดลท้องถิ่นผ่าน Ollama
+คุณสามารถกำหนดค่า ocnano เพื่อใช้โมเดลท้องถิ่นผ่าน Ollama
 
 :::tip
 Ollama สามารถกำหนดค่าตัวเองสำหรับ OC Nano ได้โดยอัตโนมัติ ดู [เอกสารการบูรณาการ Ollama](https://docs.ollama.com/integrations/ocnano) เพื่อดูรายละเอียด
@@ -1455,7 +1455,7 @@ OC Nano Models คือรายการโมเดลที่ได้ร�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า OC Nano ของคุณได้
+   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า ocnano ของคุณได้
 
    ```json title="ocnano.json" {6}
    {
@@ -1470,7 +1470,7 @@ OC Nano Models คือรายการโมเดลที่ได้ร�
    }
    ```
 
-5. คุณยังสามารถปรับแต่งได้ผ่านการกำหนดค่า OC Nano ของคุณ นี่คือตัวอย่างการระบุผู้ให้บริการ
+5. คุณยังสามารถปรับแต่งได้ผ่านการกำหนดค่า ocnano ของคุณ นี่คือตัวอย่างการระบุผู้ให้บริการ
 
    ```json title="ocnano.json"
    {
@@ -1522,7 +1522,7 @@ SAP AI Core ให้การเข้าถึงโมเดลมากก�
    หรือตั้งค่าตัวแปรสภาพแวดล้อม `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -1534,7 +1534,7 @@ SAP AI Core ให้การเข้าถึงโมเดลมากก�
 4. เลือกตั้งค่ารหัสการปรับใช้และกลุ่มทรัพยากร:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note
@@ -1611,7 +1611,7 @@ STACKIT AI Model Serving มอบสภาพแวดล้อมการโ�
 
 ### Scaleway
 
-วิธีใช้ [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) กับ OC Nano:
+วิธีใช้ [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) กับ Opencode:
 
 1. ไปที่ [Scaleway Console IAM settings](https://console.scaleway.com/iam/api-keys) เพื่อสร้างคีย์ API ใหม่
 
@@ -1719,7 +1719,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    /models
    ```
 
-คุณยังสามารถปรับแต่งโมเดลผ่านการกำหนดค่า OC Nano ของคุณได้ นี่คือตัวอย่างการระบุลำดับการกำหนดเส้นทางผู้ให้บริการ
+คุณยังสามารถปรับแต่งโมเดลผ่านการกำหนดค่า ocnano ของคุณได้ นี่คือตัวอย่างการระบุลำดับการกำหนดเส้นทางผู้ให้บริการ
 
 ```json title="ocnano.json"
 {
@@ -1829,7 +1829,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า OC Nano ของคุณได้
+   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า ocnano ของคุณได้
 
    ```json title="ocnano.json" {6}
    {
@@ -1851,7 +1851,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 หากต้องการเพิ่มผู้ให้บริการที่ **เข้ากันได้กับ OpenAI** ใดๆ ที่ไม่มีรายชื่ออยู่ในคำสั่ง `/connect`:
 
 :::tip
-คุณสามารถใช้ผู้ให้บริการที่เข้ากันได้กับ OpenAI กับ OC Nano ได้ ผู้ให้บริการ AI สมัยใหม่ส่วนใหญ่เสนอ API ที่เข้ากันได้กับ OpenAI
+คุณสามารถใช้ผู้ให้บริการที่เข้ากันได้กับ OpenAI กับ ocnano ได้ ผู้ให้บริการ AI สมัยใหม่ส่วนใหญ่เสนอ API ที่เข้ากันได้กับ OpenAI
 :::
 
 1. เรียกใช้คำสั่ง `/connect` และเลื่อนลงไปที่ **Other**
@@ -1985,7 +1985,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 
    สิ่งนี้ใช้ไม่ได้กับผู้ให้บริการเช่น Amazon Bedrock ซึ่งอาศัยตัวแปรสภาพแวดล้อมสำหรับการตรวจสอบสิทธิ์
 
-2. สำหรับผู้ให้บริการที่กำหนดเอง ให้ตรวจสอบการกำหนดค่า OC Nano และ:
-   - ตรวจสอบให้แน่ใจว่า ID ผู้ให้บริการที่ใช้ในคำสั่ง `/connect` ตรงกับ ID ในการกำหนดค่า OC Nano ของคุณ
+2. สำหรับผู้ให้บริการที่กำหนดเอง ให้ตรวจสอบการกำหนดค่า ocnano และ:
+   - ตรวจสอบให้แน่ใจว่า ID ผู้ให้บริการที่ใช้ในคำสั่ง `/connect` ตรงกับ ID ในการกำหนดค่า ocnano ของคุณ
    - ใช้แพ็คเกจ npm ที่ถูกต้องสำหรับผู้ให้บริการ ตัวอย่างเช่น ใช้ `@ai-sdk/cerebras` สำหรับ Cerebras และสำหรับผู้ให้บริการอื่นๆ ที่เข้ากันได้กับ OpenAI ให้ใช้ `@ai-sdk/openai-compatible`
    - ตรวจสอบว่าใช้จุดสิ้นสุด API ที่ถูกต้องในฟิลด์ `options.baseURL`

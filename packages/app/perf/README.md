@@ -64,11 +64,11 @@ strobe bench packages/app/perf/review.bench.ts --base origin/dev --head . --para
 strobe bench packages/app/perf/timeline.bench.ts --aa --head .
 
 # Two installed desktop channels, or the desktop's launch (packages/desktop/README.md).
-strobe bench packages/app/perf/desktop.bench.ts --base app:OC Nano --head app:ocnano-beta
-strobe bench packages/desktop/perf/startup.bench.ts --target desktop --base app:OC Nano --head app:ocnano-beta
+strobe bench packages/app/perf/desktop.bench.ts --base app:ocnano --head app:ocnano-beta
+strobe bench packages/desktop/perf/startup.bench.ts --target desktop --base app:ocnano --head app:ocnano-beta
 
 # Core and UI code, in a Bun process. The snapshot fixtures are generated once (a minute or two).
-bun packages/core/perf/snapshot.ts medium OC Nano
+bun packages/core/perf/snapshot.ts medium ocnano
 strobe bench packages/core/perf/snapshot.bench.ts --base origin/dev --head .
 
 # The interactive report, and the results block in pull request <n> (see "In a pull request").
@@ -127,7 +127,7 @@ which grows while the JIT warms up:
 ```sh
 strobe bench packages/app/perf/tabs.bench.ts --filter "switch tab with a large model catalog" --head . --probes memory --repeat 10
 strobe query <rec_…> leaks                            # objects from the first half still alive at the end, and what holds them
-strobe record app:OC Nano --probes memory --for 60s  # the same over time, for an app left running
+strobe record app:ocnano --probes memory --for 60s  # the same over time, for an app left running
 ```
 
 ## Which commit moved it?
@@ -175,7 +175,7 @@ strobe bench packages/app/perf/timeline.bench.ts --filter "scroll*" --bisect <go
 - `apps` are the desktop profiles. Strobe gives every launch a private home; a profile adds what the desktop needs on
   top: its own database and config, a private service port, a file where the updater keeps its download cache
   (otherwise an older channel downloads the next release mid-run and looks like it idles at 10% CPU), the user's
-  service registration as guarded state (strobe stops if it changes), and the `OC Nano://` key, which strobe saves
+  service registration as guarded state (strobe stops if it changes), and the `ocnano://` key, which strobe saves
   and restores around each launch. The Dev channel has no profile on purpose. A source build is packed with
   `OCNANO_CHANNEL=beta` or `prod` and passed as `exe:<path>`.
 

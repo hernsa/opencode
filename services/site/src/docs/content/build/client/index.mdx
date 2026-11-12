@@ -177,7 +177,7 @@ compatibility predicate:
 const endpoint = await Service.ensure({
   file: "/var/run/ocnano/service.json",
   version: (version) => version.startsWith("2."),
-  command: ["OC Nano", "serve", "--service"],
+  command: ["ocnano", "serve", "--service"],
   onStart(reason, previousVersion) {
     console.log(reason, previousVersion)
   },

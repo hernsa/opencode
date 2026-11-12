@@ -6,8 +6,8 @@ description: Typsicherer JS-Client fuer den ocnano-Server.
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-Das OC Nano JS/TS SDK bietet einen typsicheren Client fuer die Server-API.
-Damit kannst du Integrationen bauen und OC Nano programmatisch steuern.
+Das ocnano JS/TS SDK bietet einen typsicheren Client fuer die Server-API.
+Damit kannst du Integrationen bauen und ocnano programmatisch steuern.
 
 [Mehr zum Server](/docs/server). Beispiele findest du in den [Community-Projekten](/docs/ecosystem#projects).
 
@@ -18,7 +18,7 @@ Damit kannst du Integrationen bauen und OC Nano programmatisch steuern.
 Installiere das SDK ueber npm:
 
 ```bash
-npm install @ocnano-ai/sdk
+npm install @opencode-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @ocnano-ai/sdk
 Erstelle eine ocnano-Instanz:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const { client } = await createOC Nano()
+const { client } = await createOpencode()
 ```
 
 Das startet Server und Client.
@@ -53,9 +53,9 @@ Du kannst ein Konfigurationsobjekt uebergeben, um das Verhalten anzupassen.
 `ocnano.json` wird weiterhin geladen, kann aber inline ueberschrieben oder erweitert werden:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const OC Nano = await createOC Nano({
+const ocnano = await createOpencode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -70,12 +70,12 @@ ocnano.server.close()
 
 ## Nur Client
 
-Wenn OC Nano bereits laeuft, kannst du nur einen Client erstellen und verbinden:
+Wenn ocnano bereits laeuft, kannst du nur einen Client erstellen und verbinden:
 
 ```javascript
-import { createOC NanoClient } from "@ocnano-ai/sdk"
+import { createOpencodeClient } from "@opencode-ai/sdk"
 
-const client = createOC NanoClient({
+const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -98,7 +98,7 @@ Das SDK bringt TypeScript-Definitionen fuer alle API-Typen mit.
 Du kannst sie direkt importieren:
 
 ```typescript
-import type { Session, Message, Part } from "@ocnano-ai/sdk"
+import type { Session, Message, Part } from "@opencode-ai/sdk"
 ```
 
 Alle Typen werden aus der OpenAPI-Spezifikation des Servers generiert und sind in der <a href={typesUrl}>Typdatei</a> verfuegbar.
@@ -375,7 +375,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*OC Nano" },
+  query: { pattern: "function.*ocnano" },
 })
 
 const files = await client.find.files({

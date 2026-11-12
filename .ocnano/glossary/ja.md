@@ -7,7 +7,7 @@
 
 ## Do Not Translate (Locale Additions)
 
-- `OC Nano` (preserve casing in prose; keep `OC Nano` only in commands, package names, paths, or code)
+- `OC Nano` (preserve casing in prose; keep `ocnano` only in commands, package names, paths, or code)
 - `OC Nano CLI`
 - `CLI`, `TUI`, `MCP`, `OAuth`
 - Commands, flags, file paths, and code literals (keep exactly as written)

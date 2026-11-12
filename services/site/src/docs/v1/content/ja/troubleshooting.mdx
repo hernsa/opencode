@@ -12,11 +12,11 @@ OC Nano の問題をデバッグするには、まず、ディスク上に保存
 ログファイルは次の場所に書き込まれます。
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\OC Nano\log` を貼り付けます
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\ocnano\log` を貼り付けます
 
 ログファイルにはタイムスタンプ付きの名前が付けられ (例: `2025-01-09T123456.log`)、最新の 10 個のログファイルが保存されます。
 
-`--log-level` コマンドラインオプションを使用してログレベルを設定すると、より詳細なデバッグ情報を取得できます。たとえば、`OC Nano --log-level DEBUG`。
+`--log-level` コマンドラインオプションを使用してログレベルを設定すると、より詳細なデバッグ情報を取得できます。たとえば、`ocnano --log-level DEBUG`。
 
 ---
 
@@ -25,7 +25,7 @@ OC Nano の問題をデバッグするには、まず、ディスク上に保存
 OC Nano は、セッションデータとその他のアプリケーションデータをディスク上の次の場所に保存します。
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\OC Nano` を貼り付けます
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\ocnano` を貼り付けます
 
 このディレクトリには次のものが含まれます。
 
@@ -59,7 +59,7 @@ OC Nano Desktop は、ローカル OC Nano サーバー (`ocnano-cli` サイド�
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (または `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (古いインストール): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\OC Nano\ocnano.jsonc` を貼り付けます
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\ocnano\ocnano.jsonc` を貼り付けます
 
 プラグインを構成している場合は、キーを削除するか空の配列に設定して、プラグインを一時的に無効にします。
 
@@ -76,7 +76,7 @@ OC Nano はディスクからローカルプラグインをロードすること
 
 - **グローバルプラグイン**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\OC Nano\plugins` を貼り付けます
+  - **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\ocnano\plugins` を貼り付けます
 - **プロジェクトプラグイン** (プロジェクトごとの構成を使用する場合のみ)
   - `<your-project>/.ocnano/plugins/`
 
@@ -93,7 +93,7 @@ OC Nano はディスクからローカルプラグインをロードすること
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> `~/.cache/ocnano` を貼り付け
 - **Linux**: `~/.cache/ocnano` を削除します (または `rm -rf ~/.cache/ocnano` を実行します)。
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.cache\OC Nano` を貼り付けます
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.cache\ocnano` を貼り付けます
 
 3. OC Nano デスクトップを再起動します。
 
@@ -244,7 +244,7 @@ ProviderInitError が発生した場合は、構成が無効または破損し�
    rm -rf ~/.local/share/ocnano
    ```
 
-   Windows では、`WIN+R` を押して、`%USERPROFILE%\.local\share\OC Nano` を削除します。
+   Windows では、`WIN+R` を押して、`%USERPROFILE%\.local\share\ocnano` を削除します。
 
 3. TUI の `/connect` コマンドを使用して、プロバイダーで再認証します。
 
@@ -262,7 +262,7 @@ API 呼び出しエラーが発生した場合は、プロバイダーパッケ�
    rm -rf ~/.cache/ocnano
    ```
 
-   Windows では、`WIN+R` を押して、`%USERPROFILE%\.cache\OC Nano` を削除します。
+   Windows では、`WIN+R` を押して、`%USERPROFILE%\.cache\ocnano` を削除します。
 
 2. OC Nano を再起動して最新のプロバイダーパッケージを再インストールします
 

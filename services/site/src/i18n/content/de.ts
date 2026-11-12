@@ -350,7 +350,7 @@ export const content = {
     hero: { copy: { text: "Regeln für Agents", copied: "Regeln kopiert" } },
     naming: {
       title: "Name",
-      body: "Schreib OC Nano als ein Wort, mit großem O und großem C. Schreib nicht OC Nano, Open Code, OC Nano AI oder Open-Code.",
+      body: "Schreib OC Nano als ein Wort, mit großem O und großem C. Schreib nicht Opencode, Open Code, OC Nano AI oder Open-Code.",
       code: "Nutze das kleingeschriebene `ocnano` nur in Code und Paketnamen, etwa `ocnano-figma` oder `@acme/ocnano-plugin`.",
     },
     families: {

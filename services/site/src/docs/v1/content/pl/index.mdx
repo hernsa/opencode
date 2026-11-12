@@ -7,9 +7,9 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 import config from "../../../../config.mjs"
 export const console = config.console
 
-[**OC Nano**](/) to agent kodujący AI typu open source. Jest dostępny jako interfejs terminalowy, aplikacja desktopowa i rozszerzenie IDE.
+[**ocnano**](/) to agent kodujący AI typu open source. Jest dostępny jako interfejs terminalowy, aplikacja desktopowa i rozszerzenie IDE.
 
-![OC Nano TUI z motywem OC Nano](../../../assets/lander/screenshot.png)
+![ocnano TUI z motywem ocnano](../../../assets/lander/screenshot.png)
 
 Zacznijmy.
 
@@ -17,7 +17,7 @@ Zacznijmy.
 
 #### Warunki wstępne
 
-Aby uzyskać dostęp do OC Nano w swoim terminalu, będziesz potrzebować:
+Aby uzyskać dostęp do ocnano w swoim terminalu, będziesz potrzebować:
 
 1. Nowoczesny emulator terminala, taki jak:
    - [WezTerm](https://wezterm.org), wieloplatformowy
@@ -31,7 +31,7 @@ Aby uzyskać dostęp do OC Nano w swoim terminalu, będziesz potrzebować:
 
 ## Instalacja
 
-Najłatwiej zainstalować OC Nano za pomocą skryptu instalacyjnego.
+Najłatwiej zainstalować ocnano za pomocą skryptu instalacyjnego.
 
 ```bash
 curl -fsSL https://opencode.ai/install | bash
@@ -45,28 +45,28 @@ Możesz też użyć poniższych metod instalacji:
 
       <TabItem label="npm">
       ```bash
-      npm install -g ocnano-ai
+      npm install -g opencode-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g ocnano-ai
+        bun install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g ocnano-ai
+        pnpm install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add ocnano-ai
+        yarn global add opencode-ai
         ```
 
       </TabItem>
@@ -79,12 +79,12 @@ Możesz też użyć poniższych metod instalacji:
   brew install anomalyco/tap/ocnano
   ```
 
-  > W celu uzyskania najbardziej aktualnej wersji zalecamy korzystanie z ocnano. Oficjalna formuła `brew install OC Nano` jest utrzymywana przez zespół Homebrew i jest aktualizowana.
+  > W celu uzyskania najbardziej aktualnej wersji zalecamy korzystanie z ocnano. Oficjalna formuła `brew install ocnano` jest utrzymywana przez zespół Homebrew i jest aktualizowana.
 
 - **Korzystanie z Paru na Arch Linux**
 
   ```bash
-  sudo pacman -S OC Nano           # Arch Linux (Stable)
+  sudo pacman -S ocnano           # Arch Linux (Stable)
   paru -S ocnano-bin              # Arch Linux (Latest from AUR)
   ```
 
@@ -97,19 +97,19 @@ Aby najlepiej wykorzystać działanie w systemie Windows, zalecamy włączenie [
 - **Używając Chocolatey**
 
   ```bash
-  choco install OC Nano
+  choco install ocnano
   ```
 
 - **Korzystanie z Scoop**
 
   ```bash
-  scoop install OC Nano
+  scoop install ocnano
   ```
 
 - **Przy użyciu NPM**
 
   ```bash
-  npm install -g ocnano-ai
+  npm install -g opencode-ai
   ```
 
 - **Używając Mise’a**
@@ -124,7 +124,7 @@ Aby najlepiej wykorzystać działanie w systemie Windows, zalecamy włączenie [
   docker run -it --rm ghcr.io/anomalyco/opencode
   ```
 
-Obecnie pracujemy nad instalacją OC Nano w systemie Windows za pomocą Bun.
+Obecnie pracujemy nad instalacją ocnano w systemie Windows za pomocą Bun.
 
 Możesz także pobrać plik binarny z [Releases](https://github.com/anomalyco/opencode/releases).
 
@@ -132,12 +132,12 @@ Możesz także pobrać plik binarny z [Releases](https://github.com/anomalyco/op
 
 ## Konfiguracja
 
-Dzięki OC Nano możesz korzystać z dowolnego dostawcy LLM, konfigurując jego klucze API.
+Dzięki ocnano możesz korzystać z dowolnego dostawcy LLM, konfigurując jego klucze API.
 
 Jeśli będziesz korzystać z wielu dostawców LLM, zalecamy skorzystanie z [OC Nano Models](https://opencode.ai/docs/console/).
 Aby uzyskać dostęp do wyselekcjonowanej listy modeli, które zostały zatwierdzone i zweryfikowane przez zespół ocnano.
 
-1. Uruchom polecenie `/connect` w TUI, wybierz OC Nano i przejdź do [opencode.ai/auth](https://opencode.ai/auth).
+1. Uruchom polecenie `/connect` w TUI, wybierz ocnano i przejdź do [opencode.ai/auth](https://opencode.ai/auth).
 
    ```txt
    /connect
@@ -169,22 +169,22 @@ cd /path/to/project
 Uruchom ocnano.
 
 ```bash
-OC Nano
+ocnano
 ```
 
-Następnie zainicjuj OC Nano dla projektu, uruchamiając odpowiednie polecenie.
+Następnie zainicjuj ocnano dla projektu, uruchamiając odpowiednie polecenie.
 
 ```bash frame="none"
 /init
 ```
 
-Spowoduje to, że OC Nano przeanalizuje Twój projekt i utworzy plik `AGENTS.md` w katalogu głównym projektu.
+Spowoduje to, że ocnano przeanalizuje Twój projekt i utworzy plik `AGENTS.md` w katalogu głównym projektu.
 
 :::tip
 Powinieneś zacommitować plik `AGENTS.md` swojego projektu w Git.
 :::
 
-Pomaga to OC Nano zrozumieć strukturę projektu i stosowane wzorce kodowania.
+Pomaga to ocnano zrozumieć strukturę projektu i stosowane wzorce kodowania.
 
 ---
 
@@ -198,7 +198,7 @@ Jeśli dopiero zaczynasz korzystać z agenta kodującego AI, oto kilka wskazówe
 
 ### Zadawaj pytania
 
-Możesz poprosić OC Nano o wyjaśnienie bazy kodu.
+Możesz poprosić ocnano o wyjaśnienie bazy kodu.
 
 :::tip
 Użyj `@` do wyszukiwania rozmytego plików w projekcie.
@@ -214,11 +214,11 @@ Jest to pomocne, jeśli istnieje część bazy kodu, nad którą nie pracowałe�
 
 ### Dodaj funkcje
 
-Możesz poprosić OC Nano o dodanie nowej funkcji do Twojego projektu. Najpierw zalecamy poproszenie o przygotowanie planu.
+Możesz poprosić ocnano o dodanie nowej funkcji do Twojego projektu. Najpierw zalecamy poproszenie o przygotowanie planu.
 
 1. **Stwórz Plan**
 
-   OC Nano ma _Plan Mode_, który umożliwia wyłączenie zmian i
+   ocnano ma _Plan Mode_, który umożliwia wyłączenie zmian i
    zamiast tego zasugeruje, jak zaimplementować tę funkcję.
 
    Przejdź do niego za pomocą klawisza **Tab**. Zobaczysz odpowiedni wskaźnik w prawym dolnym rogu.
@@ -235,11 +235,11 @@ Możesz poprosić OC Nano o dodanie nowej funkcji do Twojego projektu. Najpierw 
    From this screen, the user can undelete a note or permanently delete it.
    ```
 
-   Wersja OC Nano jest bardzo inteligentna, aby zrozumieć, czego chcesz. To pomaga
+   Wersja ocnano jest bardzo inteligentna, aby zrozumieć, czego chcesz. To pomaga
    rozmawiaj z nim tak, jakbyś rozmawiał z młodszym programistą w swoim zespole.
 
    :::tip
-   Podaj OC Nano kontekst, aby zrozumiał, czego chcesz.
+   Podaj ocnano kontekst, aby zrozumiał, czego chcesz.
    :::
 
 2. **Udoskonalanie planu**
@@ -255,7 +255,7 @@ Możesz poprosić OC Nano o dodanie nowej funkcji do Twojego projektu. Najpierw 
    Przeciągnij i upuść obrazy do terminala, aby dodać je do monitu.
    :::
 
-   OC Nano może zeskanować obrazy, które mu przekażesz i zrozumieć je. Możesz to zrobić, przeciągając i upuszczając obraz do terminala.
+   ocnano może zeskanować obrazy, które mu przekażesz i zrozumieć je. Możesz to zrobić, przeciągając i upuszczając obraz do terminala.
 
 3. **Wprowadź zmiany**
 
@@ -275,7 +275,7 @@ Możesz poprosić OC Nano o dodanie nowej funkcji do Twojego projektu. Najpierw 
 
 ### Wprowadź zmiany
 
-Aby wprowadzić kolejną zmianę, możesz poprosić OC Nano lub zrobić to bezpośrednio bez konieczności wcześniejszego przeglądania planu.
+Aby wprowadzić kolejną zmianę, możesz poprosić ocnano lub zrobić to bezpośrednio bez konieczności wcześniejszego przeglądania planu.
 
 ```txt frame="none" "@packages/functions/src/settings.ts" "@packages/functions/src/notes.ts"
 We need to add authentication to the /settings route. Take a look at how this is
@@ -283,13 +283,13 @@ handled in the /notes route in @packages/functions/src/notes.ts and implement
 the same logic in @packages/functions/src/settings.ts
 ```
 
-Musisz upewnić się, że dostarczyłeś odpowiednie pliki, aby OC Nano mógł wprowadzić zmiany.
+Musisz upewnić się, że dostarczyłeś odpowiednie pliki, aby ocnano mógł wprowadzić zmiany.
 
 ---
 
 ### Cofnij zmiany
 
-Załóżmy, że prosisz OC Nano o wprowadzenie zmian.
+Załóżmy, że prosisz ocnano o wprowadzenie zmian.
 
 ```txt frame="none" "@packages/functions/src/api/index.ts"
 Can you refactor the function in @packages/functions/src/api/index.ts?
@@ -302,13 +302,13 @@ za pomocą polecenia `/undo`.
 /undo
 ```
 
-OC Nano cofnie teraz zmiany i wyświetli wiadomość ponownie.
+ocnano cofnie teraz zmiany i wyświetli wiadomość ponownie.
 
 ```txt frame="none" "@packages/functions/src/api/index.ts"
 Can you refactor the function in @packages/functions/src/api/index.ts?
 ```
 
-Możesz edytować monit i poprosić OC Nano o ponowną próbę.
+Możesz edytować monit i poprosić ocnano o ponowną próbę.
 
 :::tip
 Możesz użyć `/undo` wiele razy, aby cofnąć wiele zmian.
@@ -326,4 +326,4 @@ Możesz też **przywrócić** zmianę za pomocą polecenia `/redo`.
 
 To tyle! Jesteś teraz profesjonalistą w korzystaniu z ocnano.
 
-Aby dostosować go do potrzeb, zalecamy [wybranie motywu](/docs/themes), [dostosowanie skrótów klawiaturowych](/docs/keybinds), [konfigurowanie programów formatujących kod](/docs/formatters), [tworzenie niestandardowych poleceń](/docs/commands) lub zabawę z [konfiguracją OC Nano](/docs/config).
+Aby dostosować go do potrzeb, zalecamy [wybranie motywu](/docs/themes), [dostosowanie skrótów klawiaturowych](/docs/keybinds), [konfigurowanie programów formatujących kod](/docs/formatters), [tworzenie niestandardowych poleceń](/docs/commands) lub zabawę z [konfiguracją ocnano](/docs/config).

@@ -1,29 +1,29 @@
 ---
 name: ocnano-dev
-description: Use when interactively running, debugging, or verifying OC Nano's own CLI/TUI or server during development in this repo — starting the dev TUI, driving it with termctrl, hitting the server/API directly, reading log files, or attaching Bun's inspector.
+description: Use when interactively running, debugging, or verifying ocnano's own CLI/TUI or server during development in this repo — starting the dev TUI, driving it with termctrl, hitting the server/API directly, reading log files, or attaching Bun's inspector.
 ---
 
-# Debugging OC Nano itself
+# Debugging ocnano itself
 
 Workflow for interactively exercising the CLI/TUI and server while developing in this repo. All commands below run from `packages/cli` unless noted otherwise.
 
 ## Server/client model
 
-OC Nano is a client/server system, not a single monolithic process:
+ocnano is a client/server system, not a single monolithic process:
 
 - **Server process** runs the Effect HTTP API (`packages/server`) and owns all domain state: sessions, database, plugins, permissions, Location services. It's started by the `serve` command (`packages/cli/src/commands/handlers/serve.ts`).
 - **TUI process** is a separate process that runs no application logic itself — it's an HTTP/SSE client of the server via `@ocnano/client` (`OC Nano.make`).
-- **Discovery**: CLI processes find the shared server through a JSON registration file at `~/.local/state/ocnano/service.json` (or `service-local.json` for the local/dev channel) containing `{id, version, url, pid, password}`; the password is used for HTTP Basic auth. Before reusing a registration, the client calls `GET /api/info` to confirm the server is alive, is the registered PID, and is version-compatible. `OC Nano service status` prints the registered URL.
-- **Sharing**: because of this registration/health-check dance, many concurrent `OC Nano`/TUI invocations converge on one shared background daemon rather than each spawning their own. If no compatible healthy daemon is found, a new one is spawned detached (`serve --service`) and registers itself.
+- **Discovery**: CLI processes find the shared server through a JSON registration file at `~/.local/state/ocnano/service.json` (or `service-local.json` for the local/dev channel) containing `{id, version, url, pid, password}`; the password is used for HTTP Basic auth. Before reusing a registration, the client calls `GET /api/info` to confirm the server is alive, is the registered PID, and is version-compatible. `ocnano service status` prints the registered URL.
+- **Sharing**: because of this registration/health-check dance, many concurrent `ocnano`/TUI invocations converge on one shared background daemon rather than each spawning their own. If no compatible healthy daemon is found, a new one is spawned detached (`serve --service`) and registers itself.
 - **`bun dev service start|status|stop|restart`** manages this shared background daemon's lifecycle directly — useful when you need to force a fresh server, confirm one is running, or kill a stuck one.
-- **Standalone mode** (`--standalone`) opts a single invocation out of the shared daemon: it spawns a private one-off `serve --stdio --port 0` child tied to that invocation's lifetime, with its own random password. Use this to isolate a debugging session from your other running OC Nano sessions.
+- **Standalone mode** (`--standalone`) opts a single invocation out of the shared daemon: it spawns a private one-off `serve --stdio --port 0` child tied to that invocation's lifetime, with its own random password. Use this to isolate a debugging session from your other running ocnano sessions.
 - Every log line is tagged `role=server` or `role=cli` and a per-process `run=<id>`, so you can distinguish server-side and client-side activity in one shared log file (see "Logs" below) even when both roles are interleaved from concurrent processes.
 
 ## Starting the dev TUI
 
 - `packages/cli` is the CLI and TUI entrypoint. `bun dev` from `packages/cli` and the repository-root `bun dev` both run `packages/cli/src/index.ts`.
 - `bun dev` connects to the shared local-channel background service (`service-local.json`), starting it if needed. Every worktree on the machine shares that service. Add `--standalone` for a private server tied to this one process.
-- Use `bun run dev:live` from the repository root to run this worktree's TUI against the installed `OC Nano` background server and your real sessions.
+- Use `bun run dev:live` from the repository root to run this worktree's TUI against the installed `ocnano` background server and your real sessions.
 
 ## Interactive debugging with termctrl
 
@@ -82,13 +82,13 @@ bun dev api <operationId> --param key=value
 - If no compatible background server is registered, `bun dev api` starts one through the daemon service. Use `bun dev service status`, `bun dev service restart`, and `bun dev service stop` when you need explicit lifecycle control.
 - Prefer raw method/path calls for quick server debugging and operation IDs when exercising documented OpenAPI routes with path or query parameters.
 
-## Auditing installed `OC Nano` sessions
+## Auditing installed `ocnano` sessions
 
-Installed (released) sessions use `~/.local/share/ocnano/ocnano.db` and `~/.local/share/ocnano/log/ocnano.log`. A local/dev checkout uses `ocnano-local.db` and `ocnano-local.log` instead, and `OCNANO_DB` overrides the database. Run `OC Nano service status` before `OC Nano api`, because `OC Nano api` starts a server when none is healthy.
+Installed (released) sessions use `~/.local/share/ocnano/ocnano.db` and `~/.local/share/ocnano/log/ocnano.log`. A local/dev checkout uses `ocnano-local.db` and `ocnano-local.log` instead, and `OCNANO_DB` overrides the database. Run `ocnano service status` before `ocnano api`, because `ocnano api` starts a server when none is healthy.
 
 For a supplied `ses_...` ID, compare three sources:
 
-- `OC Nano api get /api/session/active` and the Session/message endpoints for live server state.
+- `ocnano api get /api/session/active` and the Session/message endpoints for live server state.
 - The database's ordered `event` rows for durable history.
 - `packages/tui/src/context/data.tsx` and the relevant route for client projection and rendering.
 
@@ -139,7 +139,7 @@ The Unix `SIGUSR1` listener in `packages/cli/src/heap.ts` shares the same writer
 1. Find the processes and inspect their roles and memory:
 
 ```bash
-pgrep -af OC Nano
+pgrep -af ocnano
 ps -o pid,ppid,rss,vsz,lstart,etime,cmd -p <pid>,<pid>
 ```
 
@@ -185,7 +185,7 @@ The CLI installs a `SIGPROF` listener on non-Windows processes in `packages/cli/
 1. Get the PID from the info endpoint. For shared-service performance, target the server PID returned here rather than a TUI process:
 
 ```bash
-OC Nano api get /api/info
+ocnano api get /api/info
 ```
 
 Use `bun dev api get /api/info` instead when targeting the local/dev channel.

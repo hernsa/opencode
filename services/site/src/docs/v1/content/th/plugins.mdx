@@ -118,7 +118,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 - `project`: ข้อมูลโครงการปัจจุบัน
 - `directory`: ไดเร็กทอรีการทำงานปัจจุบัน
 - `worktree`: เส้นทางเวิร์กทรีคอมไพล์
-- `client`: ไคลเอนต์ OC Nano SDK สำหรับการโต้ตอบกับ AI
+- `client`: ไคลเอนต์ ocnano SDK สำหรับการโต้ตอบกับ AI
 - `$`: [shell API](https://bun.com/docs/runtime/shell) ของ Bun สำหรับการดำเนินการคำสั่ง
 
 ---
@@ -128,7 +128,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 สำหรับปลั๊กอิน TypeScript คุณสามารถนำเข้าประเภทจากแพ็คเกจปลั๊กอินได้:
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -207,7 +207,7 @@ export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree
 
 ## ตัวอย่าง
 
-นี่คือตัวอย่างบางส่วนของปลั๊กอินที่คุณสามารถใช้เพื่อขยาย OC Nano
+นี่คือตัวอย่างบางส่วนของปลั๊กอินที่คุณสามารถใช้เพื่อขยาย ocnano
 
 ---
 
@@ -221,7 +221,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
     event: async ({ event }) => {
       // Send notification on session completion
       if (event.type === "session.idle") {
-        await $`osascript -e 'display notification "Session completed!" with title "OC Nano"'`
+        await $`osascript -e 'display notification "Session completed!" with title "ocnano"'`
       }
     },
   }
@@ -238,7 +238,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
 
 ### การป้องกัน .env
 
-ป้องกันไม่ให้ OC Nano อ่านไฟล์ `.env`:
+ป้องกันไม่ให้ ocnano อ่านไฟล์ `.env`:
 
 ```javascript title=".ocnano/plugins/env-protection.js"
 export const EnvProtection = async ({ project, client, $, directory, worktree }) => {
@@ -273,10 +273,10 @@ export const InjectEnvPlugin = async () => {
 
 ### เครื่องมือที่กำหนดเอง
 
-ปลั๊กอินยังสามารถเพิ่มเครื่องมือที่กำหนดเองให้กับ OC Nano:
+ปลั๊กอินยังสามารถเพิ่มเครื่องมือที่กำหนดเองให้กับ ocnano:
 
 ```ts title=".ocnano/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@ocnano-ai/plugin"
+import { type Plugin, tool } from "@opencode-ai/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -296,13 +296,13 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 }
 ```
 
-ตัวช่วย `tool` สร้างเครื่องมือแบบกำหนดเองที่สามารถเรียกใช้ OC Nano ได้ ใช้ฟังก์ชัน Zod schema และส่งกลับคำจำกัดความของเครื่องมือด้วย:
+ตัวช่วย `tool` สร้างเครื่องมือแบบกำหนดเองที่สามารถเรียกใช้ ocnano ได้ ใช้ฟังก์ชัน Zod schema และส่งกลับคำจำกัดความของเครื่องมือด้วย:
 
 - `description`: เครื่องมือนี้ทำอะไร
 - `args`: Zod schema สำหรับข้อโต้แย้งของเครื่องมือ
 - `execute`: ฟังก์ชั่นที่ทำงานเมื่อมีการเรียกใช้เครื่องมือ
 
-เครื่องมือที่คุณกำหนดเองจะพร้อมใช้งานสำหรับ OC Nano ควบคู่ไปกับเครื่องมือในตัว
+เครื่องมือที่คุณกำหนดเองจะพร้อมใช้งานสำหรับ ocnano ควบคู่ไปกับเครื่องมือในตัว
 
 :::note
 หากเครื่องมือปลั๊กอินใช้ชื่อเดียวกับเครื่องมือในตัว เครื่องมือปลั๊กอินจะมีความสำคัญเหนือกว่า
@@ -336,7 +336,7 @@ export const MyPlugin = async ({ client }) => {
 ปรับแต่งบริบทที่รวมไว้เมื่อมีการกระชับเซสชัน:
 
 ```ts title=".ocnano/plugins/compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ Include any state that should persist across compaction:
 คุณยังสามารถแทนที่พรอมต์การกระชับข้อมูลทั้งหมดได้โดยตั้งค่า `output.prompt`:
 
 ```ts title=".ocnano/plugins/custom-compaction.ts"
-import type { Plugin } from "@ocnano-ai/plugin"
+import type { Plugin } from "@opencode-ai/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

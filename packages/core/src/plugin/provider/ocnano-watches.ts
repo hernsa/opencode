@@ -1,4 +1,4 @@
-export * as OcNanoWatches from "./ocnano-watches.js"
+export * as OpencodeWatches from "./ocnano-watches.js"
 
 import { ToolFailure } from "@ocnano/ai/effect"
 import type { Context } from "@ocnano/plugin/effect/plugin"

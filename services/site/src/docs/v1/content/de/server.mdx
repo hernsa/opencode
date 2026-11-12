@@ -38,7 +38,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 ### Authentifizierung
 
 Setze `OCNANO_SERVER_PASSWORD`, um den Server mit HTTP Basic Auth zu schuetzen.
-Der Benutzername ist standardmaessig `OC Nano`, kann aber mit `OCNANO_SERVER_USERNAME` ueberschrieben werden. Das gilt fuer `ocnano serve` und `ocnano web`.
+Der Benutzername ist standardmaessig `ocnano`, kann aber mit `OCNANO_SERVER_USERNAME` ueberschrieben werden. Das gilt fuer `ocnano serve` und `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -48,11 +48,11 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### Funktionsweise
 
-Wenn du `OC Nano` startest, werden TUI und Server gestartet.
+Wenn du `ocnano` startest, werden TUI und Server gestartet.
 Die TUI ist dabei der Client, der mit dem Server spricht; dessen OpenAPI-3.1-Endpunkt dient auch zur Generierung des [SDK](/docs/sdk).
 
 :::tip
-Nutze den ocnano-Server, um OC Nano programmatisch anzusteuern.
+Nutze den ocnano-Server, um ocnano programmatisch anzusteuern.
 :::
 
 Diese Architektur erlaubt mehrere Clients und programmatische Nutzung.

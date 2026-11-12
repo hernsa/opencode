@@ -1,6 +1,6 @@
 ---
 title: GitLab
-description: Bruk OC Nano i GitLab-problemer og Merge Requests.
+description: Bruk ocnano i GitLab-problemer og Merge Requests.
 ---
 
 OC Nano integreres med GitLab arbeidsflyten gjennom GitLab CI/CD pipeline eller med GitLab Duo.
@@ -82,8 +82,8 @@ Sjekk ut [**GitLab-dokumentene**](https://docs.gitlab.com/user/duo_agent_platfor
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing OC Nano"
-      - npm install --global ocnano-ai
+      - echo "Installing ocnano"
+      - npm install --global opencode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OCNANO
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
@@ -91,7 +91,7 @@ Sjekk ut [**GitLab-dokumentene**](https://docs.gitlab.com/user/duo_agent_platfor
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating ocnano auth configuration"
+      - echo "Creating OC Nano auth configuration"
       - mkdir --parents ~/.local/share/ocnano
       - |
         cat > ~/.local/share/ocnano/auth.json << EOF
@@ -103,7 +103,7 @@ Sjekk ut [**GitLab-dokumentene**](https://docs.gitlab.com/user/duo_agent_platfor
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "OC Nano@gitlab.com"
+      - git config --global user.email "ocnano@gitlab.com"
       - git config --global user.name "OC Nano"
       - echo "Testing glab"
       - glab issue list

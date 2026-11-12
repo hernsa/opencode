@@ -1,11 +1,11 @@
 ---
 name: sample-skill
-description: Use when the user says sample skill, skill demo, or asks how an OC Nano SKILL.md should be structured; demonstrates a tiny project-local skill with practical assistant workflow guidance.
+description: Use when the user says sample skill, skill demo, or asks how an ocnano SKILL.md should be structured; demonstrates a tiny project-local skill with practical assistant workflow guidance.
 ---
 
 # Sample Skill
 
-This is a minimal project-local OC Nano skill. It exists as a reference for how a skill is structured and as a tiny reusable workflow the assistant can load when the user asks for a skill example.
+This is a minimal project-local ocnano skill. It exists as a reference for how a skill is structured and as a tiny reusable workflow the assistant can load when the user asks for a skill example.
 
 ## When To Use
 
@@ -27,5 +27,5 @@ When this skill is relevant, keep responses direct and actionable:
 
 ```text
 I created a project-local skill at .ocnano/skills/sample-skill/SKILL.md.
-Restart OC Nano for the new skill to be discovered by future sessions.
+Restart ocnano for the new skill to be discovered by future sessions.
 ```

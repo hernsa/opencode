@@ -65,10 +65,10 @@ and `SENTRY_*` environment removed), so it never touches the developer's app, pr
 # A returning user's launches of two packaged builds (pack each with OCNANO_CHANNEL=beta or prod), or two installed
 # channels.
 strobe bench perf/startup.bench.ts --target desktop --base exe:<old>/OC Nano.exe --head exe:<new>/OC Nano.exe
-strobe bench perf/startup.bench.ts --target desktop --base app:OC Nano --head app:ocnano-beta
+strobe bench perf/startup.bench.ts --target desktop --base app:ocnano --head app:ocnano-beta
 
 # The first launch after an install.
-strobe bench perf/startup.bench.ts --target install --base app:OC Nano --head app:ocnano-beta
+strobe bench perf/startup.bench.ts --target install --base app:ocnano --head app:ocnano-beta
 
 # The dev loop's cold start, dev against this checkout.
 strobe bench perf/startup.bench.ts --target dev --base origin/dev --head .
@@ -87,6 +87,6 @@ returning-user cases keep the GPU shader caches their build compiled in earlier 
 them; `first launch` starts each launch without them. `--why always` adds a profiled
 launch per build: the main process and the renderer, both from their first statement.
 
-A packaged beta or prod build registers itself as the `OC Nano://` handler when it starts, even from the bench; the
+A packaged beta or prod build registers itself as the `ocnano://` handler when it starts, even from the bench; the
 installed app takes the registration back on its next launch. Those channels run with `HTTPS_PROXY` pointed at a
 closed port (`--offline` forces it for dev) so the updater's first check fails fast instead of reaching GitHub.

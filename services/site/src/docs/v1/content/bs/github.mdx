@@ -20,7 +20,7 @@ OC Nano se integriše sa vašim GitHub tokovom rada. Spomenite `/ocnano` ili `/o
 Pokrenite sljedeću naredbu u projektu koji se nalazi u GitHub repo:
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Ovo će vas provesti kroz instalaciju GitHub aplikacije, kreiranje toka posla i postavljanje tajni.
@@ -37,7 +37,7 @@ Ili ga možete postaviti ručno.
    Dodajte sljedeći fajl toka posla u `.github/workflows/ocnano.yml` u svoj repo. Obavezno postavite odgovarajuće `model` i potrebne API ključeve u `env`.
 
 ```yml title=".github/workflows/ocnano.yml" {24,26}
-name: OC Nano
+name: ocnano
 
 on:
   issue_comment:
@@ -46,7 +46,7 @@ on:
     types: [created]
 
 jobs:
-  OC Nano:
+  ocnano:
     if: |
       contains(github.event.comment.body, '/oc') ||
       contains(github.event.comment.body, '/ocnano')
@@ -118,7 +118,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

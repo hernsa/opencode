@@ -3,7 +3,7 @@ title: Regole
 description: Imposta istruzioni personalizzate per ocnano.
 ---
 
-Puoi fornire istruzioni personalizzate a OC Nano creando un file `AGENTS.md`. E' simile alle regole di Cursor. Contiene istruzioni che verranno incluse nel contesto dell'LLM per personalizzarne il comportamento per il tuo progetto.
+Puoi fornire istruzioni personalizzate a ocnano creando un file `AGENTS.md`. E' simile alle regole di Cursor. Contiene istruzioni che verranno incluse nel contesto dell'LLM per personalizzarne il comportamento per il tuo progetto.
 
 ---
 
@@ -15,7 +15,7 @@ Per creare un nuovo file `AGENTS.md`, puoi eseguire il comando `/init` in ocnano
 Dovresti committare il file `AGENTS.md` del progetto in Git.
 :::
 
-Questo scansiona il progetto e tutti i suoi contenuti per capire di cosa si tratta e generare un file `AGENTS.md`. Questo aiuta OC Nano a orientarsi meglio nel progetto.
+Questo scansiona il progetto e tutti i suoi contenuti per capire di cosa si tratta e generare un file `AGENTS.md`. Questo aiuta ocnano a orientarsi meglio nel progetto.
 
 Se hai gia' un file `AGENTS.md` esistente, cerchera' di aggiungervi contenuti.
 
@@ -54,7 +54,7 @@ Qui stiamo aggiungendo istruzioni specifiche del progetto e saranno condivise co
 
 ## Tipi
 
-OC Nano supporta anche la lettura del file `AGENTS.md` da piu' posizioni, e questo serve a scopi diversi.
+ocnano supporta anche la lettura del file `AGENTS.md` da piu' posizioni, e questo serve a scopi diversi.
 
 ### Progetto
 
@@ -86,7 +86,7 @@ export OCNANO_DISABLE_CLAUDE_CODE_SKILLS=1 # Disable only .claude/skills
 
 ## Priorita
 
-Quando OC Nano si avvia, cerca i file di regole in questo ordine:
+Quando ocnano si avvia, cerca i file di regole in questo ordine:
 
 1. **File locali** risalendo dalla directory corrente (`AGENTS.md`, `CLAUDE.md`)
 2. **File globale** in `~/.config/ocnano/AGENTS.md`
@@ -126,7 +126,7 @@ Tutti i file di istruzioni vengono combinati con i tuoi file `AGENTS.md`.
 
 ## Riferisci file esterni
 
-Anche se OC Nano non interpreta automaticamente i riferimenti a file in `AGENTS.md`, puoi ottenere una funzionalita' simile in due modi:
+Anche se ocnano non interpreta automaticamente i riferimenti a file in `AGENTS.md`, puoi ottenere una funzionalita' simile in due modi:
 
 ### Usa ocnano.json
 
@@ -141,7 +141,7 @@ L'approccio consigliato e' usare il campo `instructions` in `ocnano.json`:
 
 ### Istruzioni manuali in AGENTS.md
 
-Puoi insegnare a OC Nano a leggere file esterni fornendo istruzioni esplicite nel tuo `AGENTS.md`. Ecco un esempio pratico:
+Puoi insegnare a ocnano a leggere file esterni fornendo istruzioni esplicite nel tuo `AGENTS.md`. Ecco un esempio pratico:
 
 ```markdown title="AGENTS.md"
 # TypeScript Project Rules
@@ -173,7 +173,7 @@ Questo approccio ti permette di:
 - Crea file di regole modulari e riutilizzabili
 - Condividi regole tra progetti con symlink o submodule Git
 - Mantieni AGENTS.md conciso riferendoti a linee guida dettagliate
-- Assicurati che OC Nano carichi file solo quando servono per il task specifico
+- Assicurati che ocnano carichi file solo quando servono per il task specifico
 
 :::tip
 Per monorepo o progetti con standard condivisi, usare `ocnano.json` con pattern glob (come `packages/*/AGENTS.md`) e' piu' manutenibile rispetto alle istruzioni manuali.

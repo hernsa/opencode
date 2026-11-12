@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 OC Nano CLI 在不帶任何參數執行時，預設啟動 [TUI](/docs/tui)。
 
 ```bash
-OC Nano
+ocnano
 ```
 
 但它也接受本頁面中記錄的指令，使您可以透過程式方式與 OC Nano 進行互動。
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 啟動 OC Nano 終端機使用者介面。
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### 旗標
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | 要繼續的工作階段 ID                                                     |
 | <nobr><code>{"--fork"}</code></nobr>     |      | 繼續時分支工作階段（與 `--continue` 或 `--session` 一起使用）           |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | 基本驗證密碼（預設使用 `OCNANO_SERVER_PASSWORD`）                     |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `OCNANO_SERVER_USERNAME` 或 `OC Nano`） |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `OCNANO_SERVER_USERNAME` 或 `ocnano`） |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 管理用於儲存庫自動化的 GitHub 代理。
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 在您的儲存庫中安裝 GitHub 代理。
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 此指令會設定必要的 GitHub Actions 工作流程並引導您完成設定過程。[了解更多](/docs/github)。
@@ -154,7 +154,7 @@ OC Nano github install
 執行 GitHub 代理。通常在 GitHub Actions 中使用。
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### 旗標
@@ -318,9 +318,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f` | 附加到訊息的檔案                                                        |
 | <nobr><code>{"--format"}</code></nobr>   |      | 格式：default（格式化輸出）或 json（原始 JSON 事件）                    |
 | <nobr><code>{"--title"}</code></nobr>    |      | 工作階段標題（未提供值時使用截斷的提示詞）                              |
-| <nobr><code>{"--attach"}</code></nobr>   |      | 連接到正在執行的 OC Nano 伺服器（例如 http://localhost:4096）          |
+| <nobr><code>{"--attach"}</code></nobr>   |      | 連接到正在執行的 ocnano 伺服器（例如 http://localhost:4096）          |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | 基本驗證密碼（預設使用 `OCNANO_SERVER_PASSWORD`）                     |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `OCNANO_SERVER_USERNAME` 或 `OC Nano`） |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `OCNANO_SERVER_USERNAME` 或 `ocnano`） |
 | <nobr><code>{"--dir"}</code></nobr>      |      | 執行目錄，或附加時遠端伺服器上的路徑                                    |
 | <nobr><code>{"--variant"}</code></nobr>  |      | 模型變體（特定於提供者的推理級別）                                      |
 | <nobr><code>{"--thinking"}</code></nobr> |      | 顯示思考區塊                                                            |
@@ -336,7 +336,7 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ocnano serve
 ```
 
-此指令啟動一個 HTTP 伺服器，提供對 OC Nano 功能的 API 存取，無需 TUI 介面。設定 `OCNANO_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `OC Nano`）。
+此指令啟動一個 HTTP 伺服器，提供對 OC Nano 功能的 API 存取，無需 TUI 介面。設定 `OCNANO_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `ocnano`）。
 
 #### 旗標
 
@@ -429,7 +429,7 @@ ocnano import session.json
 ocnano web
 ```
 
-此指令啟動一個 HTTP 伺服器並開啟瀏覽器，透過 Web 介面存取 OC Nano。設定 `OCNANO_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `OC Nano`）。
+此指令啟動一個 HTTP 伺服器並開啟瀏覽器，透過 Web 介面存取 OC Nano。設定 `OCNANO_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `ocnano`）。
 
 #### 旗標
 
@@ -447,7 +447,7 @@ ocnano web
 啟動 ACP（Agent Client Protocol）伺服器。
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 此指令啟動一個透過 stdin/stdout 使用 nd-JSON 進行通訊的 ACP 伺服器。
@@ -549,7 +549,7 @@ OC Nano 可以透過環境變數進行設定。
 | `OCNANO_CLIENT`                     | string  | 用戶端識別碼（預設為 `cli`）                |
 | `OCNANO_ENABLE_EXA`                 | boolean | 啟用 Exa 網路搜尋工具                       |
 | `OCNANO_SERVER_PASSWORD`            | string  | 為 `serve`/`web` 啟用基本認證               |
-| `OCNANO_SERVER_USERNAME`            | string  | 覆寫基本認證使用者名稱（預設為 `OC Nano`） |
+| `OCNANO_SERVER_USERNAME`            | string  | 覆寫基本認證使用者名稱（預設為 `ocnano`） |
 | `OCNANO_MODELS_URL`                 | string  | 自訂模型設定擷取 URL                        |
 
 ---

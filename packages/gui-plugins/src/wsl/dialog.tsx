@@ -348,7 +348,7 @@ function useWslAddServerController(props: DialogWslServerProps) {
 
     if (action.kind === "install-distro") return client.installDistro({ name: action.distro }, { signal })
 
-    if (action.kind === "install-ocnano") return client.installOcNano({ name: action.distro }, { signal })
+    if (action.kind === "install-ocnano") return client.installOpencode({ name: action.distro }, { signal })
 
     // The server shows up in main's state; the dialog needs only to know it was saved.
     await client.addServer({ distro: action.distro }, { signal })

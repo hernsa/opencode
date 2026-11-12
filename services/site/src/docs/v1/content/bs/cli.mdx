@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 OC Nano CLI po defaultu pokreće [TUI](/docs/tui) kada se pokrene bez ikakvih argumenata.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Ali takođe prihvata naredbe kao što je dokumentovano na ovoj stranici. Ovo vam omogućava programsku interakciju sa OC Nano.
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 Pokrenite OC Nano terminalski korisnički interfejs.
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### Opcije
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s`   | ID sesije za nastavak                                                                         |
 | <nobr><code>{"--fork"}</code></nobr>     |        | Forkuj sesiju prilikom nastavka (koristite sa `--continue` ili `--session`)                   |
 | <nobr><code>{"--password"}</code></nobr> | `-p`   | Lozinka za osnovnu autentifikaciju (zadano: `OCNANO_SERVER_PASSWORD`)                       |
-| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `OCNANO_SERVER_USERNAME` ili `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `OCNANO_SERVER_USERNAME` ili `ocnano`) |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 Upravljajte GitHub agentom za automatizaciju repozitorija.
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 Instalirajte GitHub agenta u svoj repozitorij.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Ovo postavlja neophodni tok rada GitHub Actions i vodi vas kroz proces konfiguracije. [Saznajte više](/docs/github).
@@ -154,7 +154,7 @@ Ovo postavlja neophodni tok rada GitHub Actions i vodi vas kroz proces konfigura
 Pokrenite GitHub agent. Ovo se obično koristi u GitHub Actions.
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### Opcije
@@ -317,7 +317,7 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--title"}</code></nobr>    |        | Naslov sesije (koristi skraćeni prompt ako nije navedena vrijednost)                          |
 | <nobr><code>{"--attach"}</code></nobr>   |        | Priključite na pokrenuti OC Nano server (npr. http://localhost:4096)                         |
 | <nobr><code>{"--password"}</code></nobr> | `-p`   | Lozinka za osnovnu autentifikaciju (zadano: `OCNANO_SERVER_PASSWORD`)                       |
-| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `OCNANO_SERVER_USERNAME` ili `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `OCNANO_SERVER_USERNAME` ili `ocnano`) |
 | <nobr><code>{"--dir"}</code></nobr>      |        | Direktorij za pokretanje, ili putanja na udaljenom serveru pri spajanju                       |
 | <nobr><code>{"--variant"}</code></nobr>  |        | Varijanta modela (napor zaključivanja specifičan za provajdera)                               |
 | <nobr><code>{"--thinking"}</code></nobr> |        | Prikaži blokove razmišljanja                                                                  |
@@ -333,7 +333,7 @@ Pokrenite OC Nano headless server za API pristup. Pogledajte [server docs](/docs
 ocnano serve
 ```
 
-Ovo pokreće HTTP server koji pruža API pristup funkcionalnosti OC Nano-a bez TUI interfejsa. Postavite `OCNANO_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `OC Nano`).
+Ovo pokreće HTTP server koji pruža API pristup funkcionalnosti OC Nano-a bez TUI interfejsa. Postavite `OCNANO_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `ocnano`).
 
 #### Opcije
 
@@ -426,7 +426,7 @@ Pokrenite OC Nano headless server sa web interfejsom.
 ocnano web
 ```
 
-Ovo pokreće HTTP server i otvara web pretraživač za pristup OC Nano-u preko web interfejsa. Postavite `OCNANO_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `OC Nano`).
+Ovo pokreće HTTP server i otvara web pretraživač za pristup OC Nano-u preko web interfejsa. Postavite `OCNANO_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `ocnano`).
 
 #### Opcije
 
@@ -444,7 +444,7 @@ Ovo pokreće HTTP server i otvara web pretraživač za pristup OC Nano-u preko w
 Pokrenite ACP (Agent Client Protocol) server.
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 Ova naredba pokreće ACP server koji komunicira preko stdin/stdout koristeći nd-JSON.
@@ -546,7 +546,7 @@ OC Nano se može konfigurirati pomoću varijabli okruženja.
 | `OCNANO_CLIENT`                     | string  | Identifikator klijenta (zadano na `cli`)                           |
 | `OCNANO_ENABLE_EXA`                 | boolean | Omogući Exa alate za web pretraživanje                             |
 | `OCNANO_SERVER_PASSWORD`            | string  | Omogući osnovnu autentifikaciju za `serve`/`web`                   |
-| `OCNANO_SERVER_USERNAME`            | string  | Poništi osnovno korisničko ime autentifikacije (zadano `OC Nano`) |
+| `OCNANO_SERVER_USERNAME`            | string  | Poništi osnovno korisničko ime autentifikacije (zadano `ocnano`) |
 | `OCNANO_MODELS_URL`                 | string  | Prilagođeni URL za dohvaćanje konfiguracije modela                 |
 
 ---

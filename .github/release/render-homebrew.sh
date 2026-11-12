@@ -10,8 +10,8 @@ cat > "$tap/ocnano-v2.rb" <<FORMULA
 # typed: false
 # frozen_string_literal: true
 
-class OcNanoV2 < Formula
-  desc "OcNano V2 - the AI coding agent for the terminal"
+class OpencodeV2 < Formula
+  desc "OC Nano V2 - the AI coding agent for the terminal"
   homepage "https://github.com/anomalyco/opencode"
   version "$OCNANO_VERSION"
   license "MIT"

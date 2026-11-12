@@ -250,10 +250,26 @@ const STYLES = `
 `
 
 // OcNano wordmark — the same "OC NANO" glyphs as packages/ui/src/components/logo.tsx (Logo), drawn with
-// this page's own tokens.
+// this page's own tokens. Each letter is placed on its own so the mark matches the app's wordmark
+// glyph for glyph.
+const WORDMARK_GLYPHS = [
+  { x: 15, char: "O" },
+  { x: 54, char: "C" },
+  { x: 102, char: "N" },
+  { x: 141, char: "A" },
+  { x: 180, char: "N" },
+  { x: 219, char: "O" },
+] as const
+
+const wordmarkGlyphs = (fill: string, transform?: string) =>
+  WORDMARK_GLYPHS.map(
+    (glyph) =>
+      `<text x="${glyph.x}" y="35" text-anchor="middle" font-family="var(--oc-font-sans)" font-size="40" font-weight="600" fill="${fill}"${transform ? ` transform="${transform}"` : ""}>${glyph.char}</text>`,
+  ).join("")
+
 const WORDMARK = `<svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 234 42" fill="none" aria-label="OC Nano" role="img">
-        <text aria-hidden="true" x="0" y="35" font-family="var(--oc-font-sans)" font-size="40" font-weight="600" letter-spacing="0.08em" textLength="234" lengthAdjust="spacingAndGlyphs" fill="var(--oc-icon-weak)" transform="translate(0 1.5)">OC NANO</text>
-        <text x="0" y="35" font-family="var(--oc-font-sans)" font-size="40" font-weight="600" letter-spacing="0.08em" textLength="234" lengthAdjust="spacingAndGlyphs" fill="var(--oc-icon-strong)">OC NANO</text>
+        ${wordmarkGlyphs("var(--oc-icon-weak)", "translate(0 1.5)").replaceAll("<text ", '<text aria-hidden="true" ')}
+        ${wordmarkGlyphs("var(--oc-icon-strong)")}
       </svg>`
 
 const ICON_CHECK = `<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="m8.5 12.5 2.4 2.4 4.6-5.4" /></svg>`

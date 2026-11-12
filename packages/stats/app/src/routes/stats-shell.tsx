@@ -129,7 +129,7 @@ export function Header(props: { githubStars: string; links?: readonly HeaderLink
             aria-label={i18n.t("header.tryOC Nano")}
           >
             <strong data-slot="label">{i18n.t("header.tryOC Nano")}</strong>
-            <strong data-slot="label-short">{i18n.t("header.tryOC NanoShort")}</strong>
+            <strong data-slot="label-short">{i18n.t("header.tryOcNanoShort")}</strong>
           </a>
           <a
             data-slot="github-mark"

@@ -14,7 +14,7 @@ ACP は、コードエディターと AI コーディングエージェント間
 
 ## 設定
 
-ACP 経由で OC Nano を使用するには、`OC Nano acp` コマンドを実行するようにエディタを設定します。
+ACP 経由で OC Nano を使用するには、`ocnano acp` コマンドを実行するようにエディタを設定します。
 
 このコマンドは、stdio 経由で JSON-RPC 経由でエディターと通信する ACP 互換のサブプロセスとして OC Nano を開始します。
 
@@ -33,7 +33,7 @@ ACP 経由で OC Nano を使用するには、`OC Nano acp` コマンドを実�
   "agent_servers": {
     "OC Nano": {
       "type": "custom",
-      "command": "OC Nano",
+      "command": "ocnano",
       "args": ["acp"]
     }
   }
@@ -55,7 +55,7 @@ ACP 経由で OC Nano を使用するには、`OC Nano acp` コマンドを実�
             "custom": {
               "name": "OC Nano",
               "command": {
-                "command": "OC Nano",
+                "command": "ocnano",
                 "args": ["acp"]
               }
             }
@@ -95,8 +95,8 @@ ACP 経由で OC Nano を使用するには、`OC Nano acp` コマンドを実�
 ```lua
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" }
     }
   }
@@ -108,8 +108,8 @@ ACP 経由で OC Nano を使用するには、`OC Nano acp` コマンドを実�
 ```lua {6-8}
 {
   acp_providers = {
-    ["OC Nano"] = {
-      command = "OC Nano",
+    ["ocnano"] = {
+      command = "ocnano",
       args = { "acp" },
       env = {
         OCNANO_API_KEY = os.getenv("OCNANO_API_KEY")
@@ -130,7 +130,7 @@ require("codecompanion").setup({
   interactions = {
     chat = {
       adapter = {
-        name = "OC Nano",
+        name = "ocnano",
         model = "claude-sonnet-5-5",
       },
     },

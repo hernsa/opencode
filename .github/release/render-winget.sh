@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # render-winget.sh <sign-windows dir> <sign-desktop-windows-installer dir> <out dir>: writes the WinGet manifests for
-# Anomaly.OcNano and Anomaly.OcNano.Desktop. Submission to microsoft/winget-pkgs is paused until the packages
+# Anomaly.OC Nano and Anomaly.OC Nano.Desktop. Submission to microsoft/winget-pkgs is paused until the packages
 # are accepted, so the workflow only uploads them.
 . "$(dirname "$0")/lib.sh"
 
@@ -21,7 +21,7 @@ manifests() {
   { header "$id" installer; printf '%s\n' "$@" "ReleaseDate: $date"; footer installer; } > "$out/$id/$id.installer.yaml"
   {
     header "$id" defaultLocale
-    printf '%s\n' "PackageLocale: en-US" "Publisher: OcNano" "PublisherUrl: https://anoma.ly/" \
+    printf '%s\n' "PackageLocale: en-US" "Publisher: OC Nano" "PublisherUrl: https://anoma.ly/" \
       "PublisherSupportUrl: https://github.com/anomalyco/opencode/issues" "PrivacyUrl: https://opencode.ai/legal/privacy-policy" \
       "PackageName: $name" "PackageUrl: https://opencode.ai/" "License: MIT" "LicenseUrl: https://github.com/anomalyco/opencode/blob/HEAD/LICENSE" \
       "ShortDescription: $description" "Moniker: $moniker" "Tags:" "- ai" "- coding-agent" "- developer-tools" \
@@ -30,14 +30,14 @@ manifests() {
   } > "$out/$id/$id.locale.en-US.yaml"
 }
 
-manifests Anomaly.OcNano "OcNano CLI" "The open source AI coding agent for the terminal." ocnano \
+manifests Anomaly.OC Nano "OC Nano CLI" "The open source AI coding agent for the terminal." ocnano \
   "InstallerType: zip" "NestedInstallerType: portable" "NestedInstallerFiles:" \
   "- RelativeFilePath: ocnano.exe" "  PortableCommandAlias: ocnano" "Commands:" "- ocnano" "Installers:" \
   "- Architecture: x64" "  InstallerUrl: $base/ocnano-windows-x64-baseline.zip" "  InstallerSha256: $(sum "$cli/ocnano-windows-x64-baseline.zip")" \
   "- Architecture: arm64" "  InstallerUrl: $base/ocnano-windows-arm64.zip" "  InstallerSha256: $(sum "$cli/ocnano-windows-arm64.zip")"
 
 # The display name and uninstall key match what the NSIS installer registers for ai.ocnano.desktop.
-manifests Anomaly.OcNano.Desktop "OcNano" "The open source AI coding agent as a desktop app." ocnano-desktop \
+manifests Anomaly.OC Nano.Desktop "OC Nano" "The open source AI coding agent as a desktop app." ocnano-desktop \
   "InstallerType: nullsoft" "Scope: user" "UpgradeBehavior: install" "ProductCode: d074f30d-5f88-5885-b075-be1348cc7676" \
   "Protocols:" "- ocnano" "Installers:" \
   "- Architecture: x64" "  InstallerUrl: $base/ocnano-desktop-win-x64.exe" "  InstallerSha256: $(sum "$desktop/ocnano-desktop-win-x64.exe")" \

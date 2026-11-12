@@ -56,7 +56,7 @@ OC Nano Models er en liste over modeller leveret af OC Nano-teamet, som er bleve
 Hvis du er ny, anbefaler vi at starte med OC Nano Models.
 :::
 
-1. Kør kommandoen `/connect` i TUI, vælg OC Nano og gå til [opencode.ai/auth](https://opencode.ai/auth).
+1. Kør kommandoen `/connect` i TUI, vælg ocnano og gå til [opencode.ai/auth](https://opencode.ai/auth).
 
    ```txt
    /connect
@@ -165,17 +165,17 @@ Sådan bruger du Amazon Bedrock med OC Nano:
 
    #### Miljøvariabler (hurtigstart)
 
-   Angiv en af disse miljøvariabler, mens du kører OC Nano:
+   Angiv en af disse miljøvariabler, mens du kører ocnano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    Eller tilføj dem til din bash-profil:
@@ -319,7 +319,7 @@ Eller hvis du allerede har en API-nøgle, kan du vælge **Manually enter API Key
 
 ### Atomic Chat
 
-Du kan konfigurere OC Nano til at bruge lokale modeller via [Atomic Chat](https://atomic.chat) — en desktopapplikation, der kører lokale LLM'er bag en OpenAI-kompatibel API-server (standard-endpoint `http://127.0.0.1:1337/v1`).
+Du kan konfigurere ocnano til at bruge lokale modeller via [Atomic Chat](https://atomic.chat) — en desktopapplikation, der kører lokale LLM'er bag en OpenAI-kompatibel API-server (standard-endpoint `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -368,7 +368,7 @@ Hvis du støder på "Beklager, men jeg kan ikke hjælpe med den anmodning"-fejl,
 2. Gå til [Azure AI Foundry](https://ai.azure.com/) og distribuer en model.
 
    :::note
-   Distributionsnavnet skal matche modelnavnet for at OC Nano skal fungere korrekt.
+   Distributionsnavnet skal matche modelnavnet for at ocnano skal fungere korrekt.
    :::
 
 3. Kør kommandoen `/connect` og søg efter **Azure**.
@@ -389,7 +389,7 @@ Hvis du støder på "Beklager, men jeg kan ikke hjælpe med den anmodning"-fejl,
 5. Angiv dit ressourcenavn som en miljøvariabel:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    Eller tilføj den til din bash-profil:
@@ -415,7 +415,7 @@ Hvis du støder på "Beklager, men jeg kan ikke hjælpe med den anmodning"-fejl,
 2. Gå til [Azure AI Foundry](https://ai.azure.com/) og distribuer en model.
 
    :::note
-   Distributionsnavnet skal matche modelnavnet for at OC Nano skal fungere korrekt.
+   Distributionsnavnet skal matche modelnavnet for at ocnano skal fungere korrekt.
    :::
 
 3. Kør kommandoen `/connect` og søg efter **Azure Cognitive Services**.
@@ -436,7 +436,7 @@ Hvis du støder på "Beklager, men jeg kan ikke hjælpe med den anmodning"-fejl,
 5. Angiv dit ressourcenavn som en miljøvariabel:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    Eller tilføj den til din bash-profil:
@@ -744,7 +744,7 @@ GitLab Duo giver AI-drevet agentchat med native værktøjskaldsfunktioner gennem
 
 :::note
 Du kan også specificere 'GITLAB_TOKEN' miljøvariabel, hvis du ikke vil
-gemme tokenet i OC Nano auth-lagring.
+gemme tokenet i ocnano auth-lagring.
 :::
 
 ##### Selvhostet GitLab
@@ -902,7 +902,7 @@ Sådan bruger du Google Vertex AI med OC Nano:
    Sæt dem mens du kører ocnano.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    Eller tilføj dem til din bash-profil.
@@ -1012,7 +1012,7 @@ For flere udbydere og avancerede funktioner som caching og hastighedsbegrænsnin
 
 #### Valgfrie konfigurationer
 
-I tilfælde af at du ser en funktion eller model fra Helicone som ikke konfigureres automatisk gennem OC Nano, kan du altid konfigurere den selv.
+I tilfælde af at du ser en funktion eller model fra Helicone som ikke konfigureres automatisk gennem ocnano, kan du altid konfigurere den selv.
 
 Her er [Helicone's Model Directory](https://helicone.ai/models), du skal bruge denne for at hente ID'erne til de modeller du vil tilføje.
 
@@ -1055,7 +1055,7 @@ Helicone understøtter tilpassede headers for funktioner som caching, brugerspor
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1096,7 +1096,7 @@ Se [Helicone Header Directory](https://docs.helicone.ai/helicone-headers/header-
 
 ### llama.cpp
 
-Du kan konfigurere OC Nano til at bruge lokale modeller gennem [llama.cpps](https://github.com/ggml-org/llama.cpp) llama-server-værktøj
+Du kan konfigurere ocnano til at bruge lokale modeller gennem [llama.cpps](https://github.com/ggml-org/llama.cpp) llama-server-værktøj
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1163,7 +1163,7 @@ IO.NET tilbyder 17 modeller optimeret for forskellige brugstilfælde:
 
 ### LM Studio
 
-Du kan konfigurere OC Nano til at bruge lokale modeller gennem LM Studio.
+Du kan konfigurere ocnano til at bruge lokale modeller gennem LM Studio.
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1280,7 +1280,7 @@ Sådan bruger du Kimi K2 fra Moonshot AI:
 
 ### Ollama
 
-Du kan konfigurere OC Nano til at bruge lokale modeller gennem Ollama.
+Du kan konfigurere ocnano til at bruge lokale modeller gennem Ollama.
 
 :::tip
 Ollama kan automatisk konfigurere sig selv for OC Nano. Se [Ollama-integrationsdokumenterne](https://docs.ollama.com/integrations/ocnano) for detaljer.
@@ -1515,7 +1515,7 @@ SAP AI Core giver adgang til 40+ modeller fra OpenAI, Anthropic, Google, Amazon,
    Eller angiv miljøvariablen `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    Eller tilføj den til din bash-profil:
@@ -1527,7 +1527,7 @@ SAP AI Core giver adgang til 40+ modeller fra OpenAI, Anthropic, Google, Amazon,
 4. Angiv eventuelt deployment-ID og ressourcegruppe:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note

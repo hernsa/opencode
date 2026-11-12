@@ -1,7 +1,18 @@
-import { type ComponentProps } from "solid-js"
+import { type ComponentProps, For } from "solid-js"
 
-// The wordmark's glyphs. A constant so the run never picks up JSX whitespace around it.
-const WORDMARK = "OC NANO"
+// The wordmark's glyphs. Each letter is placed on its own so every consumer can position them the
+// same way: the mark and the animated wordmark in the app have to line up glyph for glyph.
+const LETTERS = [
+  { x: 15, char: "O" },
+  { x: 54, char: "C" },
+  { x: 102, char: "N" },
+  { x: 141, char: "A" },
+  { x: 180, char: "N" },
+  { x: 219, char: "O" },
+] as const
+
+// The glyph run, so no consumer has to spell the word out again.
+export const WORDMARK = "OC NANO"
 
 export const Mark = (props: { class?: string }) => {
   return (
@@ -45,34 +56,38 @@ export const Logo = (props: { class?: string }) => {
       classList={{ [props.class ?? ""]: !!props.class }}
     >
       {/* The weak ink: the same glyphs dropped a unit and a half, the wordmark's shadow. */}
-      <text
-        aria-hidden="true"
-        x="0"
-        y="35"
-        font-family="var(--font-family-sans)"
-        font-size="40"
-        font-weight="600"
-        letter-spacing="0.08em"
-        textLength="234"
-        lengthAdjust="spacingAndGlyphs"
-        fill="var(--icon-weak-base)"
-        transform="translate(0 1.5)"
-      >
-        {WORDMARK}
-      </text>
-      <text
-        x="0"
-        y="35"
-        font-family="var(--font-family-sans)"
-        font-size="40"
-        font-weight="600"
-        letter-spacing="0.08em"
-        textLength="234"
-        lengthAdjust="spacingAndGlyphs"
-        fill="var(--icon-strong-base)"
-      >
-        {WORDMARK}
-      </text>
+      <For each={LETTERS}>
+        {(letter) => (
+          <text
+            aria-hidden="true"
+            x={letter.x}
+            y="35"
+            text-anchor="middle"
+            font-family="var(--font-family-sans)"
+            font-size="40"
+            font-weight="600"
+            fill="var(--icon-weak-base)"
+            transform="translate(0 1.5)"
+          >
+            {letter.char}
+          </text>
+        )}
+      </For>
+      <For each={LETTERS}>
+        {(letter) => (
+          <text
+            x={letter.x}
+            y="35"
+            text-anchor="middle"
+            font-family="var(--font-family-sans)"
+            font-size="40"
+            font-weight="600"
+            fill="var(--icon-strong-base)"
+          >
+            {letter.char}
+          </text>
+        )}
+      </For>
     </svg>
   )
 }

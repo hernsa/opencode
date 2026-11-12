@@ -12,20 +12,20 @@ description: المشكلات الشائعة وكيفية حلها.
 يتم حفظ ملفات السجل في:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\ocnano\log`
 
 تتم تسمية ملفات السجل بطوابع زمنية (مثل `2025-01-09T123456.log`) ويتم الاحتفاظ بأحدث 10 ملفات سجل.
 
-يمكنك ضبط مستوى السجل باستخدام خيار CLI `--log-level` للحصول على معلومات تصحيح أكثر تفصيلا. على سبيل المثال: `OC Nano --log-level DEBUG`.
+يمكنك ضبط مستوى السجل باستخدام خيار CLI `--log-level` للحصول على معلومات تصحيح أكثر تفصيلا. على سبيل المثال: `ocnano --log-level DEBUG`.
 
 ---
 
 ## التخزين
 
-يخزن OC Nano بيانات الجلسات وبيانات التطبيق الأخرى على القرص في:
+يخزن ocnano بيانات الجلسات وبيانات التطبيق الأخرى على القرص في:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\ocnano`
 
 يحتوي هذا الدليل على:
 
@@ -59,7 +59,7 @@ description: المشكلات الشائعة وكيفية حلها.
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (أو `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (عمليات تثبيت أقدم): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 إذا كانت لديك إضافات مضبوطة، فقم بتعطيلها مؤقتا بإزالة المفتاح أو ضبطه على مصفوفة فارغة:
 
@@ -76,7 +76,7 @@ description: المشكلات الشائعة وكيفية حلها.
 
 - **إضافات عامة**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\ocnano\plugins`
 - **إضافات المشروع** (فقط إذا كنت تستخدم إعدادات لكل مشروع)
   - `<your-project>/.ocnano/plugins/`
 
@@ -93,7 +93,7 @@ description: المشكلات الشائعة وكيفية حلها.
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> الصق `~/.cache/ocnano`
 - **Linux**: احذف `~/.cache/ocnano` (أو شغّل `rm -rf ~/.cache/ocnano`)
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.cache\ocnano`
 
 3. أعد تشغيل OC Nano Desktop.
 
@@ -243,7 +243,7 @@ description: المشكلات الشائعة وكيفية حلها.
    rm -rf ~/.local/share/ocnano
    ```
 
-   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.local\share\OC Nano`
+   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.local\share\ocnano`
 
 3. أعد المصادقة مع المزوّد باستخدام الأمر `/connect` في واجهة TUI.
 
@@ -251,7 +251,7 @@ description: المشكلات الشائعة وكيفية حلها.
 
 ### AI_APICallError ومشكلات حزم المزوّد
 
-إذا واجهت أخطاء في استدعاءات API، فقد يكون السبب حزم مزوّد قديمة. يقوم OC Nano بتثبيت حزم المزوّد (OpenAI و Anthropic و Google وغير ذلك) ديناميكيا عند الحاجة ويقوم بتخزينها مؤقتا محليا.
+إذا واجهت أخطاء في استدعاءات API، فقد يكون السبب حزم مزوّد قديمة. يقوم ocnano بتثبيت حزم المزوّد (OpenAI و Anthropic و Google وغير ذلك) ديناميكيا عند الحاجة ويقوم بتخزينها مؤقتا محليا.
 
 لحل مشكلات حزم المزوّد:
 
@@ -261,11 +261,11 @@ description: المشكلات الشائعة وكيفية حلها.
    rm -rf ~/.cache/ocnano
    ```
 
-   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.cache\OC Nano`
+   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.cache\ocnano`
 
-2. أعد تشغيل OC Nano لإعادة تثبيت أحدث حزم المزوّد
+2. أعد تشغيل ocnano لإعادة تثبيت أحدث حزم المزوّد
 
-سيجبر ذلك OC Nano على تنزيل أحدث إصدارات حزم المزوّد، وهو ما يحل غالبا مشكلات التوافق مع معاملات النماذج وتغييرات API.
+سيجبر ذلك ocnano على تنزيل أحدث إصدارات حزم المزوّد، وهو ما يحل غالبا مشكلات التوافق مع معاملات النماذج وتغييرات API.
 
 ---
 
@@ -296,4 +296,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-سيكتشف OC Nano ما إذا كنت تستخدم Wayland ويفضل `wl-clipboard`، وإلا فسيحاول العثور على أدوات الحافظة بالترتيب التالي: `xclip` ثم `xsel`.
+سيكتشف ocnano ما إذا كنت تستخدم Wayland ويفضل `wl-clipboard`، وإلا فسيحاول العثور على أدوات الحافظة بالترتيب التالي: `xclip` ثم `xsel`.

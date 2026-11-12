@@ -3,7 +3,7 @@ title: Sorun giderme
 description: Yaygin sorunlar ve cozum adimlari.
 ---
 
-OC Nano ile ilgili bir sorunu ayiklamak icin once loglari ve diskte tuttugu yerel verileri kontrol edin.
+ocnano ile ilgili bir sorunu ayiklamak icin once loglari ve diskte tuttugu yerel verileri kontrol edin.
 
 ---
 
@@ -12,20 +12,20 @@ OC Nano ile ilgili bir sorunu ayiklamak icin once loglari ve diskte tuttugu yere
 Log dosyalari su konuma yazilir:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.local\share\OC Nano\log` yapistirin
+- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.local\share\ocnano\log` yapistirin
 
 Log dosyalari zaman damgasiyla adlandirilir (ornegin `2025-01-09T123456.log`) ve en yeni 10 log dosyasi tutulur.
 
-Daha ayrintili ayiklama bilgisi icin `--log-level` komut satiri secenegini kullanabilirsiniz. Ornek: `OC Nano --log-level DEBUG`.
+Daha ayrintili ayiklama bilgisi icin `--log-level` komut satiri secenegini kullanabilirsiniz. Ornek: `ocnano --log-level DEBUG`.
 
 ---
 
 ## Depolama
 
-OC Nano, oturum verilerini ve diger uygulama verilerini diskte su konumda saklar:
+ocnano, oturum verilerini ve diger uygulama verilerini diskte su konumda saklar:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.local\share\OC Nano` yapistirin
+- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.local\share\ocnano` yapistirin
 
 Bu dizin sunlari icerir:
 
@@ -39,13 +39,13 @@ Bu dizin sunlari icerir:
 
 ## Masaüstü uygulaması
 
-OC Nano Desktop arka planda yerel bir OC Nano sunucusu (`ocnano-cli` sidecar) calistirir. Sorunlarin cogu bozuk bir plugin, hasarli cache veya hatali sunucu ayarindan kaynaklanir.
+ocnano Desktop arka planda yerel bir ocnano sunucusu (`ocnano-cli` sidecar) calistirir. Sorunlarin cogu bozuk bir plugin, hasarli cache veya hatali sunucu ayarindan kaynaklanir.
 
 ### Hızlı kontroller
 
 - Uygulamayi tamamen kapatip yeniden acin
 - Uygulama hata ekrani gosteriyorsa **Restart**'a tiklayip hata detaylarini kopyalayin
-- Yalnizca macOS: `OC Nano` menusu -> **Reload Webview** (arayuz bos/donukse yardimci olur)
+- Yalnizca macOS: `ocnano` menusu -> **Reload Webview** (arayuz bos/donukse yardimci olur)
 
 ---
 
@@ -59,7 +59,7 @@ Global config dosyanizi acin ve `plugin` anahtarini arayin.
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (veya `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (eski kurulumlar): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.config\OC Nano\ocnano.jsonc` yapistirin
+- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.config\ocnano\ocnano.jsonc` yapistirin
 
 Plugin tanimliysa anahtari kaldirarak veya bos bir diziye cekerek gecici olarak devre disi birakin:
 
@@ -72,11 +72,11 @@ Plugin tanimliysa anahtari kaldirarak veya bos bir diziye cekerek gecici olarak 
 
 #### Eklenti dizinlerini kontrol edin
 
-OC Nano diskten yerel plugin de yukleyebilir. Bu dizinleri gecici olarak tasiyin (veya klasoru yeniden adlandirin) ve uygulamayi yeniden baslatin:
+ocnano diskten yerel plugin de yukleyebilir. Bu dizinleri gecici olarak tasiyin (veya klasoru yeniden adlandirin) ve uygulamayi yeniden baslatin:
 
 - **Global plugins**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.config\OC Nano\plugins` yapistirin
+  - **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.config\ocnano\plugins` yapistirin
 - **Project plugins** (sadece proje bazli config kullaniyorsaniz)
   - `<your-project>/.ocnano/plugins/`
 
@@ -86,22 +86,22 @@ Uygulama duzelirse soruna neden olan plugini bulmak icin pluginleri tek tek yeni
 
 ### Cache'i temizleyin
 
-Pluginleri kapatmak ise yaramazsa (veya plugin kurulumu takili kaldiysa), OC Nano'un cache'i yeniden olusturmasi icin cache'i temizleyin.
+Pluginleri kapatmak ise yaramazsa (veya plugin kurulumu takili kaldiysa), ocnano'un cache'i yeniden olusturmasi icin cache'i temizleyin.
 
-1. OC Nano Desktop'u tamamen kapatin
+1. ocnano Desktop'u tamamen kapatin
 2. Cache dizinini silin:
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> `~/.cache/ocnano`
 - **Linux**: `~/.cache/ocnano` dizinini silin (veya `rm -rf ~/.cache/ocnano` calistirin)
-- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.cache\OC Nano` yapistirin
+- **Windows**: `WIN+R` tuslayip `%USERPROFILE%\.cache\ocnano` yapistirin
 
-3. OC Nano Desktop'u yeniden baslatin
+3. ocnano Desktop'u yeniden baslatin
 
 ---
 
 ### Sunucu bağlantı sorunlarını düzeltin
 
-OC Nano Desktop ya kendi yerel sunucusunu baslatir (varsayilan) ya da sizin tanimladiginiz bir sunucu URL'sine baglanir.
+ocnano Desktop ya kendi yerel sunucusunu baslatir (varsayilan) ya da sizin tanimladiginiz bir sunucu URL'sine baglanir.
 
 **"Connection Failed"** penceresi goruyorsaniz (veya uygulama acilis ekranini gecemiyorsa), ozel bir sunucu URL'si olup olmadigini kontrol edin.
 
@@ -132,21 +132,21 @@ Linux'ta bazi Wayland kurulumlari bos pencere veya compositor hatalarina yol aca
 
 ### Windows: WebView2 Çalışma Zamanı
 
-Windows'ta OC Nano Desktop, Microsoft Edge **WebView2 Runtime** gerektirir. Uygulama bos pencereyle aciliyorsa veya hic baslamiyorsa WebView2'yi kurup/guncelleyip tekrar deneyin.
+Windows'ta ocnano Desktop, Microsoft Edge **WebView2 Runtime** gerektirir. Uygulama bos pencereyle aciliyorsa veya hic baslamiyorsa WebView2'yi kurup/guncelleyip tekrar deneyin.
 
 ---
 
 ### Windows: Genel performans sorunları
 
-Windows'ta yavaslik, dosya erisim sorunlari veya terminal problemleri yasiyorsaniz [WSL (Windows Subsystem for Linux)](/docs/windows-wsl) kullanmayi deneyin. WSL, OC Nano ozellikleriyle daha sorunsuz calisan bir Linux ortami saglar.
+Windows'ta yavaslik, dosya erisim sorunlari veya terminal problemleri yasiyorsaniz [WSL (Windows Subsystem for Linux)](/docs/windows-wsl) kullanmayi deneyin. WSL, ocnano ozellikleriyle daha sorunsuz calisan bir Linux ortami saglar.
 
 ---
 
 ### Bildirimler görünmüyor
 
-OC Nano Desktop sistem bildirimlerini yalnizca su durumlarda gosterir:
+ocnano Desktop sistem bildirimlerini yalnizca su durumlarda gosterir:
 
-- Isletim sistemi ayarlarinizda OC Nano icin bildirimler etkinse
+- Isletim sistemi ayarlarinizda ocnano icin bildirimler etkinse
 - Uygulama penceresi odakta degilse
 
 ---
@@ -155,8 +155,8 @@ OC Nano Desktop sistem bildirimlerini yalnizca su durumlarda gosterir:
 
 Uygulama acilmiyorsa ve ayarlari arayuz icinden temizleyemiyorsaniz, desktop uygulamasinin kayitli durumunu sifirlayin.
 
-1. OC Nano Desktop'u kapatin
-2. Su dosyalari bulun ve silin (OC Nano Desktop uygulama veri dizininde yer alirlar):
+1. ocnano Desktop'u kapatin
+2. Su dosyalari bulun ve silin (ocnano Desktop uygulama veri dizininde yer alirlar):
 
 - `ocnano.settings.dat` (desktop varsayilan sunucu URL'si)
 - `ocnano.global.dat` ve `ocnano.workspace.*.dat` (son sunucular/projeler gibi UI durumu)
@@ -171,7 +171,7 @@ Dizini hizlica bulmak icin:
 
 ## Yardım alın
 
-OC Nano ile ilgili bir sorun yasiyorsaniz:
+ocnano ile ilgili bir sorun yasiyorsaniz:
 
 1. **GitHub'da issue acin**
 
@@ -195,7 +195,7 @@ Asagida yaygin sorunlar ve cozumleri yer aliyor.
 
 ---
 
-### OC Nano başlamıyor
+### ocnano başlamıyor
 
 1. Hata mesaji icin loglari kontrol edin
 2. Terminalde cikti gormek icin `--print-logs` ile calistirin
@@ -243,7 +243,7 @@ Cozum adimlari:
    rm -rf ~/.local/share/ocnano
    ```
 
-   Windows'ta `WIN+R` tuslayip su konumu silin: `%USERPROFILE%\.local\share\OC Nano`
+   Windows'ta `WIN+R` tuslayip su konumu silin: `%USERPROFILE%\.local\share\ocnano`
 
 3. TUI'da `/connect` komutuyla provider kimlik dogrulamasini tekrar yapin
 
@@ -251,7 +251,7 @@ Cozum adimlari:
 
 ### AI_APICallError ve provider paket sorunlari
 
-API cagrisi hatalari aliyorsaniz bunun nedeni guncel olmayan provider paketleri olabilir. OC Nano, provider paketlerini (OpenAI, Anthropic, Google vb.) gerektikce dinamik yukler ve yerelde onbellekler.
+API cagrisi hatalari aliyorsaniz bunun nedeni guncel olmayan provider paketleri olabilir. ocnano, provider paketlerini (OpenAI, Anthropic, Google vb.) gerektikce dinamik yukler ve yerelde onbellekler.
 
 Provider paket sorunlarini gidermek icin:
 
@@ -261,11 +261,11 @@ Provider paket sorunlarini gidermek icin:
    rm -rf ~/.cache/ocnano
    ```
 
-   Windows'ta `WIN+R` tuslayip su konumu silin: `%USERPROFILE%\.cache\OC Nano`
+   Windows'ta `WIN+R` tuslayip su konumu silin: `%USERPROFILE%\.cache\ocnano`
 
-2. En guncel provider paketlerini yeniden kurmak icin OC Nano'u yeniden baslatin
+2. En guncel provider paketlerini yeniden kurmak icin ocnano'u yeniden baslatin
 
-Bu, OC Nano'un en yeni provider paket surumlerini indirmesini zorlar ve model parametresi/API degisikliklerinden kaynakli uyumsuzluklari cogu zaman cozer.
+Bu, ocnano'un en yeni provider paket surumlerini indirmesini zorlar ve model parametresi/API degisikliklerinden kaynakli uyumsuzluklari cogu zaman cozer.
 
 ---
 
@@ -296,4 +296,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-OC Nano, Wayland kullandiginizi algilarsa `wl-clipboard` tercihi yapar. Aksi halde sirayla `xclip` ve `xsel` araclarini arar.
+ocnano, Wayland kullandiginizi algilarsa `wl-clipboard` tercihi yapar. Aksi halde sirayla `xclip` ve `xsel` araclarini arar.

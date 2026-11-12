@@ -20,7 +20,7 @@ OC Nano ผสานรวมกับเวิร์กโฟลว์ GitHub �
 รันคำสั่งต่อไปนี้ในโปรเจ็กต์ที่อยู่ใน repo GitHub:
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 ขั้นตอนนี้จะแนะนำคุณตลอดขั้นตอนการติดตั้งแอป GitHub การสร้างเวิร์กโฟลว์ และการตั้งค่าความลับ
@@ -40,7 +40,7 @@ OC Nano github install
    เพิ่มไฟล์เวิร์กโฟลว์ต่อไปนี้ไปที่ `.github/workflows/ocnano.yml` ใน repo ของคุณ ตรวจสอบให้แน่ใจว่าได้ตั้งค่า `model` ที่เหมาะสมและคีย์ API ที่จำเป็นใน `env`
 
    ```yml title=".github/workflows/ocnano.yml" {24,26}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ OC Nano github install
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

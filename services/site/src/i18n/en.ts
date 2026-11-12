@@ -249,7 +249,7 @@ export const dict = {
   "brand.subtitle": "Resources and assets to help you work with the OC Nano brand.",
   "brand.downloadAll": "Download all assets",
   "changelog.title": "OC Nano | Changelog and release notes for every version",
-  "changelog.meta.description": "Release notes for every ocnano version, with the new features, improvements and fixes in the desktop app, terminal UI, mobile app and SDK.",
+  "changelog.meta.description": "Release notes for every OC Nano version, with the new features, improvements and fixes in the desktop app, terminal UI, mobile app and SDK.",
   "changelog.hero.title": "Changelog",
   "changelog.hero.subtitle": "New updates and improvements to OC Nano",
   "changelog.unavailable": "Couldn't load the changelog right now.",

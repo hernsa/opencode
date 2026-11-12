@@ -1,21 +1,21 @@
 ---
 title: Kurallar
-description: OC Nano için özel talimatları ayarlayın.
+description: ocnano için özel talimatları ayarlayın.
 ---
 
-Bir `AGENTS.md` dosyası oluşturarak OC Nano için özel talimatlar verebilirsiniz. Bu, Cursor rules yaklaşımına benzer. Özel projeniz için davranışını özelleştirmek amacıyla LLM'in içeriğine dahil edilecek talimatları içerir.
+Bir `AGENTS.md` dosyası oluşturarak ocnano için özel talimatlar verebilirsiniz. Bu, Cursor rules yaklaşımına benzer. Özel projeniz için davranışını özelleştirmek amacıyla LLM'in içeriğine dahil edilecek talimatları içerir.
 
 ---
 
 ## Başlat
 
-Yeni bir `AGENTS.md` dosyası oluşturmak için `/init` komutunu OC Nano'da çalıştırabilirsiniz.
+Yeni bir `AGENTS.md` dosyası oluşturmak için `/init` komutunu ocnano'da çalıştırabilirsiniz.
 
 :::tip
 Projenizin `AGENTS.md` dosyasını Git'e göndermelisiniz.
 :::
 
-Bu, projenin neyle ilgili olduğunu anlamak için projenizi ve tüm içeriğini tarayacak ve onunla bir `AGENTS.md` dosyası oluşturacaktır. Bu, OC Nano'un projede daha iyi gezinmesine yardımcı olur.
+Bu, projenin neyle ilgili olduğunu anlamak için projenizi ve tüm içeriğini tarayacak ve onunla bir `AGENTS.md` dosyası oluşturacaktır. Bu, ocnano'un projede daha iyi gezinmesine yardımcı olur.
 
 Mevcut bir `AGENTS.md` dosyanız varsa, bu dosyaya eklemeye çalışacaktır.
 
@@ -54,7 +54,7 @@ Buraya projeye özel talimatlar ekliyoruz ve bu, ekibiniz arasında paylaşılac
 
 ## Türler
 
-OC Nano ayrıca `AGENTS.md` dosyasının birden fazla konumdan okunmasını da destekler. Ve bu farklı amaçlara hizmet ediyor.
+ocnano ayrıca `AGENTS.md` dosyasının birden fazla konumdan okunmasını da destekler. Ve bu farklı amaçlara hizmet ediyor.
 
 ### Proje
 
@@ -62,13 +62,13 @@ Projeye özel kurallar için proje kökünüze bir `AGENTS.md` yerleştirin. Bun
 
 ### Global
 
-Ayrıca `~/.config/ocnano/AGENTS.md` dosyasında genel kurallara sahip olabilirsiniz. Bu, tüm OC Nano oturumlarına uygulanır.
+Ayrıca `~/.config/ocnano/AGENTS.md` dosyasında genel kurallara sahip olabilirsiniz. Bu, tüm ocnano oturumlarına uygulanır.
 
 Bu Git'e kaydedilmediği veya ekibinizle paylaşılmadığı için, LLM'ın uyması gereken kişisel kuralları belirtmek için bunu kullanmanızı öneririz.
 
 ### Claude Code uyumluluğu
 
-OC Nano, Claude Code'dan geçiş yapan kullanıcılar için yedek olarak Claude Code'un dosya kurallarını destekler:
+ocnano, Claude Code'dan geçiş yapan kullanıcılar için yedek olarak Claude Code'un dosya kurallarını destekler:
 
 - **Proje kuralları**: Proje dizininizdeki `CLAUDE.md` (`AGENTS.md` yoksa kullanılır)
 - **Global kurallar**: `~/.claude/CLAUDE.md` (`~/.config/ocnano/AGENTS.md` yoksa kullanılır)
@@ -86,7 +86,7 @@ export OCNANO_DISABLE_CLAUDE_CODE_SKILLS=1 # Disable only .claude/skills
 
 ## Öncelik
 
-OC Nano başlatıldığında kural dosyalarını şu sırayla arar:
+Opencode başlatıldığında kural dosyalarını şu sırayla arar:
 
 1. **Yerel dosyalar** geçerli dizinden yukarıya doğru giderek (`AGENTS.md`, `CLAUDE.md`)
 2. **Global dosya** `~/.config/ocnano/AGENTS.md` adresinde
@@ -126,7 +126,7 @@ Tüm talimat dosyaları `AGENTS.md` dosyalarınızla birleştirilir.
 
 ## Harici Dosyalara Referans Verme
 
-OC Nano, `AGENTS.md`'daki dosya referanslarını otomatik olarak ayrıştırmasa da, benzer işlevleri iki şekilde elde edebilirsiniz:
+Opencode, `AGENTS.md`'daki dosya referanslarını otomatik olarak ayrıştırmasa da, benzer işlevleri iki şekilde elde edebilirsiniz:
 
 ### ocnano.json'u kullanma
 
@@ -141,7 +141,7 @@ OC Nano, `AGENTS.md`'daki dosya referanslarını otomatik olarak ayrıştırmasa
 
 ### AGENTS.md içinde manuel talimatlar
 
-`AGENTS.md`'nizde açık talimatlar sağlayarak OC Nano'u harici dosyaları okumayı öğretebilirsiniz. İşte pratik bir örnek:
+`AGENTS.md`'nizde açık talimatlar sağlayarak ocnano'u harici dosyaları okumayı öğretebilirsiniz. İşte pratik bir örnek:
 
 ```markdown title="AGENTS.md"
 # TypeScript Project Rules
@@ -173,7 +173,7 @@ Bu yaklaşım şunları yapmanızı sağlar:
 - Modüler, yeniden kullanılabilir kural dosyaları oluşturun
 - Sembolik bağlantılar veya git alt modülleri aracılığıyla kuralları projeler arasında paylaşın
 - AGENTS.md dosyasını kısa tutarken ayrıntılı kılavuzlara referans verin
-- OC Nano'un dosyaları yalnızca belirli bir görev için gerektiğinde yüklediğinden emin olun
+- ocnano'un dosyaları yalnızca belirli bir görev için gerektiğinde yüklediğinden emin olun
 
 :::tip
 Monorepo'lar veya ortak standartlara sahip projeler için, `ocnano.json`'yi glob desenleriyle (`packages/*/AGENTS.md` gibi) kullanmak, manuel talimatlara göre daha sürdürülebilirdir.

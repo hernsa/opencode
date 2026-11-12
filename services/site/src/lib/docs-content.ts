@@ -157,7 +157,7 @@ export const docsIntro = {
   ] satisfies RichText[],
   desktop: "Download the latest OC Nano Desktop build for your platform.",
   web: {
-    lead: ["Access the ocnano web interface with the ", { code: "ocnano pair" }, " command."] satisfies RichText,
+    lead: ["Access the OC Nano web interface with the ", { code: "ocnano pair" }, " command."] satisfies RichText,
     command: "ocnano pair",
     output: "  Open a link to connect. Links work once and expire in 5 minutes.",
     url: "http://127.0.0.1:49374/auth/connect/...",
@@ -189,7 +189,7 @@ export const docsIntro = {
   ] satisfies RichText[],
   customize: [
     "Make OC Nano your own by editing the ",
-    { text: "ocnano config", href: docsUrl("/config") },
+    { text: "OC Nano config", href: docsUrl("/config") },
     ", ",
     { text: "loading plugins", href: docsUrl("/plugins") },
     ", ",

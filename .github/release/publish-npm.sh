@@ -8,11 +8,11 @@ npm_dir=$1
 shift
 targets="linux-arm64 linux-x64 linux-x64-baseline linux-arm64-musl linux-x64-musl linux-x64-baseline-musl darwin-arm64 darwin-x64 darwin-x64-baseline windows-arm64 windows-x64 windows-x64-baseline"
 expected="@ocnano/cli"
-for target in $targets; do expected="$expected @ocnano/cli-$target"; done
+for target in $targets; do expected="$expected @opencode/cli-$target"; done
 for lib in schema codemode theme ai util protocol client plugin plugin-browser core simulation server sdk ui; do expected="$expected @ocnano/$lib"; done
 if [ "$OCNANO_CHANNEL" != latest ]; then
-  expected="$expected @ocnano/cli-node"
-  for target in linux-arm64 linux-x64 darwin-arm64 windows-arm64 windows-x64; do expected="$expected @ocnano/cli-node-$target"; done
+  expected="$expected @opencode/cli-node"
+  for target in linux-arm64 linux-x64 darwin-arm64 windows-arm64 windows-x64; do expected="$expected @opencode/cli-node-$target"; done
 fi
 
 if ! dry_run; then
@@ -35,11 +35,11 @@ for file in "${files[@]}"; do
   # The signed copy of a macOS or Windows CLI package replaces the unsigned one from the build.
   if cut -f1 "$list" | grep -qxF -- "$name"; then continue; fi
   case "$name:$file" in
-    @ocnano/cli-darwin-*:"$npm_dir"/* | @ocnano/cli-windows-*:"$npm_dir"/*) die "$name is not signed" ;;
+    @opencode/cli-darwin-*:"$npm_dir"/* | @opencode/cli-windows-*:"$npm_dir"/*) die "$name is not signed" ;;
   esac
   [ "$version" = "$OCNANO_VERSION" ] || die "$name has version $version, expected $OCNANO_VERSION"
   [ "$config" = false ] || die "$name sets publishConfig beyond access"
-  [ "$install" = false ] || [ "$name" = @ocnano/cli ] || [ "$name" = @ocnano/cli-node ] || die "$name has an install script"
+  [ "$install" = false ] || [ "$name" = @ocnano/cli ] || [ "$name" = @opencode/cli-node ] || die "$name has an install script"
   printf '%s\t%s\n' "$name" "$file" >> "$list"
 done
 for name in $expected; do cut -f1 "$list" | grep -qxF -- "$name" || die "Missing package $name"; done

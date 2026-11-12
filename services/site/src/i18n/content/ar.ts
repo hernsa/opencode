@@ -246,7 +246,7 @@ export const content = {
     hero: { copy: { text: "قواعد للوكيل", copied: "نُسخت القواعد" } },
     naming: {
       title: "التسمية",
-      body: "اكتب OC Nano كلمة واحدة، بحرف O كبير وحرف C كبير. لا تكتب OC Nano أو Open Code أو OC Nano AI أو Open-Code.",
+      body: "اكتب OC Nano كلمة واحدة، بحرف O كبير وحرف C كبير. لا تكتب Opencode أو Open Code أو OC Nano AI أو Open-Code.",
       code: "استخدم `ocnano` بالأحرف الصغيرة فقط في الكود وأسماء الحزم، مثل `ocnano-figma` أو `@acme/ocnano-plugin`.",
     },
     families: {

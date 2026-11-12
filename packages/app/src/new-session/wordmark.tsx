@@ -16,56 +16,16 @@ import {
 } from "./wordmark-machine"
 import "./wordmark.css"
 
-// Each letter in the 234×42 logo viewBox, with its counter shadow, stem, and bottom-centre pivot.
+// The wordmark's six glyphs in the 234×42 logo viewBox. Each one is a group so the pin board can pull
+// a single letter out, and each keeps the mark's own placement so this faint layer lines up with the
+// logo drawn on top of it.
 const LETTERS = [
-  {
-    cx: 12,
-    weak: "M18 30H6V18H18V30Z",
-    fill: "var(--icon-base)",
-    stem: "M18 12H6V30H18V12ZM24 36H0V6H24V36Z",
-  },
-  {
-    cx: 42,
-    weak: "M48 30H36V18H48V30Z",
-    fill: "var(--icon-base)",
-    stem: "M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z",
-  },
-  {
-    cx: 72,
-    weak: "M84 24V30H66V24H84Z",
-    fill: "var(--icon-base)",
-    stem: "M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z",
-  },
-  {
-    cx: 102,
-    weak: "M108 36H96V18H108V36Z",
-    fill: "var(--icon-base)",
-    stem: "M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z",
-  },
-  {
-    cx: 132,
-    weak: "M144 30H126V18H144V30Z",
-    fill: "var(--icon-strong-base)",
-    stem: "M144 12H126V30H144V36H120V6H144V12Z",
-  },
-  {
-    cx: 162,
-    weak: "M168 30H156V18H168V30Z",
-    fill: "var(--icon-strong-base)",
-    stem: "M168 12H156V30H168V12ZM174 36H150V6H174V36Z",
-  },
-  {
-    cx: 192,
-    weak: "M198 30H186V18H198V30Z",
-    fill: "var(--icon-strong-base)",
-    stem: "M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z",
-  },
-  {
-    cx: 222,
-    weak: "M234 24V30H216V24H234Z",
-    fill: "var(--icon-strong-base)",
-    stem: "M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z",
-  },
+  { cx: 15, char: "O", fill: "var(--icon-base)" },
+  { cx: 54, char: "C", fill: "var(--icon-base)" },
+  { cx: 102, char: "N", fill: "var(--icon-base)" },
+  { cx: 141, char: "A", fill: "var(--icon-base)" },
+  { cx: 180, char: "N", fill: "var(--icon-strong-base)" },
+  { cx: 219, char: "O", fill: "var(--icon-strong-base)" },
 ] as const
 
 // Lodger geometry, in the logo's 234×42 viewBox units. The lodger is drawn from its bottom centre.
@@ -73,11 +33,11 @@ const W = 234
 
 const H = 42
 
-const HOLE = { x: 222, y: 15 }
+const HOLE = { x: 219, y: 20 }
 
-const REST = { x: 222, y: 21 }
+const REST = { x: 219, y: 26 }
 
-const PIN_SLOT = { x: 226.5, y: 10.5 }
+const PIN_SLOT = { x: 228, y: 15 }
 
 const GROUND = 36
 
@@ -149,7 +109,7 @@ type Parts = {
 
 /**
  * Reserves the wordmark's space. With `pins`, `NewSessionPinBoard` draws the logo into it. Otherwise it shows
- * the flat logo, and something lives in the top counter of the final "e".
+ * the flat logo, and something lives in the top counter of the final "O".
  */
 export function NewSessionWordmark(props: {
   ref: (element: HTMLDivElement) => void
@@ -192,7 +152,7 @@ export function NewSessionWordmark(props: {
 }
 
 /**
- * Eyes peek out of the "e" when the pointer comes near. Dragging them pulls the lodger and a single corner pin
+ * Eyes peek out of the "O" when the pointer comes near. Dragging them pulls the lodger and a single corner pin
  * out on a stretchy neck; pull far enough and that pin triggers an elastic 3D pull-wave across the wordmark.
  * Dragging the lodger back into the "e" hole reels all the pins back into the flat wordmark.
  */
@@ -238,14 +198,23 @@ function WordmarkLodger(props: {
             {(item, i) => (
               <g ref={(el) => (letters[i()] = el)}>
                 <g class="opacity-[0.16]">
-                  <path d={item.weak} fill="var(--icon-weak-base)" />
-                  <path d={item.stem} fill={item.fill} />
+                  <text
+                    x={item.cx}
+                    y="35"
+                    text-anchor="middle"
+                    font-family="var(--font-family-sans)"
+                    font-size="40"
+                    font-weight="600"
+                    fill={item.fill}
+                  >
+                    {item.char}
+                  </text>
                 </g>
-                <Show when={i() === 7}>
+                <Show when={i() === LETTERS.length - 1}>
                   <rect
                     ref={notch}
-                    x="224.6"
-                    y="8.6"
+                    x="226"
+                    y="13"
                     width="3.8"
                     height="3.8"
                     fill="var(--v2-background-bg-base)"
@@ -438,7 +407,7 @@ function mountLodger(
     }
 
     parts.grip.style.display = ""
-    const box = where === "hidden" ? { x: 213, y: 8, w: 18, h: 14 } : { x: 234, y: 18, w: 24, h: 24 }
+    const box = where === "hidden" ? { x: 209, y: 12, w: 20, h: 16 } : { x: 234, y: 18, w: 24, h: 24 }
     parts.grip.style.left = `${(box.x / W) * 100}%`
     parts.grip.style.top = `${(box.y / H) * 100}%`
     parts.grip.style.width = `${(box.w / W) * 100}%`
@@ -512,10 +481,10 @@ function mountLodger(
     c.pinY = lerp(PIN_SLOT.y, c.y - 11, clamp01(out / 7))
     c.pinRot = (c.x - REST.x) * 2.5
     c.pinScale = 1 + stress * 0.35
-    poses[7].x = (c.x - REST.x) * 0.12
-    poses[7].y = (c.y - REST.y) * 0.12
-    poses[7].sx = 1 + stress * 0.05
-    poses[7].sy = 1 + stress * 0.05
+    poses[LETTERS.length - 1].x = (c.x - REST.x) * 0.12
+    poses[LETTERS.length - 1].y = (c.y - REST.y) * 0.12
+    poses[LETTERS.length - 1].sx = 1 + stress * 0.05
+    poses[LETTERS.length - 1].sy = 1 + stress * 0.05
   }
 
   const snapIn = (dt: number) => {
@@ -600,7 +569,7 @@ function mountLodger(
     { at: 1.95, run: () => blinkOnce() },
   ]
 
-  // Pulling one single pin out of the "e" triggers an elastic 3D pull-wave that pops every pin out toward
+  // Pulling one single pin out of the "O" triggers an elastic 3D pull-wave that pops every pin out toward
   // the viewer from right to left, then the lodger hops up to slot its starter pin back in.
   const show = (t: number, cue: number) => {
     const reached = runCues(showCues, cue, t)
@@ -618,7 +587,7 @@ function mountLodger(
     c.pinOpacity = t < 1.35 ? 1 : 0
 
     poses.forEach((p, i) => {
-      const start = (7 - i) * 0.08
+      const start = (LETTERS.length - 1 - i) * 0.08
       const u = seg(t, start, start + 0.28)
       p.opacity = 1 - u
       p.x = 0
@@ -811,8 +780,8 @@ function mountLodger(
     { at: 1.14, run: () => blinkOnce() },
   ]
 
-  // Reverse sequence: the lodger hops into the "e" hole, grabs the corner pin, and reels all 800 pins
-  // from left ("o") back into the "e" before tucking itself back inside.
+  // Reverse sequence: the lodger hops into the "O" hole, grabs the corner pin, and reels all 800 pins
+  // from left ("O") back into the "O" before tucking itself back inside.
   const pack = (t: number, cue: number) => {
     const reached = runCues(packCues, cue, t)
 
@@ -825,7 +794,7 @@ function mountLodger(
     }
 
     poses.forEach((p, i) => {
-      const start = 0.32 + (i / 7) * 0.48
+      const start = 0.32 + (i / (LETTERS.length - 1)) * 0.48
       const u = seg(t, start, start + 0.32)
       p.opacity = u
       p.x = 0

@@ -52,10 +52,10 @@ curl -fsSL https://opencode.ai/v2/install | bash
 # Package manageri
 npm i -g @ocnano/cli@latest      # ili bun/pnpm/yarn
 brew install anomalyco/tap/ocnano-v2 # macOS i Linux (preporučeno, uvijek ažurno)
-brew install OC Nano              # macOS i Linux (zvanična brew formula, rjeđe se ažurira)
-sudo pacman -S OC Nano            # Arch Linux (Stable)
+brew install ocnano              # macOS i Linux (zvanična brew formula, rjeđe se ažurira)
+sudo pacman -S ocnano            # Arch Linux (Stable)
 paru -S ocnano-beta              # Arch Linux (Latest from AUR)
-mise use -g OC Nano               # Bilo koji OS
+mise use -g ocnano               # Bilo koji OS
 nix run github:anomalyco/opencode  # Nix
 ```
 
@@ -107,7 +107,7 @@ Ako želiš doprinositi OC Nano-u, pročitaj [upute za doprinošenje](./CONTRIBU
 
 ### Gradnja na OC Nano-u
 
-Ako radiš na projektu koji je povezan s OC Nano-om i koristi "OC Nano" kao dio naziva, npr. "ocnano-dashboard" ili "ocnano-mobile", dodaj napomenu u svoj README da projekat nije napravio OC Nano tim i da nije povezan s nama.
+Ako radiš na projektu koji je povezan s OC Nano-om i koristi "ocnano" kao dio naziva, npr. "ocnano-dashboard" ili "ocnano-mobile", dodaj napomenu u svoj README da projekat nije napravio OC Nano tim i da nije povezan s nama.
 
 ---
 

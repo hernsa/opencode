@@ -1,5 +1,5 @@
 ; electron-builder names a one-click per-user install directory after the package name, which every
-; channel shares, so OcNano, OcNano Beta and OcNano Dev all installed into one "@ocnanodesktop"
+; channel shares, so OC Nano, OC Nano Beta and OC Nano Dev all installed into one "@ocnanodesktop"
 ; directory and each channel's installer and uninstaller replaced or deleted the others' files.
 ; Each channel now installs into a directory named after its app ID, like its data directory.
 ; Only the installer moves, and NSIS rejects a variable that the uninstaller build never sets.

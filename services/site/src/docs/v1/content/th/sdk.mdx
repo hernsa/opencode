@@ -1,13 +1,13 @@
 ---
 title: SDK
-description: ไคลเอนต์ JS ประเภทที่ปลอดภัยสำหรับเซิร์ฟเวอร์ OC Nano
+description: ไคลเอนต์ JS ประเภทที่ปลอดภัยสำหรับเซิร์ฟเวอร์ ocnano
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-OC Nano JS/TS SDK จัดเตรียมไคลเอ็นต์ประเภทที่ปลอดภัยสำหรับการโต้ตอบกับเซิร์ฟเวอร์
-ใช้เพื่อสร้างการบูรณาการและควบคุม OC Nano โดยทางโปรแกรม
+ocnano JS/TS SDK จัดเตรียมไคลเอ็นต์ประเภทที่ปลอดภัยสำหรับการโต้ตอบกับเซิร์ฟเวอร์
+ใช้เพื่อสร้างการบูรณาการและควบคุม ocnano โดยทางโปรแกรม
 
 [เรียนรู้เพิ่มเติม](/docs/server) เกี่ยวกับวิธีการทำงานของเซิร์ฟเวอร์ ตัวอย่างเช่น ลองดู [โครงการ](/docs/ecosystem#โครงการ) ที่สร้างโดยชุมชน
 
@@ -18,19 +18,19 @@ OC Nano JS/TS SDK จัดเตรียมไคลเอ็นต์ปร�
 ติดตั้ง SDK จาก npm:
 
 ```bash
-npm install @ocnano-ai/sdk
+npm install @opencode-ai/sdk
 ```
 
 ---
 
 ## สร้างไคลเอนต์
 
-สร้างอินสแตนซ์ของ OC Nano:
+สร้างอินสแตนซ์ของ ocnano:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const { client } = await createOC Nano()
+const { client } = await createOpencode()
 ```
 
 สิ่งนี้จะเริ่มต้นทั้งเซิร์ฟเวอร์และไคลเอนต์
@@ -52,9 +52,9 @@ const { client } = await createOC Nano()
 คุณสามารถส่งผ่านออบเจ็กต์การกำหนดค่าเพื่อปรับแต่งลักษณะการทำงานได้ อินสแตนซ์ยังคงรับ `ocnano.json` ของคุณ แต่คุณสามารถแทนที่หรือเพิ่มการกำหนดค่าแบบอินไลน์ได้:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const OC Nano = await createOC Nano({
+const ocnano = await createOpencode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -69,12 +69,12 @@ ocnano.server.close()
 
 ## ลูกค้าเท่านั้น
 
-หากคุณมีอินสแตนซ์ OC Nano ที่ทำงานอยู่แล้ว คุณสามารถสร้างอินสแตนซ์ไคลเอ็นต์เพื่อเชื่อมต่อได้:
+หากคุณมีอินสแตนซ์ ocnano ที่ทำงานอยู่แล้ว คุณสามารถสร้างอินสแตนซ์ไคลเอ็นต์เพื่อเชื่อมต่อได้:
 
 ```javascript
-import { createOC NanoClient } from "@ocnano-ai/sdk"
+import { createOpencodeClient } from "@opencode-ai/sdk"
 
-const client = createOC NanoClient({
+const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOC NanoClient({
 SDK มีคำจำกัดความ TypeScript สำหรับ API ประเภททั้งหมด นำเข้าโดยตรง:
 
 ```typescript
-import type { Session, Message, Part } from "@ocnano-ai/sdk"
+import type { Session, Message, Part } from "@opencode-ai/sdk"
 ```
 
 ทุกประเภทสร้างขึ้นจากข้อกำหนด OpenAPI ของเซิร์ฟเวอร์และมีอยู่ใน <a href={typesUrl}>ไฟล์ประเภท</a>
@@ -373,7 +373,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*OC Nano" },
+  query: { pattern: "function.*ocnano" },
 })
 
 const files = await client.find.files({

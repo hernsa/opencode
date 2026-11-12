@@ -1,33 +1,33 @@
 ---
 title: GitLab
-description: użyj OC Nano w problemach z GitLabem i zastosujch scalania.
+description: użyj ocnano w problemach z GitLabem i zastosujch scalania.
 ---
 
-OC Nano integruje się z przepływem pracy GitLab poprzez potok GitLab CI/CD lub z GitLab Duo.
+ocnano integruje się z przepływem pracy GitLab poprzez potok GitLab CI/CD lub z GitLab Duo.
 
-W obu przypadkach OC Nano będzie modułem GitLab.
+W obu przypadkach ocnano będzie modułem GitLab.
 
 ---
 
 ## GitLab CI
 
-OC Nano działa w zwykłym potoku GitLab. Możesz wbudować go w potok jako [komponent CI](https://docs.gitlab.com/ee/ci/components/)
+ocnano działa w zwykłym potoku GitLab. Możesz wbudować go w potok jako [komponent CI](https://docs.gitlab.com/ee/ci/components/)
 
-Tutaj obowiązkowego przez społeczność komponentu CI/CD dla OC Nano — [nagyv/gitlab-ocnano](https://gitlab.com/nagyv/gitlab-ocnano).
+Tutaj obowiązkowego przez społeczność komponentu CI/CD dla ocnano — [nagyv/gitlab-ocnano](https://gitlab.com/nagyv/gitlab-ocnano).
 
 ---
 
 ### Cechy
 
-- **Użyj konfiguracji dla każdego zadania**: Skonfiguruj OC Nano z niestandardowym katalogiem konfiguracyjnym, na przykładzie `./config/#custom-directory`, aby włączyć lub funkcjonalności na każde wywołanie ocnano.
-- **Konfiguracja minimalna**: Komponent CI konfiguruje OC Nano w tle, wystarczy skonfigurować OC Nano i początkowy monit.
+- **Użyj konfiguracji dla każdego zadania**: Skonfiguruj ocnano z niestandardowym katalogiem konfiguracyjnym, na przykładzie `./config/#custom-directory`, aby włączyć lub funkcjonalności na każde wywołanie ocnano.
+- **Konfiguracja minimalna**: Komponent CI konfiguruje ocnano w tle, wystarczy skonfigurować ocnano i początkowy monit.
 - **Elastyczny**: Komponent CI obsługuje kilka danych, które są stosowane w celu dostosowania jego zachowania
 
 ---
 
 ### Organizować coś
 
-1. Przechowuj dane uwierzytelniające OC Nano w formacie JSON jako zmienne parametry CI typu pliku w specyfikacji **Ustawienia** > **CI/CD** > **Zmienne**. Zachowaj, aby być oznaczony jako „Zamaskowane i ukryte”.
+1. Przechowuj dane uwierzytelniające ocnano w formacie JSON jako zmienne parametry CI typu pliku w specyfikacji **Ustawienia** > **CI/CD** > **Zmienne**. Zachowaj, aby być oznaczony jako „Zamaskowane i ukryte”.
 2. Dodaj elementy do swojego pliku `.gitlab-ci.yml`.
 
    ```yaml title=".gitlab-ci.yml"
@@ -46,23 +46,23 @@ Więcej danych dotyczących użycia [sprawdź opis](https://gitlab.com/explore/c
 
 ## Duet GitLab
 
-OC Nano integruje się z przepływem pracy GitLab.
-Wspomnij o `@ocnano` w komentarzu, a OC Nano wykonaj zadania w ramach swojego potoku GitLab CI.
+ocnano integruje się z przepływem pracy GitLab.
+Wspomnij o `@ocnano` w komentarzu, a ocnano wykonaj zadania w ramach swojego potoku GitLab CI.
 
 ---
 
 ### Cechy
 
-- **Problem związany z segregacją**: Poproś OC Nano o szczegółowe wyjaśnienie problemu i wyjaśnienie go.
-- **Napraw i zaimplementuj**: Poproś OC Nano o naprawienie problemu lub zaimplementowanie funkcji.
+- **Problem związany z segregacją**: Poproś ocnano o szczegółowe wyjaśnienie problemu i wyjaśnienie go.
+- **Napraw i zaimplementuj**: Poproś ocnano o naprawienie problemu lub zaimplementowanie funkcji.
   Utworzył nowy oddział i zgłosi ataku ze sobą.
-- **Bezpieczny**: OC Nano działa na modułach GitLab.
+- **Bezpieczny**: ocnano działa na modułach GitLab.
 
 ---
 
 ### Organizować coś
 
-OC Nano działa w potoku CI/CD GitLab. Oto, czego potrzebujesz, aby przejść do:
+ocnano działa w potoku CI/CD GitLab. Oto, czego potrzebujesz, aby przejść do:
 
 :::tip
 Aktualne instrukcje dotyczące [**dokumentacji GitLab**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/).
@@ -82,8 +82,8 @@ Aktualne instrukcje dotyczące [**dokumentacji GitLab**](https://docs.gitlab.com
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing OC Nano"
-      - npm install --global ocnano-ai
+      - echo "Installing ocnano"
+      - npm install --global opencode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OCNANO
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
@@ -91,7 +91,7 @@ Aktualne instrukcje dotyczące [**dokumentacji GitLab**](https://docs.gitlab.com
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating ocnano auth configuration"
+      - echo "Creating OC Nano auth configuration"
       - mkdir --parents ~/.local/share/ocnano
       - |
         cat > ~/.local/share/ocnano/auth.json << EOF
@@ -103,7 +103,7 @@ Aktualne instrukcje dotyczące [**dokumentacji GitLab**](https://docs.gitlab.com
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "OC Nano@gitlab.com"
+      - git config --global user.email "ocnano@gitlab.com"
       - git config --global user.name "OC Nano"
       - echo "Testing glab"
       - glab issue list
@@ -158,7 +158,7 @@ Szczegółowe instrukcje w [dokumentacji agentów GitLab CLI](https://docs.gitla
 
 ### Przykłady
 
-Oto kilka możliwości wykorzystania OC Nano w GitLabie.
+Oto kilka możliwości wykorzystania ocnano w GitLabie.
 
 :::tip
 Można zastosować inną metodę ograniczającą niż `@ocnano`.
@@ -172,7 +172,7 @@ Można zastosować inną metodę ograniczającą niż `@ocnano`.
   @ocnano explain this issue
   ```
 
-  OC Nano przeczytaj problem i odpowiedź z wyjaśnieniem.
+  ocnano przeczytaj problem i odpowiedź z wyjaśnieniem.
 
 - **Napraw problem**
 
@@ -182,7 +182,7 @@ Można zastosować inną metodę ograniczającą niż `@ocnano`.
   @ocnano fix this
   ```
 
-  OC Nano utworzy nową podstawę, zaimplementuje zmiany i spowoduje, że skalowanie będzie możliwe.
+  ocnano utworzy nową podstawę, zaimplementuje zmiany i spowoduje, że skalowanie będzie możliwe.
 
 - **Przejrzyj prośby o połączenie**
 
@@ -192,4 +192,4 @@ Można zastosować inną metodę ograniczającą niż `@ocnano`.
   @ocnano review this merge request
   ```
 
-  OC Nano sprawdzenie rozwiązania i przepuszczenie.
+  ocnano sprawdzenie rozwiązania i przepuszczenie.

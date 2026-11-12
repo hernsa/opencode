@@ -8,7 +8,7 @@ import config from "../../../../config.mjs"
 export const console = config.console
 
 [**OC Nano**](/) je AI agent za kodiranje otvorenog koda. Dostupan je kao interfejs baziran na terminalu, desktop aplikacija ili IDE ekstenzija.
-![OC Nano TUI sa OC Nano temom](../../../assets/lander/screenshot.png)
+![OC Nano TUI sa ocnano temom](../../../assets/lander/screenshot.png)
 Hajde da počnemo.
 
 ---
@@ -42,28 +42,28 @@ Također ga možete instalirati pomoću sljedećih naredbi:
 
       <TabItem label="npm">
       ```bash
-      npm install -g ocnano-ai
+      npm install -g opencode-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g ocnano-ai
+        bun install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g ocnano-ai
+        pnpm install -g opencode-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add ocnano-ai
+        yarn global add opencode-ai
         ```
 
       </TabItem>
@@ -76,12 +76,12 @@ Također ga možete instalirati pomoću sljedećih naredbi:
   brew install anomalyco/tap/ocnano
 ```
 
-> Preporučujemo korištenje OC Nano tap za najnovija izdanja. Službenu formulu `brew install OC Nano` održava Homebrew tim i ažurira se rjeđe.
+> Preporučujemo korištenje OC Nano tap za najnovija izdanja. Službenu formulu `brew install ocnano` održava Homebrew tim i ažurira se rjeđe.
 
 - **Korištenje Parua na Arch Linuxu**
 
   ```bash
-  sudo pacman -S OC Nano           # Arch Linux (Stable)
+  sudo pacman -S ocnano           # Arch Linux (Stable)
   paru -S ocnano-bin              # Arch Linux (Latest from AUR)
   ```
 
@@ -94,19 +94,19 @@ Za najbolje iskustvo na Windows-u preporučujemo korištenje [Windows Subsystem 
 - **Korištenje Chocolatey-a**
 
 ```bash
-  choco install OC Nano
+  choco install ocnano
 ```
 
 - **Korištenje Scoop-a**
 
 ```bash
-  scoop install OC Nano
+  scoop install ocnano
 ```
 
 - **Korištenje NPM-a**
 
 ```bash
-  npm install -g ocnano-ai
+  npm install -g opencode-ai
 ```
 
 - **Korištenje Mise**
@@ -132,7 +132,7 @@ Uz OC Nano možete koristiti bilo kojeg LLM provajdera tako što ćete konfiguri
 Ako ste tek počeli koristiti LLM provajdere, preporučujemo korištenje [OC Nano Models](https://opencode.ai/docs/console/).
 To je kurirana lista modela koji su testirani i verifikovani od strane OC Nano tima.
 
-1. Pokrenite naredbu `/connect` u TUI-u, odaberite OC Nano i idite na [opencode.ai/auth](https://opencode.ai/auth).
+1. Pokrenite naredbu `/connect` u TUI-u, odaberite ocnano i idite na [opencode.ai/auth](https://opencode.ai/auth).
 
 ```txt
    /connect
@@ -163,7 +163,7 @@ cd /path/to/project
 I pokrenite OC Nano.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Zatim inicijalizirajte OC Nano za projekat pokretanjem sljedeće naredbe.
@@ -304,4 +304,4 @@ Ili **možete ponoviti** promjene koristeći naredbu `/redo`.
 ## Prilagođavanje
 
 I to je to! Sada ste profesionalac u korištenju OC Nano.
-Da biste to učinili svojim, preporučujemo [odabir teme](/docs/themes), [prilagođavanje povezivanja tipki](/docs/keybinds), [konfiguriranje formatera koda](/docs/formatters), [kreiranje prilagođenih komandi](/docs/commands), ili igranje sa [ocnano config](/docs/config).
+Da biste to učinili svojim, preporučujemo [odabir teme](/docs/themes), [prilagođavanje povezivanja tipki](/docs/keybinds), [konfiguriranje formatera koda](/docs/formatters), [kreiranje prilagođenih komandi](/docs/commands), ili igranje sa [OC Nano config](/docs/config).

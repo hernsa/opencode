@@ -80,7 +80,7 @@ const setup: Plugin.MainSetup = (ctx) => {
     installWsl: () => controller.installWsl(),
     installDistro: (input) => controller.installDistro(input.name),
     probeAddable: (input) => controller.probeAddable(input.distros),
-    installOcNano: (input) => controller.installOcNano(input.name),
+    installOpencode: (input) => controller.installOpencode(input.name),
     addServer: (input) => controller.addServer(input.distro),
     removeServer: (input) => controller.removeServer(input.id),
     startServer: (input) => controller.startServer(input.id),

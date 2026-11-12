@@ -44,7 +44,7 @@ const en = {
   "header.tryOC Nano": "Try OC Nano",
   // The header button's label on phones: the same where it fits beside the 20px product name at 375px, else a short
   // "Try now".
-  "header.tryOC NanoShort": "Try OC Nano",
+  "header.tryOcNanoShort": "Try OC Nano",
   "header.openNav": "Open navigation",
   "header.closeNav": "Close navigation",
   "theme.groupLabel": "Theme",
@@ -261,7 +261,7 @@ const en = {
   "methodology.users": "Approximate counts of distinct users and OC Nano sessions.",
   "methodology.costLabel": "Cost",
   "methodology.cost":
-    "Session cost is the average cost per ocnano session. Token prices are list prices from the OC Nano model catalog.",
+    "Session cost is the average cost per OC Nano session. Token prices are list prices from the OC Nano model catalog.",
   "methodology.retentionLabel": "Retention",
   "methodology.retention": "The share of a model's users in one week who use it again the next week.",
   "methodology.citeLabel": "Citation",

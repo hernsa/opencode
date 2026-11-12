@@ -690,7 +690,7 @@ describe("ConfigProviderPlugin.Plugin", () => {
         npm: "@ocnano/ai/providers/google-vertex",
         options: { project: "my-project", location: "europe-west4" },
         models: {
-          chat: { provider: { npm: "@ocnano-ai/ai/providers/google-vertex/mistral" } },
+          chat: { provider: { npm: "@opencode-ai/ai/providers/google-vertex/mistral" } },
         },
       },
       native: {

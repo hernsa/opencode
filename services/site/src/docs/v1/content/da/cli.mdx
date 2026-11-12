@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 OC Nano CLI starter som standard [TUI](/docs/tui), når den kører uden nogen argumenter.
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Men den accepterer også kommandoer som dokumenteret på denne side. Dette giver dig mulighed for at interagere med OC Nano programmatisk.
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 Start OC Nano terminalbrugergrænsefladen.
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### Flag
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | Sessions-id for at fortsætte                                                      |
 | <nobr><code>{"--fork"}</code></nobr>     |      | Forgren sessionen ved fortsættelse (brug med `--continue` eller `--session`)      |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | Adgangskode til basic auth (standard: `OCNANO_SERVER_PASSWORD`)                 |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `OCNANO_SERVER_USERNAME` eller `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `OCNANO_SERVER_USERNAME` eller `ocnano`) |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 Administrator GitHub-agenten til lagerautomatisering.
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 Installatør GitHub-agenten i dit lager.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Dette opsætter det nødvendige GitHub Actions workflow og guider dig gennem konfigurationsprocessen. [Learn more](/docs/github).
@@ -154,7 +154,7 @@ Dette opsætter det nødvendige GitHub Actions workflow og guider dig gennem kon
 Kør GitHub-agenten. Dette bruges typisk i GitHub Actions.
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### Flag
@@ -283,7 +283,7 @@ ocnano models --refresh
 
 ### run
 
-Kør OC Nano i ikke-interaktiv tilstand ved at sende en prompt direkte.
+Kør ocnano i ikke-interaktiv tilstand ved at sende en prompt direkte.
 
 ```bash
 ocnano run [message..]
@@ -320,7 +320,7 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--title"}</code></nobr>    |      | Titel for sessionen (bruger trunkeret prompt, hvis der ikke er angivet nogen værdi) |
 | <nobr><code>{"--attach"}</code></nobr>   |      | Tilslut til en kørende ocnano-server (f.eks. http://localhost:4096)               |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | Adgangskode til basic auth (standard: `OCNANO_SERVER_PASSWORD`)                   |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `OCNANO_SERVER_USERNAME` eller `OC Nano`)   |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `OCNANO_SERVER_USERNAME` eller `ocnano`)   |
 | <nobr><code>{"--dir"}</code></nobr>      |      | Mappe at køre i, eller sti på fjernserveren ved tilkobling                          |
 | <nobr><code>{"--variant"}</code></nobr>  |      | Modelvariant (udbyder-specifik ræsonneringsindsats)                                 |
 | <nobr><code>{"--thinking"}</code></nobr> |      | Vis tænkeblokke                                                                     |
@@ -336,7 +336,7 @@ Start en hovedløs OC Nano-server til API-adgang. Tjek [server docs](/docs/serve
 ocnano serve
 ```
 
-Dette starter en HTTP-server, der giver API-adgang til ocnano-funktionalitet uden TUI-grænsefladen. Indstil `OCNANO_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `OC Nano`).
+Dette starter en HTTP-server, der giver API-adgang til ocnano-funktionalitet uden TUI-grænsefladen. Indstil `OCNANO_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `ocnano`).
 
 #### Flag
 
@@ -429,7 +429,7 @@ Start en hovedløs OC Nano-server med en webgrænseflade.
 ocnano web
 ```
 
-Dette starter en HTTP-server og åbner en webbrowser for at få adgang til OC Nano via en webgrænseflade. Indstil `OCNANO_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `OC Nano`).
+Dette starter en HTTP-server og åbner en webbrowser for at få adgang til OC Nano via en webgrænseflade. Indstil `OCNANO_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `ocnano`).
 
 #### Flag
 
@@ -447,7 +447,7 @@ Dette starter en HTTP-server og åbner en webbrowser for at få adgang til OC Na
 Start en ACP-server (Agent Client Protocol).
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 Denne kommando starter en ACP-server, der kommunikerer via stdin/stdout ved hjælp af nd-JSON.
@@ -511,7 +511,7 @@ ocnano upgrade v0.1.48
 
 ## Globale flag
 
-OC Nano CLI tager følgende globale flag.
+ocnano CLI tager følgende globale flag.
 
 | Flag                                       | Kort | Beskrivelse                          |
 | ------------------------------------------ | ---- | ------------------------------------ |
@@ -549,7 +549,7 @@ OC Nano kan konfigureres ved hjælp af miljøvariabler.
 | `OCNANO_CLIENT`                     | string  | Klient-id (standard til `cli`)                                        |
 | `OCNANO_ENABLE_EXA`                 | boolean | Aktiver Exa-websøgeværktøjer                                          |
 | `OCNANO_SERVER_PASSWORD`            | string  | Aktiver grundlæggende godkendelse for `serve`/`web`                   |
-| `OCNANO_SERVER_USERNAME`            | string  | Tilsidesæt grundlæggende godkendelsesbrugernavn (standard `OC Nano`) |
+| `OCNANO_SERVER_USERNAME`            | string  | Tilsidesæt grundlæggende godkendelsesbrugernavn (standard `ocnano`) |
 | `OCNANO_MODELS_URL`                 | string  | Brugerdefineret URL til hentning af modelkonfiguration                |
 
 ---

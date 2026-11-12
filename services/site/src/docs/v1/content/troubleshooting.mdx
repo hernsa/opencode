@@ -12,20 +12,20 @@ To debug issues with OC Nano, start by checking the logs and local data it store
 CLI and server logs are written to:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/ocnano.log`
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\ocnano\log`
 
 Logs are appended to `ocnano.log`. Run `ocnano debug paths` to find the log directory if you use custom XDG paths.
 
-You can set the log level with the `--log-level` command-line option to get more detailed debug information. For example, `OC Nano --log-level DEBUG`.
+You can set the log level with the `--log-level` command-line option to get more detailed debug information. For example, `ocnano --log-level DEBUG`.
 
 ---
 
 ## Storage
 
-OC Nano stores session data and other application data on disk at:
+ocnano stores session data and other application data on disk at:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\ocnano`
 
 This directory contains:
 
@@ -34,7 +34,7 @@ This directory contains:
 - `ocnano.db` - SQLite database containing projects, sessions, and messages
 - `snapshot/` - Project snapshots used for undo
 
-Run `OC Nano db path` to find the active database. Custom `OCNANO_DB` settings and development channels can use a different filename.
+Run `ocnano db path` to find the active database. Custom `OCNANO_DB` settings and development channels can use a different filename.
 
 ---
 
@@ -76,7 +76,7 @@ Open your global config file and look for a `plugin` key.
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (or `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (older installs): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 If you have plugins configured, temporarily disable them by removing the key or setting it to an empty array:
 
@@ -93,7 +93,7 @@ OC Nano can also load local plugins from disk. Temporarily move these out of the
 
 - **Global plugins**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\ocnano\plugins`
 - **Project plugins** (only if you use per-project config)
   - `<your-project>/.ocnano/plugins/`
 
@@ -110,7 +110,7 @@ If disabling plugins doesn't help (or a plugin install is stuck), clear the cach
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> paste `~/.cache/ocnano`
 - **Linux**: delete `~/.cache/ocnano` (or run `rm -rf ~/.cache/ocnano`)
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.cache\ocnano`
 
 3. Restart OC Nano Desktop.
 
@@ -256,7 +256,7 @@ To resolve this:
    rm -rf ~/.local/share/ocnano
    ```
 
-   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.local\share\OC Nano`
+   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.local\share\ocnano`
 
 3. Re-authenticate with your provider using the `/connect` command in the TUI.
 
@@ -264,7 +264,7 @@ To resolve this:
 
 ### AI_APICallError and provider package issues
 
-If you encounter API call errors, this may be due to outdated provider packages. OC Nano dynamically installs provider packages (OpenAI, Anthropic, Google, etc.) as needed and caches them locally.
+If you encounter API call errors, this may be due to outdated provider packages. ocnano dynamically installs provider packages (OpenAI, Anthropic, Google, etc.) as needed and caches them locally.
 
 To resolve provider package issues:
 
@@ -274,11 +274,11 @@ To resolve provider package issues:
    rm -rf ~/.cache/ocnano
    ```
 
-   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.cache\OC Nano`
+   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.cache\ocnano`
 
-2. Restart OC Nano to reinstall the latest provider packages
+2. Restart ocnano to reinstall the latest provider packages
 
-This will force OC Nano to download the most recent versions of provider packages, which often resolves compatibility issues with model parameters and API changes.
+This will force ocnano to download the most recent versions of provider packages, which often resolves compatibility issues with model parameters and API changes.
 
 ---
 
@@ -309,4 +309,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-OC Nano will detect if you're using Wayland and prefer `wl-clipboard`, otherwise it will try to find clipboard tools in order of: `xclip` and `xsel`.
+ocnano will detect if you're using Wayland and prefer `wl-clipboard`, otherwise it will try to find clipboard tools in order of: `xclip` and `xsel`.

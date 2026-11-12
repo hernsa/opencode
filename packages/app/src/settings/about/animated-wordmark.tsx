@@ -2,12 +2,17 @@ import { createEffect, For, on, onCleanup } from "solid-js"
 import { createStore } from "solid-js/store"
 import { prefersReducedMotion } from "@ocnano/ui/motion"
 
-const target = ["o", "p", "e", "n", "c", "o", "d", "e"] as const
+// The wordmark settles letter by letter. Each slot holds one glyph of the OC Nano wordmark while it settles.
+const target = ["O", "C", "N", "A", "N", "O"] as const
 
-const choices = ["o", "p", "e", "n", "c", "d"] as const
+// The glyphs a slot cycles through while it is still scrambling.
+const choices = ["O", "C", "N", "A", "D"] as const
+
+// The glyph positions, in the logo's 234x42 viewBox. They line up with the wordmark in @ocnano/ui/logo.
+const positions: readonly number[] = [15, 54, 102, 141, 180, 219]
 
 export function AnimatedWordmark(props: { active: boolean }) {
-  const [state, setState] = createStore({ letters: [...target] })
+  const [state, setState] = createStore<{ letters: string[] }>({ letters: [...target] })
   const timers = new Set<ReturnType<typeof setTimeout>>()
 
   createEffect(
@@ -49,35 +54,32 @@ export function AnimatedWordmark(props: { active: boolean }) {
 
   return (
     <svg class="settings-about-wordmark" viewBox="0 0 234 42" aria-hidden="true">
-      <defs>
-        <symbol id="settings-about-letter-o" viewBox="0 0 24 42">
-          <path class="settings-about-letter-shadow" d="M18 30H6V18H18V30Z" />
-          <path d="M18 12H6V30H18V12ZM24 36H0V6H24V36Z" />
-        </symbol>
-        <symbol id="settings-about-letter-p" viewBox="0 0 24 42">
-          <path class="settings-about-letter-shadow" d="M18 30H6V18H18V30Z" />
-          <path d="M6 30H18V12H6V30ZM24 36H6V42H0V6H24V36Z" />
-        </symbol>
-        <symbol id="settings-about-letter-e" viewBox="0 0 24 42">
-          <path class="settings-about-letter-shadow" d="M24 24V30H6V24H24Z" />
-          <path d="M24 24H6V30H24V36H0V6H24V24ZM6 18H18V12H6V18Z" />
-        </symbol>
-        <symbol id="settings-about-letter-n" viewBox="0 0 24 42">
-          <path class="settings-about-letter-shadow" d="M18 36H6V18H18V36Z" />
-          <path d="M18 12H6V36H0V6H18V12ZM24 36H18V12H24V36Z" />
-        </symbol>
-        <symbol id="settings-about-letter-c" viewBox="0 0 24 42">
-          <path class="settings-about-letter-shadow" d="M24 30H6V18H24V30Z" />
-          <path d="M24 12H6V30H24V36H0V6H24V12Z" />
-        </symbol>
-        <symbol id="settings-about-letter-d" viewBox="0 0 24 42">
-          <path class="settings-about-letter-shadow" d="M18 30H6V18H18V30Z" />
-          <path d="M18 12H6V30H18V12ZM24 36H0V6H18V0H24V36Z" />
-        </symbol>
-      </defs>
       <For each={state.letters}>
         {(letter, index) => (
-          <use href={`#settings-about-letter-${letter}`} x={index() * 30} width="24" height="42" />
+          <>
+            <text
+              class="settings-about-letter-shadow"
+              x={positions[index()]}
+              y="35"
+              transform="translate(0 1.5)"
+              text-anchor="middle"
+              font-family="var(--font-family-sans)"
+              font-size="40"
+              font-weight="600"
+            >
+              {letter}
+            </text>
+            <text
+              x={positions[index()]}
+              y="35"
+              text-anchor="middle"
+              font-family="var(--font-family-sans)"
+              font-size="40"
+              font-weight="600"
+            >
+              {letter}
+            </text>
+          </>
         )}
       </For>
     </svg>

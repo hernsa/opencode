@@ -5,13 +5,13 @@ title: "Intro"
 Run the CLI in a project to open the full-screen terminal interface:
 
 ```bash
-OC Nano
+ocnano
 ```
 
 Pass a directory to work in a different project:
 
 ```bash
-OC Nano ~/code/my-project
+ocnano ~/code/my-project
 ```
 
 Suggested terminals:
@@ -35,13 +35,13 @@ ocnano run "Explain this repository"
 
 ## Mini
 
-Use `OC Nano mini` to start OC Nano's minimal interactive interface instead of the full-screen TUI.
+Use `ocnano mini` to start OC Nano's minimal interactive interface instead of the full-screen TUI.
 
 ```bash
-OC Nano mini
+ocnano mini
 ```
 
-Run `OC Nano mini --help` to see its session, model, agent, prompt, and replay options.
+Run `ocnano mini --help` to see its session, model, agent, prompt, and replay options.
 
 ## Background service
 
@@ -51,19 +51,19 @@ connects to that server, which owns sessions, configuration, integrations, permi
 Use `--standalone` to run with a private server, or `--server` to connect to a specific server URL:
 
 ```bash
-OC Nano --standalone
-OC Nano --server http://localhost:4096
+ocnano --standalone
+ocnano --server http://localhost:4096
 ```
 
 To make private servers the default for CLI commands instead of starting the shared service, disable it:
 
 ```bash
-OC Nano service set disabled true
-OC Nano
+ocnano service set disabled true
+ocnano
 ```
 
-This stops the running background service. `--server` still connects to an explicitly selected server; `OC Nano service start`
-can still start the shared service explicitly. To return to automatic service use, run `OC Nano service unset disabled`.
+This stops the running background service. `--server` still connects to an explicitly selected server; `ocnano service start`
+can still start the shared service explicitly. To return to automatic service use, run `ocnano service unset disabled`.
 Pairing requires the shared service and is unavailable while it is disabled.
 
 See [Troubleshooting](/troubleshooting) for shared service diagnostics and the [API reference](/api) for server endpoints.

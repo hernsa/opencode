@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 OC Nano CLI จะเริ่มต้น [TUI](/docs/tui) เป็นค่าเริ่มต้นเมื่อเรียกใช้โดยไม่มีอาร์กิวเมนต์
 
 ```bash
-OC Nano
+ocnano
 ```
 
 นอกจากนี้ยังรับคำสั่งและแฟล็ก ซึ่งช่วยให้คุณใช้ OC Nano ผ่านโปรแกรมได้
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 เริ่ม TUI เพื่อใช้ OC Nano แบบโต้ตอบ
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### แฟล็ก
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | ID เซสชันเพื่อดำเนินการต่อ                                                                  |
 | <nobr><code>{"--fork"}</code></nobr>     |      | แยกเซสชันเมื่อดำเนินการต่อ (ใช้กับ `--continue` หรือ `--session`)                           |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | รหัสผ่านการยืนยันตัวตนพื้นฐาน (ค่าเริ่มต้นคือ `OCNANO_SERVER_PASSWORD`)                   |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | ชื่อผู้ใช้การยืนยันตัวตนพื้นฐาน (ค่าเริ่มต้นคือ `OCNANO_SERVER_USERNAME` หรือ `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | ชื่อผู้ใช้การยืนยันตัวตนพื้นฐาน (ค่าเริ่มต้นคือ `OCNANO_SERVER_USERNAME` หรือ `ocnano`) |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 จัดการเอเจนต์ GitHub สำหรับเวิร์กโฟลว์อัตโนมัติ
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 ติดตั้งเอเจนต์ GitHub ใน repository ของคุณ
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 คำสั่งนี้จะสร้างเวิร์กโฟลว์ GitHub Actions และแนะนำคุณตลอดกระบวนการตั้งค่า [เรียนรู้เพิ่มเติม](/docs/github)
@@ -154,7 +154,7 @@ OC Nano github install
 รันเอเจนต์ GitHub ด้วยตนเองหรือใน GitHub Actions
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### แฟล็ก
@@ -319,9 +319,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f` | แนบไฟล์ไปกับข้อความ                                                                         |
 | <nobr><code>{"--format"}</code></nobr>   |      | รูปแบบเอาต์พุต: text (จัดรูปแบบ) หรือ json (JSON ดิบ)                                       |
 | <nobr><code>{"--title"}</code></nobr>    |      | ชื่อสำหรับเซสชัน (หากไม่ได้ระบุ จะสร้างจากพรอมต์)                                           |
-| <nobr><code>{"--attach"}</code></nobr>   |      | แนบไปกับเซิร์ฟเวอร์ OC Nano ที่ทำงานอยู่ (เช่น http://localhost:4096)                      |
+| <nobr><code>{"--attach"}</code></nobr>   |      | แนบไปกับเซิร์ฟเวอร์ ocnano ที่ทำงานอยู่ (เช่น http://localhost:4096)                      |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | รหัสผ่านการยืนยันตัวตนพื้นฐาน (ค่าเริ่มต้นคือ `OCNANO_SERVER_PASSWORD`)                   |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | ชื่อผู้ใช้การยืนยันตัวตนพื้นฐาน (ค่าเริ่มต้นคือ `OCNANO_SERVER_USERNAME` หรือ `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | ชื่อผู้ใช้การยืนยันตัวตนพื้นฐาน (ค่าเริ่มต้นคือ `OCNANO_SERVER_USERNAME` หรือ `ocnano`) |
 | <nobr><code>{"--dir"}</code></nobr>      |      | ไดเร็กทอรีสำหรับรัน หรือเส้นทางบนเซิร์ฟเวอร์ระยะไกลเมื่อแนบ                                 |
 | <nobr><code>{"--variant"}</code></nobr>  |      | ตัวแปรโมเดล (ระดับการใช้เหตุผลเฉพาะผู้ให้บริการ)                                            |
 | <nobr><code>{"--thinking"}</code></nobr> |      | แสดงบล็อกความคิด                                                                            |
@@ -337,7 +337,7 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ocnano serve
 ```
 
-คำสั่งนี้จะเริ่มต้นเซิร์ฟเวอร์ HTTP ให้ API เข้าถึงฟังก์ชันการทำงานของ OC Nano ได้โดยไม่ต้องมี TUI นอกจากนี้ยังรองรับการตรวจสอบสิทธิ์พื้นฐาน HTTP (ชื่อผู้ใช้เริ่มต้นคือ `OC Nano` และรหัสผ่านระบุโดย `OCNANO_SERVER_PASSWORD`)
+คำสั่งนี้จะเริ่มต้นเซิร์ฟเวอร์ HTTP ให้ API เข้าถึงฟังก์ชันการทำงานของ OC Nano ได้โดยไม่ต้องมี TUI นอกจากนี้ยังรองรับการตรวจสอบสิทธิ์พื้นฐาน HTTP (ชื่อผู้ใช้เริ่มต้นคือ `ocnano` และรหัสผ่านระบุโดย `OCNANO_SERVER_PASSWORD`)
 
 #### แฟล็ก
 
@@ -430,7 +430,7 @@ ocnano import session.json
 ocnano web
 ```
 
-คำสั่งนี้จะเริ่มต้นเซิร์ฟเวอร์ HTTP และเปิดเว็บเบราว์เซอร์เพื่อเข้าถึง OC Nano ผ่านทางเว็บอินเตอร์เฟส รองรับการตรวจสอบสิทธิ์พื้นฐาน HTTP (ชื่อผู้ใช้เริ่มต้นคือ `OC Nano` และรหัสผ่านระบุโดย `OCNANO_SERVER_PASSWORD`)
+คำสั่งนี้จะเริ่มต้นเซิร์ฟเวอร์ HTTP และเปิดเว็บเบราว์เซอร์เพื่อเข้าถึง OC Nano ผ่านทางเว็บอินเตอร์เฟส รองรับการตรวจสอบสิทธิ์พื้นฐาน HTTP (ชื่อผู้ใช้เริ่มต้นคือ `ocnano` และรหัสผ่านระบุโดย `OCNANO_SERVER_PASSWORD`)
 
 #### แฟล็ก
 
@@ -448,7 +448,7 @@ ocnano web
 เริ่มต้นเซิร์ฟเวอร์ ACP (Agent Client Protocol)
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 คำสั่งนี้เริ่มต้นเซิร์ฟเวอร์ ACP ที่สื่อสารผ่าน stdin/stdout ด้วย nd-JSON
@@ -550,7 +550,7 @@ OC Nano สามารถกำหนดค่าโดยใช้ตัวแ
 | `OCNANO_CLIENT`                     | String  | ตัวระบุไคลเอนต์ (ค่าเริ่มต้นคือ `cli`)                           |
 | `OCNANO_ENABLE_EXA`                 | Boolean | เปิดใช้งานการใช้ Exa แทน ls หากมี                                |
 | `OCNANO_SERVER_PASSWORD`            | String  | รหัสผ่านสำหรับการตรวจสอบสิทธิ์พื้นฐาน `serve`/`web`              |
-| `OCNANO_SERVER_USERNAME`            | String  | ชื่อผู้ใช้สำหรับการตรวจสอบสิทธิ์พื้นฐาน (ค่าเริ่มต้น `OC Nano`) |
+| `OCNANO_SERVER_USERNAME`            | String  | ชื่อผู้ใช้สำหรับการตรวจสอบสิทธิ์พื้นฐาน (ค่าเริ่มต้น `ocnano`) |
 | `OCNANO_MODELS_URL`                 | String  | URL ที่กำหนดเองสำหรับการดึงรายการโมเดล                           |
 
 ---

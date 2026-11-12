@@ -1,6 +1,6 @@
 # Figma
 
-An opt-in ocnano plugin that registers Figma's remote MCP server and official Figma skills. It uses OC Nano's existing OAuth/DCR flow and credential storage, without a shared client secret.
+An opt-in OC Nano plugin that registers Figma's remote MCP server and official Figma skills. It uses OC Nano's existing OAuth/DCR flow and credential storage, without a shared client secret.
 
 ## Install
 

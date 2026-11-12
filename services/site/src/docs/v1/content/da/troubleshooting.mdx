@@ -12,20 +12,20 @@ For at fejlfinde problemer med OC Nano, start med at tjekke logfilerne og de lok
 Logfiler skrives til:
 
 - **macOS/Linux**: `~/.local/share/ocnano/log/`
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\OC Nano\log`
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\ocnano\log`
 
 Logfiler navngives med tidsstempler (f.eks. `2025-01-09T123456.log`) og de sidste 10 logfiler beholdes.
 
-Du kan angive logniveauet med kommandolinjeflaget `--log-level` for at få mere detaljeret fejlfindingsinformation. For eksempel `OC Nano --log-level DEBUG`.
+Du kan angive logniveauet med kommandolinjeflaget `--log-level` for at få mere detaljeret fejlfindingsinformation. For eksempel `ocnano --log-level DEBUG`.
 
 ---
 
 ## Lagring
 
-OC Nano gemmer sessionsdata og andre applikationsdata på disken på:
+ocnano gemmer sessionsdata og andre applikationsdata på disken på:
 
 - **macOS/Linux**: `~/.local/share/ocnano/`
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\OC Nano`
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\ocnano`
 
 Denne mappe indeholder:
 
@@ -59,7 +59,7 @@ Hvis skrivebordsappen går ned ved opstart, hænger eller opfører sig mærkelig
 
 - **macOS/Linux**: `~/.config/ocnano/ocnano.jsonc` (eller `~/.config/ocnano/ocnano.json`)
 - **macOS/Linux** (ældre installationer): `~/.local/share/ocnano/ocnano.jsonc`
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\OC Nano\ocnano.jsonc`
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\ocnano\ocnano.jsonc`
 
 Hvis du har konfigureret plugins, deaktiver dem midlertidigt ved at fjerne nøglen eller sætte den til et tomt array:
 
@@ -76,7 +76,7 @@ OC Nano kan også indlæse lokale plugins fra disken. Flyt disse midlertidigt v�
 
 - **Globale plugins**
   - **macOS/Linux**: `~/.config/ocnano/plugins/`
-  - **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\OC Nano\plugins`
+  - **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\ocnano\plugins`
 - **Projektplugins** (kun hvis du bruger konfiguration per projekt)
   - `<your-project>/.ocnano/plugins/`
 
@@ -93,7 +93,7 @@ Hvis deaktivering af plugins ikke hjælper (eller en plugin-installation sidder 
 
 - **macOS**: Finder -> `Cmd+Shift+G` -> indsæt `~/.cache/ocnano`
 - **Linux**: slet `~/.cache/ocnano` (eller kør `rm -rf ~/.cache/ocnano`)
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.cache\OC Nano`
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.cache\ocnano`
 
 3. Start OC Nano Desktop på ny.
 
@@ -244,7 +244,7 @@ For at løse dette:
    rm -rf ~/.local/share/ocnano
    ```
 
-   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.local\share\OC Nano`
+   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.local\share\ocnano`
 
 3. Godkend på ny med din udbyder ved at bruge kommandoen `/connect` i TUI.
 
@@ -252,7 +252,7 @@ For at løse dette:
 
 ### AI_APICallError og udbyderpakkeproblemer
 
-Hvis du støder på API-kaldsfejl, kan dette skyldes forældede udbyderpakker. OC Nano installerer dynamisk udbyderpakker (OpenAI, Anthropic, Google, etc.) efter behov og cacher dem lokalt.
+Hvis du støder på API-kaldsfejl, kan dette skyldes forældede udbyderpakker. ocnano installerer dynamisk udbyderpakker (OpenAI, Anthropic, Google, etc.) efter behov og cacher dem lokalt.
 
 For at løse problemer med udbyderpakke:
 
@@ -262,11 +262,11 @@ For at løse problemer med udbyderpakke:
    rm -rf ~/.cache/ocnano
    ```
 
-   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.cache\OC Nano`
+   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.cache\ocnano`
 
-2. Start OC Nano på ny for at installere de nyeste udbyderpakker på ny
+2. Start ocnano på ny for at installere de nyeste udbyderpakker på ny
 
-Dette vil tvinge OC Nano til at downloade de nyeste versioner af udbyderpakkerne, som ofte løser kompatibilitetsproblemer med modelparametre og API-ændringer.
+Dette vil tvinge ocnano til at downloade de nyeste versioner af udbyderpakkerne, som ofte løser kompatibilitetsproblemer med modelparametre og API-ændringer.
 
 ---
 
@@ -297,4 +297,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-OC Nano vil opdage om du bruger Wayland og foretrække `wl-clipboard`, ellers vil den prøve at finde udklipsholderværktøjer i rækkefølgen: `xclip` og `xsel`.
+ocnano vil opdage om du bruger Wayland og foretrække `wl-clipboard`, ellers vil den prøve at finde udklipsholderværktøjer i rækkefølgen: `xclip` og `xsel`.

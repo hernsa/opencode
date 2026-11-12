@@ -49,7 +49,7 @@ Here are several models that work well with OC Nano, in no particular order. (Th
 ## Set a default
 
 To set one of these as the default model, you can set the `model` key in your
-ocnano config.
+OC Nano config.
 
 ```json title="ocnano.json" {3}
 {
@@ -111,7 +111,7 @@ You can also define custom variants that extend built-in ones. Variants let you 
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "OC Nano": {
+    "ocnano": {
       "models": {
         "gpt-6.1-sol": {
           "variants": {
@@ -207,7 +207,7 @@ When OC Nano starts up, it checks for models in the following priority order:
 
 1. The `--model` or `-m` command line flag. The format is the same as in the config file: `provider_id/model_id`.
 
-2. The model list in the ocnano config.
+2. The model list in the OC Nano config.
 
    ```json title="ocnano.json"
    {

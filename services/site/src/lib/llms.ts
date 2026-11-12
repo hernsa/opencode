@@ -44,7 +44,7 @@ export async function llmsText(locale: Locale) {
     [
       `- ${link("Docs index", docsLlms)}: the llms.txt of the OC Nano v2 docs, listing every docs page`,
       docs("Intro", "/", "install OC Nano and connect a provider"),
-      docs("Config", "/config/", "the ocnano config file"),
+      docs("Config", "/config/", "the OC Nano config file"),
       docs("Models", "/models/", "choose and configure models"),
       docs("Providers", "/providers/", "connect model providers"),
       docs("Agents", "/agents/", "built-in and custom agents"),

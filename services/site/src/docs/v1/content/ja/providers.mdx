@@ -171,17 +171,17 @@ OC Nano で Amazon Bedrock を使用するには:
 
    #### 環境変数 (クイックスタート)
 
-   OC Nano の実行中に次の環境変数のいずれかを設定します。
+   ocnano の実行中に次の環境変数のいずれかを設定します。
 
    ```bash
    # オプション 1: AWS アクセスキーの使用
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # オプション 2: 名前付き AWS プロファイルの使用
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # オプション 3: Bedrock ベアラートークンの使用
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    または、それらを bash プロファイルに追加します。
@@ -333,7 +333,7 @@ Pro/Max サブスクリプションをお持ちでない場合は、[**API キ�
 
 ### Atomic Chat
 
-OC Nano は、OpenAI 互換の API サーバーの背後でローカル LLM を実行するデスクトップアプリケーション [Atomic Chat](https://atomic.chat) 経由でローカルモデルを使うように設定できます（デフォルトのエンドポイントは `http://127.0.0.1:1337/v1`）。
+ocnano は、OpenAI 互換の API サーバーの背後でローカル LLM を実行するデスクトップアプリケーション [Atomic Chat](https://atomic.chat) 経由でローカルモデルを使うように設定できます（デフォルトのエンドポイントは `http://127.0.0.1:1337/v1`）。
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -403,7 +403,7 @@ OC Nano が正しく動作するには、デプロイメント名がモデル名
 5. リソース名を環境変数として設定します。
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
 または、bash プロファイルに追加します。
@@ -450,7 +450,7 @@ OC Nano が正しく動作するには、デプロイメント名がモデル名
 5. リソース名を環境変数として設定します。
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
 または、bash プロファイルに追加します。
@@ -914,10 +914,10 @@ Vertex AI API が有効になっている Google Cloud プロジェクトが必�
      - `GOOGLE_APPLICATION_CREDENTIALS`: サービスアカウントの JSON キーファイルへのパス
      - gcloud CLI を使用して認証する: `gcloud auth application-default login`
 
-OC Nano の実行中に設定します。
+ocnano の実行中に設定します。
 
 ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
 ```
 
 または、それらを bash プロファイルに追加します。
@@ -1070,7 +1070,7 @@ Helicone は、キャッシュ、ユーザー追跡、セッション管理な�
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1111,7 +1111,7 @@ npm install -g ocnano-helicone-session
 
 ### llama.cpp
 
-[llama.cpp の s](https://github.com/ggml-org/llama.cpp) llama-server ユーティリティ] を通じて、ローカルモデルを使用するように OC Nano を構成できます。
+[llama.cpp の s](https://github.com/ggml-org/llama.cpp) llama-server ユーティリティ] を通じて、ローカルモデルを使用するように ocnano を構成できます。
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1178,7 +1178,7 @@ IO.NET は、さまざまなユースケースに最適化された 17 のモデ
 
 ### LM Studio
 
-LM Studio を通じてローカルモデルを使用するように OC Nano を構成できます。
+LM Studio を通じてローカルモデルを使用するように ocnano を構成できます。
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1295,7 +1295,7 @@ Moonshot AI の Kim K2 を使用するには:
 
 ### Ollama
 
-Ollama を通じてローカルモデルを使用するように OC Nano を構成できます。
+Ollama を通じてローカルモデルを使用するように ocnano を構成できます。
 
 :::tip
 Ollama は OC Nano 用に自動的に構成できます。詳細については、[Ollama 統合 docs](https://docs.ollama.com/integrations/ocnano)」を参照してください。
@@ -1530,7 +1530,7 @@ SAP AI コアは、統合プラットフォームを通じて、OpenAI、Anthrop
 または、`AICORE_SERVICE_KEY` 環境変数を設定します。
 
 ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
 ```
 
 または、bash プロファイルに追加します。
@@ -1542,7 +1542,7 @@ SAP AI コアは、統合プラットフォームを通じて、OpenAI、Anthrop
 4. 必要に応じて、デプロイメント ID とリソースグループを設定します。
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
 :::note
@@ -1619,7 +1619,7 @@ STACKIT AI Model Serving は、Llama、Mistral、Qwen などの LLM に焦点を
 
 ### Scaleway
 
-[Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) を OC Nano で使用するには:
+[Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) を Opencode で使用するには:
 
 1. [Scaleway Console IAM settings](https://console.scaleway.com/iam/api-keys) に移動して、新しい API キーを生成します。
 

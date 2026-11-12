@@ -1,4 +1,4 @@
-# ocnano-pty
+# opencode-pty
 
 ## Objective
 

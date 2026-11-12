@@ -24,8 +24,8 @@ changes prepared for the connected OC Nano org.
 From this directory, deployment uses the existing Salesforce CLI authentication:
 
 ```sh
-sf project deploy start --source-dir force-app --target-org OC Nano --wait 10
-sf org assign permset --name Console_Account_Sync --target-org OC Nano
+sf project deploy start --source-dir force-app --target-org ocnano --wait 10
+sf org assign permset --name Console_Account_Sync --target-org ocnano
 ```
 
 The Console writes these fields when someone signs up. Enterprise inquiry Leads from

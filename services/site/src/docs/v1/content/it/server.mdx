@@ -1,6 +1,6 @@
 ---
 title: Server
-description: Interagisci con il server OC Nano via HTTP.
+description: Interagisci con il server ocnano via HTTP.
 ---
 
 import config from "../../../../config.mjs"
@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Autenticazione
 
-Imposta `OCNANO_SERVER_PASSWORD` per proteggere il server con HTTP basic auth. Lo username predefinito e `OC Nano`, oppure imposta `OCNANO_SERVER_USERNAME` per sovrascriverlo. Questo vale sia per `ocnano serve` sia per `ocnano web`.
+Imposta `OCNANO_SERVER_PASSWORD` per proteggere il server con HTTP basic auth. Lo username predefinito e `ocnano`, oppure imposta `OCNANO_SERVER_USERNAME` per sovrascriverlo. Questo vale sia per `ocnano serve` sia per `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,15 +46,15 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### Come funziona
 
-Quando esegui `OC Nano` avvia una TUI e un server. La TUI e il client che parla col server. Il server espone un endpoint con specifica OpenAPI 3.1. Questo endpoint viene anche usato per generare un [SDK](/docs/sdk).
+Quando esegui `ocnano` avvia una TUI e un server. La TUI e il client che parla col server. Il server espone un endpoint con specifica OpenAPI 3.1. Questo endpoint viene anche usato per generare un [SDK](/docs/sdk).
 
 :::tip
-Usa il server OC Nano per interagire con OC Nano in modo programmatico.
+Usa il server ocnano per interagire con ocnano in modo programmatico.
 :::
 
-Questa architettura permette a OC Nano di supportare piu client e di essere usato in modo programmatico.
+Questa architettura permette a ocnano di supportare piu client e di essere usato in modo programmatico.
 
-Puoi eseguire `ocnano serve` per avviare un server standalone. Se la TUI di OC Nano e gia in esecuzione, `ocnano serve` avviera un nuovo server.
+Puoi eseguire `ocnano serve` per avviare un server standalone. Se la TUI di ocnano e gia in esecuzione, `ocnano serve` avviera un nuovo server.
 
 ---
 
@@ -80,7 +80,7 @@ Per esempio, `http://localhost:4096/doc`. Usa la spec per generare client o ispe
 
 ## API
 
-Il server OC Nano espone le seguenti API.
+Il server ocnano espone le seguenti API.
 
 ---
 

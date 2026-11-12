@@ -2,7 +2,7 @@
 
 ## Completed
 
-- [x] Rename the project and process to `ocnano-pty`.
+- [x] Rename the project and process to `opencode-pty`.
 - [x] Remove the descriptor-handoff POC implementation.
 - [x] Add portable-pty terminal creation and process ownership.
 - [x] Add isolated reader, actor/parser, writer, and child-wait threads.

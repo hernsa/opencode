@@ -52,11 +52,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   desktopItems = lib.optional stdenv.hostPlatform.isLinux (makeDesktopItem {
     name = "ai.ocnano.desktop";
-    desktopName = "OcNano";
+    desktopName = "OC Nano";
     exec = "ocnano-desktop %U";
     icon = "ai.ocnano.desktop";
     # Electron derives X11 WM_CLASS from app.name.
-    startupWMClass = "OcNano";
+    startupWMClass = "OC Nano";
     categories = [ "Development" ];
   });
 
@@ -122,7 +122,7 @@ stdenv.mkDerivation (finalAttrs: {
   + lib.optionalString stdenv.hostPlatform.isDarwin ''
     mkdir -p $out/Applications
     mv dist/mac*/*.app $out/Applications
-    makeWrapper "$out/Applications/OcNano.app/Contents/MacOS/OcNano" $out/bin/ocnano-desktop
+    makeWrapper "$out/Applications/OC Nano.app/Contents/MacOS/OC Nano" $out/bin/ocnano-desktop
   ''
   + lib.optionalString stdenv.hostPlatform.isLinux ''
     mkdir -p $out/opt/ocnano-desktop
@@ -161,7 +161,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   meta = {
-    description = "OcNano Desktop App";
+    description = "OC Nano Desktop App";
     mainProgram = "ocnano-desktop";
     inherit (ocnano.meta) homepage license platforms;
   };

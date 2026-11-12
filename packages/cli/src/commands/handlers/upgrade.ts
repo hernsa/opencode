@@ -23,7 +23,7 @@ export default Runtime.handler(
       const target = Option.getOrUndefined(input.target) ?? (yield* updater.latest(method))
       const version = target.trim().replace(/^v/, "")
       if (version === OCNANO_VERSION) {
-        log.warn(`ocnano upgrade skipped: ${version} is already installed`)
+        log.warn(`OC Nano upgrade skipped: ${version} is already installed`)
         outro("Done")
         return
       }

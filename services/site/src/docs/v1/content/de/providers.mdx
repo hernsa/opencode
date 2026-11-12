@@ -174,13 +174,13 @@ So verwenden Sie Amazon Bedrock mit OC Nano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    Oder fügen Sie sie Ihrem Bash-Profil hinzu:
@@ -325,7 +325,7 @@ Wenn Sie bereits über einen API-Schlüssel verfügen, können Sie **API-Schlüs
 
 ### Atomic Chat
 
-Sie können OC Nano so konfigurieren, dass es lokale Modelle über [Atomic Chat](https://atomic.chat) verwendet — eine Desktop-Anwendung, die lokale LLMs hinter einem OpenAI-kompatiblen API-Server bereitstellt (Standard-Endpunkt `http://127.0.0.1:1337/v1`).
+Sie können ocnano so konfigurieren, dass es lokale Modelle über [Atomic Chat](https://atomic.chat) verwendet — eine Desktop-Anwendung, die lokale LLMs hinter einem OpenAI-kompatiblen API-Server bereitstellt (Standard-Endpunkt `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -395,7 +395,7 @@ Wenn Sie auf die Fehlermeldung „Es tut mir leid, aber ich kann Ihnen bei diese
 5. Legen Sie Ihren Ressourcennamen als Umgebungsvariable fest:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    Oder fügen Sie es Ihrem Bash-Profil hinzu:
@@ -442,7 +442,7 @@ Wenn Sie auf die Fehlermeldung „Es tut mir leid, aber ich kann Ihnen bei diese
 5. Legen Sie Ihren Ressourcennamen als Umgebungsvariable fest:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    Oder fügen Sie es Ihrem Bash-Profil hinzu:
@@ -908,7 +908,7 @@ So verwenden Sie Google Vertex AI mit OC Nano:
    Legen Sie sie fest, während Sie OC Nano ausführen.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    Oder fügen Sie sie Ihrem Bash-Profil hinzu.
@@ -1061,7 +1061,7 @@ Helicone unterstützt benutzerdefinierte Header für Funktionen wie Caching, Ben
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1521,7 +1521,7 @@ SAP AI Core bietet Zugriff auf 40+ Modelle von OpenAI, Anthropic, Google, Amazon
    Oder legen Sie die Umgebungsvariable `AICORE_SERVICE_KEY` fest:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    Oder fügen Sie es Ihrem Bash-Profil hinzu:
@@ -1533,7 +1533,7 @@ SAP AI Core bietet Zugriff auf 40+ Modelle von OpenAI, Anthropic, Google, Amazon
 4. Legen Sie optional die Bereitstellung ID und die Ressourcengruppe fest:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note

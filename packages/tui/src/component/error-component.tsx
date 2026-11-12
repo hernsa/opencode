@@ -117,7 +117,6 @@ export function ErrorComponent(props: { error: Error; reset: () => void; mode?: 
         {/* Headline */}
         <box flexDirection="column" alignItems="center" flexShrink={0}>
           <text attributes={TextAttributes.BOLD} fg={colors.text}>
-            
             OC Nano crashed
           </text>
           <Show when={showSubtext()}>
@@ -211,7 +210,7 @@ export function ErrorComponent(props: { error: Error; reset: () => void; mode?: 
                   ? "Clipboard write failed. Try again or report the crash manually."
                   : "Copy the report and open a GitHub issue to help us fix this."}
             </text>
-            <text fg={colors.muted}>OcNano {app.version}</text>
+            <text fg={colors.muted}>OC Nano {app.version}</text>
           </box>
         </Show>
       </box>

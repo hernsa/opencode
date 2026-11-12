@@ -451,7 +451,7 @@ export const content = {
     },
     naming: {
       title: "Nom",
-      body: "Écrivez OC Nano en un seul mot, avec un O et un C majuscules. N'écrivez pas OC Nano, Open Code, OC Nano AI ou Open-Code.",
+      body: "Écrivez OC Nano en un seul mot, avec un O et un C majuscules. N'écrivez pas Opencode, Open Code, OC Nano AI ou Open-Code.",
       code: "Utilisez `ocnano` en minuscules uniquement dans le code et les noms de paquets, comme `ocnano-figma` ou `@acme/ocnano-plugin`.",
     },
     families: {

@@ -83,7 +83,7 @@ Only Anthropic remains available.
 ## Providers
 
 `provider.use` controls whether a provider is usable at all. The resource is the
-provider ID: `anthropic`, `openai`, `OC Nano`, or a custom ID from
+provider ID: `anthropic`, `openai`, `ocnano`, or a custom ID from
 [`providers`](/providers).
 
 ```jsonc
@@ -154,7 +154,7 @@ broader `deny`, after which the agent's own rules decide.
 ## Integrations
 
 An integration is anything you connect in `/connect`: the OC Nano Console
-(`OC Nano`), a provider such as `anthropic`, a web search service such as `exa`,
+(`ocnano`), a provider such as `anthropic`, a web search service such as `exa`,
 or a well-known config origin such as `https://ai.acme.com`. Signing in to an MCP
 server is not affected by integration policies; use `mcp.use` to control MCP
 servers.
@@ -166,8 +166,8 @@ connected. The resource is the integration ID.
 models, its web search, and the MCP servers and config a Console workspace or
 well-known origin delivers. The resource is `<integration>#<account>`, where the
 account is the connected organization or account ID, such as
-`OC Nano#org_01M3CAP8H43Z49CER6NT0Y3ZF1`. Without a connected account it is the
-bare integration ID: the signed-out free tier is `OC Nano`, an `ANTHROPIC_API_KEY`
+`ocnano#org_01M3CAP8H43Z49CER6NT0Y3ZF1`. Without a connected account it is the
+bare integration ID: the signed-out free tier is `ocnano`, an `ANTHROPIC_API_KEY`
 environment variable is `anthropic`, and a provider from `ocnano.json` is its
 provider ID.
 
@@ -177,9 +177,9 @@ This MDM policy requires one Console workspace and nothing else:
 {
   "policies": [
     { "action": "integration.connect", "resource": "*", "effect": "deny" },
-    { "action": "integration.connect", "resource": "OC Nano", "effect": "allow" },
+    { "action": "integration.connect", "resource": "ocnano", "effect": "allow" },
     { "action": "integration.use", "resource": "*", "effect": "deny" },
-    { "action": "integration.use", "resource": "OC Nano#org_01M3CAP8H43Z49CER6NT0Y3ZF1", "effect": "allow" },
+    { "action": "integration.use", "resource": "ocnano#org_01M3CAP8H43Z49CER6NT0Y3ZF1", "effect": "allow" },
   ],
 }
 ```
@@ -250,7 +250,7 @@ wherever you rely on them.
 ## Web search
 
 `websearch.use` controls the web search providers the `websearch` tool can use. The
-resource is the provider ID: `OC Nano` for OC Nano Web Search from the Console, a
+resource is the provider ID: `ocnano` for OC Nano Web Search from the Console, a
 built-in provider such as `exa`, `firecrawl`, `parallel`, `tavily`, or `tinyfish`, or
 the ID of a provider a plugin adds.
 
@@ -258,7 +258,7 @@ the ID of a provider a plugin adds.
 {
   "policies": [
     { "action": "websearch.use", "resource": "*", "effect": "deny" },
-    { "action": "websearch.use", "resource": "OC Nano", "effect": "allow" },
+    { "action": "websearch.use", "resource": "ocnano", "effect": "allow" },
   ],
 }
 ```
@@ -276,7 +276,7 @@ configuration and the connected Console always outrank user and project files.
 | Authority   | Source                                                                                                         |
 | ----------- | -------------------------------------------------------------------------------------------------------------- |
 | 1 (highest) | macOS managed preferences (`/Library/Managed Preferences/ai.ocnano.managed.plist`)                           |
-| 2           | System `ocnano.json(c)` (`/Library/Application Support/ocnano`, `/etc/ocnano`, `%ProgramData%\OC Nano`) |
+| 2           | System `ocnano.json(c)` (`/Library/Application Support/ocnano`, `/etc/ocnano`, `%ProgramData%\ocnano`) |
 | 3           | Connected OC Nano Console workspace                                                                           |
 | 4           | Global `~/.config/ocnano/ocnano.json(c)`                                                                   |
 | 5           | Direct `ocnano.json(c)`; outer directories beat inner ones                                                   |

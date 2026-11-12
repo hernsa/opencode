@@ -21,8 +21,8 @@ body:
   - type: input
     id: ocnano-version
     attributes:
-      label: OcNano version
-      description: What version of OcNano are you using?
+      label: OC Nano version
+      description: What version of OC Nano are you using?
     validations:
       required: false
 

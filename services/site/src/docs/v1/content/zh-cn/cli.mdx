@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 OC Nano CLI 在不带任何参数运行时，默认启动 [TUI](/docs/tui)。
 
 ```bash
-OC Nano
+ocnano
 ```
 
 但它也接受本页面中记录的命令，使您可以通过编程方式与 OC Nano 进行交互。
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 启动 OC Nano 终端用户界面。
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### 标志
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | 要继续的会话 ID                                                     |
 | <nobr><code>{"--fork"}</code></nobr>     |      | 继续时派生会话（与 `--continue` 或 `--session` 一起使用）           |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | 基本认证密码（默认使用 `OCNANO_SERVER_PASSWORD`）                 |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本认证用户名（默认使用 `OCNANO_SERVER_USERNAME` 或 `OC Nano`） |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本认证用户名（默认使用 `OCNANO_SERVER_USERNAME` 或 `ocnano`） |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 管理用于仓库自动化的 GitHub 代理。
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 在您的仓库中安装 GitHub 代理。
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 此命令会设置必要的 GitHub Actions 工作流并引导您完成配置过程。[了解更多](/docs/github)。
@@ -154,7 +154,7 @@ OC Nano github install
 运行 GitHub 代理。通常在 GitHub Actions 中使用。
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### 标志
@@ -318,9 +318,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f` | 附加到消息的文件                                                    |
 | <nobr><code>{"--format"}</code></nobr>   |      | 格式：default（格式化输出）或 json（原始 JSON 事件）                |
 | <nobr><code>{"--title"}</code></nobr>    |      | 会话标题（未提供值时使用截断的提示词）                              |
-| <nobr><code>{"--attach"}</code></nobr>   |      | 连接到正在运行的 OC Nano 服务器（例如 http://localhost:4096）      |
+| <nobr><code>{"--attach"}</code></nobr>   |      | 连接到正在运行的 ocnano 服务器（例如 http://localhost:4096）      |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | 基本认证密码（默认使用 `OCNANO_SERVER_PASSWORD`）                 |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本认证用户名（默认使用 `OCNANO_SERVER_USERNAME` 或 `OC Nano`） |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本认证用户名（默认使用 `OCNANO_SERVER_USERNAME` 或 `ocnano`） |
 | <nobr><code>{"--dir"}</code></nobr>      |      | 运行目录，或附加时远程服务器上的路径                                |
 | <nobr><code>{"--variant"}</code></nobr>  |      | 模型变体（特定于提供商的推理级别）                                  |
 | <nobr><code>{"--thinking"}</code></nobr> |      | 显示思考块                                                          |
@@ -336,7 +336,7 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ocnano serve
 ```
 
-此命令启动一个 HTTP 服务器，提供对 OC Nano 功能的 API 访问，无需 TUI 界面。设置 `OCNANO_SERVER_PASSWORD` 可启用 HTTP 基本认证（用户名默认为 `OC Nano`）。
+此命令启动一个 HTTP 服务器，提供对 OC Nano 功能的 API 访问，无需 TUI 界面。设置 `OCNANO_SERVER_PASSWORD` 可启用 HTTP 基本认证（用户名默认为 `ocnano`）。
 
 #### 标志
 
@@ -429,7 +429,7 @@ ocnano import session.json
 ocnano web
 ```
 
-此命令启动一个 HTTP 服务器并打开浏览器，通过 Web 界面访问 OC Nano。设置 `OCNANO_SERVER_PASSWORD` 可启用 HTTP 基本认证（用户名默认为 `OC Nano`）。
+此命令启动一个 HTTP 服务器并打开浏览器，通过 Web 界面访问 OC Nano。设置 `OCNANO_SERVER_PASSWORD` 可启用 HTTP 基本认证（用户名默认为 `ocnano`）。
 
 #### 标志
 
@@ -447,7 +447,7 @@ ocnano web
 启动 ACP（Agent Client Protocol）服务器。
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 此命令启动一个通过 stdin/stdout 使用 nd-JSON 进行通信的 ACP 服务器。
@@ -549,7 +549,7 @@ OC Nano 可以通过环境变量进行配置。
 | `OCNANO_CLIENT`                     | string  | 客户端标识符（默认为 `cli`）            |
 | `OCNANO_ENABLE_EXA`                 | boolean | 启用 Exa 网络搜索工具                   |
 | `OCNANO_SERVER_PASSWORD`            | string  | 为 `serve`/`web` 启用基本认证           |
-| `OCNANO_SERVER_USERNAME`            | string  | 覆盖基本认证用户名（默认为 `OC Nano`） |
+| `OCNANO_SERVER_USERNAME`            | string  | 覆盖基本认证用户名（默认为 `ocnano`） |
 | `OCNANO_MODELS_URL`                 | string  | 自定义模型配置获取 URL                  |
 
 ---

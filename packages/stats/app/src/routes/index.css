@@ -312,7 +312,7 @@ body {
   color: var(--stats-text);
 }
 
-/* Try OcNano, the GitHub mark and the menu button sit 24px apart, ink to ink: the button's edge to the mark, and the
+/* Try OC Nano, the GitHub mark and the menu button sit 24px apart, ink to ink: the button's edge to the mark, and the
    mark to the menu's lines. That is as close as their 44px targets go without overlapping. */
 [data-page="stats"] [data-slot="header-actions"] {
   flex: 0 0 auto;

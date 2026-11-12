@@ -98,7 +98,7 @@ You can enable specific servers in your local config:
 
 ### Global
 
-Place your global ocnano config in `~/.config/ocnano/ocnano.json`. Use global config for user-wide server/runtime preferences like providers, models, and permissions.
+Place your global OC Nano config in `~/.config/ocnano/ocnano.json`. Use global config for user-wide server/runtime preferences like providers, models, and permissions.
 
 For TUI-specific settings, use `~/.config/ocnano/tui.json`.
 
@@ -163,7 +163,7 @@ Drop an `ocnano.json` or `ocnano.jsonc` file in the system managed config direct
 | -------- | ---------------------------------------- |
 | macOS    | `/Library/Application Support/ocnano/` |
 | Linux    | `/etc/ocnano/`                         |
-| Windows  | `%ProgramData%\OC Nano`                 |
+| Windows  | `%ProgramData%\ocnano`                 |
 
 These directories require admin/root access to write, so users cannot modify them.
 
@@ -180,7 +180,7 @@ The plist keys map directly to `ocnano.json` fields. MDM metadata keys (`Payload
 
 **Creating a `.mobileconfig`**
 
-Use the `ai.ocnano.managed` PayloadType. The ocnano config keys go directly in the payload dict:
+Use the `ai.ocnano.managed` PayloadType. The OC Nano config keys go directly in the payload dict:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -359,7 +359,7 @@ You can manage the tools an LLM can use through the `tools` option.
 
 ### Models
 
-You can configure the providers and models you want to use in your ocnano config through the `provider`, `model` and `small_model` options.
+You can configure the providers and models you want to use in your OC Nano config through the `provider`, `model` and `small_model` options.
 
 ```json title="ocnano.json"
 {
@@ -704,7 +704,7 @@ Use an object to keep built-ins enabled while configuring overrides or custom LS
 
 ### Permissions
 
-By default, OC Nano allows most operations without requiring explicit approval. Some operations, including reading `.env` files and accessing external directories, require approval. You can change these [defaults](/docs/permissions#defaults) using the `permission` option.
+By default, ocnano allows most operations without requiring explicit approval. Some operations, including reading `.env` files and accessing external directories, require approval. You can change these [defaults](/docs/permissions#defaults) using the `permission` option.
 
 For example, to ensure that the `edit` and `bash` tools require user approval:
 

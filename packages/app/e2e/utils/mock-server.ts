@@ -630,7 +630,7 @@ function mockHandlers(
   const persistentPtyEnabled = Effect.suspend(() =>
     state.persistentPty.capability !== false
       ? Effect.void
-      : Effect.fail(new MockServiceUnavailable({ message: "ocnano-pty is not available", service: "ocnano-pty" })),
+      : Effect.fail(new MockServiceUnavailable({ message: "opencode-pty is not available", service: "opencode-pty" })),
   )
 
   const findPersistentPty = (id: string) =>
@@ -945,7 +945,7 @@ function mockHandlers(
         configUpdate: () => noContent,
         websearchProviders: () =>
           Effect.sync(() => ({ location: location(config), data: resolve(config.websearchProviders ?? []) })),
-        // No scenario signs in to an OcNano Console workspace, so none has usage limits.
+        // No scenario signs in to an OC Nano Console workspace, so none has usage limits.
         usageLimits: () => Effect.succeed({ location: location(config), data: null }),
         worktreeList: () =>
           Effect.sync(() => {

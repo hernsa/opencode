@@ -1,11 +1,11 @@
 ---
 title: Web
-description: Usando o OC Nano no seu navegador.
+description: Usando o ocnano no seu navegador.
 ---
 
-O OC Nano pode ser executado como uma aplicação web no seu navegador, proporcionando a mesma poderosa experiência de codificação com IA sem precisar de um terminal.
+O ocnano pode ser executado como uma aplicação web no seu navegador, proporcionando a mesma poderosa experiência de codificação com IA sem precisar de um terminal.
 
-![OC Nano Web - Nova Sessão](../../../assets/web/web-homepage-new-session.png)
+![ocnano Web - Nova Sessão](../../../assets/web/web-homepage-new-session.png)
 
 ## Primeiros passos
 
@@ -15,7 +15,7 @@ Inicie a interface web executando:
 ocnano web
 ```
 
-Isso inicia um servidor local em `127.0.0.1` com uma porta aleatória disponível e abre automaticamente o OC Nano no seu navegador padrão.
+Isso inicia um servidor local em `127.0.0.1` com uma porta aleatória disponível e abre automaticamente o ocnano no seu navegador padrão.
 
 :::caution
 Se `OCNANO_SERVER_PASSWORD` não estiver definido, o servidor ficará sem segurança. Isso é aceitável para uso local, mas deve ser configurado para acesso à rede.
@@ -33,7 +33,7 @@ Você pode configurar o servidor web usando flags de linha de comando ou no seu 
 
 ### Porta
 
-Por padrão, o OC Nano escolhe uma porta disponível. Você pode especificar uma porta:
+Por padrão, o ocnano escolhe uma porta disponível. Você pode especificar uma porta:
 
 ```bash
 ocnano web --port 4096
@@ -41,13 +41,13 @@ ocnano web --port 4096
 
 ### Nome do Host
 
-Por padrão, o servidor se vincula a `127.0.0.1` (apenas localhost). Para tornar o OC Nano acessível na sua rede:
+Por padrão, o servidor se vincula a `127.0.0.1` (apenas localhost). Para tornar o ocnano acessível na sua rede:
 
 ```bash
 ocnano web --hostname 0.0.0.0
 ```
 
-Ao usar `0.0.0.0`, o OC Nano exibirá endereços locais e de rede:
+Ao usar `0.0.0.0`, o ocnano exibirá endereços locais e de rede:
 
 ```
   Local access:       http://localhost:4096
@@ -86,7 +86,7 @@ Para proteger o acesso, defina uma senha usando a variável de ambiente `OCNANO_
 OCNANO_SERVER_PASSWORD=secret ocnano web
 ```
 
-O nome de usuário padrão é `OC Nano`, mas pode ser alterado com `OCNANO_SERVER_USERNAME`.
+O nome de usuário padrão é `ocnano`, mas pode ser alterado com `OCNANO_SERVER_USERNAME`.
 
 ---
 
@@ -98,13 +98,13 @@ Uma vez iniciada, a interface web fornece acesso às suas sessões do ocnano.
 
 Visualize e gerencie suas sessões a partir da página inicial. Você pode ver sessões ativas e iniciar novas.
 
-![OC Nano Web - Sessão Ativa](../../../assets/web/web-homepage-active-session.png)
+![ocnano Web - Sessão Ativa](../../../assets/web/web-homepage-active-session.png)
 
 ### Status do Servidor
 
 Clique em "Ver Servidores" para visualizar os servidores conectados e seu status.
 
-![OC Nano Web - Ver Servidores](../../../assets/web/web-homepage-see-servers.png)
+![ocnano Web - Ver Servidores](../../../assets/web/web-homepage-see-servers.png)
 
 ---
 

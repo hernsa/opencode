@@ -280,7 +280,7 @@ export const content = {
     hero: { copy: { text: "에이전트용 규칙", copied: "규칙 복사됨" } },
     naming: {
       title: "명칭",
-      body: "OC Nano는 대문자 O와 대문자 C를 써서 한 단어로 표기합니다. OC Nano, Open Code, OC Nano AI, Open-Code로 쓰지 마세요.",
+      body: "OC Nano는 대문자 O와 대문자 C를 써서 한 단어로 표기합니다. Opencode, Open Code, OC Nano AI, Open-Code로 쓰지 마세요.",
       code: "소문자 `ocnano`는 `ocnano-figma`나 `@acme/ocnano-plugin`처럼 코드와 패키지 이름에만 쓰세요.",
     },
     families: {

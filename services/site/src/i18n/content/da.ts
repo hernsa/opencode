@@ -317,7 +317,7 @@ export const content = {
     hero: { copy: { text: "Regler til agent", copied: "Regler kopieret" } },
     naming: {
       title: "Navn",
-      body: "Skriv OC Nano i ét ord med stort O og stort C. Skriv ikke OC Nano, Open Code, OC Nano AI eller Open-Code.",
+      body: "Skriv OC Nano i ét ord med stort O og stort C. Skriv ikke Opencode, Open Code, OC Nano AI eller Open-Code.",
       code: "Brug kun `ocnano` med små bogstaver i kode og pakkenavne, som `ocnano-figma` eller `@acme/ocnano-plugin`.",
     },
     families: {

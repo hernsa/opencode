@@ -1076,7 +1076,7 @@ function GetStarted() {
             </li>
             <li>
               <a href={content().links.go}>
-                <span data-slot="rung">OcNano Go</span>
+                <span data-slot="rung">OC Nano Go</span>
                 <span data-slot="detail">{i18n.t("home.getStarted.goDetail")}</span>
                 <span data-slot="price">$10 / $40</span>
                 <ChevronRight />
@@ -1122,7 +1122,7 @@ function GetStarted() {
                   {"\n\n"}
                   <span data-slot="output">Select model</span>
                   {"\n"}
-                  <span data-slot="output">OcNano</span>
+                  <span data-slot="output">OC Nano</span>
                   <For each={content().freeModels}>
                     {(model, index) => (
                       <>

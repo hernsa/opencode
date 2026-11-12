@@ -8,7 +8,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components"
 OC Nano CLI は、引数なしで実行すると、デフォルトで [TUI](/docs/tui) を開始します。
 
 ```bash
-OC Nano
+ocnano
 ```
 
 ただし、このページに記載されているようにコマンドも受け入れます。これにより、OC Nano をプログラム的に操作できるようになります。
@@ -24,7 +24,7 @@ ocnano run "Explain how closures work in JavaScript"
 OC Nano ターミナルユーザーインターフェイスを開始します。
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### フラグ
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s`     | 続行するセッション ID                                                             |
 | <nobr><code>{"--fork"}</code></nobr>     |          | 続行時にセッションをフォーク（`--continue` または `--session` と使用）            |
 | <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `OCNANO_SERVER_PASSWORD`）                   |
-| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OCNANO_SERVER_USERNAME` または `OC Nano`） |
+| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OCNANO_SERVER_USERNAME` または `ocnano`） |
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 リポジトリ自動化のための GitHub エージェントを管理します。
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 GitHub エージェントをリポジトリにインストールします。
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 これにより、必要な GitHub Actions ワークフローが設定され、構成プロセスがガイドされます。 [詳細はこちら](/docs/github)。
@@ -154,7 +154,7 @@ OC Nano github install
 GitHub エージェントを実行します。これは通常、GitHub Actions で使用されます。
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### フラグ
@@ -283,7 +283,7 @@ ocnano models --refresh
 
 ### run
 
-プロンプトを直接渡して、非対話モードで OC Nano を実行します。
+プロンプトを直接渡して、非対話モードで ocnano を実行します。
 
 ```bash
 ocnano run [message..]
@@ -318,9 +318,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`     | メッセージに添付するファイル                                                              |
 | <nobr><code>{"--format"}</code></nobr>   |          | 形式: デフォルト (フォーマット済み) または json (生の JSON イベント)                      |
 | <nobr><code>{"--title"}</code></nobr>    |          | セッションのタイトル (値が指定されていない場合は、切り詰められたプロンプトが使用されます) |
-| <nobr><code>{"--attach"}</code></nobr>   |          | 実行中の OC Nano サーバー (http://localhost:4096 など) に接続します。                    |
+| <nobr><code>{"--attach"}</code></nobr>   |          | 実行中の ocnano サーバー (http://localhost:4096 など) に接続します。                    |
 | <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `OCNANO_SERVER_PASSWORD`）                           |
-| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OCNANO_SERVER_USERNAME` または `OC Nano`）         |
+| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `OCNANO_SERVER_USERNAME` または `ocnano`）         |
 | <nobr><code>{"--dir"}</code></nobr>      |          | 実行ディレクトリ、またはアタッチ時のリモートサーバー上のパス                              |
 | <nobr><code>{"--variant"}</code></nobr>  |          | モデルバリアント（プロバイダー固有の推論レベル）                                          |
 | <nobr><code>{"--thinking"}</code></nobr> |          | 思考ブロックを表示                                                                        |
@@ -336,7 +336,7 @@ API アクセスのためにヘッドレス OC Nano サーバーを起動しま�
 ocnano serve
 ```
 
-これにより、TUI インターフェイスを使用せずに OC Nano 機能への API アクセスを提供する HTTP サーバーが起動します。 `OCNANO_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `OC Nano`)。
+これにより、TUI インターフェイスを使用せずに ocnano 機能への API アクセスを提供する HTTP サーバーが起動します。 `OCNANO_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `ocnano`)。
 
 #### フラグ
 
@@ -429,7 +429,7 @@ Web インターフェイスを使用してヘッドレス OC Nano サーバー�
 ocnano web
 ```
 
-これにより、HTTP サーバーが起動し、Web ブラウザが開き、Web インターフェイスを通じて OC Nano にアクセスします。 `OCNANO_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `OC Nano`)。
+これにより、HTTP サーバーが起動し、Web ブラウザが開き、Web インターフェイスを通じて OC Nano にアクセスします。 `OCNANO_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `ocnano`)。
 
 #### フラグ
 
@@ -447,7 +447,7 @@ ocnano web
 ACP (エージェントクライアントプロトコル) サーバーを起動します。
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 このコマンドは、nd-JSON を使用して stdin/stdout 経由で通信する ACP サーバーを起動します。
@@ -483,7 +483,7 @@ ocnano uninstall
 
 ### upgrade
 
-OC Nano を最新バージョンまたは特定のバージョンに更新します。
+ocnano を最新バージョンまたは特定のバージョンに更新します。
 
 ```bash
 ocnano upgrade [target]
@@ -511,7 +511,7 @@ ocnano upgrade v0.1.48
 
 ## グローバルフラグ
 
-OC Nano CLI は次のグローバルフラグを受け取ります。
+ocnano CLI は次のグローバルフラグを受け取ります。
 
 | フラグ                                     | ショート | 説明                                  |
 | ------------------------------------------ | -------- | ------------------------------------- |
@@ -548,7 +548,7 @@ OC Nano は環境変数を使用して構成できます。
 | `OCNANO_CLIENT`                     | 文字列   | クライアント識別子 (デフォルトは `cli`)                             |
 | `OCNANO_ENABLE_EXA`                 | ブール値 | Exa Web 検索ツールを有効にする                                      |
 | `OCNANO_SERVER_PASSWORD`            | 文字列   | `serve`/`web` の基本認証を有効にする                                |
-| `OCNANO_SERVER_USERNAME`            | 文字列   | 基本認証ユーザー名 (デフォルト `OC Nano`) をオーバーライドします。 |
+| `OCNANO_SERVER_USERNAME`            | 文字列   | 基本認証ユーザー名 (デフォルト `ocnano`) をオーバーライドします。 |
 | `OCNANO_MODELS_URL`                 | 文字列   | モデル設定を取得するためのカスタム URL                              |
 
 ---

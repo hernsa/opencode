@@ -351,7 +351,7 @@ if (import.meta.main) {
   await fs.mkdir(root, { recursive: true })
   for (const name of process.argv.slice(2).length ? process.argv.slice(2) : ["medium"]) {
     const started = performance.now()
-    const dir = name === "ocnano" ? await cloneOcNano() : await generate(name)
+    const dir = name === "ocnano" ? await cloneOpencode() : await generate(name)
     console.log(`${name}: ${dir} (${((performance.now() - started) / 1000).toFixed(0)} s)`)
   }
 }
@@ -385,7 +385,7 @@ async function generate(name: string) {
 }
 
 // This repository, cloned, with a realistic ignored dependency tree instead of a full install.
-async function cloneOcNano() {
+async function cloneOpencode() {
   const dir = path.join(root, "fixtures", "ocnano")
   if (await Bun.file(path.join(dir, ".bench-ready")).exists()) return dir
   await fs.rm(dir, { recursive: true, force: true })

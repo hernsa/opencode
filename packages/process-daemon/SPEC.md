@@ -218,9 +218,9 @@ over 1 MiB of serialized JSON.
 
 ## Failure Boundary
 
-Losing the owning server connection stops `ocnano-pty` and its terminals.
+Losing the owning server connection stops `opencode-pty` and its terminals.
 An explicitly prepared restart handoff allows a replacement server to claim
-the same daemon before a fixed deadline. If `ocnano-pty` itself dies, its
+the same daemon before a fixed deadline. If `opencode-pty` itself dies, its
 terminals may die; live replacement of the daemon is not supported.
 
 ## Persistent Service Boundary

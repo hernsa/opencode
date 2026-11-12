@@ -1,13 +1,13 @@
 ---
 title: SDK
-description: OC Nano sunucusu için type-safe JS istemcisi.
+description: ocnano sunucusu için type-safe JS istemcisi.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-OC Nano JS/TS SDK, sunucu ile etkileşmek için type-safe bir istemci sağlar.
-OC Nano'u programatik olarak kontrol etmek ve entegrasyonlar oluşturmak için kullanabilirsiniz.
+ocnano JS/TS SDK, sunucu ile etkileşmek için type-safe bir istemci sağlar.
+ocnano'u programatik olarak kontrol etmek ve entegrasyonlar oluşturmak için kullanabilirsiniz.
 
 [Sunucu](/docs/server) sayfasında nasıl çalıştığını görebilir, örnekler için topluluğun oluşturduğu [projeler](/docs/ecosystem#projects) bölümüne bakabilirsiniz.
 
@@ -18,19 +18,19 @@ OC Nano'u programatik olarak kontrol etmek ve entegrasyonlar oluşturmak için k
 SDK'yı npm'den yükleyin:
 
 ```bash
-npm install @ocnano-ai/sdk
+npm install @opencode-ai/sdk
 ```
 
 ---
 
 ## İstemci Oluşturma
 
-Bir OC Nano örneği oluşturun:
+Bir ocnano örneği oluşturun:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const { client } = await createOC Nano()
+const { client } = await createOpencode()
 ```
 
 Bu, hem bir sunucu hem de bir istemci başlatır
@@ -52,9 +52,9 @@ Bu, hem bir sunucu hem de bir istemci başlatır
 Davranışı özelleştirmek için bir yapılandırma nesnesi iletebilirsiniz. Örnek yine de `ocnano.json` dosyanızı alır, ancak yapılandırmayı satır içi olarak geçersiz kılabilir veya ekleyebilirsiniz:
 
 ```javascript
-import { createOC Nano } from "@ocnano-ai/sdk"
+import { createOpencode } from "@opencode-ai/sdk"
 
-const OC Nano = await createOC Nano({
+const ocnano = await createOpencode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -69,12 +69,12 @@ ocnano.server.close()
 
 ## Yalnızca istemci
 
-Halihazırda çalışan bir OC Nano örneğiniz varsa, ona bağlanmak için bir istemci örneği oluşturabilirsiniz:
+Halihazırda çalışan bir ocnano örneğiniz varsa, ona bağlanmak için bir istemci örneği oluşturabilirsiniz:
 
 ```javascript
-import { createOC NanoClient } from "@ocnano-ai/sdk"
+import { createOpencodeClient } from "@opencode-ai/sdk"
 
-const client = createOC NanoClient({
+const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOC NanoClient({
 SDK, tüm API türleri için TypeScript tanımlarını içerir. Bunları doğrudan içe aktarın:
 
 ```typescript
-import type { Session, Message, Part } from "@ocnano-ai/sdk"
+import type { Session, Message, Part } from "@opencode-ai/sdk"
 ```
 
 Tüm tipler, sunucunun OpenAPI spesifikasyonundan oluşturulur ve <a href={typesUrl}>tipler dosyasında</a> mevcuttur.
@@ -373,7 +373,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*OC Nano" },
+  query: { pattern: "function.*ocnano" },
 })
 
 const files = await client.find.files({

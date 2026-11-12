@@ -48,7 +48,7 @@ export const dict = {
   "desktop.recovery.action.keepWaiting": "Turpināt gaidīt",
   "desktop.recovery.action.quit": "Iziet",
   "desktop.recovery.loadFailed": "Neizdevās ielādēt OC Nano",
-  "desktop.recovery.terminated": "ocnano logs negaidīti aizvērts",
+  "desktop.recovery.terminated": "OC Nano logs negaidīti aizvērts",
   "desktop.recovery.unresponsive": "OC Nano neatbild",
   "desktop.recovery.unresponsive.detail": "Varat palaist lietotni no jauna, atvērt žurnālus vai turpināt gaidīt.",
   "desktop.recovery.loadFailed.detail": "Logs: {{window}}\nURL: {{url}}\nKļūda: {{code}} {{description}}",

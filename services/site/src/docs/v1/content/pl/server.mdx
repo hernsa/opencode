@@ -1,6 +1,6 @@
 ---
 title: Serwer
-description: Interakcja z serwerem OC Nano za pośrednictwem protokołu HTTP.
+description: Interakcja z serwerem ocnano za pośrednictwem protokołu HTTP.
 ---
 
 import config from "../../../../config.mjs"
@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Uwierzytelnianie
 
-Ustaw `OCNANO_SERVER_PASSWORD`, aby chronić serwer za pomocą podstawowego uwierzytelniania HTTP. Domyślną nazwą użytkownika jest `OC Nano` lub ustaw `OCNANO_SERVER_USERNAME`, aby ją zastąpić. Dotyczy to zarówno `ocnano serve`, jak i `ocnano web`.
+Ustaw `OCNANO_SERVER_PASSWORD`, aby chronić serwer za pomocą podstawowego uwierzytelniania HTTP. Domyślną nazwą użytkownika jest `ocnano` lub ustaw `OCNANO_SERVER_USERNAME`, aby ją zastąpić. Dotyczy to zarówno `ocnano serve`, jak i `ocnano web`.
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,18 +46,18 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### Jak to działa
 
-Kiedy uruchomisz `OC Nano`, uruchomi się TUI i serwer. Gdzie jest TUI
+Kiedy uruchomisz `ocnano`, uruchomi się TUI i serwer. Gdzie jest TUI
 klient komunikujący się z serwerem. Serwer udostępnia specyfikację OpenAPI 3.1
 punkt końcowy. Ten punkt końcowy jest również używany do generowania [SDK](/docs/sdk).
 
 :::tip
-Użyj serwera OC Nano do programowej interakcji z ocnano.
+Użyj serwera ocnano do programowej interakcji z ocnano.
 :::
 
-Ta architektura umożliwia obsługę wielu klientów przez OC Nano i programową interakcję z kodem otwartym.
+Ta architektura umożliwia obsługę wielu klientów przez ocnano i programową interakcję z kodem otwartym.
 
 Możesz uruchomić `ocnano serve`, aby uruchomić samodzielny serwer. Jeśli masz
-OC Nano TUI działa, `ocnano serve` uruchomi nowy serwer.
+ocnano TUI działa, `ocnano serve` uruchomi nowy serwer.
 
 ---
 
@@ -65,7 +65,7 @@ OC Nano TUI działa, `ocnano serve` uruchomi nowy serwer.
 
 Po uruchomieniu TUI losowo przypisuje port i nazwę hosta. Zamiast tego możesz przekazać `--hostname` i `--port` [flagi](/docs/cli). Następnie użyj tego, aby połączyć się z serwerem.
 
-Punktu końcowego [`/tui`](#TUI) można użyć do sterowania TUI przez serwer. Można na przykład wstępnie wypełnić lub uruchomić monit. Ta konfiguracja jest używana przez wtyczki OC Nano [IDE](/docs/ide).
+Punktu końcowego [`/tui`](#TUI) można użyć do sterowania TUI przez serwer. Można na przykład wstępnie wypełnić lub uruchomić monit. Ta konfiguracja jest używana przez wtyczki ocnano [IDE](/docs/ide).
 
 ---
 
@@ -83,7 +83,7 @@ Na przykład `http://localhost:4096/doc`. Użyj specyfikacji, aby wygenerować k
 
 ## API
 
-Serwer OC Nano udostępnia następujące interfejsy API.
+Serwer ocnano udostępnia następujące interfejsy API.
 
 ---
 

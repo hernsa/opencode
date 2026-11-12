@@ -1,12 +1,12 @@
 ---
 title: เซิร์ฟเวอร์
-description: โต้ตอบกับเซิร์ฟเวอร์ OC Nano ผ่าน HTTP
+description: โต้ตอบกับเซิร์ฟเวอร์ ocnano ผ่าน HTTP
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-คำสั่ง `ocnano serve` รันเซิร์ฟเวอร์ HTTP ที่ไม่มีหัวซึ่งเปิดเผยตำแหน่งข้อมูล OpenAPI ที่ไคลเอนต์ OC Nano สามารถใช้ได้
+คำสั่ง `ocnano serve` รันเซิร์ฟเวอร์ HTTP ที่ไม่มีหัวซึ่งเปิดเผยตำแหน่งข้อมูล OpenAPI ที่ไคลเอนต์ ocnano สามารถใช้ได้
 
 ---
 
@@ -36,7 +36,7 @@ ocnano serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### การรับรองความถูกต้อง
 
-ตั้งค่า `OCNANO_SERVER_PASSWORD` เพื่อปกป้องเซิร์ฟเวอร์ด้วย HTTP การตรวจสอบสิทธิ์ขั้นพื้นฐาน ชื่อผู้ใช้มีค่าเริ่มต้นเป็น `OC Nano` หรือตั้งค่า `OCNANO_SERVER_USERNAME` เพื่อแทนที่ชื่อผู้ใช้ สิ่งนี้ใช้ได้กับทั้ง `ocnano serve` และ `ocnano web`
+ตั้งค่า `OCNANO_SERVER_PASSWORD` เพื่อปกป้องเซิร์ฟเวอร์ด้วย HTTP การตรวจสอบสิทธิ์ขั้นพื้นฐาน ชื่อผู้ใช้มีค่าเริ่มต้นเป็น `ocnano` หรือตั้งค่า `OCNANO_SERVER_USERNAME` เพื่อแทนที่ชื่อผู้ใช้ สิ่งนี้ใช้ได้กับทั้ง `ocnano serve` และ `ocnano web`
 
 ```bash
 OCNANO_SERVER_PASSWORD=your-password ocnano serve
@@ -46,18 +46,18 @@ OCNANO_SERVER_PASSWORD=your-password ocnano serve
 
 ### มันทำงานอย่างไร
 
-เมื่อคุณรัน `OC Nano` มันจะเริ่มต้น TUI และเซิร์ฟเวอร์ โดยที่ TUI คือ
+เมื่อคุณรัน `ocnano` มันจะเริ่มต้น TUI และเซิร์ฟเวอร์ โดยที่ TUI คือ
 ลูกค้าที่พูดคุยกับเซิร์ฟเวอร์ เซิร์ฟเวอร์เปิดเผยข้อมูลจำเพาะของ OpenAPI 3.1
 จุดสิ้นสุด ตำแหน่งข้อมูลนี้ยังใช้เพื่อสร้าง [SDK](/docs/sdk)
 
 :::tip
-ใช้เซิร์ฟเวอร์ OC Nano เพื่อโต้ตอบกับ OC Nano โดยทางโปรแกรม
+ใช้เซิร์ฟเวอร์ ocnano เพื่อโต้ตอบกับ ocnano โดยทางโปรแกรม
 :::
 
-สถาปัตยกรรมนี้ช่วยให้ OC Nano รองรับไคลเอนต์หลายตัว และช่วยให้คุณสามารถโต้ตอบกับ OC Nano โดยทางโปรแกรมได้
+สถาปัตยกรรมนี้ช่วยให้ ocnano รองรับไคลเอนต์หลายตัว และช่วยให้คุณสามารถโต้ตอบกับ ocnano โดยทางโปรแกรมได้
 
 คุณสามารถเรียกใช้ `ocnano serve` เพื่อเริ่มเซิร์ฟเวอร์แบบสแตนด์อโลน ถ้าคุณมี
-OC Nano TUI ทำงาน `ocnano serve` จะเริ่มเซิร์ฟเวอร์ใหม่
+ocnano TUI ทำงาน `ocnano serve` จะเริ่มเซิร์ฟเวอร์ใหม่
 
 ---
 
@@ -83,7 +83,7 @@ http://<hostname>:<port>/doc
 
 ## API
 
-เซิร์ฟเวอร์ OC Nano เปิดเผย API ต่อไปนี้
+เซิร์ฟเวอร์ ocnano เปิดเผย API ต่อไปนี้
 
 ---
 

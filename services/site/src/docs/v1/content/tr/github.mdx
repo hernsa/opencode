@@ -1,17 +1,17 @@
 ---
 title: GitHub
-description: GitHub sorunlarında ve çekme isteklerinde OC Nano'u kullanın.
+description: GitHub sorunlarında ve çekme isteklerinde ocnano'u kullanın.
 ---
 
-OC Nano, GitHub iş akışınızla bütünleşir. Yorumunuzda `/ocnano` veya `/oc`'den bahsedin; OC Nano, GitHub Actions çalıştırıcınızdaki görevleri yürütecektir.
+ocnano, GitHub iş akışınızla bütünleşir. Yorumunuzda `/ocnano` veya `/oc`'den bahsedin; ocnano, GitHub Actions çalıştırıcınızdaki görevleri yürütecektir.
 
 ---
 
 ## Özellikler
 
-- **Sorunları önceliklendirin**: OC Nano'dan bir sorunu araştırıp size açıklamasını isteyin.
-- **Düzelt ve uygula**: OC Nano'dan bir sorunu düzeltmesini veya bir özelliği uygulamasını isteyin. Ve yeni bir şubede çalışacak ve tüm değişiklikleri içeren bir PR gönderecek.
-- **Güvenli**: OC Nano, GitHub'ınızın çalıştırıcılarının içinde çalışır.
+- **Sorunları önceliklendirin**: ocnano'dan bir sorunu araştırıp size açıklamasını isteyin.
+- **Düzelt ve uygula**: ocnano'dan bir sorunu düzeltmesini veya bir özelliği uygulamasını isteyin. Ve yeni bir şubede çalışacak ve tüm değişiklikleri içeren bir PR gönderecek.
+- **Güvenli**: ocnano, GitHub'ınızın çalıştırıcılarının içinde çalışır.
 
 ---
 
@@ -20,7 +20,7 @@ OC Nano, GitHub iş akışınızla bütünleşir. Yorumunuzda `/ocnano` veya `/o
 GitHub deposundaki bir projede aşağıdaki komutu çalıştırın:
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Bu size GitHub uygulamasını yükleme, iş akışını oluşturma ve gizli dizileri ayarlama adımlarında yol gösterecektir.
@@ -40,7 +40,7 @@ Veya manuel olarak ayarlayabilirsiniz.
    Aşağıdaki iş akışı dosyasını deponuzdaki `.github/workflows/ocnano.yml`'a ekleyin. `model`'de uygun `env` ve gerekli API anahtarlarını ayarladığınızdan emin olun.
 
    ```yml title=".github/workflows/ocnano.yml" {24,26}
-   name: OC Nano
+   name: ocnano
 
    on:
      issue_comment:
@@ -49,7 +49,7 @@ Veya manuel olarak ayarlayabilirsiniz.
        types: [created]
 
    jobs:
-     OC Nano:
+     ocnano:
        if: |
          contains(github.event.comment.body, '/oc') ||
          contains(github.event.comment.body, '/ocnano')
@@ -80,12 +80,12 @@ Veya manuel olarak ayarlayabilirsiniz.
 
 ## Yapılandırma
 
-- `model`: OC Nano ile kullanılacak model. `provider/model` biçimini alır. Bu **gerekli**.
+- `model`: ocnano ile kullanılacak model. `provider/model` biçimini alır. Bu **gerekli**.
 - `agent`: Kullanılacak aracı. Birincil ajan olmalı. Yapılandırmadan `default_agent`'ye veya bulunamazsa `"build"`'ye geri döner.
-- `prompt`: Varsayılan çalışma geçersiz olduğundan dolayı özel istem. OC Nano'un işleme biçimini kişiselleştirmek için bunu kullanın.
-- `token`: Yorum oluşturma, değişiklik yapma ve çekme isteklerini açma gibi işlemleri gerçekleştirmek için isteğe bağlı GitHub erişim belirteci. Varsayılan olarak OC Nano, OC Nano GitHub Uygulamasındaki kurulum erişim belirtecini kullanır, bu nedenle taahhütler, yorumlar ve çekme istekleri uygulamadan geliyormuş gibi görünür.
+- `prompt`: Varsayılan çalışma geçersiz olduğundan dolayı özel istem. ocnano'un işleme biçimini kişiselleştirmek için bunu kullanın.
+- `token`: Yorum oluşturma, değişiklik yapma ve çekme isteklerini açma gibi işlemleri gerçekleştirmek için isteğe bağlı GitHub erişim belirteci. Varsayılan olarak ocnano, ocnano GitHub Uygulamasındaki kurulum erişim belirtecini kullanır, bu nedenle taahhütler, yorumlar ve çekme istekleri uygulamadan geliyormuş gibi görünür.
 
-  Alternatif olarak, OC Nano GitHub'u yüklemeden GitHub Eylem çalıştırıcısının [built-in `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) akışını kullanabilirsiniz. İşinizde gerekli izinlere sahip olduğunuzdan emin olun:
+  Alternatif olarak, ocnano GitHub'u yüklemeden GitHub Eylem çalıştırıcısının [built-in `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) akışını kullanabilirsiniz. İşinizde gerekli izinlere sahip olduğunuzdan emin olun:
 
   ```yaml
   permissions:
@@ -101,20 +101,20 @@ Veya manuel olarak ayarlayabilirsiniz.
 
 ## Desteklenen Olaylar
 
-OC Nano aşağıdaki GitHub olayları tarafından tetiklenebilir:
+ocnano aşağıdaki GitHub olayları tarafından tetiklenebilir:
 
 | Olay Tipi                     | Tetikleyen                                    | Detaylar                                                                                                                                            |
 | ----------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `issue_comment`               | Bir soruna veya halkla ilişkilere yorum yapın | Yorumunuzda `/ocnano` veya `/oc`'den bahsedin. OC Nano bağlamı okur ve şubeler oluşturabilir, PR'leri açabilir veya yanıt verebilir.             |
-| `pull_request_review_comment` | PR'deki belirli kod satırlarına yorum yapın   | Kodu incelerken `/ocnano` veya `/oc`'den bahsedin. OC Nano dosya yolunu, satır numaralarını ve fark içeriğini alır.                              |
-| `issues`                      | Sayı açıldı veya düzenlendi                   | Sorunlar oluşturulduğunda veya değiştirildiğinde OC Nano'u otomatik olarak tetikleyin. `prompt` girişi gerektirir.                                 |
-| `pull_request`                | PR açıldı veya güncellendi                    | PR'ler açıldığında, senkronize edildiğinde veya yeniden açıldığında OC Nano'u otomatik olarak tetikleyin. Otomatik incelemeler için kullanışlıdır. |
-| `schedule`                    | Cron tabanlı program                          | OC Nano'u bir programa göre çalıştırın. `prompt` girişi gerektirir. Çıktı, günlüklere ve PR'lere gider (yorum yapılacak bir sorun yoktur).         |
-| `workflow_dispatch`           | GitHub kullanıcı arayüzünden manuel tetikleme | Eylemler sekmesi aracılığıyla OC Nano'u isteğe bağlı olarak tetikleyin. `prompt` girişi gerektirir. Çıktı günlüklere ve PR'lere gider.             |
+| `issue_comment`               | Bir soruna veya halkla ilişkilere yorum yapın | Yorumunuzda `/ocnano` veya `/oc`'den bahsedin. ocnano bağlamı okur ve şubeler oluşturabilir, PR'leri açabilir veya yanıt verebilir.             |
+| `pull_request_review_comment` | PR'deki belirli kod satırlarına yorum yapın   | Kodu incelerken `/ocnano` veya `/oc`'den bahsedin. ocnano dosya yolunu, satır numaralarını ve fark içeriğini alır.                              |
+| `issues`                      | Sayı açıldı veya düzenlendi                   | Sorunlar oluşturulduğunda veya değiştirildiğinde ocnano'u otomatik olarak tetikleyin. `prompt` girişi gerektirir.                                 |
+| `pull_request`                | PR açıldı veya güncellendi                    | PR'ler açıldığında, senkronize edildiğinde veya yeniden açıldığında ocnano'u otomatik olarak tetikleyin. Otomatik incelemeler için kullanışlıdır. |
+| `schedule`                    | Cron tabanlı program                          | ocnano'u bir programa göre çalıştırın. `prompt` girişi gerektirir. Çıktı, günlüklere ve PR'lere gider (yorum yapılacak bir sorun yoktur).         |
+| `workflow_dispatch`           | GitHub kullanıcı arayüzünden manuel tetikleme | Eylemler sekmesi aracılığıyla ocnano'u isteğe bağlı olarak tetikleyin. `prompt` girişi gerektirir. Çıktı günlüklere ve PR'lere gider.             |
 
 ### Zamanlama Örneği
 
-Otomatik görevleri gerçekleştirmek için OC Nano'u bir zamanlamaya göre çalıştırın:
+Otomatik görevleri gerçekleştirmek için ocnano'u bir zamanlamaya göre çalıştırın:
 
 ```yaml title=".github/workflows/ocnano-scheduled.yml"
 name: Scheduled OC Nano Task
@@ -124,7 +124,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  OC Nano:
+  ocnano:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -148,7 +148,7 @@ jobs:
             If you find issues worth addressing, open an issue to track them.
 ```
 
-Zamanlanmış etkinlikler için, talimatların alınabileceği bir yorum bulunmadığından `prompt` girişi **gereklidir**. Zamanlanmış iş akışları, izin kontrolü yapılacak bir kullanıcı bağlamı olmadan çalışır; bu nedenle, OC Nano'un şubeler veya PR'ler oluşturmasını bekliyorsanız iş akışının `contents: write` ve `pull-requests: write` vermesi gerekir.
+Zamanlanmış etkinlikler için, talimatların alınabileceği bir yorum bulunmadığından `prompt` girişi **gereklidir**. Zamanlanmış iş akışları, izin kontrolü yapılacak bir kullanıcı bağlamı olmadan çalışır; bu nedenle, ocnano'un şubeler veya PR'ler oluşturmasını bekliyorsanız iş akışının `contents: write` ve `pull-requests: write` vermesi gerekir.
 
 ---
 
@@ -189,7 +189,7 @@ jobs:
             - Suggest improvements
 ```
 
-`pull_request` olaylar için, `prompt` sağlanmazsa, OC Nano varsayılan olarak çekme isteklerini inceler.
+`pull_request` olaylar için, `prompt` sağlanmazsa, ocnano varsayılan olarak çekme isteklerini inceler.
 
 ---
 
@@ -250,7 +250,7 @@ jobs:
 
 ## Özel istemler
 
-OC Nano'un davranışını iş akışınız için özelleştirmek için varsayılan istemi geçersiz kılın.
+ocnano'un davranışını iş akışınız için özelleştirmek için varsayılan istemi geçersiz kılın.
 
 ```yaml title=".github/workflows/ocnano.yml"
 - uses: anomalyco/opencode/github@latest
@@ -269,7 +269,7 @@ Bu, projenizle ilgili spesifik inceleme kriterlerini, kodlama standartlarını v
 
 ## Örnekler
 
-GitHub'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bulabilirsiniz.
+GitHub'da ocnano'u nasıl kullanabileceğinize dair bazı örnekleri burada bulabilirsiniz.
 
 - **Bir sorunu açıklama**
 
@@ -279,7 +279,7 @@ GitHub'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bul
   /ocnano explain this issue
   ```
 
-  OC Nano, tüm yorumlar da dahil olmak üzere ileti dizisinin tamamını okuyacak ve net bir açıklama ile yanıt verecektir.
+  ocnano, tüm yorumlar da dahil olmak üzere ileti dizisinin tamamını okuyacak ve net bir açıklama ile yanıt verecektir.
 
 - **Bir sorunu düzeltme**
 
@@ -289,7 +289,7 @@ GitHub'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bul
   /ocnano fix this
   ```
 
-  Ve OC Nano yeni bir şube oluşturacak, değişiklikleri uygulayacak ve değişiklikleri içeren bir PR açacak.
+  Ve ocnano yeni bir şube oluşturacak, değişiklikleri uygulayacak ve değişiklikleri içeren bir PR açacak.
 
 - **PR'leri inceleyin ve değişiklik yapın**
 
@@ -299,18 +299,18 @@ GitHub'da OC Nano'u nasıl kullanabileceğinize dair bazı örnekleri burada bul
   Delete the attachment from S3 when the note is removed /oc
   ```
 
-  OC Nano istenen değişikliği uygulayacak ve aynı PR'ye uygulayacaktır.
+  ocnano istenen değişikliği uygulayacak ve aynı PR'ye uygulayacaktır.
 
 - **Belirli kod satırlarını inceleme**
 
-  PR'nin "Dosyalar" sekmesindeki kod satırlarına doğrudan yorum bırakın. OC Nano, kesin yanıtlar sağlamak için dosyayı, satır numaralarını ve fark içeriğini otomatik olarak algılar.
+  PR'nin "Dosyalar" sekmesindeki kod satırlarına doğrudan yorum bırakın. ocnano, kesin yanıtlar sağlamak için dosyayı, satır numaralarını ve fark içeriğini otomatik olarak algılar.
 
   ```
   [Comment on specific lines in Files tab]
   /oc add error handling here
   ```
 
-  Belirli satırlara yorum yaparken OC Nano şunları alır:
+  Belirli satırlara yorum yaparken ocnano şunları alır:
   - İncelenmekte olan dosyanın tamamı
   - Belirli kod satırları
   - Çevreleyen fark bağlamı

@@ -1,17 +1,17 @@
 ---
 title: CLI
-description: OC Nano CLI seçenekleri ve komutları.
+description: ocnano CLI seçenekleri ve komutları.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-OC Nano CLI herhangi bir argüman olmadan çalıştırıldığında varsayılan olarak [TUI](/docs/tui)'yi başlatır.
+ocnano CLI herhangi bir argüman olmadan çalıştırıldığında varsayılan olarak [TUI](/docs/tui)'yi başlatır.
 
 ```bash
-OC Nano
+ocnano
 ```
 
-Ancak bu sayfada belgelendiği gibi komutları da kabul eder. Bu, OC Nano ile programlı olarak etkileşim kurmanıza olanak tanır.
+Ancak bu sayfada belgelendiği gibi komutları da kabul eder. Bu, ocnano ile programlı olarak etkileşim kurmanıza olanak tanır.
 
 ```bash
 ocnano run "Explain how closures work in JavaScript"
@@ -21,10 +21,10 @@ ocnano run "Explain how closures work in JavaScript"
 
 ### tui
 
-OC Nano terminal kullanıcı arayüzünü başlatır.
+ocnano terminal kullanıcı arayüzünü başlatır.
 
 ```bash
-OC Nano [project]
+ocnano [project]
 ```
 
 #### Bayraklar
@@ -44,19 +44,19 @@ OC Nano [project]
 
 ## Komutlar
 
-OC Nano CLI ayrıca aşağıdaki komutlara da sahiptir.
+ocnano CLI ayrıca aşağıdaki komutlara da sahiptir.
 
 ---
 
 ### attach
 
-`serve` veya `web` komutlarıyla başlatılan, halihazırda çalışan bir OC Nano arka uç sunucusuna bir terminal ekleyin.
+`serve` veya `web` komutlarıyla başlatılan, halihazırda çalışan bir ocnano arka uç sunucusuna bir terminal ekleyin.
 
 ```bash
 ocnano attach [url]
 ```
 
-Bu, TUI öğesinin uzak bir OC Nano arka ucuyla kullanılmasına olanak tanır. Örneğin:
+Bu, TUI öğesinin uzak bir ocnano arka ucuyla kullanılmasına olanak tanır. Örneğin:
 
 ```bash
 # Start the backend server for web/mobile access
@@ -75,7 +75,7 @@ ocnano attach http://10.20.30.40:4096
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | Devam edecek oturum açma bilgileri                                                            |
 | <nobr><code>{"--fork"}</code></nobr>     |      | Devam ederken oturumu çatalla (`--continue` veya `--session` ile kullanın)                    |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | Temel kimlik doğrulama parolası (varsayılan: `OCNANO_SERVER_PASSWORD`)                      |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Temel kimlik doğrulama kullanıcı adı (varsayılan: `OCNANO_SERVER_USERNAME` veya `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Temel kimlik doğrulama kullanıcı adı (varsayılan: `OCNANO_SERVER_USERNAME` veya `ocnano`) |
 
 ---
 
@@ -91,13 +91,13 @@ ocnano auth [command]
 
 #### login
 
-OC Nano, [Models.dev](https://models.dev) adresindeki sağlayıcı listesi tarafından desteklenmektedir, dolayısıyla kullanmak istediğiniz herhangi bir sağlayıcı için API anahtarlarını ayarlamak üzere `ocnano auth login` kullanabilirsiniz. Bu `~/.local/share/ocnano/auth.json`'de saklanıyor.
+ocnano, [Models.dev](https://models.dev) adresindeki sağlayıcı listesi tarafından desteklenmektedir, dolayısıyla kullanmak istediğiniz herhangi bir sağlayıcı için API anahtarlarını ayarlamak üzere `ocnano auth login` kullanabilirsiniz. Bu `~/.local/share/ocnano/auth.json`'de saklanıyor.
 
 ```bash
 ocnano auth login
 ```
 
-OC Nano başlatıldığında sağlayıcıları kimlik bilgileri dosyasından yükler. Ayrıca ortam değişkenlerindeki veya projenizdeki `.env` dosyasındaki anahtarları da kullanır.
+ocnano başlatıldığında sağlayıcıları kimlik bilgileri dosyasından yükler. Ayrıca ortam değişkenlerindeki veya projenizdeki `.env` dosyasındaki anahtarları da kullanır.
 
 ---
 
@@ -132,7 +132,7 @@ ocnano auth logout
 Depo otomasyonu için GitHub aracısını yönetin.
 
 ```bash
-OC Nano github [command]
+ocnano github [command]
 ```
 
 ---
@@ -142,7 +142,7 @@ OC Nano github [command]
 GitHub aracısını deponuza yükleyin.
 
 ```bash
-OC Nano github install
+ocnano github install
 ```
 
 Bu komut gerekli GitHub Actions workflow'unu kurar ve yapılandırma adımlarında size rehberlik eder. [Daha fazla bilgi](/docs/github).
@@ -154,7 +154,7 @@ Bu komut gerekli GitHub Actions workflow'unu kurar ve yapılandırma adımların
 GitHub aracısını çalıştırın. Bu genellikle GitHub Eylemlerinde kullanılır.
 
 ```bash
-OC Nano github run
+ocnano github run
 ```
 
 ##### Bayraklar
@@ -273,7 +273,7 @@ ocnano models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | Modeller.dev'den model önbelleğini yenileyin                                |
 | <nobr><code>{"--verbose"}</code></nobr> | Daha ayrıntılı model çıktısı kullanın (maliyetler gibi meta veriler içerir) |
 
-Önbelleğe alınan model listesini güncellemek için `--refresh` bayrağını kullanın. Bu, bir sağlayıcıya yeni modeller eklendiğinde ve bunları OC Nano'da görmek istediğinizde kullanışlıdır.
+Önbelleğe alınan model listesini güncellemek için `--refresh` bayrağını kullanın. Bu, bir sağlayıcıya yeni modeller eklendiğinde ve bunları ocnano'da görmek istediğinizde kullanışlıdır.
 
 ```bash
 ocnano models --refresh
@@ -283,7 +283,7 @@ ocnano models --refresh
 
 ### run
 
-Doğrudan bir istem ileterek OC Nano'u etkileşimli olmayan modda çalıştırın.
+Doğrudan bir istem ileterek ocnano'u etkileşimli olmayan modda çalıştırın.
 
 ```bash
 ocnano run [message..]
@@ -318,9 +318,9 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f` | Mesaja eklenecek dosya(lar)                                                                   |
 | <nobr><code>{"--format"}</code></nobr>   |      | Biçim: varsayılan (biçimlendirilmiş) veya json (ham JSON olayları)                            |
 | <nobr><code>{"--title"}</code></nobr>    |      | Oturumun başlığı (değer sağlanmazsa kısaltılmış bilgi istemi kullanılır)                      |
-| <nobr><code>{"--attach"}</code></nobr>   |      | Çalışan bir OC Nano sunucusuna ekleyin (ör. http://localhost:4096)                           |
+| <nobr><code>{"--attach"}</code></nobr>   |      | Çalışan bir ocnano sunucusuna ekleyin (ör. http://localhost:4096)                           |
 | <nobr><code>{"--password"}</code></nobr> | `-p` | Temel kimlik doğrulama parolası (varsayılan: `OCNANO_SERVER_PASSWORD`)                      |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Temel kimlik doğrulama kullanıcı adı (varsayılan: `OCNANO_SERVER_USERNAME` veya `OC Nano`) |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Temel kimlik doğrulama kullanıcı adı (varsayılan: `OCNANO_SERVER_USERNAME` veya `ocnano`) |
 | <nobr><code>{"--dir"}</code></nobr>      |      | Çalıştırılacak dizin veya bağlanırken uzak sunucudaki yol                                     |
 | <nobr><code>{"--variant"}</code></nobr>  |      | Model varyantı (sağlayıcıya özgü muhakeme düzeyi)                                             |
 | <nobr><code>{"--thinking"}</code></nobr> |      | Düşünme bloklarını göster                                                                     |
@@ -330,13 +330,13 @@ ocnano run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-API erişimi için headless bir OC Nano sunucusu başlatır. Tam HTTP arayüzü için [server docs](/docs/server) sayfasına bakın.
+API erişimi için headless bir ocnano sunucusu başlatır. Tam HTTP arayüzü için [server docs](/docs/server) sayfasına bakın.
 
 ```bash
 ocnano serve
 ```
 
-Bu, TUI arayüzü olmadan OC Nano işlevselliğine API erişimi sağlayan bir HTTP sunucusunu başlatır. HTTP temel kimlik doğrulamasını etkinleştirmek için `OCNANO_SERVER_PASSWORD` öğesini ayarlayın (kullanıcı adı varsayılan olarak `OC Nano` şeklindedir).
+Bu, TUI arayüzü olmadan ocnano işlevselliğine API erişimi sağlayan bir HTTP sunucusunu başlatır. HTTP temel kimlik doğrulamasını etkinleştirmek için `OCNANO_SERVER_PASSWORD` öğesini ayarlayın (kullanıcı adı varsayılan olarak `ocnano` şeklindedir).
 
 #### Bayraklar
 
@@ -351,7 +351,7 @@ Bu, TUI arayüzü olmadan OC Nano işlevselliğine API erişimi sağlayan bir HT
 
 ### session
 
-OC Nano oturumlarını yönetin.
+ocnano oturumlarını yönetin.
 
 ```bash
 ocnano session [command]
@@ -361,7 +361,7 @@ ocnano session [command]
 
 #### list
 
-Tüm OC Nano oturumlarını listeleyin.
+Tüm ocnano oturumlarını listeleyin.
 
 ```bash
 ocnano session list
@@ -378,7 +378,7 @@ ocnano session list
 
 ### stats
 
-OC Nano oturumlarınız için belirteç kullanımı ve maliyet istatistiklerini gösterin.
+ocnano oturumlarınız için belirteç kullanımı ve maliyet istatistiklerini gösterin.
 
 ```bash
 ocnano stats
@@ -423,13 +423,13 @@ ocnano import session.json
 
 ### web
 
-Web arayüzüyle başsız bir OC Nano sunucusu başlatın.
+Web arayüzüyle başsız bir ocnano sunucusu başlatın.
 
 ```bash
 ocnano web
 ```
 
-Bu, bir HTTP sunucusunu başlatır ve bir web arayüzü aracılığıyla OC Nano'a erişmek için bir web tarayıcısı açar. HTTP temel kimlik doğrulamasını etkinleştirmek için `OCNANO_SERVER_PASSWORD` öğesini ayarlayın (kullanıcı adı varsayılan olarak `OC Nano` şeklindedir).
+Bu, bir HTTP sunucusunu başlatır ve bir web arayüzü aracılığıyla ocnano'a erişmek için bir web tarayıcısı açar. HTTP temel kimlik doğrulamasını etkinleştirmek için `OCNANO_SERVER_PASSWORD` öğesini ayarlayın (kullanıcı adı varsayılan olarak `ocnano` şeklindedir).
 
 #### Bayraklar
 
@@ -447,7 +447,7 @@ Bu, bir HTTP sunucusunu başlatır ve bir web arayüzü aracılığıyla OC Nano
 Bir ACP (Ajan İstemci Protokolü) sunucusu başlatın.
 
 ```bash
-OC Nano acp
+ocnano acp
 ```
 
 Bu komut, nd-JSON kullanarak stdin/stdout aracılığıyla iletişim kuran bir ACP sunucusunu başlatır.
@@ -464,7 +464,7 @@ Bu komut, nd-JSON kullanarak stdin/stdout aracılığıyla iletişim kuran bir A
 
 ### uninstall
 
-OC Nano'u kaldırın ve ilgili tüm dosyaları kaldırın.
+ocnano'u kaldırın ve ilgili tüm dosyaları kaldırın.
 
 ```bash
 ocnano uninstall
@@ -483,7 +483,7 @@ ocnano uninstall
 
 ### upgrade
 
-OC Nano'u en son sürüme veya belirli bir sürüme günceller.
+ocnano'u en son sürüme veya belirli bir sürüme günceller.
 
 ```bash
 ocnano upgrade [target]
@@ -511,7 +511,7 @@ ocnano upgrade v0.1.48
 
 ## Global bayraklar
 
-OC Nano CLI aşağıdaki global bayrakları destekler.
+ocnano CLI aşağıdaki global bayrakları destekler.
 
 | Bayrak                                     | Kısa | Tanım                                    |
 | ------------------------------------------ | ---- | ---------------------------------------- |
@@ -524,7 +524,7 @@ OC Nano CLI aşağıdaki global bayrakları destekler.
 
 ## Ortam değişkenleri
 
-OC Nano ortam değişkenleri kullanılarak yapılandırılabilir.
+ocnano ortam değişkenleri kullanılarak yapılandırılabilir.
 
 | Değişken                              | Tip     | Açıklama                                                                    |
 | ------------------------------------- | ------- | --------------------------------------------------------------------------- |
@@ -549,7 +549,7 @@ OC Nano ortam değişkenleri kullanılarak yapılandırılabilir.
 | `OCNANO_CLIENT`                     | string  | Client kimliği (varsayılan: `cli`)                                          |
 | `OCNANO_ENABLE_EXA`                 | boolean | Exa web arama araçlarını etkinleştir                                        |
 | `OCNANO_SERVER_PASSWORD`            | string  | `serve`/`web` için temel kimlik doğrulamayı etkinleştirin                   |
-| `OCNANO_SERVER_USERNAME`            | string  | Temel kimlik doğrulama kullanıcı adını geçersiz kıl (varsayılan `OC Nano`) |
+| `OCNANO_SERVER_USERNAME`            | string  | Temel kimlik doğrulama kullanıcı adını geçersiz kıl (varsayılan `ocnano`) |
 | `OCNANO_MODELS_URL`                 | string  | Model yapılandırmasını almak için özel URL                                  |
 
 ---

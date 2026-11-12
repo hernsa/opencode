@@ -6,7 +6,7 @@ description: Korzystanie z dowolnego dostawcy LLM w ocnano.
 import config from "../../../../config.mjs"
 export const console = config.console
 
-OC Nano używa [AI SDK](https://ai-sdk.dev/) i [Models.dev](https://models.dev) do obsługi **ponad 75 dostawców LLM** i obsługuje uruchamianie modeli lokalnych.
+ocnano używa [AI SDK](https://ai-sdk.dev/) i [Models.dev](https://models.dev) do obsługi **ponad 75 dostawców LLM** i obsługuje uruchamianie modeli lokalnych.
 
 Aby dodać dostawcę należy:
 
@@ -24,7 +24,7 @@ w `~/.local/share/ocnano/auth.json`.
 
 ### Konfiguracja
 
-Możesz dostosować dostawców za pomocą sekcji `provider` w swoim OC Nano
+Możesz dostosować dostawców za pomocą sekcji `provider` w swoim ocnano
 config.
 
 ---
@@ -52,7 +52,7 @@ Możesz dostosować podstawowy adres URL dla dowolnego dostawcy, ustawiając opc
 
 ## OC Nano Models
 
-OC Nano Models to lista modeli dostarczonych przez zespół OC Nano, które zostały
+OC Nano Models to lista modeli dostarczonych przez zespół ocnano, które zostały
 przetestowane i zweryfikowane, aby dobrze współpracować z ocnano. [Dowiedz się więcej](https://opencode.ai/docs/console/).
 
 :::tip
@@ -82,13 +82,13 @@ Jeśli jesteś nowy, zalecamy rozpoczęcie od OC Nano Models.
    /models
    ```
 
-Działa jak każdy inny dostawca w OC Nano i jest całkowicie opcjonalny w użyciu.
+Działa jak każdy inny dostawca w ocnano i jest całkowicie opcjonalny w użyciu.
 
 ---
 
 ## OC Nano Go
 
-OC Nano Go to tani plan subskrypcji, który zapewnia niezawodny dostęp do popularnych modeli open coding dostarczanych przez zespół OC Nano, które zostały przetestowane i zweryfikowane pod kątem dobrej współpracy z ocnano.
+OC Nano Go to tani plan subskrypcji, który zapewnia niezawodny dostęp do popularnych modeli open coding dostarczanych przez zespół ocnano, które zostały przetestowane i zweryfikowane pod kątem dobrej współpracy z ocnano.
 
 1. Uruchom polecenie `/connect` w TUI, wybierz `OC Nano Go` i przejdź do [opencode.ai/auth](https://opencode.ai/auth).
 
@@ -113,7 +113,7 @@ OC Nano Go to tani plan subskrypcji, który zapewnia niezawodny dostęp do popul
    /models
    ```
 
-Działa jak każdy inny dostawca w OC Nano i jest całkowicie opcjonalny w użyciu.
+Działa jak każdy inny dostawca w ocnano i jest całkowicie opcjonalny w użyciu.
 
 ---
 
@@ -157,7 +157,7 @@ Nie widzisz tutaj dostawcy? Prześlij PR.
 
 ### Amazon Bedrock
 
-Aby używać Amazon Bedrock z OC Nano:
+Aby używać Amazon Bedrock z ocnano:
 
 1. Przejdź do **Katalogu modeli** w konsoli Amazon Bedrock i poproś
    dostęp do wybranych modeli.
@@ -170,17 +170,17 @@ Aby używać Amazon Bedrock z OC Nano:
 
    #### Zmienne środowiskowe (Szybki start)
 
-   Ustaw jedną z tych zmiennych środowiskowych podczas uruchamiania OC Nano:
+   Ustaw jedną z tych zmiennych środowiskowych podczas uruchamiania ocnano:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY OC Nano
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY ocnano
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile OC Nano
+   AWS_PROFILE=my-profile ocnano
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX OC Nano
+   AWS_BEARER_TOKEN_BEDROCK=XXX ocnano
    ```
 
    Lub dodaj je do swojego profilu bash:
@@ -312,7 +312,7 @@ W przypadku niestandardowych profili wnioskowania użyj nazwy modelu i dostawcy 
    ```
 
 :::info
-Korzystanie z subskrypcji Claude Pro/Max w OC Nano nie jest oficjalnie obsługiwane przez [Anthropic](https://anthropic.com).
+Korzystanie z subskrypcji Claude Pro/Max w ocnano nie jest oficjalnie obsługiwane przez [Anthropic](https://anthropic.com).
 :::
 
 ##### Użycie kluczy API
@@ -325,7 +325,7 @@ Lub jeśli masz już klucz API, możesz wybrać **Wprowadź klucz API ręcznie**
 
 ### Atomic Chat
 
-Możesz skonfigurować OC Nano do korzystania z modeli lokalnych przez [Atomic Chat](https://atomic.chat) — aplikację desktopową uruchamiającą lokalne LLM-y za serwerem API zgodnym z OpenAI (domyślny endpoint `http://127.0.0.1:1337/v1`).
+Możesz skonfigurować ocnano do korzystania z modeli lokalnych przez [Atomic Chat](https://atomic.chat) — aplikację desktopową uruchamiającą lokalne LLM-y za serwerem API zgodnym z OpenAI (domyślny endpoint `http://127.0.0.1:1337/v1`).
 
 ```json title="ocnano.json" "atomic-chat" {5, 6, 8, 10-14}
 {
@@ -374,7 +374,7 @@ Jeśli napotkasz błędy „Przykro mi, ale nie mogę pomóc w tej prośbie”, 
 2. Przejdź do [Azure AI Foundry](https://ai.azure.com/) i wdróż model.
 
    :::note
-   Aby kod OC Nano działał poprawnie, nazwa wdrożenia musi być zgodna z nazwą modelu.
+   Aby kod ocnano działał poprawnie, nazwa wdrożenia musi być zgodna z nazwą modelu.
    :::
 
 3. Uruchom polecenie `/connect` i wyszukaj **Azure**.
@@ -395,7 +395,7 @@ Jeśli napotkasz błędy „Przykro mi, ale nie mogę pomóc w tej prośbie”, 
 5. Ustaw nazwę zasobu jako zmienną środowiskową:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX OC Nano
+   AZURE_RESOURCE_NAME=XXX ocnano
    ```
 
    Lub dodaj go do swojego profilu bash:
@@ -421,7 +421,7 @@ Jeśli napotkasz błędy „Przykro mi, ale nie mogę pomóc w tej prośbie”, 
 2. Przejdź do [Azure AI Foundry](https://ai.azure.com/) i wdróż model.
 
    :::note
-   Aby kod OC Nano działał poprawnie, nazwa wdrożenia musi być zgodna z nazwą modelu.
+   Aby kod ocnano działał poprawnie, nazwa wdrożenia musi być zgodna z nazwą modelu.
    :::
 
 3. Uruchom polecenie `/connect` i wyszukaj **Azure Cognitive Services**.
@@ -442,7 +442,7 @@ Jeśli napotkasz błędy „Przykro mi, ale nie mogę pomóc w tej prośbie”, 
 5. Ustaw nazwę zasobu jako zmienną środowiskową:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX OC Nano
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX ocnano
    ```
 
    Lub dodaj go do swojego profilu bash:
@@ -756,8 +756,8 @@ to store token in ocnano auth storage.
 ##### Self-Hosted GitLab
 
 :::note[Uwaga dotycząca zgodności]
-OC Nano używa małego modelu do niektórych zadań AI, takich jak generowanie tytułu sesji.
-Domyślnie jest skonfigurowany do używania gpt-5-nano, hostowanego przez OC Nano. Aby zablokować OC Nano
+ocnano używa małego modelu do niektórych zadań AI, takich jak generowanie tytułu sesji.
+Domyślnie jest skonfigurowany do używania gpt-5-nano, hostowanego przez OC Nano. Aby zablokować ocnano
 aby używać tylko własnej instancji hostowanej przez GitLab, dodaj następujące elementy do pliku
 `ocnano.json` plik.
 
@@ -852,7 +852,7 @@ Ta wtyczka zapewnia kompleksowe możliwości zarządzania repozytorium GitLab, w
 
 ### GitHub Copilot
 
-Aby korzystać z subskrypcji GitHub Copilot z kodem OC Nano:
+Aby korzystać z subskrypcji GitHub Copilot z kodem ocnano:
 
 :::note
 Niektóre modele mogą wymagać [subskrypcji Pro+](https://github.com/features/Copilot/plans), aby z nich korzystać.
@@ -888,7 +888,7 @@ Niektóre modele należy włączyć ręcznie w [ustawieniach GitHub Copilot](htt
 
 ### Google Vertex AI
 
-Aby używać Google Vertex AI z OC Nano:
+Aby używać Google Vertex AI z ocnano:
 
 1. Przejdź do **Model Garden** w Google Cloud Console i sprawdź
    modele dostępne w Twoim regionie.
@@ -907,7 +907,7 @@ Aby używać Google Vertex AI z OC Nano:
    Ustaw je podczas uruchamiania ocnano.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id OC Nano
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id ocnano
    ```
 
    Lub dodaj je do swojego profilu bash.
@@ -1017,7 +1017,7 @@ Więcej dostawców i zaawansowanych funkcji, takich jak buforowanie i ograniczan
 
 #### Opcjonalna konfiguracja
 
-Jeśli zobaczysz funkcję lub model firmy Helicone, która nie jest konfigurowana automatycznie za pomocą OC Nano, zawsze możesz ją skonfigurować samodzielnie.
+Jeśli zobaczysz funkcję lub model firmy Helicone, która nie jest konfigurowana automatycznie za pomocą ocnano, zawsze możesz ją skonfigurować samodzielnie.
 
 Oto [Katalog modeli Helicone](https://helicone.ai/models), będziesz go potrzebować, aby pobrać identyfikatory modeli, które chcesz dodać.
 
@@ -1060,7 +1060,7 @@ Helicone obsługuje niestandardowe nagłówki dla funkcji takich jak buforowanie
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "OC Nano",
+          "Helicone-User-Id": "ocnano",
         },
       },
     },
@@ -1070,7 +1070,7 @@ Helicone obsługuje niestandardowe nagłówki dla funkcji takich jak buforowanie
 
 ##### Śledzenie sesji
 
-Funkcja [Sesje](https://docs.helicone.ai/features/sessions) firmy Helicone umożliwia grupowanie powiązanych żądań LLM. Użyj wtyczki [ocnano-helicone-session](https://github.com/H2Shami/ocnano-helicone-session), aby automatycznie rejestrować każdą konwersację OC Nano jako sesję w Helicone.
+Funkcja [Sesje](https://docs.helicone.ai/features/sessions) firmy Helicone umożliwia grupowanie powiązanych żądań LLM. Użyj wtyczki [ocnano-helicone-session](https://github.com/H2Shami/ocnano-helicone-session), aby automatycznie rejestrować każdą konwersację ocnano jako sesję w Helicone.
 
 ```bash
 npm install -g ocnano-helicone-session
@@ -1084,7 +1084,7 @@ Dodaj go do swojej konfiguracji.
 }
 ```
 
-Wtyczka wstawia nagłówki `Helicone-Session-Id` i `Helicone-Session-Name` do Twoich żądań. Na stronie Sesje Helicone każda konwersacja OC Nano będzie wymieniona jako osobna sesja.
+Wtyczka wstawia nagłówki `Helicone-Session-Id` i `Helicone-Session-Name` do Twoich żądań. Na stronie Sesje Helicone każda konwersacja ocnano będzie wymieniona jako osobna sesja.
 
 ##### Najczęstsze nagłówki Helicone
 
@@ -1101,7 +1101,7 @@ Zobacz [Katalog nagłówków Helicone](https://docs.helicone.ai/helicone-headers
 
 ### llama.cpp
 
-Możesz skonfigurować OC Nano tak, aby korzystał z modeli lokalnych, za pomocą narzędzia llama-server [llama.cpp](https://github.com/ggml-org/llama.cpp)
+Możesz skonfigurować ocnano tak, aby korzystał z modeli lokalnych, za pomocą narzędzia llama-server [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
 ```json title="ocnano.json" "llama.cpp" {5, 6, 8, 10-15}
 {
@@ -1168,7 +1168,7 @@ IO.NET oferuje 17 modeli zoptymalizowanych pod kątem różnych zastosowań:
 
 ### LM Studio
 
-Możesz skonfigurować OC Nano tak, aby korzystał z modeli lokalnych poprzez LM Studio.
+Możesz skonfigurować ocnano tak, aby korzystał z modeli lokalnych poprzez LM Studio.
 
 ```json title="ocnano.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1285,7 +1285,7 @@ Aby użyć Kimi K2 z Moonshot AI:
 
 ### Ollama
 
-Możesz skonfigurować OC Nano tak, aby korzystał z modeli lokalnych poprzez Ollamę.
+Możesz skonfigurować ocnano tak, aby korzystał z modeli lokalnych poprzez Ollamę.
 
 :::tip
 Ollama może automatycznie skonfigurować się pod kątem ocnano. Aby uzyskać szczegółowe informacje, zobacz [dokumentację integracji Ollama](https://docs.ollama.com/integrations/ocnano).
@@ -1327,7 +1327,7 @@ Jeśli wywołania narzędzi nie działają, spróbuj zwiększyć `num_ctx` w Oll
 
 ### Ollama Cloud
 
-Aby korzystać z Ollama Cloud z OC Nano:
+Aby korzystać z Ollama Cloud z ocnano:
 
 1. Udaj się do [https://ollama.com/](https://ollama.com/) i zaloguj się lub utwórz konto.
 
@@ -1350,7 +1350,7 @@ Aby korzystać z Ollama Cloud z OC Nano:
    └ enter
    ```
 
-6. **Ważne**: Przed użyciem modeli chmurowych w OC Nano musisz pobrać informacje o modelu lokalnie:
+6. **Ważne**: Przed użyciem modeli chmurowych w ocnano musisz pobrać informacje o modelu lokalnie:
 
    ```bash
    ollama pull gpt-oss:20b-cloud
@@ -1520,7 +1520,7 @@ SAP AI Core zapewnia dostęp do ponad 40 modeli z OpenAI, Anthropic, Google, Ama
    Lub ustaw zmienną środowiskową `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' OC Nano
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' ocnano
    ```
 
    Lub dodaj go do swojego profilu bash:
@@ -1532,7 +1532,7 @@ SAP AI Core zapewnia dostęp do ponad 40 modeli z OpenAI, Anthropic, Google, Ama
 4. Opcjonalnie ustaw identyfikator wdrożenia i grupę zasobów:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group OC Nano
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group ocnano
    ```
 
    :::note
@@ -1609,7 +1609,7 @@ STACKIT AI Model Serving zapewnia w pełni zarządzane suwerenne środowisko hos
 
 ### Scaleway
 
-Aby używać [generatywnych interfejsów API Scaleway](https://www.scaleway.com/en/docs/generative-apis/) z OC Nano:
+Aby używać [generatywnych interfejsów API Scaleway](https://www.scaleway.com/en/docs/generative-apis/) z ocnano:
 
 1. Przejdź do [Ustawień uprawnień konsoli Scaleway](https://console.scaleway.com/iam/api-keys), aby wygenerować nowy klucz API.
 
@@ -1970,7 +1970,7 @@ Szczegóły konfiguracji:
 - **limit.context**: Maksymalna liczba tokenów wejściowych akceptowanych przez model.
 - **limit.output**: Maksymalna liczba tokenów, które model może wygenerować.
 
-Pola `limit` pozwalają OC Nano zrozumieć, ile kontekstu pozostało. Standardowi dostawcy pobierają je automatycznie z models.dev.
+Pola `limit` pozwalają ocnano zrozumieć, ile kontekstu pozostało. Standardowi dostawcy pobierają je automatycznie z models.dev.
 
 ---
 
@@ -1983,7 +1983,7 @@ Jeśli masz problemy z konfiguracją dostawcy, sprawdź następujące elementy:
 
    Nie dotyczy to dostawców takich jak Amazon Bedrock, którzy w procesie uwierzytelniania opierają się na zmiennych środowiskowych.
 
-2. W przypadku dostawców niestandardowych sprawdź konfigurację OC Nano i:
+2. W przypadku dostawców niestandardowych sprawdź konfigurację ocnano i:
    - Upewnij się, że identyfikator dostawcy użyty w poleceniu `/connect` jest zgodny z identyfikatorem w konfiguracji ocnano.
    - Dla dostawcy używany jest właściwy pakiet npm. Na przykład użyj `@ai-sdk/cerebras` dla Cerebras. W przypadku wszystkich innych dostawców zgodnych z OpenAI użyj `@ai-sdk/openai-compatible`.
    - Sprawdź, czy w polu `options.baseURL` użyto prawidłowego punktu końcowego API.
