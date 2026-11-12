@@ -56,7 +56,8 @@ const installNames: Record<Method, string> = {
   winget: "WinGet",
 }
 
-const wingetPackage = "Anomaly.OC Nano"
+// WinGet identifiers carry no spaces, so the product name is flattened.
+const wingetPackage = "Anomaly.OCNano"
 const wingetArgs = [
   "--id",
   wingetPackage,
@@ -105,6 +106,19 @@ function resultDetail(result: { code: number; stdout: string; stderr: string }) 
   )
 }
 
+// The release endpoint of an OC Nano deployment. The upstream service answers with UPSTREAM
+// OpenCode releases, so the endpoint is never assumed: a build without one has no feed to read.
+function releaseUrl(input: {
+  readonly base: string
+  readonly channel: string
+  readonly artifact: string
+  readonly distribution: string
+  readonly version: string
+}) {
+  const path = [input.channel, input.artifact, input.distribution].map((part) => encodeURIComponent(part)).join("/")
+  return `${input.base.replace(/\/+$/, "")}/${path}?current=${encodeURIComponent(input.version)}`
+}
+
 export interface Interface {
   readonly run: (onInstall?: (version: string) => void) => Effect.Effect<RunResult | undefined>
   readonly check: () => Effect.Effect<CheckResult | undefined, Error>
@@ -149,8 +163,9 @@ const make = Effect.gen(function* () {
     const manifest: { name: string; bin?: Record<string, string> } = yield* fs
       .readFileString(path.join(directory, "package.json"))
       .pipe(Effect.flatMap((text) => Effect.try(() => JSON.parse(text))))
-    // Source invocations run inside Bun or Node, which may themselves be npm packages.
-    if (!/^@ocnano(?:-ai)?\/cli(?:-node)?$/.test(manifest.name)) return
+    // Source invocations run inside Bun or Node, which may themselves be npm packages. The
+    // published packages keep their upstream scope, so both scopes name this CLI.
+    if (!/^@(opencode|ocnano)(?:-ai)?\/cli(?:-node)?$/.test(manifest.name)) return
     if (Object.values(manifest.bin ?? {}).some((bin) => path.resolve(directory, bin) === executable))
       return manifest.name
   }).pipe(Effect.orElseSucceed(() => undefined))
@@ -158,6 +173,13 @@ const make = Effect.gen(function* () {
   const installedFormula = ["ocnano", "ocnano-beta", "ocnano-v2"].find((name) =>
     executable.includes(`${path.sep}Cellar${path.sep}${name}${path.sep}`),
   )
+  // Homebrew Core builds its formula on its own schedule, so the tap release does not describe it.
+  const coreFormula = installedFormula === "ocnano"
+  // OC Nano publishes no releases of its own. The upstream release service answers with UPSTREAM
+  // OpenCode releases, so the endpoint is configuration: without one, no release is ever fetched
+  // and `ocnano upgrade` says so instead of installing a different product.
+  const feed = process.env.OCNANO_UPDATE_FEED?.trim()
+  const installerScript = process.env.OCNANO_INSTALL_SCRIPT?.trim()
   // WinGet extracts portable packages into a directory named after the package identifier.
   const installedWinget = /[\\/]winget[\\/]packages[\\/]anomaly\.ocnano_/i.test(executable)
 
@@ -275,17 +297,31 @@ const make = Effect.gen(function* () {
   const release = Effect.fnUntraced(function* (method?: Method) {
     const distribution = method === "brew" ? "homebrew" : "npm"
     // Homebrew Core builds its formula on its own schedule, so the tap release does not describe it.
-    const core = method === "brew" && installedFormula === "ocnano"
+    const core = method === "brew" && coreFormula
+    const url = core
+      ? "https://formulae.brew.sh/api/formula/ocnano.json"
+      : feed
+        ? releaseUrl({
+            base: feed,
+            channel,
+            artifact: OCNANO_ARTIFACT,
+            distribution,
+            version: OCNANO_VERSION,
+          })
+        : undefined
+    if (!url)
+      return yield* Effect.fail(
+        new UpgradeError({
+          title: "OC Nano has no published update feed",
+          detail: "This build has no release endpoint configured, so it cannot check for or install a newer OC Nano.",
+          retry: "Update OC Nano with your package manager, or set OCNANO_UPDATE_FEED to an OC Nano release endpoint.",
+        }),
+      )
     const response = yield* Effect.tryPromise({
       try: (signal) =>
-        fetch(
-          core
-            ? "https://formulae.brew.sh/api/formula/ocnano.json"
-            : `https://opencode.ai/update/api/${encodeURIComponent(channel)}/${encodeURIComponent(OCNANO_ARTIFACT)}/${distribution}?current=${encodeURIComponent(OCNANO_VERSION)}`,
-          {
-            signal: AbortSignal.any([signal, AbortSignal.timeout(10_000)]),
-          },
-        ),
+        fetch(url, {
+          signal: AbortSignal.any([signal, AbortSignal.timeout(10_000)]),
+        }),
       catch: (cause) =>
         new UpgradeError(
           {
@@ -428,7 +464,7 @@ const make = Effect.gen(function* () {
     const packageName =
       method === "winget"
         ? wingetPackage
-        : method === "brew" && installedFormula === "ocnano"
+        : method === "brew" && coreFormula
           ? "ocnano"
           : (yield* release(method)).package
     const target = `${packageName}@${version}`
@@ -474,14 +510,23 @@ const make = Effect.gen(function* () {
           )
         }
         if (method === "curl") {
+          if (!installerScript)
+            return yield* Effect.fail(
+              new UpgradeError({
+                title: "OC Nano has no published installer",
+                detail: "This build has no installer script configured, so it cannot install OC Nano with curl.",
+                retry:
+                  "Update OC Nano with your package manager, or set OCNANO_INSTALL_SCRIPT to an OC Nano installer.",
+              }),
+            )
           const bash = yield* installerBash()
           yield* fs.makeDirectory(global.cache, { recursive: true })
           const directory = yield* temporaryDirectory("update-")
           const installer = path.join(directory, "install")
           yield* runUpgrade({
             method,
-            command: ["curl", "-fsSL", "-o", installer, "https://opencode.ai/v2/install"],
-            displayCommand: ["curl", "-fsSL", "https://opencode.ai/v2/install"],
+            command: ["curl", "-fsSL", "-o", installer, installerScript],
+            displayCommand: ["curl", "-fsSL", installerScript],
             title: "Could not download the OC Nano installer",
             retry: "Check your network, then run ocnano upgrade again.",
           })
@@ -520,7 +565,7 @@ const make = Effect.gen(function* () {
           ? cause
           : new UpgradeError(
               {
-                title: "Could not prepare the ocnano upgrade",
+                title: "Could not prepare the OC Nano upgrade",
                 detail: errorDetail(cause),
                 retry: "Fix the issue above, then run ocnano upgrade again.",
               },
@@ -543,6 +588,15 @@ const make = Effect.gen(function* () {
     const policy = yield* readPolicy()
     if (policy === "disable") {
       yield* Effect.logInfo("update check skipped", { reason: "policy-disabled" })
+      return undefined
+    }
+    // A build without a release endpoint has no release to check for.
+    if (!feed && !coreFormula) {
+      yield* Effect.logInfo("update check skipped", {
+        reason: "no-release-feed",
+        version: OCNANO_VERSION,
+        channel: OCNANO_CHANNEL,
+      })
       return undefined
     }
 
@@ -595,6 +649,12 @@ const make = Effect.gen(function* () {
         type: "unavailable" as const,
         message:
           "Could not detect the installation method. Update with your package manager or download the latest release.",
+      }
+    if (!feed && !(detected === "brew" && coreFormula))
+      return {
+        type: "unavailable" as const,
+        message:
+          "OC Nano has no published update feed, so this build cannot check for updates. Update it with your package manager.",
       }
     const version = yield* latest(detected)
     if (!parseReleaseVersion(version)) return yield* Effect.fail(new Error(`Invalid version: ${version}`))

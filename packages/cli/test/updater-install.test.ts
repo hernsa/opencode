@@ -15,6 +15,11 @@ const it = testEffect(NodeServices.layer)
 
 declare const OCNANO_CLI_NAME: string | undefined
 
+// OC Nano has no release service of its own, so the endpoint is configuration. The fixture
+// points it at a test host: the updater must never fall back to the upstream feed.
+const feedUrl = "https://updates.ocnano.test/api"
+const installerUrl = "https://install.ocnano.test/install"
+
 function fixture(
   respond: (command: {
     readonly command: string
@@ -26,9 +31,17 @@ function fixture(
   failCleanup = false,
   releasePackage = name,
   formula?: string,
-  executableOverride?: (root: string, home: string) => Effect.Effect<string, PlatformError.PlatformError, FileSystem.FileSystem>,
+  executableOverride?: (
+    root: string,
+    home: string,
+  ) => Effect.Effect<string, PlatformError.PlatformError, FileSystem.FileSystem>,
+  feed: string | null = feedUrl,
 ) {
   return Effect.gen(function* () {
+    if (feed === null) delete process.env.OCNANO_UPDATE_FEED
+    else process.env.OCNANO_UPDATE_FEED = feed
+    process.env.OCNANO_INSTALL_SCRIPT = installerUrl
+
     const fs = yield* FileSystem.FileSystem
     const spawner = yield* ChildProcessSpawner.ChildProcessSpawner
     const root = yield* fs.makeTempDirectoryScoped({ prefix: "ocnano-updater-" })
@@ -154,6 +167,19 @@ const installs = [
   { method: "vp", command: ["vp", "update", "-g", "@ocnano/cli@2.3.4-beta.1"] },
 ] as const
 
+it.live("an upgrade without a release endpoint fails instead of reading a feed", () =>
+  Effect.gen(function* () {
+    const test = yield* fixture(() => ({}), "@ocnano/cli", false, "@ocnano/cli", undefined, undefined, null)
+    const error = yield* test.updater.upgrade("npm", "2.3.4").pipe(Effect.flip)
+    if (!(error instanceof Updater.UpgradeError)) return yield* Effect.die(new Error("Expected an upgrade error"))
+    expect(error.title).toBe("OC Nano has no published update feed")
+    expect(error.message).toContain("no release endpoint configured")
+    // No release was read and nothing was installed.
+    expect(test.requests).toEqual([])
+    expect(test.commands).toEqual([])
+  }),
+)
+
 installs.forEach(({ method, command }) => {
   it.live(`${method} installs the explicit V2 package version without a leading v`, () =>
     Effect.gen(function* () {
@@ -166,9 +192,9 @@ installs.forEach(({ method, command }) => {
 
 it.live("vp force-installs a renamed V2 package that replaces the existing binary owner", () =>
   Effect.gen(function* () {
-    const test = yield* fixture(() => ({}), "@ocnano/cli", false, "@ocnano/cli-node")
+    const test = yield* fixture(() => ({}), "@ocnano/cli", false, "@opencode/cli-node")
     yield* test.updater.upgrade("vp", "v2.3.4-beta.1")
-    expect(test.commands).toEqual([["vp", "install", "-g", "--force", "@ocnano/cli-node@2.3.4-beta.1"]])
+    expect(test.commands).toEqual([["vp", "install", "-g", "--force", "@opencode/cli-node@2.3.4-beta.1"]])
   }),
 )
 
@@ -229,7 +255,7 @@ it.live("bun ignores install cache cleanup failures", () =>
       const installer = test.commands[0]?.[3]
       expect(installer).toStartWith(path.join(test.global.cache, "update-"))
       expect(test.commands).toEqual([
-        ["curl", "-fsSL", "-o", installer, "https://opencode.ai/v2/install"],
+        ["curl", "-fsSL", "-o", installer, installerUrl],
         ...(failure === "download" ? [] : [[test.bash, installer, "--version", "2.3.4-beta.1", "--no-modify-path"]]),
       ])
       expect(yield* test.fs.readDirectory(test.global.cache)).toEqual([])
@@ -280,7 +306,7 @@ it.live("install failures expose stderr and process errors do not report success
               : "@ocnano/cli@2.3.4"
             : command.command === "vp"
               ? "[]"
-              : "ocnano-ai@1.0.0",
+              : "opencode-ai@1.0.0",
         ),
       }))
       expect(yield* test.updater.method()).toBe(method)
@@ -327,7 +353,7 @@ it.live("Homebrew Core installs check and upgrade the Core formula", () =>
     expect(yield* test.updater.latest("npm")).toBe("2.3.4")
     expect(test.requests).toEqual([
       "https://formulae.brew.sh/api/formula/ocnano.json",
-      "https://opencode.ai/update/api/local/cli/npm?current=local",
+      `${feedUrl}/local/cli/npm?current=local`,
     ])
   }),
 )
@@ -340,8 +366,8 @@ it.live("Homebrew Core installs check and upgrade the Core formula", () =>
       yield* test.updater.upgrade("brew", "2.3.4")
       expect(test.commands).toEqual([["brew", "upgrade", `anomalyco/tap/${formula}`]])
       expect(test.requests).toEqual([
-        "https://opencode.ai/update/api/local/cli/homebrew?current=local",
-        "https://opencode.ai/update/api/local/cli/homebrew?current=local",
+        `${feedUrl}/local/cli/homebrew?current=local`,
+        `${feedUrl}/local/cli/homebrew?current=local`,
       ])
     }),
   )
@@ -363,14 +389,14 @@ const winget = (search: Partial<AppProcess.RunResult>) =>
           "Microsoft",
           "WinGet",
           "Packages",
-          "Anomaly.OC Nano_Microsoft.Winget.Source_8wekyb3d8bbwe",
+          "Anomaly.OCNano_Microsoft.Winget.Source_8wekyb3d8bbwe",
           "ocnano.exe",
         ),
       ),
   )
 const wingetArgs = [
   "--id",
-  "Anomaly.OC Nano",
+  "Anomaly.OCNano",
   "--exact",
   "--source",
   "winget",
@@ -382,7 +408,7 @@ it.live("WinGet installs check, upgrade, and remove the version in the WinGet in
   Effect.gen(function* () {
     const test = yield* winget({
       stdout: Buffer.from(
-        "Name     Id               Version\r\n------------------------------\r\nOC Nano Anomaly.OC Nano 2.0.28\r\n",
+        "Name     Id               Version\r\n------------------------------\r\nOC Nano Anomaly.OCNano 2.0.28\r\n",
       ),
     })
     expect(yield* test.updater.method()).toBe("winget")
@@ -583,23 +609,23 @@ if (typeof OCNANO_CLI_NAME === "string" && OCNANO_CLI_NAME === "ocnano2-node") {
     Effect.gen(function* () {
       const test = yield* fixture(
         (command) => ({
-          stdout: Buffer.from(command.command === "npm" ? "@ocnano/cli-node@2.3.4" : ""),
+          stdout: Buffer.from(command.command === "npm" ? "@opencode/cli-node@2.3.4" : ""),
         }),
-        "@ocnano/cli-node",
+        "@opencode/cli-node",
       )
       expect(yield* test.updater.method()).toBe("npm")
       yield* test.updater.upgrade("npm", "v2.3.4")
       yield* test.updater.upgrade("pnpm", "v2.3.4")
       yield* test.updater.upgrade("vp", "v2.3.4")
       expect(test.commands).toEqual([
-        ["npm", "list", "-g", "--depth=0", "@ocnano/cli-node"],
-        ["pnpm", "list", "-g", "--depth=0", "@ocnano/cli-node"],
+        ["npm", "list", "-g", "--depth=0", "@opencode/cli-node"],
+        ["pnpm", "list", "-g", "--depth=0", "@opencode/cli-node"],
         ["bun", "pm", "ls", "-g"],
         ["yarn", "global", "list"],
-        ["vp", "list", "-g", "--json", "@ocnano/cli-node"],
-        ["npm", "install", "--global", "--allow-scripts=@ocnano/cli-node", "@ocnano/cli-node@2.3.4"],
-        ["pnpm", "add", "--global", "--allow-build=@ocnano/cli-node", "@ocnano/cli-node@2.3.4"],
-        ["vp", "update", "-g", "@ocnano/cli-node@2.3.4"],
+        ["vp", "list", "-g", "--json", "@opencode/cli-node"],
+        ["npm", "install", "--global", "--allow-scripts=@opencode/cli-node", "@opencode/cli-node@2.3.4"],
+        ["pnpm", "add", "--global", "--allow-build=@opencode/cli-node", "@opencode/cli-node@2.3.4"],
+        ["vp", "update", "-g", "@opencode/cli-node@2.3.4"],
       ])
     }),
   )
