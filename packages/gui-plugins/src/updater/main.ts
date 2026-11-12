@@ -10,7 +10,12 @@ const setup: Plugin.MainSetup = async (ctx) => {
   const builtin = builtinMainContext(ctx)
   const build = ctx.app
   const lifecycle = builtin.lifecycle
-  const enabled = build.packaged
+  // OC Nano publishes no releases of its own, so the updater stays off: the only release feed
+  // the upstream service offers answers with UPSTREAM OpenCode releases, and installing those
+  // would replace an OC Nano build with a different product. Set OCNANO_UPDATE_FEED to an OC
+  // Nano release endpoint to turn the updater on.
+  const feed = build.packaged ? process.env.OCNANO_UPDATE_FEED : undefined
+  const enabled = feed !== undefined
   // Holds no resources, so it needs no cleanup.
   const context = logContext(ctx.log.write)
   const runPromise = Effect.runPromiseWith(context)
@@ -24,9 +29,10 @@ const setup: Plugin.MainSetup = async (ctx) => {
   })
 
   // electron-updater loads only in packaged builds, after the first window is up.
-  const platform = enabled
-    ? await import("./platform").then((module) => runPromise(module.make(build.channel)))
-    : undefined
+  const platform =
+    feed === undefined
+      ? undefined
+      : await import("./platform").then((module) => runPromise(module.make({ channel: build.channel, feed })))
 
   if (ctx.signal.aborted) return
   const scope = Scope.makeUnsafe()

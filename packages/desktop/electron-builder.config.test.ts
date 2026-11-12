@@ -13,9 +13,9 @@ import { CLI_BINARIES, nodePtyPackage } from "./script/utils"
 const { FileMatcher } = createRequire(import.meta.resolve("electron-builder"))("app-builder-lib/out/fileMatcher")
 
 const channels = [
-  { channel: "dev", appId: "ai.ocnano.desktop.dev", feed: "dev" },
-  { channel: "beta", appId: "ai.ocnano.desktop.beta", feed: "beta" },
-  { channel: "prod", appId: "ai.ocnano.desktop", feed: "latest" },
+  { channel: "dev", appId: "ai.ocnano.desktop.dev" },
+  { channel: "beta", appId: "ai.ocnano.desktop.beta" },
+  { channel: "prod", appId: "ai.ocnano.desktop" },
 ] as const
 
 function load(channel: string, target?: string): Configuration {
@@ -47,15 +47,13 @@ function trimFilter(dir: string, config: Configuration) {
   ]).createFilter()
 }
 
-test.each(channels)("channel identity for $channel", ({ channel, appId, feed }) => {
+test.each(channels)("channel identity for $channel", ({ channel, appId }) => {
   const config = load(channel)
   expect(config.appId).toBe(appId)
-  // Every published channel updates from its own feed on the update service.
-  expect(config.publish).toEqual({
-    provider: "generic",
-    url: `https://opencode.ai/update/api/${feed}/desktop/ocnano/`,
-    channel: "latest",
-  })
+  // OC Nano publishes no releases, so no channel advertises a publish target. The upstream
+  // release service answers with UPSTREAM OpenCode releases, which would replace an OC Nano
+  // build with a different product.
+  expect(config.publish).toBeUndefined()
   expect(config.extraMetadata?.desktopName).toBe(`${appId}.desktop`)
   // The executable must never end in `.desktop`: libappimage resolves the
   // AppImage's desktop entry by globbing `*.desktop`, and an ELF matching
@@ -78,6 +76,13 @@ test.each(channels)("channel identity for $channel", ({ channel, appId, feed }) 
   // fpm rejects flags after the first src=dest mapping, so the flag must come first.
   expect(config.rpm?.fpm?.[0]).toBe("--rpm-rpmbuild-define=_build_id_links none")
   expect(config.deb?.fpm).not.toContain("--rpm-rpmbuild-define=_build_id_links none")
+})
+
+test.each(channels)("no release feed is advertised for $channel", ({ channel }) => {
+  const config = load(channel)
+  // The upstream release service ignores the product segment of its paths and answers with
+  // UPSTREAM OpenCode releases, so no part of the packaging configuration may point at it.
+  expect(JSON.stringify(config)).not.toContain("opencode.ai")
 })
 
 test("legacy Linux launcher stays hidden", async () => {
@@ -125,6 +130,8 @@ test("shared packaging defaults", async () => {
   expect(config.nsis?.include).toBe(include)
   expect(await Bun.file(include).exists()).toBe(true)
   expect(config.files).toContain("!resources/ocnano-cli*")
+  // The stale upstream CLI binary must never ship inside an OC Nano build.
+  expect(config.files).toContain("!resources/opencode-cli*")
 })
 
 // The oc-nano addon is a native module, so it ships as an extra resource next to the app instead

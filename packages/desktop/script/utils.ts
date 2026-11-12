@@ -100,8 +100,13 @@ export async function downloadCliToResources(version = CLI_VERSION, dest = windo
 
 export async function copyBuiltCliToResources(root: string, dest = windowsify("resources/ocnano-cli")) {
   const cli = getCurrentCli()
-  const directory = cli.package.replace("@ocnano/", "")
-  await copyCliToResources(join(root, directory), dest)
+  await copyCliToResources(join(root, packageDirectory(cli.package)), dest)
+}
+
+// The published CLI packages keep their upstream scope, while the local build writes the
+// directory without one. Drop whichever scope the name carries so both resolve.
+export function packageDirectory(name: string) {
+  return name.replace(/^@[^/]+\//, "")
 }
 
 // The package directory is an npm package: its package.json version is the string the executable

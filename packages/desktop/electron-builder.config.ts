@@ -98,6 +98,9 @@ const getBase = (appId: string): Configuration => {
       "out/**/*",
       "resources/**/*",
       "!resources/ocnano-cli*",
+      // The rename left the upstream CLI binary and its version file in the resources. They are
+      // not part of an OC Nano build, and shipping them would put an upstream artifact in the app.
+      "!resources/opencode-cli*",
       // Keep only the target platform's node-pty prebuild when cross-packaging with --cpu=*.
       ...CLI_BINARIES.filter((item) => item.os !== target.os || item.cpu !== target.cpu).map(
         (item) => `!**/node_modules/@lydell/node-pty-${item.os}-${item.cpu}{,/**/*}`,
@@ -235,6 +238,9 @@ const getBase = (appId: string): Configuration => {
   }
 }
 
+// OC Nano publishes no releases, so no channel advertises a publish target. The upstream release
+// service ignores the product segment of its paths and answers with UPSTREAM OpenCode releases,
+// which would replace an OC Nano build with a different product.
 export function getConfig() {
   const channel = resolveChannel()
   const appId = APP_IDS[channel]
@@ -246,11 +252,6 @@ export function getConfig() {
         ...base,
         appId,
         productName: "OC Nano Dev",
-        publish: {
-          provider: "generic",
-          url: "https://opencode.ai/update/api/dev/desktop/ocnano/",
-          channel: "latest",
-        },
         deb: { fpm: [...previewCompressionFpm("deb"), metainfoFpm(appId)] },
         rpm: {
           packageName: "ocnano-dev",
@@ -265,11 +266,6 @@ export function getConfig() {
         appId,
         productName: "OC Nano Beta",
         protocols: { name: "OC Nano Beta", schemes: ["ocnano"] },
-        publish: {
-          provider: "generic",
-          url: "https://opencode.ai/update/api/beta/desktop/ocnano/",
-          channel: "latest",
-        },
         deb: { fpm: [...previewCompressionFpm("deb"), metainfoFpm(appId)] },
         rpm: {
           packageName: "ocnano-beta",
@@ -289,11 +285,6 @@ export function getConfig() {
         mac: { ...base.mac, icon: "resources/icons/icon.icon" },
         // The DMG volume icon would otherwise use the same actool-generated ICNS.
         dmg: { icon: "resources/icons/icon.icns" },
-        publish: {
-          provider: "generic",
-          url: "https://opencode.ai/update/api/latest/desktop/ocnano/",
-          channel: "latest",
-        },
         deb: { fpm: [metainfoFpm(appId), legacyDesktopEntryFpm] },
         rpm: { packageName: "ocnano", fpm: [rpmNoBuildIdLinksFpm, metainfoFpm(appId), legacyDesktopEntryFpm] },
       }

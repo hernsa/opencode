@@ -13,8 +13,12 @@ const restartTimeout = 10_000
 
 const unpackTimeout = 120_000
 
-export const make = Effect.fn("Updater.platform")(function* (channel: string) {
-  const userAgent = `ocnano/${channel === "prod" ? "latest" : channel}/${app.getVersion()}/desktop`
+export const make = Effect.fn("Updater.platform")(function* (input: {
+  readonly channel: string
+  readonly feed: string
+}) {
+  const channel = input.channel === "prod" ? "latest" : input.channel
+  const userAgent = `ocnano/${channel}/${app.getVersion()}/desktop`
   const runFork = Effect.runForkWith(yield* Effect.context())
   updateClient.logger = {
     info: (...args) => runFork(Effect.logInfo(...args)),
@@ -22,14 +26,19 @@ export const make = Effect.fn("Updater.platform")(function* (channel: string) {
     error: (...args) => runFork(Effect.logError(...args)),
     debug: (...args) => runFork(Effect.logDebug(...args)),
   }
-  updateClient.channel = "latest"
+  // The release endpoint comes from the configuration. OC Nano ships no update configuration file,
+  // and the upstream feed must never be a fallback: it answers with UPSTREAM OpenCode releases.
+  updateClient.setFeedURL({ provider: "generic", url: input.feed, channel })
+  updateClient.channel = channel
   updateClient.requestHeaders = { "User-Agent": userAgent }
   updateClient.allowPrerelease = false
-  updateClient.allowDowngrade = true
+  // A downgrade installs an older build over a newer one.
+  updateClient.allowDowngrade = false
   updateClient.autoDownload = false
   updateClient.autoInstallOnAppQuit = process.platform === "darwin"
   yield* Effect.logInfo("auto updater configured", {
     channel: updateClient.channel,
+    feed: input.feed,
     allowPrerelease: updateClient.allowPrerelease,
     allowDowngrade: updateClient.allowDowngrade,
     currentVersion: app.getVersion(),
