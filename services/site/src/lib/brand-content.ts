@@ -35,7 +35,6 @@ const wordmarkSolidDarkSvg = "/brand/files/ocnano-wordmark-solid-dark.svg"
 const avatarDark1024Png = "/brand/files/ocnano-avatar-dark-1024.png"
 const avatarLight1024Png = "/brand/files/ocnano-avatar-light-1024.png"
 
-
 /** The brand page copy, shared by the page and its Markdown version. */
 export function brandContent(t: Translate) {
   return {
@@ -53,9 +52,9 @@ export function brandContent(t: Translate) {
     },
     naming: {
       title: "Naming",
-      body: "Write OC Nano as one word, with a capital O and a capital C. Do not write OC Nano, Open Code, OC Nano AI or Open-Code.",
+      body: "Write OC Nano as two words, with a capital O and a capital N. Do not write OCNano, Oc Nano, OC-Nano or OC Nano AI.",
       // Names between backticks show as code.
-      code: "Use the lowercase `ocnano` only in code and package names, such as `ocnano-figma` or `@acme/ocnano-plugin`.",
+      code: "Use the lowercase `ocnano` only in code and package names, such as `ocnano-figma` or `@ocnano/plugin`. The npm scope is `@ocnano/...`, the config and home directory is `.ocnano/`, the renderer scheme is `ocnano://` and the desktop app id is `ai.ocnano.desktop`.",
     },
     families: [
       {
@@ -147,16 +146,16 @@ export function brandContent(t: Translate) {
         {
           name: "Light",
           swatches: [
-            { name: "Ink", use: "The logo's outline and the letters of “code”.", hex: "#1F1F1F" },
-            { name: "Ink 70%", use: "The letters of “open”.", ink: "The ink at 70% opacity.", hex: "#626262" },
+            { name: "Ink", use: "The logo's outline and the wordmark's letters.", hex: "#1F1F1F" },
+            { name: "Ink 70%", use: "The logo's core.", ink: "The ink at 70% opacity.", hex: "#626262" },
             { name: "Ink 20%", use: "The logo's inner shade.", ink: "The ink at 20% opacity.", hex: "#D2D2D2" },
           ],
         },
         {
           name: "Dark",
           swatches: [
-            { name: "Ink", use: "The logo's outline and the letters of “code”.", hex: "#EEEEEE" },
-            { name: "Ink 72%", use: "The letters of “open”.", ink: "The ink at 72% opacity.", hex: "#AEAEAE" },
+            { name: "Ink", use: "The logo's outline and the wordmark's letters.", hex: "#EEEEEE" },
+            { name: "Ink 72%", use: "The logo's core.", ink: "The ink at 72% opacity.", hex: "#AEAEAE" },
             { name: "Ink 28%", use: "The logo's inner shade.", ink: "The ink at 28% opacity.", hex: "#4B4B4B" },
           ],
         },
