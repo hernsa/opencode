@@ -328,7 +328,7 @@ export const content = {
       minimumTitle: "最小尺寸",
       minimum: {
         logo: { title: "Logo", body: "至少 16 × 20px，笔画为 4px。再小就会模糊。" },
-        wordmark: { title: "文字标识", body: "至少 117 × 21px，笔画为 3px。再小就会模糊。" },
+        wordmark: { title: "文字标识", body: "至少 87 × 21px，笔画为 3px。再小就会模糊。" },
       },
     },
     donts: {

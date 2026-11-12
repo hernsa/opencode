@@ -411,7 +411,7 @@ export const content = {
         logo: { title: "Logo", body: "Minst 16 × 20px, med en strek på 4px. Mindre enn det blir den uskarp." },
         wordmark: {
           title: "Ordmerke",
-          body: "Minst 117 × 21px, med en strek på 3px. Mindre enn det blir det uskarpt.",
+          body: "Minst 87 × 21px, med en strek på 3px. Mindre enn det blir det uskarpt.",
         },
       },
     },

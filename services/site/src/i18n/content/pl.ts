@@ -680,7 +680,7 @@ export const content = {
         },
         wordmark: {
           title: "Logotyp",
-          body: "Co najmniej 117 × 21px, z kreską 3px. Mniejszy się rozmywa.",
+          body: "Co najmniej 87 × 21px, z kreską 3px. Mniejszy się rozmywa.",
         },
       },
     },

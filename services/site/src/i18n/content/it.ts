@@ -638,7 +638,7 @@ export const content = {
         },
         wordmark: {
           title: "Logotipo",
-          body: "Almeno 117 × 21px, con un tratto da 3px. Più piccolo si sfoca.",
+          body: "Almeno 87 × 21px, con un tratto da 3px. Più piccolo si sfoca.",
         },
       },
     },

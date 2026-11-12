@@ -91,8 +91,8 @@
         max-width: 100%;
       }
 
-      /* Whole-pixel steps: the logo at 48 × 60px (4:5, 12px stroke), the wordmark at 156 × 28px
-         (39 × 7 strokes of 4px). The square files pad the logo to 60 × 60px. */
+      /* Whole-pixel steps: the logo at 48 × 60px (4:5, 12px stroke), the wordmark at 116 × 28px
+         (29 × 7 strokes of 4px). The square files pad the logo to 60 × 60px. */
       &[data-kind="logo"] img {
         width: 48px;
         height: 60px;
@@ -103,7 +103,7 @@
       }
 
       &[data-kind="wordmark"] img {
-        width: 156px;
+        width: 116px;
         height: 28px;
       }
     }
@@ -1390,7 +1390,7 @@
       }
 
       > svg[data-slot="wordmark"] {
-        width: 156px;
+        width: 116px;
         height: 28px;
       }
 

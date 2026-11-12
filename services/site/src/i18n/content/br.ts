@@ -680,7 +680,7 @@ export const content = {
         },
         wordmark: {
           title: "Logotipo",
-          body: "Pelo menos 117 × 21px, com traço de 3px. Menor que isso, fica borrado.",
+          body: "Pelo menos 87 × 21px, com traço de 3px. Menor que isso, fica borrado.",
         },
       },
     },

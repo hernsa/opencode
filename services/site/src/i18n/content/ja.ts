@@ -422,7 +422,7 @@ export const content = {
       minimumTitle: "最小サイズ",
       minimum: {
         logo: { title: "ロゴ", body: "16 × 20px以上、ストロークは4px。これより小さいとぼやけます。" },
-        wordmark: { title: "ワードマーク", body: "117 × 21px以上、ストロークは3px。これより小さいとぼやけます。" },
+        wordmark: { title: "ワードマーク", body: "87 × 21px以上、ストロークは3px。これより小さいとぼやけます。" },
       },
     },
     donts: {

@@ -452,7 +452,7 @@ export const content = {
         logo: { title: "Logo", body: "Mindestens 16 × 20px, mit einem 4px-Strich. Kleiner wird es unscharf." },
         wordmark: {
           title: "Wortmarke",
-          body: "Mindestens 117 × 21px, mit einem 3px-Strich. Kleiner wird es unscharf.",
+          body: "Mindestens 87 × 21px, mit einem 3px-Strich. Kleiner wird es unscharf.",
         },
       },
     },

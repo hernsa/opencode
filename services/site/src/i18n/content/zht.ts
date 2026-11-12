@@ -332,7 +332,7 @@ export const content = {
       minimumTitle: "最小尺寸",
       minimum: {
         logo: { title: "Logo", body: "至少 16 × 20px，筆畫為 4px。再小就會模糊。" },
-        wordmark: { title: "字標", body: "至少 117 × 21px，筆畫為 3px。再小就會模糊。" },
+        wordmark: { title: "字標", body: "至少 87 × 21px，筆畫為 3px。再小就會模糊。" },
       },
     },
     donts: {

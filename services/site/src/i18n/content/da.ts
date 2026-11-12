@@ -411,7 +411,7 @@ export const content = {
         logo: { title: "Logo", body: "Mindst 16 × 20px med en streg på 4px. Mindre end det bliver det sløret." },
         wordmark: {
           title: "Ordmærke",
-          body: "Mindst 117 × 21px med en streg på 3px. Mindre end det bliver det sløret.",
+          body: "Mindst 87 × 21px med en streg på 3px. Mindre end det bliver det sløret.",
         },
       },
     },

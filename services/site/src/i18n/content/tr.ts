@@ -680,7 +680,7 @@ export const content = {
         },
         wordmark: {
           title: "Yazı logosu",
-          body: "En az 117 × 21px, 3px çizgiyle. Daha küçüğü bulanıklaşır.",
+          body: "En az 87 × 21px, 3px çizgiyle. Daha küçüğü bulanıklaşır.",
         },
       },
     },

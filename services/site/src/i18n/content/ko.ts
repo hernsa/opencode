@@ -372,7 +372,7 @@ export const content = {
       minimumTitle: "최소 크기",
       minimum: {
         logo: { title: "로고", body: "최소 16 × 20px, 스트로크 4px. 이보다 작으면 흐려집니다." },
-        wordmark: { title: "워드마크", body: "최소 117 × 21px, 스트로크 3px. 이보다 작으면 흐려집니다." },
+        wordmark: { title: "워드마크", body: "최소 87 × 21px, 스트로크 3px. 이보다 작으면 흐려집니다." },
       },
     },
     donts: {

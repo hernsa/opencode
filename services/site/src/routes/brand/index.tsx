@@ -770,9 +770,9 @@ export default function Brand() {
                       >
                         <img
                           src={asset.svg}
-                          // The files' own sizes: the logo 240 × 300 (square 300 × 300), the wordmarks 640 × 115.
-                          width={family.kind === "logo" ? (asset.file.endsWith("-square") ? 300 : 240) : 640}
-                          height={family.kind === "logo" ? 300 : 115}
+                          // The files' own sizes: the logo 240 × 300 (square 300 × 300), the wordmarks 174 × 42.
+                          width={family.kind === "logo" ? (asset.file.endsWith("-square") ? 300 : 240) : 174}
+                          height={family.kind === "logo" ? 300 : 42}
                           alt={`OC Nano ${lower(family.title)}, ${lower(asset.name)}`}
                         />
                       </div>
@@ -861,8 +861,8 @@ export default function Brand() {
                               >
                                 <img
                                   src={tile.svg}
-                                  width={tile.file.includes("-logo-") ? 240 : 640}
-                                  height={tile.file.includes("-logo-") ? 300 : 115}
+                                  width={tile.file.includes("-logo-") ? 240 : 174}
+                                  height={tile.file.includes("-logo-") ? 300 : 42}
                                   alt={`OC Nano ${lower(row.title)}, ${lower(group.name)}, ${lower(tile.name)}`}
                                 />
                               </div>
@@ -1303,39 +1303,32 @@ function DownloadIcon() {
 const markInner = "M180 240H60V120H180V240Z"
 const markOuter = "M180 60H60V240H180V60ZM240 300H0V0H240V300Z"
 
-// The wordmark letters from ocnano-wordmark-light.svg: [inner shade, outer shape]. The first four spell "open".
+// The wordmark letters from ocnano-wordmark-light.svg, scaled to the page's 640 × 115 grid:
+// [inner shade, outer shape]. The six spell "ocnano".
 const letters = [
   [
-    "M49.2346 82.1433H16.4141V49.2861H49.2346V82.1433Z",
-    "M49.2308 32.8573H16.4103V82.143H49.2308V32.8573ZM65.641 98.5716H0V16.4287H65.641V98.5716Z",
+    "M66.2069 82.1429H22.069V49.2857H66.2069V82.1429Z",
+    "M66.2069 32.8571H22.069V82.1429H66.2069V32.8571ZM88.2759 98.5714H0V16.4286H88.2759V98.5714Z",
   ],
   [
-    "M131.281 82.1433H98.4609V49.2861H131.281V82.1433Z",
-    "M98.4649 82.143H131.285V32.8573H98.4649V82.143ZM147.696 98.5716H98.4649V115H82.0547V16.4287H147.696V98.5716Z",
+    "M198.6207 82.1429H132.4138V49.2857H198.6207V82.1429Z",
+    "M198.6207 32.8571H132.4138V82.1429H198.6207V98.5714H110.3448V16.4286H198.6207V32.8571Z",
   ],
   [
-    "M229.746 65.7139V82.1424H180.516V65.7139H229.746Z",
-    "M229.743 65.7144H180.512V82.143H229.743V98.5716H164.102V16.4287H229.743V65.7144ZM180.512 49.2859H213.332V32.8573H180.512V49.2859Z",
+    "M286.8966 98.5714H242.7586V49.2857H286.8966V98.5714Z",
+    "M286.8966 32.8571H242.7586V98.5714H220.6897V16.4286H286.8966V32.8571ZM308.9655 98.5714H286.8966V32.8571H308.9655V98.5714Z",
   ],
   [
-    "M295.383 98.5718H262.562V49.2861H295.383V98.5718Z",
-    "M295.387 32.8573H262.567V98.5716H246.156V16.4287H295.387V32.8573ZM311.797 98.5716H295.387V32.8573H311.797V98.5716Z",
+    "M397.2414 65.7143H353.1034V49.2857H397.2414V65.7143Z",
+    "M353.1034 98.5714H331.0345V32.8571H353.1034V98.5714ZM419.3103 98.5714H397.2414V32.8571H419.3103V98.5714ZM397.2414 49.2857H353.1034V32.8571H397.2414V49.2857ZM397.2414 82.1429H353.1034V65.7143H397.2414V82.1429Z",
   ],
   [
-    "M393.848 82.1433H344.617V49.2861H393.848V82.1433Z",
-    "M393.844 32.8573H344.613V82.143H393.844V98.5716H328.203V16.4287H393.844V32.8573Z",
+    "M507.5862 98.5714H463.4483V49.2857H507.5862V98.5714Z",
+    "M507.5862 32.8571H463.4483V98.5714H441.3793V16.4286H507.5862V32.8571ZM529.6552 98.5714H507.5862V32.8571H529.6552V98.5714Z",
   ],
   [
-    "M459.485 82.1433H426.664V49.2861H459.485V82.1433Z",
-    "M459.489 32.8573H426.668V82.143H459.489V32.8573ZM475.899 98.5716H410.258V16.4287H475.899V98.5716Z",
-  ],
-  [
-    "M541.539 82.1433H508.719V49.2861H541.539V82.1433Z",
-    "M541.535 32.8571H508.715V82.1428H541.535V32.8571ZM557.946 98.5714H492.305V16.4286H541.535V0H557.946V98.5714Z",
-  ],
-  [
-    "M639.996 65.7139V82.1424H590.766V65.7139H639.996Z",
-    "M590.77 32.8573V49.2859H623.59V32.8573H590.77ZM640 65.7144H590.77V82.143H640V98.5716H574.359V16.4287H640V65.7144Z",
+    "M617.931 82.1429H573.7931V49.2857H617.931V82.1429Z",
+    "M617.931 32.8571H573.7931V82.1429H617.931V32.8571ZM640 98.5714H551.7241V16.4286H640V98.5714Z",
   ],
 ]
 
@@ -1357,7 +1350,7 @@ function Wordmark(props: { code: string; open: string; inner: string; style?: JS
         {(letter, index) => (
           <>
             <path d={letter[0]} style={{ fill: props.inner }} />
-            <path d={letter[1]} style={{ fill: index() < 4 ? props.open : props.code }} />
+            <path d={letter[1]} style={{ fill: index() < 3 ? props.open : props.code }} />
           </>
         )}
       </For>
@@ -1591,7 +1584,7 @@ function ClearSpace() {
 }
 
 /**
- * The wordmark with two strokes of clear space: the wordmark at 312 × 56px, so a stroke (a seventh of
+ * The wordmark with two strokes of clear space: the wordmark at 232 × 56px, so a stroke (a seventh of
  * its height, the thickness of its letters) is 8px. Marked as the logo is: the wordmark's bottom-left
  * square (the descender row, under the "o"), two of them in the margin to its left and two below the
  * wordmark, so the squares make one L on the 8px module grid, and the label down left.
@@ -1600,17 +1593,17 @@ function ClearSpaceWordmark() {
   const i18n = useI18n()
   const corners = [
     [32, 56, -1, -1],
-    [376, 56, 1, -1],
+    [296, 56, 1, -1],
     [32, 144, -1, 1],
-    [376, 144, 1, 1],
+    [296, 144, 1, 1],
   ]
   const edge = (value: number, direction: number) => value - direction * 0.5
   return (
     <svg
       data-component="clear-space"
-      width="520"
+      width="440"
       height="152"
-      viewBox="-56 24 520 152"
+      viewBox="-56 24 440 152"
       role="img"
       aria-label={i18n.t("brand.ui.clearSpaceWordmarkAlt")}
     >
@@ -1619,20 +1612,20 @@ function ClearSpaceWordmark() {
           <path d="M-1 1L1 -1M0 6L6 0M5 7L7 5" data-slot="hatch" />
         </pattern>
       </defs>
-      <path d="M32 56H376V144H32ZM48 72V128H360V72Z" fill="url(#brand-hatch-wordmark)" fill-rule="evenodd" />
-      <svg x="48" y="72" width="312" height="56" viewBox="0 0 640 115" preserveAspectRatio="none">
+      <path d="M32 56H296V144H32ZM48 72V128H280V72Z" fill="url(#brand-hatch-wordmark)" fill-rule="evenodd" />
+      <svg x="48" y="72" width="232" height="56" viewBox="0 0 640 115" preserveAspectRatio="none">
         <For each={letters}>
           {(letter, index) => (
             <>
               <path d={letter[0]} style={{ fill: "var(--logo-inner)" }} />
-              <path d={letter[1]} style={{ fill: index() < 4 ? "var(--logo-open)" : "var(--logo-code)" }} />
+              <path d={letter[1]} style={{ fill: index() < 3 ? "var(--logo-open)" : "var(--logo-code)" }} />
             </>
           )}
         </For>
       </svg>
       <g shape-rendering="crispEdges">
-        <rect data-slot="outline" x="32.5" y="56.5" width="343" height="87" />
-        <rect data-slot="outline" x="48.5" y="72.5" width="311" height="55" />
+        <rect data-slot="outline" x="32.5" y="56.5" width="263" height="87" />
+        <rect data-slot="outline" x="48.5" y="72.5" width="231" height="55" />
         <path
           data-slot="crop"
           d={corners

@@ -338,7 +338,7 @@ export const content = {
       minimumTitle: "أصغر الأحجام",
       minimum: {
         logo: { title: "الشعار", body: "لا يقل عن 16 × 20px، بخط 4px. أي حجم أصغر يجعله ضبابيًا." },
-        wordmark: { title: "الشعار النصي", body: "لا يقل عن 117 × 21px، بخط 3px. أي حجم أصغر يجعله ضبابيًا." },
+        wordmark: { title: "الشعار النصي", body: "لا يقل عن 87 × 21px، بخط 3px. أي حجم أصغر يجعله ضبابيًا." },
       },
     },
     donts: {

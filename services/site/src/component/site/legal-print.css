@@ -554,7 +554,7 @@
           }
         }
 
-        /* The wordmark at 40mm (above its 117px minimum) with more than two strokes of clear space. */
+        /* The wordmark at 40mm (above its 87px minimum) with more than two strokes of clear space. */
         [data-slot="brand"] {
           position: absolute;
           inset-inline-start: 16mm;
