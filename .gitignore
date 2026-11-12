@@ -47,3 +47,4 @@ packages/desktop/resources/ocnano-cli.version
 packages/desktop/resources/opencode-cli
 packages/desktop/resources/opencode-cli.exe
 packages/desktop/resources/opencode-cli.version
+packages/cli/.bun-cache/
