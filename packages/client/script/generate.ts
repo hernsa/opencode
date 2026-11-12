@@ -138,7 +138,7 @@ await Effect.runPromise(
           typeReferences: effectTypeReferences,
           outputTypes: {
             "event.subscribe": {
-              name: "OC NanoEvent",
+              name: "OcNanoEvent",
               import: 'import type { OC NanoEvent } from "@ocnano/protocol/groups/event"',
             },
           },

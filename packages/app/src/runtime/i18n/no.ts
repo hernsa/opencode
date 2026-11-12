@@ -236,11 +236,11 @@ export const dict = {
   "desktop.menu.nextProject": "Neste prosjekt",
   "desktop.menu.minimize": "Minimer",
   "desktop.menu.maximize": "Maksimer",
-  "desktop.menu.documentation": "OC Nano-dokumentasjon",
+  "desktop.menu.documentation": "OcNano-dokumentasjon",
   "desktop.menu.supportForum": "Brukerstøtteforum",
   "desktop.menu.shareFeedback": "Del tilbakemelding",
   "desktop.menu.reportBug": "Rapporter en feil",
-  "desktop.menu.ariaLabel": "OC Nano-meny",
+  "desktop.menu.ariaLabel": "OcNano-meny",
 
   "desktop.recovery.action.relaunch": "Start appen på nytt",
   "desktop.recovery.action.exportLogs": "Eksporter logger",

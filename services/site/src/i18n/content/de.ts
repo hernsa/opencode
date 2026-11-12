@@ -343,7 +343,7 @@ export const content = {
     headline: "Nutze die Abos, die du schon hast.",
     line: "Melde dich mit ChatGPT Plus oder Pro oder mit GitHub Copilot an. Oder nutze ein OC Nano-Abo.",
     yours: { label: "Dein Abo", items: { "chatgpt-plus-pro": { name: "ChatGPT Plus/Pro" } } },
-    planLinks: ["OC Nano-Abo"],
+    planLinks: ["OcNano-Abo"],
     ours: { label: "OC Nano-Pläne" },
   },
   brand: {

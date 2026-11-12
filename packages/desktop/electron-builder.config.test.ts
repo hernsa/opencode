@@ -130,7 +130,7 @@ test("shared packaging defaults", async () => {
   expect(config.nsis?.include).toBe(include)
   expect(await Bun.file(include).exists()).toBe(true)
   expect(config.files).toContain("!resources/ocnano-cli*")
-  // The stale upstream CLI binary must never ship inside an OC Nano build.
+  // The stale upstream CLI binary must never ship inside an OcNano build.
   expect(config.files).toContain("!resources/opencode-cli*")
 })
 

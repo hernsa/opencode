@@ -45,7 +45,7 @@ const desktop = [
   "Aðstoðarspjallborð",
   "Deila ábendingu",
   "Tilkynna villu",
-  "OC Nano-valmynd",
+  "OcNano-valmynd",
   "CLI uppsett",
   "CLI var sett upp í {{path}}\n\nEndurræstu skjáherminn til að nota 'ocnano2' skipunina.",
   "Uppsetning mistókst",

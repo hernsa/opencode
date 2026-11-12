@@ -95,8 +95,8 @@ try {
         main: "worker.js",
         compatibility_date: "2026-07-15",
         compatibility_flags: ["nodejs_compat"],
-        durable_objects: { bindings: [{ name: "OCNANO", class_name: "OC NanoDO" }] },
-        migrations: [{ tag: "v1", new_sqlite_classes: ["OC NanoDO"] }],
+        durable_objects: { bindings: [{ name: "OCNANO", class_name: "OcNanoDO" }] },
+        migrations: [{ tag: "v1", new_sqlite_classes: ["OcNanoDO"] }],
       }),
     ),
     Bun.write(

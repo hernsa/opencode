@@ -76,7 +76,7 @@ windows("installed accepts package-manager and curl binaries only", () =>
           "Microsoft",
           "WinGet",
           "Packages",
-          "Anomaly.OC Nano_Microsoft.Winget.Source_8wekyb3d8bbwe",
+          "Anomaly.OcNano_Microsoft.Winget.Source_8wekyb3d8bbwe",
           "ocnano.exe",
         ),
         true,

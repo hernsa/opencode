@@ -310,8 +310,8 @@ export const content = {
     headline: "Bruk abonnementene du allerede har.",
     line: "Logg inn med ChatGPT Plus eller Pro eller med GitHub Copilot. Eller bruk et OC Nano-abonnement.",
     yours: { label: "Ditt abonnement", items: { "chatgpt-plus-pro": { name: "ChatGPT Plus/Pro" } } },
-    planLinks: ["OC Nano-abonnement"],
-    ours: { label: "OC Nano-abonnementer" },
+    planLinks: ["OcNano-abonnement"],
+    ours: { label: "OcNano-abonnementer" },
   },
   brand: {
     hero: { copy: { text: "Regler for agent", copied: "Regler kopiert" } },

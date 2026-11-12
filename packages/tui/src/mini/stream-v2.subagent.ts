@@ -398,7 +398,7 @@ export function createSubagentTracker(input: SubagentTrackerInput): SubagentTrac
     }
   }
 
-  const hydrateChild = (sdk: OC NanoClient, child: ChildState, signal = input.signal): Promise<void> => {
+  const hydrateChild = (sdk: OcNanoClient, child: ChildState, signal = input.signal): Promise<void> => {
     if (!active(signal)) return Promise.resolve()
     const existing = hydrations.get(child.sessionID)
     if (existing) return existing
@@ -451,7 +451,7 @@ export function createSubagentTracker(input: SubagentTrackerInput): SubagentTrac
     active(signal) && epoch === blockerEpoch && children.get(child.sessionID) === child
 
   const resolvePermissionTools = async (
-    sdk: OC NanoClient,
+    sdk: OcNanoClient,
     child: ChildState,
     permissions: PermissionRequest[],
     epoch: number,
@@ -505,7 +505,7 @@ export function createSubagentTracker(input: SubagentTrackerInput): SubagentTrac
     }
   }
 
-  function scheduleBlockerRetry(sdk: OC NanoClient, child: ChildState, epoch: number, signal = input.signal) {
+  function scheduleBlockerRetry(sdk: OcNanoClient, child: ChildState, epoch: number, signal = input.signal) {
     if (!blockerCurrent(child, epoch, signal) || child.blockersHydrated || blockerRetryTimers.has(child.sessionID))
       return
     const attempt = blockerRetryAttempts.get(child.sessionID) ?? 0
@@ -521,7 +521,7 @@ export function createSubagentTracker(input: SubagentTrackerInput): SubagentTrac
   }
 
   function hydrateBlockers(
-    sdk: OC NanoClient,
+    sdk: OcNanoClient,
     child: ChildState,
     epoch = blockerEpoch,
     signal = input.signal,
@@ -638,7 +638,7 @@ export function createSubagentTracker(input: SubagentTrackerInput): SubagentTrac
     }
   }
 
-  const discover = (sdk: OC NanoClient, sessionID: string, signal = input.signal) => {
+  const discover = (sdk: OcNanoClient, sessionID: string, signal = input.signal) => {
     if (!active(signal) || children.size >= FAMILY_LIST_LIMIT) return Promise.resolve()
     if (checked.has(sessionID) || children.has(sessionID) || sessionID === input.sessionID) return Promise.resolve()
     const existing = discoveryJobs.get(sessionID)

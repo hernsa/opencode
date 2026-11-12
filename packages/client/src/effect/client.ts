@@ -14,7 +14,7 @@ const CurrentHeaders = Context.Reference<RpcCallOptions["headers"]>("@ocnano/cli
   defaultValue: () => undefined,
 })
 
-export const make = Effect.fn("OC Nano.make")(function* (options?: { readonly baseUrl?: URL | string }) {
+export const make = Effect.fn("OcNano.make")(function* (options?: { readonly baseUrl?: URL | string }) {
   const httpClient = yield* HttpClient.HttpClient
   const raw = yield* OcNano.make(options).pipe(
     Effect.provideService(

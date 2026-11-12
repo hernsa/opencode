@@ -12,7 +12,7 @@ import pkg from "../package.json"
 import { discoverPluginRuntimeSpecifiers, pluginRuntimeLoaderCode } from "@ocnano/plugin/runtime-modules"
 import { buildAppArchive } from "./app-assets"
 import { verifyArtifact, verifySimulationGraph } from "./verify-artifact"
-import { resolveOpencodePty } from "./opencode-pty"
+import { resolveOpencodePty } from "./ocnano-pty"
 import { NativeArch } from "../../../script/native-arch"
 import { bundledModelsSnapshot, modelsSnapshotPlugin } from "../../core/script/models-snapshot"
 
@@ -73,8 +73,7 @@ const targets =
       : allTargets
 if (!targets.length) throw new Error(`Unknown build target: ${requestedTarget}`)
 
-// Bun 1.4.4 skips native packages for the other libc by default, but the musl targets need them.
-if (!skipInstall)
+if (!skipInstall) {
   // The pty package is a workspace package; its platform binaries are published under their own
   // names, so the version comes from the workspace manifest rather than from a dependency range.
   const ptyVersion = JSON.parse(
@@ -82,8 +81,8 @@ if (!skipInstall)
   ).version as string
 
   // Bun 1.4.4 skips native packages for the other libc by default, but the musl targets need them.
-  if (!skipInstall)
-    await $`bun install --os="*" --cpu="*" --libc="*" @opentui/core@${pkg.dependencies["@opentui/core"]} @opencode/pty@${ptyVersion}`
+  await $`bun install --os="*" --cpu="*" --libc="*" @opentui/core@${pkg.dependencies["@opentui/core"]} @opencode/pty@${ptyVersion}`
+}
 const appArchive = path.join(dir, ".cache", "bun-app-archive.bin")
 await Bun.write(appArchive, await buildAppArchive(Script.channel, Script.version, { skipBuild: skipWebUi }))
 const appAssetsPlugin: BunPlugin = {

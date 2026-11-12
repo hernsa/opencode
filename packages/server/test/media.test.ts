@@ -76,7 +76,7 @@ const serve = (database: string, mediaBlob: boolean) =>
 const client = (handler: (request: Request) => Promise<Response>, capabilities?: string) =>
   OcNano.make({
     baseUrl: "http://ocnano.local",
-    ...(capabilities === undefined ? {} : { headers: { "X-OC Nano-Capabilities": capabilities } }),
+    ...(capabilities === undefined ? {} : { headers: { "X-OcNano-Capabilities": capabilities } }),
     fetch: Object.assign((input: string | URL | Request, init?: RequestInit) => handler(new Request(input, init)), {
       preconnect: fetch.preconnect,
     }),

@@ -61,7 +61,7 @@ if (!app && os === "win") {
   await cp(unpacked, path.join(out, "app"), { recursive: true })
 }
 
-// OC Nano publishes no releases, so the bundle must not carry an update configuration:
+// OcNano publishes no releases, so the bundle must not carry an update configuration:
 // electron-updater would read the feed from that file, and the only feed the upstream release
 // service offers answers with UPSTREAM OpenCode releases. A stale copy from an earlier build
 // is removed so the updater can never reach one.

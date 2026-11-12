@@ -146,7 +146,7 @@ export function createBrowserPane(input: {
 
             // The renderer never holds the managed sidecar's password; Node requests bypass
             // the webRequest header injection, so the host resolves the credential here in main.
-            const client = yield* OC Nano.make({ baseUrl: server.url }).pipe(
+            const client = yield* OcNano.make({ baseUrl: server.url }).pipe(
               Effect.provideService(
                 HttpClient.HttpClient,
                 Object.keys(server.headers).length

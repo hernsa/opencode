@@ -24,7 +24,7 @@ export const dict = {
   "header.sectionNavLabel": "數據分區",
   "header.githubAria": "在 GitHub 上為 OC Nano 加星",
   "header.github": "GitHub",
-  "header.tryOC Nano": "試用 OC Nano",
+  "header.tryOcNano": "試用 OC Nano",
   "header.tryOcNanoShort": "立即試用",
   "header.openNav": "開啟導覽",
   "header.closeNav": "關閉導覽",

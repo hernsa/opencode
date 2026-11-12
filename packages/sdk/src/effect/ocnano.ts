@@ -36,7 +36,7 @@ export type Interface = Omit<OcNanoClient, "plugin" | "workspace"> & {
 export const create: <R = never>(
   options?: CreateOptions<R>,
   embed?: EmbedOptions,
-) => Effect.Effect<Interface, Config.ConfigError | Error, Scope.Scope | R> = Effect.fn("OC Nano.create")(function* <
+) => Effect.Effect<Interface, Config.ConfigError | Error, Scope.Scope | R> = Effect.fn("OcNano.create")(function* <
   R = never,
 >(options: CreateOptions<R> = {}, embed: EmbedOptions = {}) {
   const host = yield* Effect.acquireRelease(EmbeddedHost.create(options, embed), (host) => Effect.promise(host.close))

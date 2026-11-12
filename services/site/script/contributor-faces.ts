@@ -18,7 +18,7 @@ type Contributor = { login: string; id: number; type: string; avatar_url: string
 const pages = await Promise.all(
   [1, 2].map((page) =>
     fetch(`https://api.github.com/repos/${repo}/contributors?per_page=100&page=${page}`, {
-      headers: { Accept: "application/vnd.github+json", "User-Agent": "OC Nano-Console" },
+      headers: { Accept: "application/vnd.github+json", "User-Agent": "OcNano-Console" },
     }).then((response) => {
       if (!response.ok) throw new Error(`GitHub answered ${response.status} for page ${page}`)
       return response.json() as Promise<Contributor[]>

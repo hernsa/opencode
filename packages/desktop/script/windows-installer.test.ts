@@ -9,7 +9,7 @@ const windows = test.skipIf(process.platform !== "win32")
 const payloadHash = "0123456789ABCDEF0123456789ABCDEF"
 
 // The installer clears the uninstall entry of an install it moves; the tests point it at their own key.
-const uninstallKey = "Software\\OC NanoInstallerTest"
+const uninstallKey = "Software\\OcNanoInstallerTest"
 
 async function harness() {
   const { getMakeNsisPath, getNsisPluginsPath } = await import("app-builder-lib/out/toolsets/windows")
@@ -133,28 +133,28 @@ const stagedCases = [
   {
     name: "moves the staged app into the emptied install directory",
     installed: [],
-    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OC Nano.exe", "resources/app.asar"] },
+    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OcNano.exe", "resources/app.asar"] },
     moved: true,
-    expected: ["OC Nano.exe", "resources/app.asar"],
+    expected: ["OcNano.exe", "resources/app.asar"],
   },
   {
     name: "keeps an install directory that still holds files",
     installed: ["locked.dll"],
-    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OC Nano.exe"] },
+    staged: { [`update-${payloadHash.slice(0, 16)}`]: ["OcNano.exe"] },
     moved: false,
     expected: ["locked.dll"],
   },
   {
     name: "discards an update staged from another payload",
     installed: [],
-    staged: { "update-FEDCBA9876543210": ["OC Nano.exe"] },
+    staged: { "update-FEDCBA9876543210": ["OcNano.exe"] },
     moved: false,
     expected: [],
   },
   {
     name: "discards staging that never finished",
     installed: [],
-    staged: { staging: ["OC Nano.exe"] },
+    staged: { staging: ["OcNano.exe"] },
     moved: false,
     expected: [],
   },
@@ -224,7 +224,7 @@ const directoryCases = [
     name: "leaving the shared directory keeps the other channels",
     from: "@ocnanodesktop",
     shared: [
-      "OC Nano.exe",
+      "OcNano.exe",
       "Uninstall OC Nano.exe",
       "OC Nano Beta.exe",
       "Uninstall OC Nano Beta.exe",
@@ -237,7 +237,7 @@ const directoryCases = [
   {
     name: "the last channel removes the shared directory",
     from: "@ocnanodesktop",
-    shared: ["OC Nano.exe", "Uninstall OC Nano.exe", "resources/app.asar"],
+    shared: ["OcNano.exe", "Uninstall OC Nano.exe", "resources/app.asar"],
     expected: "ai.ocnano.desktop",
     left: undefined,
     uninstallKept: false,
@@ -245,9 +245,9 @@ const directoryCases = [
   {
     name: "an install elsewhere stays where it is",
     from: "custom",
-    shared: ["OC Nano.exe", "Uninstall OC Nano.exe"],
+    shared: ["OcNano.exe", "Uninstall OC Nano.exe"],
     expected: "custom",
-    left: ["OC Nano.exe", "Uninstall OC Nano.exe"],
+    left: ["OcNano.exe", "Uninstall OC Nano.exe"],
     uninstallKept: true,
   },
 ]

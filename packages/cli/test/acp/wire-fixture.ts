@@ -434,7 +434,7 @@ export async function startWire(options: WireOptions = {}) {
   const logs: Array<Pick<Logger.Options<unknown>, "message" | "cause">> = []
   const agentScope = Scope.makeUnsafe()
   const agentConnection = await Effect.runPromise(
-    OC Nano.make({ baseUrl: server.url }).pipe(
+    OcNano.make({ baseUrl: server.url }).pipe(
       Effect.provide(FetchHttpClient.layer),
       Effect.flatMap((client) => ACP.connect(client, ndJsonStream(agentToClient.writable, clientToAgent.readable))),
       Scope.provide(agentScope),

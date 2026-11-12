@@ -1618,7 +1618,7 @@ export async function createSessionTransport(input: StreamInput): Promise<Sessio
   const runTurnWait = async (
     next: SessionTurnInput,
     messageID: string,
-    client: OC NanoClient,
+    client: OcNanoClient,
     send: () => Promise<SessionInboxInfo | void>,
     onAdmitted?: () => void,
   ) => {
@@ -1745,7 +1745,7 @@ export async function createSessionTransport(input: StreamInput): Promise<Sessio
   let queuedResizeReplay: SessionResizeReplayInput | undefined
   let closing: Promise<void> | undefined
 
-  const admitPrompt = async (next: SessionTurnInput, client: OC NanoClient, delivery: RunDelivery) => {
+  const admitPrompt = async (next: SessionTurnInput, client: OcNanoClient, delivery: RunDelivery) => {
     const messageID = next.prompt.messageID
     if (!messageID) throw new Error("Prompt message ID is required")
     const command = next.prompt.command

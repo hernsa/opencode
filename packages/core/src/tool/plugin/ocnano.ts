@@ -95,7 +95,7 @@ const ModelsOutput = Schema.Struct({
 
 export const Plugin = {
   id: "ocnano.tools",
-  effect: Effect.fn("OC NanoTools.Plugin")(function* (ctx: Context) {
+  effect: Effect.fn("OcNanoTools.Plugin")(function* (ctx: Context) {
     const access = yield* FileAccess.Service
     const permission = yield* Permission.Service
     const hook = (event: SessionHooks["context"]) =>

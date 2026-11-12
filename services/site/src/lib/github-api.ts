@@ -9,7 +9,7 @@ export async function githubFetch(url: string, init?: RequestInit) {
     ...init,
     headers: {
       Accept: "application/vnd.github+json",
-      "User-Agent": "OC Nano-Website",
+      "User-Agent": "OcNano-Website",
     },
     signal: AbortSignal.timeout(8000),
   }).catch(() => undefined)

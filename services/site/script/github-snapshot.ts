@@ -11,7 +11,7 @@ const root = path.resolve(import.meta.dir, "..")
 const api = "https://api.github.com/repos/anomalyco/opencode"
 const headers = {
   Accept: "application/vnd.github+json",
-  "User-Agent": "OC Nano-Console",
+  "User-Agent": "OcNano-Console",
   ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
 }
 const get = (url: string) =>

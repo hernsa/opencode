@@ -41,7 +41,7 @@ const en = {
   "header.sectionNavLabel": "Data sections",
   "header.githubAria": "Star OC Nano on GitHub",
   "header.github": "GitHub",
-  "header.tryOC Nano": "Try OC Nano",
+  "header.tryOcNano": "Try OC Nano",
   // The header button's label on phones: the same where it fits beside the 20px product name at 375px, else a short
   // "Try now".
   "header.tryOcNanoShort": "Try OC Nano",

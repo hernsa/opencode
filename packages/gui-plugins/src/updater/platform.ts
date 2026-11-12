@@ -26,7 +26,7 @@ export const make = Effect.fn("Updater.platform")(function* (input: {
     error: (...args) => runFork(Effect.logError(...args)),
     debug: (...args) => runFork(Effect.logDebug(...args)),
   }
-  // The release endpoint comes from the configuration. OC Nano ships no update configuration file,
+  // The release endpoint comes from the configuration. OcNano ships no update configuration file,
   // and the upstream feed must never be a fallback: it answers with UPSTREAM OpenCode releases.
   updateClient.setFeedURL({ provider: "generic", url: input.feed, channel })
   updateClient.channel = channel

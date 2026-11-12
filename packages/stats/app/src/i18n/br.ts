@@ -22,7 +22,7 @@ export const dict = {
   "header.sectionNavLabel": "Seções de dados",
   "header.githubAria": "Dar estrela ao OC Nano no GitHub",
   "header.github": "GitHub",
-  "header.tryOC Nano": "Experimente o OC Nano",
+  "header.tryOcNano": "Experimente o OC Nano",
   "header.tryOcNanoShort": "Experimente",
   "header.openNav": "Abrir navegação",
   "header.closeNav": "Fechar navegação",

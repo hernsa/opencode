@@ -1,6 +1,6 @@
 import electron, { type BrowserWindow } from "electron"
 
-export const rendererProtocol = "oc"
+export const rendererProtocol = "ocnano"
 
 export const rendererHost = "renderer"
 

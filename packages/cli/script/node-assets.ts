@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url"
 import { getNodeAssets } from "@opentui/core/node-assets"
 import { attentionSoundAssets, type NodeTarget, photonWasmAsset } from "../src/node/target"
 import { collectFiles } from "./files"
-import { resolveOpencodePty } from "./opencode-pty"
+import { resolveOpencodePty } from "./ocnano-pty"
 
 const dir = path.resolve(import.meta.dirname, "..")
 // The oc-nano addon is checked in under packages/core; only a win32-x64 build exists today.

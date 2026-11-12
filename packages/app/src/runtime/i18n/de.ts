@@ -743,7 +743,7 @@ export const dict = {
   "desktop.menu.nextProject": "Nächstes Projekt",
   "desktop.menu.minimize": "Minimieren",
   "desktop.menu.maximize": "Maximieren",
-  "desktop.menu.documentation": "OC Nano-Dokumentation",
+  "desktop.menu.documentation": "OcNano-Dokumentation",
   "desktop.menu.supportForum": "Supportforum",
   "desktop.menu.shareFeedback": "Feedback senden",
   "desktop.menu.reportBug": "Fehler melden",

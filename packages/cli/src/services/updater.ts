@@ -106,7 +106,7 @@ function resultDetail(result: { code: number; stdout: string; stderr: string }) 
   )
 }
 
-// The release endpoint of an OC Nano deployment. The upstream service answers with UPSTREAM
+// The release endpoint of an OcNano deployment. The upstream service answers with UPSTREAM
 // OpenCode releases, so the endpoint is never assumed: a build without one has no feed to read.
 function releaseUrl(input: {
   readonly base: string
@@ -175,7 +175,7 @@ const make = Effect.gen(function* () {
   )
   // Homebrew Core builds its formula on its own schedule, so the tap release does not describe it.
   const coreFormula = installedFormula === "ocnano"
-  // OC Nano publishes no releases of its own. The upstream release service answers with UPSTREAM
+  // OcNano publishes no releases of its own. The upstream release service answers with UPSTREAM
   // OpenCode releases, so the endpoint is configuration: without one, no release is ever fetched
   // and `ocnano upgrade` says so instead of installing a different product.
   const feed = process.env.OCNANO_UPDATE_FEED?.trim()

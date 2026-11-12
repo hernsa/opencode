@@ -1,7 +1,7 @@
 import { GLYPHS } from './glyphs.mjs';
 
 export const FONT_FAMILY = 'OC Nano';
-export const FONT_FILENAME = 'OC Nano.otf';
+export const FONT_FILENAME = 'OcNano.otf';
 const LETTERS = Object.keys(GLYPHS);
 const INVISIBLE = [0, 9, 10, 13, 0x200b, 0x200c, 0x200d, 0x2060, 0xfe0e, 0xfe0f, 0xfeff];
 const RANGES = [
@@ -71,7 +71,7 @@ export function createLogoFont(opentype, mapCharacter = defaultFontMapping) {
   const font = new opentype.Font({
     familyName: FONT_FAMILY,
     styleName: 'Regular',
-    postScriptName: `OC Nano-${signature}-Regular`,
+    postScriptName: `OcNano-${signature}-Regular`,
     unitsPerEm: 1000,
     ascender: 800,
     descender: -200,
@@ -84,7 +84,7 @@ export function createLogoFont(opentype, mapCharacter = defaultFontMapping) {
     glyphs,
   });
   for (const names of Object.values(font.names)) {
-    names.uniqueID = { en: `OC Nano-1.001-${signature}` };
+    names.uniqueID = { en: `OcNano-1.001-${signature}` };
   }
   return font;
 }

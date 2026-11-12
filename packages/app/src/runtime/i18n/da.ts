@@ -775,11 +775,11 @@ export const dict = {
   "desktop.menu.nextProject": "Næste projekt",
   "desktop.menu.minimize": "Minimer",
   "desktop.menu.maximize": "Maksimer",
-  "desktop.menu.documentation": "OC Nano-dokumentation",
+  "desktop.menu.documentation": "OcNano-dokumentation",
   "desktop.menu.supportForum": "Supportforum",
   "desktop.menu.shareFeedback": "Giv feedback",
   "desktop.menu.reportBug": "Rapportér en fejl",
-  "desktop.menu.ariaLabel": "OC Nano-menu",
+  "desktop.menu.ariaLabel": "OcNano-menu",
 
   "desktop.recovery.action.relaunch": "Start igen",
   "desktop.recovery.action.exportLogs": "Eksportér logfiler",

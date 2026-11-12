@@ -238,9 +238,9 @@ const getBase = (appId: string): Configuration => {
   }
 }
 
-// OC Nano publishes no releases, so no channel advertises a publish target. The upstream release
+// OcNano publishes no releases, so no channel advertises a publish target. The upstream release
 // service ignores the product segment of its paths and answers with UPSTREAM OpenCode releases,
-// which would replace an OC Nano build with a different product.
+// which would replace an OcNano build with a different product.
 export function getConfig() {
   const channel = resolveChannel()
   const appId = APP_IDS[channel]
