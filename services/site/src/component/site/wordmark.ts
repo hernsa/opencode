@@ -1,23 +1,19 @@
 import { washStartTime } from "./entrance"
 
-// The wordmark's shapes on its 234 × 42 drawing grid. "inner" paths are the counters.
+// The wordmark's shapes on its 174 × 42 drawing grid. "inner" paths are the counters.
 const markPaths = [
   { kind: "inner", d: "M18 30H6V18H18V30Z" },
   { kind: "open", d: "M18 12H6V30H18V12ZM24 36H0V6H24V36Z" },
-  { kind: "inner", d: "M48 30H36V18H48V30Z" },
-  { kind: "open", d: "M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z" },
-  { kind: "inner", d: "M84 24V30H66V24H84Z" },
-  { kind: "open", d: "M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z" },
-  { kind: "inner", d: "M108 36H96V18H108V36Z" },
-  { kind: "open", d: "M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z" },
-  { kind: "inner", d: "M144 30H126V18H144V30Z" },
-  { kind: "code", d: "M144 12H126V30H144V36H120V6H144V12Z" },
+  { kind: "inner", d: "M54 30H36V18H54V30Z" },
+  { kind: "open", d: "M54 12H36V30H54V36H30V6H54V12Z" },
+  { kind: "inner", d: "M78 36H66V18H78V36Z" },
+  { kind: "open", d: "M78 12H66V36H60V6H78V12ZM84 36H78V12H84V36Z" },
+  { kind: "inner", d: "M108 24H96V18H108V24Z" },
+  { kind: "open", d: "M96 36H90V12H96V36ZM114 36H108V12H114V36ZM108 18H96V12H108V18ZM108 30H96V24H108V30Z" },
+  { kind: "inner", d: "M138 36H126V18H138V36Z" },
+  { kind: "open", d: "M138 12H126V36H120V6H138V12ZM144 36H138V12H144V36Z" },
   { kind: "inner", d: "M168 30H156V18H168V30Z" },
-  { kind: "code", d: "M168 12H156V30H168V12ZM174 36H150V6H174V36Z" },
-  { kind: "inner", d: "M198 30H186V18H198V30Z" },
-  { kind: "code", d: "M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z" },
-  { kind: "inner", d: "M234 24V30H216V24H234Z" },
-  { kind: "code", d: "M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z" },
+  { kind: "open", d: "M168 12H156V30H168V12ZM174 36H150V6H174V36Z" },
 ] as const
 
 type Point = [number, number]
@@ -114,11 +110,10 @@ export const letters = [...WORD].map((char, index) => {
   }
 })
 const home = letters.map((_, index) => index)
-// On phones (site.css, max-width 40rem) the word stacks in two lines of COLUMNS letters, "open"
-// over "code", scaled up to the full width. The lines are LINE units apart, a letter's full height,
-// so the "p" descender ends level with the top of the "d" ascender. They interlock without
-// touching in any order: a descender is a letter's left stem and an ascender its right.
-const COLUMNS = 4
+// On phones (site.css, max-width 40rem) the word stacks in two lines of COLUMNS letters, "ocn"
+// over "ano", scaled up to the full width. The lines are LINE units apart, a letter's full height,
+// so the letters of one line clear those of the next.
+const COLUMNS = 3
 const LINE = 42
 const STACKED = "(max-width: 40rem)"
 
@@ -193,9 +188,9 @@ export function wordmark(
   const slotOf = (letter: number) => order.indexOf(letter)
   const reordered = () => order.some((item, slot) => item !== home[slot])
   // Whether the word is stacked in two lines (phones), and drawing units per screen pixel there, for
-  // the lift and the pointer. The stacked word is 4 letters (114 units) across the same width.
+  // the lift and the pointer. The stacked word is 3 letters (84 units) across the same width.
   const stacked = () => matchMedia(STACKED).matches
-  const unit = () => (stacked() ? 114 : 234) / Math.max(1, svg.getBoundingClientRect().width)
+  const unit = () => (stacked() ? 84 : 174) / Math.max(1, svg.getBoundingClientRect().width)
   // Where a slot is in the word, in drawing units: one line, or two of COLUMNS on phones.
   const spot = (slot: number) =>
     stacked() ? { x: (slot % COLUMNS) * SLOT, y: Math.floor(slot / COLUMNS) * LINE } : { x: slot * SLOT, y: 0 }
@@ -362,7 +357,11 @@ export function wordmark(
     if (!direction && event.key !== "Home" && event.key !== "End") return
     event.preventDefault()
     const target =
-      event.key === "Home" ? 0 : event.key === "End" ? letters.length - 1 : Math.max(0, Math.min(7, slot + direction))
+      event.key === "Home"
+        ? 0
+        : event.key === "End"
+          ? letters.length - 1
+          : Math.max(0, Math.min(letters.length - 1, slot + direction))
     if (held || event.altKey) {
       if (target === slot) return
       place(letter, target)

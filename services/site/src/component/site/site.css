@@ -420,7 +420,7 @@ html:has([data-site][data-theme="dark"]) {
     svg {
       display: block;
       flex-shrink: 0;
-      width: calc(var(--logo-height) * 234 / 42);
+      width: calc(var(--logo-height) * 174 / 42);
       height: var(--logo-height);
     }
 
@@ -2078,24 +2078,23 @@ html:has([data-site][data-theme="dark"]) {
       transform: translate(calc((var(--slot, 0) - var(--home, 0)) * 30px), var(--lift, 0px));
     }
 
-    /* Phones: two lines, "open" over "code", each as wide as the one line was. The SVG takes the
-       stacked shape (4 letters, 114 units, by two 42-unit lines 42 apart, so descenders end level
-       with the next line's ascenders) and the stage scales the
+    /* Phones: two lines, "ocn" over "ano", each as wide as the one line was. The SVG takes the
+       stacked shape (3 letters, 84 units, by two 42-unit lines 42 apart) and the stage scales the
        drawing up to fill it; slots fill the top line first. Pure CSS, so the server's markup is
        already stacked. */
     @media (max-width: 40rem) {
       svg {
-        aspect-ratio: 114 / 84;
+        aspect-ratio: 84 / 84;
       }
 
       [data-slot="stage"] {
-        transform: scale(calc(234 / 114));
+        transform: scale(calc(174 / 84));
       }
 
       [data-slot="letter"] {
         transform: translate(
-          calc((mod(var(--slot, 0), 4) - var(--home, 0)) * 30px),
-          calc(round(down, var(--slot, 0) / 4, 1) * 42px + var(--lift, 0px))
+          calc((mod(var(--slot, 0), 3) - var(--home, 0)) * 30px),
+          calc(round(down, var(--slot, 0) / 3, 1) * 42px + var(--lift, 0px))
         );
       }
     }

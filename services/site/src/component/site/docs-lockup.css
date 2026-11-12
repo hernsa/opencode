@@ -15,7 +15,7 @@
 }
 
 [data-site]:not([data-logo="icon"]) [data-component="docs-lockup"] {
-  --lockup-logo: calc(var(--logo-height) * 234 / 42);
+  --lockup-logo: calc(var(--logo-height) * 174 / 42);
 }
 
 [data-component="docs-lockup"] {
@@ -218,7 +218,7 @@
   }
 
   [data-site]:not([data-logo="icon"]) [data-component="docs-lockup"] {
-    --lockup-text: calc(var(--edge) + env(safe-area-inset-left, 0px) + 30px * 234 / 42 + 12px);
+    --lockup-text: calc(var(--edge) + env(safe-area-inset-left, 0px) + 30px * 174 / 42 + 12px);
   }
 
   [data-component="docs-lockup"] {

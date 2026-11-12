@@ -10,7 +10,7 @@ import { letters, SLOT, wordmark, wordmarkTiming } from "./wordmark"
  * top left corner while its hatch wipes in from there, each node fading in as the outline passes
  * it; "hatch only" starts from the drawn outlines. Reduced motion shows the mark.
  *
- * On phones the word stacks in two lines, "open" over "code" (CSS only, so it is stacked from the
+ * On phones the word stacks in two lines, "ocn" over "ano" (CSS only, so it is stacked from the
  * server's markup).
  *
  * With `play`, the letters are a reorderable list: drag one sideways (or pick it up with Space and
@@ -68,7 +68,7 @@ export function Wordmark(props: {
   return (
     <>
       <svg
-        viewBox="0 0 234 42"
+        viewBox="0 0 174 42"
         preserveAspectRatio="xMinYMin meet"
         data-slot="face"
         style={{
@@ -175,23 +175,19 @@ export function LogoIcon() {
 
 export function Logo() {
   return (
-    <svg width="117" height="21" viewBox="0 0 234 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="87" height="21" viewBox="0 0 174 42" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 30H6V18H18V30Z" data-slot="inner" />
       <path d="M18 12H6V30H18V12ZM24 36H0V6H24V36Z" data-slot="open" />
-      <path d="M48 30H36V18H48V30Z" data-slot="inner" />
-      <path d="M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z" data-slot="open" />
-      <path d="M84 24V30H66V24H84Z" data-slot="inner" />
-      <path d="M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z" data-slot="open" />
-      <path d="M108 36H96V18H108V36Z" data-slot="inner" />
-      <path d="M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z" data-slot="open" />
-      <path d="M144 30H126V18H144V30Z" data-slot="inner" />
-      <path d="M144 12H126V30H144V36H120V6H144V12Z" data-slot="code" />
+      <path d="M54 30H36V18H54V30Z" data-slot="inner" />
+      <path d="M54 12H36V30H54V36H30V6H54V12Z" data-slot="open" />
+      <path d="M78 36H66V18H78V36Z" data-slot="inner" />
+      <path d="M78 12H66V36H60V6H78V12ZM84 36H78V12H84V36Z" data-slot="open" />
+      <path d="M108 24H96V18H108V24Z" data-slot="inner" />
+      <path d="M96 36H90V12H96V36ZM114 36H108V12H114V36ZM108 18H96V12H108V18ZM108 30H96V24H108V30Z" data-slot="code" />
+      <path d="M138 36H126V18H138V36Z" data-slot="inner" />
+      <path d="M138 12H126V36H120V6H138V12ZM144 36H138V12H144V36Z" data-slot="code" />
       <path d="M168 30H156V18H168V30Z" data-slot="inner" />
       <path d="M168 12H156V30H168V12ZM174 36H150V6H174V36Z" data-slot="code" />
-      <path d="M198 30H186V18H198V30Z" data-slot="inner" />
-      <path d="M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z" data-slot="code" />
-      <path d="M234 24V30H216V24H234Z" data-slot="inner" />
-      <path d="M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z" data-slot="code" />
     </svg>
   )
 }
